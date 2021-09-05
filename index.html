@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find a job</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./form.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway:400,500,700,900" rel="stylesheet">
+  
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.css" integrity="sha512-3icgkoIO5qm2D4bGSUkPqeQ96LS8+ukJC7Eqhl1H5B2OJMEnFqLmNDxXVmtV/eq5M65tTDkUYS/Q0P4gvZv+yA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+   
+</head>
+<body>
+    <!-- navbar -->
+    <div class="navbar">
+          <span class="iconic-list">
+            <button class="bellicon_btn"><img src="./aset/bell-icon.png" height="30" width="30" alt=""> </button>
+              
+            
+        </span>  
+    </div>
+
+    <!-- sidebar -->
+<main class="sidebar">
+  <div class="hamburger" onclick="toggleMenu();"></div>
+  <header class="user">
+    <!-- <img src="../images/" alt=""> -->
+    <i class="fas fa-user-alt"></i>
+    <h2 class="userName">Akshada</h2>
+    <!-- <p class="userText">Web developer</p> -->
+  </header>
+  <nav class="navigation">
+    <ul class="nav-list">
+      <li class="list-item active"><a href="#"><i class="fab fa-codepen"></i>Dashboard</a></li>
+      <!-- <li class="list-item"> -->
+        <li class="list-item active"><a href="#"><i class="fab fa-codepen"></i>Application Tracker</a></li>
+      <li class="list-item"><a href="#"><i class="fab fa-html5"></i>HTML</a></li>
+      
+    </ul>
+  </nav>
+  <div class="footer">
+    <p>Help Center</p><br>
+    <p>Privacy Policy</p><br>
+    <p>Terms & conditions</p>
+    </div>
+</main>
+
+<!-- mainbody -->
+<div class="mainbody" id="mainbody">
+    <div class="mainInfo-container">
+        <div class="Information-container">
+            <div class="col-1" onclick="infocont();">
+                <div class="welcomeText">
+                    <div class="avtar"><span class="avtar"><img src="./aset/userAvtar.png" height="45px" , width="45px" alt=""></i></span></div>
+                    <div class="textwel"> <strong>
+                        <p id="hi"> Hi Sandhya!</p>
+                        <p id="yourself"> Tell us more about yourself</p></strong>
+                    </div>
+                </div>
+                <div class="col-1Form" id="per_info">
+                    <div>
+                        <!-- row-1 -->
+                        <span class="row-1">
+                            <span class="col-row-1">
+                               <span> <label>Title<p class="star">*</p></label></span>
+                                <select name="" id="" style="height: 32px;border-radius: 4px;width: 80px;" placeholder="-select-">
+                                    <option>-select-</option>
+                                    <option>Mr.</option>
+                                    <option>Mrs.</option>
+                                </select>
+                            </span>
+                        
+                            <span class="col-row-2">
+                                <span><label >First Name<p class="star">*</p></label></span>
+                                <input type="text" id="fname">
+                            </span>
+                        
+                            <span class="col-row-3">
+                               <span><label>Last Name<p class="star">*</p></label></span>
+                                <input type="text" id="lname">
+                            </span>
+                        </span>
+                        
+                        <!-- row-2 -->
+                        <span class="row-2">
+                            <span class="col-row2-1">
+                               <span> <label>Country of living<p class="star">*</p></label></span>
+                                <select name="" id="country" style="height: 32px;border-radius: 4px;">
+                                    <option>-select-</option>
+                                    <option>France</option>
+                                    <option>Germany</option>
+                                    <option>India</option>
+                                    <option>Thailand</option>
+                                    <option>USA</option>
+                                </select>
+                            </span>
+                        
+                            <span class="col-row2-2">
+                                <span><label >State<p class="star">*</p></label></span>
+                                <select name="" id="state" style="height: 32px;border-radius: 4px;">
+                                    <option>-select-</option>
+                                    <option>Berlin</option>
+                                    <option>Paris</option>
+                                    <option>Maharastra</option>
+                                    <option>Guarat</option>
+                                    <option>Karnataka</option>
+                                </select>
+                            </span>
+                        
+                            <span class="col-row2-3">
+                               <span><label>City<p class="star">*</p></label></span>
+                               <select name="" id="city" style="height: 32px;border-radius: 4px;">
+                                <option>-select-</option>
+                                <option>Mumbai</option>
+                                <option>Pune</option>
+                                <option>Chennai</option>
+                                <option>Kolkata</option>
+                                <option>surat</option>
+                            </select>
+                            </span>
+                        </span>
+                        
+                        <!-- row-3 -->
+                        <span class="row-3">
+                            <span class="col-row3-1">
+                               <span> <label>Nationality<p class="star">*</p></label></span>
+                                <select name="" id="nation" style="height: 32px;border-radius: 4px;">
+                                    <option>-select-</option>
+                                    <option>Indian</option>
+                                    <option>Us</option>
+                                    <option>UK</option>
+                                </select>
+                            </span>
+                        
+                            <span class="col-row3-2">
+                                <span><label >Current-Nationality<p class="star">*</p></label></span>
+                                <select name="" id="curr-nation" style="height: 32px;border-radius: 4px;">
+                                    <option>-select-</option>
+                                    <option>India</option>
+                                    <option>Pune</option>
+                                </select>
+                            </span>
+                        
+                            <span class="col-row3-3">
+                               <span><label>Previous-Nationality<p class="star">*</p></label></span>
+                               <select name="" id="pre-nation" style="height: 32px;border-radius: 4px;">
+                                <option>-select-</option>
+                                <option>India</option>
+                                <option>Pune</option>
+                            </select>
+                            </span>
+                        </span>
+                        
+                        <!-- row-4 -->
+                        <span class="row-4">
+                            <button id="save"> Save</button>
+                            <button id="next">Next</button>
+                        </span>
+                        
+                        </div>
+            </div>
+        </div>
+            <div class="col-2">
+                <div class="col-2Difform">
+                    <div class="cardSection">
+                        <a onclick="showpage('personal')" class="aboutyou">
+                            <div class="content-1">
+                                <img src="./aset/growingicon.png" style="height: 35px; width: 35px; margin: 12px;" class="imglogo-1">
+                                <div class="content">
+                                    <div class="title"><strong>About You </strong> </div>
+                                    <div class="description">Tell us more about you</div>
+                                </div>
+                        </div>
+                        </a>
+                        <a href="" class="yrsearch">
+                            <div class="content-1">
+                                <img src="./aset/searchingIcon.png" style="height: 35px; width: 35px; margin: 8px;" class="imglogo-1">
+                                <div class="content">
+                                    <div class="title"><strong>Your Search</strong> </div>
+                                    <div class="description">What are you looking for?</div>
+                                </div>
+                            </div>
+                        </a>
+                        <a onclick="showpage('skillprofile')" class="yrskill">
+                            <div class="content-1">
+                                <img src="./aset/checklist-icon-png-image.jpg" style="height: 35px; width: 35px; margin: 8px;" class="imglogo-1">
+                                <div class="content">
+                                    <div class="title"><strong>Your Skill </strong> </div>
+                                    <div class="description">What are you good at?</div>
+                                </div>
+                        </div>
+                    </a>
+                        <a onclick="showpage('experience')" class="yrexper">
+                            <div class="content-1">
+                                <img src="./aset/work-icon.png" style="height: 35px; width: 35px; margin: 8px;" class="imglogo-1">
+                                <div class="content">
+                                    <div class="title"><strong>Your Experience</strong> </div>
+                                    <div class="description">What's your experience so far?</div>
+                                </div>
+                        </div></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+
+</div>
+
+<!-- script files -->
+<script src="./per-info.js"></script>
+<script src="./experience.js"></script>
+<script src="./skillprofile.js"></script>
+
+
+<!-- scripting code for sidebar -->
+<script>let toggle = document.querySelector(".hamburger");
+    let sidebar = document.querySelector(".sidebar");
+    let userImage = document.querySelector(".user");
+    
+    toggle.addEventListener("click", () => {
+      userImage.classList.toggle("fade");
+    });
+    
+    function toggleMenu() {
+      toggle.classList.toggle("active");
+      sidebar.classList.toggle("active");
+    }
+    </script>
+
+    <script>
+        function showpage(page){
+            if(!page) {return}
+
+        else if(page==='personal')
+        {
+            document.getElementById("per_info").innerHTML=personal;
+        }
+        else if(page==='experience')
+        { 
+            document.getElementById("per_info").innerHTML=experience;
+        }
+        else if(page==='skillprofile')
+        { 
+            document.getElementById("per_info").innerHTML= skillprofile;
+        }
+        }
+    </script>
+
+</body>
+</html>
