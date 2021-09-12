@@ -1,0 +1,130 @@
+
+<div class="w-100 container">
+<form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.valid, userForm.value)" novalidate> 
+
+    <div class="row g-3 row-margin-05" > 
+        <div class="col-md-2">
+            <label class="form-label">Title</label>
+            <select class="form-select" class="form-control" required>
+                <option selected disabled value="">-select-</option>
+                <option>Mr.</option>
+                <option>Mrs.</option>
+                <option>Dr.</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid Title.
+              </div>
+            </div>
+
+         <div class="col-md-3"> 
+           <label>First Name</label>
+           <input type="text" class="form-control" placeholder="" formControlName="firstName"> 
+           <div class="text-danger" *ngIf="getControl.firstName.touched && getControl.firstName.invalid">
+                  <div *ngIf="getControl.firstName.errors">This is required.</div>
+           </div>
+         </div> 
+   
+         <div class="col-md-3"> 
+           <label>Middle Name</label>
+           <input type="text" class="form-control" placeholder="" formControlName="middleName"> 
+           <div class="text-danger" *ngIf="getControl.middleName.touched && getControl.middleName.invalid">
+             <div *ngIf="getControl.middleName.errors">This is required.</div>
+           </div>
+         </div> 
+
+         <div class="col-md-4"> 
+            <label>Last Name</label>
+            <input type="text" class="form-control" placeholder="" formControlName="lastName"> 
+            <div class="text-danger" *ngIf="getControl.lastName.touched && getControl.lastName.invalid">
+              <div *ngIf="getControl.lastName.errors">This is required.</div>
+            </div>
+          </div> 
+        </div> 
+
+        <div class="row g-3">
+            <div class="col-md-4">
+            <label>Country of Living</label>
+            <select class="form-control" placeholder="" formControlName="Country">
+              <option selected disabled value="">-select-</option>
+              <option>...</option>
+            </select>
+            <div class="text-danger" *ngIf="getControl.Country.touched && getControl.Country.invalid">
+                <div *ngIf="getControl.Country.errors">This is required.</div>
+              </div>
+          </div>
+
+          <div class="col-md-4">
+            <label>State</label>
+            <select class="form-control" placeholder="" formControlName="State">
+              <option selected disabled value="">-select-</option>
+              <option>...</option>
+            </select>
+            <div class="text-danger" *ngIf="getControl.State.touched && getControl.State.invalid">
+                <div *ngIf="getControl.State.errors">This is required.</div>
+              </div>
+          </div>
+
+          <div class="col-md-4">
+            <label>City</label>
+            <select class="form-control" placeholder="" formControlName="City">
+              <option selected disabled value="">-select-</option>
+              <option>...</option>
+            </select>
+            <div class="text-danger" *ngIf="getControl.City.touched && getControl.City.invalid">
+              <div *ngIf="getControl.City.errors">This is required.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-3">
+            <div class="col-md-4">
+            <label>Nationality</label>
+            <select class="form-control" placeholder="" formControlName="Nation">
+              <option selected disabled value="">-select-</option>
+              <option>...</option>
+            </select>
+            <div class="text-danger" *ngIf="getControl.Nation.touched && getControl.Nation.invalid">
+                <div *ngIf="getControl.Nation.errors">This is required.</div>
+              </div>
+          </div>
+
+          <div class="col-md-4">
+            <label>Current-Nationality</label>
+            <select class="form-control" placeholder="" formControlName="cntNation">
+              <option selected disabled value="">-select-</option>
+              <option>...</option>
+            </select>
+            <div class="text-danger" *ngIf="getControl.cntNation.touched && getControl.cntNation.invalid">
+                <div *ngIf="getControl.cntNation.errors">This is required.</div>
+              </div>
+          </div>
+
+          <div class="col-md-4">
+            <label>Previous-Nationality</label>
+            <select class="form-control" placeholder="" formControlName="prvNation">
+              <option selected disabled value="">-select-</option>
+              <option>...</option>
+            </select>
+            <div class="text-danger" *ngIf="getControl.prvNation.touched && getControl.prvNation.invalid">
+              <div *ngIf="getControl.prvNation.errors">This is required.</div>
+            </div>
+          </div>
+
+          
+
+        </div>
+
+
+         <div class="row">
+             <div class="col">
+                    <button type="submit" class="btn btn-primary mb-3">Submit form</button>
+            </div>
+   
+         <div class="col">
+           <button type="reset" class="btn btn-success mb-3"  (click)="userForm.reset()">Reset Form</button>
+         </div>
+        </div>
+   
+   
+   </form>
+</div>

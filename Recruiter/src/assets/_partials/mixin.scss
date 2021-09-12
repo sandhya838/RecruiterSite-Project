@@ -1,0 +1,23 @@
+
+
+@mixin heading-setting($clr,$value){
+    color: $clr;
+    font-size: $value;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+@mixin label($value) {
+    font-size: $value;
+    font-family:'Times New Roman', Times, serif; 
+}
+
+@mixin row($spaceX:30px) {
+    margin-bottom: $spaceX;
+}
+
+// @mixin heading-setting2(){
+//     color: red;
+//     margin-top: 15px;
+//     margin-bottom: 2rem;
+// }
