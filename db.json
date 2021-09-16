@@ -1,0 +1,10 @@
+{
+    "user-information": [
+      { "title": "mr.", "fname": "xyz","mname":"lmn" ,"lname": "pqr", "country":"india","state":"maharastra","city":"pune","nationality":"xyz","current-nationality":"xyz","previous-nationality":"xyz"} ],
+      
+      "expereince": [
+        { "title": "mr.", "fname": "xyz","mname":"lmn" ,"lname": "pqr", "country":"india","state":"maharastra","city":"pune","nationality":"xyz","current-nationality":"xyz","previous-nationality":"xyz"} ],
+
+        "skill": [
+            { "title": "mr.", "fname": "xyz","mname":"lmn" ,"lname": "pqr", "country":"india","state":"maharastra","city":"pune","nationality":"xyz","current-nationality":"xyz","previous-nationality":"xyz"} ]
+  }

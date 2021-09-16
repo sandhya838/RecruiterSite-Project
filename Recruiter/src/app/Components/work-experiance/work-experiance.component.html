@@ -1,0 +1,250 @@
+<div class="container">
+  <div *ngIf="alert"  class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success!</strong> Your data is successfully submitted.
+    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+    <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.valid, userForm.value)" novalidate> 
+      <div class="row">
+        <div class="col">Company</div>
+      </div>
+        <div class="row">
+          <div class="col-6">
+              <label for="">From</label>
+              <div class="form-group row">
+                <div class="col">
+                <select class="form-select" class="form-control" required>
+                  <option>Month</option>
+                  <option>January</option>
+                  <option>February</option>
+                  <option>March</option> 
+                  <option>April </option>
+                  <option>May </option>
+                  <option>June</option>
+                  <option> July</option>
+                  <option> August</option>
+                  <option>September </option>
+                  <option>October</option>
+                  <option>November </option>
+                  <option>December</option>
+                </select>
+                <div class="invalid-feedback">
+                  Please select a valid Title.
+                </div>
+                <div class="valid-feedback">
+                  Looks good!
+                </div> 
+              </div>
+
+                  <div class="col">
+                <select class="form-select" class="form-control" required>
+                  <option selected disabled value="">Year</option>
+                            <option>2001</option>
+                            <option>2002</option>
+                             <option>2003</option>
+                             <option>2004</option>
+                             <option>2005</option>
+                             <option>2006</option>
+                             <option>2007</option>
+                             <option>2009</option>
+                             <option>2010</option>
+                             <option>2011</option>
+                             <option>2012</option>
+                             <option>2013</option>
+                             <option>2014</option>
+                             <option>2015</option>
+                             <option>2016</option>
+                             <option>2017</option>
+                             <option>2018</option>
+                             <option>2019</option>
+                             <option>2020</option>
+                             <option>2021</option>
+                </select>
+                <div class="invalid-feedback">
+                       Please select a valid Title.
+                   </div>
+                <div class="valid-feedback">
+                   Looks good!
+                   </div>
+              </div>
+          </div>
+        </div>
+    
+          <div class="col-6">
+              <label for="">To</label>
+
+                <div class="form-group row">
+                  <div class="col-6">
+                  <select class="form-select" class="form-control" required>
+                    <option selected disabled value="">Month</option>
+                    <option>January</option>
+                    <option>February</option>
+                    <option>March</option> 
+                    <option>April </option>
+                    <option>May </option>
+                    <option>June</option>
+                    <option> July</option>
+                    <option> August</option>
+                    <option>September </option>
+                    <option>October</option>
+                    <option>November </option>
+                    <option>December</option>
+                  </select>
+                  <div class="invalid-feedback">
+                    Please select a valid Title.
+                  </div>
+                  <div class="valid-feedback">
+                    Looks good!
+                  </div> 
+                  </div>
+                  <div class="col-6">
+                  <select class="form-select" class="form-control" required>
+                    <option selected disabled value="">Year</option>
+                              <option>2001</option>
+                              <option>2002</option>
+                               <option>2003</option>
+                               <option>2004</option>
+                               <option>2005</option>
+                               <option>2006</option>
+                               <option>2007</option>
+                               <option>2009</option>
+                               <option>2010</option>
+                               <option>2011</option>
+                               <option>2012</option>
+                               <option>2013</option>
+                               <option>2014</option>
+                               <option>2015</option>
+                               <option>2016</option>
+                               <option>2017</option>
+                               <option>2018</option>
+                               <option>2019</option>
+                               <option>2020</option>
+                               <option>2021</option>
+                  </select>
+                  <div class="invalid-feedback"> Please select a valid Title.</div>
+                  <div class="valid-feedback"> Looks good!</div>
+                </div>
+          </div>
+        </div>
+    
+        </div>
+      
+
+                <!-- ---Destination--- -->
+
+                <div class="row" >
+                    <div class="col-6"> 
+                        <label>Designation </label>
+                        <input type="text" class="form-control" placeholder="" formControlName="designation"> 
+                        <div class="text-danger" *ngIf="getControl.designation.touched && getControl.designation.invalid">
+                               <div *ngIf="getControl.designation.errors">This is required.</div>
+                        </div>
+                    </div> 
+                    <div class="col-6"> 
+                        <label>Role</label>
+                        <input type="text" class="form-control" placeholder="" formControlName="role"> 
+                        <div class="text-danger" *ngIf="getControl.role.touched && getControl.role.invalid">
+                               <div *ngIf="getControl.role.errors">This is required.</div>
+                        </div>
+                    </div> 
+                  </div>
+                      <!-- ----Skills used-- -->
+
+        
+        
+                <label class="form-label">Skills Used</label>
+                <div class="row">
+                  <div class="col-3">
+                     <select class="form-select" class="form-control" required>
+                      <option>-select-</option>
+                  <option>Positive attitude</option>
+                  <option>Teamwork. .</option>
+                  <option>Self-management. .</option> 
+                  <option>Willingness to learn. ..</option>
+                  <option>Resilience.</option>
+                  <option>Initiative and enterprise</option>
+                  <option>Planning and organising</option>
+                  <option> Negotiation and persuasion </option>
+                  <option> Commercial awareness</option>
+                
+                  
+                    </select>
+                  </div>
+              
+                  <div class="col-3">
+                    <select class="form-select" class="form-control" required>
+                      <option>-select-</option>
+                      <option>-select-</option>
+                  <option>Positive attitude</option>
+                  <option>Teamwork. .</option>
+                  <option>Self-management. .</option> 
+                  <option>Willingness to learn. ..</option>
+                  <option>Resilience.</option>
+                  <option>Initiative and enterprise</option>
+                  <option>Planning and organising</option>
+                  <option> Negotiation and persuasion </option>
+                  <option> Commercial awareness</option>
+                
+                    </select>
+                  </div>
+                  <div class="col-3">
+                    <select class="form-select" class="form-control" required>
+                      <option>-select-</option>
+                  <option>Positive attitude</option>
+                  <option>Teamwork. .</option>
+                  <option>Self-management. .</option> 
+                  <option>Willingness to learn. ..</option>
+                  <option>Resilience.</option>
+                  <option>Initiative and enterprise</option>
+                  <option>Planning and organising</option>
+                  <option> Negotiation and persuasion </option>
+                  <option> Commercial awareness</option>
+                
+                    </select>
+                  </div>
+                  <div class="col-3">
+                    <select class="form-select" class="form-control" required>
+                      <option>-select-</option>
+                      <option>Positive attitude</option>
+                      <option>Teamwork. .</option>
+                      <option>Self-management. .</option> 
+                      <option>Willingness to learn. ..</option>
+                      <option>Resilience.</option>
+                      <option>Initiative and enterprise</option>
+                      <option>Planning and organising</option>
+                      <option> Negotiation and persuasion </option>
+                      <option> Commercial awareness</option>
+                    
+                    </select>
+                  </div>
+                </div>
+ 
+              <div class="row"> 
+               <div class="col">
+                 <div class="form-group">
+                  <label>Deliverables on the project</label>
+                  <input type="text" class="form-control" placeholder="" formControlName="project"> 
+                  <div class="text-danger" *ngIf="getControl.project.touched && getControl.project.invalid">
+                    <div *ngIf="getControl.project.errors">This is required.</div>
+             </div>
+                 </div>
+               </div>
+               
+            
+            </div>
+    
+    
+  
+            <div class="row">
+              <div class="col-md-2">
+                    <button type="" class="btn btn-outline-primary mb-3">Previous</button>
+              </div>
+              <div class="col">
+                    <button type="submit" class="btn btn-success mb-3">Submit</button>
+              </div>
+            </div>
+          
+ </form>
+</div>
+

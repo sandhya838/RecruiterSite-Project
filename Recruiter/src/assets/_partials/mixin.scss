@@ -1,4 +1,7 @@
-
+$blue:#007bff;
+$navyBlue:#150050;
+$clr:lightgray;
+$bghoverclr: #f4a024;
 
 @mixin heading-setting($clr,$value){
     color: $clr;
@@ -7,15 +10,33 @@
     margin-bottom: 15px;
 }
 
-@mixin label($value) {
+@mixin label($value:15px) {
+    color: rgb(78, 78, 78);
+    font-size: $value;
+    font-family:  Roboto, sans-serif; 
+    font-weight: normal;
+}
+@mixin sublabel($value:12px) {
+    color: rgb(194, 192, 192);
     font-size: $value;
     font-family:'Times New Roman', Times, serif; 
+    font-weight: normal;
 }
 
 @mixin row($spaceX:30px) {
     margin-bottom: $spaceX;
 }
 
+@mixin btn{
+    width: 100px;
+}
+
+@mixin top($value:50px) {
+    margin-top: $value;
+}
+// @mixin listStyle {
+//     :hover
+// }
 // @mixin heading-setting2(){
 //     color: red;
 //     margin-top: 15px;

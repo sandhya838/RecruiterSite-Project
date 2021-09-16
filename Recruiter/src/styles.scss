@@ -1,2 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/_partials/mixin.scss";
+
+label{
+    @include label(15px);
+}
+
+.row{
+    @include row();
+}
+.btn{
+    @include btn
+}
+option{
+    @include label(15px);
+}
