@@ -35,7 +35,7 @@ export class SkillProfileComponent implements OnInit {
 
   onSubmit(isValue:boolean,formValue:any)
   {
-    console.log(this.userForm);
+    console.log(this.userForm.value);
 
     
     this.alert=true;

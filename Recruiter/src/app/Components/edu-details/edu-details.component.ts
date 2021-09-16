@@ -19,7 +19,6 @@ export class EduDetailsComponent implements OnInit {
      
       degree: ['', [Validators.required, Validators.minLength(4), Validators.pattern(this.pattern)]],
       institute: ['', [Validators.required, Validators.minLength(4),Validators.pattern(this.pattern)]],
-     
       Country:['', [Validators.required,Validators.pattern(this.pattern)]],
       grade:['', [Validators.required,Validators.pattern(this.numberPattern)]],
          })  
@@ -33,7 +32,7 @@ export class EduDetailsComponent implements OnInit {
   
   onSubmit(isValue:boolean,formValue:any)
   {
-    console.log(this.userForm);
+    console.log(this.userForm.value);
 
     this.alert=true;
     this.userForm.reset({});

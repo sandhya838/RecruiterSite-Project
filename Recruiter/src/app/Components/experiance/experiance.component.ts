@@ -7,21 +7,23 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./experiance.component.scss']
 })
 export class ExperianceComponent implements OnInit {
-  alert:boolean=false;
   userForm !: FormGroup;
+  alert:boolean=false;
+  
 
   constructor(public formBuilder: FormBuilder) { }
-  pattern="^[ a-zA-Z]*$";
+  pattern="^[ a-zA-Z;;]*$";
   mixpattern="^[ a-z0-9_-]*$";
+  numberpattern="^[0-9]*$"
   ngOnInit(): void {
     this.userForm= this.formBuilder.group({
       Title:['', [Validators.required, Validators.pattern(this.pattern)]],
-      Team: ['', [Validators.required, Validators.pattern(this.pattern)]],
+      Team: ['', [Validators.required, Validators.pattern(this.numberpattern)]],
       Business: ['', [Validators.required, Validators.pattern(this.pattern)]],
-      Period: ['', [Validators.required, Validators.pattern(this.mixpattern)]],
-      Salary:['', [Validators.required, Validators.pattern(this.mixpattern)]],
-      Basesalary:['', [Validators.required, Validators.pattern(this.mixpattern)]],
-      Variablesal:['', [Validators.required, Validators.pattern(this.mixpattern)]],
+      Period: ['', [Validators.required, Validators.pattern(this.numberpattern)]],
+      Salary:['', [Validators.required, Validators.pattern(this.numberpattern)]],
+      Basesalary:['', [Validators.required, Validators.pattern(this.numberpattern)]],
+      Variablesal:['', [Validators.required, Validators.pattern(this.numberpattern)]],
       otherCompo:['', [Validators.required, Validators.pattern(this.pattern)]],
       indServed:['', [Validators.required, Validators.pattern(this.pattern)]]
     })  
@@ -31,14 +33,15 @@ export class ExperianceComponent implements OnInit {
   {
     return this.userForm.controls;
   }
-  
-  onSubmit(isValue:boolean,formValue:any)
+   
+  onSubmit(isValue:boolean, formValue:any)
   {
-    console.log(this.userForm);
+    console.log(this.userForm.value);
 
     this.alert=true;
     this.userForm.reset({});
   }
+
   
   closeAlert(){
     this.alert=false;

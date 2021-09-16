@@ -39,6 +39,14 @@ export class UserProfileComponent implements OnInit {
   
   onSubmit(isValue:boolean,formValue:any)
   {
+    if(this.userForm.valid){
+
+    }
+    else{
+      this.userForm.markAllAsTouched();
+      this.userForm.updateValueAndValidity();
+      
+    }
     console.log(this.userForm);
     // this.alert=true;
     // this.userForm.reset({});
