@@ -22,7 +22,9 @@ export class EduDetailsComponent implements OnInit {
       institute: ['', [Validators.required, Validators.minLength(4),Validators.pattern(this.pattern)]],
       Country:['', [Validators.required,Validators.pattern(this.pattern)]],
       grade:['', [Validators.required,Validators.pattern(this.numberPattern)]],
-      month:['',[Validators.required,Validators.pattern(this.pattern)]]
+      month:['',[Validators.required,Validators.pattern(this.pattern)]],
+      year:['',[Validators.required,Validators.pattern(this.numberPattern)]]
+
          })  
   }
 
@@ -38,6 +40,15 @@ export class EduDetailsComponent implements OnInit {
     this.allData=JSON.parse(JSON.stringify(this.userForm.value));
     this.alert=true;
     this.userForm.reset({});
+
+    if(this.userForm.valid){
+
+    }
+    else{
+      this.userForm.markAllAsTouched();
+      this.userForm.updateValueAndValidity();
+      
+    }
   }
 
   closeAlert(){
