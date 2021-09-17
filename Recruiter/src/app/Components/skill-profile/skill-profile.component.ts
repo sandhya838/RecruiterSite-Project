@@ -33,7 +33,7 @@ export class SkillProfileComponent implements OnInit {
 
 
 
-  onSubmit(isValue:boolean,formValue:any)
+  onSubmit(formValue:any)
   {
     console.log(this.userForm.value);
 

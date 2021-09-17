@@ -34,7 +34,7 @@ export class ExperianceComponent implements OnInit {
     return this.userForm.controls;
   }
    
-  onSubmit(isValue:boolean, formValue:any)
+  onSubmit(formValue:any)
   {
     console.log(this.userForm.value);
 

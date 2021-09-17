@@ -15,6 +15,8 @@ import { SkillProfileComponent } from './Components/skill-profile/skill-profile.
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { EduDetailsComponent } from './Components/edu-details/edu-details.component';
+import { RollprofileComponent } from './Components/rollprofile/rollprofile.component';
+import { CertificationComponent } from './Components/certification/certification.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { EduDetailsComponent } from './Components/edu-details/edu-details.compon
     SidebarComponent,
     DashboardComponent,
     EduDetailsComponent,
+    RollprofileComponent,
+    CertificationComponent,
    
   
   ],

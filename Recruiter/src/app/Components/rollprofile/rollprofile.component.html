@@ -1,0 +1,176 @@
+
+<div class="container">
+    <form [formGroup]="Rolesexp" (ngSubmit)="onSubmit(Rolesexp.value);">
+        <div class="row">
+            <div class="col-md-6 mt-2 font-weight-bold text-align-center">
+              <label>
+                  Management
+              </label>
+              <select id="Management" name="Management" [(ngModel)]="Management" class="form-control " 
+                  formControlName="Management" class="form-select" required>
+                  <option selected disabled value="">-select-</option>
+                  <option value="1" >Portfolio</option>
+                  <option value="2">Technical</option>
+                  <option value="3">Functional</option>
+              </select>
+              <div class="text-danger" *ngIf="getControl.Management.touched && getControl.Management.invalid">
+                <div *ngIf="getControl.Management.errors">This is required.</div>
+         </div>
+              
+          </div>
+        </div>
+    
+        <div class="row">
+            <div class="col-sm-4">
+              <label>
+                  Portfolio
+              </label>
+              <select id="Portfolio" name="Portfolio" [(ngModel)]="Portfolio" class="form-control">
+                  <option value="1" ></option>
+                  <option value="2"></option>
+                  <option value="3"></option>
+              </select>
+            </div>
+    
+            <div class="col-sm-4">
+              <label>
+                  Technical
+              </label>
+              <select id="Technical" name="Technical" [(ngModel)]="Technical" class="form-control">
+                  <option value="1" ></option>
+                  <option value="2"></option>
+                  <option value="3"></option>
+              </select>
+            </div>
+    
+            <div class="col-sm-4 ">
+              <label>
+                  Functional
+              </label>
+              <select id="Management" name="Management" [(ngModel)]="Management" class="form-control">
+                  <option value="1" ></option>
+                  <option value="2"></option>
+                  <option value="3"></option>
+              </select>
+            </div>
+      </div>
+    
+      <hr style="height: 2px;" >
+            <div class="row mt-4">
+            <div class="col-md-6 mt-2 font-weight-bold text-align-center">
+              <label>
+                  Technical
+              </label>
+              <select id="Management" name="Management" [(ngModel)]="Management" class="form-control" 
+                  formControlName="Technical" class="form-select">
+                
+                  <option value="1" >Architect</option>
+                  <option value="2">Tech Lead</option>
+                  <option value="3">Developer</option>
+              </select>
+              <div class="text-danger" *ngIf="getControl.Technical.touched && getControl.Technical.invalid">
+                <div *ngIf="getControl.Technical.errors">This is required.</div>
+         </div>
+              
+          </div>
+        </div>
+      
+          <div class="row text-align-center">
+              <div class="col-sm-4">
+                <label>
+                    Architect
+                </label>
+                <select id="Management" name="Management" [(ngModel)]="Management" class="form-control">
+                    <option value="1" ></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                </select>
+              </div>
+    
+              <div class="col-sm-4">
+                <label>
+                    Tech Lead
+                </label>
+                <select id="Management" name="Management" [(ngModel)]="Management" class="form-control">
+                    <option value="1" ></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                </select>
+              </div>
+    
+              <div class="col-sm-4 ">
+                <label>
+                    Developer
+                </label>
+                <select id="Management" name="Management" [(ngModel)]="Management" class="form-control">
+                    <option value="1" ></option>
+                    <option value="2"></option>
+                    <option value="3"></option>
+                </select>
+              </div>
+            </div>
+            
+           <hr style="height: 2px;" >
+              <div class="row mt-4">
+              <div class="col-md-6 font-weight-bold text-align-center ">
+                <label>
+                    Functional
+                </label>
+                <select id="Management" name="Management" [(ngModel)]="Management" class="form-control"
+                      formControlName="Functional" class="form-select">
+                  
+                    <option value="1" >SME</option>
+                    <option value="2">Lead Con</option>
+                    <option value="3">Consultant</option>
+                </select>
+                <div class="text-danger" *ngIf="getControl.Functional.touched && getControl.Functional.invalid">
+                  <div *ngIf="getControl.Functional.errors">This is required.</div>
+           </div>
+                
+            </div>
+            </div>
+      
+            <div class="row text-align-center ">
+                <div class="col-sm-4">
+                  <label>
+                      SME
+                  </label>
+                  <select id="Management" name="Management" [(ngModel)]="Management" class="form-control">
+                      <option value="1" ></option>
+                      <option value="2"></option>
+                      <option value="3"></option>
+                  </select>
+                </div>
+      
+                <div class="col-sm-4">
+                  <label>
+                      Lead Con
+                  </label>
+                  <select id="Management" name="Management" [(ngModel)]="Management" class="form-control">
+                      <option value="1" ></option>
+                      <option value="2"></option>
+                      <option value="3"></option>
+                  </select>
+                </div>
+      
+                <div class="col-sm-4 ">
+                  <label>
+                      Consultant
+                  </label>
+                  <select id="Management" name="Management" [(ngModel)]="Management" class="form-control">
+                      <option value="1" ></option>
+                      <option value="2"></option>
+                      <option value="3"></option>
+                  </select>
+                </div>
+    </div>
+    
+    <div class="row">
+      <div class="col">
+        <button class="btn btn-outline-primary form-control  btn-block mt-4">Cancel</button></div>
+      <div class="col">
+        <button id="btnSubmit" class="btn btn-success form-control btn-block mt-4 btn-group-small" type="submit">Submit</button></div>
+    </div>
+    
+    </form>
+    </div>
