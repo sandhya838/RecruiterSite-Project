@@ -8,6 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class EduDetailsComponent implements OnInit {
   userForm!: FormGroup;
   alert:boolean=false;
+  allData:any;
   
   constructor(public formBuilder: FormBuilder) { }
 
@@ -21,6 +22,7 @@ export class EduDetailsComponent implements OnInit {
       institute: ['', [Validators.required, Validators.minLength(4),Validators.pattern(this.pattern)]],
       Country:['', [Validators.required,Validators.pattern(this.pattern)]],
       grade:['', [Validators.required,Validators.pattern(this.numberPattern)]],
+      month:['',[Validators.required,Validators.pattern(this.pattern)]]
          })  
   }
 
@@ -30,10 +32,10 @@ export class EduDetailsComponent implements OnInit {
     return this.userForm.controls;
   }
   
-  onSubmit(isValue:boolean,formValue:any)
+  onClick(formValue:any)
   {
     console.log(this.userForm.value);
-
+    this.allData=JSON.parse(JSON.stringify(this.userForm.value));
     this.alert=true;
     this.userForm.reset({});
   }
