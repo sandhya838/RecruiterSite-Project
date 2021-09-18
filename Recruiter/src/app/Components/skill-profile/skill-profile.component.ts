@@ -7,14 +7,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./skill-profile.component.scss']
 })
 export class SkillProfileComponent implements OnInit {
-  alert:boolean=false;
   userForm !: FormGroup;
-
+  alert:boolean=false;
+  allData:any;
   constructor(public formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.userForm= this.formBuilder.group({
-      technical:['', [Validators.required]],
+      tech3:['', [Validators.required]],
       tech:['', [Validators.required]],
       tech1:['', [Validators.required]],
       tech2:['', [Validators.required]],
@@ -31,23 +31,28 @@ export class SkillProfileComponent implements OnInit {
 
   }
 
-
-
-  onSubmit(formValue:any)
-  {
-    console.log(this.userForm.value);
-
-    
-    this.alert=true;
-    this.userForm.reset({})
-  }
   get getControl()
   {
     return this.userForm.controls;
+  }
 
+  onClick(formValue:any)
+  {
+    console.log(this.userForm.value);
+    this.allData=JSON.parse(JSON.stringify(this.userForm.value));
     this.alert=true;
     this.userForm.reset({});
+
+    if(this.userForm.valid){
+
+    }
+    else{
+      this.userForm.markAllAsTouched();
+      this.userForm.updateValueAndValidity();
+      
+    }
   }
+  
   
   closeAlert(){
     this.alert=false;

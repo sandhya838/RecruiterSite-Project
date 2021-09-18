@@ -1,16 +1,16 @@
 <div class="container">
   <div *ngIf="alert"  class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Success!</strong> Your data is successfully submitted.
+    <strong>Success!</strong> Your data is successfully submitted. <pre>{{allData | json}}</pre>
     <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-    <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)" novalidate> 
+    <form [formGroup]="userForm" (ngSubmit)="onClick(userForm.value)" novalidate> 
     
         <div class="row g-3 row-margin-05" > 
             <div class="col-4">
                 <label class="form-label">Total years of exp</label><span class="text-danger">*</span>
-                <select class="form-select" class="form-control" required>
+                <select class="form-select" class="form-control" formControlName="yearExp" required>
                     <option selected disabled value="">-select-</option>
                     <option>years </option>
                     <option>0-1month </option>
@@ -18,8 +18,8 @@
                     <option>6-10years</option>
                     <option>10-15years</option>
                   </select>
-                  <div class="invalid-feedback">
-                    Please select a valid Title.
+                  <div class="text-danger" *ngIf="getControl.yearExp.touched && getControl.yearExp.invalid">
+                    <div *ngIf="getControl.yearExp.errors">This is required.</div>
                   </div>
                 </div>
     

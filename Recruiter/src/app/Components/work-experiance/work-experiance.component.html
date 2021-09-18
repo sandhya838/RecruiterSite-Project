@@ -1,11 +1,11 @@
 <div class="container">
   <div *ngIf="alert"  class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Success!</strong> Your data is successfully submitted.
+    <strong>Success!</strong> Your data is successfully submitted. <pre>{{allData | json}}</pre>
     <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-    <form [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.valid, userForm.value)" novalidate> 
+    <form [formGroup]="userForm" (ngSubmit)="onClick(userForm.value)" novalidate> 
       <div class="row">
         <div class="col">Company</div>
       </div>
@@ -14,8 +14,8 @@
               <label for="">From</label>
               <div class="form-group row">
                 <div class="col">
-                <select class="form-select" class="form-control" required>
-                  <option>Month</option>
+                <select class="form-select" class="form-control" required formControlName="joinmonth">
+                  <option selected disabled value="">Month</option>
                   <option>January</option>
                   <option>February</option>
                   <option>March</option> 
@@ -32,13 +32,13 @@
                 <div class="invalid-feedback">
                   Please select a valid Title.
                 </div>
-                <div class="valid-feedback">
-                  Looks good!
-                </div> 
+                <div class="text-danger" *ngIf="getControl.joinmonth.touched && getControl.joinmonth.invalid">
+                  <div *ngIf="getControl.joinmonth.errors">Select valid month.</div>
+           </div> 
               </div>
 
                   <div class="col">
-                <select class="form-select" class="form-control" required>
+                <select class="form-select" class="form-control" required formControlName="joinyear">
                   <option selected disabled value="">Year</option>
                             <option>2001</option>
                             <option>2002</option>
@@ -64,9 +64,9 @@
                 <div class="invalid-feedback">
                        Please select a valid Title.
                    </div>
-                <div class="valid-feedback">
-                   Looks good!
-                   </div>
+                   <div class="text-danger" *ngIf="getControl.joinyear.touched && getControl.joinyear.invalid">
+                    <div *ngIf="getControl.joinyear.errors">Select valid year.</div>
+             </div>
               </div>
           </div>
         </div>
@@ -76,7 +76,7 @@
 
                 <div class="form-group row">
                   <div class="col-6">
-                  <select class="form-select" class="form-control" required>
+                  <select class="form-select" class="form-control" required formControlName="jointomonth">
                     <option selected disabled value="">Month</option>
                     <option>January</option>
                     <option>February</option>
@@ -94,12 +94,13 @@
                   <div class="invalid-feedback">
                     Please select a valid Title.
                   </div>
-                  <div class="valid-feedback">
-                    Looks good!
-                  </div> 
+                  <div class="text-danger" *ngIf="getControl.jointomonth.touched && getControl.jointomonth.invalid">
+                    <div *ngIf="getControl.jointomonth.errors">Select valid month.</div>
+             </div>
                   </div>
+
                   <div class="col-6">
-                  <select class="form-select" class="form-control" required>
+                  <select class="form-select" class="form-control" required formControlName="jointoyear">
                     <option selected disabled value="">Year</option>
                               <option>2001</option>
                               <option>2002</option>
@@ -123,7 +124,9 @@
                                <option>2021</option>
                   </select>
                   <div class="invalid-feedback"> Please select a valid Title.</div>
-                  <div class="valid-feedback"> Looks good!</div>
+                  <div class="text-danger" *ngIf="getControl.jointoyear.touched && getControl.jointoyear.invalid">
+                    <div *ngIf="getControl.jointoyear.errors">Select valid year.</div>
+             </div>
                 </div>
           </div>
         </div>
@@ -156,8 +159,8 @@
                 <label class="form-label">Skills Used</label>
                 <div class="row">
                   <div class="col-3">
-                     <select class="form-select" class="form-control" required>
-                      <option>-select-</option>
+                     <select class="form-select" class="form-control" required formControlName="skill1">
+                      <option selected disabled value="">-select-</option>
                   <option>Positive attitude</option>
                   <option>Teamwork. .</option>
                   <option>Self-management. .</option> 
@@ -167,15 +170,15 @@
                   <option>Planning and organising</option>
                   <option> Negotiation and persuasion </option>
                   <option> Commercial awareness</option>
-                
-                  
                     </select>
+                    <div class="text-danger" *ngIf="getControl.skill1.touched && getControl.skill1.invalid">
+                      <div *ngIf="getControl.skill1.errors">Select valid data.</div>
+               </div>
                   </div>
               
                   <div class="col-3">
-                    <select class="form-select" class="form-control" required>
-                      <option>-select-</option>
-                      <option>-select-</option>
+                    <select class="form-select" class="form-control" required formControlName="skill2">
+                      <option selected disabled value="">-select-</option>
                   <option>Positive attitude</option>
                   <option>Teamwork. .</option>
                   <option>Self-management. .</option> 
@@ -185,12 +188,15 @@
                   <option>Planning and organising</option>
                   <option> Negotiation and persuasion </option>
                   <option> Commercial awareness</option>
-                
                     </select>
+                    <div class="text-danger" *ngIf="getControl.skill2.touched && getControl.skill2.invalid">
+                      <div *ngIf="getControl.skill2.errors">Select valid data.</div>
+               </div>
                   </div>
+
                   <div class="col-3">
-                    <select class="form-select" class="form-control" required>
-                      <option>-select-</option>
+                    <select class="form-select" class="form-control" required formControlName="skill3">
+                      <option selected disabled value="">-select-</option>
                   <option>Positive attitude</option>
                   <option>Teamwork. .</option>
                   <option>Self-management. .</option> 
@@ -200,12 +206,15 @@
                   <option>Planning and organising</option>
                   <option> Negotiation and persuasion </option>
                   <option> Commercial awareness</option>
-                
                     </select>
+                    <div class="text-danger" *ngIf="getControl.skill3.touched && getControl.skill3.invalid">
+                      <div *ngIf="getControl.skill3.errors">Select valid data</div>
+               </div>
                   </div>
+
                   <div class="col-3">
-                    <select class="form-select" class="form-control" required>
-                      <option>-select-</option>
+                    <select class="form-select" class="form-control" required formControlName="skill4">
+                      <option selected disabled value="">-select-</option>
                       <option>Positive attitude</option>
                       <option>Teamwork. .</option>
                       <option>Self-management. .</option> 
@@ -215,8 +224,10 @@
                       <option>Planning and organising</option>
                       <option> Negotiation and persuasion </option>
                       <option> Commercial awareness</option>
-                    
                     </select>
+                    <div class="text-danger" *ngIf="getControl.skill4.touched && getControl.skill4.invalid">
+                      <div *ngIf="getControl.skill4.errors">Select valid data</div>
+               </div>
                   </div>
                 </div>
  

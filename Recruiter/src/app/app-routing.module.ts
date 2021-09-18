@@ -6,6 +6,7 @@ import{ SkillProfileComponent} from './/Components/skill-profile/skill-profile.c
 import {WorkExperianceComponent } from './/Components/work-experiance/work-experiance.component';
 import { EduDetailsComponent} from './/Components/edu-details/edu-details.component';
 import { RollprofileComponent } from './Components/rollprofile/rollprofile.component';
+import { CertificationComponent } from './Components/certification/certification.component';
 
 const routes: Routes = [
   {path:'',component:UserProfileComponent},
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path:'experience',component:ExperianceComponent},
   {path:'work-experience',component:WorkExperianceComponent},
   {path:'education-details',component: EduDetailsComponent},
-  {path:'role-profile',component:RollprofileComponent}
+  {path:'role-profile',component:RollprofileComponent},
+  {path:'certificate', component:CertificationComponent}
   
 ];
 

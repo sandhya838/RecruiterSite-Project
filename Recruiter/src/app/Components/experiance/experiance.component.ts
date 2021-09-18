@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class ExperianceComponent implements OnInit {
   userForm !: FormGroup;
   alert:boolean=false;
+  allData:any;
   
 
   constructor(public formBuilder: FormBuilder) { }
@@ -17,7 +18,7 @@ export class ExperianceComponent implements OnInit {
   numberpattern="^[0-9]*$"
   ngOnInit(): void {
     this.userForm= this.formBuilder.group({
-      Title:['', [Validators.required, Validators.pattern(this.pattern)]],
+      yearExp:['', [Validators.required, Validators.pattern(this.mixpattern)]],
       Team: ['', [Validators.required, Validators.pattern(this.numberpattern)]],
       Business: ['', [Validators.required, Validators.pattern(this.pattern)]],
       Period: ['', [Validators.required, Validators.pattern(this.numberpattern)]],
@@ -34,12 +35,25 @@ export class ExperianceComponent implements OnInit {
     return this.userForm.controls;
   }
    
-  onSubmit(formValue:any)
+  onClick(formValue:any)
   {
     console.log(this.userForm.value);
+    this.allData=JSON.parse(JSON.stringify(this.userForm.value));
+    this.alert=true;
+    this.userForm.reset({});
 
     this.alert=true;
     this.userForm.reset({});
+
+    
+    if(this.userForm.valid){
+
+    }
+    else{
+      this.userForm.markAllAsTouched();
+      this.userForm.updateValueAndValidity();
+      
+    }
   }
 
   

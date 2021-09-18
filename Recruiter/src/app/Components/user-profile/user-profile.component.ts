@@ -8,8 +8,9 @@ import { NotificationService } from 'src/app/notification.service';
   styleUrls: ['./user-profile.component.scss']
 })
 export class UserProfileComponent implements OnInit {
-// alert:boolean=false;
+alert:boolean=false;
   userForm !: FormGroup;
+  allData:any;
 
   constructor(public formBuilder: FormBuilder,private notifyService : NotificationService) { }
   pattern="^[ a-zA-Z]*$";
@@ -33,12 +34,18 @@ export class UserProfileComponent implements OnInit {
     return this.userForm.controls;
   }
 
-  showToasterSuccess(){
-    this.notifyService.showSuccess("Data submited successfully !!")
-}
+//   showToasterSuccess(){
+//     this.notifyService.showSuccess("Data submited successfully !!")
+// }
   
-  onSubmit(isValue:boolean,formValue:any)
+  onClick(formValue:any)
   {
+    console.log(this.userForm.value);
+
+    this.allData=JSON.parse(JSON.stringify(this.userForm.value));
+    this.alert=true;
+    this.userForm.reset({});
+
     if(this.userForm.valid){
 
     }
@@ -47,14 +54,11 @@ export class UserProfileComponent implements OnInit {
       this.userForm.updateValueAndValidity();
       
     }
-    console.log(this.userForm);
-    // this.alert=true;
-    // this.userForm.reset({});
    
   }
   
-  // closeAlert(){
-  //   this.alert=false;
-  // }
+  closeAlert(){
+    this.alert=false;
+  }
 
 }
