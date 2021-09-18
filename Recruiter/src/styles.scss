@@ -6,7 +6,7 @@ label{
 }
 
 .row{
-    @include row();
+    @include row(50px);
 }
 .btn{
     @include btn

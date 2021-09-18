@@ -7,14 +7,14 @@
   </div>
     <form [formGroup]="Certificate" (ngSubmit)="onClick(Certificate.value)" novalidate>
         <div class="row">
-            <!-- <div class="col-4"> -->
+            <div class="col">
                 <label>Certification Name</label>
                 <input type="text" class="form-control" placeholder="" formControlName="Certification">
                     <div class="text-danger" *ngIf="getControl.Certification.touched && getControl.Certification.
                             invalid">
                     <div *ngIf="getControl.Certification.errors">This is required</div>
                     </div>
-            <!-- </div> -->
+            </div>
         </div>  
         
         <div class="row">
