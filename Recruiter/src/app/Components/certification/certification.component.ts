@@ -14,7 +14,7 @@ export class CertificationComponent implements OnInit {
 
   ngOnInit(): void {
     this.Certificate= this.formBuilder.group({
-      Certification: ['', [Validators.required]],
+      CertificationName: ['', [Validators.required]],
       certifiedMonth: ['', [Validators.required]],
       certifiedYear:['', [Validators.required]]
     })

@@ -17,15 +17,15 @@ export class RollprofileComponent implements OnInit {
 
   ngOnInit(): void {
     this.Rolesexp = this.formBuilder.group({       
-      Management:['', Validators.required],
+      roleManagemen:['', Validators.required],
       Portfolio:['', Validators.required],
       technical:['', Validators.required],
       functional:['', Validators.required],
-      technicalfeild:['', Validators.required],
+      roleTechnical:['', Validators.required],
       architect:['', Validators.required],
       techLead:['', Validators.required],
       developer:['', Validators.required],
-      functionalFeild:['', Validators.required],
+      roleFunctional:['', Validators.required],
       sme:['', Validators.required],
       leadcon:['', Validators.required],
       consultant:['', Validators.required]

@@ -24,8 +24,8 @@ alert:boolean=false;
       State:['', [Validators.required, Validators.pattern(this.pattern)]],
       City:['', [Validators.required, Validators.pattern(this.pattern)]],
       Nation:['', [Validators.required, Validators.pattern(this.pattern)]],
-      cntNation:['', [Validators.required, Validators.pattern(this.pattern)]],
-      prvNation:['', [Validators.required, Validators.pattern(this.pattern)]]
+      currentNationality:['', [Validators.required, Validators.pattern(this.pattern)]],
+      previousNationality:['', [Validators.required, Validators.pattern(this.pattern)]]
     })  
   }
   

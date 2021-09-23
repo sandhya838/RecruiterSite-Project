@@ -9,14 +9,14 @@
         <div class="row">
             <div class="col-md-6 mt-2 font-weight-bold text-align-center">
               <label> Management</label>
-              <select class="form-select" class="form-control" required formControlName="Management">
+              <select class="form-select" class="form-control" required formControlName=" roleManagemen">
                   <option selected disabled value="">-select-</option>
                   <option value="1" >Portfolio</option>
                   <option value="2">Technical</option>
                   <option value="3">Functional</option>
               </select>
-              <div class="text-danger" *ngIf="getControl.Management.touched && getControl.Management.invalid">
-                <div *ngIf="getControl.Management.errors">This is required.</div>
+              <div class="text-danger" *ngIf="getControl. roleManagemen.touched && getControl. roleManagemen.invalid">
+                <div *ngIf="getControl. roleManagemen.errors">This is required.</div>
              </div>
               
           </div>
@@ -75,14 +75,14 @@
               <label>
                   Technical
               </label>
-              <select class="form-select" class="form-control" required formControlName="technicalfeild">
+              <select class="form-select" class="form-control" required formControlName="roleTechnical">
                 <option selected disabled value="">-select-</option>
                   <option value="1" >Architect</option>
                   <option value="2">Tech Lead</option>
                   <option value="3">Developer</option>
               </select>
-              <div class="text-danger" *ngIf="getControl.technicalfeild.touched && getControl.technicalfeild.invalid">
-                <div *ngIf="getControl.technicalfeild.errors">This is required.</div>
+              <div class="text-danger" *ngIf="getControl.roleTechnical.touched && getControl.roleTechnical.invalid">
+                <div *ngIf="getControl.roleTechnical.errors">This is required.</div>
          </div>
               
           </div>
@@ -141,14 +141,14 @@
                 <label>
                     Functional
                 </label>
-                <select class="form-select" class="form-control" required formControlName="functionalFeild">
+                <select class="form-select" class="form-control" required formControlName="roleFunctional">
                   <option selected disabled value="">-select-</option>
                     <option value="1" >SME</option>
                     <option value="2">Lead Con</option>
                     <option value="3">Consultant</option>
                 </select>
-                <div class="text-danger" *ngIf="getControl.functionalFeild.touched && getControl.functionalFeild.invalid">
-                  <div *ngIf="getControl.functionalFeild.errors">This is required.</div>
+                <div class="text-danger" *ngIf="getControl.roleFunctional.touched && getControl.roleFunctional.invalid">
+                  <div *ngIf="getControl.roleFunctional.errors">This is required.</div>
            </div>
                 
             </div>

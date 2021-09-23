@@ -126,7 +126,7 @@
 
           <div class="col-md-4">
             <label>Current-nationality</label><span class="text-danger">*</span>
-            <select class="form-control" placeholder="" formControlName="cntNation">
+            <select class="form-control" placeholder="" formControlName="currentNationality">
               <option selected disabled value="">-select-</option>
               <option>American</option>
               <option>China</option>
@@ -135,14 +135,14 @@
               <option>Saudi arabia</option>
               <option>New zealand</option>
             </select>
-            <div class="text-danger" *ngIf="getControl.cntNation.touched && getControl.cntNation.invalid">
-                <div *ngIf="getControl.cntNation.errors">Please select a valid Nationality.</div>
+            <div class="text-danger" *ngIf="getControl.currentNationality.touched && getControl.currentNationality.invalid">
+                <div *ngIf="getControl.currentNationality.errors">Please select a valid Nationality.</div>
               </div>
           </div>
 
           <div class="col-md-4">
             <label>Previous-nationality</label><span class="text-danger">*</span>
-            <select class="form-control" placeholder="" formControlName="prvNation">
+            <select class="form-control" placeholder="" formControlName="previousNationality">
               <option selected disabled value="">-select-</option>
               <option>India</option>
               <option>Afgan</option>
@@ -151,8 +151,8 @@
               <option>Danish</option>
               <option>Faroese</option>
             </select>
-            <div class="text-danger" *ngIf="getControl.prvNation.touched && getControl.prvNation.invalid">
-              <div *ngIf="getControl.prvNation.errors">Please select a valid Nationality.</div>
+            <div class="text-danger" *ngIf="getControl.previousNationality.touched && getControl.previousNationality.invalid">
+              <div *ngIf="getControl.previousNationality.errors">Please select a valid Nationality.</div>
             </div>
           </div>
 

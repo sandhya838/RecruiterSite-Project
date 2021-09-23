@@ -7,15 +7,16 @@ import {WorkExperianceComponent } from './/Components/work-experiance/work-exper
 import { EduDetailsComponent} from './/Components/edu-details/edu-details.component';
 import { RollprofileComponent } from './Components/rollprofile/rollprofile.component';
 import { CertificationComponent } from './Components/certification/certification.component';
-
 const routes: Routes = [
-  {path:'',component:UserProfileComponent},
+  { path: '',   redirectTo:'about-you', pathMatch:'full'},
+  {path:'about-you',component:UserProfileComponent},
   {path:'skills',component:SkillProfileComponent},
   {path:'experience',component:ExperianceComponent},
   {path:'work-experience',component:WorkExperianceComponent},
   {path:'education-details',component: EduDetailsComponent},
   {path:'role-profile',component:RollprofileComponent},
   {path:'certificate', component:CertificationComponent}
+  // {path: '**', redirectTo: 'PageNotFoundComponent'}
   
 ];
 

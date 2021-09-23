@@ -2,6 +2,9 @@ $blue:#007bff;
 $navyBlue:#150050;
 $clr:lightgray;
 $bghoverclr: #f4a024;
+$denger:red;
+$light: #f1f5f9;
+$white:#ffffff;
 
 @mixin heading-setting($clr,$value){
     color: $clr;

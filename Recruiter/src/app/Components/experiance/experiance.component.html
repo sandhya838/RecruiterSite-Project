@@ -10,7 +10,7 @@
         <div class="row g-3 row-margin-05" > 
             <div class="col-4">
                 <label class="form-label">Total years of exp</label><span class="text-danger">*</span>
-                <select class="form-select" class="form-control" formControlName="yearExp" required>
+                <select class="form-select" class="form-control" formControlName="totalYearsOfExperience" required>
                     <option selected disabled value="">-select-</option>
                     <option>years </option>
                     <option>0-1month </option>
@@ -18,14 +18,14 @@
                     <option>6-10years</option>
                     <option>10-15years</option>
                   </select>
-                  <div class="text-danger" *ngIf="getControl.yearExp.touched && getControl.yearExp.invalid">
-                    <div *ngIf="getControl.yearExp.errors">This is required.</div>
+                  <div class="text-danger" *ngIf="getControl.totalYearsOfExperience.touched && getControl.totalYearsOfExperience.invalid">
+                    <div *ngIf="getControl.totalYearsOfExperience.errors">This is required.</div>
                   </div>
                 </div>
     
               <div class="col-4"> 
                 <label>Team size</label><span class="text-danger">*</span>
-                <select class="form-control" placeholder="" formControlName="Team">
+                <select class="form-control" placeholder="" formControlName="timeSize">
                   <option selected disabled value="">-select-</option>
                   <option>-select-</option>
                   <option>1</option>
@@ -35,22 +35,22 @@
                   <option>5</option>
                   <option>6</option>
                 </select>
-                <div class="text-danger" *ngIf="getControl.Team.touched && getControl.Team.invalid">
-                    <div *ngIf="getControl.Team.errors">This is required.</div>
+                <div class="text-danger" *ngIf="getControl.timeSize.touched && getControl.timeSize.invalid">
+                    <div *ngIf="getControl.timeSize.errors">This is required.</div>
                   </div>
               </div>
     
             
               <div class="col-4"> 
                 <label>Volume of business managed</label>
-                <select class="form-control" placeholder="" formControlName="Business">
+                <select class="form-control" placeholder="" formControlName="volumeOfBusinessManged">
                   <option selected disabled value="">-select-</option>
-                  <option>;;</option>
+                  <option></option>
                   <option>;;</option>
                   <option>;;</option>
                 </select>
-                <div class="text-danger" *ngIf="getControl.Business.touched && getControl.Business.invalid">
-                    <div *ngIf="getControl.Business.errors">This is required.</div>
+                <div class="text-danger" *ngIf="getControl.volumeOfBusinessManged.touched && getControl.volumeOfBusinessManged.invalid">
+                    <div *ngIf="getControl.volumeOfBusinessManged.errors">This is required.</div>
                   </div>
               </div> 
     
@@ -59,22 +59,22 @@
             <div class="row ">
                 <div class="col-4">
                   <label>Notice period </label><span class="text-danger">*</span>
-                  <select class="form-control" placeholder="" formControlName="Period">
+                  <select class="form-control" placeholder="" formControlName="noticePeriod">
                     <option selected disabled value="">-select-</option>
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
                     <option>4</option>
                   </select>
-                  <div class="text-danger" *ngIf="getControl.Period.touched && getControl.Period.invalid">
-                      <div *ngIf="getControl.Period.errors">This is required.</div>
+                  <div class="text-danger" *ngIf="getControl.noticePeriod.touched && getControl.noticePeriod.invalid">
+                      <div *ngIf="getControl.noticePeriod.errors">This is required.</div>
                     </div>
                 </div>
         
     
               <div class="col-4">
                 <label>Salary</label><span class="text-danger">*</span>
-                <select class="form-control" placeholder="" formControlName="Salary">
+                <select class="form-control" placeholder="" formControlName="salary">
                   <option selected disabled value="">-select-</option>
                   <option>10000</option>
                   <option>20000</option>
@@ -83,14 +83,14 @@
                   <option>40000</option>
                   <option>50000</option>
                 </select>
-                <div class="text-danger" *ngIf="getControl.Salary.touched && getControl.Salary.invalid">
-                    <div *ngIf="getControl.Salary.errors">This is required.</div>
+                <div class="text-danger" *ngIf="getControl.salary.touched && getControl.salary.invalid">
+                    <div *ngIf="getControl.salary.errors">This is required.</div>
                   </div>
               </div>
     
               <div class="col-4">
                 <label>Base salary</label><span class="text-danger">*</span>
-                <select class="form-control" placeholder="" formControlName="Basesalary">
+                <select class="form-control" placeholder="" formControlName="baseSalary">
                   <option selected disabled value="">-select-</option>
                   <option>13000</option>
                   <option>14000</option>
@@ -101,8 +101,8 @@
                   <option>40000</option>
 
                 </select>
-                <div class="text-danger" *ngIf="getControl.Basesalary.touched && getControl.Basesalary.invalid">
-                  <div *ngIf="getControl.Basesalary.errors">This is required.</div>
+                <div class="text-danger" *ngIf="getControl.baseSalary.touched && getControl.baseSalary.invalid">
+                  <div *ngIf="getControl.baseSalary.errors">This is required.</div>
                 </div>
               </div>
 
@@ -111,7 +111,7 @@
             <div class="row">
                 <div class="col-4">
                 <label>Variable salary</label><span class="text-danger">*</span>
-                <select class="form-control" placeholder="" formControlName="Variablesal">
+                <select class="form-control" placeholder="" formControlName="variableSalary">
                   <option selected disabled value="">-select-</option>
                   <option>17000</option>
                   <option>27000</option>
@@ -119,15 +119,15 @@
                   <option>32000</option>
                   <option>44000</option>
                 </select>
-                <div class="text-danger" *ngIf="getControl.Variablesal.touched && getControl.Variablesal.invalid">
-                    <div *ngIf="getControl.Variablesal.errors">This is required.</div>
+                <div class="text-danger" *ngIf="getControl.variableSalary.touched && getControl.variableSalary.invalid">
+                    <div *ngIf="getControl.variableSalary.errors">This is required.</div>
                   </div>
               </div>
                 <div class="col-4"> 
                   <label>Other components</label><span class="text-danger">*</span>
-                  <input type="text" class="form-control" placeholder="" formControlName="otherCompo"> 
-                  <div class="text-danger" *ngIf="getControl.otherCompo.touched && getControl.otherCompo.invalid">
-                         <div *ngIf="getControl.otherCompo.errors">This is required.</div>
+                  <input type="text" class="form-control" placeholder="" formControlName="otherComponent"> 
+                  <div class="text-danger" *ngIf="getControl.otherComponent.touched && getControl.otherComponent.invalid">
+                         <div *ngIf="getControl.otherComponent.errors">This is required.</div>
                   </div>
                 </div> 
 

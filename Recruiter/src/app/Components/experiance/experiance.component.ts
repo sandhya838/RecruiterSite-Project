@@ -18,14 +18,14 @@ export class ExperianceComponent implements OnInit {
   numberpattern="^[0-9]*$"
   ngOnInit(): void {
     this.userForm= this.formBuilder.group({
-      yearExp:['', [Validators.required, Validators.pattern(this.mixpattern)]],
-      Team: ['', [Validators.required, Validators.pattern(this.numberpattern)]],
-      Business: ['', [Validators.required, Validators.pattern(this.pattern)]],
-      Period: ['', [Validators.required, Validators.pattern(this.numberpattern)]],
-      Salary:['', [Validators.required, Validators.pattern(this.numberpattern)]],
-      Basesalary:['', [Validators.required, Validators.pattern(this.numberpattern)]],
-      Variablesal:['', [Validators.required, Validators.pattern(this.numberpattern)]],
-      otherCompo:['', [Validators.required, Validators.pattern(this.pattern)]],
+      totalYearsOfExperience:['', [Validators.required, Validators.pattern(this.mixpattern)]],
+      timeSize: ['', [Validators.required, Validators.pattern(this.numberpattern)]],
+      volumeOfBusinessManged: ['', [Validators.required, Validators.pattern(this.pattern)]],
+      noticePeriod: ['', [Validators.required, Validators.pattern(this.numberpattern)]],
+      salary:['', [Validators.required, Validators.pattern(this.numberpattern)]],
+      baseSalary:['', [Validators.required, Validators.pattern(this.numberpattern)]],
+      variableSalary:['', [Validators.required, Validators.pattern(this.numberpattern)]],
+      otherComponent:['', [Validators.required, Validators.pattern(this.pattern)]],
       indServed:['', [Validators.required, Validators.pattern(this.pattern)]]
     })  
   }

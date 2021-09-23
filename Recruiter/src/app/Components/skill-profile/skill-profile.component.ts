@@ -10,6 +10,7 @@ export class SkillProfileComponent implements OnInit {
   userForm !: FormGroup;
   alert:boolean=false;
   allData:any;
+  multiselect:any;
   constructor(public formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -28,6 +29,7 @@ export class SkillProfileComponent implements OnInit {
       sys3:['', [Validators.required]],
 
 })  
+
 
   }
 
@@ -57,6 +59,7 @@ export class SkillProfileComponent implements OnInit {
   closeAlert(){
     this.alert=false;
   }
+  
   
 }
 
