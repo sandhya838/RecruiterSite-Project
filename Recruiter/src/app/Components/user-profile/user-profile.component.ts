@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { data } from 'jquery';
+import { ConfigService } from 'src/app/config.service';
 import { NotificationService } from 'src/app/notification.service';
 
 @Component({
@@ -12,7 +14,7 @@ alert:boolean=false;
   userForm !: FormGroup;
   allData:any;
 
-  constructor(public formBuilder: FormBuilder,private notifyService : NotificationService) { }
+  constructor(public formBuilder: FormBuilder,private notifyService : NotificationService,private configService:ConfigService) { }
   pattern="^[ a-zA-Z]*$";
   ngOnInit(): void {
     this.userForm= this.formBuilder.group({
@@ -47,7 +49,12 @@ alert:boolean=false;
     this.userForm.reset({});
 
     if(this.userForm.valid){
-
+      this.configService.addUser(this.userForm.value).subscribe(data=> {
+        console.log("form submited");
+        
+      },error=>{
+        console.log(error)
+      })
     }
     else{
       this.userForm.markAllAsTouched();

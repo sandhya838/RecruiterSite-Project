@@ -7,6 +7,15 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ConfigService {
+  url="http://localhost:3000/v1/profiles"
+  baseUrl="http://localhost:3000/v1/register";
+  constructor(private http: HttpClient) {  
+  } 
+  getPost(){
+    return this.http.get(this.url);
 
-  constructor(private http: HttpClient) { }
+  }
+  addUser(user: any): Observable<Object> {
+    return this.http.post(`${this.baseUrl}`, user);
+  }
 }

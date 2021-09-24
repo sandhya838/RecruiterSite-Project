@@ -101,7 +101,8 @@ var ProfileSchema = new Schema({
           }
         }
       
-    }
+    },
+    
 
   ],
   
