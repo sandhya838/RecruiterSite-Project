@@ -8,13 +8,18 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class ConfigService {
   url="http://localhost:3000/v1/profiles"
-  baseUrl="http://localhost:3000/v1/register";
+  baseUrl="http://localhost:3000/v1/profiles";
   constructor(private http: HttpClient) {  
   } 
   getPost(){
     return this.http.get(this.url);
 
   }
+  // onSubmit(user:any){
+  //   this.http.post(`${this.baseUrl}`, user).subscribe((result)=>{
+  //     console.warn(result)
+  //   })
+  // }
   addUser(user: any): Observable<Object> {
     return this.http.post(`${this.baseUrl}`, user);
   }

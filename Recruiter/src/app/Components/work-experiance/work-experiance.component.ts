@@ -25,7 +25,7 @@ export class WorkExperianceComponent implements OnInit {
       skill3:['',[Validators.required]],
       skill4:['',[Validators.required]],
       role:['', [Validators.required]],
-      project:['', [Validators.required]],
+      deliverables:['', [Validators.required]],
       
 })  
 

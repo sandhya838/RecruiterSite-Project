@@ -31,6 +31,8 @@ var ProfileSchema = new Schema({
   previousNationality: {
     type: String
   },
+
+  experienceDetails:[{
   totalYearsOfExperience: {
     type: String
   },
@@ -58,6 +60,7 @@ var ProfileSchema = new Schema({
   indServed: {
     type: String
   },
+}],
  
   roleManagement: {
     type: String
@@ -68,15 +71,51 @@ var ProfileSchema = new Schema({
   roleFunctional: {
     type: String
   },
+
+  skillProfile:[{
   skillSysAdministration: {
-    type: String
+    sys:{
+      type:String,
+    },
+    sys1:{
+      type:String,
+    },
+    sys2:{
+      type:String,
+    },
+    sys3:{
+      type:String,
+    }
   },
   skillTechnical: {
-    type: String
+    tech:{
+      type:String,
+    },
+    tech1:{
+      type:String,
+    },
+    tech2:{
+      type:String,
+    },
+    tech3:{
+      type:String,
+    }
   },
   skillFunctional: {
-    type: String
-  },
+    functional:{
+      type:String,
+    },
+    functional1:{
+      type:String,
+    },
+    functional2:{
+      type:String,
+    },
+    functional3:{
+      type:String,
+    }
+  }
+}],
   educationalDetails: [
     {
       degree: {
@@ -127,13 +166,22 @@ var ProfileSchema = new Schema({
   workExperiences: [
     {
       company: {
-        type: String,
-      },
-      from: {
-        type: String,
-      },
-      to: {
-        type: String,
+        from: {
+          month:{
+          joinmonth:String,
+        },
+        year:{
+          joinyear:String,
+        }
+        },
+        to: {
+          month:{
+            joinmonth:String,
+          },
+          year:{
+            joinyear:String,
+          }
+        }
       },
       desgination: {
         type: String,
@@ -142,7 +190,19 @@ var ProfileSchema = new Schema({
         type:String,
       },
       skills: {
-        type: [],
+        skill1:{
+            type:String,
+        },
+        skill2:{
+          type:String,
+      },
+      skill3:{
+        type:String,
+    },
+    skill4:{
+      type:String,
+  }
+   
       },
       deliverables: {
         type: String
