@@ -8,7 +8,7 @@ import { catchError, retry } from 'rxjs/operators';
 })
 export class ConfigService {
   url="http://localhost:3000/v1/profiles"
-  baseUrl="http://localhost:3000/v1/profiles";
+  baseUrl="http://localhost:3000/v1/aboutyou";
   constructor(private http: HttpClient) {  
   } 
   getPost(){

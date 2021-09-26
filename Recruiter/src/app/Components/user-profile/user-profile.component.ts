@@ -46,7 +46,7 @@ alert:boolean=false;
 
     this.allData=JSON.parse(JSON.stringify(this.userForm.value));
     this.alert=true;
-    this.userForm.reset({});
+    
 
     if(this.userForm.valid){
       this.configService.addUser(this.userForm.value).subscribe(data=> {
@@ -55,6 +55,7 @@ alert:boolean=false;
       },error=>{
         console.log(error)
       })
+      this.userForm.reset({});
     }
     else{
       this.userForm.markAllAsTouched();

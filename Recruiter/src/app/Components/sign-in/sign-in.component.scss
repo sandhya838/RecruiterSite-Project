@@ -123,7 +123,7 @@ img {
 		border-radius: 0.25rem;
 		// color: var(--color-black);
 		background: #ffffff;
-		box-shadow:  0 10px 15px -3px rgba(0, 0, 0, 0.1),
+		box-shadow:  0 10px 15px -3px rgba(0, 0, 0, 0.1),0 10px 15px -3px rgba(0, 0, 0, 0.1),0 10px 15px -3px rgba(0, 0, 0, 0.1),
 		0 4px 6px -2px rgba(0, 0, 0, 0.05);
 
 		.form {
@@ -134,10 +134,17 @@ img {
 			.input-control {
 				display: flex;
 				align-items: center;
+				flex-direction: column;
 				justify-content: space-between;
 				margin-bottom: 1.25rem;
 			}
-
+			.input-control-row {
+				display: flex;
+				align-items: center;
+				// flex-direction: column;
+				justify-content: space-between;
+				margin-bottom: 1.25rem;
+			}
 			.input-field {
 				font-family: inherit;
 				font-size: 1rem;
@@ -234,16 +241,23 @@ img {
 	}
 }
 
-
+input[type=button]{
+	margin-left: 120px;
+}
 
 .sign-up{
 	margin-left: 236px;
     margin-top: -19px;
+	cursor: pointer;
 }
 .login{
 	margin-left: 312px;
     margin-top: -23px;
 	color: $blue;
+	cursor: pointer;
+}
+.sign-up:hover,.login:hover{
+	text-decoration: underline;
 }
 
 // social icon

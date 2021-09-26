@@ -28,6 +28,7 @@ module.exports = {
 
     },
     create: (req, res) => {
+        console.log(req.body);
         User.create(req.body, (err, result) => {
             if (err) {
                 console.log('error', err);

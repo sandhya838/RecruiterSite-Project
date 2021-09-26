@@ -36,10 +36,12 @@
 						<div *ngIf="getControl.password.errors">Invalid password</div>
 					 </div>
 				</div>
-				<div class="input-control">
+				<div class="input-control-row">
+					<label><input type="checkbox"  name="remember" style="margin-bottom:15px"> Remember me</label>
 					<a href="#" class="text text-links">Forgot Password</a>
-					<input type="button" name="submit" class="input-submit" value="Login" style="color: white;" disabled>
+					<!-- <input type="button" name="submit" class="input-submit" value="Sign In" style="color: white;" disabled> -->
 				</div>
+				<input type="button" name="submit" class="input-submit" value="Sign In" style="color: white;" disabled>
 			</form>
 			<div class="striped">
 				<span class="striped-line"></span>
