@@ -8,12 +8,14 @@ import { EduDetailsComponent} from './/Components/edu-details/edu-details.compon
 import { RollprofileComponent } from './Components/rollprofile/rollprofile.component';
 import { CertificationComponent } from './Components/certification/certification.component';
 const routes: Routes = [
-  { path: '',   redirectTo:'about-you', pathMatch:'full'},
+  {path: '',   redirectTo:'about-you', pathMatch:'full'},
   {path:'about-you',component:UserProfileComponent},
   {path:'skills',component:SkillProfileComponent},
   {path:'experience',component:ExperianceComponent},
   {path:'work-experience',component:WorkExperianceComponent},
   {path:'education-details',component: EduDetailsComponent},
+  {path:'education-details/:id',component: EduDetailsComponent},
+
   {path:'role-profile',component:RollprofileComponent},
   {path:'certificate', component:CertificationComponent}
   // {path: '**', redirectTo: 'PageNotFoundComponent'}

@@ -6,53 +6,58 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
   styleUrls: ['./rollprofile.component.scss']
 })
 export class RollprofileComponent implements OnInit {
-  Rolesexp!: FormGroup;
-  alert:boolean=false;
-  allData:any;  
-  Management = ['1','2','3'];
-  Portfolio = ['1','2','3'];
-  Technical = ['1','2','3'];
+  userForm!: FormGroup;
   formBuilder: any;
+  allData:any;
+  alert: boolean=false;;
+  
   constructor(formBuilder: FormBuilder) {}
-
+  numberPattern='^[ %0-9_-]*$';
   ngOnInit(): void {
-    this.Rolesexp = this.formBuilder.group({       
-      roleManagemen:['', Validators.required],
-      Portfolio:['', Validators.required],
-      technical:['', Validators.required],
-      functional:['', Validators.required],
-      roleTechnical:['', Validators.required],
-      architect:['', Validators.required],
-      techLead:['', Validators.required],
-      developer:['', Validators.required],
-      roleFunctional:['', Validators.required],
-      sme:['', Validators.required],
-      leadcon:['', Validators.required],
-      consultant:['', Validators.required]
-     });
-   
+    this.userForm= this.formBuilder.group({
+     
+      managment: ['', [Validators.required, Validators.pattern(this.numberPattern)]],
+      technical: ['', [Validators.required,Validators.pattern(this.numberPattern)]],
+      functional:['', [Validators.required,Validators.pattern(this.numberPattern)]]
+      // grade:['', [Validators.required,Validators.pattern(this.numberPattern)]],
+      // month:['',[Validators.required,Validators.pattern(this.numberPattern)]],
+      // year:['',[Validators.required,Validators.pattern(this.numberPattern)]]
+
+         })  
   }
+  get getControl()
+  {
+    return this.userForm.controls;
+  }
+  
 
-  onClick(formValue:any){
-    console.log(this.Rolesexp.value);
-    this.allData=JSON.parse(JSON.stringify(this.Rolesexp.value));
+//   showToasterSuccess(){
+//     this.notifyService.showSuccess("Data submited successfully !!")
+// }
+  
+  onClick(formValue:any)
+  {
+    console.log(this.userForm.value);
+
+    this.allData=JSON.parse(JSON.stringify(this.userForm.value));
     this.alert=true;
-    this.Rolesexp.reset({});
+    
 
-    if(this.Rolesexp.valid){
+    if(this.userForm.valid){
 
     }
     else{
-      this.Rolesexp.markAllAsTouched();
-      this.Rolesexp.updateValueAndValidity();
+      this.userForm.markAllAsTouched();
+      this.userForm.updateValueAndValidity();
       
     }
- }
- get getControl()
- {
-   return this.Rolesexp.controls;
- }
- closeAlert(){
-  this.alert=false;
-}
+    this.userForm.reset({});
+  }
+  
+  closeAlert(){
+    this.alert=false;
+  }
+  
+ 
+
 }

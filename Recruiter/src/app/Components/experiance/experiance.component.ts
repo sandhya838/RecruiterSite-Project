@@ -39,11 +39,8 @@ export class ExperianceComponent implements OnInit {
   {
     console.log(this.userForm.value);
     this.allData=JSON.parse(JSON.stringify(this.userForm.value));
-    this.alert=true;
-    this.userForm.reset({});
+    
 
-    this.alert=true;
-    this.userForm.reset({});
 
     
     if(this.userForm.valid){
@@ -54,6 +51,8 @@ export class ExperianceComponent implements OnInit {
       this.userForm.updateValueAndValidity();
       
     }
+    this.alert=true;
+    this.userForm.reset({});
   }
 
   

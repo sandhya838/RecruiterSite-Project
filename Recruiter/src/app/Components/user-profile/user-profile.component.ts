@@ -13,6 +13,7 @@ export class UserProfileComponent implements OnInit {
 alert:boolean=false;
   userForm !: FormGroup;
   allData:any;
+ currentUserData=null;
 
   constructor(public formBuilder: FormBuilder,private notifyService : NotificationService,private configService:ConfigService) { }
   pattern="^[ a-zA-Z]*$";
@@ -54,19 +55,21 @@ alert:boolean=false;
         
       },error=>{
         console.log(error)
-      })
-      this.userForm.reset({});
+      });
+      
     }
     else{
       this.userForm.markAllAsTouched();
       this.userForm.updateValueAndValidity();
       
     }
-   
+    this.userForm.reset({});
   }
   
   closeAlert(){
     this.alert=false;
   }
-
+ 
 }
+
+

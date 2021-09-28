@@ -1,215 +1,213 @@
 <div class="container">
-  <p>rollprofile work ..!</p>
   <!-- <div *ngIf="alert"  class="alert alert-success alert-dismissible fade show" role="alert">
     <strong>Success!</strong> Your data is successfully submitted. <pre>{{allData | json}}</pre>
     <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
       <span aria-hidden="true">&times;</span>
     </button>
+  </div> -->
+    <form [formGroup]="userForm" (ngSubmit)="onClick(userForm.value)" novalidate>
+      <div class="mb-3">
+        <label>Which field would you like to choose..?</label>
+        <input type="text" class="form-control">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+     </div>
+    </form>
+
+
+</div>
+
+
+<!-- <div class="row">
+      <div class="col-md-6 mt-2 font-weight-bold text-align-center">
+        <label> Management</label>
+        <select class="form-select" class="form-control" required formControlName=" roleManagemen">
+            <option selected disabled value="">-select-</option>
+            <option value="1" >Portfolio</option>
+            <option value="2">Technical</option>
+            <option value="3">Functional</option>
+        </select>
+        <div class="text-danger" *ngIf="getControl. roleManagemen.touched && getControl. roleManagemen.invalid">
+          <div *ngIf="getControl. roleManagemen.errors">This is required.</div>
+       </div>
+        
+    </div>
   </div>
-    <form [formGroup]="Rolesexp" (ngSubmit)="onClick(Rolesexp.value);">
-        <div class="row">
-            <div class="col-md-6 mt-2 font-weight-bold text-align-center">
-              <label> Management</label>
-              <select class="form-select" class="form-control" required formControlName=" roleManagemen">
-                  <option selected disabled value="">-select-</option>
-                  <option value="1" >Portfolio</option>
-                  <option value="2">Technical</option>
-                  <option value="3">Functional</option>
-              </select>
-              <div class="text-danger" *ngIf="getControl. roleManagemen.touched && getControl. roleManagemen.invalid">
-                <div *ngIf="getControl. roleManagemen.errors">This is required.</div>
-             </div>
-              
-          </div>
-        </div>
-    
-        <div class="row">
-            <div class="col-sm-4">
-              <label>
-                  Portfolio
-              </label>
-              <select class="form-select" class="form-control" required formControlName="Portfolio">
-                <option selected disabled value="">-select-</option>
-                  <option value="1" ></option>
-                  <option value="2"></option>
-                  <option value="3"></option>
-              </select>
-              <div class="text-danger" *ngIf="getControl.Portfolio.touched && getControl.Portfolio.invalid">
-                <div *ngIf="getControl.Portfolio.errors">This is required.</div>
-             </div>
-            </div>
-    
-            <div class="col-sm-4">
-              <label>
-                  Technical
-              </label>
-              <select class="form-select" class="form-control" required formControlName="technical">
-                <option selected disabled value="">-select-</option>
-                  <option value="1" ></option>
-                  <option value="2"></option>
-                  <option value="3"></option>
-              </select>
-              <div class="text-danger" *ngIf="getControl.technical.touched && getControl.technical.invalid">
-                <div *ngIf="getControl.technical.errors">This is required.</div>
-             </div>
-            </div>
-    
-            <div class="col-sm-4 ">
-              <label>
-                  Functional
-              </label>
-              <select class="form-select" class="form-control" required formControlName="functional">
-                <option selected disabled value="">-select-</option>
-                  <option value="1" ></option>
-                  <option value="2"></option>
-                  <option value="3"></option>
-              </select>
-              <div class="text-danger" *ngIf="getControl.functional.touched && getControl.functional.invalid">
-                <div *ngIf="getControl.functional.errors">This is required.</div>
-             </div>
-            </div>
+
+  <div class="row">
+      <div class="col-sm-4">
+        <label>
+            Portfolio
+        </label>
+        <select class="form-select" class="form-control" required formControlName="Portfolio">
+          <option selected disabled value="">-select-</option>
+            <option value="1" ></option>
+            <option value="2"></option>
+            <option value="3"></option>
+        </select>
+        <div class="text-danger" *ngIf="getControl.Portfolio.touched && getControl.Portfolio.invalid">
+          <div *ngIf="getControl.Portfolio.errors">This is required.</div>
+       </div>
       </div>
-    
-      <hr>
-            <div class="row mt-4">
-            <div class="col-md-6 mt-2 font-weight-bold text-align-center">
-              <label>
-                  Technical
-              </label>
-              <select class="form-select" class="form-control" required formControlName="roleTechnical">
-                <option selected disabled value="">-select-</option>
-                  <option value="1" >Architect</option>
-                  <option value="2">Tech Lead</option>
-                  <option value="3">Developer</option>
-              </select>
-              <div class="text-danger" *ngIf="getControl.roleTechnical.touched && getControl.roleTechnical.invalid">
-                <div *ngIf="getControl.roleTechnical.errors">This is required.</div>
+
+      <div class="col-sm-4">
+        <label>
+            Technical
+        </label>
+        <select class="form-select" class="form-control" required formControlName="technical">
+          <option selected disabled value="">-select-</option>
+            <option value="1" ></option>
+            <option value="2"></option>
+            <option value="3"></option>
+        </select>
+        <div class="text-danger" *ngIf="getControl.technical.touched && getControl.technical.invalid">
+          <div *ngIf="getControl.technical.errors">This is required.</div>
+       </div>
+      </div>
+
+      <div class="col-sm-4 ">
+        <label>
+            Functional
+        </label>
+        <select class="form-select" class="form-control" required formControlName="functional">
+          <option selected disabled value="">-select-</option>
+            <option value="1" ></option>
+            <option value="2"></option>
+            <option value="3"></option>
+        </select>
+        <div class="text-danger" *ngIf="getControl.functional.touched && getControl.functional.invalid">
+          <div *ngIf="getControl.functional.errors">This is required.</div>
+       </div>
+      </div>
+</div>
+
+<hr>
+      <div class="row mt-4">
+      <div class="col-md-6 mt-2 font-weight-bold text-align-center">
+        <label>
+            Technical
+        </label>
+        <select class="form-select" class="form-control" required formControlName="roleTechnical">
+          <option selected disabled value="">-select-</option>
+            <option value="1" >Architect</option>
+            <option value="2">Tech Lead</option>
+            <option value="3">Developer</option>
+        </select>
+        <div class="text-danger" *ngIf="getControl.roleTechnical.touched && getControl.roleTechnical.invalid">
+          <div *ngIf="getControl.roleTechnical.errors">This is required.</div>
+   </div>
+        
+    </div>
+  </div>
+
+    <div class="row text-align-center">
+        <div class="col-sm-4">
+          <label>
+              Architect
+          </label>
+          <select class="form-select" class="form-control" required formControlName="architect">
+            <option selected disabled value="">-select-</option>
+              <option value="1" ></option>
+              <option value="2"></option>
+              <option value="3"></option>
+          </select>
+          <div class="text-danger" *ngIf="getControl.architect.touched && getControl.architect.invalid">
+            <div *ngIf="getControl.architect.errors">This is required.</div>
          </div>
-              
-          </div>
         </div>
+
+        <div class="col-sm-4">
+          <label>
+              Tech Lead
+          </label>
+          <select class="form-select" class="form-control" required formControlName="techLead">
+            <option selected disabled value="">-select-</option>
+              <option value="1" ></option>
+              <option value="2"></option>
+              <option value="3"></option>
+          </select>
+          <div class="text-danger" *ngIf="getControl.techLead.touched && getControl.techLead.invalid">
+            <div *ngIf="getControl.techLead.errors">This is required.</div>
+         </div>
+        </div>
+
+        <div class="col-sm-4 ">
+          <label>
+              Developer
+          </label>
+          <select class="form-select" class="form-control" required formControlName="developer">
+            <option selected disabled value="">-select-</option>
+              <option value="1" ></option>
+              <option value="2"></option>
+              <option value="3"></option>
+          </select>
+        </div>
+        <div class="text-danger" *ngIf="getControl.developer.touched && getControl.developer.invalid">
+          <div *ngIf="getControl.developer.errors">This is required.</div>
+       </div>
+      </div>
       
-          <div class="row text-align-center">
-              <div class="col-sm-4">
-                <label>
-                    Architect
-                </label>
-                <select class="form-select" class="form-control" required formControlName="architect">
-                  <option selected disabled value="">-select-</option>
-                    <option value="1" ></option>
-                    <option value="2"></option>
-                    <option value="3"></option>
-                </select>
-                <div class="text-danger" *ngIf="getControl.architect.touched && getControl.architect.invalid">
-                  <div *ngIf="getControl.architect.errors">This is required.</div>
-               </div>
-              </div>
-    
-              <div class="col-sm-4">
-                <label>
-                    Tech Lead
-                </label>
-                <select class="form-select" class="form-control" required formControlName="techLead">
-                  <option selected disabled value="">-select-</option>
-                    <option value="1" ></option>
-                    <option value="2"></option>
-                    <option value="3"></option>
-                </select>
-                <div class="text-danger" *ngIf="getControl.techLead.touched && getControl.techLead.invalid">
-                  <div *ngIf="getControl.techLead.errors">This is required.</div>
-               </div>
-              </div>
-    
-              <div class="col-sm-4 ">
-                <label>
-                    Developer
-                </label>
-                <select class="form-select" class="form-control" required formControlName="developer">
-                  <option selected disabled value="">-select-</option>
-                    <option value="1" ></option>
-                    <option value="2"></option>
-                    <option value="3"></option>
-                </select>
-              </div>
-              <div class="text-danger" *ngIf="getControl.developer.touched && getControl.developer.invalid">
-                <div *ngIf="getControl.developer.errors">This is required.</div>
-             </div>
-            </div>
-            
-           <hr>
-              <div class="row mt-4">
-              <div class="col-md-6 font-weight-bold text-align-center ">
-                <label>
-                    Functional
-                </label>
-                <select class="form-select" class="form-control" required formControlName="roleFunctional">
-                  <option selected disabled value="">-select-</option>
-                    <option value="1" >SME</option>
-                    <option value="2">Lead Con</option>
-                    <option value="3">Consultant</option>
-                </select>
-                <div class="text-danger" *ngIf="getControl.roleFunctional.touched && getControl.roleFunctional.invalid">
-                  <div *ngIf="getControl.roleFunctional.errors">This is required.</div>
+     <hr>
+        <div class="row mt-4">
+        <div class="col-md-6 font-weight-bold text-align-center ">
+          <label>
+              Functional
+          </label>
+          <select class="form-select" class="form-control" required formControlName="roleFunctional">
+            <option selected disabled value="">-select-</option>
+              <option value="1" >SME</option>
+              <option value="2">Lead Con</option>
+              <option value="3">Consultant</option>
+          </select>
+          <div class="text-danger" *ngIf="getControl.roleFunctional.touched && getControl.roleFunctional.invalid">
+            <div *ngIf="getControl.roleFunctional.errors">This is required.</div>
+     </div>
+          
+      </div>
+      </div>
+
+      <div class="row text-align-center ">
+          <div class="col-sm-4">
+            <label>
+                SME
+            </label>
+            <select class="form-select" class="form-control" required formControlName="sme">
+              <option selected disabled value="">-select-</option>
+                <option value="1" ></option>
+                <option value="2"></option>
+                <option value="3"></option>
+            </select>
+            <div class="text-danger" *ngIf="getControl.sme.touched && getControl.sme.invalid">
+              <div *ngIf="getControl.sme.errors">This is required.</div>
            </div>
-                
-            </div>
-            </div>
-      
-            <div class="row text-align-center ">
-                <div class="col-sm-4">
-                  <label>
-                      SME
-                  </label>
-                  <select class="form-select" class="form-control" required formControlName="sme">
-                    <option selected disabled value="">-select-</option>
-                      <option value="1" ></option>
-                      <option value="2"></option>
-                      <option value="3"></option>
-                  </select>
-                  <div class="text-danger" *ngIf="getControl.sme.touched && getControl.sme.invalid">
-                    <div *ngIf="getControl.sme.errors">This is required.</div>
-                 </div>
-                </div>
-      
-                <div class="col-sm-4">
-                  <label>
-                      Lead Con
-                  </label>
-                  <select class="form-select" class="form-control" required formControlName="leadcon">
-                    <option selected disabled value="">-select-</option>
-                      <option value="1" ></option>
-                      <option value="2"></option>
-                      <option value="3"></option>
-                  </select>
-                  <div class="text-danger" *ngIf="getControl.leadcon.touched && getControl.leadcon.invalid">
-                    <div *ngIf="getControl.leadcon.errors">This is required.</div>
-                 </div>
-                </div>
-      
-                <div class="col-sm-4 ">
-                  <label>
-                      Consultant
-                  </label>
-                  <select class="form-select" class="form-control" required formControlName="consultant">
-                    <option selected disabled value="">-select-</option>d
-                      <option value="1" ></option>
-                      <option value="2"></option>
-                      <option value="3"></option>
-                  </select>
-                  <div class="text-danger" *ngIf="getControl.consultant.touched && getControl.consultant.invalid">
-                    <div *ngIf="getControl.consultant.errors">This is required.</div>
-                 </div>
-                </div>
-    </div>
-    
-    <div class="row mt-4">
-      <div class="col-md-2">
-            <button type="" class="btn btn-outline-primary mb-3">Previous</button>
-      </div>
-      <div class="col">
-            <button type="submit" class="btn btn-success mb-3">Submit</button>
-      </div>
-    </div>
-    
-    </form> -->
-    </div>
+          </div>
+
+          <div class="col-sm-4">
+            <label>
+                Lead Con
+            </label>
+            <select class="form-select" class="form-control" required formControlName="leadcon">
+              <option selected disabled value="">-select-</option>
+                <option value="1" ></option>
+                <option value="2"></option>
+                <option value="3"></option>
+            </select>
+            <div class="text-danger" *ngIf="getControl.leadcon.touched && getControl.leadcon.invalid">
+              <div *ngIf="getControl.leadcon.errors">This is required.</div>
+           </div>
+          </div>
+
+          <div class="col-sm-4 ">
+            <label>
+                Consultant
+            </label>
+            <select class="form-select" class="form-control" required formControlName="consultant">
+              <option selected disabled value="">-select-</option>d
+                <option value="1" ></option>
+                <option value="2"></option>
+                <option value="3"></option>
+            </select>
+            <div class="text-danger" *ngIf="getControl.consultant.touched && getControl.consultant.invalid">
+              <div *ngIf="getControl.consultant.errors">This is required.</div>
+           </div>
+          </div>
+</div> -->

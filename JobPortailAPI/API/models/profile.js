@@ -61,16 +61,41 @@ var ProfileSchema = new Schema({
     type: String
   },
 }],
- 
+rollProfile:[{
   roleManagement: {
-    type: String
+    portfolioManagment:{
+      type:String
+    },
+    accountManagment:{
+      type:String
+    },
+    projectManagment:{
+      type:String
+    }
   },
   roleTechnical: {
-    type: String
+    architect:{
+      type:String
+    },
+    techlead:{
+      type:String
+    },
+   developer:{
+      type:String
+    }
   },
   roleFunctional: {
-    type: String
-  },
+    sme:{
+      type:String
+    },
+    leadcon:{
+      type:String
+    },
+    consultant:{
+      type:String
+    }
+  }
+}],
 
   skillProfile:[{
   skillSysAdministration: {

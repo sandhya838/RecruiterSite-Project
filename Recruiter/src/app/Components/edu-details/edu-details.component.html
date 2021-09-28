@@ -5,7 +5,7 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-    <form [formGroup]="userForm" (ngSubmit)="onClick( userForm.value)" novalidate json> 
+    <form [formGroup]="userForm"  novalidate> 
     
         <div class="row g-3 row-margin-05" > 
 
@@ -60,7 +60,7 @@
                 <div class="form-group row">
                   <div class="col-6">
                   <select class="form-select" class="form-control" formControlName="month" required>
-                    <option selected disabled value="">Month</option>
+                    <option selected disabled value="">MM</option>
                     <option>January</option>
                     <option>February</option>
                     <option>March</option> 
@@ -84,7 +84,7 @@
   
                     <div class="col-6">
                   <select class="form-select" class="form-control" formControlName="year" required>
-                    <option selected disabled value="">Year</option>
+                    <option selected disabled value="">YYYY</option>
                               <option>2001</option>
                               <option>2002</option>
                                <option>2003</option>
@@ -124,7 +124,8 @@
               <div class="col-md-2">
                 <button class="btn btn-outline-primary form-control  btn-block">Cancel</button></div>
               <div class="col">
-                <button id="btnSubmit" class="btn btn-success form-control   btn-block" type="submit">Submit</button></div>
+                <button id="btnSubmit" class="btn btn-success form-control   btn-block" (click)="updatePublished()"
+                type="submit">Submit</button></div>
             </div>
            
     </form>

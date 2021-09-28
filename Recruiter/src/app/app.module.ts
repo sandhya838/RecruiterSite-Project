@@ -20,7 +20,6 @@ import { CertificationComponent } from './Components/certification/certification
 import { SignInComponent } from './Components/sign-in/sign-in.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +46,6 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule
-    
     
   ],
   providers: [],
