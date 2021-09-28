@@ -10,9 +10,9 @@ export class AppComponent {
   data:any;
   constructor(private postData:ConfigService){}
   ngOnInit(){
-    this.postData.getPost().subscribe((result)=>{
-      console.log("result",result);
-      this.data=result;
-    })
+    // this.postData.getPost().subscribe((result)=>{
+    //   console.log("result",result);
+    //   this.data=result;
+    // })
   }
 }
