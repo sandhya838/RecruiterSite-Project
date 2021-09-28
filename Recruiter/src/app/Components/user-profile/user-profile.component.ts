@@ -14,9 +14,8 @@ alert:boolean=false;
   userForm !: FormGroup;
   allData:any;
  currentUserData=null;
- data:any;
 
-  constructor(public formBuilder: FormBuilder,private notifyService : NotificationService,private configService:ConfigService,private postData:ConfigService) { }
+  constructor(public formBuilder: FormBuilder,private notifyService : NotificationService,private configService:ConfigService) { }
   pattern="^[ a-zA-Z]*$";
   ngOnInit(): void {
     this.userForm= this.formBuilder.group({
@@ -51,16 +50,12 @@ alert:boolean=false;
     
 
     if(this.userForm.valid){
-      // this.configService.addUser(this.userForm.value).subscribe(data=> {
-      //   console.log("form submited");
+      this.configService.addUser(this.userForm.value).subscribe(data=> {
+        console.log("form submited");
         
-      // },error=>{
-      //   console.log(error)
-      // });
-      this.postData.getPost().subscribe((result)=>{
-        console.log("result",result);
-        this.data=result;
-      })
+      },error=>{
+        console.log(error)
+      });
       
     }
     else{
