@@ -16,6 +16,26 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
 </head>
+<script>
+  $("div[id^='myModal']").each(function(){
+  
+  var currentModal = $(this);
+  
+  //click next
+  // currentModal.find('.btn-next').click(function(){
+  //   currentModal.modal('hide');
+  //   currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show'); 
+  // });
+  
+  //click prev
+  // currentModal.find('.btn-prev').click(function(){
+  //   currentModal.modal('hide');
+  //   currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show'); 
+  // });
+
+});
+
+</script>
 <body>
   <app-root></app-root>
 </body>
