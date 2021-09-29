@@ -18,6 +18,7 @@
     "@angular/platform-browser": "~11.2.12",
     "@angular/platform-browser-dynamic": "~11.2.12",
     "@angular/router": "~11.2.12",
+    "@popperjs/core": "^2.10.1",
     "@syncfusion/ej2-angular-dropdowns": "^19.2.62",
     "bootstrap": "^4.5.3",
     "bootstrap-icons": "^1.5.0",

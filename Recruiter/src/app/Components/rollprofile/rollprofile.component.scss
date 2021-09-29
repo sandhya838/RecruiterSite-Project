@@ -5,6 +5,36 @@
 .col-sm-4{
     margin-top: 15px;
 }
+.form-check{
+display: flex;
+flex-direction: row;
+justify-content: space-between;
+margin-bottom: 40px;
+}
+select{
+        width: 20%;
+}
+label{
+    width: 33%;
+}
+.btn-1{
+    height: 39px;
+    font-size: 15px;
+    width: 25%;
+}
+.modal-body{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.model-body-menu{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-bottom: 10px;
+}
+
+
 // label{
 //     margin-left: 76px;
 // }
@@ -20,10 +50,7 @@
 //     margin-bottom: 0px;
 //     height: 145px;
 // }
-// .form-control {
-//     width: 14%;
-//     margin-left: 5px;
-// }
+// 
 // input[type=checkbox] {
 //     margin-right: 10px;
 //     height: 17px;

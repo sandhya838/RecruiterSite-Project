@@ -7,11 +7,10 @@ import { FormGroup, FormBuilder, FormControl, Validators } from '@angular/forms'
 })
 export class RollprofileComponent implements OnInit {
   userForm!: FormGroup;
-  formBuilder: any;
   allData:any;
   alert: boolean=false;;
   
-  constructor(formBuilder: FormBuilder) {}
+  constructor(public formBuilder: FormBuilder) {}
   numberPattern='^[ %0-9_-]*$';
   ngOnInit(): void {
     this.userForm= this.formBuilder.group({
