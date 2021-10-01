@@ -1,0 +1,293 @@
+<div class="container">
+  <div *ngIf="alert"  class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success!</strong> Your data is successfully submitted. <pre>{{allData | json}}</pre>
+    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form [formGroup]="userForm" (ngSubmit)="onClick(userForm.value, userForm.valid)" novalidate>
+    <div class="mb-3">
+     <p class="heading"><strong>What role you had done?</strong></p>
+     <p class="subHeading"> Which field would you like to choose..?</p>
+    </div>
+    
+<!-- using display none  -->
+<div class="form-check">
+  <input class="form-check-input"  onclick="manageFunction()" type="checkbox" value="" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">Managements</label>
+  <select class="form-select" class="form-control" required formControlName="managment">
+    <option selected disabled value="">-select-</option>
+    <option>0%</option>
+    <option>10%</option>
+    <option>20%</option>
+    <option>30%</option>
+    <option>40%</option>
+    <option>50%</option>
+    <option>60%</option>
+    <option>70%</option>
+    <option>80%</option>
+    <option>90%</option>
+    <option>100%</option>
+  </select>
+  <div class="text-danger" *ngIf="getControl.managment.touched && getControl.managment.invalid">
+    <div *ngIf="getControl.managment.errors">This is required.</div>
+</div>
+  </div>
+  
+  <div id="manageDIV">
+   <!-- Modal -->
+   <h6 class="heading">The addition of all field is equals to management</h6>
+   <div class="row">
+     <div class="body">
+    <label style="width: 10%; margin-right: 12px;">Portfolio </label>
+    <select class="form-select" class="form-control" required formControlName="PortfolioManagement" >
+      <option selected disabled value="">-select-</option>
+      <option>0%</option>
+      <option>10%</option>
+      <option>20%</option>
+      <option>30%</option>
+      <option>40%</option>
+      <option>50%</option>
+      <option>60%</option>
+      <option>70%</option>
+      <option>80%</option>
+      <option>90%</option>
+      <option>100%</option>
+    </select>
+    <div class="text-danger" *ngIf="getControl.PortfolioManagement.touched && getControl.PortfolioManagement.invalid">
+      <div *ngIf="getControl.PortfolioManagement.errors">This is required.</div>
+</div>
+    <label style="width: 10%; margin-right: 12px;">Account </label>
+    <select class="form-select" class="form-control" required formControlName="AccountManagement" >
+      <option selected disabled value="">-select-</option>
+      <option>0%</option>
+      <option>10%</option>
+      <option>20%</option>
+      <option>30%</option>
+      <option>40%</option>
+      <option>50%</option>
+      <option>60%</option>
+      <option>70%</option>
+      <option>80%</option>
+      <option>90%</option>
+      <option>100%</option>
+    </select>
+    <div class="text-danger" *ngIf="getControl.AccountManagement.touched && getControl.AccountManagement.invalid">
+      <div *ngIf="getControl.AccountManagement.errors">This is required.</div>
+</div>
+
+    <label style="width: 10%; margin-right: 12px;">Project </label>
+    <select class="form-select" class="form-control" required formControlName="ProjectManagement" >
+      <option selected disabled value="">-select-</option>
+      <option>0%</option>
+      <option>10%</option>
+      <option>20%</option>
+      <option>30%</option>
+      <option>40%</option>
+      <option>50%</option>
+      <option>60%</option>
+      <option>70%</option>
+      <option>80%</option>
+      <option>90%</option>
+      <option>100%</option>
+    </select>  
+    <div class="text-danger" *ngIf="getControl.PortfolioManagement.touched && getControl.PortfolioManagement.invalid">
+      <div *ngIf="getControl.PortfolioManagement.errors">This is required.</div>
+</div>  
+       </div>
+   </div>
+       </div>
+<!-- second one -->
+<div class="form-check">
+  <input class="form-check-input"  onclick="techFunction()" type="checkbox" value="" id="flexCheckDefault">
+  <label class="form-check-label" for="flexCheckDefault">Technical</label>
+  <select class="form-select" class="form-control" required formControlName="technical">
+    <option selected disabled value="">-select-</option>
+    <option>0%</option>
+    <option>10%</option>
+    <option>20%</option>
+    <option>30%</option>
+    <option>40%</option>
+    <option>50%</option>
+    <option>60%</option>
+    <option>70%</option>
+    <option>80%</option>
+    <option>90%</option>
+    <option>100%</option>
+  </select>
+  <div class="text-danger" *ngIf="getControl.technical.touched && getControl.technical.invalid">
+    <div *ngIf="getControl.technical.errors">This is required.</div>
+</div>
+  </div>
+  <div id="techDIV">
+   <!-- Modal -->
+   <h6 class="heading">The addition of all field is equals to technical</h6>
+   <div class="row">
+    <div class="body">
+    <label>Architect</label>
+    <select class="form-select" class="form-control" required formControlName="Architect" >
+      <option selected disabled value="">-select-</option>
+      <option>0%</option>
+      <option>10%</option>
+      <option>20%</option>
+      <option>30%</option>
+      <option>40%</option>
+      <option>50%</option>
+      <option>60%</option>
+      <option>70%</option>
+      <option>80%</option>
+      <option>90%</option>
+      <option>100%</option>
+    </select>
+    <div class="text-danger" *ngIf="getControl.Architect.touched && getControl.Architect.invalid">
+      <div *ngIf="getControl.Architect.errors">This is required.</div>
+</div>
+    <label>Tech-Lead</label>
+    <select class="form-select" class="form-control" required formControlName="TechLead" >
+      <option selected disabled value="">-select-</option>
+      <option>0%</option>
+      <option>10%</option>
+      <option>20%</option>
+      <option>30%</option>
+      <option>40%</option>
+      <option>50%</option>
+      <option>60%</option>
+      <option>70%</option>
+      <option>80%</option>
+      <option>90%</option>
+      <option>100%</option>
+    </select>
+    <div class="text-danger" *ngIf="getControl.TechLead.touched && getControl.TechLead.invalid">
+      <div *ngIf="getControl.TechLead.errors">This is required.</div>
+</div>
+    <label>Developer</label>
+    <select class="form-select" class="form-control" required formControlName="developer" >
+      <option selected disabled value="">-select-</option>
+      <option>0%</option>
+      <option>10%</option>
+      <option>20%</option>
+      <option>30%</option>
+      <option>40%</option>
+      <option>50%</option>
+      <option>60%</option>
+      <option>70%</option>
+      <option>80%</option>
+      <option>90%</option>
+      <option>100%</option>
+    </select>   
+    <div class="text-danger" *ngIf="getControl.developer.touched && getControl.developer.invalid">
+      <div *ngIf="getControl.developer.errors">This is required.</div>
+</div> 
+       </div>
+       </div>
+       </div>
+<!-- last one -->
+<div class="form-check">
+<input class="form-check-input"  onclick="myFunction()" type="checkbox" value="" id="flexCheckDefault">
+<label class="form-check-label" for="flexCheckDefault"> functional</label>
+<select class="form-select" class="form-control" required formControlName="functional">
+  <option selected disabled value="">-select-</option>
+  <option>0%</option>
+  <option>10%</option>
+  <option>20%</option>
+  <option>30%</option>
+  <option>40%</option>
+  <option>50%</option>
+  <option>60%</option>
+  <option>70%</option>
+  <option>80%</option>
+  <option>90%</option>
+  <option>100%</option>
+</select>
+<div class="text-danger" *ngIf="getControl.functional.touched && getControl.functional.invalid">
+  <div *ngIf="getControl.functional.errors">This is required.</div>
+</div>
+</div>
+<div id="myDIV">
+ <!-- Modal -->
+ <h6 class="heading">The addition of all field is equals to functional</h6>
+ <div class="row">
+  <div class="body">
+  
+           <label selected disabled value="">SME</label>
+           <select class="form-select" class="form-control" required formControlName="sme" >
+             <option selected disabled value="">-select-</option>
+             <option>0%</option>
+             <option>10%</option>
+             <option>20%</option>
+             <option>30%</option>
+             <option>40%</option>
+             <option>50%</option>
+             <option>60%</option>
+             <option>70%</option>
+             <option>80%</option>
+             <option>90%</option>
+             <option>100%</option>
+           </select>
+           <div class="text-danger" *ngIf="getControl.sme.touched && getControl.sme.invalid">
+            <div *ngIf="getControl.sme.errors">This is required.</div>
+     </div>
+  
+           <label>Lead-con</label>
+           <select class="form-select" class="form-control" required formControlName="leadcon" >
+             <option selected disabled value="">-select-</option>
+             <option>0%</option>
+             <option>10%</option>
+             <option>20%</option>
+             <option>30%</option>
+             <option>40%</option>
+             <option>50%</option>
+             <option>60%</option>
+             <option>70%</option>
+             <option>80%</option>
+             <option>90%</option>
+             <option>100%</option>
+           </select>
+           <div class="text-danger" *ngIf="getControl.leadcon.touched && getControl.leadcon.invalid">
+            <div *ngIf="getControl.leadcon.errors">This is required.</div>
+     </div>
+  
+           <label >Consultant</label>
+           <select class="form-select" class="form-control" required formControlName="consultant" >
+             <option selected disabled value="">-select-</option>
+             <option>0%</option>
+             <option>10%</option>
+             <option>20%</option>
+             <option>30%</option>
+             <option>40%</option>
+             <option>50%</option>
+             <option>60%</option>
+             <option>70%</option>
+             <option>80%</option>
+             <option>90%</option>
+             <option>100%</option>
+           </select>
+           <div class="text-danger" *ngIf="getControl.consultant.touched && getControl.consultant.invalid">
+            <div *ngIf="getControl.consultant.errors">This is required.</div>
+     </div>
+     </div>
+    </div>  
+     </div>
+
+
+
+<div class="row">
+  <div class="col-2">
+         <button type="" class="btn btn-outline-primary mb-3">Previous</button>
+ </div>
+
+<div class="col">
+<button type="submit" class="btn btn-success form-control mb-3" >Submit</button>
+</div>
+</div>
+
+</form>
+</div>
+
+
+
+
+
+  
+  
+  
