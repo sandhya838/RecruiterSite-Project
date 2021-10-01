@@ -17,24 +17,31 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
 </head>
 <script>
-  $("div[id^='myModal']").each(function(){
+  function myFunction() {
+    var x = document.getElementById("myDIV");
+    if (x.style.display === "none" || !x.style.display) {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+  function techFunction() {
+    var x = document.getElementById("techDIV");
+    if (x.style.display === "none" || !x.style.display) {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+  function manageFunction() {
+    var x = document.getElementById("manageDIV");
+    if (x.style.display === "none" || !x.style.display) {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
   
-  var currentModal = $(this);
-  
-  //click next
-  // currentModal.find('.btn-next').click(function(){
-  //   currentModal.modal('hide');
-  //   currentModal.closest("div[id^='myModal']").nextAll("div[id^='myModal']").first().modal('show'); 
-  // });
-  
-  //click prev
-  // currentModal.find('.btn-prev').click(function(){
-  //   currentModal.modal('hide');
-  //   currentModal.closest("div[id^='myModal']").prevAll("div[id^='myModal']").first().modal('show'); 
-  // });
-
-});
-
 </script>
 <body>
   <app-root></app-root>

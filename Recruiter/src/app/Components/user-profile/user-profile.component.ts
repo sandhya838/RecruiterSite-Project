@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { getDiffieHellman } from 'crypto';
 import { data } from 'jquery';
 import { ConfigService } from 'src/app/config.service';
 import { NotificationService } from 'src/app/notification.service';
@@ -14,8 +15,8 @@ alert:boolean=false;
   userForm !: FormGroup;
   allData:any;
  currentUserData=null;
-
-  constructor(public formBuilder: FormBuilder,private notifyService : NotificationService,private configService:ConfigService) { }
+  constructor(public formBuilder: FormBuilder,private notifyService : NotificationService,private configService:ConfigService) {}
+   
   pattern="^[ a-zA-Z]*$";
   ngOnInit(): void {
     this.userForm= this.formBuilder.group({
@@ -37,9 +38,7 @@ alert:boolean=false;
     return this.userForm.controls;
   }
 
-//   showToasterSuccess(){
-//     this.notifyService.showSuccess("Data submited successfully !!")
-// }
+
   
   onClick(formValue:any)
   {
@@ -50,12 +49,17 @@ alert:boolean=false;
     
 
     if(this.userForm.valid){
-      this.configService.addUser(this.userForm.value).subscribe(data=> {
-        console.log("form submited");
-        
+      this.configService.addUser(this.userForm.value).subscribe((data:any)=> {
+        console.log("data",data);
+        localStorage.setItem( 'ID', data.profile._id);
+        // console.log(localStorage.getItem('ID'));
+    // var RetriveID= localStorage.getItem('ID');
+    
+    
       },error=>{
         console.log(error)
       });
+    
       
     }
     else{
@@ -63,7 +67,7 @@ alert:boolean=false;
       this.userForm.updateValueAndValidity();
       
     }
-    this.userForm.reset({});
+    // this.userForm.reset({});
   }
   
   closeAlert(){
@@ -71,5 +75,7 @@ alert:boolean=false;
   }
  
 }
+
+
 
 

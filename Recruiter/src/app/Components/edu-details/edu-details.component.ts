@@ -45,6 +45,10 @@ export class EduDetailsComponent implements OnInit {
       year:['',[Validators.required,Validators.pattern(this.numberPattern)]]
 
          })  
+         this.configService.getPost().subscribe((res)=>{
+            console.log(res);
+            
+          }) 
   }
 
 
@@ -53,18 +57,7 @@ export class EduDetailsComponent implements OnInit {
     return this.userForm.controls;
   }
   
-  getTutorial(): void {
-    this.configService.get(this.route.snapshot.params.id)
-      .subscribe(
-        data => {
-          this.currentTutorial = data;
-          console.log(data);
-        },
-        error => {
-          console.log(error);
-        });
-        
-  }
+  
 
   onClick(formValue:any)
   {
@@ -73,12 +66,43 @@ export class EduDetailsComponent implements OnInit {
     this.allData=JSON.parse(JSON.stringify(this.userForm.value));
     this.alert=true;
     
-
+console.log(localStorage.getItem('ID'));
+    var RetriveID= localStorage.getItem('ID');
     
       if(this.userForm.valid){
-        this.configService.updateUser(this.userForm.value.id,this.userForm.value).subscribe(()=>{
+        const educationDetails=[];
+        const tempFormatedData={ 
+          degree:'',
+          Country:'',
+          institute:'',
+          grade:'',
+          yearofPassing:{
+            month:'',
+            year:'',
+          }
+        };
+        tempFormatedData.degree=formValue.degree;
+        tempFormatedData.Country=formValue.Country;
+        tempFormatedData.institute=formValue.institute;
+        tempFormatedData.grade=formValue.grade;
+        tempFormatedData.yearofPassing.month=formValue.month;
+        tempFormatedData.yearofPassing.year=formValue.year;
+        educationDetails.push(tempFormatedData)
+        this.configService.updateUser(RetriveID,tempFormatedData).subscribe((res)=>{
+          if(res.status===200){
+            console.log(res.message);
+            
+          }else{
+            console.log('response');
+            
+          }
           console.log("form submited");
-        })
+        },
+        error=>{
+          console.log(error);
+          
+        }
+        )
       }
      
     else{
@@ -89,17 +113,11 @@ export class EduDetailsComponent implements OnInit {
     this.userForm.reset({});
   }
 
-  updatePublished(): void {
-    console.log(this.route.snapshot.params.id);
-  };
+  
 
   closeAlert(){
     this.alert=false;
   }
 }
 
-
-function id(id: any) {
-  throw new Error('Function not implemented.');
-}
 

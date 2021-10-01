@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
@@ -7,30 +7,39 @@ import { catchError, retry } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ConfigService {
-  url="http://localhost:3000/v1/profiles"
-  baseUrl="http://localhost:3000/v1/aboutyou";
-
-  constructor(private http: HttpClient) {  
+  url="http://localhost:3000/v1/"
+  createUrl="http://localhost:3000/v1/aboutyou";
+updateUrl="http://localhost:3000/v1/profile";
+ 
+  constructor(private http: HttpClient, private xhttp:HttpClient) {  
+    
   } 
   getPost(){
-    return this.http.get(this.url);
+    return this.http.get(this.url+'profiles');
   }
   // add user
   addUser(user: any): Observable<Object> {
-    return this.http.post(`${this.baseUrl}`, user);
+
+    return this.http.post(this.url+'aboutyou', user);
   }
-  // checking id 
-  // get(id: any): Observable<any> {
-  //   return this.http.get(`${this.baseUrl}/${id}`);
-  // }
+
   // update user
   updateUser(id:any, data:any): Observable<any> {
-    return this.http.put(`${this.baseUrl}/${id}`, data);
+   
+    console.log(data);
+    const header=this._getHeaders()
+    return this.http.put(this.url+'profile/'+id, data,{headers:header});
   }
-  // updateUser(id:number,data:any){
-  //   return this.http.put(`${this.baseUrl}/${id}`,data);
-  // }
+  private _getHeaders(){
+    let header = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+ 
+    return header;
+ }
+  
   get(id: number): Observable<any> {
-    return this.http.get(`${this.baseUrl}/${id}`);
+    return this.http.get(`${this. createUrl}/${id}`);
   }
+
 }

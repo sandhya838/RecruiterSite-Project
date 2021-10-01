@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ConfigService } from 'src/app/config.service';
 
 @Component({
   selector: 'app-experiance',
@@ -12,7 +13,7 @@ export class ExperianceComponent implements OnInit {
   allData:any;
   
 
-  constructor(public formBuilder: FormBuilder) { }
+  constructor(public formBuilder: FormBuilder,private configService:ConfigService) { }
   pattern="^[ a-zA-Z;;]*$";
   mixpattern="^[ a-z0-9_-]*$";
   numberpattern="^[0-9]*$"
@@ -43,9 +44,7 @@ export class ExperianceComponent implements OnInit {
 
 
     
-    if(this.userForm.valid){
-
-    }
+    if(this.userForm.valid){ }
     else{
       this.userForm.markAllAsTouched();
       this.userForm.updateValueAndValidity();
@@ -59,5 +58,9 @@ export class ExperianceComponent implements OnInit {
   closeAlert(){
     this.alert=false;
   }
+}
+
+function id(id: any, any: any) {
+  throw new Error('Function not implemented.');
 }
 

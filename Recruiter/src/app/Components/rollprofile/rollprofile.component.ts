@@ -16,8 +16,18 @@ export class RollprofileComponent implements OnInit {
     this.userForm= this.formBuilder.group({
      
       managment: ['', [Validators.required, Validators.pattern(this.numberPattern)]],
+      PortfolioManagement: ['', [Validators.required, Validators.pattern(this.numberPattern)]],
+      AccountManagement: ['', [Validators.required, Validators.pattern(this.numberPattern)]],
+      ProjectManagement: ['', [Validators.required, Validators.pattern(this.numberPattern)]],
       technical: ['', [Validators.required,Validators.pattern(this.numberPattern)]],
-      functional:['', [Validators.required,Validators.pattern(this.numberPattern)]]
+      Architect: ['', [Validators.required,Validators.pattern(this.numberPattern)]],
+      TechLead: ['', [Validators.required,Validators.pattern(this.numberPattern)]],
+      developer: ['', [Validators.required,Validators.pattern(this.numberPattern)]],
+      functional:['', [Validators.required,Validators.pattern(this.numberPattern)]],
+      sme: ['', [Validators.required,Validators.pattern(this.numberPattern)]],
+      leadcon: ['', [Validators.required,Validators.pattern(this.numberPattern)]],
+      consultant: ['', [Validators.required,Validators.pattern(this.numberPattern)]],
+
       // grade:['', [Validators.required,Validators.pattern(this.numberPattern)]],
       // month:['',[Validators.required,Validators.pattern(this.numberPattern)]],
       // year:['',[Validators.required,Validators.pattern(this.numberPattern)]]
@@ -56,7 +66,5 @@ export class RollprofileComponent implements OnInit {
   closeAlert(){
     this.alert=false;
   }
-  
  
-
 }
