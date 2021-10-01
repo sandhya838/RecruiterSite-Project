@@ -10,19 +10,22 @@ var ProfileSchema = new Schema({
   middleName: {
     type: String
   },
+  resume: {
+    type: String
+  },
   lastName: {
     type: String
   },
-  Country: {
+  countryOfLiving: {
     type: String
   },
-  State: {
+  state: {
     type: String
   },
-  City: {
+  city: {
     type: String
   },
-  Nation: {
+  nationality: {
     type: String
   },
   currentNationality: {
@@ -31,8 +34,6 @@ var ProfileSchema = new Schema({
   previousNationality: {
     type: String
   },
-
-  experienceDetails:[{
   totalYearsOfExperience: {
     type: String
   },
@@ -57,179 +58,97 @@ var ProfileSchema = new Schema({
   otherComponent: {
     type: String
   },
-  indServed: {
-    type: String
-  },
-}],
-rollProfile:[{
+
   roleManagement: {
-    portfolioManagment:{
-      type:String
-    },
-    accountManagment:{
-      type:String
-    },
-    projectManagment:{
-      type:String
-    }
+    management: { type: String },
+    portfolio: { type: String },
+    account: { type: String },
+    project: { type: String },
   },
   roleTechnical: {
-    architect:{
-      type:String
-    },
-    techlead:{
-      type:String
-    },
-   developer:{
-      type:String
-    }
+    technical: { type: String },
+    architect: { type: String },
+    techLead: { type: String },
+    developer: { type: String },
   },
   roleFunctional: {
-    sme:{
-      type:String
-    },
-    leadcon:{
-      type:String
-    },
-    consultant:{
-      type:String
-    }
-  }
-}],
-
-  skillProfile:[{
+    functional: { type: String },
+    sme: { type: String },
+    leadCon: { type: String },
+    consultant: { type: String },
+  },
   skillSysAdministration: {
-    sys:{
-      type:String,
-    },
-    sys1:{
-      type:String,
-    },
-    sys2:{
-      type:String,
-    },
-    sys3:{
-      type:String,
-    }
+    sys: { type: String },
+    sys1: { type: String },
+    sys2: { type: String },
+    sys3: { type: String },
   },
   skillTechnical: {
-    tech:{
-      type:String,
-    },
-    tech1:{
-      type:String,
-    },
-    tech2:{
-      type:String,
-    },
-    tech3:{
-      type:String,
-    }
+    tech3: { type: String },
+    tech2: { type: String },
+    tech1: { type: String },
+    tech: { type: String },
   },
   skillFunctional: {
-    functional:{
-      type:String,
-    },
-    functional1:{
-      type:String,
-    },
-    functional2:{
-      type:String,
-    },
-    functional3:{
-      type:String,
-    }
-  }
-}],
+    functional: { type: String },
+    functional1: { type: String },
+    functional2: { type: String },
+    functional3: { type: String },
+  },
   educationalDetails: [
     {
       degree: {
         type: String,
       },
-      Country:{
-        type:String
+      Country: {
+        type: String,
       },
-      institute:{
-        type:String
+      institute: {
+        type: String
       },
-      grade:{
-        type:String
+      grade: {
+        type: String
       },
-      yearofPassing: 
-        {
-          month: {
-            type: String,
-          },
-          year: {
-            type: String,
-          }
-        }
-      
-    },
-    
-
+      yearofPassing: {
+        month: { type: String },
+        year: { type: String },
+      },
+    }
   ],
-  
- 
-  
-  // institute:{
-  //   type:String
-  // },
   certifications: [
     {
-      CertificationName: {
+      name: {
         type: String,
       },
-      certifiedMonth: {
+      year: {
         type: String,
       },
-      certifiedYear:{
-        type:String,
+      month: {
+        type: String,
       }
     }
   ],
   workExperiences: [
     {
       company: {
-        from: {
-          month:{
-          joinmonth:String,
-        },
-        year:{
-          joinyear:String,
-        }
-        },
-        to: {
-          month:{
-            joinmonth:String,
-          },
-          year:{
-            joinyear:String,
-          }
-        }
+        type: String,
+      },
+      from: {
+        type: String,
+      },
+      to: {
+        type: String,
       },
       desgination: {
         type: String,
       },
-      role:{
-        type:String,
-      },
       skills: {
-        skill1:{
-            type:String,
-        },
-        skill2:{
-          type:String,
-      },
-      skill3:{
-        type:String,
-    },
-    skill4:{
-      type:String,
-  }
-   
+        type: [],
       },
       deliverables: {
+        type: String
+      },
+      role: {
         type: String
       }
     }

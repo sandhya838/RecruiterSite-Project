@@ -1,0 +1,266 @@
+<div class="container">
+  <div
+    *ngIf="alert"
+    class="alert alert-success alert-dismissible fade show"
+    role="alert"
+  >
+    <strong>Success!</strong> Your data is successfully submitted.
+    <pre>{{ allData | json }}</pre>
+    <button
+      (click)="closeAlert()"
+      type="button"
+      class="close"
+      data-dismiss="alert"
+      aria-label="Close"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <!-- <div class="container">
+    <li class="list-item"><strong><p id="hi"><i class="fa fa-user-circle" aria-hidden="true"></i> Hi Sandhya!</p></strong></li>
+    <li class="list-item"><strong><p id="yourself"> Tell us more about yourself</p></strong></li>
+  </div> -->
+
+  <form [formGroup]="userForm" (ngSubmit)="onClick(userForm.value, userForm.valid)" novalidate>
+    <div class="row g-3 row-margin-05">
+      <div class="col-md-2">
+        <label class="form-label">Title</label
+        ><span class="text-danger">*</span>
+        <select
+          class="form-select"
+          class="form-control"
+          formControlName="title"
+          required
+        >
+          <option selected disabled value="">select</option>
+          <option>Mr.</option>
+          <option>Mrs.</option>
+          <option>Dr.</option>
+        </select>
+        <div
+          class="text-danger"
+          *ngIf="getControl.title.touched && getControl.title.invalid"
+        >
+          <div *ngIf="getControl.title.errors">enter valid data.</div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <label>First name</label><span class="text-danger">*</span>
+        <input
+          type="text"
+          class="form-control"
+          placeholder=""
+          formControlName="firstName"
+        />
+        <div
+          class="text-danger"
+          *ngIf="getControl.firstName.touched && getControl.firstName.invalid"
+        >
+          <div *ngIf="getControl.firstName.errors">
+            Please enter valid name.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-3">
+        <label>Middle name</label><span class="text-danger">*</span>
+        <input
+          type="text"
+          class="form-control"
+          placeholder=""
+          formControlName="middleName"
+        />
+        <div
+          class="text-danger"
+          *ngIf="getControl.middleName.touched && getControl.middleName.invalid"
+        >
+          <div *ngIf="getControl.middleName.errors">
+            Please enter valid name.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label>Last name</label><span class="text-danger">*</span>
+        <input
+          type="text"
+          class="form-control"
+          placeholder=""
+          formControlName="lastName"
+        />
+        <div
+          class="text-danger"
+          *ngIf="getControl.lastName.touched && getControl.lastName.invalid"
+        >
+          <div *ngIf="getControl.lastName.errors">Please enter valid name.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-4">
+        <label>Country of living</label><span class="text-danger">*</span>
+        <select class="form-control" placeholder="" formControlName="Country">
+          <option selected disabled value="">-select-</option>
+          <option>new zealand</option>
+          <option>Dubai</option>
+          <option>France</option>
+          <option>Germany</option>
+          <option>India</option>
+          <option>Thailand</option>
+          <option>USA</option>
+          <option>Soudi Arabia</option>
+        </select>
+        <div
+          class="text-danger"
+          *ngIf="getControl.Country.touched && getControl.Country.invalid"
+        >
+          <div *ngIf="getControl.Country.errors">
+            Please select a valid Country.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label>State</label><span class="text-danger">*</span>
+        <select class="form-control" placeholder="" formControlName="State">
+          <option selected disabled value="">-select-</option>
+          <option>Berlin</option>
+          <option>Paris</option>
+          <option>Maharastra</option>
+          <option>Guarat</option>
+          <option>Karnataka</option>
+        </select>
+        <div
+          class="text-danger"
+          *ngIf="getControl.State.touched && getControl.State.invalid"
+        >
+          <div *ngIf="getControl.State.errors">
+            Please select a valid state.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label>City</label><span class="text-danger">*</span>
+        <select class="form-control" placeholder="" formControlName="City">
+          <option selected disabled value="">-select-</option>
+          <option>Mumbai</option>
+          <option>Pune</option>
+          <option>Chennai</option>
+          <option>Kolkata</option>
+          <option>surat</option>
+          <option>Kolhapur</option>
+          <option>Jalgaon</option>
+          <option>Hyderabad</option>
+        </select>
+        <div
+          class="text-danger"
+          *ngIf="getControl.City.touched && getControl.City.invalid"
+        >
+          <div *ngIf="getControl.City.errors">Please select a valid city.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row g-3">
+      <div class="col-md-4">
+        <label>Nationality</label><span class="text-danger">*</span>
+        <select class="form-control" placeholder="" formControlName="Nation">
+          <option selected disabled value="">-select-</option>
+          <option>Indian</option>
+          <option>Us</option>
+          <option>UK</option>
+          <option>chines</option>
+          <option>cuban</option>
+          <option>French</option>
+          <option>German</option>
+        </select>
+        <div
+          class="text-danger"
+          *ngIf="getControl.Nation.touched && getControl.Nation.invalid"
+        >
+          <div *ngIf="getControl.Nation.errors">
+            Please select a valid Nationality.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label>Current-nationality</label><span class="text-danger">*</span>
+        <select
+          class="form-control"
+          placeholder=""
+          formControlName="currentNationality"
+        >
+          <option selected disabled value="">-select-</option>
+          <option>American</option>
+          <option>China</option>
+          <option>Dubai</option>
+          <option>Indian</option>
+          <option>South africa</option>
+          <option>Saudi arabia</option>
+          <option>New zealand</option>
+        </select>
+        <div
+          class="text-danger"
+          *ngIf="
+            getControl.currentNationality.touched &&
+            getControl.currentNationality.invalid
+          "
+        >
+          <div *ngIf="getControl.currentNationality.errors">
+            Please select a valid Nationality.
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4">
+        <label>Previous-nationality</label><span class="text-danger">*</span>
+        <select
+          class="form-control"
+          placeholder=""
+          formControlName="previousNationality"
+        >
+          <option selected disabled value="">-select-</option>
+          <option>India</option>
+          <option>Afgan</option>
+          <option>American</option>
+          <option>Bangladeshi</option>
+          <option>Danish</option>
+          <option>Faroese</option>
+        </select>
+        <div
+          class="text-danger"
+          *ngIf="
+            getControl.previousNationality.touched &&
+            getControl.previousNationality.invalid
+          "
+        >
+          <div *ngIf="getControl.previousNationality.errors">
+            Please select a valid Nationality.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-2">
+        <button class="btn btn-outline-primary form-control btn-block">
+          Cancel
+        </button>
+      </div>
+      <div class="col">
+        <button
+          id="btnSubmit"
+          class="btn btn-success form-control btn-block"
+          type="submit"
+        >
+          Submit
+        </button>
+      </div>
+      <!-- <button id="btnSubmit" class="btn btn-success form-control btn-block" type="submit" (click)="showToasterSuccess()">Submit</button>   for toaster -->
+    </div>
+  </form>
+</div>

@@ -114,8 +114,8 @@ img {
 // Main
 .main {
 	.wrapper {
-		max-width: 28rem;
-		width: 100%;
+		max-width: 26rem;
+		// width: 100%;
 		margin: 2rem auto;
 		padding: 2rem 2.5rem;
 		border: none;
@@ -283,7 +283,10 @@ i{
 	background: $denger;
 	color: white;
   }
-  .fa-apple{
-	background: black;
+  .fa-linkedin{
+	background: #3B5998;
 	color: white;
+	width: 31px;
+    height: 32px;
+
   }
