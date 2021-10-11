@@ -1,10 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
-import { data } from "jquery";
 import { ConfigService } from "src/app/config.service";
 import { NotificationService } from "src/app/notification.service";
-import { User } from "src/app/user";
 @Component({
   selector: "app-edu-details",
   templateUrl: "./edu-details.component.html",
@@ -14,7 +12,7 @@ export class EduDetailsComponent implements OnInit {
   userForm!: FormGroup;
   alert: boolean = false;
   allData: any;
-  currentTutorial = null;
+  // currentTutorial = null;
 
   // selectedPolicy: User = {
   //   _id:null,
@@ -43,33 +41,16 @@ export class EduDetailsComponent implements OnInit {
   numberPattern = "^[ %0-9_-]*$";
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
-      degree: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(4),
-          Validators.pattern(this.pattern),
-        ],
-      ],
-      institute: [
-        "",
-        [
-          Validators.required,
-          Validators.minLength(4),
-          Validators.pattern(this.pattern),
-        ],
-      ],
+      degree: ["",[Validators.required, Validators.minLength(4),  Validators.pattern(this.pattern)]],
+      institute: ["",[Validators.required,Validators.minLength(4),Validators.pattern(this.pattern)]],
       Country: ["", [Validators.required, Validators.pattern(this.pattern)]],
-      grade: [
-        "",
-        [Validators.required, Validators.pattern(this.numberPattern)],
-      ],
+      grade: ["",[Validators.required, Validators.pattern(this.numberPattern)]],
       month: ["", [Validators.required, Validators.pattern(this.pattern)]],
       year: ["", [Validators.required, Validators.pattern(this.numberPattern)]],
     });
-    this.configService.getPost().subscribe((res) => {
-      console.log(res);
-    });
+    // this.configService.getPost().subscribe((res) => {
+    //   console.log(res);
+    // });
   }
 
   get getControl() {

@@ -16,12 +16,61 @@
       <span aria-hidden="true">&times;</span>
     </button>
   </div>
-  <form
-    [formGroup]="userForm"
-    (ngSubmit)="onClick(userForm.value, userForm.valid)"
-    novalidate
-  >
+  <form [formGroup]="userForm" (ngSubmit)="onClick(userForm.value, userForm.valid)" novalidate>
+  <!-- <div class="container"> -->
     <div class="row">
+            <h6>Technical skill</h6>
+            <ng-multiselect-dropdown formControlName="techskill"
+            [placeholder]="'Select Feild' "
+            [settings]="dropdownSettings"
+            [data]="dropdownList"
+            [(ngModel)]="selectedItems"
+            (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+        <!-- <span   *ngIf="!userForm.value.techskill" class="validation">
+          * required {{userForm.techskill}}
+        </span> -->
+    </div>
+        
+
+    <div class="row">
+            <label>Functional skill</label>
+            <ng-multiselect-dropdown formControlName="funtskill"
+            [placeholder]="'Select Feild' "
+            [settings]="dropdownSettings1"
+            [data]="dropdownList1"
+            [(ngModel)]="selectedItems"
+            (onSelect)="onItemSelect($event)"
+            (onSelectAll)="onSelectAll($event)">
+        </ng-multiselect-dropdown>
+        
+    </div>
+    <div class="row">
+        <label>System adminstration skill</label>
+        <ng-multiselect-dropdown formControlName="sysAdminskill"
+        [placeholder]="'Select Feild' "
+        [settings]="dropdownSettings1"
+        [data]="dropdownList1"
+        [(ngModel)]="selectedItems"
+        (onSelect)="onItemSelect($event)"
+        (onSelectAll)="onSelectAll($event)">
+    </ng-multiselect-dropdown>
+<!-- </div> -->
+<div class="row-btn">
+  <div class="col-2">
+    <a routerLink="/experience"> <button type="" class="btn btn-outline-primary mb-3" >Previous</button></a>
+ </div>
+
+<div class="col">
+<button type="submit" class="btn btn-success form-control mb-3" >Next</button>
+</div>
+</div>
+</div>
+
+</form>
+</div>
+    <!-- <div class="row">
       <label class="form-label">Technical</label>
 
       <div class="row">
@@ -218,13 +267,12 @@
 
       <div class="row">
         <div class="col">
-          <button type="" class="btn btn-outline-primary">Previous</button>
+          <a routerLink="/role-profile"><button type="" class="btn btn-outline-primary">Previous</button></a>
         </div>
 
         <div class="col">
           <button type="submit" class="btn btn-success">Submit</button>
         </div>
       </div>
-    </div>
-  </form>
-</div>
+    </div> -->
+  

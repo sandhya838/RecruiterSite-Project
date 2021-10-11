@@ -9,10 +9,36 @@ export class AppComponent {
   title = 'Recruiter';
   data:any;
   constructor(private postData:ConfigService){}
+  
   ngOnInit(){
-    this.postData.getPost().subscribe((result)=>{
-      console.log("result",result);
-      this.data=result;
-    })
+      
+   
+
+
+
+      // this.selectedItems = [
+      //   { item_id: 3, item_text: 'Pune' },
+      //   { item_id: 4, item_text: 'Navsari' }
+      // ];
+      
+     
+      this.postData.getPost().subscribe((result)=>{
+        console.log("result",result);
+        this.data=result;
+      })
+    }
+    
+    config = {
+      paddingAtStart: true,
+      classname: 'my-custom-class',
+      listBackgroundColor: 'rgb(208, 241, 239)',
+      fontColor: 'rgb(8, 54, 71)',
+      backgroundColor: 'rgb(208, 241, 239)',
+      selectedListFontColor: 'red',
+    };
+    
   }
-}
+
+
+    
+

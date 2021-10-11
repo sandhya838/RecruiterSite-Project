@@ -19,10 +19,10 @@
                                 formControlName="contract" checked>Contract
                         </label>
                         <label class="btn btn-outline-primary">
-                            <input type="radio" name="options" id="option2" autocomplete="off"  formControlName="permanant" checked>Permanant
+                            <input type="radio" name="options" id="option2" autocomplete="off"  formControlName="permanant" >Permanant
                         </label>
                         <label class="btn btn-outline-primary">
-                            <input type="radio" name="options" id="option3" autocomplete="off"  formControlName="both" checked>Both
+                            <input type="radio" name="options" id="option3" autocomplete="off"  formControlName="both" >Both
                         </label>
                     </div>
                 </div>
@@ -53,9 +53,9 @@
         <div class="row">
             <div class="col-4">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <!-- <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> -->
                     <label class="form-check-label" for="flexCheckDefault">
-                        Managements
+                        Managements:
                     </label>
                     <select class="form-select" class="form-control" required formControlName="managment">
                         <option selected disabled value="">-select-</option>
@@ -70,13 +70,16 @@
                         <option>90%</option>
                         <option>100%</option>
                     </select>
+                    <div class="text-danger" *ngIf="getControl.managment.touched && getControl.managment.invalid">
+                        <div *ngIf="getControl.managment.errors">This is required.</div>
+                    </div>
                 </div>
             </div>
             <div class="col-4">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <!-- <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> -->
                     <label class="form-check-label" for="flexCheckDefault">
-                        Technical
+                        Technical:
                     </label>
                     <select class="form-select" class="form-control" required formControlName="technical">
                         <option selected disabled value="">-select-</option>
@@ -91,13 +94,16 @@
                         <option>90%</option>
                         <option>100%</option>
                     </select>
+                    <div class="text-danger" *ngIf="getControl.technical.touched && getControl.technical.invalid">
+                        <div *ngIf="getControl.technical.errors">This is required.</div>
+                    </div>
                 </div>
             </div>
             <div class="col-4">
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <!-- <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> -->
                     <label class="form-check-label" for="flexCheckDefault">
-                        Functional
+                        Functional:
                     </label>
                     <select class="form-select" class="form-control" required formControlName="functional">
                         <option selected disabled value="">-select-</option>
@@ -112,6 +118,9 @@
                         <option>90%</option>
                         <option>100%</option>
                     </select>
+                    <div class="text-danger" *ngIf="getControl.functional.touched && getControl.functional.invalid">
+                        <div *ngIf="getControl.functional.errors">This is required.</div>
+                    </div>
                 </div>
             </div>
 
@@ -122,7 +131,7 @@
         <div class="row">
 
             <div class="col-6">
-                <label class="form-check-label" for="flexCheckDefault">Primary</label>
+                <label class="form-check-label" for="flexCheckDefault">Primary:</label>
 
                 <select class="form-select" class="form-control" required formControlName="primary">
                     <option selected disabled value="">-select-</option>
@@ -131,13 +140,15 @@
                     <option>Angular</option>
                     <option>React</option>
                     <option>MySql</option>
-
                 </select>
+                <div class="text-danger" *ngIf="getControl.primary.touched && getControl.primary.invalid">
+                    <div *ngIf="getControl.primary.errors">This is required.</div>
+                </div>
             </div>
 
 
             <div class="col-6">
-                <label class="form-check-label" for="flexCheckDefault">Secondary</label>
+                <label class="form-check-label" for="flexCheckDefault">Secondary:</label>
 
                 <select class="form-select" class="form-control" required formControlName="secondary">
                     <option selected disabled value="">-select-</option>
@@ -146,8 +157,10 @@
                     <option>Angular</option>
                     <option>React</option>
                     <option>MySql</option>
-
                 </select>
+                <div class="text-danger" *ngIf="getControl.secondary.touched && getControl.secondary.invalid">
+                    <div *ngIf="getControl.secondary.errors">This is required.</div>
+                </div>
             </div>
 
 
@@ -165,8 +178,10 @@
                     <option>Dubai</option>
                     <option>America</option>
                     <option>Iceland</option>
-
                 </select>
+                <div class="text-danger" *ngIf="getControl.country.touched && getControl.country.invalid">
+                    <div *ngIf="getControl.country.errors">This is required.</div>
+                </div>
             </div>
 
             <div class="col-6">
@@ -178,8 +193,10 @@
                     <option>Jalgaon</option>
                     <option>Nagpur</option>
                     <option>Kolhapur</option>
-
                 </select>
+                <div class="text-danger" *ngIf="getControl.city.touched && getControl.city.invalid">
+                    <div *ngIf="getControl.city.errors">This is required.</div>
+                </div>
             </div>
         </div>
         <div class="mb-3">
@@ -194,6 +211,9 @@
                     <option>Base Salary</option>
                     <option>Variable salary</option>
                 </select>
+                <div class="text-danger" *ngIf="getControl.salary.touched && getControl.salary.invalid">
+                    <div *ngIf="getControl.salary.errors">This is required.</div>
+                </div>
             </div>
             <div class="col-3">
 
@@ -202,7 +222,7 @@
                     <div class="text-danger" *ngIf="getControl.inr.touched && getControl.inr.invalid">
                         <div *ngIf="getControl.inr.errors">This is required.</div>
                     </div>
-                    <option selected disabled value="">-select-</option>
+                    <option selected disabled value="">INR</option>
                     <option><i class="flag flag-us"></i>US</option>
                     <option class="ae flag">IND</option>
                     <option class="ae flag">AF</option>
@@ -251,9 +271,9 @@
             <div class="col-6">
                 <label for="">Other Components</label><span class="text-danger">*</span>
                 <input type="text" class="form-control" placeholder="" formControlName="othercomp">
-                <div class="text-danger" *ngIf="getControl.othercomp.touched && getControl.othercomp.invalid">
+                <!-- <div class="text-danger" *ngIf="getControl.othercomp.touched && getControl.othercomp.invalid">
                     <div *ngIf="getControl.othercomp.errors">This is required.</div>
-                </div>
+                </div> -->
             </div>
         </div>
         <div class="row">

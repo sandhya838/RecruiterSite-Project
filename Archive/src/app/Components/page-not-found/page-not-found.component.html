@@ -1,6 +1,87 @@
-<div class="page-error">
-    <h1> 404 </h1>
+<div class="container">
+  <div *ngIf="alert"  class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Success!</strong> Your data is successfully submitted. <pre>{{allData | json}}</pre>
+    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form [formGroup]="userForm" (ngSubmit)="onClick(userForm.value, userForm.valid)" novalidate>
+    <div class="row">
+      <label class="form-check-label">IT</label>
+      <select class="form-select" class="form-control" required formControlName="IT">
+        <option selected disabled value="">-select-</option>
+        <option>Engineering technology</option>
+        <option>Database</option>
+        <option>Network engineering</option>
+        <option>Testing</option>
+        <option>Graphic design</option>
+        <option>Programming</option>
+        <option>AI/ML/analytics</option>
+        <option>Sales/marketing</option>
+        <option>Management</option>
+        <option>Enterprize application</option>
+        <option>Cloud technology</option>
+        <option>CAD/GIS/ remoteSensing</option>
+      </select>
+      <div class="text-danger" *ngIf="getControl.IT.touched && getControl.IT.invalid">
+        <div *ngIf="getControl.IT.errors">This is required.</div>
+    </div>
+    </div>
+
+    <div class="row">
+      <label class="form-check-label">Film & modelling</label>
+      <select class="form-select" class="form-control" required formControlName="filmModelling">
+        <option selected disabled value="">-select-</option>
+        <option>Modelling</option>
+        <option>Costume designer</option>
+        <option>Choriographer</option>
+        <option>Direction</option>
+        <option>Acting</option>
+        <option>Cameramen</option>
+      
+      </select>
+      <div class="text-danger" *ngIf="getControl.filmModelling.touched && getControl.filmModelling.invalid">
+        <div *ngIf="getControl.filmModelling.errors">This is required.</div>
+    </div>
+    </div>
+
+    <div class="row">
+      <label class="form-check-label">Pharma & lifesciences</label>
+<select class="form-select" class="form-control" required formControlName="pharma">
+  <option selected disabled value="">-select-</option>
+  <option>Research scientist</option>
+  <option>Legal/patents</option>
+  <option>HR</option>
+  <option>Marketing</option>
+  <option>Purchase</option>
+</select>
+<div class="text-danger" *ngIf="getControl.pharma.touched && getControl.pharma.invalid">
+  <div *ngIf="getControl.pharma.errors">This is required.</div>
 </div>
-<div class="page-error-text">
-    <h3>Page Not Found</h3>
+    </div>
+
+    
+    <div class="row">
+      <div class="col-2">
+       <a routerLink="/about-you"> <button type="" class="btn btn-outline-primary mb-3">Previous</button></a>
+     </div>
+
+  <div class="col">
+    <button type="submit" class="btn btn-success form-control mb-3" >Submit</button>
+  </div>
+  </div>
+</form>
 </div>
+
+
+
+
+
+  
+  
+  
+
+
+  
+
+

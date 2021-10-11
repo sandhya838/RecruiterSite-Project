@@ -8,7 +8,7 @@
   <form [formGroup]="userForm" (ngSubmit)="onClick(userForm.value, userForm.valid)" novalidate>
     <div class="mb-3">
      <p class="heading"><strong>What role you had done?</strong></p>
-     <p class="subHeading"> Which field would you like to choose..?</p>
+     <p class="subHeading">The addition of all fields is 100%</p>
     </div>
     
 <!-- using display none  -->
@@ -36,13 +36,16 @@
   
   <div id="manageDIV">
    <!-- Modal -->
-   <h6 class="heading">The addition of all field is equals to management</h6>
+   <h6 class="sub-heading">The addition of all field is equals to management</h6>
    <div class="row">
      <div class="body">
     <label style="width: 10%; margin-right: 12px;">Portfolio </label>
     <select class="form-select" class="form-control" required formControlName="PortfolioManagement" >
       <option selected disabled value="">-select-</option>
-      <option>0%</option>
+      <option class=" dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">0% 
+        <ul class="dropdown-menu">
+        <!-- Dropdown menu links -->
+      </ul></option>
       <option>10%</option>
       <option>20%</option>
       <option>30%</option>
@@ -121,7 +124,7 @@
   </div>
   <div id="techDIV">
    <!-- Modal -->
-   <h6 class="heading">The addition of all field is equals to technical</h6>
+   <h6 class="sub-heading">The addition of all field is equals to technical</h6>
    <div class="row">
     <div class="body">
     <label>Architect</label>
@@ -205,7 +208,7 @@
 </div>
 <div id="myDIV">
  <!-- Modal -->
- <h6 class="heading">The addition of all field is equals to functional</h6>
+ <h6 class="sub-heading">The addition of all field is equals to functional</h6>
  <div class="row">
   <div class="body">
   
@@ -273,11 +276,11 @@
 
 <div class="row">
   <div class="col-2">
-         <button type="" class="btn btn-outline-primary mb-3">Previous</button>
+    <a routerLink="/experience"> <button type="" class="btn btn-outline-primary mb-3" >Previous</button></a>
  </div>
 
 <div class="col">
-<button type="submit" class="btn btn-success form-control mb-3" >Submit</button>
+<button type="submit" class="btn btn-success form-control mb-3" >Next</button>
 </div>
 </div>
 

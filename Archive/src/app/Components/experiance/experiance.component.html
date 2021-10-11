@@ -73,15 +73,33 @@
         
     
               <div class="col-4">
-                <label>Salary</label><span class="text-danger">*</span>
+                <label>Salary(CTC)-INR</label><span class="text-danger">*</span>
                 <select class="form-control" placeholder="" formControlName="salary">
                   <option selected disabled value="">-select-</option>
-                  <option>10000</option>
-                  <option>20000</option>
-                  <option>24000</option>
-                  <option>30000</option>
-                  <option>40000</option>
-                  <option>50000</option>
+                  <option>5000</option>
+                  <option>6000</option>
+                  <option>7000</option>
+                  <option>8000</option>
+                  <option>9000</option>
+                  <option>10,000</option>
+                  <option>12,000</option>
+                  <option>14,000</option>
+                  <option>15,000</option>
+                  <option>16,000</option>
+                  <option>18,000</option>
+                  <option>20,000</option>
+                  <option>24,000</option>
+                  <option>25,000</option>
+                  <option>30,000</option>
+                  <option>35,000</option>
+                  <option>40,000</option>
+                  <option>42,000</option>
+                  <option>45,000</option>
+                  <option>48,000</option>
+                  <option>50,000</option>
+                  
+                 
+                 
                 </select>
                 <div class="text-danger" *ngIf="getControl.salary.touched && getControl.salary.invalid">
                     <div *ngIf="getControl.salary.errors">This is required.</div>
@@ -92,13 +110,27 @@
                 <label>Base salary</label><span class="text-danger">*</span>
                 <select class="form-control" placeholder="" formControlName="baseSalary">
                   <option selected disabled value="">-select-</option>
-                  <option>13000</option>
-                  <option>14000</option>
-                  <option>17000</option>
-                  <option>27000</option>
-                  <option>29000</option>
-                  <option>32000</option>
-                  <option>40000</option>
+                  <option>5000</option>
+                  <option>6000</option>
+                  <option>7000</option>
+                  <option>8000</option>
+                  <option>9000</option>
+                  <option>10,000</option>
+                  <option>12,000</option>
+                  <option>14,000</option>
+                  <option>15,000</option>
+                  <option>16,000</option>
+                  <option>18,000</option>
+                  <option>20,000</option>
+                  <option>24,000</option>
+                  <option>25,000</option>
+                  <option>30,000</option>
+                  <option>35,000</option>
+                  <option>40,000</option>
+                  <option>42,000</option>
+                  <option>45,000</option>
+                  <option>48,000</option>
+                  <option>50,000</option>
 
                 </select>
                 <div class="text-danger" *ngIf="getControl.baseSalary.touched && getControl.baseSalary.invalid">
@@ -113,11 +145,27 @@
                 <label>Variable salary</label><span class="text-danger">*</span>
                 <select class="form-control" placeholder="" formControlName="variableSalary">
                   <option selected disabled value="">-select-</option>
-                  <option>17000</option>
-                  <option>27000</option>
-                  <option>29000</option>
-                  <option>32000</option>
-                  <option>44000</option>
+                  <option>5000</option>
+                  <option>6000</option>
+                  <option>7000</option>
+                  <option>8000</option>
+                  <option>9000</option>
+                  <option>10,000</option>
+                  <option>12,000</option>
+                  <option>14,000</option>
+                  <option>15,000</option>
+                  <option>16,000</option>
+                  <option>18,000</option>
+                  <option>20,000</option>
+                  <option>24,000</option>
+                  <option>25,000</option>
+                  <option>30,000</option>
+                  <option>35,000</option>
+                  <option>40,000</option>
+                  <option>42,000</option>
+                  <option>45,000</option>
+                  <option>48,000</option>
+                  <option>50,000</option>
                 </select>
                 <div class="text-danger" *ngIf="getControl.variableSalary.touched && getControl.variableSalary.invalid">
                     <div *ngIf="getControl.variableSalary.errors">This is required.</div>
@@ -145,11 +193,11 @@
     
              <div class="row">
                  <div class="col-2">
-                        <button type="" class="btn btn-outline-primary mb-3">Previous</button>
+                  <a routerLink="/about-you"> <button type="" class="btn btn-outline-primary mb-3">Previous</button></a>
                 </div>
        
              <div class="col">
-               <button type="submit" class="btn btn-success form-control mb-3" >Submit</button>
+               <button type="submit" class="btn btn-success form-control mb-3" >Next</button>
              </div>
              </div>
        </form>

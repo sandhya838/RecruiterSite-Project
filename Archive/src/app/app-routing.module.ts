@@ -7,8 +7,10 @@ import {WorkExperianceComponent } from './/Components/work-experiance/work-exper
 import { EduDetailsComponent} from './/Components/edu-details/edu-details.component';
 import { RollprofileComponent } from './Components/rollprofile/rollprofile.component';
 import { CertificationComponent } from './Components/certification/certification.component';
+import { DashboardComponent } from './Components/dashboard/dashboard.component';
 const routes: Routes = [
   {path: '',   redirectTo:'about-you', pathMatch:'full'},
+  {path:'dashboard' , component:DashboardComponent},
   {path:'about-you',component:UserProfileComponent},
   {path:'skills',component:SkillProfileComponent},
   {path:'experience',component:ExperianceComponent},

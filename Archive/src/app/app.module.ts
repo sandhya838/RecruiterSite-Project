@@ -20,6 +20,10 @@ import { CertificationComponent } from './Components/certification/certification
 import { SignInComponent } from './Components/sign-in/sign-in.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
+import { AgGridModule } from 'ag-grid-angular';
+
+import { FileUploadComponent } from './Components/file-upload/file-upload.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -35,7 +39,8 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
     CertificationComponent,
     SignInComponent,
     SignUpComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FileUploadComponent
   ],
   imports: [
     BrowserModule,
@@ -45,6 +50,7 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
     NgMultiSelectDropDownModule.forRoot(),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
+    AgGridModule.withComponents(null),
     HttpClientModule
     
   ],

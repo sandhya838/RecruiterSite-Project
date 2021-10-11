@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit} from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ConfigService } from "src/app/config.service";
@@ -14,6 +14,13 @@ export class SkillProfileComponent implements OnInit {
   alert: boolean = false;
   allData: any;
   multiselect: any;
+  data:any;
+
+  dropdownList:any = [];
+    selectedItems:any = [];
+    dropdownSettings = {};
+    dropdownList1:any = [];
+  dropdownSettings1 = {};
   constructor(
     public formBuilder: FormBuilder,
     private notifyService: NotificationService,
@@ -36,6 +43,57 @@ export class SkillProfileComponent implements OnInit {
       sys2: ["", [Validators.required]],
       sys3: ["", [Validators.required]],
     });
+    this.dropdownList = [
+      { item_id: 1, item_text: 'Data analysis' },
+      { item_id: 2, item_text: 'Project management' },
+      { item_id: 3, item_text: 'Software proficiency' },
+      { item_id: 4, item_text: 'Common operating systems' },
+      { item_id: 5, item_text: 'Programming languages' },
+      { item_id: 6, item_text: 'Digital design' },
+      { item_id: 7, item_text: 'Marketing Strategy' },
+      { item_id: 8, item_text: 'Copywriting' },
+      { item_id: 9, item_text: 'Computer Programs & Software' },
+      { item_id: 10, item_text: 'Accounting' },
+      { item_id: 11, item_text: 'Data Analysis' },
+      { item_id: 12, item_text: 'Medicine & Healthcare' },
+      { item_id: 13, item_text: 'Management' },
+      { item_id: 14, item_text: ' Productivity Software to Learn' },
+      { item_id: 15, item_text: 'Medicine & Healthcare' },
+      { item_id: 16, item_text: 'Medicine & Healthcare' },
+      { item_id: 17, item_text: 'Medicine & Healthcare' },
+      { item_id: 18, item_text: 'Medicine & Healthcare' },
+    ];
+    this.dropdownSettings= {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 4,
+      allowSearchFilter: true
+    };
+    this.dropdownList1 = [
+      { item_id: 1, item_text: 'Communication' },
+      { item_id: 2, item_text: 'Organization Management' },
+      { item_id: 3, item_text: 'Research & exploration' },
+      { item_id: 4, item_text: 'Informaion management' },
+      { item_id: 5, item_text: 'Design & planning' },
+      { item_id: 6, item_text: 'Human services' },
+      { item_id: 7, item_text: 'Marketing Strategy' },
+      { item_id: 8, item_text: 'Copywriting' },
+      { item_id: 9, item_text: 'Computer Programs & Software' },
+      { item_id: 10, item_text: 'Accounting' },
+      
+    ];
+    this.dropdownSettings1= {
+      singleSelection: false,
+      idField: 'item_id',
+      textField: 'item_text',
+      selectAllText: 'Select All',
+      unSelectAllText: 'UnSelect All',
+      itemsShowLimit: 4,
+      allowSearchFilter: true
+    };
   }
 
   get getControl() {
@@ -58,6 +116,7 @@ export class SkillProfileComponent implements OnInit {
         tech2: formValue.tech2,
         tech: formValue.tech,
       };
+     
       const skillFunctional = {
         functional: formValue.functional,
         functional1: formValue.functional1,
@@ -93,6 +152,13 @@ export class SkillProfileComponent implements OnInit {
     }
   }
 
+  
+  onItemSelect(item: any) {
+    console.log(item);
+  }
+  onSelectAll(items: any) {
+    console.log(items);
+  }
   closeAlert() {
     this.alert = false;
   }

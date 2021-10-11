@@ -6,6 +6,9 @@
   <base href="/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <!-- bootstrap link -->
+  
+
   <!-- font family -->
   <link rel="preconnect" href="https://fonts.gstatic.com">
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap" rel="stylesheet">
@@ -40,7 +43,19 @@
     } else {
       x.style.display = "none";
     }
+
   }
+    function showSkills() {
+  var x = document.getElementById('techField');
+  var x= document.getElementById("functField");
+  if (x.style.display === 'none') {
+    x.style.display = 'block';
+  } else {
+    x.style.display = 'none';
+  }
+}
+
+
   
 </script>
 <body>

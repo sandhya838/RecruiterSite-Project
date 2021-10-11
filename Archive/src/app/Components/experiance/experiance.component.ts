@@ -93,8 +93,13 @@ export class ExperianceComponent implements OnInit {
 
   closeAlert() {
     this.alert = false;
+  } 
+
+  previousPage(){
+    this.router.navigateByUrl("/about-you");
   }
 }
+
 
 function id(id: any, any: any) {
   throw new Error("Function not implemented.");
