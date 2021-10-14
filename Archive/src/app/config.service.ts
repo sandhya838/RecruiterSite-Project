@@ -24,10 +24,12 @@ export class ConfigService {
   updateUser(id: any, data: any): Observable<any> {
     console.log(data);
     const header = this._getHeaders();
+
     return this.http.put(this.url + "profile/" + id, data, { headers: header });
   }
   private _getHeaders() {
     let header = new HttpHeaders({
+      "x-access-token":sessionStorage.getItem('token') as string,
       "Content-Type": "application/json",
     });
 

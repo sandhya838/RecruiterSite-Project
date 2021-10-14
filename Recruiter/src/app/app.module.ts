@@ -22,6 +22,7 @@ import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { OrganizationComponent } from './Components/organization/organization.component';
 import { JobtypeComponent } from './Components/jobtype/jobtype.component';
+import { NgMaterialMultilevelMenuModule } from 'ng-material-multilevel-menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { JobtypeComponent } from './Components/jobtype/jobtype.component';
     NgMultiSelectDropDownModule.forRoot(),
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    HttpClientModule
+    HttpClientModule,
+    NgMaterialMultilevelMenuModule 
     
   ],
   providers: [],

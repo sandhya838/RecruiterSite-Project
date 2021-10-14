@@ -17,3 +17,12 @@ h5{
     @include heading-setting(black,25px)
 }
 
+.row{
+    display:block;
+    margin-bottom: 20px;
+}
+
+.container{
+    width: 60%;
+}
+

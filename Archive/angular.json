@@ -31,9 +31,13 @@
               "src/assets"
             ],
             "styles": [
+              
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              
               "node_modules/ngx-toastr/toastr.css",
+              "angular2-multiselect-dropdown/themes/default.theme.css",
               "src/styles.scss"
+              
             ],
             "scripts": [
               "node_modules/jquery/dist/jquery.min.js",

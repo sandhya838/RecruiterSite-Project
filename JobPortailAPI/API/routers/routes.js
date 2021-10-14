@@ -19,6 +19,4 @@ module.exports = (app) => {
   // app.get('/v1/profile/:profileId', auth.authToken, profile.findOne);
   // app.put('/v1/profile/:profiled', auth.authToken, requestValidator.validateParams(profile.updateRules), profile.update);
   app.delete('/v1/profile/:profileId', auth.authToken, profile.delete);
-
- 
 }

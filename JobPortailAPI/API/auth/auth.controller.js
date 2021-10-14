@@ -4,6 +4,7 @@ const app = express();
 const User = require('../models/users');
 const moment = require('moment');
 const constants = require('../config/constants');
+const { request } = require('https');
 
 app.set('jwtTokenSecret', constants.SECRET);
 
@@ -32,10 +33,12 @@ exports.authToken = function (req, res, next) {
 };
 
 exports.login = (req, res) => {
-    User.findOne({ mobileNumber: req.body.userName }, function (err, user) {
+    console.log(req.body.userName)
+    User.find({ mobileNumber: req.body.userName }, function (err, user) {
         if (err) {
             res.status(401).send({status:401, message: 'You are not autorized to get access.' });
         } else {
+            console.log(user)
             const expires = moment().add('days', 7).valueOf();
             const token = jwt.encode({
                 userName: user.mobileNumber,

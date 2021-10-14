@@ -21,9 +21,8 @@ import { SignInComponent } from './Components/sign-in/sign-in.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { AgGridModule } from 'ag-grid-angular';
-
 import { FileUploadComponent } from './Components/file-upload/file-upload.component';
-
+import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +50,8 @@ import { FileUploadComponent } from './Components/file-upload/file-upload.compon
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     AgGridModule.withComponents(null),
-    HttpClientModule
+    HttpClientModule,
+    AngularMultiSelectModule
     
   ],
   providers: [],
