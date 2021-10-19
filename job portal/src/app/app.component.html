@@ -2,43 +2,4 @@
 <!-- <app-page-not-found></app-page-not-found> -->
 <!-- <app-sign-up></app-sign-up> -->
 <!-- <app-file-upload></app-file-upload> -->
-<div class="container">
-    <div class="row">
-    <label>IT</label>
-<angular2-multiselect [data]="itemList" 
-                      [(ngModel)]="selectedItems" 
-                      [settings]="settings" 
-                      (onSelect)="onItemSelect($event)"
-                      (onDeSelect)="OnItemDeSelect($event)" 
-                      (onSelectAll)="onSelectAll($event)" 
-                      (onDeSelectAll)="onDeSelectAll($event)">
-</angular2-multiselect>
-    </div>
-
-    <div class="row">
-        <label>Pharma & Lifesciences</label>
-        <angular2-multiselect [data]="itemListPharma" 
-                              [(ngModel)]="selectedItemsPharma" 
-                              [settings]="settings" 
-                              (onSelect)="onItemSelect($event)"
-                              (onDeSelect)="OnItemDeSelect($event)" 
-                              (onSelectAll)="onSelectAll($event)" 
-                              (onDeSelectAll)="onDeSelectAll($event)">
-        </angular2-multiselect>
-    </div>
-
-    <div class="row">
-        <label>Film & Modelling</label>
-        <angular2-multiselect [data]="itemListfilmModeling" 
-                              [(ngModel)]="selectedItemsfilmModeling" 
-                              [settings]="settings" 
-                              (onSelect)="onItemSelect($event)"
-                              (onDeSelect)="OnItemDeSelect($event)" 
-                              (onSelectAll)="onSelectAll($event)" 
-                              (onDeSelectAll)="onDeSelectAll($event)">
-        </angular2-multiselect>
-    </div>
-    <div class="row">
-      <button type="submit" class="btn btn-success form-control mb-3" >Submit</button>
-      </div>
-</div>
+<app-rollprofile></app-rollprofile>
