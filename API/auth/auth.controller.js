@@ -33,12 +33,12 @@ exports.authToken = function (req, res, next) {
 };
 
 exports.login = (req, res) => {
-    console.log(req.body.userName)
-    User.find({ mobileNumber: req.body.userName }, function (err, user) {
+    // console.log(req.body.userName)
+    User.find({ mobileNumber: req.body.mobileNumber }, function (err, user) {
         if (err) {
             res.status(401).send({status:401, message: 'You are not autorized to get access.' });
         } else {
-            console.log(user)
+            // console.log(user)
             const expires = moment().add('days', 7).valueOf();
             const token = jwt.encode({
                 userName: user.mobileNumber,
@@ -47,8 +47,10 @@ exports.login = (req, res) => {
             res.status(200).send({status:200,
                 token: 'Bearer '+token,
                 expires: expires,
-                user: user.toJSON()
+                user: JSON.stringify(user)
+               
             });
+            console.log(user);
         }
 
     });

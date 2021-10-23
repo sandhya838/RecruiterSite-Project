@@ -13,19 +13,19 @@
 					
 				</div>
 				<div class="login">
-					<p>Login</p> 
+					<a routerLink="/signIn">Login</a>
 				</div>
 				<h1 class="text text-large">Sign Up</h1>
 				<!-- <p class="text text-normal">New user? <span><a href="#" class="text text-links">Create an account</a></span>
 				</p> -->
 			</div>
 
-			<form  [formGroup]="signIn" (ngSubmit)="onClick(signIn.value)" novalidate name="login" class="form">
+			<form  [formGroup]="signUp" (ngSubmit)="onClick(signUp.value)" novalidate name="login" class="form">
 				<div class="input-control">
 					<label for="full name" class="input-label" hidden>Full Name</label>
 					<input type="full name" name="name" class="input-field" placeholder="Full Name" formControlName="fullname">
 					<div class="text-danger" *ngIf="getControl.fullname.touched && getControl.fullname.invalid">
-						<div *ngIf="getControl.fullname.errors">Invalid Email Id</div>
+						<div *ngIf="getControl.fullname.errors">Invalid name</div>
 					 </div>
 				
 				</div>
@@ -38,9 +38,9 @@
 				</div> -->
 				<div class="input-control">
 					<label for="email addres" class="input-label" hidden>Email address</label>
-					<input type="password" name="password" class="input-field" placeholder="Email Address" formControlName="email">
+					<input type="email" name="email" class="input-field" placeholder="Email Address" formControlName="email">
 					<div class="text-danger" *ngIf="getControl.email.touched && getControl.email.invalid">
-						<div *ngIf="getControl.email.errors">Invalid password</div>
+						<div *ngIf="getControl.email.errors">Invalid email</div>
 					 </div>
 				</div>
 				<div class="input-control">

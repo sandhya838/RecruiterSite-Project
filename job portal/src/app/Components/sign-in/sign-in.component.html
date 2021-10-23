@@ -20,18 +20,18 @@
 				</p>
 			</div>
 
-			<form  [formGroup]="signIn" (ngSubmit)="onClick(signIn.value)" novalidate name="login" class="form">
+			<form  [formGroup]="signIn" (ngSubmit)="loginSubmit()" novalidate name="login" class="form">
 				<div class="input-control">
 					<label for="email" class="input-label" hidden>Email Address</label>
-					<input type="email" name="email" class="input-field" placeholder="Email Address" formControlName="Signin">
-					<div class="text-danger" *ngIf="getControl.Signin.touched && getControl.Signin.invalid">
-						<div *ngIf="getControl.Signin.errors">Invalid Email Id</div>
+					<input type="email" name="email" class="input-field" required [(ngModel)]="credentials.email" placeholder="Email Address" formControlName="email">
+					<div class="text-danger" *ngIf="getControl.email.touched && getControl.email.invalid">
+						<div *ngIf="getControl.email.errors">Invalid Email Id</div>
 					 </div>
 				
 				</div>
 				<div class="input-control">
 					<label for="password" class="input-label" hidden>Password</label>
-					<input type="password" name="password" class="input-field" placeholder="Password" formControlName="password">
+					<input type="password" name="password" class="input-field" placeholder="Password" formControlName="password" required [(ngModel)]="credentials.password">
 					<div class="text-danger" *ngIf="getControl.password.touched && getControl.password.invalid">
 						<div *ngIf="getControl.password.errors">Invalid password</div>
 					 </div>
@@ -41,7 +41,7 @@
 					<a href="#" class="text text-links">Forgot Password</a>
 					<!-- <input type="button" name="submit" class="input-submit" value="Sign In" style="color: white;" disabled> -->
 				</div>
-				<input class="btn btn-primary" type="submit" value="Sign Up">
+				<input class="btn btn-primary" type="submit" value="Sign In">
 			</form>
 			<div class="striped">
 				<span class="striped-line"></span>

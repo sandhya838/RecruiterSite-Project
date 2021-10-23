@@ -8,6 +8,8 @@ import { EduDetailsComponent} from './/Components/edu-details/edu-details.compon
 import { RollprofileComponent } from './Components/rollprofile/rollprofile.component';
 import { CertificationComponent } from './Components/certification/certification.component';
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
+import { SignUpComponent } from './Components/sign-up/sign-up.component';
+import { SignInComponent } from './Components/sign-in/sign-in.component';
 const routes: Routes = [
   {path: '',   redirectTo:'about-you', pathMatch:'full'},
   {path:'dashboard' , component:DashboardComponent},
@@ -19,7 +21,9 @@ const routes: Routes = [
   {path:'education-details/:id',component: EduDetailsComponent},
 
   {path:'role-profile',component:RollprofileComponent},
-  {path:'certificate', component:CertificationComponent}
+  {path:'certificate', component:CertificationComponent},
+  {path:'signUp', component:SignUpComponent},
+  {path:'signIn', component:SignInComponent}
   // {path: '**', redirectTo: 'PageNotFoundComponent'}
   
 ];
