@@ -24,6 +24,7 @@ import { AgGridModule } from 'ag-grid-angular';
 import { FileUploadComponent } from './Components/file-upload/file-upload.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { PrimarySkillComponent } from './Components/primary-skill/primary-skill.component';
+import { CompanyDetailsComponent } from './Components/company-details/company-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,6 +43,7 @@ import { PrimarySkillComponent } from './Components/primary-skill/primary-skill.
     PageNotFoundComponent,
     FileUploadComponent,
     PrimarySkillComponent
+    CompanyDetailsComponent
   ],
   imports: [
     BrowserModule,
