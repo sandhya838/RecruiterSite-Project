@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from 'express';
+
 import { ConfigService } from 'src/app/config.service';
 import { NotificationService } from 'src/app/notification.service';
 
@@ -18,7 +18,7 @@ export class CompanyDetailsComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private configService: ConfigService,
-    private router: Router,
+    //private router: Router,
     private notifyService: NotificationService
   ) {}
 
