@@ -42,7 +42,7 @@ import { CompanyDetailsComponent } from './Components/company-details/company-de
     SignUpComponent,
     PageNotFoundComponent,
     FileUploadComponent,
-    PrimarySkillComponent
+    PrimarySkillComponent,
     CompanyDetailsComponent
   ],
   imports: [

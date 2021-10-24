@@ -3,7 +3,8 @@ module.exports = (app) => {
   const profile  = require('../controllers/profile.controller');
   const auth = require('../auth/auth.controller');
   const requestValidator = require('../middlewares/validateRequest');
-
+  const multer = require("multer");
+  const upload = multer({ dest: 'public/resume/' })
 
   /************** Pre Login APIs ****************** */
   app.post('/v1/login', auth.login);
@@ -13,6 +14,8 @@ module.exports = (app) => {
   /****************** profile routings *************** */
   app.post('/v1/aboutyou', profile.create);
   app.get('/v1/profile/:profileId', profile.findOne);
+  app.put('/v1/upload-resume/:profileId', upload.single('resume'), profile.uploadResume);
+
   app.put('/v1/profile/:profileId', profile.update);
   app.get('/v1/profiles', profile.findAll);
   // app.get('/v1/profiles', auth.authToken, profile.findAll);
