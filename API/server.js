@@ -10,8 +10,9 @@ const app = express()
 
 app.use(express.json());
 app.use(express.urlencoded({
-  extended: true
+  limit: '50000mb',extended: true
 }));
+
 
 app.use('/static', express.static('public'));
 app.use(cors())
