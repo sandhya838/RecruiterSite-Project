@@ -9,8 +9,41 @@ export class SigninService {
   private loginUrl = "http://localhost:3000/v1/login"
   constructor(private http: HttpClient) { }
 
-  login(data: any){
-    // console.log(credentials)
-    return this.http.post(`${this.loginUrl}`, data);
+  generateToken(credentials: any){
+    return this.http.post(`${this.loginUrl}`,credentials);
+  }
+
+  isLoggedIn()
+  {
+    let token=localStorage.getItem("token");
+    if(token==undefined || token==='' ||  token==null)
+    {
+      return false;
+    }
+    else
+    {
+      return true;
+    }
+  }
+
+  isLoggedOut()
+  {
+    let token=localStorage.getItem("token");
+    if(token==undefined || token==='' ||  token==null)
+    {
+      return true;
+    }
+    else
+    {
+      return false;
+    }
+  }
+
+  logout()
+  {
+    localStorage.removeItem('token');
+    location.reload()
+    return true;
+    
   }
 }

@@ -10,20 +10,23 @@ import { CertificationComponent } from './Components/certification/certification
 import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { SignInComponent } from './Components/sign-in/sign-in.component';
+import { PrimarySkillComponent } from './Components/primary-skill/primary-skill.component';
+import { AuthGuard } from './authguard';
+import { SidebarComponent } from './Components/sidebar/sidebar.component';
 const routes: Routes = [
-  {path: '',   redirectTo:'about-you', pathMatch:'full'},
-  {path:'dashboard' , component:DashboardComponent},
-  {path:'about-you',component:UserProfileComponent},
-  {path:'skills',component:SkillProfileComponent},
-  {path:'experience',component:ExperianceComponent},
-  {path:'work-experience',component:WorkExperianceComponent},
-  {path:'education-details',component: EduDetailsComponent},
-  {path:'education-details/:id',component: EduDetailsComponent},
-
-  {path:'role-profile',component:RollprofileComponent},
-  {path:'certificate', component:CertificationComponent},
-  {path:'signUp', component:SignUpComponent},
-  {path:'signIn', component:SignInComponent}
+  {path: '', component:SignInComponent},
+  {path:'dashboard' , component:DashboardComponent, canActivate:[AuthGuard] },
+  {path:'about-you',component:UserProfileComponent, canActivate:[AuthGuard] },
+  {path:'skills',component:SkillProfileComponent, canActivate:[AuthGuard] },
+  {path:'experience',component:ExperianceComponent, canActivate:[AuthGuard] },
+  {path:'work-experience',component:WorkExperianceComponent, canActivate:[AuthGuard] },
+  {path:'education-details',component: EduDetailsComponent, canActivate:[AuthGuard] },
+  {path:'education-details/:id',component: EduDetailsComponent, canActivate:[AuthGuard] },
+  {path:'role-profile',component:RollprofileComponent, canActivate:[AuthGuard] },
+  {path:'certificate', component:CertificationComponent, canActivate:[AuthGuard] },
+  {path:'signUp', component:SignUpComponent },
+  {path:"sidebar",component:SidebarComponent, canActivate:[AuthGuard] },
+  {path:"priSkill",component:PrimarySkillComponent, canActivate:[AuthGuard]}
   // {path: '**', redirectTo: 'PageNotFoundComponent'}
   
 ];

@@ -1,5 +1,6 @@
 import { Component } from "@angular/core";
 import { ConfigService } from "./config.service";
+import { SigninService } from "./signin.service";
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -7,6 +8,7 @@ import { ConfigService } from "./config.service";
 })
 export class AppComponent {
   title = "Recruiter";
+  public loggedIn=false;
   // data:any;
   // constructor(private postData:ConfigService){}
 
@@ -24,8 +26,8 @@ export class AppComponent {
   // }
 
 
-  constructor() {}
+  constructor(private signinService: SigninService) {}
   ngOnInit() {
-   
+  this.loggedIn = this.signinService.isLoggedIn();
 }
 }

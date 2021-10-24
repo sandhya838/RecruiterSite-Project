@@ -36,24 +36,25 @@ msg='';
 // }
   
 loginSubmit(){
-  if(this.signIn.valid){
-    this.signService.login(this.signIn.value).subscribe(user=>{
-      // if(){
-        console.log(user);
+  // if(this.signIn.valid){
+  //   this.signService.login(this.signIn.value).subscribe(user=>{
+  //     // if(){
+  //       console.log(user);
         
-    })
-  }
-  // if((this.credentials.email!='' && this.credentials.password!='')&& (this.credentials.email!=null && this.credentials.password!=null) ) 
-  // {
-  //   this.signService.generateToken(this.credentials).subscribe(
-  //     (response:any)=>{
-     
-    
-  // })}
-  // else{
-  //   this.msg="Fields Are Empty";
-
+  //   })
   // }
+  if((this.credentials.email!='' && this.credentials.password!='')&& (this.credentials.email!=null && this.credentials.password!=null) ) 
+  {
+    this.signService.generateToken(this.credentials).subscribe(
+      (response:any)=>{
+     
+        localStorage.setItem('token', response.token);
+        window.location.href="/priSkill";
+  })}
+  else{
+    this.msg="Fields Are Empty";
+
+  }
 }
   
   closeAlert(){

@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { ConfigService } from 'src/app/config.service';
 import { NotificationService } from 'src/app/notification.service';
+import { SigninService } from 'src/app/signin.service';
+
 
 @Component({
   selector: 'app-primary-skill',
@@ -25,7 +27,8 @@ export class PrimarySkillComponent implements OnInit {
     private configService: ConfigService,
     private router: Router,
     private route: ActivatedRoute,
-    private notifyService: NotificationService) { }
+    private notifyService: NotificationService,
+    private  signinService: SigninService) { }
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
@@ -85,5 +88,7 @@ export class PrimarySkillComponent implements OnInit {
   onSelectAll(items: any) {
     console.log(items);
   }
-
+logout(){
+  this.signinService.logout()
+}
 }
