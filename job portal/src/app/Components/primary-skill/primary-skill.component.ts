@@ -23,6 +23,8 @@ export class PrimarySkillComponent implements OnInit {
   dropdownListfilmModeling:any=[];
   dropdownListIT:any=[];
   dropdownSettings = {};
+
+  
   constructor(public formBuilder: FormBuilder,
     private configService: ConfigService,
     private router: Router,
