@@ -3,7 +3,7 @@
 		<section class="wrapper">
 			<div class="heading">
 				<div class="sign-up">
-					<p>Sign Up</p> 
+					<!-- <p>SignUp</p>  -->
 					<div *ngIf="alert"  class="alert alert-success alert-dismissible fade show" role="alert">
 						<strong>Success!</strong> Your data is successfully submitted. <pre>{{allData | json}}</pre>
 						<button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -12,26 +12,26 @@
 					  </div>
 					
 				</div>
-				<div class="login">
-					<p>Login</p> 
+				<div class="sign-up">
+					<p>Sign Up</p> 
 				</div>
 				<h1 class="text text-large">Sign In</h1>
 				<p class="text text-normal">New user? <span><a href="#" class="text text-links">Create an account</a></span>
 				</p>
 			</div>
 
-			<form  [formGroup]="signIn" (ngSubmit)="onClick(signIn.value)" novalidate name="login" class="form">
+			<form  [formGroup]="signIn" (ngSubmit)="loginSubmit()" novalidate name="login" class="form">
 				<div class="input-control">
 					<label for="email" class="input-label" hidden>Email Address</label>
-					<input type="email" name="email" class="input-field" placeholder="Email Address" formControlName="Signin">
-					<div class="text-danger" *ngIf="getControl.Signin.touched && getControl.Signin.invalid">
-						<div *ngIf="getControl.Signin.errors">Invalid Email Id</div>
+					<input type="email" name="email" class="input-field" required [(ngModel)]="credentials.email" placeholder="Email Address" formControlName="email">
+					<div class="text-danger" *ngIf="getControl.email.touched && getControl.email.invalid">
+						<div *ngIf="getControl.email.errors">Invalid Email Id</div>
 					 </div>
 				
 				</div>
 				<div class="input-control">
 					<label for="password" class="input-label" hidden>Password</label>
-					<input type="password" name="password" class="input-field" placeholder="Password" formControlName="password">
+					<input type="password" name="password" class="input-field" placeholder="Password" formControlName="password" required [(ngModel)]="credentials.password">
 					<div class="text-danger" *ngIf="getControl.password.touched && getControl.password.invalid">
 						<div *ngIf="getControl.password.errors">Invalid password</div>
 					 </div>
@@ -41,14 +41,30 @@
 					<a href="#" class="text text-links">Forgot Password</a>
 					<!-- <input type="button" name="submit" class="input-submit" value="Sign In" style="color: white;" disabled> -->
 				</div>
-				<input type="button" name="submit" class="input-submit" value="Sign In" style="color: white;" disabled>
+				<input class="btn btn-primary" type="submit" value="Sign In">
 			</form>
 			<div class="striped">
 				<span class="striped-line"></span>
 				<span class="striped-text">Or</span>
 				<span class="striped-line"></span>
 			</div>
-			<div class="method">
+			<div class="row">
+				<a href="#" class="action">
+					<i class="fa fa-google" aria-hidden="true"></i>
+					<!-- <span>Sign up with Google</span> -->
+				</a>
+				<a href="#" class="action">
+					<i class="fa fa-facebook" aria-hidden="true"></i>
+					<!-- <span>Sign up with Facebook</span> -->
+				</a>
+				<a href="#" class="action">
+					<i class="fa fa-linkedin" aria-hidden="true"></i>
+					
+					<!-- <span>Sign up with Apple</span> -->
+				</a>
+
+			</div>
+			<!-- <div class="method">
 				<div class="method-control">
 					<a href="#" class="method-action">
 						<i class="fa fa-google" aria-hidden="true"></i>
@@ -67,7 +83,7 @@
 						<span>Sign in with Apple</span>
 					</a>
 				</div>
-			</div>
+			</div> -->
 		</section>
 	</div>
 </main>

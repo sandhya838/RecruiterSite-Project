@@ -9,7 +9,7 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 export class SignUpComponent implements OnInit {
 
   alert:boolean=false;
-  signIn !: FormGroup;
+  signUp !: FormGroup;
   allData:any;
   file: File | null = null
 
@@ -20,19 +20,20 @@ export class SignUpComponent implements OnInit {
     }
   }
   pattern="^[ a-zA-Z]*$";
+  numberPattern="[0-9]";
+  mixPattern="[a-zA-Z0-9]"
   ngOnInit(): void {
-    this.signIn= this.formBuilder.group({
+    this.signUp= this.formBuilder.group({
       fullname:['', [Validators.required]],
-      number:['', [Validators.required, Validators.pattern(this.pattern)]],
       email:['', [Validators.required]],
       password:['', [Validators.required]],
-      image: new FormControl(null, [Validators.required, requiredFileType('png')])
+      image: new FormControl(null, [Validators.required])
     })  
   }
   
   get getControl()
   {
-    return this.signIn.controls;
+    return this.signUp.controls;
   }
 
 //   showToasterSuccess(){
@@ -41,18 +42,18 @@ export class SignUpComponent implements OnInit {
   
   onClick(formValue:any)
   {
-    console.log(this.signIn.value);
+    console.log(this.signUp.value);
 
-    this.allData=JSON.parse(JSON.stringify(this.signIn.value));
+    this.allData=JSON.parse(JSON.stringify(this.signUp.value));
     this.alert=true;
-    this.signIn.reset({});
+    this.signUp.reset({});
 
-    if(this.signIn.valid){
+    if(this.signUp.valid){
 
     }
     else{
-      this.signIn.markAllAsTouched();
-      this.signIn.updateValueAndValidity();
+      this.signUp.markAllAsTouched();
+      this.signUp.updateValueAndValidity();
       
     }
    
@@ -64,7 +65,5 @@ export class SignUpComponent implements OnInit {
 
 
 }
-function requiredFileType(arg0: string): import("@angular/forms").ValidatorFn {
-  throw new Error('Function not implemented.');
-}
+
 
