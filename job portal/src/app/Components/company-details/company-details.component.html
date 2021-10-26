@@ -18,30 +18,30 @@
     </div>
       <form [formGroup]="userForm"  novalidate (ngSubmit)="onClick(userForm.value, userForm.valid)"> 
       
-          <div class="row g-3 row-margin-05" > 
+          
   
-               <div class="col-4"> 
+               <div class="col"> 
                  <label>Details of the Company</label>
                  <input type="text" class="form-control" placeholder="" formControlName="companyDetails"> 
                  <div class="text-danger" *ngIf="getControl.companyDetails.touched && getControl.companyDetails.invalid">
                         <div *ngIf="getControl.companyDetails.errors">Enter valid data.</div>
                  </div>
                </div> 
-               <div class="col-4"> 
+               <div class="col"> 
                   <label>Decription of the Company</label>
                   <input type="text" class="form-control" placeholder="" formControlName="descOfCompany" required> 
                   <div class="text-danger" *ngIf="getControl.descOfCompany.touched && getControl.descOfCompany.invalid">
                          <div *ngIf="getControl.descOfCompany.errors">Enter valid data.</div>
                   </div>
                 </div> 
-                <div class="col-4"> 
+                <div class="col"> 
                   <label>No of Employees</label>
                   <input type="text" class="form-control" placeholder="" formControlName="noOfEmployees" required> 
                   <div class="text-danger" *ngIf="getControl.noOfEmployees.touched && getControl.noOfEmployees.invalid">
                          <div *ngIf="getControl.noOfEmployees.errors">Enter valid data.</div>
                   </div>
                 </div> 
-                <div class="col-md-4">
+                <div class="col">
                     <label>Location of Operations</label><span class="text-danger">*</span>
                     <select class="form-control" placeholder="" formControlName="location">
                       <option selected disabled value="">-select-</option>
@@ -59,10 +59,17 @@
                       *ngIf="getControl.location.touched && getControl.location.invalid"
                     >
                       <div *ngIf="getControl.location.errors">Please select a valid city.</div>
-                    </div>
+                   
                   </div>
-         
-         
+                  <div class="col">     
+                    <input class="btn btn-outline-primary mb-3" type="submit" value="Submit">
+                  </div>
+                </div> 
+                 
+
+         </form>
+  </div>
+
                
               
-              </div> 
+            

@@ -153,6 +153,26 @@ var ProfileSchema = new Schema({
       }
     }
   ],
+  
+  companyDetail: [
+    {
+      details: {
+        type: String,
+      },
+      desc: {
+        type: String,
+      },
+      noOfEmp: {
+        type: String,
+      },
+      noOfEmp: {
+        type: String,
+      },
+      loc: {
+        type: String,
+      },
+    }
+  ],
 
   createdDate: {
     type: Date,
