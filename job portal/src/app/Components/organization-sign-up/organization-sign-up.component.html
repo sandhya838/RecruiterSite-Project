@@ -24,7 +24,7 @@
 					<label for="organization name" class="input-label" hidden>Organization Name</label>
 					<input type="organization name" name="name" class="input-field" placeholder="Organization Name" formControlName="organizationname">
 					<div class="text-danger" *ngIf="getControl.organizationname.touched && getControl.organizationname.invalid">
-						<div *ngIf="getControl.organizationname.errors">Invalid name</div>
+						<div *ngIf="getControl.organizationname.errors">Invalid Organization name</div>
 					 </div>
 				
 				</div>
@@ -47,7 +47,7 @@
 					<label for="mobile number" class="input-label" hidden>Mobile Number</label>
 					<input type="mobile number" name="number" class="input-field" placeholder="Mobile Number" formControlName="number">
 					<div class="text-danger" *ngIf="getControl.number.touched && getControl.number.invalid">
-						<div *ngIf="getControl.number.errors">Invalid password</div>
+						<div *ngIf="getControl.number.errors">Invalid Number</div>
 					 </div>
 				</div>
 			

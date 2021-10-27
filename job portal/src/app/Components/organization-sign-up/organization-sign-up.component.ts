@@ -30,7 +30,8 @@ export class OrganizationSignUpComponent implements OnInit {
       personName:['', [Validators.required]],
       email:['', [Validators.required]],
       password:['', [Validators.required]],
-      image: new FormControl(null, [Validators.required])
+      number:['', [Validators.required]]
+      // image: new FormControl(null, [Validators.required])
     })  
   }
   
