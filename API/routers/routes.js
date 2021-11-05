@@ -5,11 +5,12 @@ module.exports = (app) => {
   const requestValidator = require('../middlewares/validateRequest');
   const multer = require("multer");
   const upload = multer({ dest: 'public/resume/' });
+  const uploadLogo = multer({ dest: 'public/logo/' });
   const orgnization = require('../controllers/orgnization.controller');
 
   /**********************orgnization pre APIs **************** */
   app.post('/v1/orgnization-login', auth.orgnization_login);
-  app.post('/v1/register-orgnization', requestValidator.validateParams(orgnization.createRules), orgnization.create);
+  app.post('/v1/register-orgnization', uploadLogo.single('logo'), orgnization.create);
 
   /************ Orgnization post login ****************** */
   app.get('/v1/orgnizations', auth.authToken, orgnization.findAll);

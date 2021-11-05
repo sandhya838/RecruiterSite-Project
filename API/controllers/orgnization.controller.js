@@ -1,4 +1,5 @@
 const Orgnizaton = require('../models/orgnization');
+const fs = require('fs');
 
 module.exports = {
 
@@ -19,17 +20,23 @@ module.exports = {
     },
 
     create: (req, res) => {
-        console.log(req.body);
-        Orgnizaton.create(req.body, (err, result) => {
-            console.log('result',result);
-            console.log('error', err);
-            if (err) {
-                res.status(500).send({ status: 500, message: 'Oops! Not able to create orgnizaton. Please try after sometimes', orgnizaton: {} });
+        uploadFile(req.file, (isFileUploaded, fileName) => {
+            if (isFileUploaded) {
+                req.body.logo = fileName;
+                Orgnizaton.create(req.body, (err, result) => {
+                    if (err) {
+                        res.status(500).send({ status: 500, message: 'Oops! Not able to create orgnizaton. Please try after sometimes', orgnizaton: {} });
+                    } else {
+                        console.log(result);
+                        res.status(200).send({ status: 200, message: 'orgnizaton created successfully.', data: {} });
+                    }
+                });
             } else {
-                console.log(result);
-                res.status(200).send({ status: 200, message: 'orgnizaton created successfully.', data: {} });
+                if (err) throw res.status(500).send({ status: 500, message: 'Oops! Not able to create orgnizaton. Please try after sometimes', orgnizaton: {} });
             }
         });
+
+
     },
 
     // Retrieve and return all orgnizatons from the database.
@@ -45,7 +52,7 @@ module.exports = {
 
     // Find a single orgnizaton with a orgnizatonId
     findOne: (req, res) => {
-        Orgnizaton.findById({ _id: req.params.orgnizatonId }, (err, result) => {
+        Orgnizaton.findById({ _id: req.params.orgnizationId }, (err, result) => {
             if (err) {
                 res.status(500).send({ message: 'Oops! Not able to get orgnizaton. Please try after sometimes', orgnizaton: {} });
             } else {
@@ -54,9 +61,9 @@ module.exports = {
         });
     },
 
-    // Update a orgnizaton identified by the orgnizatonId in the request
+    // Update a orgnizaton identified by the orgnizationId in the request
     update: (req, res) => {
-        Orgnizaton.findOneAndUpdate({ _id: req.params.orgnizatonId }, { $set: req.body }, { new: true }, (err, result) => {
+        Orgnizaton.findOneAndUpdate({ _id: req.params.orgnizationId }, { $set: req.body }, { new: true }, (err, result) => {
             if (err) {
                 res.status(500).send({ message: 'Oops! Not able to update orgnizaton. Please try after sometimes', orgnizatons: result });
             } else {
@@ -64,9 +71,9 @@ module.exports = {
             }
         });
     },
-    // Delete a orgnizaton with the specified orgnizatonId in the request
+    // Delete a orgnizaton with the specified orgnizationId in the request
     delete: (req, res) => {
-        Orgnizaton.findOneAndDelete({ _id: req.params.orgnizatonId }, (err, result) => {
+        Orgnizaton.findOneAndDelete({ _id: req.params.orgnizationId }, (err, result) => {
             if (err) {
                 res.status(500).send({ message: 'Oops! Not able to delete orgnizaton. Please try after sometimes', orgnizaton: {} });
             } else {
@@ -75,4 +82,20 @@ module.exports = {
         });
     }
 }
+
+
+uploadFile = (file, callBack) => {
+    const fileName = file.fieldname + '-' + Date.now() + '.' + file.mimetype.split('/').pop();
+    fs.rename(file.path, file.destination + fileName, (err) => {
+        if (err) {
+            callBack(false, '');
+
+        } else {
+            callBack(true, fileName);
+
+        }
+
+    });
+
+};
 
