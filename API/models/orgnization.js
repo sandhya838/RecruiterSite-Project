@@ -49,4 +49,4 @@ var Organizationschema = new Schema({
     }
 });
 
-module.exports = mongoose.model('Organizations', Organizationschema);
+module.exports = mongoose.model('Orgnizations', Organizationschema);

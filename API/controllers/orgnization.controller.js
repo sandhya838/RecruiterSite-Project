@@ -63,13 +63,20 @@ module.exports = {
 
     // Update a orgnizaton identified by the orgnizationId in the request
     update: (req, res) => {
-        Orgnizaton.findOneAndUpdate({ _id: req.params.orgnizationId }, { $set: req.body }, { new: true }, (err, result) => {
-            if (err) {
-                res.status(500).send({ message: 'Oops! Not able to update orgnizaton. Please try after sometimes', orgnizatons: result });
+        uploadFile(req.file, (isFileUploaded, fileName) => {
+            if (isFileUploaded) {
+                req.body.logo = fileName;
+                Orgnizaton.findOneAndUpdate({ _id: req.params.orgnizationId }, { $set: req.body }, { new: true }, (err, result) => {
+                    if (err) {
+                        res.status(500).send({ message: 'Oops! Not able to update orgnizaton. Please try after sometimes', orgnizatons: result });
+                    } else {
+                        res.status(200).send({ message: 'orgnizaton updated successfully.', orgnizaton: result });
+                    }
+                });
             } else {
-                res.status(200).send({ message: 'orgnizaton updated successfully.', orgnizaton: result });
+                if (err) throw res.status(500).send({ status: 500, message: 'Oops! Not able to update orgnizaton. Please try after sometimes', orgnizaton: {} });
             }
-        });
+        })
     },
     // Delete a orgnizaton with the specified orgnizationId in the request
     delete: (req, res) => {

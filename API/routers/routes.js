@@ -7,6 +7,7 @@ module.exports = (app) => {
   const upload = multer({ dest: 'public/resume/' });
   const uploadLogo = multer({ dest: 'public/logo/' });
   const orgnization = require('../controllers/orgnization.controller');
+  const job = require('../controllers/job.controller');
 
   /**********************orgnization pre APIs **************** */
   app.post('/v1/orgnization-login', auth.orgnization_login);
@@ -18,6 +19,13 @@ module.exports = (app) => {
   app.delete('/v1/orgnization/:orgnizationId', auth.authToken, orgnization.delete);
   app.put('/v1/orgnization/:orgnizationId', auth.authToken, orgnization.update);
 
+
+  /*************Jobs ******************** */
+  app.post('/v1/create', auth.authToken, job.create);
+  app.get('/v1/jobs', auth.authToken, job.findAll);
+  app.get('/v1/job/:jobId', auth.authToken, job.findOne);
+  app.delete('/v1/job/:jobId', auth.authToken, job.delete);
+  app.put('/v1/job/:jobId', auth.authToken, job.update);
 
 
   /************** Pre Login APIs ****************** */

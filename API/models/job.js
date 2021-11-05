@@ -4,6 +4,9 @@ var Schema = mongoose.Schema;
 
 
 var Jobschema = new Schema({
+    title: {
+        type: String
+    },
     jobType: {
         type: String
     },
@@ -14,7 +17,7 @@ var Jobschema = new Schema({
         type: []
     },
     experience: {
-        type: Number,
+        type: String,
     },
     salary: {
         type: String
@@ -31,11 +34,11 @@ var Jobschema = new Schema({
     },
     createdBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Organization',
+        ref: 'Orgnizations',
     },
     updatedBy: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Organization',
+        ref: 'Orgnizations',
     }
 });
 
