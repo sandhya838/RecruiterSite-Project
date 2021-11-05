@@ -1,10 +1,23 @@
 module.exports = (app) => {
   const users = require('../controllers/user.controller');
-  const profile  = require('../controllers/profile.controller');
+  const profile = require('../controllers/profile.controller');
   const auth = require('../auth/auth.controller');
   const requestValidator = require('../middlewares/validateRequest');
   const multer = require("multer");
-  const upload = multer({ dest: 'public/resume/' })
+  const upload = multer({ dest: 'public/resume/' });
+  const orgnization = require('../controllers/orgnization.controller');
+
+  /**********************orgnization pre APIs **************** */
+  app.post('/v1/orgnization-login', auth.orgnization_login);
+  app.post('/v1/register-orgnization', requestValidator.validateParams(orgnization.createRules), orgnization.create);
+
+  /************ Orgnization post login ****************** */
+  app.get('/v1/orgnizations', auth.authToken, orgnization.findAll);
+  app.get('/v1/orgnization/:orgnizationId', auth.authToken, orgnization.findOne);
+  app.delete('/v1/orgnization/:orgnizationId', auth.authToken, orgnization.delete);
+  app.put('/v1/orgnization/:orgnizationId', auth.authToken, orgnization.update);
+
+
 
   /************** Pre Login APIs ****************** */
   app.post('/v1/login', auth.login);
