@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AppRoutingModule } from './app-routing.module';
@@ -25,6 +25,7 @@ import { FileUploadComponent } from './Components/file-upload/file-upload.compon
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { PrimarySkillComponent } from './Components/primary-skill/primary-skill.component';
 import { CompanyDetailsComponent } from './Components/company-details/company-details.component';
+import { TokenInterceptorService } from './token-interceptor-service.service';
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,7 +59,9 @@ import { CompanyDetailsComponent } from './Components/company-details/company-de
     AngularMultiSelectModule
     
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, 
+    useClass: TokenInterceptorService, 
+    multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
