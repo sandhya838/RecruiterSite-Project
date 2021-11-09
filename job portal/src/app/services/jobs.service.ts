@@ -19,7 +19,9 @@ private _getHeaders() {
 }
 getRecommendedJobs(){
   const header = this._getHeaders();
-
+  this.http.get(this.apiBaseUrl + CONSTANTS.RECOMMENDEDJOBS, { headers: header }).subscribe(result=>{
+    console.log('result',result);
+  });
     return this.http.get(this.apiBaseUrl + CONSTANTS.RECOMMENDEDJOBS, { headers: header });
 }
 }
