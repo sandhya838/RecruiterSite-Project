@@ -1,87 +1,6 @@
-<!-- <div class="container">
-<div class="card" style="max-width: 540px; height: 188px;">
-    <div class="row">
-      <div class="col-md-2">
-        <i class="fa fa-linkedin-square" style=" color:rgb(1, 1, 100)"></i>
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title"><a href="..">Project Manager</a></h5>
-          <div class="card-text">
-              <p class="job-card-container__company-name">Linkedin</p>
-           </div>
-
-           <div class="card-text">
-            <p class="job-card-container__company-location">Pune, Maharastra, India</p>
-         </div>
-<br><br>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-      <div class="col-md-2">
-          <div class="bookmarkIcon"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
-        </div>
-    </div>
-  </div>
-
-
-
-  <div class="card" style="max-width: 540px; height: 188px;">
-    <div class="row">
-      <div class="col-md-2">
-        <i class="fa fa-linkedin-square" style=" color:rgb(1, 1, 100)"></i>
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title"><a href="..">Project Manager</a></h5>
-          <div class="card-text">
-              <p class="job-card-container__company-name">Linkedin</p>
-           </div>
-
-           <div class="card-text">
-            <p class="job-card-container__company-location">Pune, Maharastra, India</p>
-         </div>
-<br><br>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-      <div class="col-md-2">
-          <div class="bookmarkIcon"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
-        </div>
-    </div>
-  </div>
-  
-  
-
-
-  <div class="card" style="max-width: 540px; height: 188px;">
-    <div class="row">
-      <div class="col-md-2">
-        <i class="fa fa-linkedin-square" style=" color:rgb(1, 1, 100)"></i>
-      </div>
-      <div class="col-md-8">
-        <div class="card-body">
-          <h5 class="card-title"><a href="..">Project Manager</a></h5>
-          <div class="card-text">
-              <p class="job-card-container__company-name">Linkedin</p>
-           </div>
-
-           <div class="card-text">
-            <p class="job-card-container__company-location">Pune, Maharastra, India</p>
-         </div>
-<br><br>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-      <div class="col-md-2">
-          <div class="bookmarkIcon"><i class="fa fa-bookmark-o" aria-hidden="true"></i></div>
-        </div>
-    </div>
-  </div>
-  </div> -->
-
-  <!--  -->
-  <div class="container border">
+<ng-container *ngIf="recommendedJobs$ as jobs">
+  {{jobs | json}}
+  <div class="container border" *ngIf="jobs">
     <div class="card">
     <div class="row">
       <div class="col-2">
@@ -100,8 +19,10 @@
       </div>
     </div>
   </div>
+</div>
+</ng-container>
 
-  <div class="card">
+  <!-- <div class="card">
     <div class="row">
       <div class="col-2">
           <i class="fa fa-linkedin-square" style=" color:rgb(1, 1, 100)"></i>
@@ -137,5 +58,5 @@
        <i class="fa fa-bookmark-o" aria-hidden="true"></i>
       </div>
     </div>
-  </div>
-  </div>
+  </div> -->
+ 
