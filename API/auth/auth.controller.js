@@ -34,49 +34,47 @@ exports.authToken = function (req, res, next) {
 };
 
 exports.login = (req, res) => {
-    // console.log(req.body.userName)
-    User.find({ mobileNumber: req.body.mobileNumber }, function (err, user) {
+    User.findOne({ email: req.body.email, password: req.body.password }, (err, result) => {
         if (err) {
             res.status(401).send({ status: 401, message: 'You are not autorized to get access.' });
-        } else {
-            // console.log(user)
+        } else if (result) {
             const expires = moment().add('days', 7).valueOf();
             const token = jwt.encode({
-                userName: user.mobileNumber,
+                userName: result.email,
                 exp: expires
             }, app.get('jwtTokenSecret'));
             res.status(200).send({
                 status: 200,
                 token: 'Bearer ' + token,
                 expires: expires,
-                user: JSON.stringify(user)
+                user: result
 
             });
-            console.log(user);
+        } else {
+            return res.status(404).json({ status: 404, message: 'User not found' });
         }
 
     });
 };
 exports.orgnization_login = (req, res) => {
-    // console.log(req.body.userName)
-    Orgnization.find({ email: req.body.email, password: req.body.password }, (err, orgnization)=> {
+    Orgnization.findOne({ email: req.body.email, password: req.body.password }, (err, result) => {
         if (err) {
             res.status(401).send({ status: 401, message: 'You are not autorized to get access.' });
-        } else {
-            console.log(orgnization)
+        } else if (result) {
             const expires = moment().add('days', 7).valueOf();
             const token = jwt.encode({
-                userName: orgnization.email,
+                userName: result.email,
                 exp: expires
             }, app.get('jwtTokenSecret'));
             res.status(200).send({
                 status: 200,
                 token: 'Bearer ' + token,
                 expires: expires,
-                user:orgnization
+                user: result
 
             });
-           
+        } else {
+            return res.status(404).json({ status: 404, message: 'User not found' });
         }
 
     });

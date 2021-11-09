@@ -26,6 +26,7 @@ module.exports = (app) => {
   app.get('/v1/job/:jobId', auth.authToken, job.findOne);
   app.delete('/v1/job/:jobId', auth.authToken, job.delete);
   app.put('/v1/job/:jobId', auth.authToken, job.update);
+  app.get('/v1/recomandedJobs', auth.authToken, profile.recomandedJobs);
 
 
   /************** Pre Login APIs ****************** */
