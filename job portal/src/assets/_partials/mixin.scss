@@ -6,7 +6,7 @@ $bghoverclr: #f4a024;
 $denger:red;
 $light: #f1f5f9;
 $white:#ffffff;
-
+$fontSize:15px;
 @mixin heading-setting($clr,$value){
     color: $clr;
     font-size: $value;

@@ -26,6 +26,7 @@ import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { PrimarySkillComponent } from './Components/primary-skill/primary-skill.component';
 import { CompanyDetailsComponent } from './Components/company-details/company-details.component';
 import { TokenInterceptorService } from './token-interceptor-service.service';
+import { JobProfileCardComponent } from './job-profile-card/job-profile-card.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -44,7 +45,8 @@ import { TokenInterceptorService } from './token-interceptor-service.service';
     PageNotFoundComponent,
     FileUploadComponent,
     PrimarySkillComponent,
-    CompanyDetailsComponent
+    CompanyDetailsComponent,
+    JobProfileCardComponent
   ],
   imports: [
     BrowserModule,
