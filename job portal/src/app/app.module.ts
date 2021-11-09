@@ -25,6 +25,7 @@ import { FileUploadComponent } from './Components/file-upload/file-upload.compon
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { PrimarySkillComponent } from './Components/primary-skill/primary-skill.component';
 import { CompanyDetailsComponent } from './Components/company-details/company-details.component';
+import { ProfileUploadComponent } from './Components/profile-upload/profile-upload.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -43,7 +44,8 @@ import { CompanyDetailsComponent } from './Components/company-details/company-de
     PageNotFoundComponent,
     FileUploadComponent,
     PrimarySkillComponent,
-    CompanyDetailsComponent
+    CompanyDetailsComponent,
+    ProfileUploadComponent
   ],
   imports: [
     BrowserModule,
