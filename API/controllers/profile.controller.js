@@ -108,23 +108,21 @@ module.exports = {
         }
     },
     recomandedJobs: (req, res) => {
-        console.log('req', req.body);
-        const query = {};
-        query.jobType= req.body.jobType;
-        query.experience= req.body.experience;
-        query.salary= req.body.salary;
-        query.roles= req.body.roles;
-        query.location= req.body.location;
-        query.skills= req.body.skills;
-        console.log('query', query);
-
-        Jobs.find(query, (err, result) => {
-            console.log(err, result);
-            if (err) {
-                res.status(500).send({ status: 500, message: 'Oops! Not able to get all profiles. Please try after sometimes', matchedJons: {} });
-            } else {
-                res.status(200).send({ status: 200, message: 'matching jobs successfully listed.', matchedJobs: result });
-            }
-        });
+        Jobs.find(
+            {
+                jobType: req.body.jobType,
+                experience: req.body.experience,
+                salary: req.body.salary,
+                roles: req.body.roles,
+                skills: { $in: req.body.skills.split(',') }, location: { $in: req.body.location.split(',') }
+            },
+            (err, result) => {
+                console.log(err, result);
+                if (err) {
+                    res.status(500).send({ status: 500, message: 'Oops! Not able to get all profiles. Please try after sometimes', matchedJons: {} });
+                } else {
+                    res.status(200).send({ status: 200, message: 'matching jobs successfully listed.', matchedJobs: result });
+                }
+            });
     }
 }
