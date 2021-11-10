@@ -89,7 +89,7 @@ export class PrimarySkillComponent implements OnInit {
   onSelectAll(items: any) {
     console.log(items);
   }
-logout(){
-  this.signinService.logout()
-}
+// logout(){
+//   this.signinService.logout()
+// }
 }

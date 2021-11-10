@@ -13,6 +13,11 @@ export class SigninService {
     return this.http.post(`${this.loginUrl}`,credentials);
   }
 
+  getToken()
+  {
+    return localStorage.getItem("token")
+  }
+  
   isLoggedIn()
   {
     let token=localStorage.getItem("token");

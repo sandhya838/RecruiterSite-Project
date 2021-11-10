@@ -49,7 +49,7 @@ loginSubmit(){
       (response:any)=>{
      
         localStorage.setItem('token', response.token);
-        window.location.href="/priSkill";
+        window.location.href="/about-you";
   })}
   else{
     this.msg="Fields Are Empty";

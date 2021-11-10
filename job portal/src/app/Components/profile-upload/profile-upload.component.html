@@ -1,5 +1,8 @@
-<div class="wrapper">
 
+
+<ng-container *ngif="recommendedProfiles$ as profiles">
+<!-- {{profiles | Json}} -->
+<div class="wrapper" *ngif="profiles">
     
     <div class="profile-card active">
         <div class="profile-card-header">
@@ -21,8 +24,10 @@
         </div>
         
     </div>
+  </div>
+  </ng-container>
      
-      <div class="profile-card">
+      <!-- <div class="profile-card">
         <div class="profile-card-header">
                 <img src="https://i.imgur.com/jMtQiws.jpg" alt=""/>
         </div>
@@ -55,5 +60,5 @@
         <button type="button" class="btn btn-outline-primary">Connect</button>
 
 </div>
-</div>
-   </div>
+</div> -->
+   
