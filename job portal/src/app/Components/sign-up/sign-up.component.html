@@ -1,107 +1,134 @@
-<main class="main">
-	<div class="container">
-		<section class="wrapper">
-			<div class="heading">
-				<div class="sign-up">
-					<!-- <p>Sign In</p> 
-					<div *ngIf="alert"  class="alert alert-success alert-dismissible fade show" role="alert">
-						<strong>Success!</strong> Your data is successfully submitted. <pre>{{allData | json}}</pre>
-						<button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
-						  <span aria-hidden="true">&times;</span>
-						</button>
-					  </div> -->
-					
-				</div>
-				<div class="login">
-					<a routerLink="/signIn">Login</a>
-				</div>
-				<h1 class="text text-large">Sign Up</h1>
-				<!-- <p class="text text-normal">New user? <span><a href="#" class="text text-links">Create an account</a></span>
-				</p> -->
-			</div>
+<div class="sign-up">
+  <div class="sign-up__wrapper">
+    <div class="d-flex justify-content-end">
+      <a [routerLink]="'/login'">Sign in</a>
+    </div>
+    <div class="sign-up__wrapper__heading mb-2">Sign up</div>
+    <form enctype="multipart/form-data"
+      [formGroup]="signUp"
+      (ngSubmit)="onSubmitForm(signUp.valid, signUp.value)"
+      novalidate
+      name="signupForm"
+    >
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control sign-up__wrapper__email"
+          id="fullName"
+          placeholder="full name"
+          formControlName="fullName"
+        />
+        <div
+          class="text-danger sign-up__wrapper__error"
+          *ngIf="
+            (signUp.controls['fullName'].touched ||
+              signUp.controls['fullName'].dirty) &&
+            !signUp.controls['fullName'].valid
+          "
+        >
+          <div *ngIf="getControl.fullName.errors">
+            <div *ngIf="getControl.fullName.errors.required">
+              This field is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="email"
+          class="form-control sign-up__wrapper__email"
+          id="email"
+          placeholder="Email Address"
+          formControlName="email"
+        />
+        <div
+          class="text-danger sign-up__wrapper__error"
+          *ngIf="
+            (signUp.controls['email'].touched ||
+              signUp.controls['email'].dirty) &&
+            !signUp.controls['email'].valid
+          "
+        >
+          <div *ngIf="getControl.email.errors">
+            <div *ngIf="getControl.email.errors.required">
+              This field is required
+            </div>
+          </div>
+        </div>
+      </div>
 
-			<form  [formGroup]="signUp" (ngSubmit)="onClick(signUp.value)" novalidate name="login" class="form">
-				<div class="input-control">
-					<label for="full name" class="input-label" hidden>Full Name</label>
-					<input type="full name" name="name" class="input-field" placeholder="Full Name" formControlName="fullname">
-					<div class="text-danger" *ngIf="getControl.fullname.touched && getControl.fullname.invalid">
-						<div *ngIf="getControl.fullname.errors">Invalid name</div>
-					 </div>
-				
-				</div>
-				<!-- <div class="input-control">
-					<label for="mobile number" class="input-label" hidden>Mobile Number</label>
-					<input type="mobile number" name="number" class="input-field" placeholder="Mobile Number" formControlName="number">
-					<div class="text-danger" *ngIf="getControl.number.touched && getControl.number.invalid">
-						<div *ngIf="getControl.number.errors">Invalid password</div>
-					 </div>
-				</div> -->
-				<div class="input-control">
-					<label for="email addres" class="input-label" hidden>Email address</label>
-					<input type="email" name="email" class="input-field" placeholder="Email Address" formControlName="email">
-					<div class="text-danger" *ngIf="getControl.email.touched && getControl.email.invalid">
-						<div *ngIf="getControl.email.errors">Invalid email</div>
-					 </div>
-				</div>
-				<div class="input-control">
-					<label for="password" class="input-label" hidden>password</label>
-					<input type="password" name="password" class="input-field" placeholder="Password" formControlName="password">
-					<div class="text-danger" *ngIf="getControl.password.touched && getControl.password.invalid">
-						<div *ngIf="getControl.password.errors">Invalid password</div>
-					 </div>
-				</div>
-				<!-- <div class="row" id="file-upload"> -->
-					<app-file-upload></app-file-upload>
-				 <!-- </div> -->
-				
-				<div class="input-control-row">
-					<label><input type="checkbox"  name="remember" style="margin-bottom:15px"> Remember me</label>
-					<a href="#" class="text text-links">Forgot Password</a>
-				</div>
-				<input class="btn btn-primary" type="submit" value="Sign Up">
-                <!-- <input type="button" name="submit" class="input-submit" value="Sign Up" style="color: white;" disabled> -->
-			</form>
-			<div class="striped">
-				<span class="striped-line"></span>
-				<span class="striped-text">Or</span>
-				<span class="striped-line"></span>
-			</div>
-			<div class="row">
-				<a href="#" class="action">
-					<i class="fa fa-google" aria-hidden="true"></i>
-					<!-- <span>Sign up with Google</span> -->
-				</a>
-				<a href="#" class="action">
-					<i class="fa fa-facebook" aria-hidden="true"></i>
-					<!-- <span>Sign up with Facebook</span> -->
-				</a>
-				<a href="#" class="action">
-					<i class="fa fa-linkedin" aria-hidden="true"></i>
-					
-					<!-- <span>Sign up with Apple</span> -->
-				</a>
+      <div class="form-group input-group">
+        <input
+          type="{{ isPassword ? 'text' : 'password' }}"
+          class="form-control sign-up__wrapper__password"
+          id="password"
+          placeholder="password"
+          formControlName="password"
+        />
+        <div class="input-group-prepend" (click)="showPassword()">
+          <div class="input-group-text">
+            <i class="fa fa-eye" *ngIf="!isPassword" aria-hidden="true"></i>
+            <i
+              class="fa fa-eye-slash"
+              *ngIf="isPassword"
+              aria-hidden="true"
+            ></i>
+          </div>
+        </div>
+      </div>
+      <div
+        class="text-danger sign-up__wrapper__error"
+        *ngIf="getControl.password.touched && getControl.password.invalid"
+      >
+        <div *ngIf="getControl.password.errors">
+          <div *ngIf="getControl.password.errors.required">
+            This field is required
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <!-- <file-upload
+          formControlName="file"
+          maxsize="5 MB"
+          [animation]="true"
+        ></file-upload> -->
+        <div
+          class="text-danger sign-up__wrapper__error"
+          *ngIf="
+            (signUp.controls['file'].touched ||
+              signUp.controls['file'].dirty) &&
+            !signUp.controls['file'].valid
+          "
+        >
+          <div *ngIf="getControl.file.errors">
+            <div *ngIf="getControl.file.errors.required">
+              This field is required
+            </div>
+          </div>
+        </div>
+      </div>
 
-			</div>
-			<!-- <div class="method">
-				<div class="method-control">
-					<a href="#" class="method-action">
-						<i class="fa fa-google" aria-hidden="true"></i>
-						<span>Sign up with Google</span>
-					</a>
-				</div>
-				<div class="method-control">
-					<a href="#" class="method-action">
-						<i class="fa fa-facebook" aria-hidden="true"></i>
-						<span>Sign up with Facebook</span>
-					</a>
-				</div>
-				<div class="method-control">
-					<a href="#" class="method-action">
-						<i class="fa fa-apple" aria-hidden="true"></i>
-						<span>Sign up with Apple</span>
-					</a>
-				</div>
-			</div> -->
-		</section>
-	</div>
-</main>
+      <div class="d-flex justify-content-center">
+        <button class="btn btn-primary sign-up__wrapper__btn" type="submit">
+          Sign up
+        </button>
+      </div>
+      <div class="d-flex justify-content-center my-3">
+        <span class="sign-up__wrapper__line"></span>
+        <span class="mx-2">OR</span>
+        <span class="sign-up__wrapper__line"></span>
+      </div>
+      <div class="d-flex justify-content-center align-items-center my-3">
+        <a href="#" class="mx-3">
+          <i class="fa fa-google" aria-hidden="true"></i>
+        </a>
+        <a href="#" class="mx-3">
+          <i class="fa fa-facebook" aria-hidden="true"></i>
+        </a>
+        <a href="#" class="mx-3">
+          <i class="fa fa-linkedin" aria-hidden="true"></i>
+        </a>
+      </div>
+    </form>
+  </div>
+</div>

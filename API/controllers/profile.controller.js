@@ -1,4 +1,5 @@
 const profile = require('../models/profile');
+const Jobs = require('../models/job');
 const fs = require('fs');
 const mime = require('mime');
 
@@ -29,25 +30,33 @@ module.exports = {
 
 
     },
+
     create: (req, res) => {
-        console.log('req', req.body)
-        profile.create(req.body, (err, result) => {
-            if (err) {
-                console.log('error', err);
-                res.status(500).send({ status: 400, message: 'Oops! Not able to create profile. Please try after sometimes', profile: {} });
+        uploadFile(req.file, (isFileUploaded, fileName) => {
+            if (isFileUploaded) {
+                req.body.resume = fileName;
+                profile.create(req.body, (err, result) => {
+                    if (err) {
+                        res.status(500).send({ status: 400, message: 'Oops! Not able to create profile. Please try after sometimes', profile: {} });
+                    } else {
+                        console.log(result);
+                        res.status(200).send({ status: 200, message: 'profile created successfully.', profile: result });
+                    }
+                });
             } else {
-                res.status(200).send({ status: 200, message: 'profile created successfully.', profile: result });
+                if (err) throw res.status(500).send({ status: 500, message: 'Oops! Not able to create register user. Please try after sometimes', profile: {} });
             }
-        });
+
+        })
     },
 
     // Retrieve and return all profiles from the database.
     findAll: (req, res) => {
         profile.find({}, (err, result) => {
             if (err) {
-                res.status(500).send({status: 500, message: 'Oops! Not able to get all profiles. Please try after sometimes', profiles: result });
+                res.status(500).send({ status: 500, message: 'Oops! Not able to get all profiles. Please try after sometimes', profiles: result });
             } else {
-                res.status(200).send({status: 200, message: 'profiles got successfully listed.', profiles: result });
+                res.status(200).send({ status: 200, message: 'profiles got successfully listed.', profiles: result });
             }
         });
     },
@@ -56,9 +65,9 @@ module.exports = {
     findOne: (req, res) => {
         profile.findById({ _id: req.params.profileId }, (err, result) => {
             if (err) {
-                res.status(500).send({ status: 500,message: 'Oops! Not able to get profile. Please try after sometimes', profile: {} });
+                res.status(500).send({ status: 500, message: 'Oops! Not able to get profile. Please try after sometimes', profile: {} });
             } else {
-                res.status(200).send({status: 200, message: '', profile: result });
+                res.status(200).send({ status: 200, message: '', profile: result });
             }
         });
     },
@@ -67,9 +76,9 @@ module.exports = {
     update: (req, res) => {
         profile.findOneAndUpdate({ _id: req.params.profileId }, { $set: req.body }, { new: true }, (err, result) => {
             if (err) {
-                res.status(500).send({status: 500, message: 'Oops! Not able to update profile. Please try after sometimes', profiles: result });
+                res.status(500).send({ status: 500, message: 'Oops! Not able to update profile. Please try after sometimes', profiles: result });
             } else {
-                res.status(200).send({status: 200, message: 'profile updated successfully.', profile: result });
+                res.status(200).send({ status: 200, message: 'profile updated successfully.', profile: result });
             }
         });
     },
@@ -77,9 +86,9 @@ module.exports = {
     delete: (req, res) => {
         profile.findOneAndDelete({ _id: req.params.profileId }, (err, result) => {
             if (err) {
-                res.status(500).send({status: 500, message: 'Oops! Not able to delete profile. Please try after sometimes', profile: {} });
+                res.status(500).send({ status: 500, message: 'Oops! Not able to delete profile. Please try after sometimes', profile: {} });
             } else {
-                res.status(200).send({status: 200, message: 'profile deleted successfully.', profile: result });
+                res.status(200).send({ status: 200, message: 'profile deleted successfully.', profile: result });
             }
         });
     },
@@ -105,5 +114,41 @@ module.exports = {
         } catch (e) {
             res.status(500).send({ message: e, profiles: '' });
         }
+    },
+    recomandedJobs: (req, res) => {
+        console.log('req', req.body);
+        Jobs.find(
+            {
+                jobType: req.body.jobType,
+                experience: req.body.experience,
+                salary: req.body.salary,
+                roles: req.body.roles,
+                skills: { $in: req.body.skills.split(',') }, location: { $in: req.body.location.split(',') }
+            },
+            (err, result) => {
+                console.log(err, result);
+                if (err) {
+                    res.status(500).send({ status: 500, message: 'Oops! Not able to get all profiles. Please try after sometimes', matchedJons: {} });
+                } else {
+                    res.status(200).send({ status: 200, message: 'matching jobs successfully listed.', matchedJobs: result });
+                }
+            });
     }
 }
+
+
+
+uploadFile = (file, callBack) => {
+    const fileName = file.fieldname + '-resume-' + Date.now() + '.' + file.mimetype.split('/').pop();
+    fs.rename(file.path, file.destination + fileName, (err) => {
+        if (err) {
+            callBack(false, '');
+
+        } else {
+            callBack(true, fileName);
+
+        }
+
+    });
+
+};
