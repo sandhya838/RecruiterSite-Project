@@ -1,69 +1,73 @@
-import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from "@angular/core";
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from "@angular/forms";
+import { Router } from "@angular/router";
+import { FileUploadValidators } from "@iplab/ngx-file-upload";
+import { SigninService } from "src/app/signin.service";
 
 @Component({
-  selector: 'app-sign-up',
-  templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.scss']
+  selector: "app-sign-up",
+  templateUrl: "./sign-up.component.html",
+  styleUrls: ["./sign-up.component.scss"],
 })
 export class SignUpComponent implements OnInit {
+  alert: boolean = false;
+  signUp: FormGroup = this.formBuilder.group({
+    fullName: ["", [Validators.required]],
+    email: ["", [Validators.required]],
+    password: ["", [Validators.required]],
+    file: new FormControl(null, [
+      Validators.required,
+      FileUploadValidators.filesLimit(1),
+    ]),
+  });
+  isPassword: boolean = false;
 
-  alert:boolean=false;
-  signUp !: FormGroup;
-  allData:any;
-  file: File | null = null
+  constructor(
+    public formBuilder: FormBuilder,
+    private signInService: SigninService,
+    private router: Router
+  ) {}
 
-  constructor(public formBuilder: FormBuilder) { }
-  onFileInput(files: FileList | null): void {
-    if (files) {
-      this.file = files.item(0)
-    }
-  }
-  pattern="^[ a-zA-Z]*$";
-  numberPattern="[0-9]";
-  mixPattern="[a-zA-Z0-9]"
-  ngOnInit(): void {
-    this.signUp= this.formBuilder.group({
-      fullname:['', [Validators.required]],
-      email:['', [Validators.required]],
-      password:['', [Validators.required]],
-      image: new FormControl(null, [Validators.required])
-    })  
-  }
-  
-  get getControl()
-  {
+  ngOnInit(): void {}
+
+  get getControl() {
     return this.signUp.controls;
   }
+  showPassword() {
+    this.isPassword = !this.isPassword;
+  }
 
-//   showToasterSuccess(){
-//     this.notifyService.showSuccess("Data submited successfully !!")
-// }
-  
-  onClick(formValue:any)
-  {
-    console.log(this.signUp.value);
+  onSubmitForm(isValid: boolean, formValue: any) {
+    if (isValid) {
+      let fd = new FormData();
+      fd.append("resume", formValue.file[0]);
+      fd.append("fullName", formValue.fullName);
+      fd.append("email", formValue.email);
+      fd.append("passowrd", formValue.password);
 
-    this.allData=JSON.parse(JSON.stringify(this.signUp.value));
-    this.alert=true;
-    this.signUp.reset({});
-
-    if(this.signUp.valid){
-
-    }
-    else{
+      console.log("formValue", fd);
+      this.signInService.register(fd).subscribe(
+        (response: any) => {
+          if (response.status === 200) {
+            this.router.navigate(["/login"]);
+          } else {
+          }
+        },
+        (err) => {
+          console.log(err.message);
+        }
+      );
+    } else {
       this.signUp.markAllAsTouched();
-      this.signUp.updateValueAndValidity();
-      
     }
-   
-  }
-  
-  closeAlert(){
-    this.alert=false;
   }
 
-
+  closeAlert() {
+    this.alert = false;
+  }
 }
-
-

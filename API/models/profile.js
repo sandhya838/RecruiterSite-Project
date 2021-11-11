@@ -4,6 +4,21 @@ var Schema = mongoose.Schema;
 
 
 var ProfileSchema = new Schema({
+  location: {
+    type: []
+  },
+  skills: {
+    type: []
+  },
+  email: {
+    type: String
+  },
+  mobileNumber: {
+    type: Number,
+  },
+  password: {
+    type: String
+  },
   firstName: {
     type: String
   },

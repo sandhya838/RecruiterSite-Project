@@ -8,7 +8,7 @@ import { SigninService } from "./signin.service";
 })
 export class AppComponent {
   title = "Recruiter";
-  public loggedIn=false;
+  public loggedIn = false;
   // data:any;
   // constructor(private postData:ConfigService){}
 
@@ -25,9 +25,8 @@ export class AppComponent {
   //   })
   // }
 
-
   constructor(private signinService: SigninService) {}
   ngOnInit() {
-  this.loggedIn = this.signinService.isLoggedIn();
-}
+    this.loggedIn = sessionStorage.getItem("token") ? true : false;
+  }
 }

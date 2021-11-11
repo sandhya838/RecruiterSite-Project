@@ -18,15 +18,14 @@ import { EduDetailsComponent } from './Components/edu-details/edu-details.compon
 import { RollprofileComponent } from './Components/rollprofile/rollprofile.component';
 import { CertificationComponent } from './Components/certification/certification.component';
 import { SignInComponent } from './Components/sign-in/sign-in.component';
-import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { AgGridModule } from 'ag-grid-angular';
-import { FileUploadComponent } from './Components/file-upload/file-upload.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { PrimarySkillComponent } from './Components/primary-skill/primary-skill.component';
 import { CompanyDetailsComponent } from './Components/company-details/company-details.component';
 import { TokenInterceptorService } from './token-interceptor-service.service';
 import { JobProfileCardComponent } from './job-profile-card/job-profile-card.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -41,9 +40,7 @@ import { JobProfileCardComponent } from './job-profile-card/job-profile-card.com
     RollprofileComponent,
     CertificationComponent,
     SignInComponent,
-    SignUpComponent,
     PageNotFoundComponent,
-    FileUploadComponent,
     PrimarySkillComponent,
     CompanyDetailsComponent,
     JobProfileCardComponent
