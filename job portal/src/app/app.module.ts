@@ -27,6 +27,7 @@ import { PrimarySkillComponent } from './Components/primary-skill/primary-skill.
 import { CompanyDetailsComponent } from './Components/company-details/company-details.component';
 import { TokenInterceptorService } from './token-interceptor-service.service';
 import { JobProfileCardComponent } from './job-profile-card/job-profile-card.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -46,7 +47,8 @@ import { JobProfileCardComponent } from './job-profile-card/job-profile-card.com
     FileUploadComponent,
     PrimarySkillComponent,
     CompanyDetailsComponent,
-    JobProfileCardComponent
+    JobProfileCardComponent,
+    MyProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -15,13 +15,13 @@
                </a>
             </li>
             <li>
-               <a class="s-sidebar__nav-link" href="#0">
+               <a class="s-sidebar__nav-link" routerLink="/myProfile">
                  <i class="fa fa-user"></i><em>My Profile</em>
                </a>
             </li>
             <li>
               <a class="s-sidebar__nav-link" routerLink="/jobs">
-                <i class="fa fa-user"></i><em>Jobs</em>
+                <i class="fa fa-suitcase" aria-hidden="true"></i><em>Jobs</em>
               </a>
            </li>
          </ul>
@@ -55,7 +55,7 @@
                     <h6 class="text-overflow m-0">Welcome !</h6>
                 </div>
                 <!-- item-->
-                <a routerLink="/profile" class="dropdown-item notify-item">
+                <a routerLink="/myProfile" class="dropdown-item notify-item">
                     <i class="fe-settings"></i>
                     <span>Profile</span>
                 </a>
@@ -77,8 +77,8 @@
     <!-- Content -->
     <main class="s-layout__content">
       <div class="container-fluid">
-        <app-dashboard></app-dashboard>
-        <!-- <app-primary-skill></app-primary-skill> -->
+        <router-outlet></router-outlet>
+        <!-- <app-dashboard></app-dashboard> -->
       </div>
     </main>
     </div>
