@@ -1,11 +1,11 @@
 const express = require('express');
 const jwt = require('jwt-simple');
 const app = express();
-const User = require('../models/users');
 const moment = require('moment');
 const constants = require('../config/constants');
 const { request } = require('https');
 const Orgnization = require('../models/orgnization');
+const Profile = require('../models/profile');
 
 app.set('jwtTokenSecret', constants.SECRET);
 
@@ -17,7 +17,7 @@ exports.authToken = function (req, res, next) {
             if (decoded.exp <= Date.now()) {
                 res.end('Access token has expired', 401);
             }
-            User.findOne({ mobileNumber: decoded.userName }, function (err, user) {
+            Profile.findOne({ email: decoded.userName }, function (err, user) {
                 if (err) {
                     res.status(401).send({ status: 401, message: 'You are not autorized to get access.' });
                 } else {
@@ -34,7 +34,8 @@ exports.authToken = function (req, res, next) {
 };
 
 exports.login = (req, res) => {
-    User.findOne({ email: req.body.email, password: req.body.password }, (err, result) => {
+    console.log(req.body);
+    Profile.findOne({ email: req.body.email, password: req.body.password }, (err, result) => {
         if (err) {
             res.status(401).send({ status: 401, message: 'You are not autorized to get access.' });
         } else if (result) {

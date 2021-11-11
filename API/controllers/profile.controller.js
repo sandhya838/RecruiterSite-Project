@@ -30,16 +30,24 @@ module.exports = {
 
 
     },
+
     create: (req, res) => {
-        console.log('req', req.body)
-        profile.create(req.body, (err, result) => {
-            if (err) {
-                console.log('error', err);
-                res.status(500).send({ status: 400, message: 'Oops! Not able to create profile. Please try after sometimes', profile: {} });
+        uploadFile(req.file, (isFileUploaded, fileName) => {
+            if (isFileUploaded) {
+                req.body.resume = fileName;
+                profile.create(req.body, (err, result) => {
+                    if (err) {
+                        res.status(500).send({ status: 400, message: 'Oops! Not able to create profile. Please try after sometimes', profile: {} });
+                    } else {
+                        console.log(result);
+                        res.status(200).send({ status: 200, message: 'profile created successfully.', profile: result });
+                    }
+                });
             } else {
-                res.status(200).send({ status: 200, message: 'profile created successfully.', profile: result });
+                if (err) throw res.status(500).send({ status: 500, message: 'Oops! Not able to create register user. Please try after sometimes', profile: {} });
             }
-        });
+
+        })
     },
 
     // Retrieve and return all profiles from the database.
@@ -108,6 +116,7 @@ module.exports = {
         }
     },
     recomandedJobs: (req, res) => {
+        console.log('req', req.body);
         Jobs.find(
             {
                 jobType: req.body.jobType,
@@ -126,3 +135,20 @@ module.exports = {
             });
     }
 }
+
+
+
+uploadFile = (file, callBack) => {
+    const fileName = file.fieldname + '-resume-' + Date.now() + '.' + file.mimetype.split('/').pop();
+    fs.rename(file.path, file.destination + fileName, (err) => {
+        if (err) {
+            callBack(false, '');
+
+        } else {
+            callBack(true, fileName);
+
+        }
+
+    });
+
+};

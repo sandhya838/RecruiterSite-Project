@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AppRoutingModule } from './app-routing.module';
@@ -18,13 +18,14 @@ import { EduDetailsComponent } from './Components/edu-details/edu-details.compon
 import { RollprofileComponent } from './Components/rollprofile/rollprofile.component';
 import { CertificationComponent } from './Components/certification/certification.component';
 import { SignInComponent } from './Components/sign-in/sign-in.component';
-import { SignUpComponent } from './Components/sign-up/sign-up.component';
 import { PageNotFoundComponent } from './Components/page-not-found/page-not-found.component';
 import { AgGridModule } from 'ag-grid-angular';
-import { FileUploadComponent } from './Components/file-upload/file-upload.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { PrimarySkillComponent } from './Components/primary-skill/primary-skill.component';
 import { CompanyDetailsComponent } from './Components/company-details/company-details.component';
+import { TokenInterceptorService } from './token-interceptor-service.service';
+import { JobProfileCardComponent } from './job-profile-card/job-profile-card.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,11 +40,10 @@ import { CompanyDetailsComponent } from './Components/company-details/company-de
     RollprofileComponent,
     CertificationComponent,
     SignInComponent,
-    SignUpComponent,
     PageNotFoundComponent,
-    FileUploadComponent,
     PrimarySkillComponent,
-    CompanyDetailsComponent
+    CompanyDetailsComponent,
+    JobProfileCardComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +58,9 @@ import { CompanyDetailsComponent } from './Components/company-details/company-de
     AngularMultiSelectModule
     
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, 
+    useClass: TokenInterceptorService, 
+    multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

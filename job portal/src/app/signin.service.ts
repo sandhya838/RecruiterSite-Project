@@ -1,49 +1,56 @@
-import { HttpClient } from '@angular/common/http';
-import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { CONSTANTS } from "./constants";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root",
 })
 export class SigninService {
+  constructor(private http: HttpClient) {}
+  private _getHeaders() {
+    let header = new HttpHeaders({
+      "x-access-token": sessionStorage.getItem("token") as string,
+      "Content-Type": "application/json",
+    });
 
-  private loginUrl = "http://localhost:3000/v1/login"
-  constructor(private http: HttpClient) { }
-
-  generateToken(credentials: any){
-    return this.http.post(`${this.loginUrl}`,credentials);
+    return header;
   }
 
-  isLoggedIn()
-  {
-    let token=localStorage.getItem("token");
-    if(token==undefined || token==='' ||  token==null)
-    {
+  login(credentials: any) {
+    return this.http.post(CONSTANTS.CANDIDATELOGIN, credentials);
+  }
+
+  register(data: any): Observable<any> {
+    const header = this._getHeaders();
+    return this.http.post(CONSTANTS.CANDIDATESIGNUP, data, );
+  }
+
+  getToken() {
+    return sessionStorage.getItem("token");
+  }
+
+  isLoggedIn() {
+    let token = sessionStorage.getItem("token");
+    if (token == undefined || token === "" || token == null) {
       return false;
-    }
-    else
-    {
+    } else {
       return true;
     }
   }
 
-  isLoggedOut()
-  {
-    let token=localStorage.getItem("token");
-    if(token==undefined || token==='' ||  token==null)
-    {
+  isLoggedOut() {
+    let token = sessionStorage.getItem("token");
+    if (token == undefined || token === "" || token == null) {
       return true;
-    }
-    else
-    {
+    } else {
       return false;
     }
   }
 
-  logout()
-  {
-    localStorage.removeItem('token');
-    location.reload()
+  logout() {
+    sessionStorage.removeItem("token");
+    location.reload();
     return true;
-    
   }
 }
