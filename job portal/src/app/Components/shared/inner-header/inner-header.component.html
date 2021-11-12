@@ -1,5 +1,14 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light py-3 inner-header">
-  <a class="navbar-brand" href="#">
+<nav
+  class="
+    navbar
+    fixed-top
+    navbar-expand-lg navbar-light
+    bg-light
+    py-2
+    inner-header
+  "
+>
+  <a class="navbar-brand">
     <img
       src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg"
       width="30"
@@ -21,30 +30,32 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <a class="navbar-brand" href="#">Hidden brand</a>
-    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item active">
-        <a class="nav-link" href="#"
-          >Home <span class="sr-only">(current)</span></a
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link dropdown-toggle"
+          id="navbarDropdown"
+          role="button"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
         >
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Link</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+          <div class="inner-header__profile">
+            Welcome Ved
+            <img
+              class="inner-header__profile__img"
+              src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"
+              alt=""
+            />
+          </div>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <!-- <div class="dropdown-divider"></div> -->
+          <a class="dropdown-item" (click)="onLogOut()">
+            <i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a
+          >
+        </div>
       </li>
     </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input
-        class="form-control mr-sm-2"
-        type="search"
-        placeholder="Search"
-        aria-label="Search"
-      />
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-        Search
-      </button>
-    </form>
   </div>
 </nav>

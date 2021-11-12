@@ -19,7 +19,7 @@ export class SideBarComponent implements OnInit {
 
     {
       name: "My profile",
-      url: "/my-profile",
+      url: "/about-you",
       hasChildren: false,
       isActive: true,
       subLinks: [],
@@ -39,7 +39,7 @@ export class SideBarComponent implements OnInit {
   ngOnInit(): void {}
 
   makeLinkActive(index: number) {
-    this.menu.forEach((item:any) => {
+    this.menu.forEach((item: any) => {
       item.isActive = false;
     });
     this.menu[index].isActive = true;

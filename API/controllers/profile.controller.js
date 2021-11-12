@@ -117,14 +117,21 @@ module.exports = {
     },
     recomandedJobs: (req, res) => {
         console.log('req', req.body);
+        const searchQuery = {
+            jobType: req.body.jobType,
+            experience: req.body.experience,
+            salary: req.body.salary,
+            roles: req.body.roles,
+        };
+        if (req.body.skills.length) {
+            searchQuery.skills = { $in: req.body.skills.split(',') }
+        }
+        if (req.body.location.length) {
+            searchQuery.location = { $in: req.body.location.split(',') }
+        }
+        console.log('searchQuery',searchQuery);
         Jobs.find(
-            {
-                jobType: req.body.jobType,
-                experience: req.body.experience,
-                salary: req.body.salary,
-                roles: req.body.roles,
-                skills: { $in: req.body.skills.split(',') }, location: { $in: req.body.location.split(',') }
-            },
+            searchQuery,
             (err, result) => {
                 console.log(err, result);
                 if (err) {
