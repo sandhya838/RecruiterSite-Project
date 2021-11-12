@@ -1,3 +1,4 @@
+@import"../../assets/_partials/mixin.scss"; 
 body{
   margin-top:20px;
   color: #1a202c;
@@ -61,4 +62,26 @@ body{
 }
 img{
   background-color: #ffa50045;
+}
+.fa-pencil{
+  background: #dddddd;
+  padding:10px;
+  border-radius: 50%;
+}
+.introHeading{
+  width: 106.20%;
+    height: 50px;
+  box-shadow: 0px 0px 3px 1px rgb(180, 180, 180);
+  // text-align: center;
+}
+.inrotitle{
+  margin-top: 10px;
+  color: $darkGreyclr;
+}
+.fa-times{
+  margin-top: 5px;
+    margin-left: 177px;
+    background: #dddddd;
+    padding:12px;
+    border-radius: 50%;
 }
