@@ -6,7 +6,7 @@ import {
   Validators,
 } from "@angular/forms";
 import { Router } from "@angular/router";
-// import { FileUploadValidators } from "@iplab/ngx-file-upload";
+import { FileUploadValidators } from "@iplab/ngx-file-upload";
 import { SigninService } from "src/app/signin.service";
 
 @Component({
@@ -22,7 +22,7 @@ export class SignUpComponent implements OnInit {
     password: ["", [Validators.required]],
     file: new FormControl(null, [
       Validators.required,
-      // FileUploadValidators.filesLimit(1),
+      FileUploadValidators.filesLimit(1),
     ]),
   });
   isPassword: boolean = false;

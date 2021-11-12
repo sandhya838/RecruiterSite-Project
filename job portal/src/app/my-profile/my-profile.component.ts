@@ -11,5 +11,12 @@ export class MyProfileComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  displayStyle = "none";
+  
+  openPopup() {
+    this.displayStyle = "block";
+  }
+  closePopup() {
+    this.displayStyle = "none";
+  }
 }
