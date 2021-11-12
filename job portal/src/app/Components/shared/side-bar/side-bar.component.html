@@ -1,0 +1,56 @@
+<div class="sidebar" *ngIf="menu.length">
+    <ngx-simplebar [options]="options">
+      <ul *ngFor="let item of menu; let i = index">
+        <li [class.active]="item.isActive" class="mb-4">
+          <i class="{{ item.icon }}"></i>
+  
+          <a
+            *ngIf="item.url; else subMneu"
+            [class.active]="item.isActive"
+            (click)="makeLinkActive(i)"
+            [routerLink]="item.url"
+          >
+            {{ item.name }}
+            <i class="fa fa-chevron-right sidebar__right-arrow"></i>
+          </a>
+          <ng-template #subMneu>
+            <a 
+              [class.active]="item.isActive"
+              (click)="makeLinkActive(i)"
+              data-toggle="collapse"
+              href="#collapsemenu{{ i }}"
+              role="button"
+              aria-expanded="false"
+              [attr.aria-controls]="'collapsemenu' + i"
+            >
+              {{ item.name }}
+              <ng-template #rightIcon>
+                <i class="fa fa-chevron-right sidebar__right-arrow"></i>
+              </ng-template>
+              <i
+                class="fa fa-chevron-down sidebar__right-arrow"
+                *ngIf="item.subLinks.length && item.isActive; else rightIcon"
+              ></i>
+            </a>
+            <ng-container *ngIf="item.subLinks?.length">
+              <ul
+                class="sidebar__childmenu collapse"
+                [ngClass]="{ show: item.isActive }"
+                id="collapsemenu{{ i }}"
+              >
+                <li
+                  *ngFor="let childItem of item?.subLinks"
+                  class="sidebar__childmenu__link"
+                >
+                  <a [routerLink]="childItem?.url">
+                    {{ childItem?.name }}
+                  </a>
+                </li>
+              </ul>
+            </ng-container>
+          </ng-template>
+        </li>
+      </ul>
+    </ngx-simplebar>
+  </div>
+  

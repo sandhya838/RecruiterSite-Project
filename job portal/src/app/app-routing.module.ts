@@ -24,10 +24,11 @@ const routes: Routes = [
       import("./Components/sign-up/sign-up.module").then((m) => m.SignUpModule),
   },
   {
-    path: "dashboard",
-    component: DashboardComponent,
-    canActivate: [AuthGuard],
+    path:'',
+    loadChildren:()=>import('./Components/admin/admin.module').then((m)=>m.AdminModule)
   },
+
+  
   {
     path: "about-you",
     component: UserProfileComponent,

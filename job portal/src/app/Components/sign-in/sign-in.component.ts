@@ -38,7 +38,7 @@ export class SignInComponent implements OnInit {
           if (response.status === 200) {
             sessionStorage.setItem("token", response.token);
             sessionStorage.setItem("user", JSON.stringify(response.user));
-            this.router.navigate(["/about-you"]);
+            this.router.navigate(["/dashboard"]);
           } else {
           }
         },

@@ -13,7 +13,6 @@ import {ExperianceComponent} from './Components/experiance/experiance.component'
 import { WorkExperianceComponent } from './Components/work-experiance/work-experiance.component';
 import { SkillProfileComponent } from './Components/skill-profile/skill-profile.component';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
-import { DashboardComponent } from './Components/dashboard/dashboard.component';
 import { EduDetailsComponent } from './Components/edu-details/edu-details.component';
 import { RollprofileComponent } from './Components/rollprofile/rollprofile.component';
 import { CertificationComponent } from './Components/certification/certification.component';
@@ -35,7 +34,6 @@ import { JobProfileCardComponent } from './job-profile-card/job-profile-card.com
     WorkExperianceComponent,
     SkillProfileComponent,
     SidebarComponent,
-    DashboardComponent,
     EduDetailsComponent,
     RollprofileComponent,
     CertificationComponent,
