@@ -1,0 +1,20 @@
+
+@media screen and (max-width: 767px) {
+    .container{
+        padding-right: 338px;
+        padding-left: 17px;
+        padding-top: 22px;
+    }
+    .row{
+        display: flex;
+    flex-direction: column;
+}
+.col {
+    flex-basis: 0;
+    flex-grow: 1;
+    max-width: 100%;
+    margin-left: 135px;
+    margin-top: -50px;
+
+}
+    }
