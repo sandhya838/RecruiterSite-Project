@@ -25,52 +25,15 @@ const routes: Routes = [
       import("./Components/sign-up/sign-up.module").then((m) => m.SignUpModule),
   },
   {
-    path: "dashboard",
-    component: DashboardComponent,
-    canActivate: [AuthGuard],
+    path: "",
+    loadChildren: () =>
+      import("./Components/admin/admin.module").then((m) => m.AdminModule),
   },
-  {
-    path: "about-you",
-    component: UserProfileComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "skills",
-    component: SkillProfileComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "experience",
-    component: ExperianceComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "work-experience",
-    component: WorkExperianceComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "education-details",
-    component: EduDetailsComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "education-details/:id",
-    component: EduDetailsComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "role-profile",
-    component: RollprofileComponent,
-    canActivate: [AuthGuard],
-  },
-  {
-    path: "certificate",
-    component: CertificationComponent,
-    canActivate: [AuthGuard],
-  },
+
+  
   { path: "signUp", component: SignUpComponent },
   { path: "sidebar", component: SidebarComponent, canActivate: [AuthGuard] },
+<<<<<<< HEAD
   {
     path: "jobs",
     component: JobProfileCardComponent,
@@ -86,6 +49,9 @@ const routes: Routes = [
     component:JobProfileCardComponent,
     canActivate:[AuthGuard]
   }
+=======
+
+>>>>>>> 07c10273e9645119c15bbcadcbb492c36d1d4dfd
   // {path:"priSkill",component:PrimarySkillComponent, canActivate:[AuthGuard]}
   // {path: '**', redirectTo: 'PageNotFoundComponent'}
 ];

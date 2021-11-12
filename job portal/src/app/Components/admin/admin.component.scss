@@ -1,0 +1,14 @@
+.admin {
+  &__main-content {
+    margin: 50px 20px 50px 260px !important;
+    padding-top: 50px;
+  }
+}
+
+@media all and (max-width: 767px) {
+    .admin {
+        &__main-content {
+          margin: auto 15px !important;
+        }
+      }
+  }
