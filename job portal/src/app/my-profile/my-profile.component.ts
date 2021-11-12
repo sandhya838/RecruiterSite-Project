@@ -19,5 +19,4 @@ export class MyProfileComponent implements OnInit {
   closePopup() {
     this.displayStyle = "none";
   }
-
 }
