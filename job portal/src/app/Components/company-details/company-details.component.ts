@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+<<<<<<< HEAD
+=======
+
+>>>>>>> 420aaa594e8bdb97c497fdb5399bc25849677a1f
 import { ConfigService } from 'src/app/config.service';
 import { NotificationService } from 'src/app/notification.service';
 
@@ -17,6 +21,10 @@ export class CompanyDetailsComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private configService: ConfigService,
+<<<<<<< HEAD
+=======
+    //private router: Router,
+>>>>>>> 420aaa594e8bdb97c497fdb5399bc25849677a1f
     private notifyService: NotificationService
   ) {}
 

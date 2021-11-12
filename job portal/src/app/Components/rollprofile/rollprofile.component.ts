@@ -13,6 +13,8 @@ import { NotificationService } from "src/app/notification.service";
   styleUrls: ["./rollprofile.component.scss"],
 })
 export class RollprofileComponent implements OnInit {
+  sh: any;
+  isChecked: boolean = true;
   userForm!: FormGroup;
   allData: any;
   alert: boolean = false;

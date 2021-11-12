@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { AppRoutingModule } from './app-routing.module';
@@ -23,8 +23,14 @@ import { PageNotFoundComponent } from './Components/page-not-found/page-not-foun
 import { AgGridModule } from 'ag-grid-angular';
 import { FileUploadComponent } from './Components/file-upload/file-upload.component';
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
+import { PrimarySkillComponent } from './Components/primary-skill/primary-skill.component';
 import { CompanyDetailsComponent } from './Components/company-details/company-details.component';
+<<<<<<< HEAD
 import { OrganizationSignUpComponent } from './Components/organization-sign-up/organization-sign-up.component';
+=======
+import { TokenInterceptorService } from './token-interceptor-service.service';
+import { JobProfileCardComponent } from './job-profile-card/job-profile-card.component';
+>>>>>>> 420aaa594e8bdb97c497fdb5399bc25849677a1f
 @NgModule({
   declarations: [
     AppComponent,
@@ -42,8 +48,14 @@ import { OrganizationSignUpComponent } from './Components/organization-sign-up/o
     SignUpComponent,
     PageNotFoundComponent,
     FileUploadComponent,
+<<<<<<< HEAD
     CompanyDetailsComponent,
     OrganizationSignUpComponent
+=======
+    PrimarySkillComponent,
+    CompanyDetailsComponent,
+    JobProfileCardComponent
+>>>>>>> 420aaa594e8bdb97c497fdb5399bc25849677a1f
   ],
   imports: [
     BrowserModule,
@@ -58,7 +70,9 @@ import { OrganizationSignUpComponent } from './Components/organization-sign-up/o
     AngularMultiSelectModule
     
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, 
+    useClass: TokenInterceptorService, 
+    multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -5,6 +5,7 @@ const User = require('../models/users');
 const moment = require('moment');
 const constants = require('../config/constants');
 const { request } = require('https');
+const Orgnization = require('../models/orgnization');
 
 app.set('jwtTokenSecret', constants.SECRET);
 
@@ -18,7 +19,7 @@ exports.authToken = function (req, res, next) {
             }
             User.findOne({ mobileNumber: decoded.userName }, function (err, user) {
                 if (err) {
-                    res.status(401).send({status:401, message: 'You are not autorized to get access.' });
+                    res.status(401).send({ status: 401, message: 'You are not autorized to get access.' });
                 } else {
 
                 }
@@ -28,27 +29,54 @@ exports.authToken = function (req, res, next) {
             return next();
         }
     } else {
-        res.status(401).send({status:401, message: 'Opps! You are not autorized to get access. please login again' });
+        res.status(401).send({ status: 401, message: 'Opps! You are not autorized to get access. please login again' });
     }
 };
 
 exports.login = (req, res) => {
-    console.log(req.body.userName)
-    User.find({ mobileNumber: req.body.userName }, function (err, user) {
+    // console.log(req.body.userName)
+    User.find({ mobileNumber: req.body.mobileNumber }, function (err, user) {
         if (err) {
-            res.status(401).send({status:401, message: 'You are not autorized to get access.' });
+            res.status(401).send({ status: 401, message: 'You are not autorized to get access.' });
         } else {
-            console.log(user)
+            // console.log(user)
             const expires = moment().add('days', 7).valueOf();
             const token = jwt.encode({
                 userName: user.mobileNumber,
                 exp: expires
             }, app.get('jwtTokenSecret'));
-            res.status(200).send({status:200,
-                token: 'Bearer '+token,
+            res.status(200).send({
+                status: 200,
+                token: 'Bearer ' + token,
                 expires: expires,
-                user: user.toJSON()
+                user: JSON.stringify(user)
+
             });
+            console.log(user);
+        }
+
+    });
+};
+exports.orgnization_login = (req, res) => {
+    // console.log(req.body.userName)
+    Orgnization.find({ email: req.body.email, password: req.body.password }, (err, orgnization)=> {
+        if (err) {
+            res.status(401).send({ status: 401, message: 'You are not autorized to get access.' });
+        } else {
+            console.log(orgnization)
+            const expires = moment().add('days', 7).valueOf();
+            const token = jwt.encode({
+                userName: orgnization.email,
+                exp: expires
+            }, app.get('jwtTokenSecret'));
+            res.status(200).send({
+                status: 200,
+                token: 'Bearer ' + token,
+                expires: expires,
+                user:orgnization
+
+            });
+           
         }
 
     });

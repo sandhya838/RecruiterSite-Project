@@ -84,31 +84,23 @@ module.exports = {
         });
     },
     uploadResume: (req, res, next) => {
-        console.log('req', req)
-        var matches = req.body.resume.match(/^data:([A-Za-z-+/]+);base64,(.+)$/),
-            response = {};
-
+        var matches = req.body.resume.match(/^data:([@A-Za-z-+/]+);base64,(.+)$/);
         if (matches.length !== 3) {
-            res.status(500).send({status: 500, message: 'Invalid input string', profiles: '' });
+            res.status(500).send({ status: 500, message: 'Invalid input string', profiles: '' });
         }
-
-        response.type = matches[1];
-        response.data = new Buffer(matches[2], 'base64');
-        let decodedImg = response;
-        let imageBuffer = decodedImg.data;
-        let type = decodedImg.type;
-        let extension = mime.extension(type);
-        let fileName = req.params.profileId + "-resume." + extension;
+        const filematches = req.body.resume.replace(/^data:.+;base64,/, "");
+        const tempExtension = req.body.resume.split(';')[0].split('/')[1];
+        let fileName = req.params.profileId + "-resume." + tempExtension;
         try {
-            fs.writeFileSync("./public/resume/" + fileName, imageBuffer, 'utf8');
-            profile.findOneAndUpdate({ _id: req.params.profileId }, { $set: {resume:fileName} },{ new: true }, (err, result) => {
+            fs.writeFileSync("./public/resume/" + fileName, Buffer.from(filematches, "base64"), 'utf8');
+            profile.findOneAndUpdate({ _id: req.params.profileId }, { $set: { resume: fileName } }, { new: true }, (err, result) => {
                 if (err) {
-                    res.status(500).send({status: 500, message: 'Oops! Not able to update profile. Please try after sometimes', profiles: result });
+                    res.status(500).send({ status: 500, message: 'Oops! Not able to update profile. Please try after sometimes', profile: '' });
                 } else {
-                    res.status(200).send({status: 200, message: 'profile updated successfully.', profile: result });
+                    res.status(200).send({ status: 200, message: 'profile updated successfully.', profile: result });
                 }
             })
-           
+
 
         } catch (e) {
             res.status(500).send({ message: e, profiles: '' });

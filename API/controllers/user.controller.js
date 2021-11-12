@@ -3,30 +3,30 @@ const User = require('../models/users');
 module.exports = {
     // Create and Save a new User
     //['required','numeric','regex:/^[5-9][0-9]{9}$/'],
-    createRules: {
-        fullName: "required|string",
-        role: "alpha",
-        email:"string",
-        mobileNumber:"string",
-        passowrd:"required|alpha",
-        handle:"required|alpha"
+    // createRules: {
+    //     fullName: "required|string",
+    //     role: "alpha",
+    //     email:"string",
+    //     mobileNumber:"string",
+    //     passowrd:"required|alpha",
+    //     handle:"required|alpha"
 
-    },
-    updateRules: {
-        email: "required|string",
-        address: "required|string",
-        city: "required|alpha",
-        state: "required|alpha",
-        pinCode: "required|numeric",
-        emergencyNumber: "required|numeric",
-        panNumber: "required|alpha_num",
-        gender: "required|alpha",
-        aadharNumber: "required|numeric",
-        updatedDate: "required|date",
-        updatedBy: "required"
+    // },
+    // updateRules: {
+    //     email: "required|string",
+    //     address: "required|string",
+    //     city: "required|alpha",
+    //     state: "required|alpha",
+    //     pinCode: "required|numeric",
+    //     emergencyNumber: "required|numeric",
+    //     panNumber: "required|alpha_num",
+    //     gender: "required|alpha",
+    //     aadharNumber: "required|numeric",
+    //     updatedDate: "required|date",
+    //     updatedBy: "required"
 
 
-    },
+    // },
     create: (req, res) => {
         console.log(req.body);
         User.create(req.body, (err, result) => {

@@ -1,8 +1,31 @@
 module.exports = (app) => {
   const users = require('../controllers/user.controller');
-  const profile  = require('../controllers/profile.controller');
+  const profile = require('../controllers/profile.controller');
   const auth = require('../auth/auth.controller');
   const requestValidator = require('../middlewares/validateRequest');
+  const multer = require("multer");
+  const upload = multer({ dest: 'public/resume/' });
+  const uploadLogo = multer({ dest: 'public/logo/' });
+  const orgnization = require('../controllers/orgnization.controller');
+  const job = require('../controllers/job.controller');
+
+  /**********************orgnization pre APIs **************** */
+  app.post('/v1/orgnization-login', auth.orgnization_login);
+  app.post('/v1/register-orgnization', uploadLogo.single('logo'), orgnization.create);
+
+  /************ Orgnization post login ****************** */
+  app.get('/v1/orgnizations', auth.authToken, orgnization.findAll);
+  app.get('/v1/orgnization/:orgnizationId', auth.authToken, orgnization.findOne);
+  app.delete('/v1/orgnization/:orgnizationId', auth.authToken, orgnization.delete);
+  app.put('/v1/orgnization/:orgnizationId', auth.authToken, orgnization.update);
+
+
+  /*************Jobs ******************** */
+  app.post('/v1/create', auth.authToken, job.create);
+  app.get('/v1/jobs', auth.authToken, job.findAll);
+  app.get('/v1/job/:jobId', auth.authToken, job.findOne);
+  app.delete('/v1/job/:jobId', auth.authToken, job.delete);
+  app.put('/v1/job/:jobId', auth.authToken, job.update);
 
 
   /************** Pre Login APIs ****************** */
@@ -13,6 +36,8 @@ module.exports = (app) => {
   /****************** profile routings *************** */
   app.post('/v1/aboutyou', profile.create);
   app.get('/v1/profile/:profileId', profile.findOne);
+  app.put('/v1/upload-resume/:profileId', upload.single('resume'), profile.uploadResume);
+
   app.put('/v1/profile/:profileId', profile.update);
   app.get('/v1/profiles', profile.findAll);
   // app.get('/v1/profiles', auth.authToken, profile.findAll);

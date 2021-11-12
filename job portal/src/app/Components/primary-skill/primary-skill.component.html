@@ -1,0 +1,82 @@
+<div class="container">
+    <div class="body">
+
+        <div class="row">
+            <label>
+                <input [value]="1" [(ngModel)]="sh" name="sh" type="radio" [checked]="isChecked" /> IT
+            </label>
+            <div class="item-list"  *ngIf="sh == 1">
+                <ng-multiselect-dropdown formControlName="filmModeling"
+                [placeholder]="'Select Feild' "
+                [settings]="dropdownSettings"
+                [data]="dropdownListIT"
+                [(ngModel)]="selectedItems"
+                (onSelect)="onItemSelect($event)"
+                (onSelectAll)="onSelectAll($event)">
+            </ng-multiselect-dropdown>
+            <!-- <select class="form-select" class="form-control" required formControlName="IT">
+                <option>-select-</option>
+                <option>Management</option>
+                <option>Finance</option>
+                <option>HR/Legal</option>
+                <option>Consulting</option>
+                <option>Sales/Marketing</option>
+                <option>Programming</option>
+                <option>Graphic Design</option>
+                <option>CAD/GIS/RS</option>
+                <option>Engineering Tech</option>
+                <option>Testing</option>
+                <option>Network Engg</option>
+                <option>Database</option>
+                <option>CloudTech</option>
+                <option>CAD/GIS/ RemoteSensing</option>
+                <option>Enterprize App</option>
+                <option>DevOps</option>
+                <option>Digital Marketing</option>
+                <option>Digital Transformation</option>
+                <option>AI/ML/Analytics</option>
+              </select> -->
+          </div>
+        </div>
+
+        <div class="row">
+            <label>
+                <input [value]="2" [(ngModel)]="sh" name="sh" type="radio" [checked]="!isChecked"/> Film & Modelling
+              </label>
+            <div class="item-list" *ngIf="sh == 2">
+                <ng-multiselect-dropdown formControlName="filmModeling"
+                  [placeholder]="'Select Feild' "
+                  [settings]="dropdownSettings"
+                  [data]="dropdownListfilmModeling"
+                  [(ngModel)]="selectedItems"
+                  (onSelect)="onItemSelect($event)"
+                  (onSelectAll)="onSelectAll($event)">
+              </ng-multiselect-dropdown>
+            </div>
+          </div>
+
+          <div class="row">
+            <label>
+                <input [value]="3" [(ngModel)]="sh" name="sh" type="radio" [checked]="isChecked"/>Pharma & Lifesciences
+              </label>
+            <div class="item-list" *ngIf="sh == 3">
+                  <ng-multiselect-dropdown formControlName="pharmaScience"
+                  [placeholder]="'Select Feild' "
+                  [settings]="dropdownSettings"
+                  [data]="dropdownList"
+                  [(ngModel)]="selectedItems"
+                  (onSelect)="onItemSelect($event)"
+                  (onSelectAll)="onSelectAll($event)">
+              </ng-multiselect-dropdown>
+            </div>
+          </div>
+
+    </div>
+    <br><br><br><br>
+    <!-- <button (click)="logout()">Logout</button> -->
+    <!-- <input class="btn btn-primary" type="submit" value="Logout" (click)="logout()"> -->
+  
+    </div>
+
+
+    
