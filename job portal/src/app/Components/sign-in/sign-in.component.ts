@@ -31,30 +31,6 @@ export class SignInComponent implements OnInit {
     return this.signIn.controls;
   }
 
-<<<<<<< HEAD
-//   showToasterSuccess(){
-//     this.notifyService.showSuccess("Data submited successfully !!")
-// }
-  
-loginSubmit(){
-  // if(this.signIn.valid){
-  //   this.signService.login(this.signIn.value).subscribe(user=>{
-  //     // if(){
-  //       console.log(user);
-        
-  //   })
-  // }
-  if((this.credentials.email!='' && this.credentials.password!='')&& (this.credentials.email!=null && this.credentials.password!=null) ) 
-  {
-    this.signService.generateToken(this.credentials).subscribe(
-      (response:any)=>{
-     
-        localStorage.setItem('token', response.token);
-        window.location.href="/about-you";
-  })}
-  else{
-    this.msg="Fields Are Empty";
-=======
   loginSubmit() {
     if (this.signIn.valid) {
       this.signService.login(this.credentials).subscribe(
@@ -74,7 +50,6 @@ loginSubmit(){
       this.signIn.markAllAsTouched();
     }
   }
->>>>>>> e5a5b88a8aa48a4d8cb471f88818a8ed7ff2c23a
 
   closeAlert() {
     this.alert = false;
