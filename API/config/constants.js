@@ -1,7 +1,7 @@
 module.exports = {
   HOSTNAME: 'localhost',
   PORT: process.env.PORT || 3000,
-  URL: 'mongodb://localhost:27017/jobportal',
+  URL: 'mongodb://localhost:27017/jobportal?readPreference=primary&appname=MongoDBCompass&directConnection=true&ssl=false',
   OPTIONS: {
     useNewUrlParser: true,
     useUnifiedTopology: true,

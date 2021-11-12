@@ -1,5 +1,4 @@
 module.exports = (app) => {
-  const users = require('../controllers/user.controller');
   const profile = require('../controllers/profile.controller');
   const auth = require('../auth/auth.controller');
   const requestValidator = require('../middlewares/validateRequest');
@@ -26,12 +25,13 @@ module.exports = (app) => {
   app.get('/v1/job/:jobId', auth.authToken, job.findOne);
   app.delete('/v1/job/:jobId', auth.authToken, job.delete);
   app.put('/v1/job/:jobId', auth.authToken, job.update);
+  app.post('/v1/recomandedJobs', auth.authToken, profile.recomandedJobs);
 
 
   /************** Pre Login APIs ****************** */
   app.post('/v1/login', auth.login);
   // app.post('/v1/register', requestValidator.validateParams(users.createRules), users.create);
-  app.post('/v1/register', users.create);
+  app.post('/v1/register', upload.single('resume'), profile.create);
 
   /****************** profile routings *************** */
   app.post('/v1/aboutyou', profile.create);

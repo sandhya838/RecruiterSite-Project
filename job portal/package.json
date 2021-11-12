@@ -19,6 +19,7 @@
     "@angular/platform-browser": "~11.2.12",
     "@angular/platform-browser-dynamic": "~11.2.12",
     "@angular/router": "~11.2.12",
+    "@iplab/ngx-file-upload": "^3.3.1",
     "@popperjs/core": "^2.10.1",
     "@syncfusion/ej2-angular-dropdowns": "^19.2.62",
     "ag-grid-angular": "^26.1.0",
