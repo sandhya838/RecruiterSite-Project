@@ -33,6 +33,7 @@ const routes: Routes = [
   
   { path: "signUp", component: SignUpComponent },
   { path: "sidebar", component: SidebarComponent, canActivate: [AuthGuard] },
+<<<<<<< HEAD
   {
     path: "jobs",
     component: JobProfileCardComponent,
@@ -48,6 +49,8 @@ const routes: Routes = [
     component:JobProfileCardComponent,
     canActivate:[AuthGuard]
   }
+=======
+>>>>>>> 3b7c7759527b0e67da72c7732a242abfa58e10ba
   // {path:"priSkill",component:PrimarySkillComponent, canActivate:[AuthGuard]}
   // {path: '**', redirectTo: 'PageNotFoundComponent'}
 ];
