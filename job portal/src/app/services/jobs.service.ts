@@ -20,7 +20,7 @@ export class JobsService {
   getRecommendedJobs(searchString: any): Observable<any> {
     const header = this._getHeaders();
     return this.http.post(
-      this.apiBaseUrl + CONSTANTS.RECOMMENDEDJOBS,
+      this.apiBaseUrl + CONSTANTS. CANDIDATELOGIN,
       searchString,
       { headers: header }
     );
