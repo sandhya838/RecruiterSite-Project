@@ -10,9 +10,8 @@ const app = express()
 
 app.use(express.json());
 app.use(express.urlencoded({
-  extended: true
+  limit: '50000gb', extended: true
 }));
-
 app.use('/static', express.static('public'));
 app.use(cors())
 
@@ -37,7 +36,7 @@ const options = {
 //   options
 // }, app)
 
-  app.listen(constants.PORT, constants.HOSTNAME, () => {
-    console.log(`Server running at http://${constants.HOSTNAME}:${constants.PORT}/`);
-  });
+app.listen(constants.PORT, constants.HOSTNAME, () => {
+  console.log(`Server running at http://${constants.HOSTNAME}:${constants.PORT}/`);
+});
 

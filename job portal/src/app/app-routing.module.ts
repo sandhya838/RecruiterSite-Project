@@ -13,8 +13,11 @@ import { SignInComponent } from './Components/sign-in/sign-in.component';
 import { PrimarySkillComponent } from './Components/primary-skill/primary-skill.component';
 import { AuthGuard } from './authguard';
 import { SidebarComponent } from './Components/sidebar/sidebar.component';
+import { LoginguardGuard } from './loginguard.guard';
+import { JobProfileCardComponent } from './job-profile-card/job-profile-card.component';
+import { MyProfileComponent } from './my-profile/my-profile.component';
 const routes: Routes = [
-  {path: '', component:SignInComponent},
+  {path: '', component:SignInComponent,  canActivate:[LoginguardGuard]},
   {path:'dashboard' , component:DashboardComponent, canActivate:[AuthGuard] },
   {path:'about-you',component:UserProfileComponent, canActivate:[AuthGuard] },
   {path:'skills',component:SkillProfileComponent, canActivate:[AuthGuard] },
@@ -26,7 +29,9 @@ const routes: Routes = [
   {path:'certificate', component:CertificationComponent, canActivate:[AuthGuard] },
   {path:'signUp', component:SignUpComponent },
   {path:"sidebar",component:SidebarComponent, canActivate:[AuthGuard] },
-  {path:"priSkill",component:PrimarySkillComponent, canActivate:[AuthGuard]}
+  {path:"jobs", component:JobProfileCardComponent , canActivate:[AuthGuard]},
+  {path:"myProfile", component:MyProfileComponent , canActivate:[AuthGuard]},
+  // {path:"priSkill",component:PrimarySkillComponent, canActivate:[AuthGuard]}
   // {path: '**', redirectTo: 'PageNotFoundComponent'}
   
 ];

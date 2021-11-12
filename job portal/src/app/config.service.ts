@@ -11,7 +11,7 @@ export class ConfigService {
   createUrl = "http://localhost:3000/v1/aboutyou";
   updateUrl = "http://localhost:3000/v1/profile";
 
-  constructor(private http: HttpClient, private xhttp: HttpClient) {}
+  constructor(private http: HttpClient) {}
   getPost() {
     return this.http.get(this.url + "profiles");
   }
