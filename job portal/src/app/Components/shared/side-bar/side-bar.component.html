@@ -1,4 +1,4 @@
-<div class="sidebar" *ngIf="menu.length">
+<div class="sidebar bg-light" *ngIf="menu.length">
     <ngx-simplebar [options]="options">
       <ul *ngFor="let item of menu; let i = index">
         <li [class.active]="item.isActive" class="mb-4">
