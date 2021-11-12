@@ -25,12 +25,9 @@ import { FileUploadComponent } from './Components/file-upload/file-upload.compon
 import { AngularMultiSelectModule } from 'angular2-multiselect-dropdown';
 import { PrimarySkillComponent } from './Components/primary-skill/primary-skill.component';
 import { CompanyDetailsComponent } from './Components/company-details/company-details.component';
-<<<<<<< HEAD
-import { OrganizationSignUpComponent } from './Components/organization-sign-up/organization-sign-up.component';
-=======
 import { TokenInterceptorService } from './token-interceptor-service.service';
 import { JobProfileCardComponent } from './job-profile-card/job-profile-card.component';
->>>>>>> 420aaa594e8bdb97c497fdb5399bc25849677a1f
+import { OrganizationSignUpComponent } from './Components/organization-sign-up/organization-sign-up.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -48,14 +45,10 @@ import { JobProfileCardComponent } from './job-profile-card/job-profile-card.com
     SignUpComponent,
     PageNotFoundComponent,
     FileUploadComponent,
-<<<<<<< HEAD
-    CompanyDetailsComponent,
-    OrganizationSignUpComponent
-=======
     PrimarySkillComponent,
     CompanyDetailsComponent,
-    JobProfileCardComponent
->>>>>>> 420aaa594e8bdb97c497fdb5399bc25849677a1f
+    JobProfileCardComponent,
+    OrganizationSignUpComponent 
   ],
   imports: [
     BrowserModule,

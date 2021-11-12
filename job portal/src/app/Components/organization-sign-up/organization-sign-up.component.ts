@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+// import { SignupService } from 'src/app/signin.service';
 
 @Component({
   selector: 'app-organization-sign-up',
@@ -13,6 +14,9 @@ export class OrganizationSignUpComponent implements OnInit {
   alert:boolean=false;
   signUp !: FormGroup;
   allData:any;
+  credentials: any = {};
+msg='';
+
   file: File | null = null
 
   constructor(public formBuilder: FormBuilder) { }
@@ -62,6 +66,19 @@ export class OrganizationSignUpComponent implements OnInit {
     }
    
   }
+//   if((this.credentials.email!='' && this.credentials.password!='')&& (this.credentials.email!=null && this.credentials.password!=null) ) 
+//   {
+//     this.signService.generateToken(this.credentials).subscribe(
+//       (response:any)=>{
+     
+//         localStorage.setItem('token', response.token);
+//         window.location.href="/about-you";
+//   })}
+//   else{
+//     this.msg="Fields Are Empty";
+
+//   }
+// }
   
   closeAlert(){
     this.alert=false;
