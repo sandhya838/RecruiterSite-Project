@@ -2,6 +2,9 @@
 @import "./assets/_partials/mixin.scss";
 @import 'ag-grid-community/dist/styles/ag-grid.css';
 @import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+body {
+    font-family: "Times New Roman", Times, serif;
+  }
 
 label{
     @include label(15px);
