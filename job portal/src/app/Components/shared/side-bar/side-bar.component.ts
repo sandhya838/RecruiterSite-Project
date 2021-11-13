@@ -19,7 +19,7 @@ export class SideBarComponent implements OnInit {
 
     {
       name: "My profile",
-      url: "/about-you",
+      url: "/myProfile",
       hasChildren: false,
       isActive: true,
       subLinks: [],

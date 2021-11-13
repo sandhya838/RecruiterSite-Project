@@ -1,4 +1,5 @@
 @import"../../assets/_partials/mixin.scss"; 
+@import '~bootstrap/dist/css/bootstrap.min.css';
 body{
   margin-top:20px;
   color: #1a202c;
@@ -31,6 +32,7 @@ body{
   flex: 1 1 auto;
   min-height: 1px;
   padding: 1rem;
+  // padding-right: 100px;
 }
 
 .gutters-sm {
@@ -85,3 +87,35 @@ img{
     padding:12px;
     border-radius: 50%;
 }
+.preskill{
+  display: flex;
+  flex-direction: row;
+}
+
+.chip{
+    background: #eee;
+    padding: 11px 20px;
+    border-radius: 4px;
+    margin: 10px 10px 0 0;
+    color: #666;
+    max-width: 515px;
+    max-height: 90px;
+}
+  
+ .card-subheading{
+   height: auto;
+ }
+
+
+ @media only screen and (max-width: 767px) {
+  .preskill{
+    flex-direction: column;
+    max-width: 150px;
+    margin: 10px 10px 0 0;
+   
+   margin-left: 40px;
+  }
+  .chip{
+    text-align: center;
+  }
+ }
