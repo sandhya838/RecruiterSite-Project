@@ -30,8 +30,7 @@ module.exports = (app) => {
 
   /************** Pre Login APIs ****************** */
   app.post('/v1/login', auth.login);
-  // app.post('/v1/register', requestValidator.validateParams(users.createRules), users.create);
-  app.post('/v1/register', upload.single('resume'), profile.create);
+  app.post('/v1/register', upload.single('resume'), requestValidator.validateParams(profile.createRules), profile.create);
 
   /****************** profile routings *************** */
   app.post('/v1/aboutyou', profile.create);

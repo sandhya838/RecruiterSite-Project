@@ -13,6 +13,7 @@ export class InnerHeaderComponent implements OnInit {
 
   onLogOut() {
     sessionStorage.clear();
-    this.router.navigateByUrl('');
+    localStorage.clear();
+    this.router.navigate([""], { replaceUrl: true });
   }
 }

@@ -1,8 +1,5 @@
 <div class="sign-in">
   <div class="sign-in__wrapper">
-    <div class="d-flex justify-content-end">
-      <a>Sign up</a>
-    </div>
     <div class="sign-in__wrapper__heading">Sign in</div>
     <p>New user? <a [routerLink]="'/sign-up'">Create an account</a></p>
     <form
@@ -66,9 +63,10 @@
             class="form-check-input"
             type="checkbox"
             value=""
-            id="defaultCheck1"
+            id="rememberMe"
+            formControlName="rememberMe"
           />
-          <label class="form-check-label" for="defaultCheck1">
+          <label class="form-check-label" for="rememberMe">
             Remember me
           </label>
         </div>

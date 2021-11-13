@@ -23,7 +23,7 @@ export class SigninService {
 
   register(data: any): Observable<any> {
     const header = this._getHeaders();
-    return this.http.post(CONSTANTS.CANDIDATESIGNUP, data, );
+    return this.http.post(CONSTANTS.CANDIDATESIGNUP, data);
   }
 
   getToken() {
@@ -31,7 +31,9 @@ export class SigninService {
   }
 
   isLoggedIn() {
-    let token = sessionStorage.getItem("token");
+    let token = localStorage.getItem("rememberMe")
+      ? localStorage.getItem("token")
+      : sessionStorage.getItem("token");
     if (token == undefined || token === "" || token == null) {
       return false;
     } else {
@@ -40,7 +42,9 @@ export class SigninService {
   }
 
   isLoggedOut() {
-    let token = sessionStorage.getItem("token");
+    let token = localStorage.getItem("rememberMe")
+      ? localStorage.getItem("token")
+      : sessionStorage.getItem("token");
     if (token == undefined || token === "" || token == null) {
       return true;
     } else {
@@ -49,7 +53,8 @@ export class SigninService {
   }
 
   logout() {
-    sessionStorage.removeItem("token");
+    localStorage.clear();
+    sessionStorage.clear();
     location.reload();
     return true;
   }

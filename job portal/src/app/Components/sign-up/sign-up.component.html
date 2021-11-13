@@ -4,7 +4,8 @@
       <a [routerLink]="'/login'">Sign in</a>
     </div>
     <div class="sign-up__wrapper__heading mb-2">Sign up</div>
-    <form enctype="multipart/form-data"
+    <form
+      enctype="multipart/form-data"
       [formGroup]="signUp"
       (ngSubmit)="onSubmitForm(signUp.valid, signUp.value)"
       novalidate
@@ -87,11 +88,30 @@
         </div>
       </div>
       <div class="form-group">
-        <file-upload
-          formControlName="file"
-          maxsize="5 MB"
-          [animation]="true"
-        ></file-upload>
+        <file-upload simple formControlName="file" maxsize="5 MB" >
+          <ng-template let-file #placeholder>
+            <ng-container *ngIf="file; else emptyList">
+                {{ file.name }}
+            </ng-container>
+        
+            <ng-template #emptyList>
+                Choose a file...
+            </ng-template>
+        </ng-template>
+
+        <ng-template let-control="control" #button>
+          <i class="fa fa-upload" aria-hidden="true"></i>
+        </ng-template>
+          <!-- <ng-template
+            let-isFileDragDropAvailable="isFileDragDropAvailable"
+            #placeholder
+          >
+            <span *ngIf="!signUp.controls['file'].valid"
+              ><i class="fa fa-upload" aria-hidden="true"></i> drop or
+              click</span
+            >
+          </ng-template> -->
+        </file-upload>
         <div
           class="text-danger sign-up__wrapper__error"
           *ngIf="
