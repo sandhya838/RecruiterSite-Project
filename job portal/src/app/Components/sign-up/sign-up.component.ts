@@ -52,23 +52,14 @@ export class SignUpComponent implements OnInit {
       fd.append("email", formValue.email);
       fd.append("password", this.commonService.encrypt(formValue.password));
 
-      this.signInService.register(fd).subscribe(
-        (response: any) => {
-          if (response.status === 200) {
-            this.router.navigate(["/login"]);
-            this.commonService.alert("success", response.message);
-          } else {
-            this.commonService.alert("error", response.message);
-          }
-        },
-        (err) => {
-          if (err.error.status === 412) {
-            this.commonService.alert("error", err.error.message);
-          } else {
-            this.commonService.alert("error", err.message);
-          }
+      this.signInService.register(fd).subscribe((response: any) => {
+        if (response.status === 200) {
+          this.router.navigate(["/login"]);
+          this.commonService.alert("success", response.message);
+        } else {
+          this.commonService.alert("error", response.message);
         }
-      );
+      });
     } else {
       this.signUp.markAllAsTouched();
     }

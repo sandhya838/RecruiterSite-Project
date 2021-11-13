@@ -38,30 +38,25 @@ export class SignInComponent implements OnInit {
           email: this.signIn.value.email,
           password: this.commonService.encrypt(this.signIn.value.password),
         })
-        .subscribe(
-          (response: any) => {
-            if (response.status === 200) {
-              localStorage.clear();
-              sessionStorage.clear();
-              if (this.signIn.value.rememberMe) {
-                localStorage.setItem("rememberMe", "true");
-                localStorage.setItem("token", response.token);
-                localStorage.setItem("user", JSON.stringify(response.user));
-              } else {
-                sessionStorage.setItem("token", response.token);
-                sessionStorage.setItem("user", JSON.stringify(response.user));
-              }
-              this.router.navigate(["/dashboard"]);
-            } else if (response.status === 400) {
-              this.commonService.alert("error", response.message);
+        .subscribe((response: any) => {
+          if (response.status === 200) {
+            localStorage.clear();
+            sessionStorage.clear();
+            if (this.signIn.value.rememberMe) {
+              localStorage.setItem("rememberMe", "true");
+              localStorage.setItem("token", response.token);
+              localStorage.setItem("user", JSON.stringify(response.user));
             } else {
-              this.commonService.alert("error", response.message);
+              sessionStorage.setItem("token", response.token);
+              sessionStorage.setItem("user", JSON.stringify(response.user));
             }
-          },
-          (err) => {
-            this.commonService.alert("error", err.statusText);
+            this.router.navigate(["/dashboard"]);
+          } else if (response.status === 400) {
+            this.commonService.alert("error", response.message);
+          } else {
+            this.commonService.alert("error", response.message);
           }
-        );
+        });
     } else {
       this.signIn.markAllAsTouched();
     }
