@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { CONSTANTS } from "../constants";
 import { JobsService } from "../services/jobs.service";
 
 @Component({
@@ -7,6 +8,7 @@ import { JobsService } from "../services/jobs.service";
   styleUrls: ["./job-profile-card.component.scss"],
 })
 export class JobProfileCardComponent implements OnInit {
+  APIURL= CONSTANTS.BASEURL;
   recommendedJobs: any;
   constructor(private jobsService: JobsService) {}
 
@@ -23,6 +25,9 @@ export class JobProfileCardComponent implements OnInit {
 
     console.log("userProifleData", requestHeader);
     this.jobsService.getRecommendedJobs(requestHeader).subscribe((result) => {
+      if (result.matchedJobs.length) {
+        this.recommendedJobs = result.matchedJobs;
+      }
       console.log(result);
     });
   }

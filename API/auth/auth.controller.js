@@ -39,7 +39,8 @@ exports.login = (req, res) => {
         if (err) {
             res.status(401).send({ status: 401, message: 'You are not autorized to get access.' });
         } else if (result) {
-            const expires = moment().add('days', 7).valueOf();
+            console.log('result',result);
+            const expires = moment().add(7,'days').valueOf();
             const token = jwt.encode({
                 userName: result.email,
                 exp: expires
@@ -62,7 +63,7 @@ exports.orgnization_login = (req, res) => {
         if (err) {
             res.status(401).send({ status: 401, message: 'You are not autorized to get access.' });
         } else if (result) {
-            const expires = moment().add('days', 7).valueOf();
+            const expires = moment().add(7,'days').valueOf();
             const token = jwt.encode({
                 userName: result.email,
                 exp: expires

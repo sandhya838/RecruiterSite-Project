@@ -15,9 +15,6 @@ export class SignInComponent implements OnInit {
     email: ["", [Validators.required]],
     password: ["", [Validators.required]],
   });
-  allData: any;
-  credentials: any = {};
-  msg = "";
   isPassword = false;
 
   constructor(
@@ -33,7 +30,7 @@ export class SignInComponent implements OnInit {
 
   loginSubmit() {
     if (this.signIn.valid) {
-      this.signService.login(this.credentials).subscribe(
+      this.signService.login(this.signIn.value).subscribe(
         (response: any) => {
           if (response.status === 200) {
             sessionStorage.setItem("token", response.token);

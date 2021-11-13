@@ -116,26 +116,32 @@ module.exports = {
         }
     },
     recomandedJobs: (req, res) => {
-        console.log('req', req.body);
         const searchQuery = {
-            jobType: req.body.jobType,
-            experience: req.body.experience,
-            salary: req.body.salary,
-            roles: req.body.roles,
         };
-        if (req.body.skills.length) {
-            searchQuery.skills = { $in: req.body.skills.split(',') }
+        if (req.body.jobType) {
+            searchQuery.jobType = req.body.jobType;
         }
-        if (req.body.location.length) {
-            searchQuery.location = { $in: req.body.location.split(',') }
+        if (req.body.experience) {
+            searchQuery.experience = req.body.experience;
         }
-        console.log('searchQuery',searchQuery);
+        if (req.body.salary) {
+            searchQuery.salary = { $gte: req.body.salary };
+        }
+        if (req.body.roles) {
+            searchQuery.roles = req.body.roles;
+        }
+
+        if (req.body.skills && req.body.skills.length) {
+            searchQuery.skills = { $in: req.body.skills.toString().split(',') }
+        }
+        if (req.body.location && req.body.location.length) {
+            searchQuery.location = { $in: req.body.location.toString().split(',') }
+        }
         Jobs.find(
-            searchQuery,
-            (err, result) => {
-                console.log(err, result);
+            searchQuery).populate('createdBy').exec
+            ((err, result) => {
                 if (err) {
-                    res.status(500).send({ status: 500, message: 'Oops! Not able to get all profiles. Please try after sometimes', matchedJons: {} });
+                    res.status(500).send({ status: 500, message: 'Oops! Not able to get all profiles. Please try after sometimes', matchedJobs: [] });
                 } else {
                     res.status(200).send({ status: 200, message: 'matching jobs successfully listed.', matchedJobs: result });
                 }
