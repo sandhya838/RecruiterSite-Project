@@ -26,7 +26,7 @@ export class SigninService {
     return this.http.post(CONSTANTS.CANDIDATESIGNUP, data, );
   }
 
-  getToken() {
+  getToken(): string | null {
     return sessionStorage.getItem("token");
   }
 
