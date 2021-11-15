@@ -3,8 +3,11 @@
 .sign-in {
   margin: auto;
   &__wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 30rem;
-    margin: 2rem auto;
     padding: 2rem 2.5rem;
     border: none;
     outline: none;

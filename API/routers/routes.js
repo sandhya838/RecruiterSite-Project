@@ -30,8 +30,7 @@ module.exports = (app) => {
 
   /************** Pre Login APIs ****************** */
   app.post('/v1/login', auth.login);
-  // app.post('/v1/register', requestValidator.validateParams(users.createRules), users.create);
-  app.post('/v1/register', upload.single('resume'), profile.create);
+  app.post('/v1/register', upload.single('resume'), requestValidator.validateParams(profile.createRules), profile.create);
 
   /****************** profile routings *************** */
   app.post('/v1/aboutyou', profile.create);
@@ -44,4 +43,5 @@ module.exports = (app) => {
   // app.get('/v1/profile/:profileId', auth.authToken, profile.findOne);
   // app.put('/v1/profile/:profiled', auth.authToken, requestValidator.validateParams(profile.updateRules), profile.update);
   app.delete('/v1/profile/:profileId', auth.authToken, profile.delete);
+  app.put('/v1/change-password/:id', auth.authToken, profile.changePassword);
 }

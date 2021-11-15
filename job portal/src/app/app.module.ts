@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from "./Components/page-not-found/page-not-foun
 import { AgGridModule } from "ag-grid-angular";
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
 import { TokenInterceptorService } from "./token-interceptor-service.service";
+import { ErrorInterceptor } from "./services/error.interceptor";
 
 @NgModule({
   declarations: [
@@ -43,6 +44,7 @@ import { TokenInterceptorService } from "./token-interceptor-service.service";
       useClass: TokenInterceptorService,
       multi: true,
     },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

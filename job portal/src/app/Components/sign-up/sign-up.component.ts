@@ -7,6 +7,7 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { FileUploadValidators } from "@iplab/ngx-file-upload";
+import { CommonService } from "src/app/services/common.service";
 import { SigninService } from "src/app/signin.service";
 
 @Component({
@@ -30,6 +31,7 @@ export class SignUpComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private signInService: SigninService,
+    private commonService: CommonService,
     private router: Router
   ) {}
 
@@ -48,26 +50,18 @@ export class SignUpComponent implements OnInit {
       fd.append("resume", formValue.file[0]);
       fd.append("fullName", formValue.fullName);
       fd.append("email", formValue.email);
-      fd.append("passowrd", formValue.password);
+      fd.append("password", this.commonService.encrypt(formValue.password));
 
-      console.log("formValue", fd);
-      this.signInService.register(fd).subscribe(
-        (response: any) => {
-          if (response.status === 200) {
-            this.router.navigate(["/login"]);
-          } else {
-          }
-        },
-        (err) => {
-          console.log(err.message);
+      this.signInService.register(fd).subscribe((response: any) => {
+        if (response.status === 200) {
+          this.router.navigate(["/login"]);
+          this.commonService.alert("success", response.message);
+        } else {
+          this.commonService.alert("error", response.message);
         }
-      );
+      });
     } else {
       this.signUp.markAllAsTouched();
     }
-  }
-
-  closeAlert() {
-    this.alert = false;
   }
 }

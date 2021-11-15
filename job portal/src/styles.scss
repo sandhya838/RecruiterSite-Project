@@ -1,48 +1,70 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/_partials/mixin.scss";
-@import 'ag-grid-community/dist/styles/ag-grid.css';
-@import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+@import "ag-grid-community/dist/styles/ag-grid.css";
+@import "ag-grid-community/dist/styles/ag-theme-balham.css";
 body {
-    font-family: "Times New Roman", Times, serif;
-  }
-
-label{
-    @include label(15px);
+  font-family: "Times New Roman", Times, serif;
 }
 
-.row{
-    @include row(50px);
+label {
+  @include label(15px);
 }
-.btn{
-    @include btn
+
+.row {
+  @include row(50px);
 }
-option{
-    @include label(15px);
+.btn {
+  @include btn;
+}
+option {
+  @include label(15px);
 }
 // global css for multiselect dropdown
 .multiselect-dropdown .dropdown-btn {
-    display: inline-block;
-    border: 1px solid #adadad;
-    width: 100%;
-    padding: 6px 12px;
-    margin-bottom: 0;
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 1.9;
-    text-align: left;
-    vertical-align: middle;
-    cursor: pointer;
-    background-image: none;
-    border-radius: 4px;
+  display: inline-block;
+  border: 1px solid #adadad;
+  width: 100%;
+  padding: 6px 12px;
+  margin-bottom: 0;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 1.9;
+  text-align: left;
+  vertical-align: middle;
+  cursor: pointer;
+  background-image: none;
+  border-radius: 4px;
 }
-.multiselect-dropdown[_ngcontent-amg-c40] .dropdown-btn[_ngcontent-amg-c40] .selected-item[_ngcontent-amg-c40] {
-    border: 1px solid #337ab7;
-    margin-right: 4px;
-    background: #156fe6;
-    padding: 0 5px;
-    color: #fff;
-    border-radius: 2px;
-    float: left;
-    display: flex;
-    max-width: 0px; 
+.multiselect-dropdown[_ngcontent-amg-c40]
+  .dropdown-btn[_ngcontent-amg-c40]
+  .selected-item[_ngcontent-amg-c40] {
+  border: 1px solid #337ab7;
+  margin-right: 4px;
+  background: #156fe6;
+  padding: 0 5px;
+  color: #fff;
+  border-radius: 2px;
+  float: left;
+  display: flex;
+  max-width: 0px;
+}
+
+app-sign-up {
+  .upload-button {
+    text-align: center;
+    border-top-right-radius: 2rem !important;
+    border-bottom-right-radius: 2rem !important;
+    background-color: #f1f5f9 !important;
+    padding-top: 12px !important;
+  }
+  file-upload {
+    background: #f1f5f9 !important;
+    min-height: 51px !important;
+    outline: 1px dashed #f1f5f9 !important;
+    border-radius: 2rem !important;
+  }
+  .upload-text {
+    padding: 13px 10px !important;
+    height: 33px !important;
+  }
 }
