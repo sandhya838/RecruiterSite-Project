@@ -1,0 +1,47 @@
+@mixin font-face($font, $family, $type, $style: normal, $weight: normal) {
+  @font-face {
+    font-family: $family;
+    @if $type == "ttf" {
+      src: url("#{$font}.ttf") format("ttf");
+    }
+   
+    @if $type == "woff" {
+      src: url("#{$font}.woff") format("woff");
+    }
+    @if $type == "woff2" {
+      src: url("#{$font}.woff2") format("woff2");
+    }
+
+    @if $type == "otf" {
+      src: url("#{$font}.otf") format("otf");
+    }
+
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+@mixin gen-colors($prefix, $property) {
+  @each $color-name, $color in $colors {
+    .#{$prefix}-#{"" + $color-name} {
+      #{$property}: $color !important;
+    }
+  }
+}
+
+@mixin font-size($font-size, $line-height: normal, $letter-spacing: normal) {
+  font-size: $font-size * 1px;
+  // font-size: $font-size * 0.1rem;
+  // example using rem values and 62.5% font-size so 1rem = 10px
+
+  @if $line-height==normal {
+    line-height: normal;
+  } @else {
+    line-height: $line-height / $font-size;
+  }
+
+  @if $letter-spacing==normal {
+    letter-spacing: normal;
+  } @else {
+    letter-spacing: #{$letter-spacing / $font-size}em;
+  }
+}

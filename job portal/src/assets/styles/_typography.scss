@@ -1,0 +1,95 @@
+@import "./mixin";
+
+li {
+  line-height: normal;
+}
+.a,
+a {
+  @include font-size(14);
+  text-decoration: none;
+  color: var(--skyBlue);
+  // font-family: var(--Roboto-Regular);
+  font-weight: 500;
+  &:hover {
+    color: var(--secondaryAqua) !important;
+  }
+  &:link,
+  &:visited,
+  &:active,
+  &.active {
+    color: var(--secondaryAqua);
+  }
+  &:focus {
+    color: var(--secondaryAqua);
+  }
+}
+p,
+.p {
+  @include font-size(14);
+  font-weight: 500;
+  // font-family: var(--Roboto-Regular);
+}
+.h1,
+h1 {
+  @include font-size(38);
+  // font-family: var(--Roboto-Bold);
+}
+.h2,
+h2 {
+  @include font-size(33);
+  // font-family: var(--Roboto-Medium);
+}
+.h3,
+h3 {
+  @include font-size(28);
+  // font-family: var(--Roboto-Regular);
+}
+.h4,
+h4 {
+  @include font-size(23);
+  // font-family: var(--Roboto-Regular);
+}
+.h5,
+h5 {
+  @include font-size(18);
+  // font-family: var(--Roboto-Regular);
+}
+.h6,
+h6 {
+  @include font-size(13);
+  // font-family: var(--Roboto-Regular);
+}
+
+.job-btn {
+  // font-family: var(--Roboto-Regular);
+  display: inline-block;
+  border-radius: 1px;
+  margin-bottom: 0;
+  text-align: center;
+  vertical-align: middle;
+  color: var(--black);
+  background-color: var(--primary);
+  width: auto;
+  cursor: pointer;
+  border: none;
+  &.job-btn-large {
+    padding: 11px 28px 13px;
+    font-size: 20px;
+    line-height: 1.815;
+    border-radius: 0;
+  }
+  &.job-btn-small {
+    padding: 11px 22px 13px;
+    border-radius: 0;
+  }
+  &.job-btn-mini {
+    padding: 11px 20px 13px;
+    border-radius: 0;
+  }
+  &.job-btn-outline {
+    background-color: transparent;
+    border: 1px solid black;
+    padding: 11px 20px 13px;
+    color: black;
+  }
+}

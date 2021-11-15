@@ -1,0 +1,167 @@
+@import "./mixin";
+$primary: #1c1c1a;
+$gray80: #f1f5f9;
+$white: #fff;
+$grayLightWarm: #f0f0f0;
+$grayMediumWarm: #ada8a8;
+$warmBlack: #1c1c1c;
+$grayMediumCool: #2f353d;
+$gray30: #504d56;
+$gray10: #212530;
+$gray70: #e4e7eb;
+$grayMediumCool02: #b4b4b8;
+$dargGrayWarm02: #6f6f75;
+$grayDarkCool: #333336;
+$grayDisabled: #83838f;
+$secondarySlateDark: #293d54;
+$secondarySlate: #4f6b85;
+$secondaryAqua: #0085ba;
+$secondarySage: #87b560;
+$secondaryGold: #ebab3d;
+$secondaryEggplant: #734566;
+$secondaryLavender: #734f8a;
+$transparent: transparent;
+$lightGrayishNavy: #878792;
+$tolopea: #212738;
+$black: #000;
+$lavanderGrey: #bcbccc;
+$text-success: #0c8456;
+$Alizarin: #e02020;
+$bg-success: #d7f8eb;
+$text-danger: #da2a2a;
+$bg-danger: #fff5f5;
+$toast-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.1);
+$laurelGray: #6b6b7b;
+$ebonyClay: #2f353d;
+$ghostWhite: #f8f8fa;
+$skyBlue: #276df8;
+$paleNavy: #d2d2db;
+$curiousBlue: #2d75c7;
+$funBlue: #34568e;
+$goldenBrown: #a46900;
+$royalblue: #3865e0;
+$mariner: #2d75c7;
+$lightGray: #53555a;
+$grayishNavy: #3c3c42;
+$lightBlue: #2d75c7;
+$lightBlueFade: #00a8e1;
+$picassoBlue: #3b5c99;
+$turquoise: #00acef;
+$raspberry: #c13584;
+$firebrick: #b82a2a;
+$lightslategray: #35465c;
+$lightCyan: #656565;
+$tuna: #31353d;
+$graySuit: #bcbcca;
+$catskillwhite: #f2f6f9;
+$cinnabar: #dc3a1a;
+$GrayChateau: #a0a1a2;
+$Trout: #495057;
+$Iron: #d3d6db;
+$marinerlight: #2c75c7;
+$lightBlack: #1f2024;
+$redOrange: #d03700;
+$brightNavy: #3561e3;
+$gray95: #f2f2f2;
+$salem: #167f57;
+$CornflowerBlue: #558cf9;
+$paleBlue: #417ff8;
+$blackRussian: #030010;
+$gossamer: #3b9c77;
+$solitude: #e9ecef;
+$solitude2: #e8edf3;
+$cart-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.1);
+$inputFocusGray: rgba(131, 131, 143, 0.8);
+$grey1: #c9c9d6;
+$linkwater: #c9c9d6;
+$tracking: #bcbccd;
+$grayishBlue: #60728a;
+$eminence: #76466e;
+$dirty-purple-13: rgba(118, 70, 110, 0.13);
+$faux-royal-blue: #4671ec;
+$link-hover-card: #34568e;
+$festival: #e9c64c;
+$ivory: #fffef9;
+$youtube: #f03c3a;
+$cyanOrange: #d24615;
+
+$colors: (
+  primary:$primary,
+  gray80: $gray80,
+  white: $white,
+  grayLightWarm: $grayLightWarm,
+  grayMediumWarm: $grayMediumWarm,
+  warmBlack: $warmBlack,
+  grayMediumCool: $grayMediumCool,
+  gray30: $gray30,
+  gray10: $gray10,
+  gray70: $gray70,
+  grayMediumCool02: $grayMediumCool02,
+  dargGrayWarm02: $dargGrayWarm02,
+  grayDarkCool: $grayDarkCool,
+  grayDisabled: $grayDisabled,
+  secondarySlateDark: $secondarySlateDark,
+  secondarySlate: $secondarySlate,
+  secondaryAqua: $secondaryAqua,
+  secondarySage: $secondarySage,
+  secondaryGold: $secondaryGold,
+  secondaryEggplant: $secondaryEggplant,
+  secondaryLavender: $secondaryLavender,
+  transparent: $transparent,
+  lightGrayishNavy: $lightGrayishNavy,
+  tolopea: $tolopea,
+  black: $black,
+  lavanderGrey: $lavanderGrey,
+  Alizarin: $Alizarin,
+  laurelGray: $laurelGray,
+  ebonyClay: $ebonyClay,
+  ghostWhite: $ghostWhite,
+  skyBlue: $skyBlue,
+  paleNavy: $paleNavy,
+  curiousBlue: $curiousBlue,
+  funBlue: $funBlue,
+  goldenBrown: $goldenBrown,
+  royalblue: $royalblue,
+  mariner: $mariner,
+  lightGray: $lightGray,
+  grayishNavy: $grayishNavy,
+  lightBlue: $lightBlue,
+  lightBlueFade: $lightBlueFade,
+  picassoBlue: $picassoBlue,
+  turquoise: $turquoise,
+  raspberry: $raspberry,
+  firebrick: $firebrick,
+  lightslategray: $lightslategray,
+  lightCyan: $lightCyan,
+  tuna: $tuna,
+  graySuit: $graySuit,
+  catskillwhite: $catskillwhite,
+  cinnabar: $cinnabar,
+  GrayChateau: $GrayChateau,
+  Trout: $Trout,
+  Iron: $Iron,
+  marinerlight: $marinerlight,
+  lightBlack: $lightBlack,
+  redOrange: $redOrange,
+  brightNavy: $brightNavy,
+  gray95: $gray95,
+  salem: $salem,
+  CornflowerBlue: $CornflowerBlue,
+  paleBlue: $paleBlue,
+  blackRussian: $blackRussian,
+  gossamer: $gossamer,
+  solitude: $solitude,
+  solitude2: $solitude2,
+  grey1: $grey1,
+  linkwater: $linkwater,
+  tracking: $tracking,
+  grayishBlue: $grayishBlue,
+  eminence: $eminence,
+  festival: $festival,
+  ivory: $ivory,
+  youtube: $youtube,
+  cyanOrange: $cyanOrange,
+);
+
+@include gen-colors("text", "color");
+@include gen-colors("bg", "background-color");
