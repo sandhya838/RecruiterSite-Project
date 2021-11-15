@@ -68,6 +68,14 @@ const routes: Routes = [
         component: CertificationComponent,
         canActivate: [AuthGuard],
       },
+      {
+        path: "change-password",
+        canActivate: [AuthGuard],
+        loadChildren: () =>
+          import("../change-password/change-password.module").then(
+            (m) => m.ChangePasswordModule
+          ),
+      },
     ],
   },
 ];

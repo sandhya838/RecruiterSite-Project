@@ -10,7 +10,10 @@ export class SigninService {
   constructor(private http: HttpClient) {}
   private _getHeaders() {
     let header = new HttpHeaders({
-      "x-access-token": sessionStorage.getItem("token") as string,
+      "x-access-token":
+        localStorage.getItem("rememberMe") === "true"
+          ? (localStorage.getItem("token") as string)
+          : (sessionStorage.getItem("token") as string),
       "Content-Type": "application/json",
     });
 
@@ -24,6 +27,12 @@ export class SigninService {
   register(data: any): Observable<any> {
     const header = this._getHeaders();
     return this.http.post(CONSTANTS.CANDIDATESIGNUP, data);
+  }
+  changePassword(id: string, data: any): Observable<any> {
+    const header = this._getHeaders();
+    return this.http.put(CONSTANTS.CHANGEPASSWORD + id, data, {
+      headers: header,
+    });
   }
 
   getToken() {

@@ -6,4 +6,5 @@ export const CONSTANTS = {
   RECOMMENDEDJOBS: "v1/recomandedJobs",
   CANDIDATESIGNUP: BASEURL + "v1/register",
   CANDIDATELOGIN: BASEURL + "v1/login",
+  CHANGEPASSWORD:BASEURL+'v1/change-password/'
 };
