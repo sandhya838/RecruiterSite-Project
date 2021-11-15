@@ -15,6 +15,7 @@ import { PageNotFoundComponent } from "./Components/page-not-found/page-not-foun
 import { AgGridModule } from "ag-grid-angular";
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
 import { TokenInterceptorService } from "./token-interceptor-service.service";
+import { CandidateProfileCardComponent } from './Components/candidate-profile-card/candidate-profile-card.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { TokenInterceptorService } from "./token-interceptor-service.service";
     SidebarComponent,
     SignInComponent,
     PageNotFoundComponent,
+    CandidateProfileCardComponent,
   ],
   imports: [
     BrowserModule,
