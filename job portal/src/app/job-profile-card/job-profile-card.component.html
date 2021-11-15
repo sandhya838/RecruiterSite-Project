@@ -1,27 +1,45 @@
-<!-- <ng-container *ngIf="recommendedJobs$ as jobs">
-  {{jobs | json}}
-  <div class="container border" *ngIf="jobs">
-    <div class="card">
-    <div class="row">
-      <div class="col-2">
-          <i class="fa fa-linkedin-square" style=" color:rgb(1, 1, 100)"></i>
-      </div>
-      <div class="col-8">
-        <h5 class="card-title"><a href="..">Assistant Vice President-Service delivery lead (p2p & R2R)-HM50114116</a></h5>
-        <p class="job-card-container__company-name">Linkedin</p>
-        <p class="job-card-container__company-location">Pune, Maharastra, India</p>
-        <p class="job-card-container__salary"><i class="fa fa-money" aria-hidden="true"></i>18,000 per month</p>
-        <p class="card-text"><i class="fa fa-clock-o" aria-hidden="true"></i><small class="text-muted"> 3 mins ago</small></p>
-      </div>
-      <div class="col-2">
-        <i class="fa fa-eye-slash" aria-hidden="true"></i>
-       <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+<ng-container *ngIf="recommendedJobs?.length">
+  <div class="container border jobs" *ngFor="let job of recommendedJobs">
+    <div class="card jobs__wrapper">
+      <div class="row">
+        <div class="col-2">
+          <img
+            class="jobs__logo"
+            [src]="APIURL + 'static/logo/' + job.createdBy.logo"
+            alt="{{ job.createdBy.name }}"
+          />
+        </div>
+        <div class="col-8">
+          <h5 class="card-title">
+            <a href="..">{{ job.title }}</a>
+          </h5>
+          <p class="job-card-container__company-name">
+            {{ job.createdBy.name }}
+          </p>
+          <p class="job-card-container__company-location">
+            {{ job.createdBy.city }},{{ job.createdBy.state }},
+            {{ job.createdBy.country }}
+          </p>
+          <p class="job-card-container__salary">
+            <i class="fa fa-money" aria-hidden="true"></i>18,000 per month
+          </p>
+          <p class="card-text">
+            <i class="fa fa-clock-o" aria-hidden="true"></i
+            ><small class="text-muted">
+              {{ job.createdDate | date: "mm-dd-yyyy" }}</small
+            >
+          </p>
+        </div>
+        <div class="col-2">
+          <i class="fa fa-eye-slash" aria-hidden="true"></i>
+          <i class="fa fa-bookmark-o" aria-hidden="true"></i>
+        </div>
       </div>
     </div>
   </div>
-</div>
-</ng-container> -->
+</ng-container>
 
+<<<<<<< HEAD
 <div class="card">
   <div class="row">
     <div class="col-2">
@@ -59,3 +77,6 @@
     </div>
   </div>
 </div>
+=======
+
+>>>>>>> e397cc432925f47102c903cb1276e3a65d27a348
