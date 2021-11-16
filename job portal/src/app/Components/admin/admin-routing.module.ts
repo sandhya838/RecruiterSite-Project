@@ -69,16 +69,23 @@ const routes: Routes = [
         path: "certificate",
         component: CertificationComponent,
         canActivate: [AuthGuard],
-      },
-      {
-        path:"myProfile",
-        component:MyProfileComponent,
-        canActivate:[AuthGuard],
+      }, {
+        path: "myProfile",
+        component: MyProfileComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: "company-details",
         component: CompanyDetailsComponent,
         canActivate: [AuthGuard],
+      },
+      {
+        path: "change-password",
+        canActivate: [AuthGuard],
+        loadChildren: () =>
+          import("../change-password/change-password.module").then(
+            (m) => m.ChangePasswordModule
+          ),
       },
     ],
   },
@@ -88,4 +95,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AdminRoutingModule {}
+export class AdminRoutingModule { }

@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-side-bar",
@@ -21,7 +22,7 @@ export class SideBarComponent implements OnInit {
       name: "My profile",
       url: "/myProfile",
       hasChildren: false,
-      isActive: true,
+      isActive: false,
       subLinks: [],
       icon: "fa fa-home",
     },
@@ -29,20 +30,24 @@ export class SideBarComponent implements OnInit {
       name: "Jobs",
       url: "/jobs",
       hasChildren: false,
-      isActive: true,
+      isActive: false,
       subLinks: [],
       icon: "fa fa-home",
     },
   ];
-  constructor() {}
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this. makeLinkActive();
+  }
 
-  makeLinkActive(index: number) {
+  makeLinkActive() {
     this.menu.forEach((item: any) => {
-      item.isActive = false;
+      if (item.url === this.router.url) {
+        item.isActive = true;
+      } else {
+        item.isActive = false;
+      }
     });
-    this.menu[index].isActive = true;
-    return false;
   }
 }

@@ -1,136 +1,135 @@
-@import"../../assets/_partials/mixin.scss"; 
-body{
-    font-family:'Times New Roman', Times, serif; 
-}
-// .card{
-//     margin-bottom: 4px;
-// }
-// .card:hover{
-//    transform: scale(1.011);
-// }
-//  .fa{
-//     font-size:60px;
-//     margin-left: 25px;
-//         margin-top: 20px;
-// }
-.fa-bookmark-o{
-    font-size:24px;
-}
-.col-md-10 {
-padding-left: 0px;
-}
+@import "../../assets/_partials/mixin.scss";
 
-a{
-    color: #0a66c2;
-}
-.card-body{
-    width: 90%;
-    padding-left: 0px;
-}
- p{
-     margin-bottom: 0px;
-     color:#474747;
-     font-size: $fontSize;
- }
-//  .card-title{
-//      margin-bottom: 0px;
-//  }
- .col-md-2{
-     position: relative;
- }
-
-
-
-//  using grid
-.container {
-    width: 585px;
-    padding: 0px;
-}
-.col-8{
-    margin-top: 16px;
-}
-.card{
-    // margin-bottom: 4px;
+.jobs {
+  width: 585px;
+  padding: 0px;
+  &__logo {
+    width: 55px;
+    height: 55px;
+    border-radius: 7px;
+    position: absolute;
+    top: 17px;
+    left: 23px;
+  }
+  &__wrapper {
     border: none;
     border-bottom: 1px solid lightgray;
     width: 100%;
     height: 188px;
+    a {
+      color: #0a66c2;
+    }
+    p {
+      margin-bottom: 0px;
+      color: #474747;
+      font-size: $fontSize;
+    }
+    &:hover {
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 -2px 8px rgb(112 117 122 / 9%),
+        0 4px 8px rgb(112 117 122 / 6%), 0 1px 2px rgb(60 64 67 / 30%),
+        0 2px 6px rgb(60 64 67 / 15%);
+    }
+  }
 }
-.card:hover{
-    position: relative;
-    z-index: 1;
-    box-shadow: 0 -2px 8px rgb(112 117 122 / 9%), 0 4px 8px rgb(112 117 122 / 6%), 0 1px 2px rgb(60 64 67 / 30%), 0 2px 6px rgb(60 64 67 / 15%);
+.fa-bookmark-o {
+  font-size: 24px;
 }
-.fa{
-    font-size:56px;
-    margin-top: 16px;
-   
-}
-.fa-bookmark-o{
-    font-size:20px !important;
-    margin-left: 10px;
-    color: #626262;
-}
-.fa-eye-slash{
-    font-size:20px !important;
-    color: #626262;
-}
-.fa-linkedin-square{
-    margin-left: 10px;
-}
-.fa-clock-o{
-    font-size: 16px;
-    color: $darkGreyclr;
-    margin-top: 18px;
-}
-.fa-money{
-    font-size: 16px;
-    color: $darkGreyclr;
-    margin-top: 5px;
+.col-md-10 {
+  padding-left: 0px;
 }
 
-
-h5{
-    font-size: 1.00rem;
+.card-body {
+  width: 90%;
+  padding-left: 0px;
 }
-.card-title{
-    margin-bottom: 5px;
-    line-height: 23px;
+p {
+  margin-bottom: 0px;
+  color: #474747;
+  font-size: $fontSize;
+}
+//  .card-title{
+//      margin-bottom: 0px;
+//  }
+.col-md-2 {
+  position: relative;
 }
 
+//  using grid
+.container {
+  width: 585px;
+  padding: 0px;
+}
+.col-8 {
+  margin-top: 16px;
+}
 
+.fa {
+  font-size: 56px;
+  margin-top: 16px;
+}
+.fa-bookmark-o {
+  font-size: 20px !important;
+  margin-left: 10px;
+  color: #626262;
+}
+.fa-eye-slash {
+  font-size: 20px !important;
+  color: #626262;
+}
+.fa-linkedin-square {
+  margin-left: 10px;
+}
+.fa-clock-o {
+  font-size: 16px;
+  color: $darkGreyclr;
+  margin-top: 18px;
+}
+.fa-money {
+  font-size: 16px;
+  color: $darkGreyclr;
+  margin-top: 5px;
+}
 
+h5 {
+  font-size: 1rem;
+}
+.card-title {
+  margin-bottom: 5px;
+  line-height: 23px;
+}
 
 @media only screen and (max-width: 600px) {
-    .container {
-        width: 400px;
-        margin-left: 10px;
-    }
-    h5{
-        font-size: 0.811rem;
-    }
-    .card-title {
-        margin-bottom: 4px;
-        line-height: 18px;
-    }
-    .col-2{
-        padding-left: 0px;
-    }
-    .fa-eye-slash{
-        font-size: 16px !important;
-    }
-    .fa-bookmark-o{
-        font-size:16px !important;
-        margin-left: 12px;
-    }
-    .fa-linkedin-square{
-        font-size:30px;
-        padding-left: 15px;
-        margin-top: 18px;
-    }
-    p{
-        margin-bottom: 0px;
-        color:#474747;
-        font-size: 13px;
-    }
+  .container {
+    width: 400px;
+    margin-left: 10px;
+  }
+  h5 {
+    font-size: 0.811rem;
+  }
+  .card-title {
+    margin-bottom: 4px;
+    line-height: 18px;
+  }
+  .col-2 {
+    padding-left: 0px;
+  }
+  .fa-eye-slash {
+    font-size: 16px !important;
+  }
+  .fa-bookmark-o {
+    font-size: 16px !important;
+    margin-left: 12px;
+  }
+  .fa-linkedin-square {
+    font-size: 30px;
+    padding-left: 15px;
+    margin-top: 18px;
+  }
+  p {
+    margin-bottom: 0px;
+    color: #474747;
+    font-size: 13px;
+  }
 }

@@ -50,7 +50,10 @@
           </div>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <!-- <div class="dropdown-divider"></div> -->
+          <a class="dropdown-item" [routerLink]="'/change-password'">
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i> Change password</a
+          >
+          <div class="dropdown-divider"></div>
           <a class="dropdown-item" (click)="onLogOut()">
             <i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a
           >

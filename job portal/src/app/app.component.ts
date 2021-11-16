@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { ConfigService } from "./config.service";
-import { SigninService } from "./signin.service";
+import { Router } from "@angular/router";
+
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
@@ -9,24 +9,21 @@ import { SigninService } from "./signin.service";
 export class AppComponent {
   title = "Recruiter";
   public loggedIn = false;
-  // data:any;
-  // constructor(private postData:ConfigService){}
 
-  // ngOnInit(){
+  constructor(private router: Router) {}
 
-  // this.selectedItems = [
-  //   { item_id: 3, item_text: 'Pune' },
-  //   { item_id: 4, item_text: 'Navsari' }
-  // ];
-
-  //   this.postData.getPost().subscribe((result)=>{
-  //     console.log("result",result);
-  //     this.data=result;
-  //   })
-  // }
-
-  constructor(private signinService: SigninService) {}
   ngOnInit() {
-    this.loggedIn = sessionStorage.getItem("token") ? true : false;
+    if (localStorage.getItem("token")) {
+      this.router.navigate(["/dashboard"]);
+    }
+
+    this.loggedIn =
+      localStorage.getItem("rememberMe") === "true"
+        ? localStorage.getItem("token")
+          ? true
+          : false
+        : sessionStorage.getItem("token")
+        ? true
+        : false;
   }
 }

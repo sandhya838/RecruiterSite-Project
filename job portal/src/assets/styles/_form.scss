@@ -1,0 +1,14 @@
+.form-control {
+  border: 1px solid #333333;
+  border-radius: 7px;
+  font-size: 12px;
+  height: 40px;
+  &:invalid &.is-invalid {
+    border-color: #dc3545;
+  }
+
+  &:focus {
+    border-color: #333333;
+    box-shadow: none;
+  }
+}

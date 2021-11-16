@@ -11,13 +11,19 @@ var ProfileSchema = new Schema({
     type: []
   },
   email: {
-    type: String
+    type: String,
+    unique: true,
   },
   mobileNumber: {
     type: Number,
+    unique: true
   },
   password: {
-    type: String
+    type: String,
+  },
+  
+  fullName: {
+    type: String,
   },
   firstName: {
     type: String
@@ -26,7 +32,7 @@ var ProfileSchema = new Schema({
     type: String
   },
   resume: {
-    type: String
+    type: String,
   },
   lastName: {
     type: String

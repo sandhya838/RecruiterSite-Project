@@ -17,6 +17,7 @@ import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
 import { TokenInterceptorService } from "./token-interceptor-service.service";
 import { OrganizationSignInComponent } from './Components/organization-sign-in/organization-sign-in.component';
 import { OrganizationSignUpComponent } from './Components/organization-sign-up/organization-sign-up.component';
+import { ErrorInterceptor } from "./services/error.interceptor";
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { OrganizationSignUpComponent } from './Components/organization-sign-up/o
       useClass: TokenInterceptorService,
       multi: true,
     },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })
