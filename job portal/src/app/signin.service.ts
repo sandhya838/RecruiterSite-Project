@@ -10,7 +10,10 @@ export class SigninService {
   constructor(private http: HttpClient) {}
   private _getHeaders() {
     let header = new HttpHeaders({
-      "x-access-token": sessionStorage.getItem("token") as string,
+      "x-access-token":
+        localStorage.getItem("rememberMe") === "true"
+          ? (localStorage.getItem("token") as string)
+          : (sessionStorage.getItem("token") as string),
       "Content-Type": "application/json",
     });
 
@@ -23,7 +26,13 @@ export class SigninService {
 
   register(data: any): Observable<any> {
     const header = this._getHeaders();
-    return this.http.post(CONSTANTS.CANDIDATESIGNUP, data, );
+    return this.http.post(CONSTANTS.CANDIDATESIGNUP, data);
+  }
+  changePassword(id: string, data: any): Observable<any> {
+    const header = this._getHeaders();
+    return this.http.put(CONSTANTS.CHANGEPASSWORD + id, data, {
+      headers: header,
+    });
   }
 
   getToken() {
@@ -31,7 +40,9 @@ export class SigninService {
   }
 
   isLoggedIn() {
-    let token = sessionStorage.getItem("token");
+    let token = localStorage.getItem("rememberMe")
+      ? localStorage.getItem("token")
+      : sessionStorage.getItem("token");
     if (token == undefined || token === "" || token == null) {
       return false;
     } else {
@@ -40,7 +51,9 @@ export class SigninService {
   }
 
   isLoggedOut() {
-    let token = sessionStorage.getItem("token");
+    let token = localStorage.getItem("rememberMe")
+      ? localStorage.getItem("token")
+      : sessionStorage.getItem("token");
     if (token == undefined || token === "" || token == null) {
       return true;
     } else {
@@ -49,7 +62,8 @@ export class SigninService {
   }
 
   logout() {
-    sessionStorage.removeItem("token");
+    localStorage.clear();
+    sessionStorage.clear();
     location.reload();
     return true;
   }

@@ -70,8 +70,8 @@ const routes: Routes = [
         component: CertificationComponent,
         canActivate: [AuthGuard],
       },
-      {
-        path:"myProfile",
+      { 
+      path:"myProfile",
         component:MyProfileComponent,
         canActivate:[AuthGuard],
       },
@@ -79,7 +79,15 @@ const routes: Routes = [
         path:"Candidateprofile",
         component: CandidateProfileCardComponent,
         canActivate:[AuthGuard],
-      }
+      },
+      {
+        path: "change-password",
+        canActivate: [AuthGuard],
+        loadChildren: () =>
+          import("../change-password/change-password.module").then(
+            (m) => m.ChangePasswordModule
+          ),
+      },
     ],
   },
 ];

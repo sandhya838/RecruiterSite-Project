@@ -17,6 +17,7 @@ import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
 import { TokenInterceptorService } from "./token-interceptor-service.service";
 import { CandidateProfileCardComponent } from './Components/candidate-profile-card/candidate-profile-card.component';
 import { QRCodeModule } from 'angularx-qrcode';
+import { ErrorInterceptor } from "./services/error.interceptor";
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { QRCodeModule } from 'angularx-qrcode';
       useClass: TokenInterceptorService,
       multi: true,
     },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent],
 })

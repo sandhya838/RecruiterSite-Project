@@ -4,15 +4,10 @@ const fs = require('fs');
 const mime = require('mime');
 
 module.exports = {
-    // Create and Save a new profile
-    //['required','numeric','regex:/^[5-9][0-9]{9}$/'],
     createRules: {
         fullName: "required|string",
-        role: "alpha",
-        email: "string",
-        mobileNumber: "string",
-        passowrd: "required|alpha",
-        handle: "required|alpha"
+        email: "required|email",
+        password: "required|string",
 
     },
     updateRules: {
@@ -37,7 +32,11 @@ module.exports = {
                 req.body.resume = fileName;
                 profile.create(req.body, (err, result) => {
                     if (err) {
-                        res.status(500).send({ status: 400, message: 'Oops! Not able to create profile. Please try after sometimes', profile: {} });
+                        if (err.code === 11000) {
+                            res.status(412).send({ status: 412, message: err.keyValue.email + ' already exist.', profile: {} });
+                        } else {
+                            res.status(500).send({ status: 400, message: 'Oops! Not able to create profile. Please try after sometimes', profile: {} });
+                        }
                     } else {
                         console.log(result);
                         res.status(200).send({ status: 200, message: 'profile created successfully.', profile: result });
@@ -122,13 +121,13 @@ module.exports = {
             searchQuery.jobType = req.body.jobType;
         }
         if (req.body.experience) {
-            searchQuery.experience = req.body.experience;
+            searchQuery.experience = '/' + req.body.experience + '/i';
         }
         if (req.body.salary) {
             searchQuery.salary = { $gte: req.body.salary };
         }
         if (req.body.roles) {
-            searchQuery.roles = req.body.roles;
+            searchQuery.roles = '/' + req.body.roles + '/i';
         }
 
         if (req.body.skills && req.body.skills.length) {
@@ -146,6 +145,30 @@ module.exports = {
                     res.status(200).send({ status: 200, message: 'matching jobs successfully listed.', matchedJobs: result });
                 }
             });
+    },
+
+    changePassword: (req, res) => {
+        console.log(req.body);
+        profile.findById({ _id: req.params.id }, (err, result) => {
+            if (err) {
+                res.status(500).send({ status: 500, message: err, profile: {} });
+            } else if (result) {
+                if (result.password === req.body.currentPassword) {
+                    profile.findOneAndUpdate({ _id: req.params.id }, { $set: { password: req.body.password } }, { new: true }, (err, result) => {
+                        if (err) {
+                            res.status(500).send({ status: 500, message: err, profile: {} });
+                        } else {
+                            res.status(200).send({ status: 200, message: 'Password updated successfully.', profile: {} });
+                        }
+                    })
+
+                } else {
+                    res.status(500).send({ status: 500, message: 'Current password didn\'t matched', profile: {} });
+                }
+            } else {
+                res.status(500).send({ status: 500, message: 'Oops! Not able to get all profiles. Please try after sometimes', profile: {} });
+            }
+        })
     }
 }
 

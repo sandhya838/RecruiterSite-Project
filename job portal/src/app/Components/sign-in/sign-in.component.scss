@@ -1,26 +1,28 @@
-@import "../../../assets/_partials/mixin.scss";
-
 .sign-in {
   margin: auto;
   &__wrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 30rem;
-    margin: 2rem auto;
     padding: 2rem 2.5rem;
     border: none;
     outline: none;
     border-radius: 0.25rem;
-    background: #ffffff;
+    background: var(--white);
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%),
       0 10px 15px -3px rgb(0 0 0 / 10%), 0 10px 15px -3px rgb(0 0 0 / 10%),
       0 4px 6px -2px rgb(0 0 0 / 5%);
     a {
-      color: #007bff !important;
+      color: var(--secondaryAqua) !important;
       font-size: 1rem;
       font-weight: normal;
       line-height: 1.5;
       color: var(--color-black);
       background: var(--color-light);
       cursor: pointer;
+      text-decoration: none;
     }
     .form-control {
       &:hover,
@@ -31,49 +33,13 @@
     }
     &__heading {
       font-size: 2rem;
-      font-weight: 600;
+      font-weight: 200;
       color: var(--color-black);
     }
-    &__email {
-      font-size: 1rem;
-      font-weight: 400;
-      height: auto;
-      padding: 0.75rem 1.25rem;
-      border: none;
-      outline: none;
-      border-radius: 2rem;
-      color: var(--color-black);
-      background: #f1f5f9;
-      text-rendering: optimizeLegibility;
-    }
-    &__password {
-      font-size: 1rem;
-      font-weight: 400;
-      height: auto;
-      padding: 0.75rem 1.25rem;
-      border: none;
-      outline: none;
-      border-top-left-radius: 2rem;
-      border-bottom-left-radius: 2rem;
-      color: var(--color-black);
-      background: #f1f5f9;
-      text-rendering: optimizeLegibility;
-    }
-    .input-group-text {
-      border-top-right-radius: 2rem;
-      border-bottom-right-radius: 2rem;
-      background-color: #f1f5f9;
-      border: none;
-	  cursor: pointer;
-    }
-    &__btn {
-      cursor: pointer;
-      min-width: 40%;
-      height: auto;
-      padding: 0.65rem 1.25rem;
-      border: none;
-      border-radius: 2rem;
-      font-weight: 500;
+    &__icon {
+      position: absolute;
+      right: 10px;
+      top: 8px;
     }
     &__line {
       flex: auto;
@@ -91,15 +57,15 @@
     }
     .fa-facebook {
       background: #3b5998;
-      color: white;
+      color: var(--white);
     }
     .fa-google {
-      background: $denger;
-      color: white;
+      background: var(--danger);
+      color: var(--white);
     }
     .fa-linkedin {
-      background: #2867b2;
-      color: white;
+      background: var(--linkedin);
+      color: var(--white);
     }
     &__error {
       font-size: 11px;

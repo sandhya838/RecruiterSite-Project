@@ -4,7 +4,8 @@
       <a [routerLink]="'/login'">Sign in</a>
     </div>
     <div class="sign-up__wrapper__heading mb-2">Sign up</div>
-    <form enctype="multipart/form-data"
+    <form
+      enctype="multipart/form-data"
       [formGroup]="signUp"
       (ngSubmit)="onSubmitForm(signUp.valid, signUp.value)"
       novalidate
@@ -57,7 +58,7 @@
         </div>
       </div>
 
-      <div class="form-group input-group">
+      <div class="form-group position-relative">
         <input
           type="{{ isPassword ? 'text' : 'password' }}"
           class="form-control sign-up__wrapper__password"
@@ -65,33 +66,45 @@
           placeholder="password"
           formControlName="password"
         />
-        <div class="input-group-prepend" (click)="showPassword()">
-          <div class="input-group-text">
-            <i class="fa fa-eye" *ngIf="!isPassword" aria-hidden="true"></i>
-            <i
-              class="fa fa-eye-slash"
-              *ngIf="isPassword"
-              aria-hidden="true"
-            ></i>
+        <div class="sign-up__wrapper__icon" (click)="showPassword()">
+          <i class="fa fa-eye" *ngIf="!isPassword" aria-hidden="true"></i>
+          <i class="fa fa-eye-slash" *ngIf="isPassword" aria-hidden="true"></i>
+        </div>
+        <div
+          class="text-danger sign-up__wrapper__error"
+          *ngIf="getControl.password.touched && getControl.password.invalid"
+        >
+          <div *ngIf="getControl.password.errors">
+            <div *ngIf="getControl.password.errors.required">
+              This field is required
+            </div>
           </div>
         </div>
       </div>
-      <div
-        class="text-danger sign-up__wrapper__error"
-        *ngIf="getControl.password.touched && getControl.password.invalid"
-      >
-        <div *ngIf="getControl.password.errors">
-          <div *ngIf="getControl.password.errors.required">
-            This field is required
-          </div>
-        </div>
-      </div>
+
       <div class="form-group">
-        <file-upload
-          formControlName="file"
-          maxsize="5 MB"
-          [animation]="true"
-        ></file-upload>
+        <file-upload simple formControlName="file" maxsize="5 MB">
+          <ng-template let-file #placeholder>
+            <ng-container *ngIf="file; else emptyList">
+              {{ file.name }}
+            </ng-container>
+
+            <ng-template #emptyList> Choose a file... </ng-template>
+          </ng-template>
+
+          <ng-template let-control="control" #button>
+            <i class="fa fa-upload" aria-hidden="true"></i>
+          </ng-template>
+          <!-- <ng-template
+            let-isFileDragDropAvailable="isFileDragDropAvailable"
+            #placeholder
+          >
+            <span *ngIf="!signUp.controls['file'].valid"
+              ><i class="fa fa-upload" aria-hidden="true"></i> drop or
+              click</span
+            >
+          </ng-template> -->
+        </file-upload>
         <div
           class="text-danger sign-up__wrapper__error"
           *ngIf="
@@ -109,7 +122,7 @@
       </div>
 
       <div class="d-flex justify-content-center">
-        <button class="btn btn-primary sign-up__wrapper__btn" type="submit">
+        <button class="job-btn job-btn-small w-100" type="submit">
           Sign up
         </button>
       </div>

@@ -18,6 +18,14 @@
     text-align: right;
     .dropdown-item {
       cursor: pointer;
+      margin: -9px auto;
+      padding: 20px;
+      .fa{
+        font-size: 20px;
+      }
+      &:hover{
+        background-color: var(--primary);
+      }
     }
   }
 }

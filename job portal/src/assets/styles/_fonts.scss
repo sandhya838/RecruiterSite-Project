@@ -1,0 +1,153 @@
+$path: "../fonts/" !default;
+@import "./mixin";
+
+@include font-face($path + "Bebas-Regular", "Bebas-Regular", "otf", 400);
+@include font-face($path + "Bebas-Regular", "Bebas-Regular", "ttf", 400);
+
+@include font-face(
+  $path + "BebasNeue-Regular",
+  "BebasNeue-Regular",
+  "eot",
+  400
+);
+@include font-face(
+  $path + "BebasNeue-Regular",
+  "BebasNeue-Regular",
+  "ttf",
+  400
+);
+@include font-face(
+  $path + "BebasNeue-Regular",
+  "BebasNeue-Regular",
+  "woff",
+  400
+);
+@include font-face(
+  $path + "BebasNeue-Regular",
+  "BebasNeue-Regular",
+  "woff2",
+  400
+);
+
+@include font-face(
+  $path + "CaviarDreams_Bold",
+  "CaviarDreams_Bold",
+  "eot",
+  900
+);
+@include font-face(
+  $path + "CaviarDreams_Bold",
+  "CaviarDreams_Bold",
+  "ttf",
+  900
+);
+
+@include font-face(
+  $path + "CaviarDreams_BoldItalic",
+  "CaviarDreams_BoldItalic",
+  "ttf",
+  700
+);
+
+@include font-face(
+  $path + "CaviarDreams_Italic",
+  "CaviarDreams_Italic",
+  "ttf",
+  900
+);
+
+@include font-face($path + "CaviarDreams", "CaviarDreams", "ttf", 400);
+
+@include font-face($path + "LemonMilk", "LemonMilk", "otf", 400);
+
+@include font-face($path + "Roboto-Regular", "Roboto-Regular", "ttf", 400);
+
+// @include font-face($path+'Roboto-Black','Roboto-Black','eot',800);
+@include font-face($path + "Roboto-Black", "Roboto-Black", "ttf", 900);
+// @include font-face($path+'Roboto-Black','Roboto-Black','woff',800);
+// @include font-face($path+'Roboto-Black','Roboto-Black','woff2',800);
+
+// @include font-face($path+'Roboto-BlackItalic','Roboto-BlackItalic','eot',800);
+@include font-face(
+  $path + "Roboto-BlackItalic",
+  "Roboto-BlackItalic",
+  "ttf",
+  900
+);
+// @include font-face($path+'Roboto-BlackItalic','Roboto-BlackItalic','woff',800);
+// @include font-face($path+'Roboto-BlackItalic','Roboto-BlackItalic','woff2',800);
+
+// @include font-face($path+'Roboto-Bold','Roboto-Bold','eot',900);
+@include font-face($path + "Roboto-Bold", "Roboto-Bold", "ttf", 700);
+// @include font-face($path+'Roboto-Bold','Roboto-Bold','woff',900);
+// @include font-face($path+'Roboto-Bold','Roboto-Bold','woff2',900);
+
+// @include font-face($path+'Roboto-BoldCondensed','Roboto-BoldCondensed','eot',300);
+@include font-face(
+  $path + "Roboto-BoldCondensed",
+  "Roboto-BoldCondensed",
+  "ttf",
+  300
+);
+// @include font-face($path+'Roboto-BoldCondensed','Roboto-BoldCondensed','woff',300);
+// @include font-face($path+'Roboto-BoldCondensed','Roboto-BoldCondensed','woff2',300);
+
+// @include font-face($path+'Roboto-BoldCondensedItalic','Roboto-BoldCondensedItalic','eot',300);
+@include font-face(
+  $path + "Roboto-BoldCondensedItalic",
+  "Roboto-BoldCondensedItalic",
+  "ttf",
+  300
+);
+// @include font-face($path+'Roboto-BoldCondensedItalic','Roboto-BoldCondensedItalic','woff',300);
+// @include font-face($path+'Roboto-BoldCondensedItalic','Roboto-BoldCondensedItalic','woff2',300);
+
+// @include font-face($path+'Roboto-Italic','Roboto-Italic','eot',500);
+@include font-face($path + "Roboto-Italic", "Roboto-Italic", "ttf", 500);
+// @include font-face($path+'Roboto-Italic','Roboto-Italic','woff',500);
+// @include font-face($path+'Roboto-Italic','Roboto-Italic','woff2',500);
+
+// @include font-face($path+'Roboto-Light','Roboto-Light','eot',500);
+@include font-face($path + "Roboto-Light", "Roboto-Light", "ttf", 300);
+// @include font-face($path+'Roboto-Light','Roboto-Light','woff',500);
+// @include font-face($path+'Roboto-Light','Roboto-Light','woff2',500);
+
+// @include font-face($path+'Roboto-LightItalic','Roboto-LightItalic','eot',600);
+@include font-face(
+  $path + "Roboto-LightItalic",
+  "Roboto-LightItalic",
+  "ttf",
+  300
+);
+// @include font-face($path+'Roboto-LightItalic','Roboto-LightItalic','woff',600);
+// @include font-face($path+'Roboto-LightItalic','Roboto-LightItalic','woff2',600);
+
+// @include font-face($path+'Roboto-Medium','Roboto-Medium','eot',600);
+@include font-face($path + "Roboto-Medium", "Roboto-Medium", "ttf", 500);
+// @include font-face($path+'Roboto-Medium','Roboto-Medium','woff',600);
+// @include font-face($path+'Roboto-Medium','Roboto-Medium','woff2',600);
+
+// @include font-face($path+'Roboto-MediumItalic','Roboto-MediumItalic','eot',100);
+@include font-face(
+  $path + "Roboto-MediumItalic",
+  "Roboto-MediumItalic",
+  "ttf",
+  500
+);
+// @include font-face($path+'Roboto-MediumItalic','Roboto-MediumItalic','woff',100);
+// @include font-face($path+'Roboto-MediumItalic','Roboto-MediumItalic','woff2',100);
+
+// @include font-face($path+'Roboto-Thin','Roboto-Thin','eot',100);
+@include font-face($path + "Roboto-Thin", "Roboto-Thin", "ttf", 100);
+// @include font-face($path+'Roboto-Thin','Roboto-Thin','woff',100);
+// @include font-face($path+'Roboto-Thin','Roboto-Thin','woff2',100);
+
+// @include font-face($path+'Roboto-ThinItalic','Roboto-ThinItalic','eot',100);
+@include font-face(
+  $path + "Roboto-ThinItalic",
+  "Roboto-ThinItalic",
+  "ttf",
+  100
+);
+// @include font-face($path+'Roboto-ThinItalic','Roboto-ThinItalic','woff',100);
+// @include font-face($path+'Roboto-ThinItalic','Roboto-ThinItalic','woff2',100);

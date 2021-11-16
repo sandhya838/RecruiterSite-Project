@@ -7,7 +7,7 @@
           <a
             *ngIf="item.url; else subMneu"
             [class.active]="item.isActive"
-            (click)="makeLinkActive(i)"
+            (click)="makeLinkActive()"
             [routerLink]="item.url"
           >
             {{ item.name }}
@@ -16,7 +16,7 @@
           <ng-template #subMneu>
             <a 
               [class.active]="item.isActive"
-              (click)="makeLinkActive(i)"
+              (click)="makeLinkActive()"
               data-toggle="collapse"
               href="#collapsemenu{{ i }}"
               role="button"
