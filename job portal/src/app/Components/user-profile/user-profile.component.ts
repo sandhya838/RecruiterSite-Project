@@ -5,6 +5,7 @@ import { Router } from "@angular/router";
 import { data } from "jquery";
 import { ConfigService } from "src/app/config.service";
 import { NotificationService } from "src/app/notification.service";
+import { CommonService } from "src/app/services/common.service";
 
 @Component({
   selector: "app-user-profile",
@@ -16,11 +17,13 @@ export class UserProfileComponent implements OnInit {
   userForm!: FormGroup;
   allData: any;
   currentUserData = null;
+  userId: string | undefined;
   constructor(
     public formBuilder: FormBuilder,
     private notifyService: NotificationService,
     private configService: ConfigService,
-    private router: Router
+    private router: Router,
+    private commonService: CommonService
   ) {}
 
   pattern = "^[ a-zA-Z]*$";
@@ -28,21 +31,22 @@ export class UserProfileComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       title: ["", [Validators.required]],
       firstName: ["", [Validators.required, Validators.pattern(this.pattern)]],
-      middleName: ["", [Validators.required, Validators.pattern(this.pattern)]],
+      middleName: [""],
       lastName: ["", [Validators.required, Validators.pattern(this.pattern)]],
-      Country: ["", [Validators.required, Validators.pattern(this.pattern)]],
-      State: ["", [Validators.required, Validators.pattern(this.pattern)]],
-      City: ["", [Validators.required, Validators.pattern(this.pattern)]],
-      Nation: ["", [Validators.required, Validators.pattern(this.pattern)]],
-      currentNationality: [
-        "",
-        [Validators.required, Validators.pattern(this.pattern)],
-      ],
-      previousNationality: [
-        "",
-        [Validators.required, Validators.pattern(this.pattern)],
-      ],
+      countryOfLiving: ["", [Validators.required]],
+      state: ["", [Validators.required]],
+      city: ["", [Validators.required]],
+      nationality: ["", [Validators.required]],
+      currentNationality: ["", [Validators.required]],
+      previousNationality: ["", [Validators.required]],
     });
+    const userData = JSON.parse(
+      localStorage.getItem("rememberMe") === "true"
+        ? localStorage.getItem("user")
+        : (sessionStorage.getItem("user") as any)
+    );
+    this.userId = userData._id;
+    this.userForm.patchValue(userData);
   }
 
   get getControl() {
@@ -51,22 +55,19 @@ export class UserProfileComponent implements OnInit {
 
   onClick(formValue: any, isValid: boolean) {
     if (isValid) {
-      this.configService.addUser(formValue).subscribe(
-        (data: any) => {
+      this.configService
+        .updateUser(this.userId, formValue)
+        .subscribe((data: any) => {
           if (data.status === 200) {
-            this.notifyService.showSuccess(data.message);
-            localStorage.setItem("ID", data.profile._id);
-            this.router.navigateByUrl('/experience');
-            this.userForm.reset();
+            localStorage.getItem("rememberMe") === "true"
+              ? localStorage.setItem("user", JSON.stringify(data.profile))
+              : sessionStorage.setItem("user", JSON.stringify(data.profile));
+            this.commonService.alert("success", data.message);
+            this.router.navigateByUrl("/profile/experience");
           } else {
-            this.notifyService.showError(data.message);
+            this.commonService.alert("error", data.message);
           }
-          console.log("data", data);
-        },
-        (error) => {
-          this.notifyService.showError(error.message);
-        }
-      );
+        });
     } else {
       this.userForm.markAllAsTouched();
       this.userForm.updateValueAndValidity();

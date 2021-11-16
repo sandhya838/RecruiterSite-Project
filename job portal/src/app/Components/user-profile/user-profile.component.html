@@ -1,266 +1,359 @@
-<div class="container">
-  <div
-    *ngIf="alert"
-    class="alert alert-success alert-dismissible fade show"
-    role="alert"
-  >
-    <strong>Success!</strong> Your data is successfully submitted.
-    <pre>{{ allData | json }}</pre>
-    <button
-      (click)="closeAlert()"
-      type="button"
-      class="close"
-      data-dismiss="alert"
-      aria-label="Close"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
+<div class="card user-profile">
+  <div class="card-body d-flex p-0">
+    <div class="user-profile__empty-block">
+      <div class="d-flex align-items-center justify-content-center h-100">
+        <img
+          src="assets/img/change-password.png"
+          alt="change password"
+          class="w-25"
+        />
+      </div>
+    </div>
+    <div class="p-4 w-50">
+      <form
+        [formGroup]="userForm"
+        (ngSubmit)="onClick(userForm.value, userForm.valid)"
+        novalidate
+      >
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label>Title</label>
+              <select
+                class="form-select"
+                class="form-control"
+                formControlName="title"
+              >
+                <option selected disabled value="">Title</option>
+                <option>Mr.</option>
+                <option>Mrs.</option>
+                <option>Dr.</option>
+              </select>
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['title'].valid &&
+                  (userForm.controls['title'].touched ||
+                    userForm.controls['title'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['title'].errors">
+                  <small *ngIf="userForm.controls['title'].errors.required">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label>First name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstName"
+                name="firstname"
+                formControlName="firstName"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['firstName'].valid &&
+                  (userForm.controls['firstName'].touched ||
+                    userForm.controls['firstName'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['firstName'].errors">
+                  <small *ngIf="userForm.controls['firstName'].errors.required">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label>Middle name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="middleName"
+                name="middleName"
+                formControlName="middleName"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['middleName'].valid &&
+                  (userForm.controls['middleName'].touched ||
+                    userForm.controls['middleName'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['middleName'].errors">
+                  <small
+                    *ngIf="userForm.controls['middleName'].errors.required"
+                  >
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label>Last name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lastName"
+                name="lastName"
+                formControlName="lastName"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['lastName'].valid &&
+                  (userForm.controls['lastName'].touched ||
+                    userForm.controls['lastName'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['lastName'].errors">
+                  <small *ngIf="userForm.controls['lastName'].errors.required">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label>Country of living</label>
+              <select
+                class="form-select"
+                class="form-control"
+                formControlName="countryOfLiving"
+              >
+                <option selected disabled value="">Country of living</option>
+                <option>new zealand</option>
+                <option>Dubai</option>
+                <option>France</option>
+                <option>Germany</option>
+                <option>India</option>
+                <option>Thailand</option>
+                <option>USA</option>
+                <option>Soudi Arabia</option>
+              </select>
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['countryOfLiving'].valid &&
+                  (userForm.controls['countryOfLiving'].touched ||
+                    userForm.controls['countryOfLiving'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['countryOfLiving'].errors">
+                  <small *ngIf="userForm.controls['countryOfLiving'].errors.required">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label>State</label>
+              <select
+                class="form-select"
+                class="form-control"
+                formControlName="state"
+                required
+              >
+                <option selected disabled value="">state</option>
+                <option>Berlin</option>
+                <option>Paris</option>
+                <option>Maharastra</option>
+                <option>Guarat</option>
+                <option>Karnataka</option>
+              </select>
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['state'].valid &&
+                  (userForm.controls['state'].touched ||
+                    userForm.controls['state'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['state'].errors">
+                  <small *ngIf="userForm.controls['state'].errors.required">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label>City</label>
+              <select
+                class="form-select"
+                class="form-control"
+                formControlName="city"
+              >
+                <option selected disabled value="">City</option>
+                <option>Mumbai</option>
+                <option>Pune</option>
+                <option>Chennai</option>
+                <option>Kolkata</option>
+                <option>surat</option>
+                <option>Kolhapur</option>
+                <option>Jalgaon</option>
+                <option>Hyderabad</option>
+              </select>
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['city'].valid &&
+                  (userForm.controls['city'].touched ||
+                    userForm.controls['city'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['city'].errors">
+                  <small *ngIf="userForm.controls['city'].errors.required">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label>Nationality</label>
+              <select
+                class="form-select"
+                class="form-control"
+                formControlName="nationality"
+                required
+              >
+                <option selected disabled value="">nationality</option>
+                <option>Indian</option>
+                <option>Us</option>
+                <option>UK</option>
+                <option>chines</option>
+                <option>cuban</option>
+                <option>French</option>
+                <option>German</option>
+              </select>
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['nationality'].valid &&
+                  (userForm.controls['nationality'].touched ||
+                    userForm.controls['nationality'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['nationality'].errors">
+                  <small
+                    *ngIf="userForm.controls['nationality'].errors.required"
+                  >
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label>Current nationality</label>
+              <select
+                class="form-select"
+                class="form-control"
+                formControlName="currentNationality"
+              >
+                <option selected disabled value="">current nationality</option>
+                <option>Mumbai</option>
+                <option>Pune</option>
+                <option>Chennai</option>
+                <option>Kolkata</option>
+                <option>surat</option>
+                <option>Kolhapur</option>
+                <option>Jalgaon</option>
+                <option>Hyderabad</option>
+              </select>
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['currentNationality'].valid &&
+                  (userForm.controls['currentNationality'].touched ||
+                    userForm.controls['currentNationality'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['currentNationality'].errors">
+                  <small
+                    *ngIf="
+                      userForm.controls['currentNationality'].errors.required
+                    "
+                  >
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label>Previous ationality</label>
+              <select
+                class="form-select"
+                class="form-control"
+                formControlName="previousNationality"
+                required
+              >
+                <option selected disabled value="">previous nationality</option>
+                <option>Indian</option>
+                <option>Us</option>
+                <option>UK</option>
+                <option>chines</option>
+                <option>cuban</option>
+                <option>French</option>
+                <option>German</option>
+              </select>
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['previousNationality'].valid &&
+                  (userForm.controls['previousNationality'].touched ||
+                    userForm.controls['previousNationality'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['previousNationality'].errors">
+                  <small
+                    *ngIf="
+                      userForm.controls['previousNationality'].errors.required
+                    "
+                  >
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="d-flex justify-content-end">
+          <div class="pl-1">
+            <button class="job-btn job-btn-mini" type="submit">Next</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
-  <!-- <div class="container">
-    <li class="list-item"><strong><p id="hi"><i class="fa fa-user-circle" aria-hidden="true"></i> Hi Sandhya!</p></strong></li>
-    <li class="list-item"><strong><p id="yourself"> Tell us more about yourself</p></strong></li>
-  </div> -->
-
-  <form [formGroup]="userForm" (ngSubmit)="onClick(userForm.value, userForm.valid)" novalidate>
-    <div class="row g-3 row-margin-05">
-      <div class="col-md-2">
-        <label class="form-label">Title</label
-        ><span class="text-danger">*</span>
-        <select
-          class="form-select"
-          class="form-control"
-          formControlName="title"
-          required
-        >
-          <option selected disabled value="">select</option>
-          <option>Mr.</option>
-          <option>Mrs.</option>
-          <option>Dr.</option>
-        </select>
-        <div
-          class="text-danger"
-          *ngIf="getControl.title.touched && getControl.title.invalid"
-        >
-          <div *ngIf="getControl.title.errors">enter valid data.</div>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <label>First name</label><span class="text-danger">*</span>
-        <input
-          type="text"
-          class="form-control"
-          placeholder=""
-          formControlName="firstName"
-        />
-        <div
-          class="text-danger"
-          *ngIf="getControl.firstName.touched && getControl.firstName.invalid"
-        >
-          <div *ngIf="getControl.firstName.errors">
-            Please enter valid name.
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-3">
-        <label>Middle name</label><span class="text-danger">*</span>
-        <input
-          type="text"
-          class="form-control"
-          placeholder=""
-          formControlName="middleName"
-        />
-        <div
-          class="text-danger"
-          *ngIf="getControl.middleName.touched && getControl.middleName.invalid"
-        >
-          <div *ngIf="getControl.middleName.errors">
-            Please enter valid name.
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <label>Last name</label><span class="text-danger">*</span>
-        <input
-          type="text"
-          class="form-control"
-          placeholder=""
-          formControlName="lastName"
-        />
-        <div
-          class="text-danger"
-          *ngIf="getControl.lastName.touched && getControl.lastName.invalid"
-        >
-          <div *ngIf="getControl.lastName.errors">Please enter valid name.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row g-3">
-      <div class="col-md-4">
-        <label>Country of living</label><span class="text-danger">*</span>
-        <select class="form-control" placeholder="" formControlName="Country">
-          <option selected disabled value="">-select-</option>
-          <option>new zealand</option>
-          <option>Dubai</option>
-          <option>France</option>
-          <option>Germany</option>
-          <option>India</option>
-          <option>Thailand</option>
-          <option>USA</option>
-          <option>Soudi Arabia</option>
-        </select>
-        <div
-          class="text-danger"
-          *ngIf="getControl.Country.touched && getControl.Country.invalid"
-        >
-          <div *ngIf="getControl.Country.errors">
-            Please select a valid Country.
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <label>State</label><span class="text-danger">*</span>
-        <select class="form-control" placeholder="" formControlName="State">
-          <option selected disabled value="">-select-</option>
-          <option>Berlin</option>
-          <option>Paris</option>
-          <option>Maharastra</option>
-          <option>Guarat</option>
-          <option>Karnataka</option>
-        </select>
-        <div
-          class="text-danger"
-          *ngIf="getControl.State.touched && getControl.State.invalid"
-        >
-          <div *ngIf="getControl.State.errors">
-            Please select a valid state.
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <label>City</label><span class="text-danger">*</span>
-        <select class="form-control" placeholder="" formControlName="City">
-          <option selected disabled value="">-select-</option>
-          <option>Mumbai</option>
-          <option>Pune</option>
-          <option>Chennai</option>
-          <option>Kolkata</option>
-          <option>surat</option>
-          <option>Kolhapur</option>
-          <option>Jalgaon</option>
-          <option>Hyderabad</option>
-        </select>
-        <div
-          class="text-danger"
-          *ngIf="getControl.City.touched && getControl.City.invalid"
-        >
-          <div *ngIf="getControl.City.errors">Please select a valid city.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row g-3">
-      <div class="col-md-4">
-        <label>Nationality</label><span class="text-danger">*</span>
-        <select class="form-control" placeholder="" formControlName="Nation">
-          <option selected disabled value="">-select-</option>
-          <option>Indian</option>
-          <option>Us</option>
-          <option>UK</option>
-          <option>chines</option>
-          <option>cuban</option>
-          <option>French</option>
-          <option>German</option>
-        </select>
-        <div
-          class="text-danger"
-          *ngIf="getControl.Nation.touched && getControl.Nation.invalid"
-        >
-          <div *ngIf="getControl.Nation.errors">
-            Please select a valid Nationality.
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <label>Current-nationality</label><span class="text-danger">*</span>
-        <select
-          class="form-control"
-          placeholder=""
-          formControlName="currentNationality"
-        >
-          <option selected disabled value="">-select-</option>
-          <option>American</option>
-          <option>China</option>
-          <option>Dubai</option>
-          <option>Indian</option>
-          <option>South africa</option>
-          <option>Saudi arabia</option>
-          <option>New zealand</option>
-        </select>
-        <div
-          class="text-danger"
-          *ngIf="
-            getControl.currentNationality.touched &&
-            getControl.currentNationality.invalid
-          "
-        >
-          <div *ngIf="getControl.currentNationality.errors">
-            Please select a valid Nationality.
-          </div>
-        </div>
-      </div>
-
-      <div class="col-md-4">
-        <label>Previous-nationality</label><span class="text-danger">*</span>
-        <select
-          class="form-control"
-          placeholder=""
-          formControlName="previousNationality"
-        >
-          <option selected disabled value="">-select-</option>
-          <option>India</option>
-          <option>Afgan</option>
-          <option>American</option>
-          <option>Bangladeshi</option>
-          <option>Danish</option>
-          <option>Faroese</option>
-        </select>
-        <div
-          class="text-danger"
-          *ngIf="
-            getControl.previousNationality.touched &&
-            getControl.previousNationality.invalid
-          "
-        >
-          <div *ngIf="getControl.previousNationality.errors">
-            Please select a valid Nationality.
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-md-2">
-        <button class="btn btn-outline-primary form-control btn-block">
-          Cancel
-        </button>
-      </div>
-      <div class="col">
-        <button
-          id="btnSubmit"
-          class="btn btn-success form-control btn-block"
-          type="submit"
-        >
-        Next
-        </button>
-      </div>
-      <!-- <button id="btnSubmit" class="btn btn-success form-control btn-block" type="submit" (click)="showToasterSuccess()">Submit</button>   for toaster -->
-    </div>
-  </form>
 </div>

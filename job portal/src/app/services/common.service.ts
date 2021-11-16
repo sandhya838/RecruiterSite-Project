@@ -1,3 +1,4 @@
+import { HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import * as CryptoJS from "crypto-js";
 import { ToastrService } from "ngx-toastr";
@@ -44,17 +45,23 @@ export class CommonService {
   alert(type: string, message: string) {
     switch (type) {
       case "error":
-        this.toastr.error(message,"Error!");
+        this.toastr.error(message, "Error!");
         break;
       case "warning":
-        this.toastr.warning(message,"Warning!");
+        this.toastr.warning(message, "Warning!");
         break;
       case "success":
-        this.toastr.success(message,"Success!");
+        this.toastr.success(message, "Success!");
         break;
       default:
-        this.toastr.info(message,"Info!");
+        this.toastr.info(message, "Info!");
         break;
     }
+  }
+   _getHeaders() {
+    return new HttpHeaders({
+      "x-access-token": sessionStorage.getItem("token") as string,
+      "Content-Type": "application/json",
+    });
   }
 }

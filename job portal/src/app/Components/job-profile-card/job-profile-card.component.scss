@@ -1,5 +1,3 @@
-@import "../../assets/_partials/mixin.scss";
-
 .jobs {
   width: 585px;
   padding: 0px;
@@ -22,7 +20,7 @@
     p {
       margin-bottom: 0px;
       color: #474747;
-      font-size: $fontSize;
+      font-size: 15px;
     }
     &:hover {
       position: relative;
@@ -47,7 +45,7 @@
 p {
   margin-bottom: 0px;
   color: #474747;
-  font-size: $fontSize;
+  font-size: 15px;
 }
 //  .card-title{
 //      margin-bottom: 0px;
@@ -83,12 +81,12 @@ p {
 }
 .fa-clock-o {
   font-size: 16px;
-  color: $darkGreyclr;
+  color: var(--grayMediumWarm);
   margin-top: 18px;
 }
 .fa-money {
   font-size: 16px;
-  color: $darkGreyclr;
+  color: var(--grayMediumWarm);
   margin-top: 5px;
 }
 
