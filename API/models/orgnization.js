@@ -10,6 +10,10 @@ var Organizationschema = new Schema({
     password: {
         type: String
     },
+    contactPerson:{
+        type:String
+    },
+    
     contactNumber: {
         type: String
     },

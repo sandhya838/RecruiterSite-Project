@@ -15,6 +15,8 @@ import { PageNotFoundComponent } from "./Components/page-not-found/page-not-foun
 import { AgGridModule } from "ag-grid-angular";
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
 import { TokenInterceptorService } from "./token-interceptor-service.service";
+import { OrganizationSignInComponent } from './Components/organization-sign-in/organization-sign-in.component';
+import { OrganizationSignUpComponent } from './Components/organization-sign-up/organization-sign-up.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +26,8 @@ import { TokenInterceptorService } from "./token-interceptor-service.service";
     SidebarComponent,
     SignInComponent,
     PageNotFoundComponent,
+    OrganizationSignInComponent,
+    OrganizationSignUpComponent,
   ],
   imports: [
     BrowserModule,

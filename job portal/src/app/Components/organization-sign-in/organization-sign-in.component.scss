@@ -1,0 +1,124 @@
+@import "../../../assets/_partials/mixin.scss";
+
+.sign-in {
+  margin: auto;
+  &__wrapper {
+    width: 30rem;
+    margin: 2rem auto;
+    padding: 2rem 2.5rem;
+    border: none;
+    outline: none;
+    border-radius: 14px;
+    background: #ffffff;
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%),
+      0 10px 15px -3px rgb(0 0 0 / 10%), 0 10px 15px -3px rgb(0 0 0 / 10%),
+      0 4px 6px -2px rgb(0 0 0 / 5%);
+    a {
+      color: #007bff !important;
+      font-size: 1rem;
+      font-weight: normal;
+      line-height: 1.5;
+      color: var(--color-black);
+      background: var(--color-light);
+      cursor: pointer;
+    }
+    .form-control {
+      &:hover,
+      &:focus,
+      &:active {
+        box-shadow: none;
+      }
+    }
+    &__heading {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--color-black);
+    }
+    &__email {
+      font-size: 1rem;
+      font-weight: 400;
+      height: auto;
+      padding: 0.75rem 1.25rem;
+      // border: none;
+      outline: none;
+      border-radius: 14px;
+      color: var(--color-black);
+      background: #fff;
+      text-rendering: optimizeLegibility;
+    }
+    &__password {
+      font-size: 1rem;
+      font-weight: 400;
+      height: auto;
+      padding: 0.75rem 1.25rem;
+      // border: none;
+      outline: none;
+      border-top-left-radius: 14px;
+      border-bottom-left-radius: 14px;
+      color: var(--color-black);
+      background: #fff;
+      text-rendering: optimizeLegibility;
+    }
+    .input-group-text {
+      background-color: #fff;
+      border-bottom-right-radius: 14px;
+      border-top-right-radius: 14px;
+
+      
+    /* border: none; */
+    cursor: pointer;
+	
+    }
+    &__btn {
+      cursor: pointer;
+      min-width: 100%;
+      height: auto;
+      padding: 0.65rem 1.25rem;
+      border: none;
+      // border-radius: 2rem;
+      font-weight: 500;
+    }
+    &__line {
+      flex: auto;
+      height: 1px;
+      margin-top: 10px;
+      background: #dadce0;
+    }
+    .fa {
+      padding: 4px;
+      font-size: 20px;
+      width: 30px;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 50%;
+    }
+    .btn-primary {
+      color: #0e0e0e;
+      background-color: #efe13a;
+    }
+    .fa-facebook {
+      background: #3b5998;
+      color: white;
+    }
+    .fa-google {
+      background: $denger;
+      color: white;
+    }
+    .fa-linkedin {
+      background: #2867b2;
+      color: white;
+    }
+    &__error {
+      font-size: 11px;
+    }
+  }
+}
+
+@media all and (max-width: 767px) {
+  .sign-in {
+    margin: auto 15px;
+    &__wrapper {
+      width: 100%;
+    }
+  }
+}

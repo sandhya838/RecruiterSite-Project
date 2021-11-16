@@ -16,9 +16,11 @@ import { SidebarComponent } from "./Components/sidebar/sidebar.component";
 import { LoginguardGuard } from "./loginguard.guard";
 import { JobProfileCardComponent } from "./job-profile-card/job-profile-card.component";
 import { MyProfileComponent } from "./my-profile/my-profile.component";
+import { OrganizationSignInComponent } from "./Components/organization-sign-in/organization-sign-in.component";
 const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
   { path: "login", component: SignInComponent },
+  { path:"organization-signin", component: OrganizationSignInComponent },
   {
     path: "sign-up",
     loadChildren: () =>
@@ -29,6 +31,17 @@ const routes: Routes = [
     loadChildren: () =>
       import("./Components/admin/admin.module").then((m) => m.AdminModule),
   },
+  {
+    path: "organization-sign-up",
+    loadChildren: () =>
+      import("./Components/organization-sign-up/organization-sign-up.module").then((m) => m.OrganizationSignUpModule),
+  },
+  // { path: "orglogin", component: OrganizationSignInComponent },
+  // {
+  //   path: "orgsign-up",
+  //   loadChildren: () =>
+  //     import("./Components/organization-sign-up").then((m) => m.SignUpModule),
+  // },
 
   
   { path: "signUp", component: SignUpComponent },

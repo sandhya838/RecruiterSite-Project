@@ -4,6 +4,7 @@ import { AuthGuard } from "src/app/authguard";
 import { JobProfileCardComponent } from "src/app/job-profile-card/job-profile-card.component";
 import { MyProfileComponent } from "src/app/my-profile/my-profile.component";
 import { CertificationComponent } from "../certification/certification.component";
+import { CompanyDetailsComponent } from "../company-details/company-details.component";
 import { DashboardComponent } from "../dashboard/dashboard.component";
 import { EduDetailsComponent } from "../edu-details/edu-details.component";
 import { ExperianceComponent } from "../experiance/experiance.component";
@@ -73,7 +74,12 @@ const routes: Routes = [
         path:"myProfile",
         component:MyProfileComponent,
         canActivate:[AuthGuard],
-      }
+      },
+      {
+        path: "company-details",
+        component: CompanyDetailsComponent,
+        canActivate: [AuthGuard],
+      },
     ],
   },
 ];

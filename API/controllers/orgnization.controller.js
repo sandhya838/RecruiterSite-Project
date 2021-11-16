@@ -7,6 +7,7 @@ module.exports = {
         name: "required|string",
         logo: "required|string",
         address: "required|string",
+         contactPerson: "required|string",
         city: "required|string",
         state: "required|alpha",
         pinCode: "required|numeric",
