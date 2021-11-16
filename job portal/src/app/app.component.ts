@@ -16,6 +16,14 @@ export class AppComponent {
     if (localStorage.getItem("token")) {
       this.router.navigate(["/dashboard"]);
     }
-    this.loggedIn = sessionStorage.getItem("token") ? true : false;
+
+    this.loggedIn =
+      localStorage.getItem("rememberMe") === "true"
+        ? localStorage.getItem("token")
+          ? true
+          : false
+        : sessionStorage.getItem("token")
+        ? true
+        : false;
   }
 }
