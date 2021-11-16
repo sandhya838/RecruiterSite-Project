@@ -1,0 +1,36 @@
+<div class="container profile">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="profile__heading">Profile details</h2>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-white">
+        <li class="breadcrumb-item">
+          <a [routerLink]="'/dashboard'">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">my profile</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="profile__steps">
+    <ul>
+      <li class="done" [class.done]="done" [class.active]="activeStep">
+        <a href=""> About you </a>
+      </li>
+      <li>
+        <a href=""> Skills </a>
+      </li>
+      <li>
+        <a href=""> Experiences </a>
+      </li>
+      <li>
+        <a href=""> Work experiences </a>
+      </li>
+      <li>
+        <a href=""> Education details </a>
+      </li>
+      <li>
+        <a href=""> About you </a>
+      </li>
+    </ul>
+  </div>
+  <router-outlet></router-outlet>
+</div>

@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { CONSTANTS } from "../constants";
-import { JobsService } from "../services/jobs.service";
+import { CONSTANTS } from "../../constants";
+import { JobsService } from "../../services/jobs.service";
 
 @Component({
   selector: "app-job-profile-card",
@@ -15,12 +15,12 @@ export class JobProfileCardComponent implements OnInit {
   ngOnInit(): void {
     const userProifleData = JSON.parse(sessionStorage.getItem("user") as any);
     const requestHeader = {
-      jobType: userProifleData.jobType,
-      skills: userProifleData.skills,
-      location: userProifleData.location,
-      experience: userProifleData.experience,
-      salary: userProifleData.salary,
-      roles: userProifleData.roles,
+      jobType: userProifleData?.jobType,
+      skills: userProifleData?.skills,
+      location: userProifleData?.location,
+      experience: userProifleData?.experience,
+      salary: userProifleData?.salary,
+      roles: userProifleData?.roles,
     };
 
     console.log("userProifleData", requestHeader);
