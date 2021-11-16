@@ -16,6 +16,7 @@ import { AgGridModule } from "ag-grid-angular";
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
 import { TokenInterceptorService } from "./token-interceptor-service.service";
 import { CandidateProfileCardComponent } from './Components/candidate-profile-card/candidate-profile-card.component';
+import { QRCodeModule } from 'angularx-qrcode';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { CandidateProfileCardComponent } from './Components/candidate-profile-ca
     AgGridModule.withComponents(null),
     HttpClientModule,
     AngularMultiSelectModule,
+    QRCodeModule 
   ],
   providers: [
     {

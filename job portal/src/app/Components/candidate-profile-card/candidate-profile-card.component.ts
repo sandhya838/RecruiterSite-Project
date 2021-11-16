@@ -6,9 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./candidate-profile-card.component.scss']
 })
 export class CandidateProfileCardComponent implements OnInit {
+  public stringQrCode: string ;
 
-  constructor() { }
-
+  constructor() {
+    this.stringQrCode = 'eduforbetterment.com';
+  }
   ngOnInit(): void {
   }
 
