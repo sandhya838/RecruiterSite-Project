@@ -4,6 +4,7 @@ import { AuthGuard } from "src/app/authguard";
 import { JobProfileCardComponent } from "src/app/Components/job-profile-card/job-profile-card.component";
 import { MyProfileComponent } from "src/app/my-profile/my-profile.component";
 import { CandidateProfileCardComponent } from "../candidate-profile-card/candidate-profile-card.component";
+import { CandidateProfileSummaryComponent } from "../candidate-profile-summary/candidate-profile-summary.component";
 import { CertificationComponent } from "../certification/certification.component";
 import { DashboardComponent } from "../dashboard/dashboard.component";
 import { EduDetailsComponent } from "../edu-details/edu-details.component";
@@ -30,7 +31,11 @@ const routes: Routes = [
         component: JobProfileCardComponent,
         canActivate: [AuthGuard],
       },
-      
+      {
+        path:"profileSummary",
+        component:CandidateProfileSummaryComponent,
+        canActivate:[AuthGuard],
+      },
       {
         path: "education-details/:id",
         component: EduDetailsComponent,

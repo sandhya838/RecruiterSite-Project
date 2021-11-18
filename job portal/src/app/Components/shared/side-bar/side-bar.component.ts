@@ -42,6 +42,14 @@ export class SideBarComponent implements OnInit {
       subLinks: [],
       icon: "fa fa-home",
     },
+    {
+      name: "Pofile summary",
+      url: "/profileSummary",
+      hasChildren: false,
+      isActive: true,
+      subLinks: [],
+      icon: "fa fa-home",
+    }
   ];
   constructor(private router: Router) {}
 
