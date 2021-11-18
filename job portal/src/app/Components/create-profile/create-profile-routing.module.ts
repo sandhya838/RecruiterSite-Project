@@ -3,6 +3,7 @@ import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "src/app/authguard";
 import { EduDetailsComponent } from "../edu-details/edu-details.component";
 import { ExperianceComponent } from "../experiance/experiance.component";
+import { RollprofileComponent } from "../rollprofile/rollprofile.component";
 import { SkillProfileComponent } from "../skill-profile/skill-profile.component";
 import { UserProfileComponent } from "../user-profile/user-profile.component";
 import { WorkExperianceComponent } from "../work-experiance/work-experiance.component";
@@ -37,6 +38,11 @@ const routes: Routes = [
       {
         path: "education-details",
         component: EduDetailsComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: "roles",
+        component: RollprofileComponent,
         canActivate: [AuthGuard],
       },
     ],
