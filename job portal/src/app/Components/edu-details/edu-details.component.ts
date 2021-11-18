@@ -1,8 +1,8 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { ActivatedRoute, Router } from "@angular/router";
+import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { Router } from "@angular/router";
 import { ConfigService } from "src/app/config.service";
-import { NotificationService } from "src/app/notification.service";
+import { CommonService } from "src/app/services/common.service";
 @Component({
   selector: "app-edu-details",
   templateUrl: "./edu-details.component.html",
@@ -10,47 +10,56 @@ import { NotificationService } from "src/app/notification.service";
 })
 export class EduDetailsComponent implements OnInit {
   userForm!: FormGroup;
-  alert: boolean = false;
-  allData: any;
-  // currentTutorial = null;
 
-  // selectedPolicy: User = {
-  //   _id:null,
-  //   first_Name: null,
-  //   first_Name:null,
-  //   middle_Name:null,
-  //   lastName:null,
-  //   Country:  null,
-  //   State:null,
-  //     City:null,
-  //     Nation:null,
-  //     currentNationality:null,
-  //     previousNationality:null
-  // }
-
+  years = ([] = this.generateArrayOfYears());
+  months = ([] = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ]);
+  userId: string | undefined;
   constructor(
     public formBuilder: FormBuilder,
     private configService: ConfigService,
     private router: Router,
-    private route: ActivatedRoute,
-    private notifyService: NotificationService
-  ) {}
-
-  pattern = "^[ a-zA-Z]*$";
-  mixpattern = "^[ a-z0-9_-]*$";
-  numberPattern = "^[ %0-9_-]*$";
-  ngOnInit(): void {
+    private commonService: CommonService
+  ) {
     this.userForm = this.formBuilder.group({
-      degree: ["",[Validators.required, Validators.minLength(4),  Validators.pattern(this.pattern)]],
-      institute: ["",[Validators.required,Validators.minLength(4),Validators.pattern(this.pattern)]],
-      Country: ["", [Validators.required, Validators.pattern(this.pattern)]],
-      grade: ["",[Validators.required, Validators.pattern(this.numberPattern)]],
-      month: ["", [Validators.required, Validators.pattern(this.pattern)]],
-      year: ["", [Validators.required, Validators.pattern(this.numberPattern)]],
+      degree: ["", [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/)]],
+      institute: [
+        "",
+        [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/)],
+      ],
+      country: ["", [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/)]],
+      grade: ["", [Validators.required]],
+      yearofPassing: this.formBuilder.group({
+        month: ["", [Validators.required]],
+        year: ["", [Validators.required]],
+      }),
     });
-    // this.configService.getPost().subscribe((res) => {
-    //   console.log(res);
-    // });
+  }
+
+  get f() {
+    return this.userForm.controls["educationalDetails"] as FormGroup;
+  }
+
+  ngOnInit(): void {
+    const userData = JSON.parse(
+      localStorage.getItem("rememberMe") === "true"
+        ? localStorage.getItem("user")
+        : (sessionStorage.getItem("user") as any)
+    );
+    this.userId = userData._id;
+    this.userForm.patchValue(userData);
   }
 
   get getControl() {
@@ -58,53 +67,38 @@ export class EduDetailsComponent implements OnInit {
   }
 
   onClick(formValue: any, isValid: boolean) {
-    if (this.userForm.valid) {
+    if (isValid) {
       const educationDetails = [];
-      const tempFormatedData = {
-        degree: "",
-        Country: "",
-        institute: "",
-        grade: "",
-        yearofPassing: {
-          month: "",
-          year: "",
-        },
-      };
-      tempFormatedData.degree = formValue.degree;
-      tempFormatedData.Country = formValue.Country;
-      tempFormatedData.institute = formValue.institute;
-      tempFormatedData.grade = formValue.grade;
-      tempFormatedData.yearofPassing.month = formValue.month;
-      tempFormatedData.yearofPassing.year = formValue.year;
-      educationDetails.push(tempFormatedData);
+      educationDetails.push(formValue);
       const finalData = {
         educationalDetails: educationDetails,
+        createdBy: this.userId,
       };
       this.configService
-        .updateUser(localStorage.getItem("ID"), finalData)
-        .subscribe(
-          (data: any) => {
-            console.log(data);
-            if (data.status === 200) {
-              this.notifyService.showSuccess(data.message);
-              this.router.navigateByUrl("/certificate");
-              this.userForm.reset();
-            } else {
-              this.notifyService.showError(data.message);
-            }
-          },
-          (error) => {
-            this.notifyService.showError(error.message);
+        .updateUser(this.userId, formValue)
+        .subscribe((data: any) => {
+          if (data.status === 200) {
+            localStorage.getItem("rememberMe") === "true"
+              ? localStorage.setItem("user", JSON.stringify(data.profile))
+              : sessionStorage.setItem("user", JSON.stringify(data.profile));
+            this.commonService.alert("success", data.message);
+            this.router.navigateByUrl("/profile/certificate");
+          } else {
+            this.commonService.alert("error", data.message);
           }
-        );
+        });
     } else {
       this.userForm.markAllAsTouched();
-      this.userForm.updateValueAndValidity();
     }
-    this.userForm.reset({});
   }
+  generateArrayOfYears() {
+    const max = new Date().getFullYear();
+    const min = 1900;
+    const years = [];
 
-  closeAlert() {
-    this.alert = false;
+    for (var i = max; i >= min; i--) {
+      years.push(i);
+    }
+    return years;
   }
 }

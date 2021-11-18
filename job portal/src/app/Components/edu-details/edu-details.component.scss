@@ -1,3 +1,8 @@
-a:hover {
-    text-decoration: none;
-}
+.edu-details{
+    &__empty-block {
+      background-color: var(--secondary);
+      height: auto;
+      width: 50%;
+    }
+  }
+  

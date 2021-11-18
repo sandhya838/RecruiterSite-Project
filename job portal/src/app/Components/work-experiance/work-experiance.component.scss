@@ -1,3 +1,10 @@
-.row {
-    margin-bottom: 18px;
+.work-experiance {
+  &__empty-block {
+    background-color: var(--secondary);
+    height: auto;
+    width: 50%;
+  }
+  textarea {
+    height: 75px !important;
+  }
 }

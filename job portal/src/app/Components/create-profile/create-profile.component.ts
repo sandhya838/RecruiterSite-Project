@@ -17,15 +17,17 @@ export class CreateProfileComponent implements OnInit {
         console.log("curentUrl", curentUrl);
         switch (curentUrl) {
           case "about-you":
-            this.activeStep = true;
+            this.activeStep = false;
             this.done = false;
-
             break;
-            case "experience":
-              this.activeStep = true;
-              this.done = true;
-  
-              break;
+          case "experience":
+            this.activeStep = false;
+            this.done = true;
+            break;
+          case "roles":
+            this.activeStep = true;
+            this.done = true;
+            break;
 
           default:
             break;

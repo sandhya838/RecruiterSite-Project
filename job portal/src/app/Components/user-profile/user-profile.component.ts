@@ -55,6 +55,7 @@ export class UserProfileComponent implements OnInit {
 
   onClick(formValue: any, isValid: boolean) {
     if (isValid) {
+      formValue.createdBy= this.userId;
       this.configService
         .updateUser(this.userId, formValue)
         .subscribe((data: any) => {
