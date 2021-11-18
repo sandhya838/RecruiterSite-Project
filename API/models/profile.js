@@ -4,6 +4,9 @@ var Schema = mongoose.Schema;
 
 
 var ProfileSchema = new Schema({
+  title:{
+    type: String
+  },
   location: {
     type: []
   },
@@ -19,10 +22,6 @@ var ProfileSchema = new Schema({
     unique: true
   },
   password: {
-    type: String,
-  },
-  
-  fullName: {
     type: String,
   },
   firstName: {

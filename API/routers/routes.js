@@ -33,11 +33,11 @@ module.exports = (app) => {
   app.post('/v1/register', upload.single('resume'), requestValidator.validateParams(profile.createRules), profile.create);
 
   /****************** profile routings *************** */
-  app.post('/v1/aboutyou', profile.create);
+  app.post('/v1/aboutyou',auth.authToken, profile.create);
   app.get('/v1/profile/:profileId', profile.findOne);
   app.put('/v1/upload-resume/:profileId', upload.single('resume'), profile.uploadResume);
 
-  app.put('/v1/profile/:profileId', profile.update);
+  app.put('/v1/profile/:profileId',auth.authToken, profile.update);
   app.get('/v1/profiles', profile.findAll);
   // app.get('/v1/profiles', auth.authToken, profile.findAll);
   // app.get('/v1/profile/:profileId', auth.authToken, profile.findOne);

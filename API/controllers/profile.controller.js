@@ -5,7 +5,8 @@ const mime = require('mime');
 
 module.exports = {
     createRules: {
-        fullName: "required|string",
+        firstName: "required|string",
+        lastName: "required|string",
         email: "required|email",
         password: "required|string",
 
@@ -75,7 +76,7 @@ module.exports = {
     update: (req, res) => {
         profile.findOneAndUpdate({ _id: req.params.profileId }, { $set: req.body }, { new: true }, (err, result) => {
             if (err) {
-                res.status(500).send({ status: 500, message: 'Oops! Not able to update profile. Please try after sometimes', profiles: result });
+                res.status(500).send({ status: 500, message: 'Oops! Not able to update profile. Please try after sometimes', profile: {} });
             } else {
                 res.status(200).send({ status: 200, message: 'profile updated successfully.', profile: result });
             }

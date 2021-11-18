@@ -14,21 +14,67 @@
       <div class="form-group">
         <input
           type="text"
-          class="form-control sign-up__wrapper__email"
-          id="fullName"
-          placeholder="full name"
-          formControlName="fullName"
+          class="form-control"
+          id="firstName"
+          placeholder="first name"
+          formControlName="firstName"
         />
         <div
           class="text-danger sign-up__wrapper__error"
           *ngIf="
-            (signUp.controls['fullName'].touched ||
-              signUp.controls['fullName'].dirty) &&
-            !signUp.controls['fullName'].valid
+            (signUp.controls['firstName'].touched ||
+              signUp.controls['firstName'].dirty) &&
+            !signUp.controls['firstName'].valid
           "
         >
-          <div *ngIf="getControl.fullName.errors">
-            <div *ngIf="getControl.fullName.errors.required">
+          <div *ngIf="getControl.firstName.errors">
+            <div *ngIf="getControl.firstName.errors.required">
+              This field is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="middleName"
+          placeholder="middle name"
+          formControlName="middleName"
+        />
+        <div
+          class="text-danger sign-up__wrapper__error"
+          *ngIf="
+            (signUp.controls['middleName'].touched ||
+              signUp.controls['middleName'].dirty) &&
+            !signUp.controls['middleName'].valid
+          "
+        >
+          <div *ngIf="getControl.middleName.errors">
+            <div *ngIf="getControl.middleName.errors.required">
+              This field is required
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="lastName"
+          placeholder="last name"
+          formControlName="lastName"
+        />
+        <div
+          class="text-danger sign-up__wrapper__error"
+          *ngIf="
+            (signUp.controls['lastName'].touched ||
+              signUp.controls['lastName'].dirty) &&
+            !signUp.controls['lastName'].valid
+          "
+        >
+          <div *ngIf="getControl.lastName.errors">
+            <div *ngIf="getControl.lastName.errors.required">
               This field is required
             </div>
           </div>
@@ -37,7 +83,7 @@
       <div class="form-group">
         <input
           type="email"
-          class="form-control sign-up__wrapper__email"
+          class="form-control"
           id="email"
           placeholder="Email Address"
           formControlName="email"

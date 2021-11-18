@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "./assets/styles/index";
 
-@import "./assets/_partials/mixin.scss";
 @import "ag-grid-community/dist/styles/ag-grid.css";
 @import "ag-grid-community/dist/styles/ag-theme-balham.css";
 
@@ -10,19 +9,6 @@ body {
   font-family: "Lucida Grande",Helvetica,Arial,sans-serif;
 }
 
-label {
-  @include label(15px);
-}
-
-.row {
-  @include row(50px);
-}
-.btn {
-  @include btn;
-}
-option {
-  @include label(15px);
-}
 // global css for multiselect dropdown
 .multiselect-dropdown .dropdown-btn {
   display: inline-block;

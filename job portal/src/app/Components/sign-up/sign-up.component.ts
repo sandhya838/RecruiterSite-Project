@@ -18,7 +18,9 @@ import { SigninService } from "src/app/signin.service";
 export class SignUpComponent implements OnInit {
   alert: boolean = false;
   signUp: FormGroup = this.formBuilder.group({
-    fullName: ["", [Validators.required]],
+    firstName: ["", [Validators.required]],
+    lastName: ["", [Validators.required]],
+    middleName: [""],
     email: ["", [Validators.required]],
     password: ["", [Validators.required]],
     file: new FormControl(null, [
@@ -48,7 +50,9 @@ export class SignUpComponent implements OnInit {
     if (isValid) {
       let fd = new FormData();
       fd.append("resume", formValue.file[0]);
-      fd.append("fullName", formValue.fullName);
+      fd.append("firstName", formValue.firstName);
+      fd.append("lastName", formValue.lastName);
+      fd.append("middleName", formValue.middleName);
       fd.append("email", formValue.email);
       fd.append("password", this.commonService.encrypt(formValue.password));
 
