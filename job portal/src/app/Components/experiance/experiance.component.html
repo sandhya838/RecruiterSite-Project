@@ -1,204 +1,339 @@
-<div class="container">
-  <div *ngIf="alert"  class="alert alert-success alert-dismissible fade show" role="alert">
-    <strong>Success!</strong> Your data is successfully submitted. <pre>{{allData | json}}</pre>
-    <button (click)="closeAlert()" type="button" class="close" data-dismiss="alert" aria-label="Close">
-      <span aria-hidden="true">&times;</span>
-    </button>
+<div class="card experience">
+  <div class="card-body d-flex p-0">
+    <div class="experience__empty-block">
+      <div class="d-flex align-items-center justify-content-center h-100">
+        <img
+          src="assets/img/change-password.png"
+          alt="change password"
+          class="w-25"
+        />
+      </div>
+    </div>
+    <div class="p-4 w-50">
+      <form
+        [formGroup]="userForm"
+        (ngSubmit)="onClick(userForm.value, userForm.valid)"
+        novalidate
+      >
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label>Total experience (in year)</label>
+              <input
+                formControlName="totalYearsOfExperience"
+                type="number"
+                placeholder="total experience (in year)"
+                class="form-control"
+                id="quantity"
+                name="quantity"
+                min="0"
+                max="100"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['totalYearsOfExperience'].valid &&
+                  (userForm.controls['totalYearsOfExperience'].touched ||
+                    userForm.controls['totalYearsOfExperience'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['totalYearsOfExperience'].errors">
+                  <small
+                    *ngIf="
+                      userForm.controls['totalYearsOfExperience'].errors
+                        .required
+                    "
+                  >
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label>Time size</label>
+              <input
+                type="number"
+                class="form-control"
+                id="quantity"
+                name="quantity"
+                placeholder="time size"
+                min="0"
+                max="100"
+                formControlName="teamSize"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['teamSize'].valid &&
+                  (userForm.controls['teamSize'].touched ||
+                    userForm.controls['teamSize'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['teamSize'].errors">
+                  <small *ngIf="userForm.controls['teamSize'].errors.required">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label
+                >Volume of business managed</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                id="volumeOfBusinessManged"
+                name="volumeOfBusinessManged"
+                placeholder="Volume of business managed in million"
+                formControlName="volumeOfBusinessManged"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['volumeOfBusinessManged'].valid &&
+                  (userForm.controls['volumeOfBusinessManged'].touched ||
+                    userForm.controls['volumeOfBusinessManged'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['volumeOfBusinessManged'].errors">
+                  <small
+                    *ngIf="
+                      userForm.controls['volumeOfBusinessManged'].errors
+                        .required
+                    "
+                  >
+                    This field is required
+                  </small>
+                  <small
+                    *ngIf="
+                      userForm.controls['volumeOfBusinessManged'].errors
+                        .pattern
+                    "
+                  >
+                    Enter valid number
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label>Notice period (in month)</label>
+              <input
+                type="number"
+                class="form-control"
+                id="noticePeriod"
+                name="noticePeriod"
+                formControlName="noticePeriod"
+                placeholder="Notice period (in month)"
+                min="0"
+                max="10"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['noticePeriod'].valid &&
+                  (userForm.controls['noticePeriod'].touched ||
+                    userForm.controls['noticePeriod'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['noticePeriod'].errors">
+                  <small
+                    *ngIf="userForm.controls['noticePeriod'].errors.required"
+                  >
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label>Salary (CTC)</label>
+              <select
+                class="form-select"
+                class="form-control"
+                formControlName="salary"
+              >
+                <option selected disabled value="">Salary (CTC)</option>
+                <option *ngFor="let salary of ctc" [value]="salary?.salary">
+                  {{ salary?.salary }}
+                </option>
+              </select>
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['salary'].valid &&
+                  (userForm.controls['salary'].touched ||
+                    userForm.controls['salary'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['salary'].errors">
+                  <small *ngIf="userForm.controls['salary'].errors.required">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label>Base salary</label>
+              <select
+                class="form-select"
+                class="form-control"
+                formControlName="baseSalary"
+                required
+              >
+                <option selected disabled value="">base salary</option>
+                <option
+                  *ngFor="let salary of salaries"
+                  [value]="salary?.salary"
+                >
+                  {{ salary?.salary }}
+                </option>
+              </select>
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['baseSalary'].valid &&
+                  (userForm.controls['baseSalary'].touched ||
+                    userForm.controls['baseSalary'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['baseSalary'].errors">
+                  <small
+                    *ngIf="userForm.controls['baseSalary'].errors.required"
+                  >
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label>Variable salary</label>
+              <select
+                class="form-select"
+                class="form-control"
+                formControlName="variableSalary"
+              >
+                <option selected disabled value="">variable salary</option>
+                <option
+                  *ngFor="let salary of salaries"
+                  [value]="salary?.salary"
+                >
+                  {{ salary?.salary }}
+                </option>
+              </select>
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['variableSalary'].valid &&
+                  (userForm.controls['variableSalary'].touched ||
+                    userForm.controls['variableSalary'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['variableSalary'].errors">
+                  <small
+                    *ngIf="userForm.controls['variableSalary'].errors.required"
+                  >
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="form-group">
+              <label>Other component</label>
+              <input
+                type="text"
+                class="form-control"
+                name="otherComponent"
+                id="otherComponent"
+                placeholder="other component"
+                formControlName="otherComponent"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['otherComponent'].valid &&
+                  (userForm.controls['otherComponent'].touched ||
+                    userForm.controls['otherComponent'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['otherComponent'].errors">
+                  <small
+                    *ngIf="userForm.controls['otherComponent'].errors.required"
+                  >
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label>Industry served</label>
+              <input
+                type="text"
+                class="form-control"
+                name="industryServed"
+                id="industryServed"
+                placeholder="Industry served"
+                formControlName="industryServed"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['industryServed'].valid &&
+                  (userForm.controls['industryServed'].touched ||
+                    userForm.controls['industryServed'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['industryServed'].errors">
+                  <small
+                    *ngIf="userForm.controls['industryServed'].errors.required"
+                  >
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <hr />
+        <div class="d-flex justify-content-end">
+          <div class="pr-1">
+            <button
+              class="job-btn job-btn-outline"
+              type="reset"
+              [routerLink]="'/profile/about-you'"
+            >
+              Back
+            </button>
+          </div>
+          <div class="pl-1">
+            <button class="job-btn job-btn-mini" type="submit">Next</button>
+          </div>
+        </div>
+      </form>
+    </div>
   </div>
-    <form [formGroup]="userForm" (ngSubmit)="onClick(userForm.value, userForm.valid)" novalidate> 
-    
-        <div class="row g-3 row-margin-05" > 
-            <div class="col-4">
-                <label class="form-label">Total years of exp</label><span class="text-danger">*</span>
-                <select class="form-select" class="form-control" formControlName="totalYearsOfExperience" required>
-                    <option selected disabled value="">-select-</option>
-                    <option>years </option>
-                    <option>0-1month </option>
-                    <option>2-5years</option>
-                    <option>6-10years</option>
-                    <option>10-15years</option>
-                  </select>
-                  <div class="text-danger" *ngIf="getControl.totalYearsOfExperience.touched && getControl.totalYearsOfExperience.invalid">
-                    <div *ngIf="getControl.totalYearsOfExperience.errors">This is required.</div>
-                  </div>
-                </div>
-    
-              <div class="col-4"> 
-                <label>Team size</label><span class="text-danger">*</span>
-                <select class="form-control" placeholder="" formControlName="timeSize">
-                  <option selected disabled value="">-select-</option>
-                  <option>-select-</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                </select>
-                <div class="text-danger" *ngIf="getControl.timeSize.touched && getControl.timeSize.invalid">
-                    <div *ngIf="getControl.timeSize.errors">This is required.</div>
-                  </div>
-              </div>
-    
-            
-              <div class="col-4"> 
-                <label>Volume of business managed</label>
-                <select class="form-control" placeholder="" formControlName="volumeOfBusinessManged">
-                  <option selected disabled value="">-select-</option>
-                  <option></option>
-                  <option>;;</option>
-                  <option>;;</option>
-                </select>
-                <div class="text-danger" *ngIf="getControl.volumeOfBusinessManged.touched && getControl.volumeOfBusinessManged.invalid">
-                    <div *ngIf="getControl.volumeOfBusinessManged.errors">This is required.</div>
-                  </div>
-              </div> 
-    
-            </div>
-     
-            <div class="row ">
-                <div class="col-4">
-                  <label>Notice period </label><span class="text-danger">*</span>
-                  <select class="form-control" placeholder="" formControlName="noticePeriod">
-                    <option selected disabled value="">-select-</option>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                  </select>
-                  <div class="text-danger" *ngIf="getControl.noticePeriod.touched && getControl.noticePeriod.invalid">
-                      <div *ngIf="getControl.noticePeriod.errors">This is required.</div>
-                    </div>
-                </div>
-        
-    
-              <div class="col-4">
-                <label>Salary(CTC)-INR</label><span class="text-danger">*</span>
-                <select class="form-control" placeholder="" formControlName="salary">
-                  <option selected disabled value="">-select-</option>
-                  <option>5000</option>
-                  <option>6000</option>
-                  <option>7000</option>
-                  <option>8000</option>
-                  <option>9000</option>
-                  <option>10,000</option>
-                  <option>12,000</option>
-                  <option>14,000</option>
-                  <option>15,000</option>
-                  <option>16,000</option>
-                  <option>18,000</option>
-                  <option>20,000</option>
-                  <option>24,000</option>
-                  <option>25,000</option>
-                  <option>30,000</option>
-                  <option>35,000</option>
-                  <option>40,000</option>
-                  <option>42,000</option>
-                  <option>45,000</option>
-                  <option>48,000</option>
-                  <option>50,000</option>
-                  
-                 
-                 
-                </select>
-                <div class="text-danger" *ngIf="getControl.salary.touched && getControl.salary.invalid">
-                    <div *ngIf="getControl.salary.errors">This is required.</div>
-                  </div>
-              </div>
-    
-              <div class="col-4">
-                <label>Base salary</label><span class="text-danger">*</span>
-                <select class="form-control" placeholder="" formControlName="baseSalary">
-                  <option selected disabled value="">-select-</option>
-                  <option>5000</option>
-                  <option>6000</option>
-                  <option>7000</option>
-                  <option>8000</option>
-                  <option>9000</option>
-                  <option>10,000</option>
-                  <option>12,000</option>
-                  <option>14,000</option>
-                  <option>15,000</option>
-                  <option>16,000</option>
-                  <option>18,000</option>
-                  <option>20,000</option>
-                  <option>24,000</option>
-                  <option>25,000</option>
-                  <option>30,000</option>
-                  <option>35,000</option>
-                  <option>40,000</option>
-                  <option>42,000</option>
-                  <option>45,000</option>
-                  <option>48,000</option>
-                  <option>50,000</option>
-
-                </select>
-                <div class="text-danger" *ngIf="getControl.baseSalary.touched && getControl.baseSalary.invalid">
-                  <div *ngIf="getControl.baseSalary.errors">This is required.</div>
-                </div>
-              </div>
-
-            </div>
-    
-            <div class="row">
-                <div class="col-4">
-                <label>Variable salary</label><span class="text-danger">*</span>
-                <select class="form-control" placeholder="" formControlName="variableSalary">
-                  <option selected disabled value="">-select-</option>
-                  <option>5000</option>
-                  <option>6000</option>
-                  <option>7000</option>
-                  <option>8000</option>
-                  <option>9000</option>
-                  <option>10,000</option>
-                  <option>12,000</option>
-                  <option>14,000</option>
-                  <option>15,000</option>
-                  <option>16,000</option>
-                  <option>18,000</option>
-                  <option>20,000</option>
-                  <option>24,000</option>
-                  <option>25,000</option>
-                  <option>30,000</option>
-                  <option>35,000</option>
-                  <option>40,000</option>
-                  <option>42,000</option>
-                  <option>45,000</option>
-                  <option>48,000</option>
-                  <option>50,000</option>
-                </select>
-                <div class="text-danger" *ngIf="getControl.variableSalary.touched && getControl.variableSalary.invalid">
-                    <div *ngIf="getControl.variableSalary.errors">This is required.</div>
-                  </div>
-              </div>
-                <div class="col-4"> 
-                  <label>Other components</label><span class="text-danger">*</span>
-                  <input type="text" class="form-control" placeholder="" formControlName="otherComponent"> 
-                  <div class="text-danger" *ngIf="getControl.otherComponent.touched && getControl.otherComponent.invalid">
-                         <div *ngIf="getControl.otherComponent.errors">This is required.</div>
-                  </div>
-                </div> 
-
-                <div class="col-4"> 
-                  <label>Industries served</label><span class="text-danger">*</span>
-                  <input type="text" class="form-control" placeholder="" formControlName="indServed"> 
-                  <div class="text-danger" *ngIf="getControl.indServed.touched && getControl.indServed.invalid">
-                         <div *ngIf="getControl.indServed.errors">This is required.</div>
-                  </div>
-                </div> 
-              </div>
-    
-           
-    
-    
-             <div class="row">
-                 <div class="col-2">
-                  <a routerLink="/about-you"> <button type="" class="btn btn-outline-primary mb-3">Previous</button></a>
-                </div>
-       
-             <div class="col">
-               <button type="submit" class="btn btn-success form-control mb-3" >Next</button>
-             </div>
-             </div>
-       </form>
-       </div>
+</div>

@@ -36,6 +36,7 @@ module.exports = {
                         if (err.code === 11000) {
                             res.status(412).send({ status: 412, message: err.keyValue.email + ' already exist.', profile: {} });
                         } else {
+                            console.log('err',err);
                             res.status(500).send({ status: 400, message: 'Oops! Not able to create profile. Please try after sometimes', profile: {} });
                         }
                     } else {
