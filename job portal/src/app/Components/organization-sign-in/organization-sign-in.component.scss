@@ -35,15 +35,19 @@
       font-weight: 600;
       color: var(--color-black);
     }
+    &__icon {
+      position: absolute;
+      right: 10px;
+      top: 8px;
+    }
     &__email {
-      font-size: 1rem;
+      font-size: 12px;
       font-weight: 400;
-      height: auto;
+      // height: auto;
+      border: 1px solid #333333;
       padding: 0.75rem 1.25rem;
-      // border: none;
       outline: none;
-      border-radius: 14px;
-      color: var(--color-black);
+      border-radius: 7px;
       background: #fff;
       text-rendering: optimizeLegibility;
     }

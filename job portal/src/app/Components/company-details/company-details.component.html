@@ -1,272 +1,62 @@
+<div class="container company-details">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="profile-summary__heading">company details</h2>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-white">
+        <li class="breadcrumb-item">
+          <a [routerLink]="'/dashboard'">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          company details
+        </li>
+      </ol>
+    </nav>
+  </div>
 
-
-       
-        <!-- <div class="container">
-          <div class="card">
-            <div class="row">
-              <div class="col-sm-8">organization</div>
-              <div class="col-sm-4">logo</div>
-            </div>
-            <div class="card-body">
-              <div class="row">
-                <div class="col-md-3">
-                  <label>Organization name</label><span class="text-danger">*</span>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder=""
-                    formControlName="Organization"
-                  />
-                  <div
-                    class="text-danger"
-                    *ngIf="getControl.Organization.touched && getControl.Organization.invalid"
-                  >
-                    <div *ngIf="getControl.Organization.errors">
-                      Please enter valid name.
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-
-
-              <div class="row">
-                <div class="col-md-3">
-                  <label>First name</label><span class="text-danger">*</span>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder=""
-                    formControlName="firstName"
-                  />
-                  <div
-                    class="text-danger"
-                    *ngIf="getControl.firstName.touched && getControl.firstName.invalid"
-                  >
-                    <div *ngIf="getControl.firstName.errors">
-                      Please enter valid name.
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-
-              <div class="row">
-                <div class="col-md-3">
-                  <label>Middle name</label><span class="text-danger">*</span>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder=""
-                    formControlName="middleName"
-                  />
-                  <div
-                    class="text-danger"
-                    *ngIf="getControl.middleName.touched && getControl.middleName.invalid"
-                  >
-                    <div *ngIf="getControl.middleName.errors">
-                      Please enter valid name.
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-
-              <div class="row">
-                <div class="col-md-3">
-                  <label>Last name</label><span class="text-danger">*</span>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder=""
-                    formControlName="lastName"
-                  />
-                  <div
-                    class="text-danger"
-                    *ngIf="getControl.lastName.touched && getControl.lastName.invalid"
-                  >
-                    <div *ngIf="getControl.lastName.errors">
-                      Please enter valid name.
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div> -->
-
-
-
-        <!-- <div class="container">
-          <div class="card">
-            <div class="card-body">
-              <div class="row">
-                <div class="col">
-                Organization 
-                </div>
-                <div class="col">
-                  logo
-                  
-                </div>
-              </div><br>
-              
-
-              <div class="row">
-                <div class="col-2">Organization name:</div>
-                <div class="col-6">
-                  <h6>MIT</h6>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-2">Empoyeer name:</div>
-                <div class="col-6">
-                  <h6>Malcolm Frank</h6>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-2">Contact number:</div>
-                <div class="col-6">
-                  <h6> +91 123456789</h6>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-4">
-                  <label>Location</label><span class="text-danger">*</span>
-                  <select class="form-control" placeholder="" formControlName="location">
-                    <option >-select-</option>
-                    <option>new zealand</option>
-                    <option>Dubai</option>
-                    <option>France</option>
-                    <option>Germany</option>
-                    <option>India</option>
-                    <option>Thailand</option>
-                    <option>USA</option>
-                    <option>Soudi Arabia</option>
-                  </select>
-                  <div
-                    class="text-danger"
-                    *ngIf="getControl.location.touched && getControl.location.invalid"
-                  >
-                    <div *ngIf="getControl.location.errors">
-                      Please select a valid Country.
-                    </div>
-                  </div>
-                </div>
-            </div>
-
-            <div class="row">
-              <div class="col-sm-4">
-                <label>No of employees</label><span class="text-danger">*</span>
-                <select class="form-control" placeholder="" formControlName="employees">
-                  <option >-select-</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                </select>
-                <div
-                  class="text-danger"
-                  *ngIf="getControl.employees.touched && getControl.employees.invalid"
-                >
-                  <div *ngIf="getControl.employees.errors">
-                    Please select a valid Country.
-                  </div>
-                </div>
-              </div>
-          </div>
-          <div class="description">
-            <h5>description:</h5>
-             <input type="text" 
-             id="name"
-             placeholder="message....">
-             </div>
-         
-          
-          </div>
-          
-        </div> -->
-
-
-        <nav class="navbar navbar-light bg-light">
-          <a class="navbar-brand" href="#">Org</a>
-        </nav><br><br>
-        <div class="container">
-          <div class="card">
-            <div class="row">
-              <div class="col-2">Organization name:</div>
-              <input type= "text">
-            
-          </div>
-          <div class="row">
-            <div class="col-2">First name:</div>
-            <input type= "text">
-          
-        </div>
-        <div class="row">
-          <div class="col-2">Last name:</div>
-          <input type= "text">
-        
+  <div class="card "> 
+  <div class="card company-details__header">
+      <img src="https://blog.cloudflare.com/content/images/2019/12/gradient.jpg" alt="" style="width:100%;">
+      <div class="company-details__top-right">
+        <ul class="company-details__list-style">
+          <li class="company-details__list-item"><i class="fa fa-building-o" aria-hidden="true"></i> MIT alandi</li>
+          <li class="company-details__list-item"><i class="fa fa-user" aria-hidden="true"></i> Akshada Ghule</li>
+          <li class="company-details__list-item"><i class="fa fa-envelope" aria-hidden="true"></i> akshadaghule@gmail.com</li>
+          <li class="company-details__list-item"><i class="fa fa-phone" aria-hidden="true"></i> 8380891905</li>
+        </ul>
       </div>
-      <div class="row">
-        <div class="col-2">Contact number:</div>
-        <input type= "text">
-      
     </div>
-    <div class="row">
-      <div class="col-2">Email id:</div>
-      <input type= "text">
-
     
-  </div>
-  <div class="location">
-    <div class="row">
-      <div class="col-2">No of employees:</div>
-      <!-- <label>No of employees</label><span class="text-danger">*</span> -->
-                <select class="form-control" placeholder="" formControlName="employees">
-                  <option >-select-</option>
-                  <option>1</option>
-                  <option>2</option>
-                  <option>3</option>
-                  <option>4</option>
-                  <option>5</option>
-                  <option>6</option>
-                  <option>7</option>
-                  <option>8</option>
-                </select>
-    
-  </div>
-          </div>
+      <div class="card-body">
+        <form action="">
+            <div class="form-group">
+              <label>Description</label>
+              <textarea class="form-control"  rows="3"></textarea>
+            </div>
 
-          <div class="location">
-            <div class="row">
-              <div class="col-2">Location:</div>
-              <!-- <label>No of employees</label><span class="text-danger">*</span> -->
-                        <select class="form-control" placeholder="" formControlName="employees">
-                          <option >-select-</option>
-                    <option>new zealand</option>
-                    <option>Dubai</option>
-                    <option>France</option>
-                    <option>Germany</option>
-                    <option>India</option>
-                    <option>Thailand</option>
-                    <option>USA</option>
-                    <option>Soudi Arabia</option>
-                    </select>
-            
-          </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-2">Desciption:</div>
-                    <input type= "text"
-                    id="desc"
-                    class="description">
-                  
-                </div>
-           
+            <div class="form-group">
+              <label>Number of employees</label>
+              <select class="form-control" >
+                <option>-select-</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Location of operations</label>
+              <select class="form-control" >
+                <option>-select-</option>
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </select>
+            </div>
+        </form>
+      
+      </div>
+  </div>
