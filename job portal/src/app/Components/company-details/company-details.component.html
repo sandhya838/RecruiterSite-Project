@@ -1,68 +1,272 @@
-<div class="container">
-    <div
-      *ngIf="alert"
-      class="alert alert-success alert-dismissible fade show"
-      role="alert"
-    >
-      <strong>Success!</strong> Your data is successfully submitted.
-      <pre>{{ allData | json }}</pre>
-      <button
-        (click)="closeAlert()"
-        type="button"
-        class="close"
-        data-dismiss="alert"
-        aria-label="Close"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-      <form [formGroup]="userForm"  novalidate (ngSubmit)="onClick(userForm.value, userForm.valid)"> 
-      
-          <div class="row g-3 row-margin-05" > 
-  
-               <div class="col-4"> 
-                 <label>Details of the Company</label>
-                 <input type="text" class="form-control" placeholder="" formControlName="companyDetails"> 
-                 <div class="text-danger" *ngIf="getControl.companyDetails.touched && getControl.companyDetails.invalid">
-                        <div *ngIf="getControl.companyDetails.errors">Enter valid data.</div>
-                 </div>
-               </div> 
-               <div class="col-4"> 
-                  <label>Decription of the Company</label>
-                  <input type="text" class="form-control" placeholder="" formControlName="descOfCompany" required> 
-                  <div class="text-danger" *ngIf="getControl.descOfCompany.touched && getControl.descOfCompany.invalid">
-                         <div *ngIf="getControl.descOfCompany.errors">Enter valid data.</div>
-                  </div>
-                </div> 
-                <div class="col-4"> 
-                  <label>No of Employees</label>
-                  <input type="text" class="form-control" placeholder="" formControlName="noOfEmployees" required> 
-                  <div class="text-danger" *ngIf="getControl.noOfEmployees.touched && getControl.noOfEmployees.invalid">
-                         <div *ngIf="getControl.noOfEmployees.errors">Enter valid data.</div>
-                  </div>
-                </div> 
-                <div class="col-md-4">
-                    <label>Location of Operations</label><span class="text-danger">*</span>
-                    <select class="form-control" placeholder="" formControlName="location">
-                      <option selected disabled value="">-select-</option>
-                      <option>Mumbai</option>
-                      <option>Pune</option>
-                      <option>Chennai</option>
-                      <option>Kolkata</option>
-                      <option>surat</option>
-                      <option>Kolhapur</option>
-                      <option>Jalgaon</option>
-                      <option>Hyderabad</option>
-                    </select>
-                    <div
-                      class="text-danger"
-                      *ngIf="getControl.location.touched && getControl.location.invalid"
-                    >
-                      <div *ngIf="getControl.location.errors">Please select a valid city.</div>
+
+
+       
+        <!-- <div class="container">
+          <div class="card">
+            <div class="row">
+              <div class="col-sm-8">organization</div>
+              <div class="col-sm-4">logo</div>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col-md-3">
+                  <label>Organization name</label><span class="text-danger">*</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder=""
+                    formControlName="Organization"
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="getControl.Organization.touched && getControl.Organization.invalid"
+                  >
+                    <div *ngIf="getControl.Organization.errors">
+                      Please enter valid name.
                     </div>
                   </div>
-         
-         
-               
+                </div>
+              </div>
+
+
+
+
+              <div class="row">
+                <div class="col-md-3">
+                  <label>First name</label><span class="text-danger">*</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder=""
+                    formControlName="firstName"
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="getControl.firstName.touched && getControl.firstName.invalid"
+                  >
+                    <div *ngIf="getControl.firstName.errors">
+                      Please enter valid name.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+
+              <div class="row">
+                <div class="col-md-3">
+                  <label>Middle name</label><span class="text-danger">*</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder=""
+                    formControlName="middleName"
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="getControl.middleName.touched && getControl.middleName.invalid"
+                  >
+                    <div *ngIf="getControl.middleName.errors">
+                      Please enter valid name.
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="row">
+                <div class="col-md-3">
+                  <label>Last name</label><span class="text-danger">*</span>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder=""
+                    formControlName="lastName"
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="getControl.lastName.touched && getControl.lastName.invalid"
+                  >
+                    <div *ngIf="getControl.lastName.errors">
+                      Please enter valid name.
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div> -->
+
+
+
+        <!-- <div class="container">
+          <div class="card">
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                Organization 
+                </div>
+                <div class="col">
+                  logo
+                  
+                </div>
+              </div><br>
               
-              </div> 
+
+              <div class="row">
+                <div class="col-2">Organization name:</div>
+                <div class="col-6">
+                  <h6>MIT</h6>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2">Empoyeer name:</div>
+                <div class="col-6">
+                  <h6>Malcolm Frank</h6>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-2">Contact number:</div>
+                <div class="col-6">
+                  <h6> +91 123456789</h6>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-sm-4">
+                  <label>Location</label><span class="text-danger">*</span>
+                  <select class="form-control" placeholder="" formControlName="location">
+                    <option >-select-</option>
+                    <option>new zealand</option>
+                    <option>Dubai</option>
+                    <option>France</option>
+                    <option>Germany</option>
+                    <option>India</option>
+                    <option>Thailand</option>
+                    <option>USA</option>
+                    <option>Soudi Arabia</option>
+                  </select>
+                  <div
+                    class="text-danger"
+                    *ngIf="getControl.location.touched && getControl.location.invalid"
+                  >
+                    <div *ngIf="getControl.location.errors">
+                      Please select a valid Country.
+                    </div>
+                  </div>
+                </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm-4">
+                <label>No of employees</label><span class="text-danger">*</span>
+                <select class="form-control" placeholder="" formControlName="employees">
+                  <option >-select-</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                </select>
+                <div
+                  class="text-danger"
+                  *ngIf="getControl.employees.touched && getControl.employees.invalid"
+                >
+                  <div *ngIf="getControl.employees.errors">
+                    Please select a valid Country.
+                  </div>
+                </div>
+              </div>
+          </div>
+          <div class="description">
+            <h5>description:</h5>
+             <input type="text" 
+             id="name"
+             placeholder="message....">
+             </div>
+         
+          
+          </div>
+          
+        </div> -->
+
+
+        <nav class="navbar navbar-light bg-light">
+          <a class="navbar-brand" href="#">Org</a>
+        </nav><br><br>
+        <div class="container">
+          <div class="card">
+            <div class="row">
+              <div class="col-2">Organization name:</div>
+              <input type= "text">
+            
+          </div>
+          <div class="row">
+            <div class="col-2">First name:</div>
+            <input type= "text">
+          
+        </div>
+        <div class="row">
+          <div class="col-2">Last name:</div>
+          <input type= "text">
+        
+      </div>
+      <div class="row">
+        <div class="col-2">Contact number:</div>
+        <input type= "text">
+      
+    </div>
+    <div class="row">
+      <div class="col-2">Email id:</div>
+      <input type= "text">
+
+    
+  </div>
+  <div class="location">
+    <div class="row">
+      <div class="col-2">No of employees:</div>
+      <!-- <label>No of employees</label><span class="text-danger">*</span> -->
+                <select class="form-control" placeholder="" formControlName="employees">
+                  <option >-select-</option>
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                  <option>7</option>
+                  <option>8</option>
+                </select>
+    
+  </div>
+          </div>
+
+          <div class="location">
+            <div class="row">
+              <div class="col-2">Location:</div>
+              <!-- <label>No of employees</label><span class="text-danger">*</span> -->
+                        <select class="form-control" placeholder="" formControlName="employees">
+                          <option >-select-</option>
+                    <option>new zealand</option>
+                    <option>Dubai</option>
+                    <option>France</option>
+                    <option>Germany</option>
+                    <option>India</option>
+                    <option>Thailand</option>
+                    <option>USA</option>
+                    <option>Soudi Arabia</option>
+                    </select>
+            
+          </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-2">Desciption:</div>
+                    <input type= "text"
+                    id="desc"
+                    class="description">
+                  
+                </div>
+           

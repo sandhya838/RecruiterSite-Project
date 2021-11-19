@@ -24,10 +24,12 @@ export class CompanyDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
-      companyDetails: ["", [Validators.required]],
-      descOfCompany: ["", [Validators.required]],
-      noOfEmployees: ["", [Validators.required]],
-      location: ["", [Validators.required]]
+      Organization: ["", [Validators.required]],
+      firstName: ["", [Validators.required]],
+      middleName: ["", [Validators.required]],
+      lastName: ["", [Validators.required]],
+      location: ["", [Validators.required]],
+      employees: ["", [Validators.required]]
     });
   }
   get getControl() {

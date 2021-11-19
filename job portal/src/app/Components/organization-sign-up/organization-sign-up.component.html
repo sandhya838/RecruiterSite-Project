@@ -39,19 +39,65 @@
               type="text"
               class="form-control sign-up__wrapper__email"
               id="contact person"
-              placeholder="contact person poc"
-              formControlName="contactPerson"
+              placeholder="first name"
+              formControlName="firstname"
             />
             <div
               class="text-danger sign-up__wrapper__error"
               *ngIf="
-                (signUp.controls['contactPerson'].touched ||
-                  signUp.controls['contactPerson'].dirty) &&
-                !signUp.controls['contactPerson'].valid
+                (signUp.controls['firstname'].touched ||
+                  signUp.controls['firstname'].dirty) &&
+                !signUp.controls['firstname'].valid
               "
             >
-              <div *ngIf="getControl.contactPerson.errors">
-                <div *ngIf="getControl.contactPerson.errors.required">
+              <div *ngIf="getControl.firstname.errors">
+                <div *ngIf="getControl.firstname.errors.required">
+                  This field is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control sign-up__wrapper__email"
+              id="contact person"
+              placeholder="middle name"
+              formControlName="middlename"
+            />
+            <div
+              class="text-danger sign-up__wrapper__error"
+              *ngIf="
+                (signUp.controls['middlename'].touched ||
+                  signUp.controls['middlename'].dirty) &&
+                !signUp.controls['middlename'].valid
+              "
+            >
+              <div *ngIf="getControl.middlename.errors">
+                <div *ngIf="getControl.middlename.errors.required">
+                  This field is required
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <input
+              type="text"
+              class="form-control sign-up__wrapper__email"
+              id="contact person"
+              placeholder="last name"
+              formControlName="lastname"
+            />
+            <div
+              class="text-danger sign-up__wrapper__error"
+              *ngIf="
+                (signUp.controls['lastname'].touched ||
+                  signUp.controls['lastname'].dirty) &&
+                !signUp.controls['lastname'].valid
+              "
+            >
+              <div *ngIf="getControl.lastname.errors">
+                <div *ngIf="getControl.lastname.errors.required">
                   This field is required
                 </div>
               </div>
@@ -65,7 +111,7 @@
             type="email"
             class="form-control sign-up__wrapper__email"
             id="email"
-            placeholder="email id of the poc"
+            placeholder="email id"
             formControlName="email"
           />
           <div
@@ -89,7 +135,7 @@
               type="number"
               class="form-control sign-up__wrapper__email"
               id="contact number"
-              placeholder="contact number poc"
+              placeholder="contact number"
               formControlName="contactNumber"
             />
             <div

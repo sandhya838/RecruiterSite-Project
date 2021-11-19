@@ -18,7 +18,7 @@
 <!-- multiselected external link -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" />
-</head>
+
 <script>
   function myFunction() {
     var x = document.getElementById("myDIV");
@@ -53,6 +53,11 @@
   } else {
     x.style.display = 'none';
   }
+
+  $("input").intlTelInput({
+  utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/8.4.6/js/utils.js"
+})
+
 }
 
 

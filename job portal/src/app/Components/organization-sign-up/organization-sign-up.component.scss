@@ -6,6 +6,8 @@
     margin: 2rem auto;
     padding: 2rem 2.5rem;
     border: none;
+    top: 50%;
+    left: 50%;
     outline: none;
     border-radius: 0.25rem;
     background: #ffffff;
@@ -34,8 +36,8 @@
       color: var(--color-black);
     }
     &__email {
-      font-size: 1rem;
-      font-weight: 400;
+      // font-size: 1rem;
+      // font-weight: 400;
       height: auto;
       padding: 0.75rem 1.25rem;
       // border: none;
@@ -82,7 +84,7 @@
     }
     .btn-primary {
       color: #0e0e0e;
-      background-color: #efe13a;
+      background-color:  #4572f1;
     }
     .fa {
       padding: 4px;
@@ -109,6 +111,8 @@
     }
   }
 }
+
+
 
 @media all and (max-width: 767px) {
   .sign-up {
