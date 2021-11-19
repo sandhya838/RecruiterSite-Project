@@ -1,5 +1,56 @@
-.profile-summary{
-    &__heading{
-        font-size: 20px;
+img {
+  // background-color: #ffa50045;
+  background-color: var(--festival);
+  height: 130px;
+  width: 120px;
+}
+.card-title{
+  color: var(--secondaryAqua);
+}
+.profile-details{
+  &__heading{
+      font-size: 20px;
+  }
+  &__profile{
+      text-align: center;
+  }
+}
+.fa{
+  color: var(--festival);
+  font-size: 18px;
+  margin-right: 10px;
+}
+label{
+  color: var(--lightGrayishNavy);
+  margin-bottom: 5px;
+}
+
+hr{
+  margin-right: 0;
+  margin-left: 32px;
+  width: 80%;
+}
+p{
+  line-height: 22px;
+  margin-left: 44px;
+
+}
+
+
+@media only screen and (max-width: 767px){
+  .fa{
+    margin-right: 4px;
+  }
+  p{
+    margin-left: 4px;
+    line-height: 20px;
+  }
+  .profile-details{
+    &__profile{
+      margin-bottom: 5px;
     }
+    &__heading{
+      font-size: 14px;
+    }
+  }
 }

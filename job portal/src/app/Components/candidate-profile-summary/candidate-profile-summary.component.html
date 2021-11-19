@@ -1,38 +1,160 @@
-<div class="container profile-summary">
-    <div class="d-flex justify-content-between align-items-center">
-      <h2 class="profile-summary__heading">Profile-summary</h2>
-      <nav aria-label="breadcrumb">
-        <ol class="breadcrumb bg-white">
-          <li class="breadcrumb-item">
-            <a [routerLink]="'/dashboard'">Dashboard</a>
-          </li>
-          <li class="breadcrumb-item active" aria-current="page">
-            profile-summary
-          </li>
-        </ol>
-      </nav>
+<div class="container profile-details">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="profile-details__heading">profile summary</h2>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-white">
+        <li class="breadcrumb-item">
+          <a [routerLink]="'/dashboard'">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          profile summary
+        </li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"> profile details</h5>
+          <div class="profile-details__profile">
+            <img class="card-img-top" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Card image cap"
+              class="rounded-circle" width="135">
+          </div>
+          <h5 class="profile-details__worktitle">Frontend Developer</h5>
+          <label><i class="fa fa-phone" aria-hidden="true"></i> Contact number:</label>
+          <p class="profile-details__contact"> +91 8380891905</p>
+          <label><i class="fa fa-envelope" aria-hidden="true"></i> Email address:</label>
+          <p class="profile-details__email"> sandhya@gmail.com</p>
+
+          <label><i class="fa fa-pencil" aria-hidden="true"></i> Technical architech/SME:</label>
+          <p class="profile-details__technical-architect">
+            1) Strong experience in developing technical architecture for product applications. <br>
+            2) Deep knowledge of architecture patterns, frameworks and design patterns. <br>
+            3) Working knowledge of Java, C++, AJAX, UNIX and Linux.. <br>
+          </p>
+
+          <label><i class="fa fa-suitcase" aria-hidden="true"></i> Experience:</label>
+          <p class="profile-details__experience"> Overall 1 years of experience in the development of Web & Enterprise
+            applications using Angular and nodejs Technologies.
+            Working with XXXX from June 20XX to till date.
+            Hands on experience in Core Java, Servlets, JSP, JDBC, RichFaces, JPA, JSF.
+            Knowledge of Eclipse tool for the development of Java projects.</p>
+
+          <label><i class="fa fa-file-text-o" aria-hidden="true"></i> Skills:</label>
+          <p class="profile-details__skills">
+            Angular, Bootstrap, HTML, CSS, SCSS, My SQL.
+          </p>
+
+          <label><i class="fa fa-file" aria-hidden="true"></i> Resume:</label>
+          <p class="profile-details__resume">
+            Sandhay_CV.pdf - Uploaded on Nov 12, 2021.
+          </p>
+        </div>
+        <hr>
+
+        <div class="card-body">
+          <h5 class="profile-details__experience">Experience 1:</h5>
+          <label><i class="fa fa-pencil" aria-hidden="true"></i> Title:</label>
+          <p class="profile-details__title">Full Stack Web Developer with Management Experience.</p>
+          <label><i class="fa fa-building" aria-hidden="true"></i>Comapny name:</label>
+          <p class="profile-details__company"> Amdocs</p>
+          <label><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Duration:</label>
+          <p class="profile-details__duration"> 6 months</p>
+          <label><i class="fa fa-user" aria-hidden="true"></i> Role:</label>
+          <p class="profile-details__role">Frontend developer</p>
+          <label><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Brief Description of responsibilty:</label>
+          <p class="profile-details__description">Front End Developer My role is to write and style the front-end
+            components that meet the requirements of our mocks and fulfill our user stories. I also monitor and process
+            pull requests for production deployments. Technologies used: Angular, JavaScript, ES6, TypeScript, SASS.</p>
+
+          <label><i class="fa fa-file-text-o" aria-hidden="true"></i> Skills:</label> <br>
+          <label>Technical:</label>
+          <p class="profile-details__skill-tech"></p>
+          <label>Function:</label>
+          <p class="profile-details__skill-funt"></p>
+          <label>Management:</label>
+          <p class="profile-details__skill-manage"></p>
+        </div>
+
+        <hr>
+        <div class="card-body">
+          <h5 class="profile-details__experience">Experience 2:</h5>
+          <label><i class="fa fa-pencil" aria-hidden="true"></i> Title:</label>
+          <p class="profile-details__title"></p>
+          <label><i class="fa fa-building" aria-hidden="true"></i>Comapny name:</label>
+          <p class="profile-details__company"></p>
+          <label><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Duration:</label>
+          <p class="profile-details__duration"></p>
+          <label><i class="fa fa-user" aria-hidden="true"></i> Role:</label>
+          <p class="profile-details__role"></p>
+          <label><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Brief Description of responsibilty:</label>
+          <p class="profile-details__description"></p>
+
+          <label><i class="fa fa-file-text-o" aria-hidden="true"></i> Skills:</label> <br>
+          <label>Technical:</label>
+          <p class="profile-details__skill-tech"></p>
+          <label>Function:</label>
+          <p class="profile-details__skill-funt"></p>
+          <label>Management:</label>
+          <p class="profile-details__skill-manage"></p>
+        </div>
+
+        <hr>
+        <div class="card-body">
+          <h5 class="profile-details__experience">Education:</h5>
+          <label><i class="fa fa-building-o" aria-hidden="true"></i> College:</label>
+          <p class="profile-details__college">MIT ACSC alandi, Pune</p>
+          <label><i class="fa fa-calendar" aria-hidden="true"></i> Year of passing:</label>
+          <p class="profile-details__year">2021</p>
+          <label><i class="fa fa-graduation-cap" aria-hidden="true"></i> Degree:</label>
+          <p class="profile-details__degree"> BSC computer science.</p>
+          <label><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Specialization:</label>
+          <p class="profile-details__role"> Specialization in software testing.</p>
+          <label><i class="fa fa-percent" aria-hidden="true"></i> Grade:</label>
+          <p class="profile-details__description">72 SGPA</p>
+
+          <label><i class="fa fa-certificate" aria-hidden="true"></i> Certification Name:</label>
+          <p class="profile-details__cirtificate">Python, Angular 9</p>
+          <label><i class="fa fa-handshake-o" aria-hidden="true"></i> Mentor:</label>
+          <p class="profile-details__cirtificate">Mr.Pranay sir & Mr.Ved sir.</p>
+          <label><i class="fa fa-book" aria-hidden="true"></i> Refrence & Recommendations:</label>
+          <p class="profile-details__cirtificate"></p>
+        </div>
+
+      </div>
     </div>
 
-        <div class="row">
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-            </div>
-            <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Special title treatment</h5>
-                  <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                  <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-              </div>
-            </div>
-          </div>
-       
-   <!-- </div>   -->
+    <!--  -->
+    <div class="col-sm-6">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Candidate profile dashboard</h5>
+          <label><i class="fa fa-user" aria-hidden="true"></i> Profile strength:</label>
+          <p class="profile-details__strength"> </p>
+          <label><i class="fa fa-money" aria-hidden="true"></i> salary strength:</label>
+          <p class="profile-details__salary"> </p>
+          <label><i class="fa fa-commenting" aria-hidden="true"></i> Social contact reach:</label>
+          <p class="profile-details__strength"> </p>
+          <label><i class="fa fa-file-text-o" aria-hidden="true"></i> Skill strength:</label>
+          <p class="profile-details__strength"> </p>
+        </div>
+
+        <hr>
+        <div class="card-body">
+          <h5 class="card-title">Actively looking for job opportunities:</h5>
+          <!-- <label><i class="fa fa-user" aria-hidden="true"></i></label> -->
+        </div>
+
+        <hr>
+
+        <div class="card-body">
+          <h5 class="card-title">Proof the skills:</h5>
+          <!-- <label><i class="fa fa-user" aria-hidden="true"></i> Skill specifics on which th candidate is :</label>
+          <p class="profile-details__strength"> </p> -->
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

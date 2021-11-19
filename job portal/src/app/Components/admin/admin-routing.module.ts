@@ -32,7 +32,7 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
-        path:"profileSummary",
+        path:"profile-summary",
         component:CandidateProfileSummaryComponent,
         canActivate:[AuthGuard],
       },
@@ -57,7 +57,7 @@ const routes: Routes = [
         canActivate:[AuthGuard],
       },
       {
-        path:"Candidateprofile",
+        path:"candidate-profile",
         component: CandidateProfileCardComponent,
         canActivate:[AuthGuard],
       },

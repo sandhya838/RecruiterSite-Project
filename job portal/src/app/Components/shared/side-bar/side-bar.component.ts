@@ -35,8 +35,8 @@ export class SideBarComponent implements OnInit {
       icon: "fa fa-home",
     },
     {
-      name: "Candidate Pofile",
-      url: "/Candidateprofile",
+      name: "Candidate pofile",
+      url: "/candidate-profile",
       hasChildren: false,
       isActive: true,
       subLinks: [],
@@ -44,7 +44,7 @@ export class SideBarComponent implements OnInit {
     },
     {
       name: "Pofile summary",
-      url: "/profileSummary",
+      url: "/profile-summary",
       hasChildren: false,
       isActive: true,
       subLinks: [],

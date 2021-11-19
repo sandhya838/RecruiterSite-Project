@@ -1,29 +1,29 @@
-@import '../../../assets/_partials/mixin.scss';
-.description{
-    @include sublabel(15px);
-}
-.title{
-    @include label(15px) 
-}
 
-li:hover{
-    background-color: $blue;
-    color: white !important;
-}
-.list-group {
-    .list-group-item{
-        &:hover{
-            .title{
-                color: white;
-            }
-            .description{
-                color: white;
-            }
+// .description{
+//     @include sublabel(15px);
+// }
+// .title{
+//     @include label(15px) 
+// }
+
+// li:hover{
+//     background-color: $blue;
+//     color: white !important;
+// }
+// .list-group {
+//     .list-group-item{
+//         &:hover{
+//             .title{
+//                 color: white;
+//             }
+//             .description{
+//                 color: white;
+//             }
            
-        }
-    }
-}
+//         }
+//     }
+// }
 
-.active{
-    background-color: $blue;
-}
+// .active{
+//     background-color: $blue;
+// }
