@@ -101,22 +101,13 @@ var ProfileSchema = new Schema({
     consultant: { type: String },
   },
   skillSysAdministration: {
-    sys: { type: String },
-    sys1: { type: String },
-    sys2: { type: String },
-    sys3: { type: String },
+    type: []
   },
   skillTechnical: {
-    tech3: { type: String },
-    tech2: { type: String },
-    tech1: { type: String },
-    tech: { type: String },
+    type: []
   },
   skillFunctional: {
-    functional: { type: String },
-    functional1: { type: String },
-    functional2: { type: String },
-    functional3: { type: String },
+    type: []
   },
   educationalDetails: [
     {

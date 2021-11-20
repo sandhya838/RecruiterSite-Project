@@ -1,9 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  FormGroup,
-  FormBuilder,
-  Validators,
-} from "@angular/forms";
+import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ConfigService } from "src/app/config.service";
 import { NotificationService } from "src/app/notification.service";
@@ -13,12 +9,8 @@ import { NotificationService } from "src/app/notification.service";
   styleUrls: ["./rollprofile.component.scss"],
 })
 export class RollprofileComponent implements OnInit {
-  sh: any;
-  isChecked: boolean = true;
   userForm!: FormGroup;
-  allData: any;
-  alert: boolean = false;
-  
+  percentageList = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
 
   constructor(
     public formBuilder: FormBuilder,
@@ -26,28 +18,99 @@ export class RollprofileComponent implements OnInit {
     private configService: ConfigService,
     private router: Router
   ) {}
-  numberPattern = "^[ %0-9_-]*$";
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
-      managment: ["",[Validators.required, Validators.pattern(this.numberPattern)]],
-      PortfolioManagement: ["",[Validators.required, Validators.pattern(this.numberPattern)]],
-      AccountManagement: ["",[Validators.required, Validators.pattern(this.numberPattern)]],
-      ProjectManagement: ["",[Validators.required, Validators.pattern(this.numberPattern)]],
-      technical: ["",[Validators.required, Validators.pattern(this.numberPattern)]],
-      Architect: ["",[Validators.required, Validators.pattern(this.numberPattern)]],
-      TechLead: ["",[Validators.required, Validators.pattern(this.numberPattern)]],
-      developer: ["",[Validators.required, Validators.pattern(this.numberPattern)]],
-      functional: ["",[Validators.required, Validators.pattern(this.numberPattern)]],
-      sme: ["", [Validators.required, Validators.pattern(this.numberPattern)]],
-      leadcon: ["",[Validators.required, Validators.pattern(this.numberPattern)]],
-      consultant: ["",[Validators.required, Validators.pattern(this.numberPattern)]]
+      roleManagement: this.formBuilder.group({
+        isManagement: ["", Validators.required],
+        management: [""],
+        portfolio: [""],
+        account: [""],
+        project: [""],
+      }),
+
+      roleTechnical: this.formBuilder.group({
+        isTechnical: ["", Validators.required],
+        technical: [""],
+        architect: [""],
+        techLead: [""],
+        developer: [""],
+      }),
+
+      roleFunctional: this.formBuilder.group({
+        isFuncational: ["", Validators.required],
+        functional: [""],
+        sme: [""],
+        leadCon: [""],
+        consultant: [""],
+      }),
     });
   }
-  get getControl() {
-    return this.userForm.controls;
+
+  onChecked(type: string) {
+    if (this.userForm.get("roleManagement.isManagement")!.value) {
+      this.userForm
+        .get("roleManagement.management")
+        ?.setValidators([Validators.required]);
+      this.userForm
+        .get("roleManagement.portfolio")
+        ?.setValidators([Validators.required]);
+      this.userForm
+        .get("roleManagement.account")
+        ?.setValidators([Validators.required]);
+      this.userForm
+        .get("roleManagement.project")
+        ?.setValidators([Validators.required]);
+      this.userForm.get("roleManagement")!.updateValueAndValidity();
+    } else {
+      this.userForm.get("roleManagement.management")?.reset();
+      this.userForm.get("roleManagement.portfolio")?.reset();
+      this.userForm.get("roleManagement.account")?.reset();
+      this.userForm.get("roleManagement.project")?.reset();
+      this.userForm.get("roleManagement")!.updateValueAndValidity();
+    }
+    if (this.userForm.get("roleTechnical.isTechnical")!.value) {
+      this.userForm
+        .get("roleTechnical.technical")
+        ?.setValidators([Validators.required]);
+      this.userForm
+        .get("roleTechnical.architect")
+        ?.setValidators([Validators.required]);
+      this.userForm
+        .get("roleTechnical.techLead")
+        ?.setValidators([Validators.required]);
+      this.userForm
+        .get("roleTechnical.developer")
+        ?.setValidators([Validators.required]);
+      this.userForm.get("roleTechnical")!.updateValueAndValidity();
+    } else {
+      this.userForm.get("roleTechnical.technical")?.reset();
+      this.userForm.get("roleTechnical.architect")?.reset();
+      this.userForm.get("roleTechnical.techLead")?.reset();
+      this.userForm.get("roleTechnical.developer")?.reset();
+      this.userForm.get("roleTechnical")!.updateValueAndValidity();
+    }
+    if (this.userForm.get("roleFunctional.isFuncational")!.value) {
+      this.userForm
+        .get("roleFunctional.functional")
+        ?.setValidators([Validators.required]);
+      this.userForm
+        .get("roleFunctional.sme")
+        ?.setValidators([Validators.required]);
+      this.userForm
+        .get("roleFunctional.leadCon")
+        ?.setValidators([Validators.required]);
+      this.userForm
+        .get("roleFunctional.consultant")
+        ?.setValidators([Validators.required]);
+      this.userForm.get("roleFunctional")!.updateValueAndValidity();
+    } else {
+      this.userForm.get("roleFunctional.functional")?.reset();
+      this.userForm.get("roleFunctional.sme")?.reset();
+      this.userForm.get("roleFunctional.leadCon")?.reset();
+      this.userForm.get("roleFunctional.consultant")?.reset();
+      this.userForm.get("roleFunctional")!.updateValueAndValidity();
+    }
   }
-
-
 
   onClick(formValue: any, isValid: boolean) {
     console.log(this.userForm.value);
@@ -79,31 +142,26 @@ export class RollprofileComponent implements OnInit {
         roleTechnical: roleTechnical,
         roleFunctional: roleFunctional,
       };
-      console.log('finalData',finalData)
-      this.configService.updateUser(localStorage.getItem("ID"), finalData).subscribe(
-        (data: any) => {
-          console.log(data);
-          if (data.status === 200) {
-            this.notifyService.showSuccess(data.message);
-            this.router.navigateByUrl("/skills");
-            this.userForm.reset();
-          } else {
-            this.notifyService.showError(data.message);
+      console.log("finalData", finalData);
+      this.configService
+        .updateUser(localStorage.getItem("ID"), finalData)
+        .subscribe(
+          (data: any) => {
+            console.log(data);
+            if (data.status === 200) {
+              this.notifyService.showSuccess(data.message);
+              this.router.navigateByUrl("/skills");
+              this.userForm.reset();
+            } else {
+              this.notifyService.showError(data.message);
+            }
+          },
+          (error) => {
+            this.notifyService.showError(error.message);
           }
-        },
-        (error) => {
-          this.notifyService.showError(error.message);
-        }
-      );
+        );
     } else {
       this.userForm.markAllAsTouched();
-      this.userForm.updateValueAndValidity();
     }
-    // this.userForm.reset({});
   }
-
-  closeAlert() {
-    this.alert = false;
-  }
-  
 }
