@@ -110,6 +110,63 @@ export class RollprofileComponent implements OnInit {
       this.userForm.get("roleFunctional.consultant")?.reset();
       this.userForm.get("roleFunctional")!.updateValueAndValidity();
     }
+    this.userForm.get("roleTechnical")?.enable();
+    this.userForm.get("roleFunctional")?.enable();
+    this.userForm.get("roleManagement")?.enable();
+  }
+  onManagementChnage(value: string, type: string) {
+    if (type === "management") {
+      if (value === "100") {
+        this.userForm.get("roleTechnical")?.disable();
+        this.userForm.get("roleFunctional")?.disable();
+      } else {
+        this.userForm.get("roleTechnical")?.enable();
+        this.userForm.get("roleFunctional")?.enable();
+      }
+      this.userForm.get("roleTechnical")?.updateValueAndValidity();
+      this.userForm.get("roleFunctional")?.updateValueAndValidity();
+    }
+
+    if (type === "technical") {
+      if (value === "100") {
+        this.userForm.get("roleManagement")?.disable();
+        this.userForm.get("roleFunctional")?.disable();
+      } else {
+        this.userForm.get("roleManagement")?.enable();
+        this.userForm.get("roleFunctional")?.enable();
+      }
+      this.userForm.get("roleManagement")?.updateValueAndValidity();
+      this.userForm.get("roleFunctional")?.updateValueAndValidity();
+    }
+    if (type === "functional") {
+      if (value === "100") {
+        this.userForm.get("roleTechnical")?.disable();
+        this.userForm.get("roleManagement")?.disable();
+      } else {
+        this.userForm.get("roleTechnical")?.enable();
+        this.userForm.get("roleManagement")?.enable();
+      }
+      this.userForm.get("roleTechnical")?.updateValueAndValidity();
+      this.userForm.get("roleManagement")?.updateValueAndValidity();
+    }
+  }
+
+  getTotalPercentage() {
+    if (
+      Number(this.userForm.get("roleManagement.management")!.value) +
+        Number(this.userForm.get("roleTechnical.technical")!.value) >
+        100 ||
+      Number(this.userForm.get("roleManagement.management")!.value) +
+        Number(this.userForm.get("roleFunctional.functional")!.value) >
+        100 ||
+      Number(this.userForm.get("roleTechnical.technical")!.value) +
+        Number(this.userForm.get("roleFunctional.functional")!.value) >
+        100
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   onClick(formValue: any, isValid: boolean) {

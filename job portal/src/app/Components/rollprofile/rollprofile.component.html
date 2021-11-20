@@ -1,5 +1,20 @@
 <div class="card rollprofile">
   <div class="card-body">
+    <div
+      class="alert alert-dismissible fade show alert alert-danger"
+      role="alert"
+      *ngIf="getTotalPercentage() ? true : false"
+    >
+      The addition of all management, technical and functional is 100%.
+      <button
+        type="button"
+        class="close"
+        data-dismiss="alert"
+        aria-label="Close"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
     <div>
       <h5>What role you had done?</h5>
       <small class="mb-2">The addition of all fields is 100%</small>
@@ -10,7 +25,7 @@
       novalidate
     >
       <div class="row mt-2" formGroupName="roleManagement">
-        <div class="col">
+        <div class="col-md">
           <div class="form-group form-check">
             <input
               type="checkbox"
@@ -46,7 +61,7 @@
         <ng-container
           *ngIf="userForm.get('roleManagement.isManagement')!.value"
         >
-          <div class="col">
+          <div class="col-md">
             <div class="form-group">
               <label for="Management">Management</label>
               <select
@@ -54,6 +69,12 @@
                 name="management"
                 id="management"
                 formControlName="management"
+                (change)="
+                  onManagementChnage(
+                    userForm.get('roleManagement.management')!.value,
+                    'management'
+                  )
+                "
               >
                 <option value="" selected disabled>Managenent</option>
                 <option *ngFor="let item of percentageList" [value]="item">
@@ -81,7 +102,7 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-md">
             <div class="form-group">
               <label for="Portfolio">Portfolio</label>
               <select
@@ -115,7 +136,7 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-md">
             <div class="form-group">
               <label for="account">Account</label>
               <select
@@ -149,7 +170,7 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-md">
             <div class="form-group">
               <label for="project">Project</label>
               <select
@@ -186,7 +207,7 @@
         </ng-container>
       </div>
       <div class="row" formGroupName="roleTechnical">
-        <div class="col">
+        <div class="col-md">
           <div class="form-group form-check">
             <input
               type="checkbox"
@@ -219,7 +240,7 @@
           </div>
         </div>
         <ng-container *ngIf="userForm.get('roleTechnical.isTechnical')!.value">
-          <div class="col">
+          <div class="col-md">
             <div class="form-group">
               <label for="technical">Technical</label>
               <select
@@ -227,6 +248,12 @@
                 name="technical"
                 id="technical"
                 formControlName="technical"
+                (change)="
+                  onManagementChnage(
+                    userForm.get('roleTechnical.technical')!.value,
+                    'technical'
+                  )
+                "
               >
                 <option value="" selected disabled>technical</option>
                 <option *ngFor="let item of percentageList" [value]="item">
@@ -253,7 +280,7 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-md">
             <div class="form-group">
               <label for="architect">Architect</label>
               <select
@@ -287,7 +314,7 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-md">
             <div class="form-group">
               <label for="techLead">Tech lead</label>
               <select
@@ -321,7 +348,7 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-md">
             <div class="form-group">
               <label for="developer">Developer</label>
               <select
@@ -358,7 +385,7 @@
         </ng-container>
       </div>
       <div class="row" formGroupName="roleFunctional">
-        <div class="col">
+        <div class="col-md">
           <div class="form-group form-check">
             <input
               type="checkbox"
@@ -394,7 +421,7 @@
         <ng-container
           *ngIf="userForm.get('roleFunctional.isFuncational')!.value"
         >
-          <div class="col">
+          <div class="col-md">
             <div class="form-group">
               <label for="functional">Functional</label>
               <select
@@ -402,6 +429,12 @@
                 name="functional"
                 id="functional"
                 formControlName="functional"
+                (change)="
+                  onManagementChnage(
+                    userForm.get('roleFunctional.functional')!.value,
+                    'functional'
+                  )
+                "
               >
                 <option value="" selected disabled>functional</option>
                 <option *ngFor="let item of percentageList" [value]="item">
@@ -429,7 +462,7 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-md">
             <div class="form-group">
               <label for="sme">SME</label>
               <select
@@ -461,7 +494,7 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-md">
             <div class="form-group">
               <label for="leadCon">Lead consultant</label>
               <select
@@ -495,7 +528,7 @@
               </div>
             </div>
           </div>
-          <div class="col">
+          <div class="col-md">
             <div class="form-group">
               <label for="consultant">Consultant</label>
               <select
@@ -533,7 +566,7 @@
         </ng-container>
       </div>
       <hr />
-      <div class="d-flex justify-content-end">
+      <div class="rollprofile__action">
         <div class="pr-1">
           <button
             class="job-btn job-btn-outline"
@@ -544,307 +577,16 @@
           </button>
         </div>
         <div class="pl-1">
-          <button class="job-btn job-btn-mini" type="submit">Next</button>
+          <button
+            class="job-btn job-btn-mini"
+            [class.disabled]="getTotalPercentage() ? true : false"
+            type="submit"
+            [disabled]="getTotalPercentage() ? true : null"
+          >
+            Next
+          </button>
         </div>
       </div>
     </form>
   </div>
 </div>
-<!-- <div class="card rollprofile">
-  <div class="card-body d-flex p-0">
-    <div class="rollprofile__empty-block">
-      <div class="d-flex align-items-center justify-content-center h-100">
-        <img
-          src="assets/img/change-password.png"
-          alt="change password"
-          class="w-25"
-        />
-      </div>
-    </div>
-    <div class="p-4 rollprofile__form-block">
-      <h4>What role you had done?</h4>
-      <small class="mb-2">The addition of all fields is 100%</small>
-      <form
-        [formGroup]="userForm"
-        (ngSubmit)="onClick(userForm.value, userForm.valid)"
-        novalidate
-      >
-        <div class="row">
-          <div class="col">
-            <div class="form-group form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="Managements"
-                formControlName="roleManagement"
-                (change)="onChecked('management')"
-              />
-              <label class="form-check-label" for="Managements"
-                >Managements ( in % )</label
-              >
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.controls['roleManagement'].valid &&
-                  (userForm.controls['roleManagement'].touched ||
-                    userForm.controls['roleManagement'].dirty)
-                "
-              >
-                <div *ngIf="userForm.controls['roleManagement'].errors">
-                  <small
-                    *ngIf="
-                      userForm.controls['roleManagement'].errors.required
-                    "
-                  >
-                    This field is required
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row mx-2" formGroupName="roleManagement">
-            <div class="col">
-              <div class="form-group">
-                <label for="Management">Management</label>
-                <select
-                  class="form-control"
-                  name="management"
-                  id="management"
-                  formControlName="management"
-                >
-                  <option value="" selected disabled>Managenent</option>
-                </select>
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                <label for="Portfolio">Portfolio</label>
-                <select
-                  class="form-control"
-                  name="portfolio"
-                  id="portfolio"
-                  formControlName="portfolio"
-                >
-                  <option value="" selected disabled>portfolio</option>
-                </select>
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                <label for="Account">Account</label>
-                <select
-                  class="form-control"
-                  name="account"
-                  id="account"
-                  formControlName="account"
-                >
-                  <option value="" selected disabled>account</option>
-                </select>
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                <label for="project">Project</label>
-                <select
-                  class="form-control"
-                  name="project"
-                  id="project"
-                  formControlName="project"
-                >
-                  <option value="" selected disabled>project</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <div class="form-group form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="roleTechnical"
-                formControlName="roleTechnical"
-                (change)="onChecked('technical')"
-              />
-              <label class="form-check-label" for="roleTechnical"
-                >Technical</label
-              >
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.controls['roleTechnical'].valid &&
-                  (userForm.controls['roleTechnical'].touched ||
-                    userForm.controls['roleTechnical'].dirty)
-                "
-              >
-                <div *ngIf="userForm.controls['roleTechnical'].errors">
-                  <small
-                    *ngIf="userForm.controls['roleTechnical'].errors.required"
-                  >
-                    This field is required
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row mx-2" formGroupName="roleTechnical">
-            <div class="col">
-              <div class="form-group">
-                <label for="technical">Technical</label>
-                <select
-                  class="form-control"
-                  name="technical"
-                  id="technical"
-                  formControlName="technical"
-                >
-                  <option value="" selected disabled>technical</option>
-                </select>
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                <label for="architect">Architect</label>
-                <select
-                  class="form-control"
-                  name="architect"
-                  id="architect"
-                  formControlName="architect"
-                >
-                  <option value="" selected disabled>architect</option>
-                </select>
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                <label for="techLead">Tech lead</label>
-                <select
-                  class="form-control"
-                  name="techLead"
-                  id="techLead"
-                  formControlName="techLead"
-                >
-                  <option value="" selected disabled>tech lead</option>
-                </select>
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                <label for="developer">Developer</label>
-                <select
-                  class="form-control"
-                  name="developer"
-                  id="developer"
-                  formControlName="developer"
-                >
-                  <option value="" selected disabled>developer</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <div class="form-group form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                id="roleFunctional"
-                formControlName="roleFunctional"
-                (change)="onChecked('funcational')"
-              />
-              <label class="form-check-label" for="roleFunctional"
-                >Functional</label
-              >
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.controls['roleFunctional'].valid &&
-                  (userForm.controls['roleFunctional'].touched ||
-                    userForm.controls['roleFunctional'].dirty)
-                "
-              >
-                <div *ngIf="userForm.controls['roleFunctional'].errors">
-                  <small
-                    *ngIf="userForm.controls['roleFunctional'].errors.required"
-                  >
-                    This field is required
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="row mx-2" formGroupName="roleFunctional">
-            <div class="col">
-              <div class="form-group">
-                <label for="functional">Functional</label>
-                <select
-                  class="form-control"
-                  name="functional"
-                  id="functional"
-                  formControlName="functional"
-                >
-                  <option value="" selected disabled>functional</option>
-                </select>
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                <label for="sme">SME</label>
-                <select
-                  class="form-control"
-                  name="sme"
-                  id="sme"
-                  formControlName="sme"
-                >
-                  <option value="" selected disabled>sme</option>
-                </select>
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                <label for="leadCon">Lead consultant</label>
-                <select
-                  class="form-control"
-                  name="leadCon"
-                  id="leadCon"
-                  formControlName="leadCon"
-                >
-                  <option value="" selected disabled>Lead consultant</option>
-                </select>
-              </div>
-            </div>
-            <div class="col">
-              <div class="form-group">
-                <label for="consultant">consultant</label>
-                <select
-                  class="form-control"
-                  name="consultant"
-                  id="consultant"
-                  formControlName="consultant"
-                >
-                  <option value="" selected disabled>consultant</option>
-                </select>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr />
-        <div class="d-flex justify-content-end">
-          <div class="pr-1">
-            <button
-              class="job-btn job-btn-outline"
-              type="reset"
-              [routerLink]="'/profile/roles'"
-            >
-              Back
-            </button>
-          </div>
-          <div class="pl-1">
-            <button class="job-btn job-btn-mini" type="submit">Next</button>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</div> -->
