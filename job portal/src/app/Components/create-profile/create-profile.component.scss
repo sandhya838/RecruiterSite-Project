@@ -5,10 +5,11 @@
   &__steps {
     counter-reset: step;
     ul {
+      padding-left: 0;
       li {
         list-style: none;
         display: inline-block;
-        width: 16%;
+        width: 14%;
         position: relative;
         text-align: center;
         cursor: pointer;
@@ -17,6 +18,9 @@
         }
         &.active {
           color: var(--white);
+          a {
+            color: var(--primary);
+          }
           &:before {
             border-color: var(--primary);
             background-color: var(--primary);
@@ -31,6 +35,9 @@
         }
         &.done {
           color: var(--white);
+          a {
+            color: var(--text-success);
+          }
           &:before {
             border-color: var(--text-success);
             background-color: var(--text-success);

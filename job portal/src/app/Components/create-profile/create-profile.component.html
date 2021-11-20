@@ -10,25 +10,37 @@
       </ol>
     </nav>
   </div>
-  <div class="profile__steps">
+  <div class="profile__steps mb-5">
     <ul>
-      <li [class.done]="done" [class.active]="activeStep">
+      <li
+        [class.done]="step2 || step3 || step4 || step5 || step6 || step7"
+        [class.active]="step1"
+      >
         <a href=""> About you </a>
       </li>
-      <li [class.done]="done" [class.active]="activeStep">
+      <li
+        [class.done]="step3 || step4 || step5 || step6 || step7"
+        [class.active]="step2"
+      >
         <a href=""> Experiences </a>
       </li>
-      <li [class.done]="done" [class.active]="activeStep">
+      <li
+        [class.done]="step4 || step5 || step6 || step7"
+        [class.active]="step3"
+      >
         <a href=""> Roles </a>
       </li>
-      <li [class.done]="done" [class.active]="activeStep">
+      <li [class.done]="step5 || step6 || step7" [class.active]="step4">
         <a href=""> Skills </a>
       </li>
-      <li [class.done]="done" [class.active]="activeStep">
+      <li [class.done]="step6 || step7" [class.active]="step5">
         <a href=""> Work experiences </a>
       </li>
-      <li [class.done]="done" [class.active]="activeStep">
+      <li [class.done]="step7" [class.active]="step6">
         <a routerLink="/profile/education-details"> Education details </a>
+      </li>
+      <li [class.done]="done" [class.active]="step7">
+        <a routerLink="/profile/certificates"> Cetificates </a>
       </li>
     </ul>
   </div>

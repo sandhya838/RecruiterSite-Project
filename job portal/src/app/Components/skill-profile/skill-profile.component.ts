@@ -17,6 +17,7 @@ export class SkillProfileComponent implements OnInit {
   technicalSkills: { id: number; name: string }[] = [];
   functionalSkills: { id: number; name: string }[] = [];
   user: any;
+  viewPort = true;
   constructor(
     public formBuilder: FormBuilder,
     private configService: ConfigService,
@@ -25,6 +26,7 @@ export class SkillProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.viewPort = window.innerWidth > 991 ? true : false;
     this.userForm = this.formBuilder.group({
       technical: ["", [Validators.required]],
       system: ["", [Validators.required]],
@@ -59,7 +61,7 @@ export class SkillProfileComponent implements OnInit {
       singleSelection: false,
       idField: "name",
       textField: "name",
-      itemsShowLimit: 2,
+      itemsShowLimit: this.viewPort ? 4 : 1,
       limitSelection: 4,
       allowSearchFilter: true,
     };

@@ -9,6 +9,13 @@ import { NavigationEnd, Router } from "@angular/router";
 export class CreateProfileComponent implements OnInit {
   activeStep = false;
   done = false;
+  step1 = false;
+  step2 = false;
+  step3 = false;
+  step4 = false;
+  step5 = false;
+  step6 = false;
+  step7 = false;
 
   constructor(private router: Router) {
     this.router.events.forEach((event) => {
@@ -17,16 +24,67 @@ export class CreateProfileComponent implements OnInit {
         console.log("curentUrl", curentUrl);
         switch (curentUrl) {
           case "about-you":
-            this.activeStep = false;
-            this.done = false;
+            this.step1 = true;
+            this.step2 = false;
+            this.step3 = false;
+            this.step4 = false;
+            this.step5 = false;
+            this.step6 = false;
+            this.step7 = false;
             break;
           case "experience":
-            this.activeStep = false;
-            this.done = true;
+            this.step1 = true;
+            this.step2 = true;
+            this.step3 = false;
+            this.step4 = false;
+            this.step5 = false;
+            this.step6 = false;
+            this.step7 = false;
             break;
           case "roles":
-            this.activeStep = true;
-            this.done = true;
+            this.step1 = true;
+            this.step2 = true;
+            this.step3 = true;
+            this.step4 = false;
+            this.step5 = false;
+            this.step6 = false;
+            this.step7 = false;
+            break;
+          case "skills":
+            this.step1 = true;
+            this.step2 = true;
+            this.step3 = true;
+            this.step4 = true;
+            this.step5 = false;
+            this.step6 = false;
+            this.step7 = false;
+            break;
+          case "work-experience":
+            this.step1 = true;
+            this.step2 = true;
+            this.step3 = true;
+            this.step4 = true;
+            this.step5 = true;
+            this.step6 = false;
+            this.step7 = false;
+            break;
+          case "education-details":
+            this.step1 = true;
+            this.step2 = true;
+            this.step3 = true;
+            this.step4 = true;
+            this.step5 = true;
+            this.step6 = true;
+            this.step7 = false;
+            break;
+          case "certificates":
+            this.step1 = true;
+            this.step2 = true;
+            this.step3 = true;
+            this.step4 = true;
+            this.step5 = true;
+            this.step6 = true;
+            this.step7 = true;
             break;
 
           default:

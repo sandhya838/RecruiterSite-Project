@@ -1,21 +1,14 @@
 .skill-profile {
-  &__empty-block {
-    background-color: var(--secondary);
-    height: auto;
-    width: 50%;
-  }
-  &__form-block{
-    width: 50%;
+  &__action {
+    display: flex;
+    justify-content: flex-end;
   }
 }
 
 @media all and (max-width: 767px) {
   .skill-profile {
-    &__empty-block {
-     display: none;
-    }
-    &__form-block{
-      width: 100%;
+    &__action {
+      justify-content: space-between;
     }
   }
 }

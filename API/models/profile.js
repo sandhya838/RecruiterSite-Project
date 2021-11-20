@@ -114,7 +114,7 @@ var ProfileSchema = new Schema({
       degree: {
         type: String,
       },
-      Country: {
+      country: {
         type: String,
       },
       institute: {
@@ -139,6 +139,9 @@ var ProfileSchema = new Schema({
       },
       month: {
         type: String,
+      },
+      certificate: {
+        type: String
       }
     }
   ],

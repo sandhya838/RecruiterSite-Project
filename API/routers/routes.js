@@ -5,6 +5,7 @@ module.exports = (app) => {
   const multer = require("multer");
   const upload = multer({ dest: 'public/resume/' });
   const uploadLogo = multer({ dest: 'public/logo/' });
+  uploadCertificate = multer({ dest: 'public/certificates/' });
   const orgnization = require('../controllers/orgnization.controller');
   const job = require('../controllers/job.controller');
 
@@ -33,15 +34,16 @@ module.exports = (app) => {
   app.post('/v1/register', upload.single('resume'), requestValidator.validateParams(profile.createRules), profile.create);
 
   /****************** profile routings *************** */
-  app.post('/v1/aboutyou',auth.authToken, profile.create);
+  app.post('/v1/aboutyou', auth.authToken, profile.create);
   app.get('/v1/profile/:profileId', profile.findOne);
   app.put('/v1/upload-resume/:profileId', upload.single('resume'), profile.uploadResume);
 
-  app.put('/v1/profile/:profileId',auth.authToken, profile.update);
+  app.put('/v1/profile/:profileId', auth.authToken, profile.update);
   app.get('/v1/profiles', profile.findAll);
   // app.get('/v1/profiles', auth.authToken, profile.findAll);
   // app.get('/v1/profile/:profileId', auth.authToken, profile.findOne);
   // app.put('/v1/profile/:profiled', auth.authToken, requestValidator.validateParams(profile.updateRules), profile.update);
   app.delete('/v1/profile/:profileId', auth.authToken, profile.delete);
   app.put('/v1/change-password/:id', auth.authToken, profile.changePassword);
+  app.put('/v1/upload-certificates/:id', uploadCertificate.single('certificate'), auth.authToken,);
 }

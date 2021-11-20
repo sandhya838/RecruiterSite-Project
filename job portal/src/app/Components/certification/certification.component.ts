@@ -1,8 +1,10 @@
 import { Component, OnInit } from "@angular/core";
-import { FormGroup, FormBuilder, Validators } from "@angular/forms";
+import { FormControl } from "@angular/forms";
+import { FormGroup, FormBuilder, Validators, FormArray } from "@angular/forms";
 import { Router } from "@angular/router";
+import { FileUploadValidators } from "@iplab/ngx-file-upload";
 import { ConfigService } from "src/app/config.service";
-import { NotificationService } from "src/app/notification.service";
+import { CommonService } from "src/app/services/common.service";
 @Component({
   selector: "app-certification",
   templateUrl: "./certification.component.html",
@@ -12,62 +14,94 @@ export class CertificationComponent implements OnInit {
   Certificate!: FormGroup;
   allData: any;
   alert: boolean = false;
+  certificationsForm!: FormGroup;
+  userId: string | undefined;
 
   constructor(
     public formBuilder: FormBuilder,
     private configService: ConfigService,
     private router: Router,
-    private notifyService: NotificationService
+    private commonService: CommonService
   ) {}
 
   ngOnInit(): void {
-    this.Certificate = this.formBuilder.group({
-      CertificationName: ["", [Validators.required]],
-      certifiedMonth: ["", [Validators.required]],
-      certifiedYear: ["", [Validators.required]],
+    this.certificationsForm = this.formBuilder.group({
+      certifications: this.formBuilder.array([this.inililzeForm()]),
     });
+    const userData = JSON.parse(
+      localStorage.getItem("rememberMe") === "true"
+        ? localStorage.getItem("user")
+        : (sessionStorage.getItem("user") as any)
+    );
+    this.userId = userData._id;
+  }
+
+  inililzeForm() {
+    return this.formBuilder.group({
+      name: ["", Validators.required],
+      year: ["", Validators.required],
+      month: ["", Validators.required],
+      file: new FormControl(null, [
+        Validators.required,
+        FileUploadValidators.filesLimit(1),
+      ]),
+    });
+  }
+  get certificationsFormArray() {
+    return this.certificationsForm.get("certifications") as FormArray;
+  }
+  getValidity(index: number) {
+    return (<FormArray>this.certificationsForm.get("certifications")).controls[
+      index
+    ] as FormControl;
+  }
+  addMore() {
+    const formarr = this.certificationsForm.get("certifications") as FormArray;
+    formarr.push(this.inililzeForm());
+  }
+  remoreForm(index: number) {
+    const formarr = this.certificationsForm.get("certifications") as FormArray;
+    formarr.removeAt(index);
   }
   get getControl() {
     return this.Certificate.controls;
   }
   onClick(formValue: any, isValid: boolean) {
+    console.log(formValue, isValid);
     if (isValid) {
-      const certificates = [];
-      const tempFormatedData = {
-        name: "",
-        month: "",
-        year: "",
-      };
-      tempFormatedData.name = formValue.CertificationName;
-      tempFormatedData.month = formValue.certifiedMonth;
-      tempFormatedData.year = formValue.certifiedYear;
-      certificates.push(tempFormatedData);
+      const finalRequest = [];
+      for (const item of formValue.certifications) {
+        let fd = new FormData();
+        fd.append("certificate", item.file[0]);
+        fd.append("name", item.name);
+        fd.append("month", item.month);
+        fd.append("year", item.year);
+        finalRequest.push(fd);
+      }
+
       const finalData = {
-        certifications: certificates,
+        certifications: finalRequest,
+        updatedBy: this.userId,
       };
-      this.configService
-        .updateUser(localStorage.getItem("ID"), finalData)
-        .subscribe(
-          (data: any) => {
-            console.log(data);
+      if (finalRequest.length === formValue.certifications.length) {
+        console.log("finalData", finalData);
+
+        this.configService
+          .updateUser(this.userId, finalData)
+          .subscribe((data: any) => {
             if (data.status === 200) {
-              this.notifyService.showSuccess(data.message);
-              //this.router.navigateByUrl("/certificate");
-              this.Certificate.reset();
+              localStorage.getItem("rememberMe") === "true"
+                ? localStorage.setItem("user", JSON.stringify(data.profile))
+                : sessionStorage.setItem("user", JSON.stringify(data.profile));
+              this.commonService.alert("success", data.message);
+              this.router.navigateByUrl("/dashboard");
             } else {
-              this.notifyService.showError(data.message);
+              this.commonService.alert("error", data.message);
             }
-          },
-          (error) => {
-            this.notifyService.showError(error.message);
-          }
-        );
+          });
+      }
     } else {
-      this.Certificate.markAllAsTouched();
-      this.Certificate.updateValueAndValidity();
+      this.certificationsForm.markAllAsTouched();
     }
-  }
-  closeAlert() {
-    this.alert = false;
   }
 }

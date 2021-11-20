@@ -1,123 +1,110 @@
 <div class="card skill-profile">
-  <div class="card-body d-flex p-0">
-    <div class="skill-profile__empty-block">
-      <div class="d-flex align-items-center justify-content-center h-100">
-        <img
-          src="assets/img/change-password.png"
-          alt="change password"
-          class="w-25"
-        />
-      </div>
-    </div>
-    <div class="p-4 skill-profile__form-block">
-      <form
-        [formGroup]="userForm"
-        (ngSubmit)="onClick(userForm.value, userForm.valid)"
-        novalidate
-      >
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label>Technical skills</label>
-              <ng-multiselect-dropdown
-                formControlName="technical"
-                [placeholder]="'Select technical skill'"
-                [settings]="dropdownSettings"
-                [data]="technicalSkills"
-              >
-              </ng-multiselect-dropdown>
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.controls['technical'].valid &&
-                  (userForm.controls['technical'].touched ||
-                    userForm.controls['technical'].dirty)
-                "
-              >
-                <div *ngIf="userForm.controls['technical'].errors">
-                  <small *ngIf="userForm.controls['technical'].errors.required">
-                    This field is required
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label>Functional skill</label>
-              <ng-multiselect-dropdown
-                formControlName="functional"
-                [placeholder]="'Select functional skill'"
-                [settings]="dropdownSettings"
-                [data]="functionalSkills"
-              >
-              </ng-multiselect-dropdown>
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.controls['functional'].valid &&
-                  (userForm.controls['functional'].touched ||
-                    userForm.controls['functional'].dirty)
-                "
-              >
-                <div *ngIf="userForm.controls['functional'].errors">
-                  <small
-                    *ngIf="userForm.controls['functional'].errors.required"
-                  >
-                    This field is required
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label>System adminstration skill</label>
-              <ng-multiselect-dropdown
-                formControlName="system"
-                [placeholder]="'Select system skill'"
-                [settings]="dropdownSettings"
-                [data]="technicalSkills"
-              >
-              </ng-multiselect-dropdown>
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.controls['system'].valid &&
-                  (userForm.controls['system'].touched ||
-                    userForm.controls['system'].dirty)
-                "
-              >
-                <div *ngIf="userForm.controls['system'].errors">
-                  <small *ngIf="userForm.controls['system'].errors.required">
-                    This field is required
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <hr />
-        <div class="d-flex justify-content-end">
-          <div class="pr-1">
-            <button
-              class="job-btn job-btn-outline"
-              type="reset"
-              [routerLink]="'/profile/roles'"
+  <div class="card-body">
+    <form
+      [formGroup]="userForm"
+      (ngSubmit)="onClick(userForm.value, userForm.valid)"
+      novalidate
+    >
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label>Technical skills</label>
+            <ng-multiselect-dropdown
+              formControlName="technical"
+              [placeholder]="'Select technical skill'"
+              [settings]="dropdownSettings"
+              [data]="technicalSkills"
             >
-              Back
-            </button>
-          </div>
-          <div class="pl-1">
-            <button class="job-btn job-btn-mini" type="submit">Next</button>
+            </ng-multiselect-dropdown>
+            <div
+              class="text-danger"
+              *ngIf="
+                !userForm.controls['technical'].valid &&
+                (userForm.controls['technical'].touched ||
+                  userForm.controls['technical'].dirty)
+              "
+            >
+              <div *ngIf="userForm.controls['technical'].errors">
+                <small *ngIf="userForm.controls['technical'].errors.required">
+                  This field is required
+                </small>
+              </div>
+            </div>
           </div>
         </div>
-      </form>
-    </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label>Functional skill</label>
+            <ng-multiselect-dropdown
+              formControlName="functional"
+              [placeholder]="'Select functional skill'"
+              [settings]="dropdownSettings"
+              [data]="functionalSkills"
+            >
+            </ng-multiselect-dropdown>
+            <div
+              class="text-danger"
+              *ngIf="
+                !userForm.controls['functional'].valid &&
+                (userForm.controls['functional'].touched ||
+                  userForm.controls['functional'].dirty)
+              "
+            >
+              <div *ngIf="userForm.controls['functional'].errors">
+                <small *ngIf="userForm.controls['functional'].errors.required">
+                  This field is required
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label>System adminstration skill</label>
+            <ng-multiselect-dropdown
+              formControlName="system"
+              [placeholder]="'Select system skill'"
+              [settings]="dropdownSettings"
+              [data]="technicalSkills"
+            >
+            </ng-multiselect-dropdown>
+            <div
+              class="text-danger"
+              *ngIf="
+                !userForm.controls['system'].valid &&
+                (userForm.controls['system'].touched ||
+                  userForm.controls['system'].dirty)
+              "
+            >
+              <div *ngIf="userForm.controls['system'].errors">
+                <small *ngIf="userForm.controls['system'].errors.required">
+                  This field is required
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr />
+      <div class="skill-profile__action">
+        <div class="pr-1">
+          <button
+            class="job-btn job-btn-outline"
+            type="reset"
+            [routerLink]="'/profile/roles'"
+          >
+            Back
+          </button>
+        </div>
+        <div class="pl-1">
+          <button class="job-btn job-btn-mini" type="submit">Next</button>
+        </div>
+      </div>
+    </form>
   </div>
 </div>

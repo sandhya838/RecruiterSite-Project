@@ -36,7 +36,7 @@ module.exports = {
                         if (err.code === 11000) {
                             res.status(412).send({ status: 412, message: err.keyValue.email + ' already exist.', profile: {} });
                         } else {
-                            console.log('err',err);
+                            console.log('err', err);
                             res.status(500).send({ status: 400, message: 'Oops! Not able to create profile. Please try after sometimes', profile: {} });
                         }
                     } else {
@@ -171,13 +171,51 @@ module.exports = {
                 res.status(500).send({ status: 500, message: 'Oops! Not able to get all profiles. Please try after sometimes', profile: {} });
             }
         })
-    }
+    },
+    certificates: (req, res) => {
+        uploadCertificate(req.file, (isFileUploaded, fileName) => {
+            if (isFileUploaded) {
+                req.body.certificate = fileName;
+                profile.findOneAndUpdate({ _id: req.params.profileId }, { $set: req.body }, { new: true },
+                    (err, result) => {
+                        if (err) {
+                            if (err.code === 11000) {
+                                res.status(412).send({ status: 412, message: err.keyValue.email + ' already exist.', profile: {} });
+                            } else {
+                                console.log('err', err);
+                                res.status(500).send({ status: 400, message: 'Oops! Not able to create profile. Please try after sometimes', profile: {} });
+                            }
+                        } else {
+                            console.log(result);
+                            res.status(200).send({ status: 200, message: 'profile updated successfully.', profile: result });
+                        }
+                    });
+            } else {
+                if (err) throw res.status(500).send({ status: 500, message: 'Oops! Not able to update profile. Please try after sometimes', profile: {} });
+            }
+
+        })
+    },
 }
 
 
 
 uploadFile = (file, callBack) => {
     const fileName = file.fieldname + '-resume-' + Date.now() + '.' + file.mimetype.split('/').pop();
+    fs.rename(file.path, file.destination + fileName, (err) => {
+        if (err) {
+            callBack(false, '');
+
+        } else {
+            callBack(true, fileName);
+
+        }
+
+    });
+
+};
+uploadCertificate = (file, callBack) => {
+    const fileName = file.fieldname + '-certificate-' + Date.now() + '.' + file.mimetype.split('/').pop();
     fs.rename(file.path, file.destination + fileName, (err) => {
         if (err) {
             callBack(false, '');

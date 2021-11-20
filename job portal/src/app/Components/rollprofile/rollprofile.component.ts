@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ConfigService } from "src/app/config.service";
 import { NotificationService } from "src/app/notification.service";
+import { CommonService } from "src/app/services/common.service";
 @Component({
   selector: "app-rollprofile",
   templateUrl: "./rollprofile.component.html",
@@ -11,12 +12,13 @@ import { NotificationService } from "src/app/notification.service";
 export class RollprofileComponent implements OnInit {
   userForm!: FormGroup;
   percentageList = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+  userId: string | undefined;
 
   constructor(
     public formBuilder: FormBuilder,
-    private notifyService: NotificationService,
     private configService: ConfigService,
-    private router: Router
+    private router: Router,
+    private commonService: CommonService
   ) {}
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
@@ -44,6 +46,13 @@ export class RollprofileComponent implements OnInit {
         consultant: [""],
       }),
     });
+    const userData = JSON.parse(
+      localStorage.getItem("rememberMe") === "true"
+        ? localStorage.getItem("user")
+        : (sessionStorage.getItem("user") as any)
+    );
+    this.userId = userData._id;
+    this.userForm.patchValue(userData);
   }
 
   onChecked(type: string) {
@@ -169,54 +178,93 @@ export class RollprofileComponent implements OnInit {
     }
   }
 
+  getTotalOfManagement() {
+    if (
+      Number(this.userForm.get("roleManagement.portfolio")!.value) +
+        Number(this.userForm.get("roleManagement.account")!.value) +
+        Number(this.userForm.get("roleManagement.project")!.value) >
+      100
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  getTotalOfTechnical() {
+    if (
+      Number(this.userForm.get("roleTechnical.architect")!.value) +
+        Number(this.userForm.get("roleTechnical.techLead")!.value) +
+        Number(this.userForm.get("roleTechnical.developer")!.value) >
+      100
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  getTotalOfFuncaional() {
+    if (
+      Number(this.userForm.get("roleFunctional.sme")!.value) +
+        Number(this.userForm.get("roleFunctional.leadCon")!.value) +
+        Number(this.userForm.get("roleFunctional.consultant")!.value) >
+      100
+    ) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  getDisabled() {
+    console.log()
+    return (
+      this.getTotalOfFuncaional() ||
+      this.getTotalOfTechnical() ||
+      this.getTotalOfManagement() ||
+      this.getTotalPercentage()
+    );
+  }
+
   onClick(formValue: any, isValid: boolean) {
     console.log(this.userForm.value);
-
-    // this.allData = JSON.parse(JSON.stringify(this.userForm.value));
-    // this.alert = true;
-
     if (isValid) {
-      const roleManagement = {
-        management: formValue.managment,
-        portfolio: formValue.PortfolioManagement,
-        account: formValue.AccountManagement,
-        project: formValue.ProjectManagement,
-      };
-      const roleTechnical = {
-        technical: formValue.technical,
-        architect: formValue.Architect,
-        techLead: formValue.TechLead,
-        developer: formValue.developer,
-      };
-      const roleFunctional = {
-        functional: formValue.functional,
-        sme: formValue.sme,
-        leadCon: formValue.leadcon,
-        consultant: formValue.consultant,
-      };
-      const finalData = {
-        roleManagement: roleManagement,
-        roleTechnical: roleTechnical,
-        roleFunctional: roleFunctional,
-      };
-      console.log("finalData", finalData);
+      // const roleManagement = {
+      //   management: formValue.managment,
+      //   portfolio: formValue.PortfolioManagement,
+      //   account: formValue.AccountManagement,
+      //   project: formValue.ProjectManagement,
+      // };
+      // const roleTechnical = {
+      //   technical: formValue.technical,
+      //   architect: formValue.Architect,
+      //   techLead: formValue.TechLead,
+      //   developer: formValue.developer,
+      // };
+      // const roleFunctional = {
+      //   functional: formValue.functional,
+      //   sme: formValue.sme,
+      //   leadCon: formValue.leadcon,
+      //   consultant: formValue.consultant,
+      // };
+      // const finalData = {
+      //   roleManagement: roleManagement,
+      //   roleTechnical: roleTechnical,
+      //   roleFunctional: roleFunctional,
+      // };
+      (formValue.createdBy = this.userId), console.log("finalData", formValue);
       this.configService
-        .updateUser(localStorage.getItem("ID"), finalData)
-        .subscribe(
-          (data: any) => {
-            console.log(data);
-            if (data.status === 200) {
-              this.notifyService.showSuccess(data.message);
-              this.router.navigateByUrl("/skills");
-              this.userForm.reset();
-            } else {
-              this.notifyService.showError(data.message);
-            }
-          },
-          (error) => {
-            this.notifyService.showError(error.message);
+        .updateUser(this.userId, formValue)
+        .subscribe((data: any) => {
+          if (data.status === 200) {
+            localStorage.getItem("rememberMe") === "true"
+              ? localStorage.setItem("user", JSON.stringify(data.profile))
+              : sessionStorage.setItem("user", JSON.stringify(data.profile));
+            this.commonService.alert("success", data.message);
+            this.router.navigateByUrl("/profile/skills");
+          } else {
+            this.commonService.alert("error", data.message);
           }
-        );
+        });
     } else {
       this.userForm.markAllAsTouched();
     }
