@@ -173,20 +173,25 @@ module.exports = {
         })
     },
     certificates: (req, res) => {
-        uploadCertificate(req.file, (isFileUploaded, fileName) => {
+        writeCertificate(req.file, (isFileUploaded, fileName) => {
             if (isFileUploaded) {
-                req.body.certificate = fileName;
-                profile.findOneAndUpdate({ _id: req.params.profileId }, { $set: req.body }, { new: true },
+                const data = [
+                    {
+                        name: req.body.name,
+                        certificate: fileName,
+                        month: req.body.month,
+                        year: req.body.year,
+
+
+                    }
+                ];
+
+                profile.findOneAndUpdate({ _id: req.params.profileId }, { $push: { certifications: data } }, { new: true },
                     (err, result) => {
                         if (err) {
-                            if (err.code === 11000) {
-                                res.status(412).send({ status: 412, message: err.keyValue.email + ' already exist.', profile: {} });
-                            } else {
-                                console.log('err', err);
-                                res.status(500).send({ status: 400, message: 'Oops! Not able to create profile. Please try after sometimes', profile: {} });
-                            }
+                            res.status(400).send({ status: 400, message: err.keyValue.email + ' already exist.', profile: {} });
+
                         } else {
-                            console.log(result);
                             res.status(200).send({ status: 200, message: 'profile updated successfully.', profile: result });
                         }
                     });
@@ -195,12 +200,13 @@ module.exports = {
             }
 
         })
-    },
+    }
 }
 
 
 
 uploadFile = (file, callBack) => {
+    console.log('file', file)
     const fileName = file.fieldname + '-resume-' + Date.now() + '.' + file.mimetype.split('/').pop();
     fs.rename(file.path, file.destination + fileName, (err) => {
         if (err) {
@@ -213,18 +219,18 @@ uploadFile = (file, callBack) => {
 
     });
 
-};
-uploadCertificate = (file, callBack) => {
-    const fileName = file.fieldname + '-certificate-' + Date.now() + '.' + file.mimetype.split('/').pop();
-    fs.rename(file.path, file.destination + fileName, (err) => {
-        if (err) {
-            callBack(false, '');
+},
+    writeCertificate = (file, callBack) => {
+        const fileName = file.fieldname + '-certificate-' + Date.now() + '.' + file.mimetype.split('/').pop();
+        fs.rename(file.path, file.destination + fileName, (err) => {
+            if (err) {
+                callBack(false, '');
 
-        } else {
-            callBack(true, fileName);
+            } else {
+                callBack(true, fileName);
 
-        }
+            }
 
-    });
+        });
 
-};
+    };

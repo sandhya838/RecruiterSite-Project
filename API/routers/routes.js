@@ -45,5 +45,5 @@ module.exports = (app) => {
   // app.put('/v1/profile/:profiled', auth.authToken, requestValidator.validateParams(profile.updateRules), profile.update);
   app.delete('/v1/profile/:profileId', auth.authToken, profile.delete);
   app.put('/v1/change-password/:id', auth.authToken, profile.changePassword);
-  app.put('/v1/upload-certificates/:id', uploadCertificate.single('certificate'), auth.authToken,);
+  app.post('/v1/upload-certificates/:profileId', uploadCertificate.single('certificate'), auth.authToken, profile.certificates);
 }

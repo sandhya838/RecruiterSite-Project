@@ -15,7 +15,22 @@ export class CertificationComponent implements OnInit {
   allData: any;
   alert: boolean = false;
   certificationsForm!: FormGroup;
-  userId: string | undefined;
+  userId!: string;
+  years = ([] = this.generateArrayOfYears());
+  months = ([] = [
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
+  ]);
 
   constructor(
     public formBuilder: FormBuilder,
@@ -67,41 +82,55 @@ export class CertificationComponent implements OnInit {
     return this.Certificate.controls;
   }
   onClick(formValue: any, isValid: boolean) {
-    console.log(formValue, isValid);
     if (isValid) {
-      const finalRequest = [];
+      let totalIndex = 0;
+      let fd = new FormData();
       for (const item of formValue.certifications) {
-        let fd = new FormData();
+        fd = new FormData();
+        fd.append("updatedBy", this.userId);
         fd.append("certificate", item.file[0]);
-        fd.append("name", item.name);
         fd.append("month", item.month);
         fd.append("year", item.year);
-        finalRequest.push(fd);
-      }
-
-      const finalData = {
-        certifications: finalRequest,
-        updatedBy: this.userId,
-      };
-      if (finalRequest.length === formValue.certifications.length) {
-        console.log("finalData", finalData);
-
+        fd.append("name", item.name);
+        const finalData = {
+          certifications: fd,
+          updatedBy: this.userId,
+        };
         this.configService
-          .updateUser(this.userId, finalData)
+          .uploadCertificates(this.userId, fd)
           .subscribe((data: any) => {
             if (data.status === 200) {
               localStorage.getItem("rememberMe") === "true"
                 ? localStorage.setItem("user", JSON.stringify(data.profile))
                 : sessionStorage.setItem("user", JSON.stringify(data.profile));
               this.commonService.alert("success", data.message);
-              this.router.navigateByUrl("/dashboard");
+              totalIndex++;
+              this.redirectToHome(totalIndex, formValue.certifications.length);
             } else {
+              totalIndex--;
+              this.redirectToHome(totalIndex, formValue.certifications.length);
               this.commonService.alert("error", data.message);
             }
           });
       }
     } else {
       this.certificationsForm.markAllAsTouched();
+    }
+  }
+  generateArrayOfYears() {
+    const max = new Date().getFullYear();
+    const min = 1900;
+    const years = [];
+
+    for (var i = max; i >= min; i--) {
+      years.push(i);
+    }
+    return years;
+  }
+
+  redirectToHome(totalIndex: number, maxLength: number) {
+    if (totalIndex === maxLength) {
+      this.router.navigateByUrl("/dashboard");
     }
   }
 }

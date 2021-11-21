@@ -9,14 +9,8 @@ import { CommonService } from "./services/common.service";
   providedIn: "root",
 })
 export class ConfigService {
-  url = "http://localhost:3000/v1/";
-  updateUrl = "http://localhost:3000/v1/profile";
-
   constructor(private http: HttpClient, private commonService: CommonService) {}
-  getPost() {
-    return this.http.get(this.url + "profiles");
-  }
-  // add user
+
   addUser(user: any): Observable<Object> {
     return this.http.post(CONSTANTS.ABOUTYOU, user, {
       headers: this.commonService._getHeaders(),
@@ -25,14 +19,16 @@ export class ConfigService {
 
   // update user
   updateUser(id: any, data: any): Observable<any> {
-    console.log(data);
-
     return this.http.put(CONSTANTS.UPDATEUSERPROFILE + id, data, {
       headers: this.commonService._getHeaders(),
     });
   }
-
-  // get(id: number): Observable<any> {
-  //   return this.http.get(`${this.createUrl}/${id}`);
-  // }
+  uploadCertificates(id: string, data: any) {
+    console.log("dasdasd", data);
+    return this.http.post(CONSTANTS.UPLOADCERTIFICATES + id, data, {
+      headers: new HttpHeaders({
+        "x-access-token": sessionStorage.getItem("token") as string,
+      }),
+    });
+  }
 }

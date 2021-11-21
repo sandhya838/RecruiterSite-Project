@@ -9,6 +9,7 @@
       [formGroup]="certificationsForm"
       (ngSubmit)="onClick(certificationsForm.value, certificationsForm.valid)"
       novalidate
+      enctype="multipart/form-data"
     >
       <div formArrayName="certifications">
         <ng-container
@@ -35,6 +36,7 @@
                     id="name"
                     name="name"
                     formControlName="name"
+                    placeholder="certificatation name"
                   />
                   <div
                     class="text-danger sign-up__wrapper__error"
@@ -61,13 +63,17 @@
                     <div class="col-md">
                       <div class="form-group">
                         <label class="d-none">Month</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="month"
+                        <select
                           name="month"
+                          id="month"
+                          class="form-control"
                           formControlName="month"
-                        />
+                        >
+                          <option value="" selected disabled>month</option>
+                          <option *ngFor="let month of months" [value]="month">
+                            {{ month }}
+                          </option>
+                        </select>
                         <div
                           class="text-danger sign-up__wrapper__error"
                           *ngIf="
@@ -91,13 +97,17 @@
                     <div class="col-md">
                       <div class="form-group">
                         <label class="d-none">year</label>
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="year"
+                        <select
                           name="year"
+                          id="year"
+                          class="form-control"
                           formControlName="year"
-                        />
+                        >
+                          <option value="" selected disabled>year</option>
+                          <option *ngFor="let year of years" [value]="year">
+                            {{ year }}
+                          </option>
+                        </select>
                         <div
                           class="text-danger sign-up__wrapper__error"
                           *ngIf="
