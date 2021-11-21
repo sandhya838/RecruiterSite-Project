@@ -1,62 +1,15 @@
-@import "../../../assets/_partials/mixin.scss";
+.rollprofile {
+  &__action {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
 
-// dispaly none 
-.form-check{
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 20px;
+@media all and (max-width: 767px) {
+  .rollprofile {
+    &__action {
+      display: flex;
+      justify-content: space-between;
     }
-    select{
-            width: 20%;
-    }
-#myDIV,#techDIV,#manageDIV {
-    width: 100%;
-    padding: 5px 0;
-    text-align: center;
-    background-color: rgb(247, 247, 247);
-    // background-color: rgb(233, 233, 233);
-    margin-bottom: 10px;
-    display: none;
   }
-  
-  .heading{
-    margin-bottom: 0px;
-    font-size: 20px;
-  }
-  .subHeading{
-    color: $darkGreyclr;
-    margin-bottom: 20px;
-    font-size: 12px;
-  }
-  label{
-    width: 15%;
-     margin-right: 25px
-  }
-  .sub-heading{
-    margin-bottom: 20px;
-    color: $darkGreyclr;
-  }
-  .row-body{
-    display: flex;
-    flex-direction: row;
-    // justify-content: space-between;
-    width: 60%;
-  }
-  label{
-    width: 30%;
-    margin-right: 10px;
-  }
-  select{
-    width: 40%;
-    margin-right: 20px;
-  }
-  .item-list{
-    margin-top: 30px;
-  }
-  .body{
-    display: flex;
-    margin-left: 32px;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 94%;
-  }
+}

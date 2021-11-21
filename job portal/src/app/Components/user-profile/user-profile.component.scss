@@ -1,7 +1,14 @@
 .user-profile {
-  &__empty-block {
-    background-color: var(--secondary);
-    height: auto;
-    width: 50%;
+  &__action {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .user-profile {
+    &__action {
+      justify-content: space-between;
+    }
   }
 }

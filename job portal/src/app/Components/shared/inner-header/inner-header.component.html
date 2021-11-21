@@ -41,7 +41,10 @@
           aria-expanded="false"
         >
           <div class="inner-header__profile">
-            Welcome Ved
+            Welcome
+            {{
+              user?.firstName + " " + user?.middleName + " " + user?.lastName
+            }}
             <img
               class="inner-header__profile__img"
               src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"
@@ -51,7 +54,8 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
           <a class="dropdown-item" [routerLink]="'/change-password'">
-            <i class="fa fa-unlock-alt" aria-hidden="true"></i> Change password</a
+            <i class="fa fa-unlock-alt" aria-hidden="true"></i> Change
+            password</a
           >
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" (click)="onLogOut()">

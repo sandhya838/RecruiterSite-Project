@@ -7,9 +7,17 @@ import { Router } from "@angular/router";
   styleUrls: ["./inner-header.component.scss"],
 })
 export class InnerHeaderComponent implements OnInit {
+  user: any;
   constructor(private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    const userData = JSON.parse(
+      localStorage.getItem("rememberMe") === "true"
+        ? localStorage.getItem("user")
+        : (sessionStorage.getItem("user") as any)
+    );
+    this.user = userData;
+  }
 
   onLogOut() {
     sessionStorage.clear();

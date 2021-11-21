@@ -141,4 +141,5 @@ export const CONSTANTS = {
   CHANGEPASSWORD: BASEURL + "v1/change-password/",
   ABOUTYOU: BASEURL + "v1/aboutyou",
   UPDATEUSERPROFILE: BASEURL + "v1/profile/",
+  UPLOADCERTIFICATES: BASEURL+'v1/upload-certificates/'
 };

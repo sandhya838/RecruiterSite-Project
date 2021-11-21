@@ -1,6 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "src/app/authguard";
+import { CertificationComponent } from "../certification/certification.component";
 import { EduDetailsComponent } from "../edu-details/edu-details.component";
 import { ExperianceComponent } from "../experiance/experiance.component";
 import { RollprofileComponent } from "../rollprofile/rollprofile.component";
@@ -43,6 +44,11 @@ const routes: Routes = [
       {
         path: "roles",
         component: RollprofileComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: "certificates",
+        component: CertificationComponent,
         canActivate: [AuthGuard],
       },
     ],

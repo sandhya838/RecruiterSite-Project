@@ -1,8 +1,14 @@
-.experience{
-    &__empty-block {
-      background-color: var(--secondary);
-      height: auto;
-      width: 50%;
+.experience {
+  &__action {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .experience {
+    &__action {
+      justify-content: space-between;
     }
   }
-  
+}

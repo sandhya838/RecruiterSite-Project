@@ -86,7 +86,7 @@ export class WorkExperianceComponent implements OnInit {
       const workExperiences = {
         from: formValue.joinmonth + " / " + formValue.joinyear,
         to: formValue.jointomonth + " / " + formValue.jointoyear,
-        desgination: formValue.designation,
+        designation: formValue.designation,
         deliverables: formValue.deliverables,
         role: formValue.role,
         skills: formValue.skills,
