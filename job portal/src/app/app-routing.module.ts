@@ -12,7 +12,6 @@ import { SignUpComponent } from "./Components/sign-up/sign-up.component";
 import { SignInComponent } from "./Components/sign-in/sign-in.component";
 import { PrimarySkillComponent } from "./Components/primary-skill/primary-skill.component";
 import { AuthGuard } from "./authguard";
-import { SidebarComponent } from "./Components/sidebar/sidebar.component";
 import { LoginguardGuard } from "./loginguard.guard";
 import { JobProfileCardComponent } from "./Components/job-profile-card/job-profile-card.component";
 const routes: Routes = [
@@ -29,9 +28,7 @@ const routes: Routes = [
       import("./Components/admin/admin.module").then((m) => m.AdminModule),
   },
 
-  
   { path: "signUp", component: SignUpComponent },
-  { path: "sidebar", component: SidebarComponent, canActivate: [AuthGuard] },
 
   // {path:"priSkill",component:PrimarySkillComponent, canActivate:[AuthGuard]}
   // {path: '**', redirectTo: 'PageNotFoundComponent'}

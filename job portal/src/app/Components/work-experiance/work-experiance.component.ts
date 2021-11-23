@@ -1,5 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from "@angular/forms";
 import { Router } from "@angular/router";
 import { ConfigService } from "src/app/config.service";
 import { CONSTANTS } from "src/app/constants";
@@ -47,6 +53,31 @@ export class WorkExperianceComponent implements OnInit {
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
+      workExperiences: this.formBuilder.array([this.inililzeForm()]),
+    });
+    const userData = JSON.parse(
+      localStorage.getItem("rememberMe") === "true"
+        ? localStorage.getItem("user")
+        : (sessionStorage.getItem("user") as any)
+    );
+    this.userId = userData._id;
+    this.updateValueInForm(userData);
+  }
+
+  updateValueInForm(userData: any) {
+    for (const item of userData.workExperiences) {
+      item.joinmonth = item.from.split("/")[0].trim();
+      item.joinyear = item.from.split("/")[1].trim();
+      item.jointomonth = item.from.split("/")[0].trim();
+      item.jointoyear = item.from.split("/")[1].trim();
+      this.addMore();
+    }
+    this.remoreForm(userData.workExperiences);
+    this.userForm.patchValue(userData);
+  }
+
+  inililzeForm() {
+    return this.formBuilder.group({
       companyName: [
         "",
         [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/)],
@@ -63,18 +94,22 @@ export class WorkExperianceComponent implements OnInit {
       role: ["", [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/)]],
       deliverables: ["", [Validators.required]],
     });
-    const userData = JSON.parse(
-      localStorage.getItem("rememberMe") === "true"
-        ? localStorage.getItem("user")
-        : (sessionStorage.getItem("user") as any)
-    );
-    this.userId = userData._id;
-    const experianceData = userData.workExperiences[0];
-    experianceData.joinmonth = experianceData.from.split("/")[0].trim();
-    experianceData.joinyear = experianceData.from.split("/")[1].trim();
-    experianceData.jointomonth = experianceData.from.split("/")[0].trim();
-    experianceData.jointoyear = experianceData.from.split("/")[1].trim();
-    this.userForm.patchValue(experianceData);
+  }
+  get workExperiencesFormArray() {
+    return this.userForm.get("workExperiences") as FormArray;
+  }
+  getValidity(index: number) {
+    return (<FormArray>this.userForm.get("workExperiences")).controls[
+      index
+    ] as FormControl;
+  }
+  addMore() {
+    const formarr = this.userForm.get("workExperiences") as FormArray;
+    formarr.push(this.inililzeForm());
+  }
+  remoreForm(index: number) {
+    const formarr = this.userForm.get("workExperiences") as FormArray;
+    formarr.removeAt(index);
   }
 
   get getControl() {
@@ -83,19 +118,12 @@ export class WorkExperianceComponent implements OnInit {
 
   onClick(formValue: any, isValid: boolean) {
     if (isValid) {
-      const workExperiences = {
-        from: formValue.joinmonth + " / " + formValue.joinyear,
-        to: formValue.jointomonth + " / " + formValue.jointoyear,
-        designation: formValue.designation,
-        deliverables: formValue.deliverables,
-        role: formValue.role,
-        skills: formValue.skills,
-        companyName: formValue.companyName,
-      };
-      const tempData = [];
-      tempData.push(workExperiences);
+      for (const item of formValue?.workExperiences) {
+        item["to"] = item.jointomonth + " / " + item.jointoyear;
+        item["from"] = item.joinmonth + " / " + item.joinyear;
+      }
       const finalData = {
-        workExperiences: tempData,
+        workExperiences: formValue?.workExperiences,
         updatedBy: this.userId,
       };
 
