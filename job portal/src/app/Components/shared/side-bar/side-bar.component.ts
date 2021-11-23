@@ -49,7 +49,16 @@ export class SideBarComponent implements OnInit {
       isActive: true,
       subLinks: [],
       icon: "fa fa-home",
+    },
+    {
+      name: "job post",
+      url: "/jobposting",
+      hasChildren: false,
+      isActive: true,
+      subLinks: [],
+      icon: "fa fa-home",
     }
+
   ];
   constructor(private router: Router) {}
 

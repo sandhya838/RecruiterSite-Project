@@ -18,6 +18,8 @@ import { CandidateProfileCardComponent } from './Components/candidate-profile-ca
 import { QRCodeModule } from 'angularx-qrcode';
 import { ErrorInterceptor } from "./services/error.interceptor";
 
+import { JobPostingComponent } from './Components/job-posting/job-posting.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,6 +28,8 @@ import { ErrorInterceptor } from "./services/error.interceptor";
     SignInComponent,
     PageNotFoundComponent,
     CandidateProfileCardComponent,
+
+    JobPostingComponent,
   ],
   imports: [
     BrowserModule,

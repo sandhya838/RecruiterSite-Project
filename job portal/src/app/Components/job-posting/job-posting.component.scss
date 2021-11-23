@@ -1,0 +1,21 @@
+.card{
+
+    width: 30rem;
+    box-shadow: 1px 2px 5px 3px var(--grayLightWarm);
+    border: none;
+    
+      }
+      .jobposting{
+          align-items: center;
+          &__form{
+              padding:1.25rem;
+          }
+      }
+input,select{
+    margin-bottom: 10px;
+}
+button{
+    align-items: center;
+    border-radius: 0cm;
+}
+      
