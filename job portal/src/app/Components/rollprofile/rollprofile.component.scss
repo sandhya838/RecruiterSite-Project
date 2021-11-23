@@ -1,0 +1,15 @@
+.rollprofile {
+  &__action {
+    display: flex;
+    justify-content: flex-end;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .rollprofile {
+    &__action {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

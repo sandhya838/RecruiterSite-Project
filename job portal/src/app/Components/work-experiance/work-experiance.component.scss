@@ -1,10 +1,14 @@
 .work-experiance {
-  &__empty-block {
-    background-color: var(--secondary);
-    height: auto;
-    width: 50%;
+  &__action {
+    display: flex;
+    justify-content: flex-end;
   }
-  textarea {
-    height: 75px !important;
+}
+
+@media all and (max-width: 767px) {
+  .work-experiance {
+    &__action {
+      justify-content: space-between;
+    }
   }
 }

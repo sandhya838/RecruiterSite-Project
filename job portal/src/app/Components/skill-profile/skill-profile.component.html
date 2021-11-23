@@ -1,277 +1,110 @@
-<div class="container">
-  <div
-    *ngIf="alert"
-    class="alert alert-success alert-dismissible fade show"
-    role="alert"
-  >
-    <strong>Success!</strong> Your data is successfully submitted.
-    <pre>{{ allData | json }}</pre>
-    <button
-      (click)="closeAlert()"
-      type="button"
-      class="close"
-      data-dismiss="alert"
-      aria-label="Close"
+<div class="card skill-profile">
+  <div class="card-body">
+    <form
+      [formGroup]="userForm"
+      (ngSubmit)="onClick(userForm.value, userForm.valid)"
+      novalidate
     >
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <form [formGroup]="userForm" (ngSubmit)="onClick(userForm.value, userForm.valid)" novalidate>
-    <div class="row">
-            <h6>Technical skill</h6>
-            <ng-multiselect-dropdown formControlName="techskill"
-            [placeholder]="'Select Feild' "
-            [settings]="dropdownSettings"
-            [data]="dropdownList"
-            [(ngModel)]="selectedItems"
-            (onSelect)="onItemSelect($event)"
-            (onSelectAll)="onSelectAll($event)">
-        </ng-multiselect-dropdown>
-        <!-- <span   *ngIf="!userForm.value.techskill" class="validation">
-          * required {{userForm.techskill}}
-        </span> -->
-    </div>
-        
-
-    <div class="row">
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
+            <label>Technical skills</label>
+            <ng-multiselect-dropdown
+              formControlName="technical"
+              [placeholder]="'Select technical skill'"
+              [settings]="dropdownSettings"
+              [data]="technicalSkills"
+            >
+            </ng-multiselect-dropdown>
+            <div
+              class="text-danger"
+              *ngIf="
+                !userForm.controls['technical'].valid &&
+                (userForm.controls['technical'].touched ||
+                  userForm.controls['technical'].dirty)
+              "
+            >
+              <div *ngIf="userForm.controls['technical'].errors">
+                <small *ngIf="userForm.controls['technical'].errors.required">
+                  This field is required
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="form-group">
             <label>Functional skill</label>
-            <ng-multiselect-dropdown formControlName="funtskill"
-            [placeholder]="'Select Feild' "
-            [settings]="dropdownSettings1"
-            [data]="dropdownList1"
-            [(ngModel)]="selectedItems"
-            (onSelect)="onItemSelect($event)"
-            (onSelectAll)="onSelectAll($event)">
-        </ng-multiselect-dropdown>
-        
-    </div>
-    <div class="row">
-        <label>System adminstration skill</label>
-        <ng-multiselect-dropdown formControlName="sysAdminskill"
-        [placeholder]="'Select Feild' "
-        [settings]="dropdownSettings1"
-        [data]="dropdownList1"
-        [(ngModel)]="selectedItems"
-        (onSelect)="onItemSelect($event)"
-        (onSelectAll)="onSelectAll($event)">
-    </ng-multiselect-dropdown>
-</div>
-<div class="row-btn">
-  <div class="col-2">
-    <a routerLink="/experience"> <button type="" class="btn btn-outline-primary mb-3" >Previous</button></a>
- </div>
-
-<div class="col">
-<button type="submit" class="btn btn-success form-control mb-3" >Next</button>
-</div>
-</div>
-<!-- </div> -->
-
-</form>
-</div>
-    <!-- <div class="row">
-      <label class="form-label">Technical</label>
-
-      <div class="row">
-        <div class="col-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="type.."
-            formControlName="tech3"
-          />
-          <div
-            class="text-danger"
-            *ngIf="getControl.tech3.touched && getControl.tech3.invalid"
-          >
-            <div *ngIf="getControl.tech3.errors">This is required.</div>
-          </div>
-        </div>
-
-        <div class="col-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="type.."
-            formControlName="tech"
-          />
-          <div
-            class="text-danger"
-            *ngIf="getControl.tech.touched && getControl.tech.invalid"
-          >
-            <div *ngIf="getControl.tech.errors">This is required.</div>
-          </div>
-        </div>
-        <div class="col-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="type.."
-            formControlName="tech1"
-          />
-          <div
-            class="text-danger"
-            *ngIf="getControl.tech1.touched && getControl.tech1.invalid"
-          >
-            <div *ngIf="getControl.tech1.errors">This is required.</div>
-          </div>
-        </div>
-        <div class="col-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="type.."
-            formControlName="tech2"
-          />
-          <div
-            class="text-danger"
-            *ngIf="getControl.tech2.touched && getControl.tech2.invalid"
-          >
-            <div *ngIf="getControl.tech2.errors">This is required.</div>
+            <ng-multiselect-dropdown
+              formControlName="functional"
+              [placeholder]="'Select functional skill'"
+              [settings]="dropdownSettings"
+              [data]="functionalSkills"
+            >
+            </ng-multiselect-dropdown>
+            <div
+              class="text-danger"
+              *ngIf="
+                !userForm.controls['functional'].valid &&
+                (userForm.controls['functional'].touched ||
+                  userForm.controls['functional'].dirty)
+              "
+            >
+              <div *ngIf="userForm.controls['functional'].errors">
+                <small *ngIf="userForm.controls['functional'].errors.required">
+                  This field is required
+                </small>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-
-      <label class="form-label">Functional</label>
-
-      <div class="row">
-        <div class="col-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="type.."
-            formControlName="functional"
-          />
-          <div
-            class="text-danger"
-            *ngIf="
-              getControl.functional.touched && getControl.functional.invalid
-            "
-          >
-            <div *ngIf="getControl.functional.errors">This is required.</div>
-          </div>
-        </div>
-
-        <div class="col-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="type.."
-            formControlName="functional1"
-          />
-          <div
-            class="text-danger"
-            *ngIf="
-              getControl.functional1.touched && getControl.functional1.invalid
-            "
-          >
-            <div *ngIf="getControl.functional1.errors">This is required.</div>
-          </div>
-        </div>
-        <div class="col-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="type.."
-            formControlName="functional2"
-          />
-          <div
-            class="text-danger"
-            *ngIf="
-              getControl.functional2.touched && getControl.functional2.invalid
-            "
-          >
-            <div *ngIf="getControl.functional2.errors">This is required.</div>
-          </div>
-        </div>
-        <div class="col-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="type.."
-            formControlName="functional3"
-          />
-          <div
-            class="text-danger"
-            *ngIf="
-              getControl.functional3.touched && getControl.functional3.invalid
-            "
-          >
-            <div *ngIf="getControl.functional3.errors">This is required.</div>
-          </div>
-        </div>
-      </div>
-
-      <label class="form-label">Sys Adminstration</label>
-
-      <div class="row">
-        <div class="col-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="type.."
-            formControlName="sys"
-          />
-          <div
-            class="text-danger"
-            *ngIf="getControl.sys.touched && getControl.sys.invalid"
-          >
-            <div *ngIf="getControl.sys.errors">This is required.</div>
-          </div>
-        </div>
-
-        <div class="col-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="type.."
-            formControlName="sys1"
-          />
-          <div
-            class="text-danger"
-            *ngIf="getControl.sys1.touched && getControl.sys1.invalid"
-          >
-            <div *ngIf="getControl.sys1.errors">This is required.</div>
-          </div>
-        </div>
-        <div class="col-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="type.."
-            formControlName="sys2"
-          />
-          <div
-            class="text-danger"
-            *ngIf="getControl.sys2.touched && getControl.sys2.invalid"
-          >
-            <div *ngIf="getControl.sys2.errors">This is required.</div>
-          </div>
-        </div>
-        <div class="col-3">
-          <input
-            type="text"
-            class="form-control"
-            placeholder="type.."
-            formControlName="sys3"
-          />
-          <div
-            class="text-danger"
-            *ngIf="getControl.sys3.touched && getControl.sys3.invalid"
-          >
-            <div *ngIf="getControl.sys3.errors">This is required.</div>
-          </div>
-        </div>
-      </div>
-
       <div class="row">
         <div class="col">
-          <a routerLink="/role-profile"><button type="" class="btn btn-outline-primary">Previous</button></a>
-        </div>
-
-        <div class="col">
-          <button type="submit" class="btn btn-success">Submit</button>
+          <div class="form-group">
+            <label>System adminstration skill</label>
+            <ng-multiselect-dropdown
+              formControlName="system"
+              [placeholder]="'Select system skill'"
+              [settings]="dropdownSettings"
+              [data]="technicalSkills"
+            >
+            </ng-multiselect-dropdown>
+            <div
+              class="text-danger"
+              *ngIf="
+                !userForm.controls['system'].valid &&
+                (userForm.controls['system'].touched ||
+                  userForm.controls['system'].dirty)
+              "
+            >
+              <div *ngIf="userForm.controls['system'].errors">
+                <small *ngIf="userForm.controls['system'].errors.required">
+                  This field is required
+                </small>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-    </div> -->
-  
+
+      <hr />
+      <div class="skill-profile__action">
+        <div class="pr-1">
+          <button
+            class="job-btn job-btn-outline"
+            type="reset"
+            [routerLink]="'/profile/roles'"
+          >
+            Back
+          </button>
+        </div>
+        <div class="pl-1">
+          <button class="job-btn job-btn-mini" type="submit">Next</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

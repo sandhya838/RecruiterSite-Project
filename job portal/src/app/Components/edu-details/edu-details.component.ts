@@ -46,6 +46,12 @@ export class EduDetailsComponent implements OnInit {
         year: ["", [Validators.required]],
       }),
     });
+    const userData = JSON.parse(
+      localStorage.getItem("rememberMe") === "true"
+        ? localStorage.getItem("user")
+        : (sessionStorage.getItem("user") as any)
+    );
+    this.userForm.patchValue(userData.educationalDetails[0]);
   }
 
   get f() {
@@ -75,14 +81,14 @@ export class EduDetailsComponent implements OnInit {
         createdBy: this.userId,
       };
       this.configService
-        .updateUser(this.userId, formValue)
+        .updateUser(this.userId, finalData)
         .subscribe((data: any) => {
           if (data.status === 200) {
             localStorage.getItem("rememberMe") === "true"
               ? localStorage.setItem("user", JSON.stringify(data.profile))
               : sessionStorage.setItem("user", JSON.stringify(data.profile));
             this.commonService.alert("success", data.message);
-            this.router.navigateByUrl("/profile/certificate");
+            this.router.navigateByUrl("/profile/certificates");
           } else {
             this.commonService.alert("error", data.message);
           }

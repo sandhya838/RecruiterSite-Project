@@ -142,6 +142,7 @@ export const CONSTANTS = {
   ABOUTYOU: BASEURL + "v1/aboutyou",
   UPDATEUSERPROFILE: BASEURL + "v1/profile/",
   ORGANIZATIONlOGIN: BASEURL + "v1/orgnization-login/",
-  ORGANIZATIONSIGNUP: BASEURL + "v1/register-orgnization"
+  ORGANIZATIONSIGNUP: BASEURL + "v1/register-orgnization",
 
+  UPLOADCERTIFICATES: BASEURL+'v1/upload-certificates/'
 };
