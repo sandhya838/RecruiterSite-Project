@@ -1,6 +1,7 @@
-@import "../../../assets/_partials/mixin.scss";
+
 .sign-up {
   margin: auto;
+  margin-top: 85px;
   &__wrapper {
     width: 30rem;
     margin: 2rem auto;
@@ -35,6 +36,7 @@
       font-weight: 600;
       color: var(--color-black);
     }
+    
     &__email {
       // font-size: 1rem;
       // font-weight: 400;
@@ -82,6 +84,11 @@
       margin-top: 10px;
       background: #dadce0;
     }
+    &__icon {
+      position: absolute;
+      right: 10px;
+      top: 8px;
+    }
     .btn-primary {
       color: #0e0e0e;
       background-color:  #4572f1;
@@ -94,12 +101,17 @@
       text-decoration: none;
       border-radius: 50%;
     }
+    .fa-eye, .fa-eye-slash{
+      
+      width: 180%;
+       margin-top: -33px;
+    }
     .fa-facebook {
       background: #3b5998;
       color: white;
     }
     .fa-google {
-      background: $denger;
+      background: #ff0000;
       color: white;
     }
     .fa-linkedin {
@@ -111,6 +123,9 @@
     }
   }
 }
+
+
+
 
 
 

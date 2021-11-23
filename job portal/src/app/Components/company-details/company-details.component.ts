@@ -21,6 +21,7 @@ export class CompanyDetailsComponent implements OnInit {
     //private router: Router,
     private notifyService: NotificationService
   ) {}
+  numberpattern = "^[0-9]*$";
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
@@ -29,7 +30,11 @@ export class CompanyDetailsComponent implements OnInit {
       middleName: ["", [Validators.required]],
       lastName: ["", [Validators.required]],
       location: ["", [Validators.required]],
-      employees: ["", [Validators.required]]
+      employees: ["", [Validators.required]],
+      Description: ["", [Validators.required]],
+      Country:["", [Validators.required]],
+      turnover: [ "", [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
+      employee:[ "", [Validators.required, Validators.pattern(/^[0-9]+([,.][0-9]+)?$/)]]
     });
   }
   get getControl() {

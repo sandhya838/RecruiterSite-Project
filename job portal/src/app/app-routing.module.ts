@@ -14,8 +14,7 @@ import { PrimarySkillComponent } from "./Components/primary-skill/primary-skill.
 import { AuthGuard } from "./authguard";
 import { SidebarComponent } from "./Components/sidebar/sidebar.component";
 import { LoginguardGuard } from "./loginguard.guard";
-import { JobProfileCardComponent } from "./job-profile-card/job-profile-card.component";
-import { MyProfileComponent } from "./my-profile/my-profile.component";
+import { JobProfileCardComponent } from "./Components/job-profile-card/job-profile-card.component";
 import { OrganizationSignInComponent } from "./Components/organization-sign-in/organization-sign-in.component";
 const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },

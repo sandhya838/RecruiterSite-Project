@@ -1,27 +1,30 @@
-@import "../../../assets/_partials/mixin.scss";
-
 .sign-in {
   margin: auto;
-  padding-top: 75px;
+  
   &__wrapper {
+    position: fixed;
+    top: 53%;
+    // margin-top: 87px;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 30rem;
-    margin: 2rem auto;
     padding: 2rem 2.5rem;
     border: none;
     outline: none;
-    border-radius: 14px;
-    background: #ffffff;
+    border-radius: 0.25rem;
+    background: var(--white);
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%),
       0 10px 15px -3px rgb(0 0 0 / 10%), 0 10px 15px -3px rgb(0 0 0 / 10%),
       0 4px 6px -2px rgb(0 0 0 / 5%);
     a {
-      color:#0759b1 !important;
+      color: var(--secondaryAqua) !important;
       font-size: 1rem;
       font-weight: normal;
       line-height: 1.5;
       color: var(--color-black);
       background: var(--color-light);
       cursor: pointer;
+      text-decoration: none;
     }
     .form-control {
       &:hover,
@@ -32,57 +35,13 @@
     }
     &__heading {
       font-size: 2rem;
-      font-weight: 600;
+      font-weight: 200;
       color: var(--color-black);
     }
     &__icon {
       position: absolute;
       right: 10px;
       top: 8px;
-    }
-    &__email {
-      font-size: 12px;
-      font-weight: 400;
-      // height: auto;
-      border: 1px solid #333333;
-      padding: 0.75rem 1.25rem;
-      outline: none;
-      border-radius: 7px;
-      background: #fff;
-      text-rendering: optimizeLegibility;
-    }
-    &__password {
-      font-size: 1rem;
-      font-weight: 400;
-      height: auto;
-      padding: 0.75rem 1.25rem;
-      // border: none;
-      outline: none;
-      border-top-left-radius: 14px;
-      border-bottom-left-radius: 14px;
-      color: var(--color-black);
-      background: #fff;
-      text-rendering: optimizeLegibility;
-    }
-    .input-group-text {
-      background-color: #fff;
-      border-bottom-right-radius: 14px;
-      border-top-right-radius: 14px;
-       border-color: #242020;
-
-      
-    /* border: none; */
-    cursor: pointer;
-	
-    }
-    &__btn {
-      cursor: pointer;
-      min-width: 100%;
-      height: auto;
-      padding: 0.65rem 1.25rem;
-      border: none;
-      // border-radius: 2rem;
-      font-weight: 500;
     }
     &__line {
       flex: auto;
@@ -98,28 +57,23 @@
       text-decoration: none;
       border-radius: 50%;
     }
-    .btn-primary {
-      color: #0e0e0e;
-      background-color: #4572f1;
-    }
     .fa-facebook {
       background: #3b5998;
-      color: white;
+      color: var(--white);
     }
     .fa-google {
-      background: $denger;
-      color: white;
+      background: var(--danger);
+      color: var(--white);
     }
     .fa-linkedin {
-      background: #2867b2;
-      color: white;
+      background: var(--linkedin);
+      color: var(--white);
     }
     &__error {
       font-size: 11px;
     }
   }
 }
-
 
 @media all and (max-width: 767px) {
   .sign-in {

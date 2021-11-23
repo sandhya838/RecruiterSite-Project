@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "src/app/authguard";
-import { JobProfileCardComponent } from "src/app/job-profile-card/job-profile-card.component";
+import { JobProfileCardComponent } from "src/app/Components/job-profile-card/job-profile-card.component";
 import { MyProfileComponent } from "src/app/my-profile/my-profile.component";
 import { CertificationComponent } from "../certification/certification.component";
 import { CompanyDetailsComponent } from "../company-details/company-details.component";
@@ -30,31 +30,7 @@ const routes: Routes = [
         component: JobProfileCardComponent,
         canActivate: [AuthGuard],
       },
-      {
-        path: "about-you",
-        component: UserProfileComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: "skills",
-        component: SkillProfileComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: "experience",
-        component: ExperianceComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: "work-experience",
-        component: WorkExperianceComponent,
-        canActivate: [AuthGuard],
-      },
-      {
-        path: "education-details",
-        component: EduDetailsComponent,
-        canActivate: [AuthGuard],
-      },
+      
       {
         path: "education-details/:id",
         component: EduDetailsComponent,
@@ -85,6 +61,13 @@ const routes: Routes = [
         loadChildren: () =>
           import("../change-password/change-password.module").then(
             (m) => m.ChangePasswordModule
+          ),
+      },
+      {
+        path: "profile",
+        loadChildren: () =>
+          import("../create-profile/create-profile.module").then(
+            (m) => m.CreateProfileModule
           ),
       },
     ],

@@ -4,6 +4,9 @@ var Schema = mongoose.Schema;
 
 
 var ProfileSchema = new Schema({
+  title: {
+    type: String
+  },
   location: {
     type: []
   },
@@ -19,10 +22,6 @@ var ProfileSchema = new Schema({
     unique: true
   },
   password: {
-    type: String,
-  },
-  
-  fullName: {
     type: String,
   },
   firstName: {
@@ -58,7 +57,7 @@ var ProfileSchema = new Schema({
   totalYearsOfExperience: {
     type: String
   },
-  timeSize: {
+  teamSize: {
     type: Number,
   },
   volumeOfBusinessManged: {
@@ -77,6 +76,9 @@ var ProfileSchema = new Schema({
     type: String
   },
   otherComponent: {
+    type: String
+  },
+  industryServed: {
     type: String
   },
 
@@ -151,7 +153,7 @@ var ProfileSchema = new Schema({
   ],
   workExperiences: [
     {
-      company: {
+      companyName: {
         type: String,
       },
       from: {
@@ -160,7 +162,7 @@ var ProfileSchema = new Schema({
       to: {
         type: String,
       },
-      desgination: {
+      designation: {
         type: String,
       },
       skills: {
@@ -182,14 +184,14 @@ var ProfileSchema = new Schema({
   updatedDate: {
     type: Date
   },
-  // createdBy: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'User',
-  // },
-  // updatedBy: {
-  //   type: mongoose.Schema.Types.ObjectId,
-  //   ref: 'User',
-  // },
+  createdBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Profile',
+  },
+  updatedBy: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Profile',
+  },
 
 });
 

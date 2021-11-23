@@ -15,12 +15,13 @@ export class OrganizationSignUpComponent implements OnInit {
   signUp: FormGroup = this.formBuilder.group({
     organizationName: ["", [Validators.required]],
     firstname: ["", [Validators.required]],
-    middlename: ["", [Validators.required]],
-    lastname: ["", [Validators.required]],
-    email: ["", [Validators.required]],
+    lastName: ["", [Validators.required]],
     contactNumber: ["", [Validators.required]],
+    email: ["", [Validators.required]],
+    password: ["", [Validators.required]],
   });
-  
+ 
+  isPassword:boolean = false;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -34,17 +35,20 @@ export class OrganizationSignUpComponent implements OnInit {
   get getControl() {
     return this.signUp.controls;
   }
-
+  showPassword() {
+    this.isPassword = !this.isPassword;
+  }
 
   onSubmitForm(isValid: boolean, formValue: any) {
     if (isValid) {
       let fd = new FormData();
       fd.append("organizationName", formValue.organizationName);
       fd.append("firstname", formValue.firstname);
-      fd.append("middlename", formValue.middlename);
       fd.append("lastname", formValue.lastname);
-      fd.append("email", formValue.email);
       fd.append("contactNumber", formValue.contactNumber);
+      fd.append("email", formValue.email);
+      fd.append("password", this.commonService.encrypt(formValue.password));
+     
       console.log("formValue", fd);
       this.organizationSignInService.register(fd).subscribe(
         (response: any) => {
@@ -67,5 +71,8 @@ export class OrganizationSignUpComponent implements OnInit {
   closeAlert() {
     this.alert = false;
   }
+  
+  
 }
+
 

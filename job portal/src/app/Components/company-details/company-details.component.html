@@ -15,48 +15,194 @@
 
   <div class="card "> 
   <div class="card company-details__header">
-      <img src="https://blog.cloudflare.com/content/images/2019/12/gradient.jpg" alt="" style="width:100%;">
+      <img src="https://blog.cloudflare.com/content/images/2019/12/gradient.jpg" alt="">
       <div class="company-details__top-right">
         <ul class="company-details__list-style">
-          <li class="company-details__list-item"><i class="fa fa-building-o" aria-hidden="true"></i> MIT alandi</li>
-          <li class="company-details__list-item"><i class="fa fa-user" aria-hidden="true"></i> Akshada Ghule</li>
-          <li class="company-details__list-item"><i class="fa fa-envelope" aria-hidden="true"></i> akshadaghule@gmail.com</li>
-          <li class="company-details__list-item"><i class="fa fa-phone" aria-hidden="true"></i> 8380891905</li>
+          <li class="company-details__list-item"><i class="fa fa-building-o" aria-hidden="true"></i>  MIT alandi</li>
+          <li class="company-details__list-item"><i class="fa fa-user" aria-hidden="true"></i>  Akshada Ghule</li>
+          <li class="company-details__list-item"><i class="fa fa-envelope" aria-hidden="true"></i>  akshadaghule@gmail.com</li>
+          <li class="company-details__list-item"><i class="fa fa-phone" aria-hidden="true"></i>  8380891905</li>
         </ul>
       </div>
     </div>
     
       <div class="card-body">
-        <form action="">
+        <form  [formGroup]=" userForm"
+        (ngSubmit)="onClick(userForm.value, userForm.valid)"
+        novalidate>
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <Label>Number of employee: </Label>
+          </div>
+          <input type="text" class="empnumber" placeholder="numbers of employees" aria-label="Default"formControlName="employee" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div
+        class="text-danger"
+        *ngIf="
+          !userForm.get('employee')!.valid &&
+          (userForm.get('employee')!.touched ||
+            userForm.get('employee')!.dirty)
+        "
+      >
+        <div *ngIf="userForm.get('employee')!.errors">
+          <small
+            *ngIf="userForm.get('employee')!.errors!.required"
+          >
+            This field is required
+          </small>
+        </div>
+      </div>
+
+
+
+
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <Label>Company turnover(million): </Label>
+          </div>
+          <input type="text" class="Company__turnover"placeholder="company turnover in million" formControlName="turnover"  aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div
+        class="text-danger"
+        *ngIf="
+          !userForm.get('turnover')!.valid &&
+          (userForm.get('turnover')!.touched ||
+            userForm.get('turnover')!.dirty)
+        "
+      >
+        <div *ngIf="userForm.get('turnover')!.errors">
+          <small
+            *ngIf="userForm.get('turnover')!.errors!.required"
+          >
+            This field is required
+          </small>
+        </div>
+      </div>
+
+
             <div class="form-group">
               <label>Description</label>
-              <textarea class="form-control"  rows="3"></textarea>
+              <textarea class="form-control " formControlName="Description"  style="height: 88px;" rows="3"></textarea>
+              <div
+                    class="text-danger"
+                    *ngIf="
+                      !userForm.get('Description')!.valid &&
+                      (userForm.get('Description')!.touched ||
+                        userForm.get('Description')!.dirty)
+                    "
+                  >
+                    <div *ngIf="userForm.get('Description')!.errors">
+                      <small
+                        *ngIf="userForm.get('Description')!.errors!.required"
+                      >
+                        This field is required
+                      </small>
+                    </div>
+                  </div>
+
             </div>
 
+
+
+
+
+
+
+
+            
+        
+      <div class="row">
+            <div class="col">
             <div class="form-group">
-              <label>Number of employees</label>
-              <select class="form-control" >
-                <option>-select-</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+              <label>Country of operations</label>
+             <select
+                    class="form-control"
+                    name="location"
+                    id="locationop"
+                    formControlName="Country"
+                  >
+                <option class="">-select-</option>
+                <option>	Afghanistan</option>
+                <option>Albania</option>
+                <option>Algeria</option>
+                <option>Azerbaijan</option>
+                <option>Angola</option>
+                <option>	Bahamas</option>
+                <option>Bahrain</option>
+                <option>Bangladesh</option>
+                <option>Cambodia</option>
+                <option>Canada</option>
+                <option>India</option>
               </select>
+              <div
+                    class="text-danger"
+                    *ngIf="
+                      !userForm.get('Country')!.valid &&
+                      (userForm.get('Country')!.touched ||
+                        userForm.get('Country')!.dirty)
+                    "
+                  >
+                    <div *ngIf="userForm.get('Country')!.errors">
+                      <small
+                        *ngIf="userForm.get('Country')!.errors!.required"
+                      >
+                        This field is required
+                      </small>
+                    </div>
+                  </div>
             </div>
+       </div>  
 
-            <div class="form-group">
+
+
+       <div class="col">
+       <div class="form-group">
               <label>Location of operations</label>
-              <select class="form-control" >
+             <select
+                    class="form-control"
+                    name="location"
+                    id="locationop"
+                    formControlName="location"
+                  >
                 <option>-select-</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
+                <option>pune</option>
+                <option>mumbai</option>
+                <option>dubai</option>
+                <option>delhi</option>
+                <option>maharastra</option>
+                <option>Indore</option>
+                <option>kolhapur</option>
+                <option>Jalna</option>
               </select>
+              <div
+                    class="text-danger"
+                    *ngIf="
+                      !userForm.get('location')!.valid &&
+                      (userForm.get('location')!.touched ||
+                        userForm.get('location')!.dirty)
+                    "
+                  >
+                    <div *ngIf="userForm.get('location')!.errors">
+                      <small
+                        *ngIf="userForm.get('location')!.errors!.required"
+                      >
+                        This field is required
+                      </small>
+                    </div>
+                  </div>
             </div>
+       </div> 
+      </div>
+       
+       
+
         </form>
       
       </div>
   </div>
+
+
+
+
+  
+  
