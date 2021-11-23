@@ -14,6 +14,8 @@ import { PrimarySkillComponent } from "./Components/primary-skill/primary-skill.
 import { AuthGuard } from "./authguard";
 import { LoginguardGuard } from "./loginguard.guard";
 import { JobProfileCardComponent } from "./Components/job-profile-card/job-profile-card.component";
+import { SidebarComponent } from "./Components/sidebar/sidebar.component";
+
 const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
   { path: "login", component: SignInComponent },
@@ -29,7 +31,10 @@ const routes: Routes = [
   },
 
   { path: "signUp", component: SignUpComponent },
-
+  
+  
+  
+  { path: "sidebar", component: SidebarComponent, canActivate: [AuthGuard] },
   // {path:"priSkill",component:PrimarySkillComponent, canActivate:[AuthGuard]}
   // {path: '**', redirectTo: 'PageNotFoundComponent'}
 ];

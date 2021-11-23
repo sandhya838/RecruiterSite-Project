@@ -2,6 +2,8 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "src/app/authguard";
 import { JobProfileCardComponent } from "src/app/Components/job-profile-card/job-profile-card.component";
+import { MyProfileComponent } from "src/app/my-profile/my-profile.component";
+import { CandidateProfileCardComponent } from "../candidate-profile-card/candidate-profile-card.component";
 import { CertificationComponent } from "../certification/certification.component";
 import { DashboardComponent } from "../dashboard/dashboard.component";
 import { EduDetailsComponent } from "../edu-details/edu-details.component";
@@ -43,6 +45,16 @@ const routes: Routes = [
         path: "certificate",
         component: CertificationComponent,
         canActivate: [AuthGuard],
+      },
+      { 
+      path:"myProfile",
+        component:MyProfileComponent,
+        canActivate:[AuthGuard],
+      },
+      {
+        path:"Candidateprofile",
+        component: CandidateProfileCardComponent,
+        canActivate:[AuthGuard],
       },
       {
         path: "change-password",
