@@ -1,6 +1,4 @@
-
-<div class="container profile-details">
-
+<div class="container">
   <div class="d-flex justify-content-between align-items-center">
     <h2 class="profile-details__heading">profile summary</h2>
     <nav aria-label="breadcrumb">
@@ -14,16 +12,9 @@
       </ol>
     </nav>
   </div>
-  <!-- <div class="row">
-    <div class="col-md-8">
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore illum in necessitatibus id praesentium neque libero rerum maxime est adipisci?</p>
-    </div>
-    <div class="col-md-4">
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, in?</p>
-    </div>
-  </div> -->
+
   <div class="row">
-    <div class="col-md-8">
+    <div class="col-8">
       <div class="row profile-details__profile-topcard">
         <div class="profile-details__profile">
         </div>
@@ -39,45 +30,36 @@
               <i class="fa fa-pencil" aria-hidden="true"></i>
             </div>
           </div>
-
-          <div class="row profile-details__userDetails">
-            <div class="col-7">
-              <h4 class="profile-details__username">Sandhya Dattatray Erande</h4>
-              <p class="profile-details__worktitle">Frontend Developer</p>
-              <p class="profile-details__location">Pune, Maharastra, India</p>
-              <p class="profile-details__contact"> +91 8380891905</p>
-              <p class="profile-details__email"> sandhyaerande2015@gmail.com</p>
-            </div>
-            <div class="col-5">
-              <ul>
-                <li class="profile-details__cmpname"><i class="fa fa-building" aria-hidden="true"></i> On Device
-                  Solution Ltd.</li>
-                <li class="profile-details__cmpname"><i class="fa fa-building" aria-hidden="true"></i>Indian Institute
-                  of Management, Calcutta</li>
-              </ul>
-            </div>
+        <div class="row profile-details__userDetails">
+          <div class="col-7">
+            <h4 class="profile-details__username">Sandhya Dattatray Erande</h4>
+            <p class="profile-details__worktitle">Frontend Developer</p>
+            <p class="profile-details__location">Pune, Maharastra, India</p>
+            <p class="profile-details__contact"> +91 8380891905</p>
+            <p class="profile-details__email"> sandhyaerande2015@gmail.com</p>
           </div>
-
-          <div class="row d-flex justify-content-left">
-            <!-- <div class="pl-1"> -->
-            <button type="button" class="btn btn-warning">Message</button>
-            <!-- </div> -->
+          <div class="col-5">
+            <ul>
+              <li class="profile-details__cmpname"><i class="fa fa-building" aria-hidden="true"></i> On Device
+                Solution Ltd.</li>
+              <li class="profile-details__cmpname"><i class="fa fa-building" aria-hidden="true"></i>Indian Institute
+                of Management, Calcutta</li>
+            </ul>
           </div>
+        </div>
 
+        <div class="card-body">
+          <button type="button" class="btn btn-warning">Message</button>
         </div>
       </div>
-    </div>
-    <div class="col-md-4">
+      </div>
+
       <div class="card">
         <div class="card-body">
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, in?</p>
-          </div>
+          <h5 class="profile-details__card-title">Resume</h5>
         </div>
-        </div>
-  </div>
+      </div>
 
-  <div class="row">
-    <div class="col-md-8">
       <div class="card">
         <div class="card-body">
           <h5 class="profile-details__card-title">About</h5>
@@ -108,11 +90,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-md-8">
       <div class="card experience">
         <div class="card-body">
           <h5 class="profile-details__card-title">Experience</h5>
@@ -130,13 +108,25 @@
                   </span>
                 </p>
                 <p class="experience__location">Haydrabad, Pune.</p>
-                <ul class="experience__skill" style="list-style-type: square;">
+                <div class="row experience__primaryskill">
+                  <label >Primary skill: </label>
+                    <div class="col" id="skill1">Angular</div>
+                    <div class="col" id="skill2">Bootstrap</div>
+                    <div class="col" id="skill3">Mongodb</div>
+                  </div>
+                  <div class="row experience__secondaryskill">
+                  <label >secondary skill: </label>
+                  <div class="col" id="skill4">HTML</div>
+                  <div class="col" id="skill5">CSS</div>
+                  <div class="col" id="skill6">SCSS</div>
+                </div>
+                <!-- <ul class="experience__skill" style="list-style-type: square;">
                   <li>Angular</li>
                   <li>Bootstrap</li>
                   <li>HTML, CSS, SCSS</li>
                   <li>MySQL</li>
                   <li>Mongodb</li>
-                </ul>
+                </ul> -->
                 <p class="experience__description">
                   Portfolio & Program Management ($20Mn) with Delivery leadership, Business Unit Lead with
                   responsibility for top line growth, Annual Budgeting, P&L accountability, Stakeholder Management,
@@ -178,10 +168,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8">
+
       <div class="card education">
         <div class="card-body">
           <h5 class="card-title profile-details__card-title">Education</h5>
@@ -199,11 +186,7 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-  <div class="row">
-    <div class="col-md-8">
       <div class="card certification">
         <div class="card-body">
           <h5 class="card-title profile-details__card-title">Certification</h5>
@@ -223,184 +206,68 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
 
-</div>
+    </div> <!-- col-8 close -->
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<br><br><br>
-<br><br><br>
-<!-- old code -->
-<div class="container profile-details">
-  <div class="row">
-    <div class="col-sm-6">
-      <div class="card">
+    <div class="col-4">
+      <div class="card candidateprofile">
         <div class="card-body">
-          <h5 class="card-title"> profile details</h5>
-          <div class="profile-details__profile">
-            <img class="card-img-top" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Card image cap"
-              class="rounded-circle" width="135">
+          <h5 class="profile-details__card-title">Candidate profile</h5>
+          <div class="card-body-text">
+            <label class="candidateprofile_stength">Profile strength-
+              <span>
+                70%
+              </span> </label>
           </div>
-          <h5 class="profile-details__worktitle">Frontend Developer</h5>
-          <label><i class="fa fa-phone" aria-hidden="true"></i> Contact number:</label>
-          <p class="profile-details__contact"> +91 8380891905</p>
-          <label><i class="fa fa-envelope" aria-hidden="true"></i> Email address:</label>
-          <p class="profile-details__email"> sandhya@gmail.com</p>
+          <div class="card-body-text">
+            <label class="candidateprofile_stength">Salary strength-
+              <span>
+                40%
+              </span> </label>
+          </div>
+          <div class="card-body-text">
+            <label class="candidateprofile_stength">Social contact reach-
+              <span>
+                50%
+              </span> </label>
+          </div>
+          <div class="card-body-text">
+            <label class="candidateprofile_stength">Skill strength-
+              <span>
+                50%
+              </span> </label>
+          </div>
 
-          <label><i class="fa fa-pencil" aria-hidden="true"></i> Technical architech/SME:</label>
-          <!-- <p class="profile-details__technical-architect"> -->
-          <ul class="profile-details__technical-architect" style="list-style-type:square;">
-            <li>Strong experience in developing technical architecture for product applications. </li>
-            <li>Deep knowledge of architecture patterns, frameworks and design patterns.</li>
-            <li>Working knowledge of Java, C++, AJAX, UNIX and Linux.</li>
-          </ul>
-
-          <!-- </p> -->
-
-          <label><i class="fa fa-suitcase" aria-hidden="true"></i> Experience:</label>
-          <p class="profile-details__experience"> Overall 1 years of experience in the development of Web & Enterprise
-            applications using Angular and nodejs Technologies.
-            Working with XXXX from June 20XX to till date.
-            Hands on experience in Core Java, Servlets, JSP, JDBC, RichFaces, JPA, JSF.
-            Knowledge of Eclipse tool for the development of Java projects.</p>
-
-          <label><i class="fa fa-file-text-o" aria-hidden="true"></i> Skills:</label>
-          <p class="profile-details__skills">
-            Angular, Bootstrap, HTML, CSS, SCSS, My SQL.
-          </p>
-
-          <label><i class="fa fa-file" aria-hidden="true"></i> Resume:</label>
-          <p class="profile-details__resume">
-            Sandhay_CV.pdf - Uploaded on Nov 12, 2021.
-          </p>
         </div>
-        <hr>
-
-        <div class="card-body">
-          <h5 class="profile-details__experience">Experience 1:</h5>
-          <label><i class="fa fa-pencil" aria-hidden="true"></i> Title:</label>
-          <p class="profile-details__title">Full Stack Web Developer with Management Experience.</p>
-          <label><i class="fa fa-building" aria-hidden="true"></i>Comapny name:</label>
-          <p class="profile-details__company"> Amdocs</p>
-          <label><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Duration:</label>
-          <p class="profile-details__duration"> 6 months</p>
-          <label><i class="fa fa-user" aria-hidden="true"></i> Role:</label>
-          <p class="profile-details__role">Frontend developer</p>
-          <label><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Brief Description of responsibilty:</label>
-          <p class="profile-details__description">Front End Developer My role is to write and style the front-end
-            components that meet the requirements of our mocks and fulfill our user stories. I also monitor and process
-            pull requests for production deployments. Technologies used: Angular, JavaScript, ES6, TypeScript, SASS.</p>
-
-          <label><i class="fa fa-file-text-o" aria-hidden="true"></i> Skills:</label> <br>
-          <!-- <label class="badge badge-info">Technical</label> -->
-          <button type="button" class="btn btn-light">Technical</button>
-          <p class="profile-details__skill-tech"></p>
-          <!-- <label class="badge badge-info">Function</label> -->
-          <button type="button" class="btn btn-light">Function</button>
-          <p class="profile-details__skill-funt"></p>
-          <!-- <label class="badge badge-info">Management</label> -->
-          <button type="button" class="btn btn-light">Management</button>
-          <p class="profile-details__skill-manage"></p>
-        </div>
-
-        <hr>
-        <div class="card-body">
-          <h5 class="profile-details__experience">Experience 2:</h5>
-          <label><i class="fa fa-pencil" aria-hidden="true"></i> Title:</label>
-          <p class="profile-details__title"></p>
-          <label><i class="fa fa-building" aria-hidden="true"></i>Comapny name:</label>
-          <p class="profile-details__company"></p>
-          <label><i class="fa fa-calendar-check-o" aria-hidden="true"></i>Duration:</label>
-          <p class="profile-details__duration"></p>
-          <label><i class="fa fa-user" aria-hidden="true"></i> Role:</label>
-          <p class="profile-details__role"></p>
-          <label><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Brief Description of responsibilty:</label>
-          <p class="profile-details__description"></p>
-
-          <label><i class="fa fa-file-text-o" aria-hidden="true"></i> Skills:</label> <br>
-          <label class="badge badge-info">Technical</label>
-          <!-- <a href="#" class="badge badge-info">Technical</a> -->
-          <p class="profile-details__skill-tech"></p>
-          <label class="badge badge-info">Function</label>
-          <p class="profile-details__skill-funt"></p>
-          <label class="badge badge-info">Management</label>
-          <p class="profile-details__skill-manage"></p>
-        </div>
-
-        <hr>
-        <div class="card-body">
-          <h5 class="profile-details__experience">Education:</h5>
-          <label><i class="fa fa-building-o" aria-hidden="true"></i> College:</label>&nbsp;
-          <p class="profile-details__college">MIT ACSC alandi, Pune</p>
-          <label><i class="fa fa-calendar" aria-hidden="true"></i> Year of passing:</label>&nbsp;
-          <p class="profile-details__year">2021</p>
-          <label><i class="fa fa-graduation-cap" aria-hidden="true"></i> Degree:</label>
-          <p class="profile-details__degree"> BSC computer science.</p>
-          <label><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Specialization:</label>&nbsp;
-          <p class="profile-details__role"> Specialization in software testing.</p>
-          <label><i class="fa fa-percent" aria-hidden="true"></i> Grade:</label>
-          <p class="profile-details__description">72 SGPA</p>
-
-          <label><i class="fa fa-certificate" aria-hidden="true"></i> Certification Name:</label>&nbsp;
-          <p class="profile-details__cirtificate">Python, Angular 9</p>
-          <label><i class="fa fa-handshake-o" aria-hidden="true"></i> Mentor:</label>
-          <p class="profile-details__cirtificate">Mr.Pranay sir & Mr.Ved sir.</p>
-          <label><i class="fa fa-book" aria-hidden="true"></i> Refrence & Recommendations:</label>&nbsp;
-          <p class="profile-details__cirtificate"></p>
-        </div>
-
       </div>
-    </div>
 
-    <!--  -->
-    <div class="col-sm-6">
       <div class="card">
         <div class="card-body">
-          <h5 class="card-title">Candidate profile dashboard</h5>
-          <label><i class="fa fa-user" aria-hidden="true"></i> Profile strength:</label>
-          <p class="profile-details__strength"> </p>
-          <label><i class="fa fa-money" aria-hidden="true"></i> salary strength:</label>
-          <p class="profile-details__salary"> </p>
-          <label><i class="fa fa-commenting" aria-hidden="true"></i> Social contact reach:</label>
-          <p class="profile-details__strength"> </p>
-          <label><i class="fa fa-file-text-o" aria-hidden="true"></i> Skill strength:</label>
-          <p class="profile-details__strength"> </p>
-        </div>
-
-        <hr>
-        <div class="card-body">
-          <h5 class="card-title">Actively looking for job opportunities:</h5>
-          <!-- <label><i class="fa fa-user" aria-hidden="true"></i></label> -->
-        </div>
-
-        <hr>
-
-        <div class="card-body">
-          <h5 class="card-title">Proof the skills:</h5>
-          <!-- <label><i class="fa fa-user" aria-hidden="true"></i> Skill specifics on which th candidate is :</label>
-          <p class="profile-details__strength"> </p> -->
-        </div>
+          <h5 class="profile-details__card-title">Opportunity</h5>
+          <div class="card-body-text">
+            <p>Actively looking for opportunity :</p>
+            <div class="btn-group btn-group-toggle" data-toggle="buttons">
+              <label class="btn btn-light active">
+                <input type="radio" name="options" id="option1" autocomplete="off" checked> Yes
+              </label>
+              <label class="btn btn-light">
+                <input type="radio" name="options" id="option2" autocomplete="off">No
+              </label>
+            </div>
+            <!-- <div class="row">
+              <div class="col">
+              <button type="button" class="btn btn-outline-success">Yes</button>
+            </div>
+            <div class="col">
+            <button type="button" class="btn btn-outline-danger">No</button>
+          </div>
+            </div> -->
+          </div>
+          </div>
       </div>
-    </div>
-  </div>
-</div>
+    </div> <!-- col-4 close -->
+
+
+  </div> <!-- row close -->
+</div> <!-- container close -->

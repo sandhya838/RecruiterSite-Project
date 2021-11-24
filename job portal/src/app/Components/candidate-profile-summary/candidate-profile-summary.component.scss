@@ -40,9 +40,8 @@
       font-size: 17px;
       margin-bottom: 2px !important;
     }
-    &__skill{
-      padding-left: 12px;
-      margin-top: 10px;
+    &__primaryskill> label, &__secondaryskill> label{
+      color: var(--gray30);
     }
     &__skill-sub{
       // padding-left: 12px;
@@ -71,26 +70,14 @@
       color: var(--lightGrayishNavy);
     }
   }
+  label{
+    margin-bottom: 0px;
+  }
   p{
     font-size: 16px;
     margin-bottom: 3px !important;
   }
-  .col-md-8{
-    box-shadow: 1px 2px 5px 3px var(--grayLightWarm);
-    border-radius: 7px;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-bottom: 10px;
-    // margin-right: 10px;
-  }
-  .col-md-4{
-    box-shadow: 1px 2px 5px 3px var(--grayLightWarm);
-    border-radius: 7px;
-    padding-left: 0px;
-    padding-right: 0px;
-    margin-bottom: 10px;
-    
-  }
+
   .row{
     margin-left: 0px;
     margin-right: 0px;
@@ -129,10 +116,18 @@
   background: var(--festival);
   border: 2px solid var(--festival);
 }
+// .card{
+//   border: 1px solid darkgray;
+//   margin-bottom: 2px;
+//   padding-bottom: 10px;
+// }
 .card{
-  // box-shadow: 1px 2px 5px 3px var(--grayLightWarm);
-  margin-bottom: 2px;
+  box-shadow: 1px 2px 5px 3px var(--grayLightWarm);
   border: none;
+  margin-bottom: 10px;
+}
+.btn-group-toggle{
+  margin-top: 5px;
 }
 
 img {
