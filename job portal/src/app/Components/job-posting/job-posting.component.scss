@@ -1,10 +1,6 @@
 .card{
-
-    width: 30rem;
-    box-shadow: 1px 2px 5px 3px var(--grayLightWarm);
-    border: none;
-    
-      }
+    border: 1px solid rgba(0,0,0,.125);
+     }
       .jobposting{
           align-items: center;
           &__form{
@@ -13,9 +9,26 @@
       }
 input,select{
     margin-bottom: 10px;
+    border: 1px solid #333333;
+    border-radius: 7px;
+    font-size: 12px;
+    height: 40px;
 }
-button{
-    align-items: center;
-    border-radius: 0cm;
+label{
+    font-size: 13px;
 }
+.user-profile {
+    &__action {
+      display: flex;
+      justify-content: flex-end;
+    }
+  }
+  @media all and (max-width: 767px) {
+    .user-profile {
+      &__action {
+        justify-content: space-between;
+      }
+    }
+  }
+  
       

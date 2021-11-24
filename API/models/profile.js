@@ -170,6 +170,25 @@ var ProfileSchema = new Schema({
       }
     }
   ],
+  jobposting: [
+    {
+      compname: {
+        type: String
+      },
+      compintro: {
+        type: String
+      },
+      typeofjob: {
+        type: String
+      },
+      rol: {
+        type: String
+      },
+      loc:{
+        type:String
+      }
+    }
+  ],
 
   createdDate: {
     type: Date,

@@ -36,21 +36,23 @@ export class JobPostingComponent implements OnInit {
   }
   onClick(formValue: any, isValid: boolean) {
     if (isValid) {
-      const companyDetails = [];
+      const companyName = [];
       const tempFormatedData = {
-        details: "",
-        desc: "",
-        noOfEmp: "",
+        compname: "",
+        compintro: "",
+        typeofjob: "",
+        rol:"",
         loc:""
       };
-      tempFormatedData.details = formValue.companyDetails;
-      tempFormatedData.desc = formValue.descOfCompany
-      tempFormatedData.noOfEmp = formValue.noOfEmployees;
-      tempFormatedData.loc = formValue.location;
+      tempFormatedData.compname = formValue.companyName;
+      tempFormatedData.compintro = formValue.companyIntro;
+      tempFormatedData.typeofjob = formValue.typeOfJob;
+      tempFormatedData.typeofjob = formValue. role;
+      tempFormatedData.loc = formValue.locpref;
 
-      companyDetails.push(tempFormatedData);
+      companyName.push(tempFormatedData);
       const finalData = {
-        companyDetail: companyDetails,
+        jobpsting: companyName,
       };
       this.configService
         .updateUser(localStorage.getItem("ID"), finalData)
