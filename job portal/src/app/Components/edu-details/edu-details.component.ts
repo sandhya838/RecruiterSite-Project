@@ -1,5 +1,11 @@
 import { Component, OnInit } from "@angular/core";
-import { FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
+import {
+  FormArray,
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from "@angular/forms";
 import { Router } from "@angular/router";
 import { ConfigService } from "src/app/config.service";
 import { CommonService } from "src/app/services/common.service";
@@ -34,6 +40,30 @@ export class EduDetailsComponent implements OnInit {
     private commonService: CommonService
   ) {
     this.userForm = this.formBuilder.group({
+      educationalDetails: this.formBuilder.array([this.inililzeForm()]),
+    });
+  }
+
+  ngOnInit(): void {
+    const userData = JSON.parse(
+      localStorage.getItem("rememberMe") === "true"
+        ? localStorage.getItem("user")
+        : (sessionStorage.getItem("user") as any)
+    );
+    this.userId = userData._id;
+    this.updateValueInForm(userData);
+  }
+
+  updateValueInForm(userData: any) {
+    for (const item of userData.educationalDetails) {
+      this.addMore();
+    }
+    this.remoreForm(userData.educationalDetails);
+    this.userForm.patchValue(userData);
+  }
+
+  inililzeForm() {
+    return this.formBuilder.group({
       degree: ["", [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/)]],
       institute: [
         "",
@@ -46,39 +76,29 @@ export class EduDetailsComponent implements OnInit {
         year: ["", [Validators.required]],
       }),
     });
-    const userData = JSON.parse(
-      localStorage.getItem("rememberMe") === "true"
-        ? localStorage.getItem("user")
-        : (sessionStorage.getItem("user") as any)
-    );
-    this.userForm.patchValue(userData.educationalDetails[0]);
   }
-
-  get f() {
-    return this.userForm.controls["educationalDetails"] as FormGroup;
+  get educationalDetailsFormArray() {
+    return this.userForm.get("educationalDetails") as FormArray;
   }
-
-  ngOnInit(): void {
-    const userData = JSON.parse(
-      localStorage.getItem("rememberMe") === "true"
-        ? localStorage.getItem("user")
-        : (sessionStorage.getItem("user") as any)
-    );
-    this.userId = userData._id;
-    this.userForm.patchValue(userData);
+  getValidity(index: number) {
+    return (<FormArray>this.userForm.get("educationalDetails")).controls[
+      index
+    ] as FormControl;
   }
-
-  get getControl() {
-    return this.userForm.controls;
+  addMore() {
+    const formarr = this.userForm.get("educationalDetails") as FormArray;
+    formarr.push(this.inililzeForm());
+  }
+  remoreForm(index: number) {
+    const formarr = this.userForm.get("educationalDetails") as FormArray;
+    formarr.removeAt(index);
   }
 
   onClick(formValue: any, isValid: boolean) {
     if (isValid) {
-      const educationDetails = [];
-      educationDetails.push(formValue);
       const finalData = {
-        educationalDetails: educationDetails,
-        createdBy: this.userId,
+        educationalDetails: formValue?.educationalDetails,
+        updatedBy: this.userId,
       };
       this.configService
         .updateUser(this.userId, finalData)

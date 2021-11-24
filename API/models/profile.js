@@ -147,6 +147,9 @@ var ProfileSchema = new Schema({
   ],
   workExperiences: [
     {
+      isCurrentCompany: {
+        type: String
+      },
       companyName: {
         type: String,
       },

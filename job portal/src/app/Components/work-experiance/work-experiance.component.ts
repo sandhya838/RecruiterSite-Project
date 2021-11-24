@@ -9,7 +9,6 @@ import {
 import { Router } from "@angular/router";
 import { ConfigService } from "src/app/config.service";
 import { CONSTANTS } from "src/app/constants";
-import { NotificationService } from "src/app/notification.service";
 import { CommonService } from "src/app/services/common.service";
 
 @Component({
@@ -20,6 +19,7 @@ import { CommonService } from "src/app/services/common.service";
 export class WorkExperianceComponent implements OnInit {
   userForm!: FormGroup;
   years = ([] = this.generateArrayOfYears());
+  viewPort = true;
   months = ([] = [
     "January",
     "February",
@@ -35,14 +35,7 @@ export class WorkExperianceComponent implements OnInit {
     "December",
   ]);
   userId: string | undefined;
-  dropdownSettings = {
-    singleSelection: false,
-    idField: "name",
-    textField: "name",
-    itemsShowLimit: 2,
-    limitSelection: 4,
-    allowSearchFilter: true,
-  };
+  dropdownSettings = {};
   skills = CONSTANTS.SKILLS;
   constructor(
     public formBuilder: FormBuilder,
@@ -52,6 +45,7 @@ export class WorkExperianceComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.viewPort = window.innerWidth > 991 ? true : false;
     this.userForm = this.formBuilder.group({
       workExperiences: this.formBuilder.array([this.inililzeForm()]),
     });
@@ -62,14 +56,23 @@ export class WorkExperianceComponent implements OnInit {
     );
     this.userId = userData._id;
     this.updateValueInForm(userData);
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: "name",
+      textField: "name",
+      itemsShowLimit: this.viewPort ? 4 : 1,
+      limitSelection: 4,
+      allowSearchFilter: true,
+    };
   }
 
   updateValueInForm(userData: any) {
+    console.log("adfdsfsdfs", userData);
     for (const item of userData.workExperiences) {
-      item.joinmonth = item.from.split("/")[0].trim();
-      item.joinyear = item.from.split("/")[1].trim();
-      item.jointomonth = item.from.split("/")[0].trim();
-      item.jointoyear = item.from.split("/")[1].trim();
+      item.joinmonth = item?.from?.split("/")[0].trim();
+      item.joinyear = item?.from?.split("/")[1].trim();
+      item.jointomonth = item?.to?.split("/")[0].trim();
+      item.jointoyear = item?.to?.split("/")[1].trim();
       this.addMore();
     }
     this.remoreForm(userData.workExperiences);
@@ -78,6 +81,7 @@ export class WorkExperianceComponent implements OnInit {
 
   inililzeForm() {
     return this.formBuilder.group({
+      isCurrentCompany: [""],
       companyName: [
         "",
         [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/)],
