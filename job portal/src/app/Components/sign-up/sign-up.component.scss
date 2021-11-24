@@ -1,4 +1,3 @@
-@import "../../../assets/_partials/mixin.scss";
 .sign-up {
   margin: auto;
   &__wrapper {
@@ -62,7 +61,7 @@
       color: white;
     }
     .fa-google {
-      background: $denger;
+      background: var(--text-danger);
       color: white;
     }
     .fa-linkedin {

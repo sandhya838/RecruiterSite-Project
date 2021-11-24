@@ -15,6 +15,8 @@
         cursor: pointer;
         a {
           color: var(--gray30);
+          cursor: not-allowed;
+          text-decoration: none;
         }
         &.active {
           color: var(--white);
@@ -37,6 +39,7 @@
           color: var(--white);
           a {
             color: var(--text-success);
+            cursor: pointer;
           }
           &:before {
             border-color: var(--text-success);
@@ -76,6 +79,39 @@
         &:first-child {
           &:after {
             content: none;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 767px) {
+  .profile {
+    .breadcrumb {
+      padding-right: 0;
+    }
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    &__heading {
+      font-size: 15px;
+    }
+    &__steps {
+      ul {
+        li {
+          a {
+            font-size: 6px;
+          }
+          &:before {
+            display: none;
+            width: 15px;
+            height: 15px;
+            line-height: 15px;
+            margin: 0 auto 5px auto;
+          }
+          &:after {
+            display: none;
+            top: 7.5px;
           }
         }
       }

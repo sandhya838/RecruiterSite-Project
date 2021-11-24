@@ -25,7 +25,7 @@
               </div>
             </legend>
             <div class="row">
-              <div class="col">
+              <div class="col-md-8">
                 <div class="form-group">
                   <label>Company name</label>
                   <input
@@ -63,9 +63,23 @@
                   </div>
                 </div>
               </div>
+              <div class="col-md-4">
+                <label class="invisible mt-2">Is your current company?</label>
+                <div class="form-group form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="isCurrentCompany"
+                    formControlName="isCurrentCompany"
+                  />
+                  <label class="form-check-label" for="isCurrentCompany"
+                    >Is your current company?</label
+                  >
+                </div>
+              </div>
             </div>
             <div class="row">
-              <div class="col-6">
+              <div class="col-md-6">
                 <div class="row">
                   <div class="col">
                     <div class="form-group">
@@ -139,8 +153,27 @@
                   </div>
                 </div>
               </div>
-              <div class="col-6">
-                <div class="row">
+              <div class="col-md-6">
+                <div
+                  class="row"
+                  *ngIf="getValidity(i).get('isCurrentCompany')!.value"
+                >
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Till present</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        readonly
+                        value="present"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="row"
+                  *ngIf="!getValidity(i).get('isCurrentCompany')!.value"
+                >
                   <div class="col">
                     <div class="form-group">
                       <label>To</label>
