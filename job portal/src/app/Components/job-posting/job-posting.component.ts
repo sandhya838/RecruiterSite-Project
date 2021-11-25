@@ -29,6 +29,7 @@ export class JobPostingComponent implements OnInit {
       typeOfJob: ["", [Validators.required]],
       role: ["", [Validators.required]],
       locpref: ["", [Validators.required]],
+      skills: ["", [Validators.required]],
     });
   }
   get getControl() {
@@ -42,13 +43,15 @@ export class JobPostingComponent implements OnInit {
         compintro: "",
         typeofjob: "",
         rol:"",
-        loc:""
+        loc:"",
+        skill:""
       };
       tempFormatedData.compname = formValue.companyName;
       tempFormatedData.compintro = formValue.companyIntro;
       tempFormatedData.typeofjob = formValue.typeOfJob;
-      tempFormatedData.typeofjob = formValue. role;
+      tempFormatedData.rol = formValue. role;
       tempFormatedData.loc = formValue.locpref;
+      tempFormatedData. skill = formValue.skills;
 
       companyName.push(tempFormatedData);
       const finalData = {

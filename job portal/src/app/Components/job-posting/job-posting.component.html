@@ -1,75 +1,84 @@
 <div class="container jobposting">
-<div class="card">
-<div class="card-body">
-<form class="jobposting__form" [formGroup]="userForm"  novalidate (ngSubmit)="onClick(userForm.value, userForm.valid)"> 
-    <div class="row">
-      <label for="companyName">Company Name</label><span class="text-danger">*</span>
-      <input type="text" class="form-control" placeholder="Enter Company Name" formControlName="companyName"> 
-                 <div class="text-danger" *ngIf="getControl.companyName.touched && getControl.companyName.invalid">
-                        <div *ngIf="getControl.companyName.errors">Enter valid data.</div>
-                 </div>
-      
-    </div>
-    <div class="row">
-        <label>Company Introduction</label><span class="text-danger">*</span>
-                        <input type="text" class="form-control" placeholder="Enter Company Introduction" formControlName="companyIntro"> 
-                        <div class="text-danger" *ngIf="getControl.companyIntro.touched && getControl.companyIntro.invalid">
-                               <div *ngIf="getControl.companyIntro.errors">Enter valid data.</div>
-                        </div>
-                 
-    </div>
-    <div class="row">
-    <label>Type of job</label><span class="text-danger">*</span>
-                    <select class="form-control" placeholder="" formControlName="typeOfJob">
-                      <option selected disabled value="">-select-</option>
-                      <option>Web Developer</option>
-                      <option>Employee</option>
-                      <option>Buisness specalist</option>
-                      <option>Bank Employee</option>
-                      <option>Account Manager</option>
-                      <option>analyst</option>
-                      <option>advisor</option>
-                      <option>Associated</option>
-                    </select>
-    </div>
-    <div class="row">
-    <label>Role</label><span class="text-danger">*</span>
-                    <select class="form-control" placeholder="" formControlName="role">
-                      <option selected disabled value="">-select-</option>
-                      <option>Consultant</option>
-                      <option>Lead</option>
-                      <option>Architect</option>
-                     
-                    </select>
-                </div>
-                <div class="row">
-                    <label>Location Preference</label><span class="text-danger">*</span>
-                                    <select class="form-control" placeholder="" formControlName="locpref">
-                                      <option selected disabled value="">-select-</option>
-                                      <option>Mumbai</option>
-                                      <option>Pune</option>
-                                      <option>Dubai</option>
-                                     
-                                    </select>
-                                </div>
-                 <div class="row">
-                                  <label>Role Profile</label><span class="text-danger">*</span>
-                                                  <select class="form-control" placeholder="" formControlName="roleProfile">
-                                                    <option selected disabled value="">-select-</option>
-                                                    <option>Mumbai</option>
-                                                    <option>Pune</option>
-                                                    <option>Dubai</option>
-                                                   
-                                                  </select>
-                                              </div>
-                      
-                                <div class="user-profile__action">
-                                  <div class="pl-1">
-                                    <button class="job-btn job-btn-mini" type="submit">Next</button>
-                                  </div>
-                                </div>
-  </form>
-</div>
-</div>
-</div>
+  <div class="card">
+    <div class="card-body">
+      <form class="jobposting__form" [formGroup]="userForm" novalidate
+        (ngSubmit)="onClick(userForm.value, userForm.valid)">
+        <div class="row">
+          <label for="companyName">Company Name</label><span class="text-danger">*</span>
+          <input type="text" class="form-control" placeholder="Enter Company Name" formControlName="companyName">
+          <div class="text-danger" *ngIf="getControl.companyName.touched && getControl.companyName.invalid">
+            <div *ngIf="getControl.companyName.errors">Enter valid data.</div>
+          </div>
 
+        </div>
+        <div class="row">
+          <label>Company Introduction</label><span class="text-danger">*</span>
+          <input type="text" class="form-control" placeholder="Enter Company Introduction"
+            formControlName="companyIntro">
+          <div class="text-danger" *ngIf="getControl.companyIntro.touched && getControl.companyIntro.invalid">
+            <div *ngIf="getControl.companyIntro.errors">Enter valid data.</div>
+          </div>
+
+        </div>
+        <div class="row">
+          <label>Type of job</label><span class="text-danger">*</span>
+          <select class="form-control" placeholder="" formControlName="typeOfJob">
+            <option selected disabled value="">-select-</option>
+            <option>Web Developer</option>
+            <option>Employee</option>
+            <option>Buisness specalist</option>
+            <option>Bank Employee</option>
+            <option>Account Manager</option>
+            <option>analyst</option>
+            <option>advisor</option>
+            <option>Associated</option>
+          </select>
+        </div>
+        <div class="row">
+          <label>Role</label><span class="text-danger">*</span>
+          <select class="form-control" placeholder="" formControlName="role">
+            <option selected disabled value="">-select-</option>
+            <option>Consultant</option>
+            <option>Lead</option>
+            <option>Architect</option>
+
+          </select>
+        </div>
+        <div class="row">
+          <label>Location Preference</label><span class="text-danger">*</span>
+          <select class="form-control" placeholder="" formControlName="locpref">
+            <option selected disabled value="">-select-</option>
+            <option>Mumbai</option>
+            <option>Pune</option>
+            <option>Dubai</option>
+
+          </select>
+        </div>
+        <div class="row">
+          <label>Role Profile</label><span class="text-danger">*</span>
+          <select class="form-control" placeholder="" formControlName="roleProfile">
+            <option selected disabled value="">-select-</option>
+            <option>Management</option>
+            <option>Technical</option>
+            <option>Functional</option>
+
+          </select>
+        </div>
+        <div class="row">
+          <label>Skills</label><span class="text-danger">*</span>
+          <input type="text" class="form-control" placeholder="Enter Skills"
+            formControlName="skills">
+          <div class="text-danger" *ngIf="getControl.skills.touched && getControl.skills.invalid">
+            <div *ngIf="getControl.skills.errors">Enter valid data.</div>
+          </div>
+        </div>
+
+      
+        <div class="user-profile__action">
+          <div class="pl-1">
+            <button class="job-btn job-btn-mini" type="submit">Submit</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
