@@ -11,10 +11,11 @@ import { OrganizationSignInService } from 'src/app/services/organization-sign-in
   styleUrls: ['./organization-sign-in.component.scss']
 })
 export class OrganizationSignInComponent implements OnInit {
+ 
 
   alert: boolean = false;
   orgsignIn: FormGroup = this.formBuilder.group({
-    email: ["", [Validators.required]],
+    email:  [null, [Validators.required]],
     password: ["", [Validators.required]],
   });
   allData: any;
@@ -22,6 +23,7 @@ export class OrganizationSignInComponent implements OnInit {
   msg = "";
   isPassword = false;
   OrganizationSignInService: any;
+ 
 
   constructor(
     public formBuilder: FormBuilder,
@@ -71,5 +73,8 @@ export class OrganizationSignInComponent implements OnInit {
   }
   showPassword() {
     this.isPassword = !this.isPassword;
+  }
+  forgotpassword(){
+    this.router.navigate(['forgot-password']);
   }
 }

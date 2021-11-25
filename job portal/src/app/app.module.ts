@@ -17,6 +17,7 @@ import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
 import { TokenInterceptorService } from "./token-interceptor-service.service";
 import { OrganizationSignInComponent } from './Components/organization-sign-in/organization-sign-in.component';
 import { ErrorInterceptor } from "./services/error.interceptor";
+import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { ErrorInterceptor } from "./services/error.interceptor";
     SignInComponent,
     PageNotFoundComponent,
     OrganizationSignInComponent,
+    ForgotPasswordComponent,
   
   ],
   imports: [

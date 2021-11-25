@@ -112,51 +112,8 @@
             
         
       <div class="row">
-            <div class="col">
-            <div class="form-group">
-              <label>Country of operations</label>
-             <select
-                    class="form-control"
-                    name="location"
-                    id="locationop"
-                    formControlName="Country"
-                  >
-                <option class="">-select-</option>
-                <option>	Afghanistan</option>
-                <option>Albania</option>
-                <option>Algeria</option>
-                <option>Azerbaijan</option>
-                <option>Angola</option>
-                <option>	Bahamas</option>
-                <option>Bahrain</option>
-                <option>Bangladesh</option>
-                <option>Cambodia</option>
-                <option>Canada</option>
-                <option>India</option>
-              </select>
-              <div
-                    class="text-danger"
-                    *ngIf="
-                      !userForm.get('Country')!.valid &&
-                      (userForm.get('Country')!.touched ||
-                        userForm.get('Country')!.dirty)
-                    "
-                  >
-                    <div *ngIf="userForm.get('Country')!.errors">
-                      <small
-                        *ngIf="userForm.get('Country')!.errors!.required"
-                      >
-                        This field is required
-                      </small>
-                    </div>
-                  </div>
-            </div>
-       </div>  
-
-
-
        <div class="col">
-       <div class="form-group">
+       <!-- <div class="form-group">
               <label>Location of operations</label>
              <select
                     class="form-control"
@@ -191,6 +148,67 @@
                     </div>
                   </div>
             </div>
+
+             -->
+
+
+             <div class="form-group">
+              <label>Country of operation</label>
+              <ng-multiselect-dropdown
+              formControlName="country"
+                [placeholder]="'Select country'"
+                [settings]="dropdownSettings"
+                [data]="country"
+              >
+              </ng-multiselect-dropdown>
+              <div
+                    class="text-danger"
+                    *ngIf="
+                      !userForm.get('country')!.valid &&
+                      (userForm.get('country')!.touched ||
+                        userForm.get('country')!.dirty)
+                    "
+                  >
+                    <div *ngIf="userForm.get('country')!.errors">
+                      <small
+                        *ngIf="userForm.get('country')!.errors!.required"
+                      >
+                        This field is required
+                      </small>
+                    </div>
+                  </div>
+            </div>
+
+
+
+            
+            <div class="form-group">
+              <label>Location of operation</label>
+              <ng-multiselect-dropdown
+              formControlName="location"
+                [placeholder]="'Select location'"
+                [settings]="dropdownSettings"
+                [data]="location"
+              >
+              </ng-multiselect-dropdown>
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['location'].valid &&
+                  (userForm.controls['location'].touched ||
+                    userForm.controls['location'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['location'].errors">
+                  <small *ngIf="userForm.controls['location'].errors.required">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+
+
+
        </div> 
       </div>
        

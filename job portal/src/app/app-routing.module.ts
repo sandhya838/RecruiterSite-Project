@@ -16,10 +16,12 @@ import { SidebarComponent } from "./Components/sidebar/sidebar.component";
 import { LoginguardGuard } from "./loginguard.guard";
 import { JobProfileCardComponent } from "./Components/job-profile-card/job-profile-card.component";
 import { OrganizationSignInComponent } from "./Components/organization-sign-in/organization-sign-in.component";
+import { ForgotPasswordComponent } from "./Components/forgot-password/forgot-password.component";
 const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
   { path: "login", component: SignInComponent },
   { path:"organization-signin", component: OrganizationSignInComponent },
+  {path: "forgot-password", component:ForgotPasswordComponent },
   {
     path: "sign-up",
     loadChildren: () =>
