@@ -3,6 +3,18 @@
     display: flex;
     justify-content: flex-end;
   }
+  fieldset {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 32px;
+    margin-bottom: 10px;
+    legend {
+      font-size: 20px;
+    }
+  }
+  .fa-trash {
+    color: var(--text-danger);
+    cursor: pointer;
+  }
 }
 
 @media all and (max-width: 767px) {
