@@ -22,19 +22,19 @@
         [class.done]="step3 || step4 || step5 || step6 || step7"
         [class.active]="step2"
       >
-        <a href=""> Experiences </a>
+        <a [routerLink]="'/profile/experience'"> Experiences </a>
       </li>
       <li
         [class.done]="step4 || step5 || step6 || step7"
         [class.active]="step3"
       >
-        <a href=""> Roles </a>
+        <a [routerLink]="'/profile/roles'"> Roles </a>
       </li>
       <li [class.done]="step5 || step6 || step7" [class.active]="step4">
-        <a href=""> Skills </a>
+        <a [routerLink]="'/profile/skills'"> Skills </a>
       </li>
       <li [class.done]="step6 || step7" [class.active]="step5">
-        <a href=""> Work experiences </a>
+        <a [routerLink]="'/profile/work-experience'"> Work experiences </a>
       </li>
       <li [class.done]="step7" [class.active]="step6">
         <a routerLink="/profile/education-details"> Education details </a>

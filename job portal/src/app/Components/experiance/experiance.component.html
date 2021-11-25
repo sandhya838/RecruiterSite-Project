@@ -6,7 +6,7 @@
       novalidate
     >
       <div class="row">
-        <div class="col">
+        <div class="col-md-6">
           <div class="form-group">
             <label>Total experience (in year)</label>
             <input
@@ -39,15 +39,15 @@
             </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col-md-6">
           <div class="form-group">
-            <label>Time size</label>
+            <label>Team size</label>
             <input
               type="number"
               class="form-control"
               id="quantity"
               name="quantity"
-              placeholder="time size"
+              placeholder="team size"
               min="0"
               max="100"
               formControlName="teamSize"
@@ -70,7 +70,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="col-md-6">
           <div class="form-group">
             <label>Volume of business managed</label>
             <input
@@ -108,7 +108,7 @@
             </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col-md-6">
           <div class="form-group">
             <label>Notice period (in month)</label>
             <input
@@ -141,19 +141,19 @@
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="col-md-6">
           <div class="form-group">
             <label>Salary (CTC)</label>
-            <select
-              class="form-select"
+            <input
+              type="number"
+              class="form-control"
+              id="salary"
+              name="salary"
               class="form-control"
               formControlName="salary"
-            >
-              <option selected disabled value="">Salary (CTC)</option>
-              <option *ngFor="let salary of ctc" [value]="salary?.salary">
-                {{ salary?.salary }}
-              </option>
-            </select>
+              placeholder="Salary (CTC)"
+              min="1"
+            />
             <div
               class="text-danger"
               *ngIf="
@@ -170,20 +170,19 @@
             </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col-md-6">
           <div class="form-group">
             <label>Base salary</label>
-            <select
-              class="form-select"
+            <input
+              type="number"
+              class="form-control"
+              id="baseSalary"
+              name="baseSalary"
               class="form-control"
               formControlName="baseSalary"
-              required
-            >
-              <option selected disabled value="">base salary</option>
-              <option *ngFor="let salary of salaries" [value]="salary?.salary">
-                {{ salary?.salary }}
-              </option>
-            </select>
+              placeholder="base salary"
+              min="1"
+            />
             <div
               class="text-danger"
               *ngIf="
@@ -203,19 +202,19 @@
       </div>
 
       <div class="row">
-        <div class="col">
+        <div class="col-md-6">
           <div class="form-group">
             <label>Variable salary</label>
-            <select
-              class="form-select"
+            <input
+              type="number"
+              class="form-control"
+              id="variableSalary"
+              name="variableSalary"
               class="form-control"
               formControlName="variableSalary"
-            >
-              <option selected disabled value="">variable salary</option>
-              <option *ngFor="let salary of salaries" [value]="salary?.salary">
-                {{ salary?.salary }}
-              </option>
-            </select>
+              placeholder="variable salary"
+              min="1"
+            />
             <div
               class="text-danger"
               *ngIf="
@@ -234,7 +233,7 @@
             </div>
           </div>
         </div>
-        <div class="col">
+        <div class="col-md-6">
           <div class="form-group">
             <label>Other component</label>
             <input
@@ -265,7 +264,7 @@
         </div>
       </div>
       <div class="row">
-        <div class="col">
+        <div class="col-md-6">
           <div class="form-group">
             <label>Industry served</label>
             <input
