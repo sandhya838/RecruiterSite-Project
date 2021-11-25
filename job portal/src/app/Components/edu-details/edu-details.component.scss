@@ -1,8 +1,26 @@
-.edu-details{
-    &__empty-block {
-      background-color: var(--secondary);
-      height: auto;
-      width: 50%;
+.edu-details {
+  &__action {
+    display: flex;
+    justify-content: flex-end;
+  }
+  fieldset {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 32px;
+    margin-bottom: 10px;
+    legend {
+      font-size: 20px;
     }
   }
-  
+  .fa-trash {
+    color: var(--text-danger);
+    cursor: pointer;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .edu-details {
+    &__action {
+      justify-content: space-between;
+    }
+  }
+}

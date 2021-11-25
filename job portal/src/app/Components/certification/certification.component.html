@@ -1,140 +1,185 @@
-<div class="container">
-  <div
-    *ngIf="alert"
-    class="alert alert-success alert-dismissible fade show"
-    role="alert"
-  >
-    <strong>Success!</strong> Your data is successfully submitted.
-    <pre>{{ allData | json }}</pre>
-    <button
-      (click)="closeAlert()"
-      type="button"
-      class="close"
-      data-dismiss="alert"
-      aria-label="Close"
+<div class="card certificates">
+  <div class="card-body">
+    <div class="d-flex justify-content-end">
+      <button class="job-btn job-btn-mini" (click)="addMore()">
+        <i class="fa fa-plus"></i>Add more
+      </button>
+    </div>
+    <form
+      [formGroup]="certificationsForm"
+      (ngSubmit)="onClick(certificationsForm.value, certificationsForm.valid)"
+      novalidate
+      enctype="multipart/form-data"
     >
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <form
-    [formGroup]="Certificate"
-    (ngSubmit)="onClick(Certificate.value, Certificate.valid)"
-    novalidate
-  >
-    <div class="row">
-      <div class="col">
-        <label>Certification Name</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder=""
-          formControlName="CertificationName"
-        />
-        <div
-          class="text-danger"
-          *ngIf="
-            getControl.CertificationName.touched &&
-            getControl.CertificationName.invalid
-          "
+      <div formArrayName="certifications">
+        <ng-container
+          *ngFor="let p of certificationsFormArray.controls; let i = index"
+          [formGroupName]="i"
         >
-          <div *ngIf="getControl.CertificationName.errors">
-            This is required
-          </div>
-        </div>
-      </div>
-    </div>
+          <fieldset>
+            <legend>
+              <div class="d-flex justify-content-between">
+                <div>Certificate: {{ i + 1 }}</div>
+                <div (click)="remoreForm(i)" *ngIf="i > 0">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </div>
+              </div>
+            </legend>
 
-    <div class="row">
-      <div class="col">
-        <label for="">Year of achivement</label>
-        <div class="form-group row">
-          <div class="col">
-            <select
-              class="form-select"
-              class="form-control"
-              formControlName="certifiedMonth"
-              required
-            >
-              <option selected disabled value="">Month</option>
-              <option>January</option>
-              <option>February</option>
-              <option>March</option>
-              <option>April</option>
-              <option>May</option>
-              <option>June</option>
-              <option>July</option>
-              <option>August</option>
-              <option>September</option>
-              <option>October</option>
-              <option>November</option>
-              <option>December</option>
-            </select>
-            <div class="invalid-feedback">Please select a valid Title.</div>
-            <div
-              class="text-danger"
-              *ngIf="
-                getControl.certifiedMonth.touched &&
-                getControl.certifiedMonth.invalid
-              "
-            >
-              <div *ngIf="getControl.certifiedMonth.errors">
-                This is required
+            <div class="row">
+              <div class="col-md">
+                <div class="form-group">
+                  <label>Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                    formControlName="name"
+                    placeholder="certificatation name"
+                  />
+                  <div
+                    class="text-danger sign-up__wrapper__error"
+                    *ngIf="
+                      (getValidity(i).get('name')!.touched ||
+                        getValidity(i).get('name')!.dirty) &&
+                      !getValidity(i).get('name')!.valid
+                    "
+                  >
+                    <div *ngIf="getValidity(i).get('name')!.errors">
+                      <small
+                        *ngIf="getValidity(i).get('name')!.errors!.required"
+                      >
+                        This field is required
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md">
+                <div class="form-group">
+                  <label>Year of achievement</label>
+                  <div class="row">
+                    <div class="col-md">
+                      <div class="form-group">
+                        <label class="d-none">Month</label>
+                        <select
+                          name="month"
+                          id="month"
+                          class="form-control"
+                          formControlName="month"
+                        >
+                          <option value="" selected disabled>month</option>
+                          <option *ngFor="let month of months" [value]="month">
+                            {{ month }}
+                          </option>
+                        </select>
+                        <div
+                          class="text-danger sign-up__wrapper__error"
+                          *ngIf="
+                            (getValidity(i).get('month')!.touched ||
+                              getValidity(i).get('month')!.dirty) &&
+                            !getValidity(i).get('month')!.valid
+                          "
+                        >
+                          <div *ngIf="getValidity(i).get('month')!.errors">
+                            <small
+                              *ngIf="
+                                getValidity(i).get('month')!.errors!.required
+                              "
+                            >
+                              This field is required
+                            </small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="col-md">
+                      <div class="form-group">
+                        <label class="d-none">year</label>
+                        <select
+                          name="year"
+                          id="year"
+                          class="form-control"
+                          formControlName="year"
+                        >
+                          <option value="" selected disabled>year</option>
+                          <option *ngFor="let year of years" [value]="year">
+                            {{ year }}
+                          </option>
+                        </select>
+                        <div
+                          class="text-danger sign-up__wrapper__error"
+                          *ngIf="
+                            (getValidity(i).get('year')!.touched ||
+                              getValidity(i).get('year')!.dirty) &&
+                            !getValidity(i).get('year')!.valid
+                          "
+                        >
+                          <div *ngIf="getValidity(i).get('year')!.errors">
+                            <small
+                              *ngIf="
+                                getValidity(i).get('year')!.errors!.required
+                              "
+                            >
+                              This field is required
+                            </small>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+            <div class="row">
+              <div class="col-sm-12 col-md-6">
+                <div class="form-group">
+                  <file-upload simple formControlName="file" maxsize="5 MB">
+                    <ng-template let-file #placeholder>
+                      <ng-container *ngIf="file; else emptyList">
+                        {{ file.name }}
+                      </ng-container>
 
-          <div class="col">
-            <select
-              class="form-select"
-              class="form-control"
-              formControlName="certifiedYear"
-              required
-            >
-              <option selected disabled value="">Year</option>
-              <option>2001</option>
-              <option>2002</option>
-              <option>2003</option>
-              <option>2004</option>
-              <option>2005</option>
-              <option>2006</option>
-              <option>2007</option>
-              <option>2009</option>
-              <option>2010</option>
-              <option>2011</option>
-              <option>2012</option>
-              <option>2013</option>
-              <option>2014</option>
-              <option>2015</option>
-              <option>2016</option>
-              <option>2017</option>
-              <option>2018</option>
-              <option>2019</option>
-              <option>2020</option>
-              <option>2021</option>
-            </select>
-            <div class="invalid-feedback">Please select a valid Title.</div>
-            <div
-              class="text-danger"
-              *ngIf="
-                getControl.certifiedYear.touched &&
-                getControl.certifiedYear.invalid
-              "
-            >
-              <div *ngIf="getControl.certifiedYear.errors">
-                This is required
+                      <ng-template #emptyList> Choose a file... </ng-template>
+                    </ng-template>
+
+                    <ng-template let-control="control" #button>
+                      <i class="fa fa-upload" aria-hidden="true"></i>
+                    </ng-template>
+                  </file-upload>
+                  <div
+                    class="text-danger sign-up__wrapper__error"
+                    *ngIf="
+                      (getValidity(i).get('file')!.touched ||
+                        getValidity(i).get('file')!.dirty) &&
+                      !getValidity(i).get('file')!.valid
+                    "
+                  >
+                    <div *ngIf="getValidity(i).get('file')!.errors">
+                      <small
+                        *ngIf="getValidity(i).get('file')!.errors!.required"
+                      >
+                        This field is required
+                      </small>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </div>
+          </fieldset>
+          <hr />
+        </ng-container>
+      </div>
+
+      <div class="certificates__action">
+        <div class="pr-1">
+          <button class="job-btn job-btn-outline" type="reset" [routerLink]="'/profile/education-details'">Back</button>
+        </div>
+        <div class="pl-1">
+          <button class="job-btn job-btn-mini" type="submit">Save</button>
         </div>
       </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">
-        <a routerLink="/education-details"><button type="" class="btn btn-outline-primary mb-3">Previous</button></a>
-      </div>
-      <div class="col">
-        <button type="submit" class="btn btn-success mb-3">Submit</button>
-      </div>
-    </div>
-  </form>
+    </form>
+  </div>
 </div>

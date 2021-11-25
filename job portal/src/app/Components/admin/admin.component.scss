@@ -1,5 +1,6 @@
 .admin {
   &__main-content {
+    margin-top: 50px !important;
     padding-top: 50px;
     margin-top: 50px;
   }
@@ -8,7 +9,7 @@
 @media all and (max-width: 767px) {
     .admin {
         &__main-content {
-          margin: auto 15px !important;
+          margin: auto  !important;
         }
       }
   }

@@ -38,7 +38,8 @@ body {
   max-width: 0px;
 }
 
-app-sign-up {
+app-sign-up,
+app-certification {
   .upload-button {
     text-align: center;
     background-color: transparent !important;
@@ -60,7 +61,9 @@ app-sign-up {
     font-size: 12px !important;
   }
 }
-app-work-experiance {
+app-work-experiance,
+app-rollprofile,
+app-skill-profile {
   .dropdown-btn {
     height: 46px !important;
     padding-top: 12px !important;

@@ -1,433 +1,275 @@
 <div class="card edu-details">
-  <div class="card-body d-flex p-0">
-    <div class="edu-details__empty-block">
-      <div class="d-flex align-items-center justify-content-center h-100">
-        <img
-          src="assets/img/change-password.png"
-          alt="change password"
-          class="w-25"
-        />
+  <div class="card-body">
+    <div class="d-flex justify-content-end">
+      <button class="job-btn job-btn-mini" (click)="addMore()">
+        <i class="fa fa-plus"></i>Add more
+      </button>
+    </div>
+    <form
+      [formGroup]="userForm"
+      (ngSubmit)="onClick(userForm.value, userForm.valid)"
+      novalidate
+    >
+      <div formArrayName="educationalDetails">
+        <ng-container
+          *ngFor="let p of educationalDetailsFormArray.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <fieldset>
+            <legend>
+              <div class="d-flex justify-content-between">
+                <div>Education details: {{ i + 1 }}</div>
+                <div (click)="remoreForm(i)" *ngIf="i > 0">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </div>
+              </div>
+            </legend>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Degree</label>
+                  <input
+                    formControlName="degree"
+                    type="text"
+                    placeholder="Degree"
+                    class="form-control"
+                    id="degree"
+                    name="degree"
+                    min="0"
+                    max="100"
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="
+                      !getValidity(i).get('degree')!.valid &&
+                      (getValidity(i).get('degree')!.touched ||
+                        getValidity(i).get('degree')!.dirty)
+                    "
+                  >
+                    <div *ngIf="getValidity(i).get('degree')!.errors">
+                      <small
+                        *ngIf="getValidity(i).get('degree')!.errors!.required"
+                      >
+                        This field is required
+                      </small>
+                      <small
+                        *ngIf="getValidity(i).get('degree')!.errors!.pattern"
+                      >
+                        Enter valid degree
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Institute name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="institute"
+                    name="institute"
+                    placeholder="institute name"
+                    formControlName="institute"
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="
+                      !getValidity(i).get('institute')!.valid &&
+                      (getValidity(i).get('institute')!.touched ||
+                        getValidity(i).get('institute')!.dirty)
+                    "
+                  >
+                    <div *ngIf="getValidity(i).get('institute')!.errors">
+                      <small
+                        *ngIf="
+                          getValidity(i).get('institute')!.errors!.required
+                        "
+                      >
+                        This field is required
+                      </small>
+                      <small
+                        *ngIf="getValidity(i).get('institute')!.errors!.pattern"
+                      >
+                        Enter valid institute name
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Grade / percentage</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="grade"
+                    name="grade"
+                    formControlName="grade"
+                    placeholder="Grade / percentage"
+                    min="0"
+                    max="10"
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="
+                      !getValidity(i).get('grade')!.valid &&
+                      (getValidity(i).get('grade')!.touched ||
+                        getValidity(i).get('grade')!.dirty)
+                    "
+                  >
+                    <div *ngIf="getValidity(i).get('grade')!.errors">
+                      <small
+                        *ngIf="getValidity(i).get('grade')!.errors!.required"
+                      >
+                        This field is required
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Country</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="Country"
+                    name="Country"
+                    placeholder="Country"
+                    formControlName="country"
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="
+                      !getValidity(i).get('country')!.valid &&
+                      (getValidity(i).get('country')!.touched ||
+                        getValidity(i).get('country')!.dirty)
+                    "
+                  >
+                    <div *ngIf="getValidity(i).get('country')!.errors">
+                      <small
+                        *ngIf="getValidity(i).get('country')!.errors!.required"
+                      >
+                        This field is required
+                      </small>
+                      <small
+                        *ngIf="getValidity(i).get('country')!.errors!.pattern"
+                      >
+                        This field is required
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-6">
+                <div class="row" formGroupName="yearofPassing">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>Year of passing</label>
+                      <select
+                        class="form-control"
+                        name="month"
+                        id="month"
+                        formControlName="month"
+                      >
+                        <option value="" disabled selected>month</option>
+                        <option *ngFor="let item of months" [value]="item">
+                          {{ item }}
+                        </option>
+                      </select>
+                      <div
+                        class="text-danger"
+                        *ngIf="
+                          !getValidity(i).get('yearofPassing.month')!.valid &&
+                          (getValidity(i).get('yearofPassing.month')!.touched ||
+                            getValidity(i).get('yearofPassing.month')!.dirty)
+                        "
+                      >
+                        <div
+                          *ngIf="
+                            getValidity(i).get('yearofPassing.month')!.errors
+                          "
+                        >
+                          <small
+                            *ngIf="
+                              getValidity(i).get('yearofPassing.month')!.errors!
+                                .required
+                            "
+                          >
+                            This field is required
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label class="invisible">Year of passing</label>
+                      <select
+                        class="form-control"
+                        id="year"
+                        name="year"
+                        placeholder="year"
+                        formControlName="year"
+                      >
+                        <option value="" disabled selected>Year</option>
+                        <option *ngFor="let item of years" [value]="item">
+                          {{ item }}
+                        </option>
+                      </select>
+
+                      <div
+                        class="text-danger"
+                        *ngIf="
+                          !getValidity(i).get('yearofPassing.year')!.valid &&
+                          (getValidity(i).get('yearofPassing.year')!.touched ||
+                            getValidity(i).get('yearofPassing.year')!.dirty)
+                        "
+                      >
+                        <div
+                          *ngIf="
+                            getValidity(i).get('yearofPassing.year')!.errors
+                          "
+                        >
+                          <small
+                            *ngIf="
+                              getValidity(i).get('yearofPassing.year')!.errors!
+                                .required
+                            "
+                          >
+                            This field is required
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </ng-container>
       </div>
-    </div>
-    <div class="p-4 w-50">
-      <form
-        [formGroup]="userForm"
-        (ngSubmit)="onClick(userForm.value, userForm.valid)"
-        novalidate
-      >
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label>Degree</label>
-              <input
-                formControlName="degree"
-                type="text"
-                placeholder="Degree"
-                class="form-control"
-                id="degree"
-                name="degree"
-                min="0"
-                max="100"
-              />
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.controls['degree'].valid &&
-                  (userForm.controls['degree'].touched ||
-                    userForm.controls['degree'].dirty)
-                "
-              >
-                <div *ngIf="userForm.controls['degree'].errors">
-                  <small *ngIf="userForm.controls['degree'].errors.required">
-                    This field is required
-                  </small>
-                  <small *ngIf="userForm.controls['degree'].errors.pattern">
-                    Enter valid degree
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label>Institute name</label>
-              <input
-                type="text"
-                class="form-control"
-                id="institute"
-                name="institute"
-                placeholder="institute name"
-                formControlName="institute"
-              />
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.controls['institute'].valid &&
-                  (userForm.controls['institute'].touched ||
-                    userForm.controls['institute'].dirty)
-                "
-              >
-                <div *ngIf="userForm.controls['institute'].errors">
-                  <small *ngIf="userForm.controls['institute'].errors.required">
-                    This field is required
-                  </small>
-                  <small *ngIf="userForm.controls['institute'].errors.pattern">
-                    Enter valid institute name
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
+      <hr />
+      <div class="edu-details__action">
+        <div class="pr-1">
+          <button
+            class="job-btn job-btn-outline"
+            type="reset"
+            [routerLink]="'/profile/work-experience'"
+          >
+            Back
+          </button>
         </div>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label>Grade / percentage</label>
-              <input
-                type="text"
-                class="form-control"
-                id="grade"
-                name="grade"
-                formControlName="grade"
-                placeholder="Grade / percentage"
-                min="0"
-                max="10"
-              />
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.controls['grade'].valid &&
-                  (userForm.controls['grade'].touched ||
-                    userForm.controls['grade'].dirty)
-                "
-              >
-                <div *ngIf="userForm.controls['grade'].errors">
-                  <small *ngIf="userForm.controls['grade'].errors.required">
-                    This field is required
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label>Country</label>
-              <input
-                type="text"
-                class="form-control"
-                id="Country"
-                name="Country"
-                placeholder="Country"
-                formControlName="country"
-              />
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.controls['country'].valid &&
-                  (userForm.controls['country'].touched ||
-                    userForm.controls['country'].dirty)
-                "
-              >
-                <div *ngIf="userForm.controls['country'].errors">
-                  <small *ngIf="userForm.controls['country'].errors.required">
-                    This field is required
-                  </small>
-                  <small *ngIf="userForm.controls['country'].errors.pattern">
-                    This field is required
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="pl-1">
+          <button class="job-btn job-btn-mini" type="submit">Save</button>
         </div>
-
-        <div class="row">
-          <div class="col-6">
-            <div class="row" formGroupName="yearofPassing">
-              <div class="col">
-                <div class="form-group">
-                  <label>Year of passing</label>
-                  <select
-                    class="form-control"
-                    name="month"
-                    id="month"
-                    formControlName="month"
-                  >
-                    <option value="" disabled selected>month</option>
-                    <option *ngFor="let item of months" [value]="item">
-                      {{ item }}
-                    </option>
-                  </select>
-                  <div
-                    class="text-danger"
-                    *ngIf="
-                      !userForm.get('yearofPassing.month')!.valid &&
-                      (userForm.get('yearofPassing.month')!.touched ||
-                        userForm.get('yearofPassing.month')!.dirty)
-                    "
-                  >
-                    <div *ngIf="userForm.get('yearofPassing.month')!.errors">
-                      <small
-                        *ngIf="
-                          userForm.get('yearofPassing.month')!.errors!.required
-                        "
-                      >
-                        This field is required
-                      </small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group">
-                  <label class="invisible">Year of passing</label>
-                  <select
-                    class="form-control"
-                    id="year"
-                    name="year"
-                    placeholder="year"
-                    formControlName="year"
-                  >
-                    <option value="" disabled selected>Year</option>
-                    <option *ngFor="let item of years" [value]="item">
-                      {{ item }}
-                    </option>
-                  </select>
-
-                  <div
-                    class="text-danger"
-                    *ngIf="
-                      !userForm.get('yearofPassing.year')!.valid &&
-                      (userForm.get('yearofPassing.year')!.touched ||
-                        userForm.get('yearofPassing.year')!.dirty)
-                    "
-                  >
-                    <div *ngIf="userForm.get('yearofPassing.year')!.errors">
-                      <small
-                        *ngIf="
-                          userForm.get('yearofPassing.year')!.errors!.required
-                        "
-                      >
-                        This field is required
-                      </small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr />
-        <div class="d-flex justify-content-end">
-          <div class="pr-1">
-            <button
-              class="job-btn job-btn-outline"
-              type="reset"
-              [routerLink]="'/profile/about-you'"
-            >
-              Back
-            </button>
-          </div>
-          <div class="pl-1">
-            <button class="job-btn job-btn-mini" type="submit">Save</button>
-          </div>
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
 </div>
-
-<!-- <div class="container">
-  <div
-    *ngIf="alert"
-    class="alert alert-success alert-dismissible fade show"
-    role="alert"
-  >
-    <strong>Success!</strong> Your data is successfully submitted.
-    <pre>{{ allData | json }}</pre>
-    <button
-      (click)="closeAlert()"
-      type="button"
-      class="close"
-      data-dismiss="alert"
-      aria-label="Close"
-    >
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <form
-    [formGroup]="userForm"
-    novalidate
-    (ngSubmit)="onClick(userForm.value, userForm.valid)"
-  >
-    <div class="row g-3 row-margin-05">
-      <div class="col-4">
-        <label>Degree</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder=""
-          formControlName="degree"
-        />
-        <div
-          class="text-danger"
-          *ngIf="getControl.degree.touched && getControl.degree.invalid"
-        >
-          <div *ngIf="getControl.degree.errors">Enter valid data.</div>
-        </div>
-      </div>
-      <div class="col-4">
-        <label>Institution name</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder=""
-          formControlName="institute"
-          required
-        />
-        <div
-          class="text-danger"
-          *ngIf="getControl.institute.touched && getControl.institute.invalid"
-        >
-          <div *ngIf="getControl.institute.errors">Enter valid data.</div>
-        </div>
-      </div>
-      <div class="col-4">
-        <label>Grade/Percentage</label>
-        <input
-          type="text"
-          class="form-control"
-          placeholder=""
-          formControlName="grade"
-          required
-        />
-        <div
-          class="text-danger"
-          *ngIf="getControl.grade.touched && getControl.grade.invalid"
-        >
-          <div *ngIf="getControl.grade.errors">Enter valid data.</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="row g-3">
-      <div class="col-6">
-        <label>Country</label>
-        <select
-          class="form-control"
-          placeholder=""
-          formControlName="Country"
-          required
-        >
-          <option selected disabled value="">-select-</option>
-          <option>-select-</option>
-          <option>Dubai</option>
-          <option>France</option>
-          <option>Germany</option>
-          <option>India</option>
-          <option>Thailand</option>
-          <option>USA</option>
-          <option>Soudi Arabia</option>
-        </select>
-        <div
-          class="text-danger"
-          *ngIf="getControl.Country.touched && getControl.Country.invalid"
-        >
-          <div *ngIf="getControl.Country.errors">Enter valid data.</div>
-        </div>
-      </div>
-
-      <div class="col-6">
-        <label for="">Year of passing</label>
-        <div class="form-group row">
-          <div class="col-6">
-            <select
-              class="form-select"
-              class="form-control"
-              formControlName="month"
-              required
-            >
-              <option selected disabled value="">MM</option>
-              <option>January</option>
-              <option>February</option>
-              <option>March</option>
-              <option>April</option>
-              <option>May</option>
-              <option>June</option>
-              <option>July</option>
-              <option>August</option>
-              <option>September</option>
-              <option>October</option>
-              <option>November</option>
-              <option>December</option>
-            </select>
-            <div class="invalid-feedback">Please Enter valid data.</div>
-            <div
-              class="text-danger"
-              *ngIf="getControl.month.touched && getControl.month.invalid"
-            >
-              <div *ngIf="getControl.month.errors">Enter valid data.</div>
-            </div>
-          </div>
-
-          <div class="col-6">
-            <select
-              class="form-select"
-              class="form-control"
-              formControlName="year"
-              required
-            >
-              <option selected disabled value="">YYYY</option>
-              <option>2001</option>
-              <option>2002</option>
-              <option>2003</option>
-              <option>2004</option>
-              <option>2005</option>
-              <option>2006</option>
-              <option>2007</option>
-              <option>2009</option>
-              <option>2010</option>
-              <option>2011</option>
-              <option>2012</option>
-              <option>2013</option>
-              <option>2014</option>
-              <option>2015</option>
-              <option>2016</option>
-              <option>2017</option>
-              <option>2018</option>
-              <option>2019</option>
-              <option>2020</option>
-              <option>2021</option>
-            </select>
-            <div class="invalid-feedback">Please Enter valid data.</div>
-            <div class="valid-feedback">Looks good!</div>
-            <div
-              class="text-danger"
-              *ngIf="getControl.year.touched && getControl.year.invalid"
-            >
-              <div *ngIf="getControl.year.errors">Enter valid data.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-2">
-        <a routerLink="/work-experience"
-          ><button class="btn btn-outline-primary form-control btn-block">
-            Previous
-          </button></a
-        >
-      </div>
-      <div class="col">
-        <button
-          id="btnSubmit"
-          class="btn btn-success form-control btn-block"
-          type="submit"
-        >
-          Next
-        </button>
-      </div>
-    </div>
-  </form>
-</div> -->

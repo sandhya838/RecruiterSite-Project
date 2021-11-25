@@ -9,7 +9,6 @@ import { ToastrModule } from "ngx-toastr";
 import { AppComponent } from "./app.component";
 import { UserProfileComponent } from "./Components/user-profile/user-profile.component";
 import { SideListboxComponent } from "./Components/side-listbox/side-listbox.component";
-import { SidebarComponent } from "./Components/sidebar/sidebar.component";
 import { SignInComponent } from "./Components/sign-in/sign-in.component";
 import { PageNotFoundComponent } from "./Components/page-not-found/page-not-found.component";
 import { AgGridModule } from "ag-grid-angular";
@@ -25,7 +24,6 @@ import { CandidateProfileSummaryComponent } from './Components/candidate-profile
     AppComponent,
     UserProfileComponent,
     SideListboxComponent,
-    SidebarComponent,
     SignInComponent,
     PageNotFoundComponent,
     CandidateProfileCardComponent,

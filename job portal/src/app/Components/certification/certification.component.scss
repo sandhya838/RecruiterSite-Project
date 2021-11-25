@@ -1,0 +1,25 @@
+.certificates {
+  legend {
+    font-size: 20px;
+  }
+  &__action {
+    display: flex;
+    justify-content: flex-end;
+  }
+  fieldset {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 32px;
+  }
+  .fa-trash {
+    color: var(--text-danger);
+    cursor: pointer;
+  }
+}
+
+@media all and (max-width: 767px) {
+  .certificates {
+    &__action {
+      justify-content: space-between;
+    }
+  }
+}

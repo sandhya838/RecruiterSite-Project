@@ -1,36 +1,14 @@
-// @import "../../../assets/_partials/mixin.scss";
-// #output {
-//     padding: 20px;
-//     background: #dadada;
-//   }
-  
-  // form {
-  //   margin-top: 20px;
-  // }
-  
-  select {
-    width: 300px;
+.skill-profile {
+  &__action {
+    display: flex;
+    justify-content: flex-end;
   }
-  label{
-    margin-top: 2px;
-  }
-  label:nth-last-child(2), label:nth-last-child(3){
-    margin-top: 40px;
-  }
-  
-  .row {
-    display: inline;
-    margin-right: 0px;
-    margin-left: 0px;
-    margin-bottom: 100px;
 }
-.row-btn{
-  display: flex;
-  margin-top: 40px;
-}
-h6{
-  color: #4e4e4e;
-  font-size: 15px;
-  font-family: Roboto, sans-serif;
-  font-weight: normal;
+
+@media all and (max-width: 767px) {
+  .skill-profile {
+    &__action {
+      justify-content: space-between;
+    }
+  }
 }

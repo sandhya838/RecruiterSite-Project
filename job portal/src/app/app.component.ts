@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { ChangeDetectorRef, Component } from "@angular/core";
 import { Router } from "@angular/router";
 
 @Component({
@@ -10,7 +10,7 @@ export class AppComponent {
   title = "Recruiter";
   public loggedIn = false;
 
-  constructor(private router: Router) {}
+  constructor(private router: Router, private cd: ChangeDetectorRef) {}
 
   ngOnInit() {
     if (localStorage.getItem("token")) {
@@ -25,5 +25,6 @@ export class AppComponent {
         : sessionStorage.getItem("token")
         ? true
         : false;
+    this.cd.detectChanges();
   }
 }

@@ -1,341 +1,410 @@
 <div class="card work-experiance">
-  <div class="card-body d-flex p-0">
-    <div class="work-experiance__empty-block">
-      <div class="d-flex align-items-center justify-content-center h-100">
-        <img
-          src="assets/img/change-password.png"
-          alt="change password"
-          class="w-25"
-        />
+  <div class="card-body">
+    <div class="d-flex justify-content-end">
+      <button class="job-btn job-btn-mini" (click)="addMore()">
+        <i class="fa fa-plus"></i>Add more
+      </button>
+    </div>
+    <form
+      [formGroup]="userForm"
+      (ngSubmit)="onClick(userForm.value, userForm.valid)"
+      novalidate
+    >
+      <div formArrayName="workExperiences">
+        <ng-container
+          *ngFor="let p of workExperiencesFormArray.controls; let i = index"
+          [formGroupName]="i"
+        >
+          <fieldset>
+            <legend>
+              <div class="d-flex justify-content-between">
+                <div>Experience: {{ i + 1 }}</div>
+                <div (click)="remoreForm(i)" *ngIf="i > 0">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </div>
+              </div>
+            </legend>
+            <div class="row">
+              <div class="col-md-8">
+                <div class="form-group">
+                  <label>Company name</label>
+                  <input
+                    formControlName="companyName"
+                    type="text"
+                    placeholder="Company name"
+                    class="form-control"
+                    id="name"
+                    name="name"
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="
+                      !getValidity(i).get('companyName')!.valid &&
+                      (getValidity(i).get('companyName')!.touched ||
+                        getValidity(i).get('companyName')!.dirty)
+                    "
+                  >
+                    <div *ngIf="getValidity(i).get('companyName')!.errors">
+                      <small
+                        *ngIf="
+                          getValidity(i).get('companyName')!.errors!.required
+                        "
+                      >
+                        This field is required
+                      </small>
+                      <small
+                        *ngIf="
+                          getValidity(i).get('companyName')!.errors!.pattern
+                        "
+                      >
+                        Enter valid company name
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-4">
+                <label class="invisible mt-2">Is your current company?</label>
+                <div class="form-group form-check">
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    id="isCurrentCompany"
+                    formControlName="isCurrentCompany"
+                  />
+                  <label class="form-check-label" for="isCurrentCompany"
+                    >Is your current company?</label
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6">
+                <div class="row">
+                  <div class="col">
+                    <div class="form-group">
+                      <label>From</label>
+                      <select
+                        class="form-control"
+                        name="joinmonth"
+                        id="joinmonth"
+                        formControlName="joinmonth"
+                      >
+                        <option value="" disabled selected>month</option>
+                        <option *ngFor="let item of months" [value]="item">
+                          {{ item }}
+                        </option>
+                      </select>
+                      <div
+                        class="text-danger"
+                        *ngIf="
+                          !getValidity(i).get('joinmonth')!.valid &&
+                          (getValidity(i).get('joinmonth')!.touched ||
+                            getValidity(i).get('joinmonth')!.dirty)
+                        "
+                      >
+                        <div *ngIf="getValidity(i).get('joinmonth')!.errors">
+                          <small
+                            *ngIf="
+                              getValidity(i).get('joinmonth')!.errors!.required
+                            "
+                          >
+                            This field is required
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label class="invisible">From</label>
+                      <select
+                        class="form-control"
+                        id="joinyear"
+                        name="joinyear"
+                        placeholder="joinyear"
+                        formControlName="joinyear"
+                      >
+                        <option value="" disabled selected>Year</option>
+                        <option *ngFor="let item of years" [value]="item">
+                          {{ item }}
+                        </option>
+                      </select>
+
+                      <div
+                        class="text-danger"
+                        *ngIf="
+                          !getValidity(i).get('joinyear')!.valid &&
+                          (getValidity(i).get('joinyear')!.touched ||
+                            getValidity(i).get('joinyear')!.dirty)
+                        "
+                      >
+                        <div *ngIf="getValidity(i).get('joinyear')!.errors">
+                          <small
+                            *ngIf="
+                              getValidity(i).get('joinyear')!.errors!.required
+                            "
+                          >
+                            This field is required
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div
+                  class="row"
+                  *ngIf="getValidity(i).get('isCurrentCompany')!.value"
+                >
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label>Till present</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        readonly
+                        value="present"
+                      />
+                    </div>
+                  </div>
+                </div>
+                <div
+                  class="row"
+                  *ngIf="!getValidity(i).get('isCurrentCompany')!.value"
+                >
+                  <div class="col">
+                    <div class="form-group">
+                      <label>To</label>
+                      <select
+                        class="form-control"
+                        name="jointomonth"
+                        id="jointomonth"
+                        formControlName="jointomonth"
+                      >
+                        <option value="" disabled selected>month</option>
+                        <option *ngFor="let item of months" [value]="item">
+                          {{ item }}
+                        </option>
+                      </select>
+                      <div
+                        class="text-danger"
+                        *ngIf="
+                          !getValidity(i).get('jointomonth')!.valid &&
+                          (getValidity(i).get('jointomonth')!.touched ||
+                            getValidity(i).get('jointomonth')!.dirty)
+                        "
+                      >
+                        <div *ngIf="getValidity(i).get('jointomonth')!.errors">
+                          <small
+                            *ngIf="
+                              getValidity(i).get('jointomonth')!.errors!
+                                .required
+                            "
+                          >
+                            This field is required
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col">
+                    <div class="form-group">
+                      <label class="invisible">To</label>
+                      <select
+                        class="form-control"
+                        id="jointoyear"
+                        name="jointoyear"
+                        placeholder="jointoyear"
+                        formControlName="jointoyear"
+                      >
+                        <option value="" disabled selected>Year</option>
+                        <option *ngFor="let item of years" [value]="item">
+                          {{ item }}
+                        </option>
+                      </select>
+
+                      <div
+                        class="text-danger"
+                        *ngIf="
+                          !getValidity(i).get('jointoyear')!.valid &&
+                          (getValidity(i).get('jointoyear')!.touched ||
+                            getValidity(i).get('jointoyear')!.dirty)
+                        "
+                      >
+                        <div *ngIf="getValidity(i).get('jointoyear')!.errors">
+                          <small
+                            *ngIf="
+                              getValidity(i).get('jointoyear')!.errors!.required
+                            "
+                          >
+                            This field is required
+                          </small>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Designation</label>
+                  <input
+                    formControlName="designation"
+                    type="text"
+                    placeholder="designation"
+                    class="form-control"
+                    id="designation"
+                    name="designation"
+                    min="0"
+                    max="100"
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="
+                      !getValidity(i).get('designation')!.valid &&
+                      (getValidity(i).get('designation')!.touched ||
+                        getValidity(i).get('designation')!.dirty)
+                    "
+                  >
+                    <div *ngIf="getValidity(i).get('designation')!.errors">
+                      <small
+                        *ngIf="
+                          getValidity(i).get('designation')!.errors!.required
+                        "
+                      >
+                        This field is required
+                      </small>
+                      <small
+                        *ngIf="
+                          getValidity(i).get('designation')!.errors!.pattern
+                        "
+                      >
+                        Enter valid designation
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Role</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="role"
+                    name="role"
+                    placeholder="Role"
+                    formControlName="role"
+                  />
+                  <div
+                    class="text-danger"
+                    *ngIf="
+                      !getValidity(i).get('role')!.valid &&
+                      (getValidity(i).get('role')!.touched ||
+                        getValidity(i).get('role')!.dirty)
+                    "
+                  >
+                    <div *ngIf="getValidity(i).get('role')!.errors">
+                      <small
+                        *ngIf="getValidity(i).get('role')!.errors!.required"
+                      >
+                        This field is required
+                      </small>
+                      <small
+                        *ngIf="getValidity(i).get('role')!.errors!.pattern"
+                      >
+                        Enter valid role
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Skills used</label>
+                  <ng-multiselect-dropdown
+                    formControlName="skills"
+                    [placeholder]="'Select skill used'"
+                    [settings]="dropdownSettings"
+                    [data]="skills"
+                  >
+                  </ng-multiselect-dropdown>
+                  <div
+                    class="text-danger"
+                    *ngIf="
+                      !getValidity(i).get('skills')!.valid &&
+                      (getValidity(i).get('skills')!.touched ||
+                        getValidity(i).get('skills')!.dirty)
+                    "
+                  >
+                    <div *ngIf="getValidity(i).get('skills')!.errors">
+                      <small
+                        *ngIf="getValidity(i).get('skills')!.errors!.required"
+                      >
+                        This field is required
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Deliverables on project</label>
+                  <textarea
+                    class="form-control"
+                    id="grade"
+                    name="grade"
+                    formControlName="deliverables"
+                    placeholder="deliverables"
+                  ></textarea>
+                  <div
+                    class="text-danger"
+                    *ngIf="
+                      !getValidity(i).get('deliverables')!.valid &&
+                      (getValidity(i).get('deliverables')!.touched ||
+                        getValidity(i).get('deliverables')!.dirty)
+                    "
+                  >
+                    <div *ngIf="getValidity(i).get('deliverables')!.errors">
+                      <small
+                        *ngIf="
+                          getValidity(i).get('deliverables')!.errors!.required
+                        "
+                      >
+                        This field is required
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </fieldset>
+        </ng-container>
       </div>
-    </div>
-    <div class="p-4 w-50">
-      <form
-        [formGroup]="userForm"
-        (ngSubmit)="onClick(userForm.value, userForm.valid)"
-        novalidate
-      >
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label>Company name</label>
-              <input
-                formControlName="companyName"
-                type="text"
-                placeholder="Company name"
-                class="form-control"
-                id="name"
-                name="name"
-                min="0"
-                max="100"
-              />
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.controls['companyName'].valid &&
-                  (userForm.controls['companyName'].touched ||
-                    userForm.controls['companyName'].dirty)
-                "
-              >
-                <div *ngIf="userForm.controls['companyName'].errors">
-                  <small
-                    *ngIf="userForm.controls['companyName'].errors.required"
-                  >
-                    This field is required
-                  </small>
-                  <small
-                    *ngIf="userForm.controls['companyName'].errors.pattern"
-                  >
-                    Enter valid company name
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-6">
-            <div class="row">
-              <div class="col">
-                <div class="form-group">
-                  <label>From</label>
-                  <select
-                    class="form-control"
-                    name="joinmonth"
-                    id="joinmonth"
-                    formControlName="joinmonth"
-                  >
-                    <option value="" disabled selected>month</option>
-                    <option *ngFor="let item of months" [value]="item">
-                      {{ item }}
-                    </option>
-                  </select>
-                  <div
-                    class="text-danger"
-                    *ngIf="
-                      !userForm.get('joinmonth')!.valid &&
-                      (userForm.get('joinmonth')!.touched ||
-                        userForm.get('joinmonth')!.dirty)
-                    "
-                  >
-                    <div *ngIf="userForm.get('joinmonth')!.errors">
-                      <small
-                        *ngIf="userForm.get('joinmonth')!.errors!.required"
-                      >
-                        This field is required
-                      </small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group">
-                  <label class="invisible">From</label>
-                  <select
-                    class="form-control"
-                    id="joinyear"
-                    name="joinyear"
-                    placeholder="joinyear"
-                    formControlName="joinyear"
-                  >
-                    <option value="" disabled selected>Year</option>
-                    <option *ngFor="let item of years" [value]="item">
-                      {{ item }}
-                    </option>
-                  </select>
+      <hr />
 
-                  <div
-                    class="text-danger"
-                    *ngIf="
-                      !userForm.get('joinyear')!.valid &&
-                      (userForm.get('joinyear')!.touched ||
-                        userForm.get('joinyear')!.dirty)
-                    "
-                  >
-                    <div *ngIf="userForm.get('joinyear')!.errors">
-                      <small *ngIf="userForm.get('joinyear')!.errors!.required">
-                        This field is required
-                      </small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-6">
-            <div class="row">
-              <div class="col">
-                <div class="form-group">
-                  <label>To</label>
-                  <select
-                    class="form-control"
-                    name="jointomonth"
-                    id="jointomonth"
-                    formControlName="jointomonth"
-                  >
-                    <option value="" disabled selected>month</option>
-                    <option *ngFor="let item of months" [value]="item">
-                      {{ item }}
-                    </option>
-                  </select>
-                  <div
-                    class="text-danger"
-                    *ngIf="
-                      !userForm.get('jointomonth')!.valid &&
-                      (userForm.get('jointomonth')!.touched ||
-                        userForm.get('jointomonth')!.dirty)
-                    "
-                  >
-                    <div *ngIf="userForm.get('jointomonth')!.errors">
-                      <small
-                        *ngIf="userForm.get('jointomonth')!.errors!.required"
-                      >
-                        This field is required
-                      </small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group">
-                  <label class="invisible">To</label>
-                  <select
-                    class="form-control"
-                    id="jointoyear"
-                    name="jointoyear"
-                    placeholder="jointoyear"
-                    formControlName="jointoyear"
-                  >
-                    <option value="" disabled selected>Year</option>
-                    <option *ngFor="let item of years" [value]="item">
-                      {{ item }}
-                    </option>
-                  </select>
-
-                  <div
-                    class="text-danger"
-                    *ngIf="
-                      !userForm.get('jointoyear')!.valid &&
-                      (userForm.get('jointoyear')!.touched ||
-                        userForm.get('jointoyear')!.dirty)
-                    "
-                  >
-                    <div *ngIf="userForm.get('jointoyear')!.errors">
-                      <small
-                        *ngIf="userForm.get('jointoyear')!.errors!.required"
-                      >
-                        This field is required
-                      </small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+      <div class="work-experiance__action">
+        <div class="pr-1">
+          <button
+            class="job-btn job-btn-outline"
+            type="reset"
+            [routerLink]="'/profile/skills'"
+          >
+            Back
+          </button>
         </div>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label>Designation</label>
-              <input
-                formControlName="designation"
-                type="text"
-                placeholder="designation"
-                class="form-control"
-                id="designation"
-                name="designation"
-                min="0"
-                max="100"
-              />
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.controls['designation'].valid &&
-                  (userForm.controls['designation'].touched ||
-                    userForm.controls['designation'].dirty)
-                "
-              >
-                <div *ngIf="userForm.controls['designation'].errors">
-                  <small
-                    *ngIf="userForm.controls['designation'].errors.required"
-                  >
-                    This field is required
-                  </small>
-                  <small
-                    *ngIf="userForm.controls['designation'].errors.pattern"
-                  >
-                    Enter valid designation
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="col">
-            <div class="form-group">
-              <label>Role</label>
-              <input
-                type="text"
-                class="form-control"
-                id="role"
-                name="role"
-                placeholder="Role"
-                formControlName="role"
-              />
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.controls['role'].valid &&
-                  (userForm.controls['role'].touched ||
-                    userForm.controls['role'].dirty)
-                "
-              >
-                <div *ngIf="userForm.controls['role'].errors">
-                  <small *ngIf="userForm.controls['role'].errors.required">
-                    This field is required
-                  </small>
-                  <small *ngIf="userForm.controls['role'].errors.pattern">
-                    Enter valid role
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="pl-1">
+          <button class="job-btn job-btn-mini" type="submit">Next</button>
         </div>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label>Skills used</label>
-              <ng-multiselect-dropdown
-                formControlName="skills"
-                [placeholder]="'Select skill used'"
-                [settings]="dropdownSettings"
-                [data]="skills"
-              >
-              </ng-multiselect-dropdown>
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.controls['skills'].valid &&
-                  (userForm.controls['skills'].touched ||
-                    userForm.controls['skills'].dirty)
-                "
-              >
-                <div *ngIf="userForm.controls['skills'].errors">
-                  <small *ngIf="userForm.controls['skills'].errors.required">
-                    This field is required
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col">
-            <div class="form-group">
-              <label>Deliverables on project</label>
-              <textarea
-                class="form-control"
-                id="grade"
-                name="grade"
-                formControlName="deliverables"
-                placeholder="deliverables"
-              ></textarea>
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.controls['deliverables'].valid &&
-                  (userForm.controls['deliverables'].touched ||
-                    userForm.controls['deliverables'].dirty)
-                "
-              >
-                <div *ngIf="userForm.controls['deliverables'].errors">
-                  <small
-                    *ngIf="userForm.controls['deliverables'].errors.required"
-                  >
-                    This field is required
-                  </small>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <hr />
-        <div class="d-flex justify-content-end">
-          <div class="pr-1">
-            <button
-              class="job-btn job-btn-outline"
-              type="reset"
-              [routerLink]="'/profile/skills'"
-            >
-              Back
-            </button>
-          </div>
-          <div class="pl-1">
-            <button class="job-btn job-btn-mini" type="submit">Next</button>
-          </div>
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
 </div>
