@@ -18,6 +18,7 @@ module.exports = (app) => {
   app.get('/v1/orgnization/:orgnizationId', auth.authToken, orgnization.findOne);
   app.delete('/v1/orgnization/:orgnizationId', auth.authToken, orgnization.delete);
   app.put('/v1/orgnization/:orgnizationId', auth.authToken, orgnization.update);
+  app.put('/v1/orgnization-change-password/:id', auth.authToken, orgnization.changePassword);
 
 
   /*************Jobs ******************** */
@@ -32,6 +33,7 @@ module.exports = (app) => {
   /************** Pre Login APIs ****************** */
   app.post('/v1/login', auth.login);
   app.post('/v1/register', upload.single('resume'), requestValidator.validateParams(profile.createRules), profile.create);
+  app.post('/v1/forgot-password',  auth.forgotPassword);
 
   /****************** profile routings *************** */
   app.post('/v1/aboutyou', auth.authToken, profile.create);

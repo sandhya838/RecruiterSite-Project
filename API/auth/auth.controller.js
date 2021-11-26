@@ -79,4 +79,31 @@ exports.orgnization_login = (req, res) => {
         }
 
     });
+};
+exports.forgotPassword = (req, res) => {
+    if (req.body.isOrgnization) {
+        Orgnization.findOne({ email: req.body.email }, (err, result) => {
+            if (err) {
+                res.status(401).send({ status: 401, message: 'No account with that email address exists.' });
+            } else if (result) {
+                
+
+            } else {
+                return res.status(404).json({ status: 404, message: 'User not found' });
+            }
+
+        });
+
+    } else {
+        Profile.findOne({ email: req.body.email }, (err, result) => {
+            if (err) {
+                res.status(401).send({ status: 401, message: 'No account with that email address exists.' });
+            } else if (result) {
+
+            } else {
+                return res.status(404).json({ status: 404, message: 'User not found' });
+            }
+
+        });
+    }
 }
