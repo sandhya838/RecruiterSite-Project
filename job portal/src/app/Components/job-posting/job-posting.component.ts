@@ -27,7 +27,7 @@ export class JobPostingComponent implements OnInit {
       companyName: ["", [Validators.required]],
       companyIntro: ["", [Validators.required]],
       typeOfJob: ["", [Validators.required]],
-      role: ["", [Validators.required]],
+      roleProfile: ["", [Validators.required]],
       locpref: ["", [Validators.required]],
       skills: ["", [Validators.required]],
     });
@@ -36,6 +36,7 @@ export class JobPostingComponent implements OnInit {
     return this.userForm.controls;
   }
   onClick(formValue: any, isValid: boolean) {
+    console.log(this.userForm.value)
     if (isValid) {
       const companyName = [];
       const tempFormatedData = {
@@ -49,7 +50,7 @@ export class JobPostingComponent implements OnInit {
       tempFormatedData.compname = formValue.companyName;
       tempFormatedData.compintro = formValue.companyIntro;
       tempFormatedData.typeofjob = formValue.typeOfJob;
-      tempFormatedData.rol = formValue. role;
+      tempFormatedData.rol = formValue. roleProfile;
       tempFormatedData.loc = formValue.locpref;
       tempFormatedData. skill = formValue.skills;
 

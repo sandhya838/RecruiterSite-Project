@@ -184,7 +184,7 @@ var ProfileSchema = new Schema({
       typeofjob: {
         type: String
       },
-      rol: {
+      rolProfile: {
         type: String
       },
       loc:{
