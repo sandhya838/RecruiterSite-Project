@@ -80,27 +80,30 @@ exports.orgnization_login = (req, res) => {
 
     });
 };
-exports.orgnization_login = (req, res) => {
-    // console.log(req.body.userName)
-    Orgnization.find({ email: req.body.email, password: req.body.password }, (err, orgnization)=> {
-        if (err) {
-            res.status(401).send({ status: 401, message: 'You are not autorized to get access.' });
-        } else {
-            console.log(orgnization)
-            const expires = moment().add('days', 7).valueOf();
-            const token = jwt.encode({
-                userName: orgnization.email,
-                exp: expires
-            }, app.get('jwtTokenSecret'));
-            res.status(200).send({
-                status: 200,
-                token: 'Bearer ' + token,
-                expires: expires,
-                user:orgnization
+exports.forgotPassword = (req, res) => {
+    if (req.body.isOrgnization) {
+        Orgnization.findOne({ email: req.body.email }, (err, result) => {
+            if (err) {
+                res.status(401).send({ status: 401, message: 'No account with that email address exists.' });
+            } else if (result) {
+                
 
-            });
-           
-        }
+            } else {
+                return res.status(404).json({ status: 404, message: 'User not found' });
+            }
 
-    });
+        });
+
+    } else {
+        Profile.findOne({ email: req.body.email }, (err, result) => {
+            if (err) {
+                res.status(401).send({ status: 401, message: 'No account with that email address exists.' });
+            } else if (result) {
+
+            } else {
+                return res.status(404).json({ status: 404, message: 'User not found' });
+            }
+
+        });
+    }
 }
