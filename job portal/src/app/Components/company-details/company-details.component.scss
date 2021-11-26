@@ -21,26 +21,21 @@
     width: 100%;
   }
   input{
-    width: 90%;
+    width: 110%;
 height: auto;
   }
   .form-group  {
     font-size: 14px;
     font-family: roboto;
 }
-.empnumber{
-   margin-left: 107px;
-    width: 70%;
+.empnumber,.Company__turnover{
+  
+  
     height: 44px;
     border-radius: 7px;
 
 }
-.Company__turnover{
-        margin-left: 67px;
-        width: 70%;
-        height: 44px;
-        border-radius: 7px;
-}
+
 label {
   display: inline-block;
   margin-bottom: 0.5rem;

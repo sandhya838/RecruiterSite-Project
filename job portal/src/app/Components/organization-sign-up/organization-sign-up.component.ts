@@ -68,9 +68,6 @@ export class OrganizationSignUpComponent implements OnInit {
     }
   }
 
-  closeAlert() {
-    this.alert = false;
-  }
   
   
 }

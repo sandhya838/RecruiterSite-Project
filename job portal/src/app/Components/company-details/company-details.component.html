@@ -26,15 +26,18 @@
       </div>
     </div>
     
+   
       <div class="card-body">
         <form  [formGroup]=" userForm"
         (ngSubmit)="onClick(userForm.value, userForm.valid)"
         novalidate>
+        <div class="row">
+          <div class="col">
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <Label>Number of employee: </Label>
+            <Label>Number of employee </Label>
           </div>
-          <input type="text" class="empnumber" placeholder="numbers of employees" aria-label="Default"formControlName="employee" aria-describedby="inputGroup-sizing-default">
+          <input type="text" class="empnumber"  aria-label="Default"formControlName="employee" aria-describedby="inputGroup-sizing-default">
         </div>
         <div
         class="text-danger"
@@ -52,15 +55,16 @@
           </small>
         </div>
       </div>
+    </div>
 
 
 
-
-        <div class="input-group mb-3">
+          <div class="col">
+        <div class="input-group w-100">
           <div class="input-group-prepend">
-            <Label>Company turnover(million): </Label>
+            <Label>Company turnover(million) </Label>
           </div>
-          <input type="text" class="Company__turnover"placeholder="company turnover in million" formControlName="turnover"  aria-label="Default" aria-describedby="inputGroup-sizing-default">
+          <input type="text" class="Company__turnover" formControlName="turnover"  aria-label="Default" aria-describedby="inputGroup-sizing-default">
         </div>
         <div
         class="text-danger"
@@ -78,80 +82,12 @@
           </small>
         </div>
       </div>
+    </div>
+  </div>
+                  
 
-
-            <div class="form-group">
-              <label>Description</label>
-              <textarea class="form-control " formControlName="Description"  style="height: 88px;" rows="3"></textarea>
-              <div
-                    class="text-danger"
-                    *ngIf="
-                      !userForm.get('Description')!.valid &&
-                      (userForm.get('Description')!.touched ||
-                        userForm.get('Description')!.dirty)
-                    "
-                  >
-                    <div *ngIf="userForm.get('Description')!.errors">
-                      <small
-                        *ngIf="userForm.get('Description')!.errors!.required"
-                      >
-                        This field is required
-                      </small>
-                    </div>
-                  </div>
-
-            </div>
-
-
-
-
-
-
-
-
-            
-        
-      <div class="row">
-       <div class="col">
-       <!-- <div class="form-group">
-              <label>Location of operations</label>
-             <select
-                    class="form-control"
-                    name="location"
-                    id="locationop"
-                    formControlName="location"
-                  >
-                <option>-select-</option>
-                <option>pune</option>
-                <option>mumbai</option>
-                <option>dubai</option>
-                <option>delhi</option>
-                <option>maharastra</option>
-                <option>Indore</option>
-                <option>kolhapur</option>
-                <option>Jalna</option>
-              </select>
-              <div
-                    class="text-danger"
-                    *ngIf="
-                      !userForm.get('location')!.valid &&
-                      (userForm.get('location')!.touched ||
-                        userForm.get('location')!.dirty)
-                    "
-                  >
-                    <div *ngIf="userForm.get('location')!.errors">
-                      <small
-                        *ngIf="userForm.get('location')!.errors!.required"
-                      >
-                        This field is required
-                      </small>
-                    </div>
-                  </div>
-            </div>
-
-             -->
-
-
+              <div class="row">
+                <div class="col">
              <div class="form-group">
               <label>Country of operation</label>
               <ng-multiselect-dropdown
@@ -178,10 +114,11 @@
                     </div>
                   </div>
             </div>
+          </div>
 
 
 
-            
+            <div class="col">
             <div class="form-group">
               <label>Location of operation</label>
               <ng-multiselect-dropdown
@@ -206,15 +143,40 @@
                 </div>
               </div>
             </div>
-
-
-
-       </div> 
-      </div>
+          </div>
+        </div>
        
-       
+
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control " formControlName="Description"  style="height: 88px;" rows="3"></textarea>
+          <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.get('Description')!.valid &&
+                  (userForm.get('Description')!.touched ||
+                    userForm.get('Description')!.dirty)
+                "
+              >
+                <div *ngIf="userForm.get('Description')!.errors">
+                  <small
+                    *ngIf="userForm.get('Description')!.errors!.required"
+                  >
+                    This field is required
+                  </small>
+                </div>
+              </div>
+
+        </div>
+
 
         </form>
+
+
+
+
+
       
       </div>
   </div>

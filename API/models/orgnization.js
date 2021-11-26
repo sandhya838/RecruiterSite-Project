@@ -50,7 +50,20 @@ var Organizationschema = new Schema({
     },
     updatedDate: {
         type: Date
-    }
+    },
+    organizationName: {
+        type: String
+    },
+    firstname:{
+        type: String
+
+    },
+    lastName:{
+        type: String
+    },
+    
+   
+
 });
 
 module.exports = mongoose.model('Orgnizations', Organizationschema);
