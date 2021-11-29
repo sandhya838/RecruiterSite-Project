@@ -2,6 +2,9 @@ import { NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { AuthGuard } from "src/app/authguard";
 import { JobProfileCardComponent } from "src/app/Components/job-profile-card/job-profile-card.component";
+import { MyProfileComponent } from "src/app/my-profile/my-profile.component";
+import { CandidateProfileCardComponent } from "../candidate-profile-card/candidate-profile-card.component";
+import { CandidateProfileSummaryComponent } from "../candidate-profile-summary/candidate-profile-summary.component";
 import { CertificationComponent } from "../certification/certification.component";
 import { DashboardComponent } from "../dashboard/dashboard.component";
 import { EduDetailsComponent } from "../edu-details/edu-details.component";
@@ -24,11 +27,25 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
+        path: "about-you",
+        component:UserProfileComponent,
+        canActivate: [AuthGuard],
+      },
+      {
         path: "jobs",
         component: JobProfileCardComponent,
         canActivate: [AuthGuard],
       },
-      
+      {
+        path:"profile-summary",
+        component:CandidateProfileSummaryComponent,
+        canActivate:[AuthGuard],
+      },
+      {
+        path:"work-experience",
+        component: WorkExperianceComponent,
+        canActivate:[AuthGuard],
+      },
       {
         path: "education-details/:id",
         component: EduDetailsComponent,
@@ -43,6 +60,16 @@ const routes: Routes = [
         path: "certificate",
         component: CertificationComponent,
         canActivate: [AuthGuard],
+      },
+      { 
+      path:"myProfile",
+        component:MyProfileComponent,
+        canActivate:[AuthGuard],
+      },
+      {
+        path:"candidate-profile",
+        component: CandidateProfileCardComponent,
+        canActivate:[AuthGuard],
       },
       {
         path: "change-password",
