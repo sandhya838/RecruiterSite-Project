@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container profilesummary">
   <div class="d-flex justify-content-between align-items-center">
     <h2 class="profile-details__heading">profile summary</h2>
     <nav aria-label="breadcrumb">
@@ -14,12 +14,12 @@
   </div>
 
   <div class="row">
-    <div class="col-8">
+    <div class="col-7">
       <div class="row profile-details__profile-topcard">
         <div class="profile-details__profile">
         </div>
       </div>
-      <div class="card">
+      <div class="card profilesummary__cardbody" >
         <div class="card-body">
           <div class="row">
             <div class="col-sm-11">
@@ -27,42 +27,133 @@
                 class="rounded-circle" width="135">
             </div>
             <div class="col-sm-1">
+              <a routerLink="/about-you">
               <i class="fa fa-pencil" aria-hidden="true"></i>
+              </a>
             </div>
           </div>
-        <div class="row profile-details__userDetails">
-          <div class="col-7">
-            <h4 class="profile-details__username">Sandhya Dattatray Erande</h4>
-            <p class="profile-details__worktitle">Frontend Developer</p>
-            <p class="profile-details__location">Pune, Maharastra, India</p>
-            <p class="profile-details__contact"> +91 8380891905</p>
-            <p class="profile-details__email"> sandhyaerande2015@gmail.com</p>
+          <div class="row profile-details__userDetails">
+            <div class="col-7">
+              <h4 class="profile-details__username"> {{profile.firstName}} {{profile.middleName}} {{profile.lastName}}</h4>
+              <p class="profile-details__worktitle"> {{profile.workExperiences[0].role}}</p>
+              <p class="profile-details__location">Pune, Maharastra, India</p>
+              <p class="profile-details__contact"> +91 8380891905</p>
+              <p class="profile-details__email"> {{profile.email}}</p>
+            </div>
+            <div class="col-5">
+              <ul>
+                <li class="profile-details__cmpname"><i class="fa fa-building" aria-hidden="true"></i> {{profile.workExperiences[0].companyName}}</li>
+                <li class="profile-details__cmpname"><i class="fa fa-building" aria-hidden="true"></i>Indian Institute
+                  of Management, Calcutta</li>
+              </ul>
+            </div>
           </div>
-          <div class="col-5">
-            <ul>
-              <li class="profile-details__cmpname"><i class="fa fa-building" aria-hidden="true"></i> On Device
-                Solution Ltd.</li>
-              <li class="profile-details__cmpname"><i class="fa fa-building" aria-hidden="true"></i>Indian Institute
-                of Management, Calcutta</li>
-            </ul>
+
+          <div class="card-body">
+            <button type="button" class="btn btn-warning">Message</button>
           </div>
         </div>
+      </div>
 
+      <div class="card profilesummary__cardbody">
         <div class="card-body">
-          <button type="button" class="btn btn-warning">Message</button>
+          <div class="row">
+            <div class="col-sm-11">
+              <h5 class="profile-details__card-title">Resume</h5>
+              <p>{{profile.resume}}</p>
+            </div>
+            <div class="col-sm-1">
+              <a routerLink="">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+              </a>
+            </div>
+        </div>
         </div>
       </div>
-      </div>
 
-      <div class="card">
+      <div class="card profilesummary__cardbody">
         <div class="card-body">
-          <h5 class="profile-details__card-title">Resume</h5>
+          <div class="row">
+            <div class="col-sm-11">
+          <h5 class="profile-details__card-title">Roll profile</h5>
+            </div>
+            <div class="col-sm-1">
+              <a routerLink="/role-profile">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+              </a>
+            </div>
+        </div>
+          <div class="card-body-text">
+            <div class="row rollprofile__management">
+              <div class="col rollprofile" id="skill1">Management: <span>{{profile.roleManagement.management}}</span></div>
+              <!-- <label>Management: <span>40%</span> </label> -->
+              <div class="col rollprofile__col" id="skill1">Portfolio <span>{{profile.roleManagement.portfolio}}</span></div>
+              <div class="col rollprofile__col" id="skill2">Account <span>{{profile.roleManagement.account}}</span></div>
+              <div class="col rollprofile__col" id="skill3">Project <span>{{profile.roleManagement.project}}</span></div>
+            </div>
+            
+            <div class="row rollprofile__technical">
+              <div class="col rollprofile" id="skill1">Technical: <span>{{profile.roleTechnical.technical}}</span></div>
+              <!-- <label>Technical: <span>20%</span> </label> -->
+              <div class="col rollprofile__col" id="skill1">Architect <span>{{profile.roleTechnical.architect}}</span></div>
+              <div class="col rollprofile__col" id="skill2">Tech lead <span>{{profile.roleTechnical.techLead}}</span></div>
+              <div class="col rollprofile__col" id="skill3">Developer <span>{{profile.roleTechnical.developer}}</span></div>
+            </div>
+
+            <div class="row rollprofile__funtional">
+              <div class="col rollprofile" id="skill1">Funtional: <span>{{profile.roleFunctional.functional}}</span></div>
+              <!-- <label>Funtional: <span>40%</span> </label> -->
+              <div class="col rollprofile__col" id="skill1">SME <span>{{profile.roleFunctional.sme}}</span></div>
+              <div class="col rollprofile__col" id="skill2">Lead con <span>{{profile.roleFunctional.leadCon}}</span></div>
+              <div class="col rollprofile__col" id="skill3">Consultant <span>{{profile.roleFunctional.consultant}}</span></div>
+            </div>
+
+          </div>
         </div>
       </div>
 
-      <div class="card">
+      <div class="card profilesummary__cardbody">
         <div class="card-body">
-          <h5 class="profile-details__card-title">About</h5>
+          <div class="row">
+            <div class="col-sm-11">
+              <h5 class="profile-details__card-title">Skill profile</h5>
+            </div>
+            <div class="col-sm-1">
+              <a routerLink="/skill-profile">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+
+          <div class="card-body-text">
+            <div class="row experience__primaryskill">
+              <label>Primary skill: </label>
+              <div class="col" id="skill1">{{profile.skillTechnical[0].name}}</div>
+              <div class="col" id="skill2">{{profile.skillTechnical[1].name}}</div>
+              <div class="col" id="skill3">{{profile.skillTechnical[2].name}}</div>
+            </div>
+            <div class="row experience__secondaryskill">
+              <label>secondary skill: </label>
+              <div class="col" id="skill4">{{profile.skillFunctional[0].name}}</div>
+              <div class="col" id="skill5">{{profile.skillFunctional[1].name}}</div>
+              <div class="col" id="skill6">{{profile.skillFunctional[2].name}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card profilesummary__cardbody">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-sm-11">
+              <h5 class="profile-details__card-title">About</h5>
+            </div>
+            <div class="col-sm-1">
+              <a routerLink="">
+              <i class="fa fa-pencil" aria-hidden="true"></i></a>
+            </div>
+        </div>
+
           <div class="card-body-text">
             <h5 class="profile-details__card-sub-title">Experience summary</h5>
             <ul style="list-style-type: square;">
@@ -91,31 +182,40 @@
         </div>
       </div>
 
-      <div class="card experience">
+      <div class="card profilesummary__cardbody experience">
         <div class="card-body">
-          <h5 class="profile-details__card-title">Experience</h5>
+          <div class="row">
+            <div class="col-sm-11">
+              <h5 class="profile-details__card-title">Experience</h5>
+            </div>
+            <div class="col-sm-1">
+              <a routerLink="/work-experience">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
           <div class="card-body-text">
             <div class="row">
               <div class="col-2">
                 cmp Logo
               </div>
               <div class="col-10">
-                <h5 class="experience__title"> Software designer</h5>
-                <p class="experience__company">On Device Solution Ltd.</p>
-                <p class="experience__duration-time">Nov 2020 – Present
+                <h5 class="experience__title">{{profile.workExperiences[0].role}}</h5>
+                <p class="experience__company">{{profile.workExperiences[0].companyName}}</p>
+                <p class="experience__duration-time">{{profile.workExperiences[0].from}} - {{profile.workExperiences[0].to}}
                   <span class="experience__duration">
-                    1 yr 6 months
+                    {{profile.totalYearsOfExperience}} yr
                   </span>
                 </p>
                 <p class="experience__location">Haydrabad, Pune.</p>
                 <div class="row experience__primaryskill">
-                  <label >Primary skill: </label>
-                    <div class="col" id="skill1">Angular</div>
-                    <div class="col" id="skill2">Bootstrap</div>
-                    <div class="col" id="skill3">Mongodb</div>
-                  </div>
-                  <div class="row experience__secondaryskill">
-                  <label >secondary skill: </label>
+                  <label>Primary skill: </label>
+                  <div class="col" id="skill1">{{profile.workExperiences[0].skills[0].name}}</div>
+                  <div class="col" id="skill2">{{profile.workExperiences[0].skills[1].name}}</div>
+                  <div class="col" id="skill3">{{profile.workExperiences[0].skills[2].name}}</div>
+                </div>
+                <div class="row experience__secondaryskill">
+                  <label>secondary skill: </label>
                   <div class="col" id="skill4">HTML</div>
                   <div class="col" id="skill5">CSS</div>
                   <div class="col" id="skill6">SCSS</div>
@@ -169,9 +269,19 @@
         </div>
       </div>
 
-      <div class="card education">
+      <div class="card profilesummary__cardbody education">
         <div class="card-body">
-          <h5 class="card-title profile-details__card-title">Education</h5>
+          <div class="row">
+            <div class="col-sm-11">
+              <h5 class="card-title profile-details__card-title">Education</h5>
+            </div>
+            <div class="col-sm-1">
+              <a routerLink="/education-details/:id">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
+          
           <div class="row">
             <div class="col-2"></div>
             <div class="col-10">
@@ -187,9 +297,18 @@
         </div>
       </div>
 
-      <div class="card certification">
+      <div class="card profilesummary__cardbody certification">
         <div class="card-body">
-          <h5 class="card-title profile-details__card-title">Certification</h5>
+          <div class="row">
+            <div class="col-sm-11">
+              <h5 class="card-title profile-details__card-title">Certification</h5>
+            </div>
+            <div class="col-sm-1">
+              <a routerLink="/certificate">
+                <i class="fa fa-pencil" aria-hidden="true"></i>
+                </a>
+            </div>
+        </div>
           <div class="row">
             <div class="col-2"></div>
             <div class="col-10">
@@ -210,8 +329,8 @@
     </div> <!-- col-8 close -->
 
 
-    <div class="col-4">
-      <div class="card candidateprofile">
+    <div class="col-5">
+      <div class="card profilesummary__cardbody candidateprofile">
         <div class="card-body">
           <h5 class="profile-details__card-title">Candidate profile</h5>
           <div class="card-body-text">
@@ -242,7 +361,7 @@
         </div>
       </div>
 
-      <div class="card">
+      <div class="card profilesummary__cardbody">
         <div class="card-body">
           <h5 class="profile-details__card-title">Opportunity</h5>
           <div class="card-body-text">
@@ -255,17 +374,61 @@
                 <input type="radio" name="options" id="option2" autocomplete="off">No
               </label>
             </div>
-            <!-- <div class="row">
-              <div class="col">
-              <button type="button" class="btn btn-outline-success">Yes</button>
-            </div>
-            <div class="col">
-            <button type="button" class="btn btn-outline-danger">No</button>
           </div>
-            </div> -->
-          </div>
-          </div>
+        </div>
       </div>
+
+      <div class="card profilesummary__cardbody">
+        <div class="card-body">
+          <h5 class="profile-details__card-title">1. Video</h5>
+          <h5 class="profile-details__card-sub-title">Experience summary</h5>
+        </div>
+      </div>
+
+      <div class="card profilesummary__cardbody">
+        <div class="card-body">
+          <h5 class="profile-details__card-title">2. Online code test</h5>
+          <div class="card-body-text">
+            <p></p>
+
+          </div>
+        </div>
+      </div>
+
+
+      <div class="card profilesummary__cardbody">
+        <div class="card-body">
+          <h5 class="profile-details__card-title">3. Github integration</h5>
+          <div class="card-body-text">
+            <p></p>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="card profilesummary__cardbody">
+        <div class="card-body">
+          <h5 class="profile-details__card-title">4. B.G check</h5>
+          <h5 class="profile-details__card-sub-title">Status</h5>
+          <div class="card-body-text">
+            <p></p>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="card profilesummary__cardbody">
+        <div class="card-body">
+          <h5 class="profile-details__card-title">5. SME mock interview notification</h5>
+          <div class="card-body-text">
+            <label>Notification 1:</label> <br>
+            <label>Notification 2:</label> <br>
+            <label>Notification 3:</label> <br>
+          </div>
+        </div>
+      </div>
+
+
     </div> <!-- col-4 close -->
 
 

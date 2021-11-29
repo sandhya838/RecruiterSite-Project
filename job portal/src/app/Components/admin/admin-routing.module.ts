@@ -27,6 +27,11 @@ const routes: Routes = [
         canActivate: [AuthGuard],
       },
       {
+        path: "about-you",
+        component:UserProfileComponent,
+        canActivate: [AuthGuard],
+      },
+      {
         path: "jobs",
         component: JobProfileCardComponent,
         canActivate: [AuthGuard],
@@ -34,6 +39,11 @@ const routes: Routes = [
       {
         path:"profile-summary",
         component:CandidateProfileSummaryComponent,
+        canActivate:[AuthGuard],
+      },
+      {
+        path:"work-experience",
+        component: WorkExperianceComponent,
         canActivate:[AuthGuard],
       },
       {
