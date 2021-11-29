@@ -17,10 +17,10 @@ export class CompanyDetailService {
 
     return header;
   }
-  putCompanyDetails(data:any): Observable<any> {
+  putCompanyDetails(data:any,id:String): Observable<any> {
     const header = this._getHeaders();
-    return this.http.post(
-      this.apiBaseUrl + CONSTANTS.COMPANYDETAILS,
+    return this.http.put(
+       CONSTANTS.COMPANYDETAILS +id,
       data,
       { headers: header }
     );

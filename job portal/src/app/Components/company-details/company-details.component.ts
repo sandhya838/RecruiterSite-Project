@@ -94,8 +94,13 @@ export class CompanyDetailsComponent implements OnInit {
         location: formValue.location,
       };
       console.log("finalData", finalData);
+      const userData = JSON.parse(
+        localStorage.getItem("rememberMe") === "true"
+          ? localStorage.getItem("user")
+          : (sessionStorage.getItem("user") as any)
+      );
       this.companyDetailService
-        .putCompanyDetails(data).subscribe((data: any) => {
+        .putCompanyDetails(userData?._id,formValue).subscribe((data: any) => {
           if (data.status === 200) {
             localStorage.getItem("rememberMe") === "true"
               ? localStorage.setItem("user", JSON.stringify(data.profile))

@@ -145,6 +145,6 @@ export const CONSTANTS = {
   ORGANIZATIONSIGNUP: BASEURL + "v1/register-orgnization",
   FORGOTPASSWORD:BASEURL + "/v1/forgot-password",
   UPLOADCERTIFICATES: BASEURL+'v1/upload-certificates/',
-  COMPANYDETAILS: BASEURL + "/v1/orgnization/:orgnizationId",
+  COMPANYDETAILS: BASEURL + "/v1/orgnization/",
   
 };
