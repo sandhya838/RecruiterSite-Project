@@ -6,7 +6,7 @@ module.exports = {
             if (err) {
                 res.status(500).send({ status: 400, message: 'Oops! Not able to create jobs. Please try after sometimes', jobs: {} });
             } else {
-                res.status(200).send({ status: 200, message: 'jobs created successfully.', data: {} });
+                res.status(200).send({ status: 200, message: 'jobs created successfully.', job: {} });
             }
         });
     },

@@ -25,6 +25,9 @@ var Jobschema = new Schema({
     roles: {
         type: String
     },
+    orgnizationId:{
+        type: String
+    },
     createdDate: {
         type: Date,
         default: Date.now

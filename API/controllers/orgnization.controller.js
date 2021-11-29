@@ -2,7 +2,6 @@ const Orgnizaton = require('../models/orgnization');
 const fs = require('fs');
 
 module.exports = {
-
     createRules: {
         name: "required|string",
         logo: "required|string",
@@ -16,7 +15,6 @@ module.exports = {
         email: "required|string",
         password: "required|string",
         contactNumber: "required|string",
-
     },
 
     create: (req, res) => {
@@ -63,20 +61,31 @@ module.exports = {
 
     // Update a orgnizaton identified by the orgnizationId in the request
     update: (req, res) => {
-        uploadFile(req.file, (isFileUploaded, fileName) => {
-            if (isFileUploaded) {
-                req.body.logo = fileName;
-                Orgnizaton.findOneAndUpdate({ _id: req.params.orgnizationId }, { $set: req.body }, { new: true }, (err, result) => {
-                    if (err) {
-                        res.status(500).send({ message: 'Oops! Not able to update orgnizaton. Please try after sometimes', orgnizatons: result });
-                    } else {
-                        res.status(200).send({ message: 'orgnizaton updated successfully.', orgnizaton: result });
-                    }
-                });
-            } else {
-                if (err) throw res.status(500).send({ status: 500, message: 'Oops! Not able to update orgnizaton. Please try after sometimes', orgnizaton: {} });
-            }
-        })
+        if (req.file) {
+            uploadFile(req.file, (isFileUploaded, fileName) => {
+                if (isFileUploaded) {
+                    req.body.logo = fileName;
+                    Orgnizaton.findOneAndUpdate({ _id: req.params.orgnizationId }, { $set: req.body }, { new: true }, (err, result) => {
+                        if (err) {
+                            res.status(500).send({ message: 'Oops! Not able to update orgnizaton. Please try after sometimes', orgnizatons: result });
+                        } else {
+                            res.status(200).send({ message: 'orgnizaton updated successfully.', orgnizaton: result });
+                        }
+                    });
+                } else {
+                    if (err) throw res.status(500).send({ status: 500, message: 'Oops! Not able to update orgnizaton. Please try after sometimes', orgnizaton: {} });
+                }
+            })
+        } else {
+            Orgnizaton.findOneAndUpdate({ _id: req.params.orgnizationId }, { $set: req.body }, { new: true }, (err, result) => {
+                if (err) {
+                    res.status(500).send({ message: 'Oops! Not able to update orgnizaton. Please try after sometimes', orgnizatons: result });
+                } else {
+                    res.status(200).send({ message: 'orgnizaton updated successfully.', orgnizaton: result });
+                }
+            });
+        }
+
     },
     // Delete a orgnizaton with the specified orgnizationId in the request
     delete: (req, res) => {
@@ -87,7 +96,29 @@ module.exports = {
                 res.status(200).send({ message: 'orgnizaton deleted successfully.', orgnizaton: result });
             }
         });
-    }
+    },
+    changePassword: (req, res) => {
+        Orgnizaton.findById({ _id: req.params.id }, (err, result) => {
+            if (err) {
+                res.status(500).send({ status: 500, message: err, orgnizaton: {} });
+            } else if (result) {
+                if (result.password === req.body.currentPassword) {
+                    Orgnizaton.findOneAndUpdate({ _id: req.params.id }, { $set: { password: req.body.password } }, { new: true }, (err, result) => {
+                        if (err) {
+                            res.status(500).send({ status: 500, message: err, orgnizaton: {} });
+                        } else {
+                            res.status(200).send({ status: 200, message: 'Password updated successfully.', orgnizaton: {} });
+                        }
+                    })
+
+                } else {
+                    res.status(500).send({ status: 500, message: 'Current password didn\'t matched', orgnizaton: {} });
+                }
+            } else {
+                res.status(500).send({ status: 500, message: 'Oops! Not able to get all orgnizaton. Please try after sometimes', orgnizaton: {} });
+            }
+        })
+    },
 }
 
 
