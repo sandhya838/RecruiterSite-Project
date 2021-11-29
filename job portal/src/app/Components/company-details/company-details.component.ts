@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-
-import { ConfigService } from 'src/app/config.service';
+import { data } from 'jquery';
 import { CommonService } from "src/app/services/common.service";
-import {  ViewChild } from '@angular/core';
+import { CompanyDetailService } from 'src/app/services/company-detail.service';
 
 @Component({
   selector: 'app-company-details',
@@ -23,7 +22,7 @@ export class CompanyDetailsComponent implements OnInit {
   router: any;
   constructor(
     public formBuilder: FormBuilder,
-    private configService: ConfigService,
+    private companyDetailService:CompanyDetailService,
     private commonService: CommonService
     //private router: Router,
     
@@ -95,9 +94,8 @@ export class CompanyDetailsComponent implements OnInit {
         location: formValue.location,
       };
       console.log("finalData", finalData);
-      this.configService
-        .updateUser(this.user?._id, finalData)
-        .subscribe((data: any) => {
+      this.companyDetailService
+        .putCompanyDetails(data).subscribe((data: any) => {
           if (data.status === 200) {
             localStorage.getItem("rememberMe") === "true"
               ? localStorage.setItem("user", JSON.stringify(data.profile))

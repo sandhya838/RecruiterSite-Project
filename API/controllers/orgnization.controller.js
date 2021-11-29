@@ -16,6 +16,7 @@ module.exports = {
         email: "required|string",
         password: "required|string",
         contactNumber: "required|string",
+
         
     },
 
@@ -24,6 +25,7 @@ module.exports = {
             if (isFileUploaded) {
                 req.body.logo = fileName;
                 Orgnizaton.create(req.body, (err, result) => {
+                    console.log(err)
                     if (err) {
                         res.status(500).send({ status: 500, message: 'Oops! Not able to create orgnizaton. Please try after sometimes', orgnizaton: {} });
                     } else {
