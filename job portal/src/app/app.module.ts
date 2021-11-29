@@ -17,6 +17,7 @@ import { TokenInterceptorService } from "./token-interceptor-service.service";
 import { OrganizationSignInComponent } from './Components/organization-sign-in/organization-sign-in.component';
 import { ErrorInterceptor } from "./services/error.interceptor";
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
+import {Ng2TelInputModule} from 'ng2-tel-input';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { ForgotPasswordComponent } from './Components/forgot-password/forgot-pas
     AgGridModule.withComponents(null),
     HttpClientModule,
     AngularMultiSelectModule,
+    Ng2TelInputModule
   ],
   providers: [
     {

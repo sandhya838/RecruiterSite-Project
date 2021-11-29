@@ -58,15 +58,15 @@ export class OrganizationSignUpComponent implements OnInit {
           } else {
             this.commonService.alert("error", response.message);
           }
-        },
-        (err) => {
-          console.log(err.message);
+        },error=> {
+          console.log(error);
         }
       );
     } else {
       this.signUp.markAllAsTouched();
     }
   }
+ 
 
   
   

@@ -16,6 +16,7 @@ module.exports = {
         email: "required|string",
         password: "required|string",
         contactNumber: "required|string",
+        
     },
 
     create: (req, res) => {
