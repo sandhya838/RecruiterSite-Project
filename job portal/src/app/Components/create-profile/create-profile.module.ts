@@ -4,7 +4,7 @@ import { CommonModule } from "@angular/common";
 import { CreateProfileRoutingModule } from "./create-profile-routing.module";
 import { CreateProfileComponent } from "./create-profile.component";
 import { CertificationComponent } from "../certification/certification.component";
-import { CompanyDetailsComponent } from "../company-details/company-details.component";
+
 import { EduDetailsComponent } from "../edu-details/edu-details.component";
 import { ExperianceComponent } from "../experiance/experiance.component";
 import { JobProfileCardComponent } from "../job-profile-card/job-profile-card.component";
@@ -26,7 +26,6 @@ import { FileUploadModule } from "@iplab/ngx-file-upload";
     RollprofileComponent,
     CertificationComponent,
     PrimarySkillComponent,
-    CompanyDetailsComponent,
     JobProfileCardComponent,
   ],
   imports: [

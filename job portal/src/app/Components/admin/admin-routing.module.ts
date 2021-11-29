@@ -4,10 +4,7 @@ import { AuthGuard } from "src/app/authguard";
 import { JobProfileCardComponent } from "src/app/Components/job-profile-card/job-profile-card.component";
 import { MyProfileComponent } from "src/app/my-profile/my-profile.component";
 import { CandidateProfileCardComponent } from "../candidate-profile-card/candidate-profile-card.component";
-<<<<<<< HEAD
-=======
 import { CandidateProfileSummaryComponent } from "../candidate-profile-summary/candidate-profile-summary.component";
->>>>>>> 193d407249fa207afcaf7ebd555c5545de84d611
 import { CertificationComponent } from "../certification/certification.component";
 import { DashboardComponent } from "../dashboard/dashboard.component";
 import { EduDetailsComponent } from "../edu-details/edu-details.component";
@@ -71,23 +68,10 @@ const routes: Routes = [
         canActivate:[AuthGuard],
       },
       {
-<<<<<<< HEAD
-        path:"Candidateprofile",
-        component: CandidateProfileCardComponent,
-        canActivate:[AuthGuard],
-      },
-      {
-        
-        path:"jobposting",
-        component: JobPostingComponent,
-        canActivate:[AuthGuard],
-      },
-=======
         path:"candidate-profile",
         component: CandidateProfileCardComponent,
         canActivate:[AuthGuard],
       },
->>>>>>> 193d407249fa207afcaf7ebd555c5545de84d611
       {
         path: "change-password",
         canActivate: [AuthGuard],

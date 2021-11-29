@@ -26,30 +26,12 @@ p {
     color: var(--secondaryAqua);
   }
 }
-<<<<<<< HEAD
-.col{
-  &__candidate-card{
-=======
 .col {
   &__candidate-card {
->>>>>>> 193d407249fa207afcaf7ebd555c5545de84d611
     margin-left: 26px;
     margin-top: 25px;
     box-shadow: 0px 0px 0px 1px var(--grayLightWarm);
   }
-<<<<<<< HEAD
-  &__candidate-card:hover{
-    box-shadow:1px 2px 5px 3px var(--grayLightWarm);
-    
-  }
-}
-.candidate-profile{
-  &__text{
-    color: var(--gray30);
-  }
-}
-
-=======
   &__candidate-card:hover {
     box-shadow: 1px 2px 5px 3px var(--grayLightWarm);
   }
@@ -91,4 +73,3 @@ p {
 
 
 
->>>>>>> 193d407249fa207afcaf7ebd555c5545de84d611
