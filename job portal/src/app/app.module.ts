@@ -17,8 +17,7 @@ import { TokenInterceptorService } from "./token-interceptor-service.service";
 import { CandidateProfileCardComponent } from './Components/candidate-profile-card/candidate-profile-card.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { ErrorInterceptor } from "./services/error.interceptor";
-import { JobPostingComponent } from './Components/job-posting/job-posting.component';
-
+import { CandidateProfileSummaryComponent } from './Components/candidate-profile-summary/candidate-profile-summary.component';
 
 @NgModule({
   declarations: [
@@ -28,8 +27,7 @@ import { JobPostingComponent } from './Components/job-posting/job-posting.compon
     SignInComponent,
     PageNotFoundComponent,
     CandidateProfileCardComponent,
-    JobPostingComponent,
-    
+    CandidateProfileSummaryComponent,
   ],
   imports: [
     BrowserModule,

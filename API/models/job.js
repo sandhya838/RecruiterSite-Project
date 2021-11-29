@@ -14,9 +14,9 @@ var Jobschema = new Schema({
         type: String
     },
     locpref: {
-        type: []
+        type: String
     },
-    roleProfile: [{
+    roleProfile: {
         management:{
             type:String
         },
@@ -26,11 +26,11 @@ var Jobschema = new Schema({
         functional:{
             type:String
         },
-    }],
-    salary: {
-        type: String
     },
     role: {
+        type: String
+    },
+    skills: {
         type: String
     },
     orgnizationId:{

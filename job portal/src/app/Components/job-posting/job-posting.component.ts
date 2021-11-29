@@ -67,36 +67,19 @@ export class JobPostingComponent implements OnInit {
   }
   onClick(formValue: any, isValid: boolean) {
     console.log(this.userForm.value)
+    
     if (isValid) {
-      const companyName = [];
-      const tempFormatedData = {
-        compname: "",
-        compintro: "",
-        typeofjob: "",
-        rol:"",
-        loc:"",
-        skill:""
-      };
-      tempFormatedData.compname = formValue.companyName;
-      tempFormatedData.compintro = formValue.companyIntro;
-      tempFormatedData.typeofjob = formValue.typeOfJob;
-      tempFormatedData.rol = formValue. roleProfile;
-      tempFormatedData.loc = formValue.locpref;
-      tempFormatedData. skill = formValue.skills;
-
-      companyName.push(tempFormatedData);
-      const finalData = {
-        jobpsting: companyName,
-      };
-      this.jobs
-        .createJobs(finalData)
+      const finalData={jobPost:formValue}
+      // console.log(finalData)
+      this.jobs.createJobs(finalData)
         .subscribe(
           (data: any) => {
-            console.log(data);
+            console.log(data)
             if (data.status === 200) {
               this.notifyService.showSuccess(data.message);
               //this.router.navigateByUrl("/certificate");
               this.userForm.reset();
+              console.log(finalData);
             } else {
               this.notifyService.showError(data.message);
             }

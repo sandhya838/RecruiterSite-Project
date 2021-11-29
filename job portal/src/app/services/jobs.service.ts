@@ -8,6 +8,7 @@ import { CONSTANTS } from "../constants";
 })
 export class JobsService {
   apiBaseUrl = CONSTANTS.BASEURL;
+  httpClient: any;
   constructor(private http: HttpClient) {}
   private _getHeaders() {
     let header = new HttpHeaders({
@@ -25,11 +26,11 @@ export class JobsService {
       { headers: header }
     );
   }
-  createJobs(searchString: any): Observable<any> {
+  createJobs(data: any): Observable<any> {
     const header = this._getHeaders();
     return this.http.post(
-      this.apiBaseUrl + CONSTANTS.CREATEJOBS,
-      searchString,
+      CONSTANTS.CREATEJOBS,
+      data,
       { headers: header }
     );
   }
