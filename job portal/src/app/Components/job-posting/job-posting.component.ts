@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { ConfigService } from 'src/app/config.service';
 import { NotificationService } from 'src/app/notification.service';
+import { JobsService } from 'src/app/services/jobs.service';
 
 @Component({
   selector: 'app-job-posting',
@@ -14,10 +15,14 @@ export class JobPostingComponent implements OnInit {
   userForm!: FormGroup;
   allData: any;
   alert: boolean = false;
+  dropdownSettings = {};
+  jobType: { id: number; name: string }[] = [];
+  viewPort: any;
+  roleProfile!: { id: number; name: string; }[];
 
   constructor(
     public formBuilder: FormBuilder,
-    private configService: ConfigService,
+    private jobs: JobsService,
     //private router: Router,
     private notifyService: NotificationService
   ) {}
@@ -27,10 +32,35 @@ export class JobPostingComponent implements OnInit {
       companyName: ["", [Validators.required]],
       companyIntro: ["", [Validators.required]],
       typeOfJob: ["", [Validators.required]],
-      roleProfile: ["", [Validators.required]],
+      role: ["", [Validators.required]],
+      management: ["", [Validators.required]],
+      technical: ["", [Validators.required]],
+      functional: ["", [Validators.required]],
       locpref: ["", [Validators.required]],
       skills: ["", [Validators.required]],
     });
+   
+    this.jobType = [
+      { id: 1, name: "contract" },
+      { id: 2, name: "Permanant" },
+      { id: 3, name: "Freelance" },
+      
+    ];
+    this.dropdownSettings = {
+      singleSelection: false,
+      idField: "name",
+      textField: "name",
+      itemsShowLimit: this.viewPort ? 3: 2,
+      limitSelection: 3,
+      allowSearchFilter: true,
+    };
+    
+    this.roleProfile= [
+      { id: 1, name: "management" },
+      { id: 2, name: "technical" },
+      { id: 3, name: "functional" },
+     
+    ];
   }
   get getControl() {
     return this.userForm.controls;
@@ -58,8 +88,8 @@ export class JobPostingComponent implements OnInit {
       const finalData = {
         jobpsting: companyName,
       };
-      this.configService
-        .updateUser(localStorage.getItem("ID"), finalData)
+      this.jobs
+        .createJobs(finalData)
         .subscribe(
           (data: any) => {
             console.log(data);

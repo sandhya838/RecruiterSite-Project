@@ -25,4 +25,13 @@ export class JobsService {
       { headers: header }
     );
   }
+  createJobs(searchString: any): Observable<any> {
+    const header = this._getHeaders();
+    return this.http.post(
+      this.apiBaseUrl + CONSTANTS.CREATEJOBS,
+      searchString,
+      { headers: header }
+    );
+  }
+
 }

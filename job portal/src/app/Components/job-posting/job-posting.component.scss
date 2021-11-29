@@ -1,9 +1,9 @@
 .container{
   align-items: center;
-  max-width: 450px;
+  // max-width: 450px;
 }
 .card{
-  width: 30rem;
+  // width: 30rem;
     border: 1px solid rgba(0,0,0,.125);
      }
       .jobposting{
@@ -34,6 +34,9 @@ label{
         justify-content: space-between;
       }
     }
+  }
+  .multiselect-dropdown[_ngcontent-tfh-c40] .dropdown-btn[_ngcontent-tfh-c40]{
+    border: 1px solid black !important;
   }
   
       
