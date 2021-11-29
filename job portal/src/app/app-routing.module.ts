@@ -29,7 +29,6 @@ const routes: Routes = [
   },
 
   { path: "signUp", component: SignUpComponent },
-
   // {path:"priSkill",component:PrimarySkillComponent, canActivate:[AuthGuard]}
   // {path: '**', redirectTo: 'PageNotFoundComponent'}
 ];

@@ -30,3 +30,29 @@
     }
   }
 }
+li{
+  list-style: none;
+ padding-top: 5px;
+  width: auto;
+  text-align: center;
+  padding-right: 25px;
+}
+li p{
+  margin-bottom: 2px;
+  padding-top: 6px;
+}
+p .fa{
+font-size: 18px;
+color: var(--dargGrayWarm02);
+&:hover{
+  color:var(--secondaryAqua);
+}
+}
+a{
+color: var(--grayDarkCool);
+&:hover{
+  color:var(--secondaryAqua);
+  text-decoration: none;
+}
+}
+

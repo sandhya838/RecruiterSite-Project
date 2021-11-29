@@ -14,7 +14,10 @@ import { PageNotFoundComponent } from "./Components/page-not-found/page-not-foun
 import { AgGridModule } from "ag-grid-angular";
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
 import { TokenInterceptorService } from "./token-interceptor-service.service";
+import { CandidateProfileCardComponent } from './Components/candidate-profile-card/candidate-profile-card.component';
+import { QRCodeModule } from 'angularx-qrcode';
 import { ErrorInterceptor } from "./services/error.interceptor";
+import { CandidateProfileSummaryComponent } from './Components/candidate-profile-summary/candidate-profile-summary.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,8 @@ import { ErrorInterceptor } from "./services/error.interceptor";
     SideListboxComponent,
     SignInComponent,
     PageNotFoundComponent,
+    CandidateProfileCardComponent,
+    CandidateProfileSummaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +40,7 @@ import { ErrorInterceptor } from "./services/error.interceptor";
     AgGridModule.withComponents(null),
     HttpClientModule,
     AngularMultiSelectModule,
+    QRCodeModule 
   ],
   providers: [
     {

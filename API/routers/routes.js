@@ -43,7 +43,7 @@ module.exports = (app) => {
   app.put('/v1/profile/:profileId', auth.authToken, profile.update);
   app.get('/v1/profiles', profile.findAll);
   // app.get('/v1/profiles', auth.authToken, profile.findAll);
-  // app.get('/v1/profile/:profileId', auth.authToken, profile.findOne);
+  app.get('/v1/profile/:profileId', auth.authToken, profile.findOne);
   // app.put('/v1/profile/:profiled', auth.authToken, requestValidator.validateParams(profile.updateRules), profile.update);
   app.delete('/v1/profile/:profileId', auth.authToken, profile.delete);
   app.put('/v1/change-password/:id', auth.authToken, profile.changePassword);
