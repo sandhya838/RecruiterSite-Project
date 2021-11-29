@@ -18,6 +18,10 @@ import { OrganizationSignInComponent } from './Components/organization-sign-in/o
 import { ErrorInterceptor } from "./services/error.interceptor";
 import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import {Ng2TelInputModule} from 'ng2-tel-input';
+import { CandidateProfileCardComponent } from './Components/candidate-profile-card/candidate-profile-card.component';
+import { QRCodeModule } from 'angularx-qrcode';
+
+import { CandidateProfileSummaryComponent } from './Components/candidate-profile-summary/candidate-profile-summary.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +33,8 @@ import {Ng2TelInputModule} from 'ng2-tel-input';
     OrganizationSignInComponent,
     ForgotPasswordComponent,
   
+    CandidateProfileCardComponent,
+    CandidateProfileSummaryComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,7 +47,8 @@ import {Ng2TelInputModule} from 'ng2-tel-input';
     AgGridModule.withComponents(null),
     HttpClientModule,
     AngularMultiSelectModule,
-    Ng2TelInputModule
+    Ng2TelInputModule,
+    QRCodeModule 
   ],
   providers: [
     {
