@@ -60,7 +60,8 @@
           <div class="row">
             <div class="col-sm-11">
               <h5 class="profile-details__card-title">Resume</h5>
-              <p>{{profile.resume}}</p>
+            
+              <a download="{{profile.resume}}" [href]="APIURL+'static/resume/'+profile.resume">Download resume</a>
             </div>
             <div class="col-sm-1">
               <a routerLink="">
