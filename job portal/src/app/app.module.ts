@@ -19,6 +19,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { ErrorInterceptor } from "./services/error.interceptor";
 import { CandidateProfileSummaryComponent } from './Components/candidate-profile-summary/candidate-profile-summary.component';
 import { JobPostingComponent } from './Components/job-posting/job-posting.component';
+import { JobListingComponent } from './Components/job-listing/job-listing.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { JobPostingComponent } from './Components/job-posting/job-posting.compon
     CandidateProfileCardComponent,
     CandidateProfileSummaryComponent,
     JobPostingComponent,
+    JobListingComponent,
   ],
   imports: [
     BrowserModule,
