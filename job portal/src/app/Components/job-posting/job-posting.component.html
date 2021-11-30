@@ -1,0 +1,276 @@
+<div class="container jobposting">
+    <div class="card">
+      <div class="card-body">
+        <form class="jobposting__form" [formGroup]="userForm" novalidate
+          (ngSubmit)="onClick(userForm.value, userForm.valid)">
+          <div class="row">
+            <div class="col-6">
+              <label for="companyName">Company Name</label><span class="text-danger">*</span>
+              <input type="text" class="form-control" placeholder="Enter Company Name" formControlName="companyName">
+              <div
+                  class="text-danger"
+                  *ngIf="
+                    !userForm.controls['companyName'].valid &&
+                    (userForm.controls['companyName'].touched ||
+                      userForm.controls['companyName'].dirty)
+                  "
+                >
+                  <div *ngIf="userForm.controls['companyName'].errors">
+                    <small *ngIf="userForm.controls['companyName'].errors.required">
+                      This field is required
+                    </small>
+                  </div>
+              </div>
+            </div>
+  
+            <div class="col-6">
+              <label>Company Introduction</label><span class="text-danger">*</span>
+              <input type="text" class="form-control" placeholder="Enter Company Introduction"
+                formControlName="companyIntro">
+                <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['companyIntro'].valid &&
+                  (userForm.controls['companyIntro'].touched ||
+                    userForm.controls['companyIntro'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['companyIntro'].errors">
+                  <small *ngIf="userForm.controls['companyIntro'].errors.required">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+  
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label>Type of Job</label>
+                <ng-multiselect-dropdown 
+                formControlName="typeOfJob"
+                 [placeholder]="'Select job type'"
+                  [settings]="dropdownSettings"
+                   [data]="jobType">
+                </ng-multiselect-dropdown>
+                <div class="text-danger" 
+                *ngIf="
+                      !userForm.controls['typeOfJob'].valid &&
+                      (userForm.controls['typeOfJob'].touched ||
+                      userForm.controls['typeOfJob'].dirty)
+          ">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <label>Role</label><span class="text-danger">*</span>
+              <select class="form-control" formControlName="role">
+                <option selected disabled value="">Role</option>
+                <option>Consultant</option>
+                <option>Lead</option>
+                <option>Architect</option>
+  
+              </select>
+              <div
+                  class="text-danger"
+                  *ngIf="
+                    !userForm.controls['role'].valid &&
+                    (userForm.controls['role'].touched ||
+                      userForm.controls['role'].dirty)
+                  "
+                >
+                  <div *ngIf="userForm.controls['role'].errors">
+                    <small *ngIf="userForm.controls['role'].errors.required">
+                      This field is required
+                    </small>
+                  </div>
+                </div>
+            </div>
+  
+            <div class="col-6">
+              <label>Location Preference</label><span class="text-danger">*</span>
+              <select class="form-control" formControlName="locationpreference">
+                <option selected disabled value="">location Preference</option>
+                <option>Mumbai</option>
+                <option>Pune</option>
+                <option>Dubai</option>
+              </select>
+              <div
+              class="text-danger"
+              *ngIf="
+                !userForm.controls['locationpreference'].valid &&
+                (userForm.controls['locationpreference'].touched ||
+                  userForm.controls['locationpreference'].dirty)
+              "
+            >
+              <div *ngIf="userForm.controls['locationpreference'].errors">
+                <small *ngIf="userForm.controls['locationpreference'].errors.required">
+                  This field is required
+                </small>
+              </div>
+            </div>
+            </div>
+          </div>
+          <label>Skills</label>
+          <div class="row">
+            <div class="col-6">
+              <label>Primary</label>
+              <select class="form-control" formControlName="skills">
+                <option selected disabled value="">skills</option>
+                <option>skill-1</option>
+                <option>skill-2</option>
+                <option>skill-3</option>
+                <option>skill-4</option>
+  
+              </select>
+              <div
+              class="text-danger"
+              *ngIf="
+                !userForm.controls['skills'].valid &&
+                (userForm.controls['skills'].touched ||
+                  userForm.controls['skills'].dirty)
+              "
+            >
+              <div *ngIf="userForm.controls['skills'].errors">
+                <small *ngIf="userForm.controls['skills'].errors.required">
+                  This field is required
+                </small>
+              </div>
+            </div>
+            </div>
+            <div class="col-6">
+              <label>secondary</label>
+              <select class="form-control" formControlName="skills">
+                <option selected disabled value="">skills</option>
+                <option>skill-1</option>
+                <option>skill-2</option>
+                <option>skill-3</option>
+                <option>skill-4</option>
+        </select>
+              <div
+              class="text-danger"
+              *ngIf="
+                !userForm.controls['skills'].valid &&
+                (userForm.controls['skills'].touched ||
+                  userForm.controls['skills'].dirty)
+              "
+            >
+              <div *ngIf="userForm.controls['skills'].errors">
+                <small *ngIf="userForm.controls['skills'].errors.required">
+                  This field is required
+                </small>
+              </div>
+            </div>
+             
+            </div>
+          </div>
+          <label>Role Profile</label>
+          <div class="row">
+            <div class="col-4">
+              <label>Management</label>
+              <select class="form-control" formControlName="management">
+                <option selected disabled value="">Percentage</option>
+                <option>10%</option>
+                <option>20%</option>
+                <option>30%</option>
+                <option>40%</option>
+                <option>50%</option>
+                <option>60%</option>
+                <option>70%</option>
+                <option>80%</option>
+                <option>90%</option>
+                <option>100%</option>
+  
+              </select>
+              <div
+              class="text-danger"
+              *ngIf="
+                !userForm.controls['management'].valid &&
+                (userForm.controls['management'].touched ||
+                  userForm.controls['management'].dirty)
+              "
+            >
+              <div *ngIf="userForm.controls['management'].errors">
+                <small *ngIf="userForm.controls['management'].errors.required">
+                  This field is required
+                </small>
+              </div>
+            </div>
+            </div>
+            <div class="col-4">
+              <label>Technical</label>
+              <select class="form-control" formControlName="technical">
+                <option selected disabled value="">Percentage</option>
+                <option>10%</option>
+                <option>20%</option>
+                <option>30%</option>
+                <option>40%</option>
+                <option>50%</option>
+                <option>60%</option>
+                <option>70%</option>
+                <option>80%</option>
+                <option>90%</option>
+                <option>100%</option>
+  
+              </select>
+              <div
+              class="text-danger"
+              *ngIf="
+                !userForm.controls['technical'].valid &&
+                (userForm.controls['technical'].touched ||
+                  userForm.controls['technical'].dirty)
+              "
+            >
+              <div *ngIf="userForm.controls['technical'].errors">
+                <small *ngIf="userForm.controls['technical'].errors.required">
+                  This field is required
+                </small>
+              </div>
+            </div>
+            </div>
+            <div class="col-4">
+              <label>Functional</label>
+              <select class="form-control" formControlName="functional">
+                <option selected disabled value="">Percentage</option>
+                <option>10%</option>
+                <option>20%</option>
+                <option>30%</option>
+                <option>40%</option>
+                <option>50%</option>
+                <option>60%</option>
+                <option>70%</option>
+                <option>80%</option>
+                <option>90%</option>
+                <option>100%</option>
+  
+              </select>
+              <div
+              class="text-danger"
+              *ngIf="
+                !userForm.controls['functional'].valid &&
+                (userForm.controls['functional'].touched ||
+                  userForm.controls['functional'].dirty)
+              "
+            >
+              <div *ngIf="userForm.controls['functional'].errors">
+                <small *ngIf="userForm.controls['functional'].errors.required">
+                  This field is required
+                </small>
+              </div>
+            </div>
+            </div>
+          </div>
+  
+          <hr />
+  
+          <div class="user-profile__action">
+            <div class="pl-1">
+              <button class="job-btn job-btn-mini" type="submit">Submit</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
