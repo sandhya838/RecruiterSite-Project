@@ -17,6 +17,7 @@ export class OrganizationSignInComponent implements OnInit {
   orgsignIn: FormGroup = this.formBuilder.group({
     email:  [null, [Validators.required]],
     password: ["", [Validators.required]],
+    rememberMe: [false],
   });
   allData: any;
   credentials: any = {};

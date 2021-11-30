@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { OrganizationSignInService } from 'src/app/services/organization-sign-in.service';
 import {CommonService} from 'src/app/services/common.service';
+import { FileUploadValidators } from '@iplab/ngx-file-upload';
+
 
 @Component({
   selector: 'app-organization-sign-up',
@@ -19,6 +21,10 @@ export class OrganizationSignUpComponent implements OnInit {
     contactNumber: ["", [Validators.required]],
     email: ["", [Validators.required]],
     password: ["", [Validators.required]],
+    file: new FormControl(null, [
+      Validators.required,
+      FileUploadValidators.filesLimit(1),
+    ]),
   });
  
   isPassword:boolean = false;
@@ -49,7 +55,8 @@ export class OrganizationSignUpComponent implements OnInit {
       fd.append("email", formValue.email);
       fd.append("password", this.commonService.encrypt(formValue.password));
      
-      console.log("formValue", fd);
+      // console.log("formValue", fd);
+      
       this.organizationSignInService.register(fd).subscribe(
         (response: any) => {
           if (response.status === 200) {
@@ -66,6 +73,8 @@ export class OrganizationSignUpComponent implements OnInit {
       this.signUp.markAllAsTouched();
     }
   }
+
+  
  
 
   

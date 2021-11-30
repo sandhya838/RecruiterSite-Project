@@ -142,7 +142,7 @@
             placeholder="password"
             formControlName="password"
           />
-          <div class="sign-in__wrapper__icon" (click)="showPassword()">
+          <div class="sign-in__wrapper__icon" style="margin-top:-30px" (click)="showPassword()">
             <i class="fa fa-eye" *ngIf="!isPassword" aria-hidden="true"></i>
             <i class="fa fa-eye-slash" *ngIf="isPassword" aria-hidden="true"></i>
           </div>
@@ -157,6 +157,13 @@
             </div>
           </div>
         </div>
+
+
+        <form>
+          <div class="form-group">
+            <input type="file" class="form-control-file"  id="exampleFormControlFile1">
+          </div>
+        </form>
 
 
        

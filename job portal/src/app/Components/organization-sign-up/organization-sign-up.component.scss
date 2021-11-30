@@ -25,6 +25,7 @@
       background: var(--color-light);
       cursor: pointer;
     }
+    
     .form-control {
       &:hover,
       &:focus,
@@ -125,6 +126,16 @@
     }
   }
 }
+
+.form-control-file, .form-control-range {
+  display: block;
+  width: 100%;
+  border: 1px solid #484242;
+  line-height: 32px;
+  border-radius: 7px;
+  font-size: 12px;
+}
+
 
 
 
