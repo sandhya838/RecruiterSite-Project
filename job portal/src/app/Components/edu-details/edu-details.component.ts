@@ -58,8 +58,10 @@ export class EduDetailsComponent implements OnInit {
     for (const item of userData.educationalDetails) {
       this.addMore();
     }
-    this.remoreForm(userData.educationalDetails);
-    this.userForm.patchValue(userData);
+    if (userData.educationalDetails?.length) {
+      this.remoreForm(userData.educationalDetails);
+      this.userForm.patchValue(userData);
+    }
   }
 
   inililzeForm() {
@@ -99,6 +101,7 @@ export class EduDetailsComponent implements OnInit {
       const finalData = {
         educationalDetails: formValue?.educationalDetails,
         updatedBy: this.userId,
+        isProfileUpdated: true,
       };
       this.configService
         .updateUser(this.userId, finalData)

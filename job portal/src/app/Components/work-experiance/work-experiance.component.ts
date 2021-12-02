@@ -1,3 +1,4 @@
+import { invalid } from "@angular/compiler/src/render3/view/util";
 import { Component, OnInit } from "@angular/core";
 import {
   FormArray,
@@ -67,7 +68,6 @@ export class WorkExperianceComponent implements OnInit {
   }
 
   updateValueInForm(userData: any) {
-    console.log("adfdsfsdfs", userData);
     for (const item of userData.workExperiences) {
       item.joinmonth = item?.from?.split("/")[0].trim();
       item.joinyear = item?.from?.split("/")[1].trim();
@@ -75,8 +75,10 @@ export class WorkExperianceComponent implements OnInit {
       item.jointoyear = item?.to?.split("/")[1].trim();
       this.addMore();
     }
-    this.remoreForm(userData.workExperiences);
-    this.userForm.patchValue(userData);
+    if (userData.workExperiences.length) {
+      this.remoreForm(userData.workExperiences);
+      this.userForm.patchValue(userData);
+    }
   }
 
   inililzeForm() {
@@ -121,6 +123,7 @@ export class WorkExperianceComponent implements OnInit {
   }
 
   onClick(formValue: any, isValid: boolean) {
+    console.log('dsfdsfsdf',invalid, formValue);
     if (isValid) {
       for (const item of formValue?.workExperiences) {
         item["to"] = item.jointomonth + " / " + item.jointoyear;

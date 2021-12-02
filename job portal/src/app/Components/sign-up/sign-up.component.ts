@@ -49,6 +49,7 @@ export class SignUpComponent implements OnInit {
   onSubmitForm(isValid: boolean, formValue: any) {
     if (isValid) {
       let fd = new FormData();
+      fd.append("role", "candidate");
       fd.append("resume", formValue.file[0]);
       fd.append("firstName", formValue.firstName);
       fd.append("lastName", formValue.lastName);
