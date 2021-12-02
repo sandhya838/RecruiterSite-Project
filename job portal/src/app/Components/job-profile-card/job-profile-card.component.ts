@@ -23,7 +23,6 @@ export class JobProfileCardComponent implements OnInit {
       roles: userProifleData?.roles,
     };
 
-    console.log("userProifleData", requestHeader);
     this.jobsService.getRecommendedJobs(requestHeader).subscribe((result) => {
       if (result.matchedJobs.length) {
         this.recommendedJobs = result.matchedJobs;
