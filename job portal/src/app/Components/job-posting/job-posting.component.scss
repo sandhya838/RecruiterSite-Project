@@ -1,0 +1,43 @@
+.container{
+    align-items: center;
+    // max-width: 450px;
+  }
+  .card{
+    // width: 30rem;
+      border: 1px solid rgba(0,0,0,.125);
+       }
+        .jobposting{
+            align-items: center;
+            &__form{
+                padding:1.25rem;
+            }
+        }
+  input,select{
+      margin-bottom: 10px;
+      border: 1px solid #333333;
+      border-radius: 7px;
+      font-size: 12px;
+      height: 40px;
+  }
+  label{
+      font-size: 13px;
+  }
+  .user-profile {
+      &__action {
+        display: flex;
+        justify-content: flex-end;
+      }
+    }
+    @media all and (max-width: 767px) {
+      .user-profile {
+        &__action {
+          justify-content: space-between;
+        }
+      }
+    }
+    .multiselect-dropdown[_ngcontent-tfh-c40] .dropdown-btn[_ngcontent-tfh-c40]{
+      border: 1px solid black !important;
+    }
+    
+        
+  

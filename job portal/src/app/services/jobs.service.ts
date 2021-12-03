@@ -10,8 +10,13 @@ export class JobsService {
   apiBaseUrl = CONSTANTS.BASEURL;
   constructor(private http: HttpClient) {}
   private _getHeaders() {
+    const token = (
+      localStorage.getItem("rememberMe") === "true"
+        ? localStorage.getItem("token")
+        : (sessionStorage.getItem("token") as any)
+    );
     let header = new HttpHeaders({
-      "x-access-token": sessionStorage.getItem("token") as string,
+      "x-access-token":  token,
       "Content-Type": "application/json",
     });
 
@@ -24,5 +29,15 @@ export class JobsService {
       searchString,
       { headers: header }
     );
+    
   }
+  createJobs(data: any): Observable<any> {
+    console.log(data)
+    const header = this._getHeaders();
+    return this.http.post(
+      CONSTANTS.CREATEJOBS,
+      data,
+      { headers: header }
+    );
+}
 }

@@ -4,25 +4,33 @@ var Schema = mongoose.Schema;
 
 
 var Jobschema = new Schema({
-    title: {
+    companyName: {
         type: String
     },
-    jobType: {
+    companyIntro: {
+        type: String
+    },
+    typeOfJob: {
+        type: []
+    },
+    locationpreference: {
+        type: String
+    },
+    roleProfile: {
+        management:{
+            type:String
+        },
+        technical:{
+            type:String
+        },
+        functional:{
+            type:String
+        },
+    },
+    role: {
         type: String
     },
     skills: {
-        type: []
-    },
-    location: {
-        type: []
-    },
-    experience: {
-        type: String,
-    },
-    salary: {
-        type: String
-    },
-    roles: {
         type: String
     },
     orgnizationId:{

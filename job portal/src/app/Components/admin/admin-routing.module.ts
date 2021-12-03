@@ -10,6 +10,7 @@ import { CompanyDetailsComponent } from "../company-details/company-details.comp
 import { DashboardComponent } from "../dashboard/dashboard.component";
 import { EduDetailsComponent } from "../edu-details/edu-details.component";
 import { ExperianceComponent } from "../experiance/experiance.component";
+import { JobPostingComponent } from "../job-posting/job-posting.component";
 import { RollprofileComponent } from "../rollprofile/rollprofile.component";
 import { SkillProfileComponent } from "../skill-profile/skill-profile.component";
 import { UserProfileComponent } from "../user-profile/user-profile.component";
@@ -79,6 +80,11 @@ const routes: Routes = [
       {
         path:"candidate-profile",
         component: CandidateProfileCardComponent,
+        canActivate:[AuthGuard],
+      },
+      {
+        path:"job-post",
+        component: JobPostingComponent,
         canActivate:[AuthGuard],
       },
       {
