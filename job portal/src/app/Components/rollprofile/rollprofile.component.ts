@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ConfigService } from "src/app/config.service";
-import { NotificationService } from "src/app/notification.service";
 import { CommonService } from "src/app/services/common.service";
 @Component({
   selector: "app-rollprofile",

@@ -7,24 +7,28 @@ var https = require('https');
 const bodyParser = require('body-parser');
 const routes = require('./routers/routes');
 const app = express()
-
+app.use('/static', express.static('public'));
+app.use(cors({
+  "origin": "*",
+  "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
+  "preflightContinue": false,
+  "optionsSuccessStatus": 204
+}))
 app.use(express.json());
 app.use(express.urlencoded({
   limit: '50000gb', extended: true
 }));
-app.use('/static', express.static('public'));
-app.use(cors())
+
 
 mongoose.connect(constants.URL, constants.OPTIONS).then(
   () => { console.log('Database connection is ready'); },
   err => {
-    console.log('error', err);
+    console.error('error', err);
     throw err;
   }
 );
 
 app.get('/', (req, res) => {
-  console.log('req', req);
   res.json({ "message": "Welcome to rent management application. Manage your all tanents and amenities." });
 });
 routes(app); //register the route

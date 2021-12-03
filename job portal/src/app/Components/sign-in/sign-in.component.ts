@@ -50,7 +50,10 @@ export class SignInComponent implements OnInit {
               sessionStorage.setItem("token", response.token);
               sessionStorage.setItem("user", JSON.stringify(response.user));
             }
-            this.router.navigate(["/dashboard"]);
+
+            this.router.navigate([
+              response?.isProfileUpdated ? "/dashboard" : "/profile/about-you",
+            ]);
           } else if (response.status === 400) {
             this.commonService.alert("error", response.message);
           } else {

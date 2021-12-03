@@ -4,6 +4,7 @@ var Schema = mongoose.Schema;
 
 
 var ProfileSchema = new Schema({
+
   title: {
     type: String
   },
@@ -12,6 +13,12 @@ var ProfileSchema = new Schema({
   },
   skills: {
     type: []
+  },
+  role: {
+    type: String
+  },
+  isProfileUpdated: {
+    type: Boolean
   },
   email: {
     type: String,

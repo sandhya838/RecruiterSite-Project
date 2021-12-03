@@ -30,6 +30,8 @@ export class UserProfileComponent implements OnInit {
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
       title: ["", [Validators.required]],
+      email: ["", [Validators.required, Validators.email]],
+      mobileNumber: ["", [Validators.required]],
       firstName: ["", [Validators.required, Validators.pattern(this.pattern)]],
       middleName: [""],
       lastName: ["", [Validators.required, Validators.pattern(this.pattern)]],
