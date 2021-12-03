@@ -273,3 +273,29 @@
     </form>
   </div>
 </div>
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Certification</h4>
+  </div>
+  <div class="modal-body">
+    <h6 class="small">Do you have done certification?</h6>
+  </div>
+  <div class="modal-footer">
+    <button
+      type="button"
+      class="job-btn job-btn-outline"
+      [routerLink]="'/profile-summary'"
+      (click)="modal.close('Save click')"
+    >
+      No
+    </button>
+    <button
+      type="button"
+      class="job-btn job-btn-mini"
+      [routerLink]="'/profile/certificates'"
+      (click)="modal.close('Save click')"
+    >
+      Yes
+    </button>
+  </div>
+</ng-template>

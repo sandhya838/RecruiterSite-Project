@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import {
   FormArray,
   FormBuilder,
@@ -9,6 +9,7 @@ import {
 import { Router } from "@angular/router";
 import { ConfigService } from "src/app/config.service";
 import { CommonService } from "src/app/services/common.service";
+import { NgbModal, ModalDismissReasons } from "@ng-bootstrap/ng-bootstrap";
 @Component({
   selector: "app-edu-details",
   templateUrl: "./edu-details.component.html",
@@ -16,7 +17,7 @@ import { CommonService } from "src/app/services/common.service";
 })
 export class EduDetailsComponent implements OnInit {
   userForm!: FormGroup;
-
+  @ViewChild("content", { static: false }) private content: any;
   years = ([] = this.generateArrayOfYears());
   months = ([] = [
     "January",
@@ -37,7 +38,8 @@ export class EduDetailsComponent implements OnInit {
     public formBuilder: FormBuilder,
     private configService: ConfigService,
     private router: Router,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private modalService: NgbModal
   ) {
     this.userForm = this.formBuilder.group({
       educationalDetails: this.formBuilder.array([this.inililzeForm()]),
@@ -58,8 +60,10 @@ export class EduDetailsComponent implements OnInit {
     for (const item of userData.educationalDetails) {
       this.addMore();
     }
-    this.remoreForm(userData.educationalDetails);
-    this.userForm.patchValue(userData);
+    if (userData.educationalDetails?.length) {
+      this.remoreForm(userData.educationalDetails);
+      this.userForm.patchValue(userData);
+    }
   }
 
   inililzeForm() {
@@ -99,6 +103,7 @@ export class EduDetailsComponent implements OnInit {
       const finalData = {
         educationalDetails: formValue?.educationalDetails,
         updatedBy: this.userId,
+        isProfileUpdated: true,
       };
       this.configService
         .updateUser(this.userId, finalData)
@@ -108,7 +113,7 @@ export class EduDetailsComponent implements OnInit {
               ? localStorage.setItem("user", JSON.stringify(data.profile))
               : sessionStorage.setItem("user", JSON.stringify(data.profile));
             this.commonService.alert("success", data.message);
-            this.router.navigateByUrl("/profile/certificates");
+            this.open(this.content);
           } else {
             this.commonService.alert("error", data.message);
           }
@@ -126,5 +131,8 @@ export class EduDetailsComponent implements OnInit {
       years.push(i);
     }
     return years;
+  }
+  open(content: any) {
+    this.modalService.open(content);
   }
 }

@@ -71,6 +71,7 @@
                     class="form-check-input"
                     id="isCurrentCompany"
                     formControlName="isCurrentCompany"
+                    (change)="onIsCurrentCompany(i, getValidity(i).get('isCurrentCompany')!.value)"
                   />
                   <label class="form-check-label" for="isCurrentCompany"
                     >Is your current company?</label
