@@ -1,4 +1,4 @@
-<div class=" profilesummary">
+<div class="profilesummary">
   <div class="d-flex justify-content-between align-items-center">
     <h2 class="profile-details__heading">profile summary</h2>
     <nav aria-label="breadcrumb">
@@ -17,34 +17,48 @@
     <div class="col-7">
       <div class="row profile-details__profile-topcard">
         <div class="profile-details__profile">
+          <div class="profile-details__profile__profile-img">
+            <img class="card-img-top" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Card image cap"
+              class="rounded-circle" width="135" />
+          </div>
         </div>
       </div>
-      <div class="card profilesummary__cardbody" >
+      <div class="card profilesummary__cardbody">
         <div class="card-body">
           <div class="row">
             <div class="col-sm-11">
-              <img class="card-img-top" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Card image cap"
-                class="rounded-circle" width="135">
+              <!-- <img class="card-img-top" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Card image cap"
+                class="rounded-circle" width="135"> -->
             </div>
             <div class="col-sm-1">
               <a routerLink="/about-you">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
               </a>
             </div>
           </div>
           <div class="row profile-details__userDetails">
             <div class="col-7">
-              <h4 class="profile-details__username"> {{profile.firstName}} {{profile.middleName}} {{profile.lastName}}</h4>
-              <p class="profile-details__worktitle"> {{profile.workExperiences[0].role}}</p>
+              <h4 class="profile-details__username">
+                {{ profile.firstName }} {{ profile.middleName }}
+                {{ profile.lastName }}
+              </h4>
+              <p class="profile-details__worktitle">
+                {{ profile.workExperiences[0].role }}
+              </p>
               <p class="profile-details__location">Pune, Maharastra, India</p>
-              <p class="profile-details__contact"> +91 8380891905</p>
-              <p class="profile-details__email"> {{profile.email}}</p>
+              <p class="profile-details__contact">+91 8380891905</p>
+              <p class="profile-details__email">{{ profile.email }}</p>
             </div>
             <div class="col-5">
               <ul>
-                <li class="profile-details__cmpname"><i class="fa fa-building" aria-hidden="true"></i> {{profile.workExperiences[0].companyName}}</li>
-                <li class="profile-details__cmpname"><i class="fa fa-building" aria-hidden="true"></i>Indian Institute
-                  of Management, Calcutta</li>
+                <li class="profile-details__cmpname">
+                  <i class="fa fa-building" aria-hidden="true"></i>
+                  {{ profile.workExperiences[0].companyName }}
+                </li>
+                <li class="profile-details__cmpname">
+                  <i class="fa fa-building" aria-hidden="true"></i>Indian
+                  Institute of Management, Calcutta
+                </li>
               </ul>
             </div>
           </div>
@@ -60,15 +74,17 @@
           <div class="row">
             <div class="col-sm-11">
               <h5 class="profile-details__card-title">Resume</h5>
-            
-              <a download="{{profile.resume}}" [href]="APIURL+'static/resume/'+profile.resume">Download resume</a>
+              <a href="{{ APIURL + 'static/resume/' + profile.resume }}" target="_blank" [download]="profile.resume">
+                <i class="fa fa-download" aria-hidden="true"></i>
+                {{ profile.resume }}
+              </a>
             </div>
             <div class="col-sm-1">
               <a routerLink="">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
               </a>
             </div>
-        </div>
+          </div>
         </div>
       </div>
 
@@ -76,39 +92,64 @@
         <div class="card-body">
           <div class="row">
             <div class="col-sm-11">
-          <h5 class="profile-details__card-title">Roll profile</h5>
+              <h5 class="profile-details__card-title">Roll profile</h5>
             </div>
             <div class="col-sm-1">
               <a routerLink="/role-profile">
-              <i class="fa fa-pencil" aria-hidden="true"></i>
+                <i class="fa fa-pencil" aria-hidden="true"></i>
               </a>
             </div>
-        </div>
+          </div>
           <div class="card-body-text">
             <div class="row rollprofile__management">
-              <div class="col rollprofile" id="skill1">Management: <span>{{profile.roleManagement.management}}</span></div>
+              <div class="col rollprofile" id="skill1">
+                Management: <span>{{ profile.roleManagement.management }}</span>
+              </div>
               <!-- <label>Management: <span>40%</span> </label> -->
-              <div class="col rollprofile__col" id="skill1">Portfolio <span>{{profile.roleManagement.portfolio}}</span></div>
-              <div class="col rollprofile__col" id="skill2">Account <span>{{profile.roleManagement.account}}</span></div>
-              <div class="col rollprofile__col" id="skill3">Project <span>{{profile.roleManagement.project}}</span></div>
+              <div class="col rollprofile__col" id="skill1">
+                Portfolio <span>{{ profile.roleManagement.portfolio }}</span>
+              </div>
+              <div class="col rollprofile__col" id="skill2">
+                Account <span>{{ profile.roleManagement.account }}</span>
+              </div>
+              <div class="col rollprofile__col" id="skill3">
+                Project <span>{{ profile.roleManagement.project }}</span>
+              </div>
             </div>
-            
+
             <div class="row rollprofile__technical">
-              <div class="col rollprofile" id="skill1">Technical: <span>{{profile.roleTechnical.technical}}</span></div>
+              <div class="col rollprofile" id="skill1">
+                Technical: <span>{{ profile?.roleTechnical?.technical }}</span>
+              </div>
               <!-- <label>Technical: <span>20%</span> </label> -->
-              <div class="col rollprofile__col" id="skill1">Architect <span>{{profile.roleTechnical.architect}}</span></div>
-              <div class="col rollprofile__col" id="skill2">Tech lead <span>{{profile.roleTechnical.techLead}}</span></div>
-              <div class="col rollprofile__col" id="skill3">Developer <span>{{profile.roleTechnical.developer}}</span></div>
+              <div class="col rollprofile__col" id="skill1">
+                Architect <span>{{ profile?.roleTechnical?.architect }}</span>
+              </div>
+              <div class="col rollprofile__col" id="skill2">
+                Tech lead <span>{{ profile?.roleTechnical?.techLead }}</span>
+              </div>
+              <div class="col rollprofile__col" id="skill3">
+                Developer <span>{{ profile?.roleTechnical?.developer }}</span>
+              </div>
             </div>
 
             <div class="row rollprofile__funtional">
-              <div class="col rollprofile" id="skill1">Funtional: <span>{{profile.roleFunctional.functional}}</span></div>
+              <div class="col rollprofile" id="skill1">
+                Funtional:
+                <span>{{ profile?.roleFunctional?.functional }}</span>
+              </div>
               <!-- <label>Funtional: <span>40%</span> </label> -->
-              <div class="col rollprofile__col" id="skill1">SME <span>{{profile.roleFunctional.sme}}</span></div>
-              <div class="col rollprofile__col" id="skill2">Lead con <span>{{profile.roleFunctional.leadCon}}</span></div>
-              <div class="col rollprofile__col" id="skill3">Consultant <span>{{profile.roleFunctional.consultant}}</span></div>
+              <div class="col rollprofile__col" id="skill1">
+                SME <span>{{ profile?.roleFunctional?.sme }}</span>
+              </div>
+              <div class="col rollprofile__col" id="skill2">
+                Lead con <span>{{ profile?.roleFunctional?.leadCon }}</span>
+              </div>
+              <div class="col rollprofile__col" id="skill3">
+                Consultant
+                <span>{{ profile?.roleFunctional?.consultant }}</span>
+              </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -122,22 +163,34 @@
             <div class="col-sm-1">
               <a routerLink="/skill-profile">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
-                </a>
+              </a>
             </div>
-        </div>
+          </div>
 
           <div class="card-body-text">
             <div class="row experience__primaryskill">
               <label>Primary skill: </label>
-              <div class="col experience__col" id="skill1">{{profile.skillTechnical[0].name}}</div>
-              <div class="col experience__col" id="skill2">{{profile.skillTechnical[1].name}}</div>
-              <div class="col experience__col" id="skill3">{{profile.skillTechnical[2].name}}</div>
+              <div class="col" id="skill1">
+                {{ profile?.skillTechnical[0]?.name }}
+              </div>
+              <div class="col" id="skill2">
+                {{ profile?.skillTechnical[1]?.name }}
+              </div>
+              <div class="col" id="skill3">
+                {{ profile?.skillTechnical[2]?.name }}
+              </div>
             </div>
             <div class="row experience__secondaryskill">
               <label>secondary skill: </label>
-              <div class="col experience__col" id="skill4">{{profile.skillFunctional[0].name}}</div>
-              <div class="col experience__col" id="skill5">{{profile.skillFunctional[1].name}}</div>
-              <div class="col experience__col" id="skill6">{{profile.skillFunctional[2].name}}</div>
+              <div class="col" id="skill4">
+                {{ profile?.skillFunctional[0]?.name }}
+              </div>
+              <div class="col" id="skill5">
+                {{ profile?.skillFunctional[1]?.name }}
+              </div>
+              <div class="col" id="skill6">
+                {{ profile?.skillFunctional[2]?.name }}
+              </div>
             </div>
           </div>
         </div>
@@ -151,33 +204,64 @@
             </div>
             <div class="col-sm-1">
               <a routerLink="">
-              <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <i class="fa fa-pencil" aria-hidden="true"></i></a>
             </div>
-        </div>
+          </div>
 
           <div class="card-body-text">
             <h5 class="profile-details__card-sub-title">Experience summary</h5>
-            <ul style="list-style-type: square;">
-              <li> 21 years of IT industry experience of which 17 yrs in Solution Architecting, Deal shaping and Service
-                Delivery of large scale System Transformation & Application Management engagements on SAP, S4 HANA &
-                Digital Stack and 4 Yrs in Marketing the IT services (CAD, GIS & Remote Sensing) & products.</li>
-              <li> Portfolio Management expertise, with complete P&L responsibility for revenues around 20Mn, across
-                Continental Europe, Europe & NA geographies for Utilities, Mfg and Life Sciences businesses.</li>
-              <li>Expert in Strategizing Industry 4.0 Digital Transformation across business functions, enterprise IT
-                operations so as to influence both the operational efficiency & evolving newer business models.</li>
-              <li>Experienced in setting up large scale Application Management engagements including-Mobilization,
-                Transition, Service introduction & Performance Management</li>
-              <li>Successfully handled large Multi Geo Transformation program implementation including Program Planning
-                and execution with stake holder management & reporting.</li>
-              <li>Excellent skills in aligning to the senior business and internal stake holders to envisage the
-                Progressively Growth Oriented Account Plan in alignment with the customer Business & IT objectives.</li>
-              <li>Portfolio planning and execution with multi-site/ offshore/ Near-Shore delivery with various delivery
-                models to optimize the TCO, improved service availability and customer satisfaction.</li>
-              <li>Good experience on the Contract Commercials & deal shaping.</li>
-              <li>Agile Delivery, Cloud Computing (AWS Certified), Blockchain, Data & Analytics (AI, ML), Automation.
+            <ul style="list-style-type: square">
+              <li>
+                21 years of IT industry experience of which 17 yrs in Solution
+                Architecting, Deal shaping and Service Delivery of large scale
+                System Transformation & Application Management engagements on
+                SAP, S4 HANA & Digital Stack and 4 Yrs in Marketing the IT
+                services (CAD, GIS & Remote Sensing) & products.
               </li>
-              <li>Industry Domains: Energy Utilities (Reg/De-Reg), Mining & Minerals, Chemicals, BFSI, Manufacturing,
-                Logistics & Life Sciences</li>
+              <li>
+                Portfolio Management expertise, with complete P&L responsibility
+                for revenues around 20Mn, across Continental Europe, Europe & NA
+                geographies for Utilities, Mfg and Life Sciences businesses.
+              </li>
+              <li>
+                Expert in Strategizing Industry 4.0 Digital Transformation
+                across business functions, enterprise IT operations so as to
+                influence both the operational efficiency & evolving newer
+                business models.
+              </li>
+              <li>
+                Experienced in setting up large scale Application Management
+                engagements including-Mobilization, Transition, Service
+                introduction & Performance Management
+              </li>
+              <li>
+                Successfully handled large Multi Geo Transformation program
+                implementation including Program Planning and execution with
+                stake holder management & reporting.
+              </li>
+              <li>
+                Excellent skills in aligning to the senior business and internal
+                stake holders to envisage the Progressively Growth Oriented
+                Account Plan in alignment with the customer Business & IT
+                objectives.
+              </li>
+              <li>
+                Portfolio planning and execution with multi-site/ offshore/
+                Near-Shore delivery with various delivery models to optimize the
+                TCO, improved service availability and customer satisfaction.
+              </li>
+              <li>
+                Good experience on the Contract Commercials & deal shaping.
+              </li>
+              <li>
+                Agile Delivery, Cloud Computing (AWS Certified), Blockchain,
+                Data & Analytics (AI, ML), Automation.
+              </li>
+              <li>
+                Industry Domains: Energy Utilities (Reg/De-Reg), Mining &
+                Minerals, Chemicals, BFSI, Manufacturing, Logistics & Life
+                Sciences
+              </li>
             </ul>
           </div>
         </div>
@@ -192,28 +276,38 @@
             <div class="col-sm-1">
               <a routerLink="/work-experience">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
-                </a>
+              </a>
             </div>
-        </div>
+          </div>
           <div class="card-body-text">
             <div class="row">
-              <div class="col-2">
-                cmp Logo
-              </div>
+              <div class="col-2">cmp Logo</div>
               <div class="col-10">
-                <h5 class="experience__title">{{profile.workExperiences[0].role}}</h5>
-                <p class="experience__company">{{profile.workExperiences[0].companyName}}</p>
-                <p class="experience__duration-time">{{profile.workExperiences[0].from}} - {{profile.workExperiences[0].to}}
+                <h5 class="experience__title">
+                  {{ profile.workExperiences[0].role }}
+                </h5>
+                <p class="experience__company">
+                  {{ profile.workExperiences[0].companyName }}
+                </p>
+                <p class="experience__duration-time">
+                  {{ profile.workExperiences[0].from }} -
+                  {{ profile.workExperiences[0].to }}
                   <span class="experience__duration">
-                    {{profile.totalYearsOfExperience}} yr
+                    {{ profile.totalYearsOfExperience }} yr
                   </span>
                 </p>
                 <p class="experience__location">Haydrabad, Pune.</p>
                 <div class="row experience__primaryskill">
                   <label>Primary skill: </label>
-                  <div class="col experience__col" id="skill1">{{profile.workExperiences[0].skills[0].name}}</div>
-                  <div class="col experience__col" id="skill2">{{profile.workExperiences[0].skills[1].name}}</div>
-                  <div class="col experience__col" id="skill3">{{profile.workExperiences[0].skills[2].name}}</div>
+                  <div class="col" id="skill1">
+                    {{ profile?.workExperiences[0]?.skills[0]?.name }}
+                  </div>
+                  <div class="col" id="skill2">
+                    {{ profile?.workExperiences[0]?.skills[1]?.name }}
+                  </div>
+                  <div class="col" id="skill3">
+                    {{ profile?.workExperiences[0]?.skills[2]?.name }}
+                  </div>
                 </div>
                 <div class="row experience__secondaryskill">
                   <label>secondary skill: </label>
@@ -229,43 +323,51 @@
                   <li>Mongodb</li>
                 </ul> -->
                 <p class="experience__description">
-                  Portfolio & Program Management ($20Mn) with Delivery leadership, Business Unit Lead with
-                  responsibility for top line growth, Annual Budgeting, P&L accountability, Stakeholder Management,
-                  Account Planning, GTM strategy, Capability Building, RFP, RFI & Bid defense for all opportunities
-                  across Technologies (SAP,HANA, Open Stack, Mean Stack, Database, Mobile, Cloud, Infrastructure) for AD
-                  and AMS services in Germany, Finland, Norway & NA region, Innovation, Digital Labs, MDM, Data Model
-                  Design, Bigdata & Advanced Analytics, Blockchain, Agile Delivery, Operating Model Design, People
-                  Management, Managing Strategic Partnerships and 3rd Party Vendors.
+                  Portfolio & Program Management ($20Mn) with Delivery
+                  leadership, Business Unit Lead with responsibility for top
+                  line growth, Annual Budgeting, P&L accountability, Stakeholder
+                  Management, Account Planning, GTM strategy, Capability
+                  Building, RFP, RFI & Bid defense for all opportunities across
+                  Technologies (SAP,HANA, Open Stack, Mean Stack, Database,
+                  Mobile, Cloud, Infrastructure) for AD and AMS services in
+                  Germany, Finland, Norway & NA region, Innovation, Digital
+                  Labs, MDM, Data Model Design, Bigdata & Advanced Analytics,
+                  Blockchain, Agile Delivery, Operating Model Design, People
+                  Management, Managing Strategic Partnerships and 3rd Party
+                  Vendors.
                 </p>
               </div>
             </div>
-            <hr>
+            <hr />
             <div class="row">
-              <div class="col-2">
-                cmp Logo
-              </div>
+              <div class="col-2">cmp Logo</div>
               <div class="col-10">
-                <h5 class="experience__title"> Full Stack Web Developer</h5>
+                <h5 class="experience__title">Full Stack Web Developer</h5>
                 <p class="experience__company">On Device Solution Ltd.</p>
-                <p class="experience__duration-time">Nov 2020 – Present
-                  <span class="experience__duration">
-                    1 yr 6 months
-                  </span>
+                <p class="experience__duration-time">
+                  Nov 2020 – Present
+                  <span class="experience__duration"> 1 yr 6 months </span>
                 </p>
                 <p class="experience__location">Haydrabad, Pune.</p>
-                <p class="experience__skill-sub">Angular, Bootstrap, HTML, Css, Scss, MySQL, Mongodb</p>
+                <p class="experience__skill-sub">
+                  Angular, Bootstrap, HTML, Css, Scss, MySQL, Mongodb
+                </p>
                 <p class="experience__description">
-                  Portfolio & Program Management ($20Mn) with Delivery leadership, Business Unit Lead with
-                  responsibility for top line growth, Annual Budgeting, P&L accountability, Stakeholder Management,
-                  Account Planning, GTM strategy, Capability Building, RFP, RFI & Bid defense for all opportunities
-                  across Technologies (SAP,HANA, Open Stack, Mean Stack, Database, Mobile, Cloud, Infrastructure) for AD
-                  and AMS services in Germany, Finland, Norway & NA region, Innovation, Digital Labs, MDM, Data Model
-                  Design, Bigdata & Advanced Analytics, Blockchain, Agile Delivery, Operating Model Design, People
-                  Management, Managing Strategic Partnerships and 3rd Party Vendors.
+                  Portfolio & Program Management ($20Mn) with Delivery
+                  leadership, Business Unit Lead with responsibility for top
+                  line growth, Annual Budgeting, P&L accountability, Stakeholder
+                  Management, Account Planning, GTM strategy, Capability
+                  Building, RFP, RFI & Bid defense for all opportunities across
+                  Technologies (SAP,HANA, Open Stack, Mean Stack, Database,
+                  Mobile, Cloud, Infrastructure) for AD and AMS services in
+                  Germany, Finland, Norway & NA region, Innovation, Digital
+                  Labs, MDM, Data Model Design, Bigdata & Advanced Analytics,
+                  Blockchain, Agile Delivery, Operating Model Design, People
+                  Management, Managing Strategic Partnerships and 3rd Party
+                  Vendors.
                 </p>
               </div>
             </div>
-
           </div>
         </div>
       </div>
@@ -279,18 +381,20 @@
             <div class="col-sm-1">
               <a routerLink="/education-details/:id">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
-                </a>
+              </a>
             </div>
-        </div>
-          
+          </div>
+
           <div class="row">
             <div class="col-2"></div>
             <div class="col-10">
               <p class="education__college">MIT ACSC, Pune, Maharastra.</p>
-              <p class="education__degree">Master of Computer Science.
+              <p class="education__degree">
+                Master of Computer Science.
                 <span class="education__yop">2019-2021</span>
               </p>
-              <p class="education__specialization">Software Engineering
+              <p class="education__specialization">
+                Software Engineering
                 <span class="education__grade">9.0 SGPA</span>
               </p>
             </div>
@@ -302,63 +406,55 @@
         <div class="card-body">
           <div class="row">
             <div class="col-sm-11">
-              <h5 class="card-title profile-details__card-title">Certification</h5>
+              <h5 class="card-title profile-details__card-title">
+                Certification
+              </h5>
             </div>
             <div class="col-sm-1">
               <a routerLink="/certificate">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
-                </a>
+              </a>
             </div>
-        </div>
+          </div>
           <div class="row">
             <div class="col-2"></div>
             <div class="col-10">
-              <p class="certification__Name">Angular.
-                <span class="certification__issueDate">
-                  2019
-                </span>
+              <p class="certification__Name">
+                Angular.
+                <span class="certification__issueDate"> 2019 </span>
               </p>
-              <p class="certification__mentor">Mr.Pranay sir, Mr.Ved sir </p>
-              <p class="certification__refrence">Refrence
+              <p class="certification__mentor">Mr.Pranay sir, Mr.Ved sir</p>
+              <p class="certification__refrence">
+                Refrence
                 <span class="certification__recommendation">Recommendations</span>
               </p>
             </div>
           </div>
         </div>
       </div>
-
-    </div> <!-- col-8 close -->
-
+    </div>
+    <!-- col-8 close -->
 
     <div class="col-5">
       <div class="card profilesummary__cardbody candidateprofile">
         <div class="card-body">
           <h5 class="profile-details__card-title">Candidate profile</h5>
           <div class="card-body-text">
-            <label class="candidateprofile_stength">Profile strength-
-              <span>
-                70%
-              </span> </label>
+            <label class="candidateprofile_stength">Profile strength- <span> 70% </span>
+            </label>
           </div>
           <div class="card-body-text">
-            <label class="candidateprofile_stength">Salary strength-
-              <span>
-                40%
-              </span> </label>
+            <label class="candidateprofile_stength">Salary strength- <span> 40% </span>
+            </label>
           </div>
           <div class="card-body-text">
-            <label class="candidateprofile_stength">Social contact reach-
-              <span>
-                50%
-              </span> </label>
+            <label class="candidateprofile_stength">Social contact reach- <span> 50% </span>
+            </label>
           </div>
           <div class="card-body-text">
-            <label class="candidateprofile_stength">Skill strength-
-              <span>
-                50%
-              </span> </label>
+            <label class="candidateprofile_stength">Skill strength- <span> 50% </span>
+            </label>
           </div>
-
         </div>
       </div>
 
@@ -369,10 +465,11 @@
             <p>Actively looking for opportunity :</p>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-light active">
-                <input type="radio" name="options" id="option1" autocomplete="off" checked> Yes
+                <input type="radio" name="options" id="option1" autocomplete="off" checked />
+                Yes
               </label>
               <label class="btn btn-light">
-                <input type="radio" name="options" id="option2" autocomplete="off">No
+                <input type="radio" name="options" id="option2" autocomplete="off" />No
               </label>
             </div>
           </div>
@@ -391,18 +488,15 @@
           <h5 class="profile-details__card-title">2. Online code test</h5>
           <div class="card-body-text">
             <p></p>
-
           </div>
         </div>
       </div>
-
 
       <div class="card profilesummary__cardbody">
         <div class="card-body">
           <h5 class="profile-details__card-title">3. Github integration</h5>
           <div class="card-body-text">
             <p></p>
-
           </div>
         </div>
       </div>
@@ -413,25 +507,25 @@
           <h5 class="profile-details__card-sub-title">Status</h5>
           <div class="card-body-text">
             <p></p>
-
           </div>
         </div>
       </div>
 
       <div class="card profilesummary__cardbody">
         <div class="card-body">
-          <h5 class="profile-details__card-title">5. SME mock interview notification</h5>
+          <h5 class="profile-details__card-title">
+            5. SME mock interview notification
+          </h5>
           <div class="card-body-text">
-            <label>Notification 1:</label> <br>
-            <label>Notification 2:</label> <br>
-            <label>Notification 3:</label> <br>
+            <label>Notification 1:</label> <br />
+            <label>Notification 2:</label> <br />
+            <label>Notification 3:</label> <br />
           </div>
         </div>
       </div>
-
-
-    </div> <!-- col-4 close -->
-
-
-  </div> <!-- row close -->
-</div> <!-- container close -->
+    </div>
+    <!-- col-4 close -->
+  </div>
+  <!-- row close -->
+</div>
+<!-- container close -->

@@ -67,7 +67,6 @@ export class WorkExperianceComponent implements OnInit {
   }
 
   updateValueInForm(userData: any) {
-    console.log("adfdsfsdfs", userData);
     for (const item of userData.workExperiences) {
       item.joinmonth = item?.from?.split("/")[0].trim();
       item.joinyear = item?.from?.split("/")[1].trim();
@@ -75,8 +74,10 @@ export class WorkExperianceComponent implements OnInit {
       item.jointoyear = item?.to?.split("/")[1].trim();
       this.addMore();
     }
-    this.remoreForm(userData.workExperiences);
-    this.userForm.patchValue(userData);
+    if (userData.workExperiences.length) {
+      this.remoreForm(userData.workExperiences);
+      this.userForm.patchValue(userData);
+    }
   }
 
   inililzeForm() {
@@ -121,6 +122,7 @@ export class WorkExperianceComponent implements OnInit {
   }
 
   onClick(formValue: any, isValid: boolean) {
+    console.log("sdsadsad", isValid, formValue);
     if (isValid) {
       for (const item of formValue?.workExperiences) {
         item["to"] = item.jointomonth + " / " + item.jointoyear;
@@ -159,5 +161,25 @@ export class WorkExperianceComponent implements OnInit {
       years.push(i);
     }
     return years;
+  }
+  onIsCurrentCompany(index: number, isCurrentCompany: boolean) {
+    if (isCurrentCompany) {
+      this.getValidity(index).get("jointomonth")?.clearValidators();
+      this.getValidity(index).get("jointoyear")?.clearValidators();
+    } else {
+      this.getValidity(index)
+        .get("jointomonth")
+        ?.setValidators([Validators.required]);
+      this.getValidity(index)
+        .get("jointoyear")
+        ?.setValidators([Validators.required]);
+    }
+    this.getValidity(index)!.get("jointomonth")!.updateValueAndValidity();
+    this.getValidity(index)!.get("jointoyear")!.updateValueAndValidity();
+    console.log(
+      "error",
+      this.getValidity(index)!.get("jointomonth")!.errors,
+      this.getValidity(index)!.get("jointoyear")!.errors
+    );
   }
 }

@@ -23,16 +23,16 @@
         &.active {
           color: var(--white);
           a {
-            color: var(--primary);
+            color: var(--main);
           }
           &:before {
-            border-color: var(--primary);
-            background-color: var(--primary);
+            border-color: var(--main);
+            background-color: var(--main);
           }
           + {
             li {
               &:after {
-                background-color: var(--primary);
+                background-color: var(--main);
               }
             }
           }
@@ -134,7 +134,7 @@
           //   background-color: var(--text-success) !important;
           // }
           // &.active {
-          //   background-color: var(--primary);
+          //   background-color: var(--main);
           // }
           a {
             font-size: 5px;
