@@ -1,62 +1,30 @@
 <div class="card rollprofile">
   <div class="card-body">
-    <div
-      class="alert alert-dismissible fade show alert alert-danger"
-      role="alert"
-      *ngIf="getTotalPercentage() ? true : false"
-    >
+    <div class="alert alert-dismissible fade show alert alert-danger" role="alert"
+      *ngIf="getTotalPercentage() ? true : false">
       The addition of all management, technical and functional is 100%.
-      <button
-        type="button"
-        class="close"
-        data-dismiss="alert"
-        aria-label="Close"
-      >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div
-      class="alert alert-dismissible fade show alert alert-danger"
-      role="alert"
-      *ngIf="getTotalOfFuncaional() ? true : false"
-    >
+    <div class="alert alert-dismissible fade show alert alert-danger" role="alert"
+      *ngIf="getTotalOfFuncaional() ? true : false">
       The addition of all sme, lead consultant and consultant is 100%.
-      <button
-        type="button"
-        class="close"
-        data-dismiss="alert"
-        aria-label="Close"
-      >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div
-      class="alert alert-dismissible fade show alert alert-danger"
-      role="alert"
-      *ngIf="getTotalOfManagement() ? true : false"
-    >
+    <div class="alert alert-dismissible fade show alert alert-danger" role="alert"
+      *ngIf="getTotalOfManagement() ? true : false">
       The addition of all portfolio, account and project is 100%.
-      <button
-        type="button"
-        class="close"
-        data-dismiss="alert"
-        aria-label="Close"
-      >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div
-      class="alert alert-dismissible fade show alert alert-danger"
-      role="alert"
-      *ngIf="getTotalOfTechnical() ? true : false"
-    >
+    <div class="alert alert-dismissible fade show alert alert-danger" role="alert"
+      *ngIf="getTotalOfTechnical() ? true : false">
       The addition of all architect, techLead and developer is 100%.
-      <button
-        type="button"
-        class="close"
-        data-dismiss="alert"
-        aria-label="Close"
-      >
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
@@ -65,151 +33,204 @@
       <h5>What role you had done?</h5>
       <small class="mb-2">The addition of all fields is 100%</small>
     </div>
-    <form
-      [formGroup]="userForm"
-      (ngSubmit)="onClick(userForm.value, userForm.valid)"
-      novalidate
-    >
-      <div class="row mt-2" formGroupName="roleManagement">
-        <div class="col-md">
-          <div class="form-group form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="Managementscheckbox"
-              (change)="onChecked('management')"
-              formControlName="isManagement"
-            />
-            <label class="form-check-label" for="Managementscheckbox"
-              >Role managements</label
-            >
-            <div
-              class="text-danger"
-              *ngIf="
-                !userForm.get('roleManagement.isManagement')!.valid &&
-                (userForm.get('roleManagement.isManagement')!.touched ||
-                  userForm.get('roleManagement.isManagement')!.dirty)
-              "
-            >
-              <div *ngIf="userForm.get('roleManagement.isManagement')!.errors">
-                <small
-                  *ngIf="
-                    userForm.get('roleManagement.isManagement')!.errors!
-                      .required
-                  "
-                >
-                  This field is required
-                </small>
-              </div>
-            </div>
-          </div>
-        </div>
-        <ng-container
-          *ngIf="userForm.get('roleManagement.isManagement')!.value"
-        >
-          <div class="col-md">
-            <div class="form-group">
-              <label for="Management">Management</label>
-              <select
-                class="form-control"
-                name="management"
-                id="management"
-                formControlName="management"
-                (change)="
+    <form [formGroup]="userForm" (ngSubmit)="onClick(userForm.value, userForm.valid)" novalidate>
+      <div class="row">
+        <div class="col-3">
+          <div class="row " formGroupName="roleManagement">
+            <!-- <div class="col-md"> -->
+            <div class="form-group form-check" >
+              <!-- <input type="checkbox" class="form-check-input" id="Managementscheckbox"
+                (change)="onChecked('management')" formControlName="isManagement" /> -->
+              <label class="form-check-label" for="Managementscheckbox">Managements</label>
+              <select class="form-control" name="management" id="management" formControlName="management" (change)="
                   onManagementChnage(
                     userForm.get('roleManagement.management')!.value,
                     'management'
                   )
-                "
-              >
+                ">
                 <option value="" selected disabled>Managenent</option>
                 <option *ngFor="let item of percentageList" [value]="item">
                   {{ item }} %
                 </option>
               </select>
-              <div
-                class="text-danger"
-                *ngIf="
+              <div class="text-danger" *ngIf="
                   !userForm.get('roleManagement.management')!.valid &&
                   (userForm.get('roleManagement.management')!.touched ||
                     userForm.get('roleManagement.management')!.dirty)
-                "
-              >
+                ">
                 <div *ngIf="userForm.get('roleManagement.management')!.errors">
-                  <small
-                    *ngIf="
+                  <small *ngIf="
                       userForm.get('roleManagement.management')!.errors!
                         .required
-                    "
-                  >
+                    ">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+              <div class="text-danger" *ngIf="
+            !userForm.get('roleManagement.isManagement')!.valid &&
+            (userForm.get('roleManagement.isManagement')!.touched ||
+              userForm.get('roleManagement.isManagement')!.dirty)
+          ">
+                <div *ngIf="userForm.get('roleManagement.isManagement')!.errors">
+                  <small *ngIf="
+                userForm.get('roleManagement.isManagement')!.errors!
+                  .required
+              ">
                     This field is required
                   </small>
                 </div>
               </div>
             </div>
+            <!-- </div> -->
           </div>
+
+          <div class="row" formGroupName="roleTechnical">
+            <!-- <div class="col-md"> -->
+            <div class="form-group form-check">
+              <!-- <input type="checkbox" class="form-check-input" id="technicalcheckbox" (change)="onChecked('technical')"
+                formControlName="isTechnical" /> -->
+              <label class="form-check-label" for="technicalcheckbox">Technical</label>
+              <select class="form-control" name="technical" id="technical" formControlName="technical" (change)="
+                  onManagementChnage(
+                    userForm.get('roleTechnical.technical')!.value,
+                    'technical'
+                  )
+                ">
+                <option value="" selected disabled>technical</option>
+                <option *ngFor="let item of percentageList" [value]="item">
+                  {{ item }} %
+                </option>
+              </select>
+              <div class="text-danger" *ngIf="
+                  !userForm.get('roleTechnical.technical')!.valid &&
+                  (userForm.get('roleTechnical.technical')!.touched ||
+                    userForm.get('roleTechnical.technical')!.dirty)
+                ">
+                <div *ngIf="userForm.get('roleTechnical.technical')!.errors">
+                  <small *ngIf="
+                      userForm.get('roleTechnical.technical')!.errors!.required
+                    ">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+              <div class="text-danger" *ngIf="
+                !userForm.get('roleTechnical.isTechnical')!.valid &&
+                (userForm.get('roleTechnical.isTechnical')!.touched ||
+                  userForm.get('roleTechnical.isTechnical')!.dirty)
+              ">
+                <div *ngIf="userForm.get('roleTechnical.isTechnical')!.errors">
+                  <small *ngIf="
+                    userForm.get('roleTechnical.isTechnical')!.errors!.required
+                  ">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+            <!-- </div> -->
+          </div>
+
+          <div class="row" formGroupName="roleFunctional">
+            <!-- <div class="col-md"> -->
+            <div class="form-group form-check">
+              <!-- <input type="checkbox" class="form-check-input" id="roleFunctionalcheckbox"
+                (change)="onChecked('functional')" formControlName="isFuncational" /> -->
+              <label class="form-check-label" for="roleFunctionalcheckbox">Funcational</label>
+              <select class="form-control" name="functional" id="functional" formControlName="functional" (change)="
+                  onManagementChnage(
+                    userForm.get('roleFunctional.functional')!.value,
+                    'functional'
+                  )
+                ">
+                <option value="" selected disabled>functional</option>
+                <option *ngFor="let item of percentageList" [value]="item">
+                  {{ item }} %
+                </option>
+              </select>
+              <div class="text-danger" *ngIf="
+                  !userForm.get('roleFunctional.functional')!.valid &&
+                  (userForm.get('roleFunctional.functional')!.touched ||
+                    userForm.get('roleFunctional.functional')!.dirty)
+                ">
+                <div *ngIf="userForm.get('roleFunctional.functional')!.errors">
+                  <small *ngIf="
+                      userForm.get('roleFunctional.functional')!.errors!
+                        .required
+                    ">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+              <div class="text-danger" *ngIf="
+                !userForm.get('roleFunctional.isFuncational')!.valid &&
+                (userForm.get('roleFunctional.isFuncational')!.touched ||
+                  userForm.get('roleFunctional.isFuncational')!.dirty)
+              ">
+                <div *ngIf="userForm.get('roleFunctional.isFuncational')!.errors">
+                  <small *ngIf="
+                    userForm.get('roleFunctional.isFuncational')!.errors!
+                      .required
+                  ">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div> <!-- col-4 cls -->
+        </div>
+
+
+
+      
+      <!--  -->
+      <div class="col-9">
+        <ng-container *ngIf="userForm.get('roleFunctional.isFuncational')!.value">
+          <div class="row">
           <div class="col-md">
             <div class="form-group">
               <label for="Portfolio">Portfolio</label>
-              <select
-                class="form-control"
-                name="portfolio"
-                id="portfolio"
-                formControlName="portfolio"
-              >
+              <select class="form-control" name="portfolio" id="portfolio" formControlName="portfolio">
                 <option value="" selected disabled>portfolio</option>
                 <option *ngFor="let item of percentageList" [value]="item">
                   {{ item }} %
                 </option>
               </select>
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.get('roleManagement.portfolio')!.valid &&
-                  (userForm.get('roleManagement.portfolio')!.touched ||
-                    userForm.get('roleManagement.portfolio')!.dirty)
-                "
-              >
+              <div class="text-danger" *ngIf="
+          !userForm.get('roleManagement.portfolio')!.valid &&
+          (userForm.get('roleManagement.portfolio')!.touched ||
+            userForm.get('roleManagement.portfolio')!.dirty)
+        ">
                 <div *ngIf="userForm.get('roleManagement.portfolio')!.errors">
-                  <small
-                    *ngIf="
-                      userForm.get('roleManagement.portfolio')!.errors!.required
-                    "
-                  >
+                  <small *ngIf="
+              userForm.get('roleManagement.portfolio')!.errors!.required
+            ">
                     This field is required
                   </small>
                 </div>
               </div>
             </div>
+            
           </div>
           <div class="col-md">
             <div class="form-group">
               <label for="account">Account</label>
-              <select
-                class="form-control"
-                name="account"
-                id="account"
-                formControlName="account"
-              >
+              <select class="form-control" name="account" id="account" formControlName="account">
                 <option value="" selected disabled>account</option>
                 <option *ngFor="let item of percentageList" [value]="item">
                   {{ item }} %
                 </option>
               </select>
-              <div
-                class="text-danger"
-                *ngIf="
-                  !userForm.get('roleManagement.account')!.valid &&
-                  (userForm.get('roleManagement.account')!.touched ||
-                    userForm.get('roleManagement.account')!.dirty)
-                "
-              >
+              <div class="text-danger" *ngIf="
+          !userForm.get('roleManagement.account')!.valid &&
+          (userForm.get('roleManagement.account')!.touched ||
+            userForm.get('roleManagement.account')!.dirty)
+        ">
                 <div *ngIf="userForm.get('roleManagement.account')!.errors">
-                  <small
-                    *ngIf="
-                      userForm.get('roleManagement.account')!.errors!.required
-                    "
-                  >
+                  <small *ngIf="
+              userForm.get('roleManagement.account')!.errors!.required
+            ">
                     This field is required
                   </small>
                 </div>
@@ -219,31 +240,357 @@
           <div class="col-md">
             <div class="form-group">
               <label for="project">Project</label>
-              <select
-                class="form-control"
-                name="project"
-                id="project"
-                formControlName="project"
-              >
+              <select class="form-control" name="project" id="project" formControlName="project">
                 <option value="" selected disabled>project</option>
                 <option *ngFor="let item of percentageList" [value]="item">
                   {{ item }} %
                 </option>
               </select>
-              <div
-                class="text-danger"
-                *ngIf="
+              <div class="text-danger" *ngIf="
+          !userForm.get('roleManagement.project')!.valid &&
+          (userForm.get('roleManagement.project')!.touched ||
+            userForm.get('roleManagement.project')!.dirty)
+        ">
+                <div *ngIf="userForm.get('roleManagement.project')!.errors">
+                  <small *ngIf="
+              userForm.get('roleManagement.project')!.errors!.required
+            ">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md">
+            <div class="form-group">
+              <label for="sme">SME</label>
+              <select class="form-control" name="sme" id="sme" formControlName="sme">
+                <option value="" selected disabled>sme</option>
+                <option *ngFor="let item of percentageList" [value]="item">
+                  {{ item }} %
+                </option>
+              </select>
+              <div class="text-danger" *ngIf="
+          !userForm.get('roleFunctional.sme')!.valid &&
+          (userForm.get('roleFunctional.sme')!.touched ||
+            userForm.get('roleFunctional.sme')!.dirty)
+        ">
+                <div *ngIf="userForm.get('roleFunctional.sme')!.errors">
+                  <small *ngIf="userForm.get('roleFunctional.sme')!.errors!.required">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="form-group">
+              <label for="leadCon">Lead consultant</label>
+              <select class="form-control" name="leadCon" id="leadCon" formControlName="leadCon">
+                <option value="" selected disabled>lead consultant</option>
+                <option *ngFor="let item of percentageList" [value]="item">
+                  {{ item }} %
+                </option>
+              </select>
+              <div class="text-danger" *ngIf="
+          !userForm.get('roleFunctional.leadCon')!.valid &&
+          (userForm.get('roleFunctional.leadCon')!.touched ||
+            userForm.get('roleFunctional.leadCon')!.dirty)
+        ">
+                <div *ngIf="userForm.get('roleFunctional.leadCon')!.errors">
+                  <small *ngIf="
+              userForm.get('roleFunctional.leadCon')!.errors!.required
+            ">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="form-group">
+              <label for="consultant">Consultant</label>
+              <select class="form-control" name="consultant" id="consultant" formControlName="consultant">
+                <option value="" selected disabled>consultant</option>
+                <option *ngFor="let item of percentageList" [value]="item">
+                  {{ item }} %
+                </option>
+              </select>
+              <div class="text-danger" *ngIf="
+          !userForm.get('roleFunctional.consultant')!.valid &&
+          (userForm.get('roleFunctional.consultant')!.touched ||
+            userForm.get('roleFunctional.consultant')!.dirty)
+        ">
+                <div *ngIf="userForm.get('roleFunctional.consultant')!.errors">
+                  <small *ngIf="
+              userForm.get('roleFunctional.consultant')!.errors!
+                .required
+            ">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md">
+            <div class="form-group">
+              <label for="architect">Architect</label>
+              <select class="form-control" name="architect" id="architect" formControlName="architect">
+                <option value="" selected disabled>architect</option>
+                <option *ngFor="let item of percentageList" [value]="item">
+                  {{ item }} %
+                </option>
+              </select>
+              <div class="text-danger" *ngIf="
+          !userForm.get('roleTechnical.architect')!.valid &&
+          (userForm.get('roleTechnical.architect')!.touched ||
+            userForm.get('roleTechnical.architect')!.dirty)
+        ">
+                <div *ngIf="userForm.get('roleTechnical.architect')!.errors">
+                  <small *ngIf="
+              userForm.get('roleTechnical.architect')!.errors!.required
+            ">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="form-group">
+              <label for="techLead">Tech lead</label>
+              <select class="form-control" name="techLead" id="techLead" formControlName="techLead">
+                <option value="" selected disabled>techLead</option>
+                <option *ngFor="let item of percentageList" [value]="item">
+                  {{ item }} %
+                </option>
+              </select>
+              <div class="text-danger" *ngIf="
+          !userForm.get('roleTechnical.techLead')!.valid &&
+          (userForm.get('roleTechnical.techLead')!.touched ||
+            userForm.get('roleTechnical.techLead')!.dirty)
+        ">
+                <div *ngIf="userForm.get('roleTechnical.techLead')!.errors">
+                  <small *ngIf="
+              userForm.get('roleTechnical.techLead')!.errors!.required
+            ">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="form-group">
+              <label for="developer">Developer</label>
+              <select class="form-control" name="developer" id="developer" formControlName="developer">
+                <option value="" selected disabled>developer</option>
+                <option *ngFor="let item of percentageList" [value]="item">
+                  {{ item }} %
+                </option>
+              </select>
+              <div class="text-danger" *ngIf="
+          !userForm.get('roleTechnical.developer')!.valid &&
+          (userForm.get('roleTechnical.developer')!.touched ||
+            userForm.get('roleTechnical.developer')!.dirty)
+        ">
+                <div *ngIf="userForm.get('roleTechnical.developer')!.errors">
+                  <small *ngIf="
+              userForm.get('roleTechnical.developer')!.errors!.required
+            ">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        </ng-container>
+      </div>
+      <!--  -->
+    </div> <!-- row cls -->
+    <hr />
+    <div class="rollprofile__action">
+      <div class="pr-1">
+        <button class="job-btn job-btn-outline" type="reset" [routerLink]="'/profile/experience'">
+          Back
+        </button>
+      </div>
+      <div class="pl-1">
+        <button class="job-btn job-btn-mini" [class.disabled]="getDisabled() ? true : false" type="submit"
+          [disabled]="getDisabled() ? true : null">
+          Next
+        </button>
+      </div>
+    </div>
+    </form>
+
+
+  </div>
+</div>
+
+
+<!--  -->
+<br><br><br>
+<div class="card rollprofile">
+  <div class="card-body">
+    <div class="alert alert-dismissible fade show alert alert-danger" role="alert"
+      *ngIf="getTotalPercentage() ? true : false">
+      The addition of all management, technical and functional is 100%.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-dismissible fade show alert alert-danger" role="alert"
+      *ngIf="getTotalOfFuncaional() ? true : false">
+      The addition of all sme, lead consultant and consultant is 100%.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-dismissible fade show alert alert-danger" role="alert"
+      *ngIf="getTotalOfManagement() ? true : false">
+      The addition of all portfolio, account and project is 100%.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="alert alert-dismissible fade show alert alert-danger" role="alert"
+      *ngIf="getTotalOfTechnical() ? true : false">
+      The addition of all architect, techLead and developer is 100%.
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div>
+      <h5>What role you had done?</h5>
+      <small class="mb-2">The addition of all fields is 100%</small>
+    </div>
+    <form [formGroup]="userForm" (ngSubmit)="onClick(userForm.value, userForm.valid)" novalidate>
+      <div class="row mt-2" formGroupName="roleManagement">
+        <div class="col-md">
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="Managementscheckbox" (change)="onChecked('management')"
+              formControlName="isManagement" />
+            <label class="form-check-label" for="Managementscheckbox">Managements</label>
+            <div class="text-danger" *ngIf="
+                !userForm.get('roleManagement.isManagement')!.valid &&
+                (userForm.get('roleManagement.isManagement')!.touched ||
+                  userForm.get('roleManagement.isManagement')!.dirty)
+              ">
+              <div *ngIf="userForm.get('roleManagement.isManagement')!.errors">
+                <small *ngIf="
+                    userForm.get('roleManagement.isManagement')!.errors!
+                      .required
+                  ">
+                  This field is required
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <ng-container *ngIf="userForm.get('roleManagement.isManagement')!.value">
+          <div class="col-md">
+            <div class="form-group">
+              <label for="Management">Management</label>
+              <select class="form-control" name="management" id="management" formControlName="management" (change)="
+                  onManagementChnage(
+                    userForm.get('roleManagement.management')!.value,
+                    'management'
+                  )
+                ">
+                <option value="" selected disabled>Managenent</option>
+                <option *ngFor="let item of percentageList" [value]="item">
+                  {{ item }} %
+                </option>
+              </select>
+              <div class="text-danger" *ngIf="
+                  !userForm.get('roleManagement.management')!.valid &&
+                  (userForm.get('roleManagement.management')!.touched ||
+                    userForm.get('roleManagement.management')!.dirty)
+                ">
+                <div *ngIf="userForm.get('roleManagement.management')!.errors">
+                  <small *ngIf="
+                      userForm.get('roleManagement.management')!.errors!
+                        .required
+                    ">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="form-group">
+              <label for="Portfolio">Portfolio</label>
+              <select class="form-control" name="portfolio" id="portfolio" formControlName="portfolio">
+                <option value="" selected disabled>portfolio</option>
+                <option *ngFor="let item of percentageList" [value]="item">
+                  {{ item }} %
+                </option>
+              </select>
+              <div class="text-danger" *ngIf="
+                  !userForm.get('roleManagement.portfolio')!.valid &&
+                  (userForm.get('roleManagement.portfolio')!.touched ||
+                    userForm.get('roleManagement.portfolio')!.dirty)
+                ">
+                <div *ngIf="userForm.get('roleManagement.portfolio')!.errors">
+                  <small *ngIf="
+                      userForm.get('roleManagement.portfolio')!.errors!.required
+                    ">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="form-group">
+              <label for="account">Account</label>
+              <select class="form-control" name="account" id="account" formControlName="account">
+                <option value="" selected disabled>account</option>
+                <option *ngFor="let item of percentageList" [value]="item">
+                  {{ item }} %
+                </option>
+              </select>
+              <div class="text-danger" *ngIf="
+                  !userForm.get('roleManagement.account')!.valid &&
+                  (userForm.get('roleManagement.account')!.touched ||
+                    userForm.get('roleManagement.account')!.dirty)
+                ">
+                <div *ngIf="userForm.get('roleManagement.account')!.errors">
+                  <small *ngIf="
+                      userForm.get('roleManagement.account')!.errors!.required
+                    ">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md">
+            <div class="form-group">
+              <label for="project">Project</label>
+              <select class="form-control" name="project" id="project" formControlName="project">
+                <option value="" selected disabled>project</option>
+                <option *ngFor="let item of percentageList" [value]="item">
+                  {{ item }} %
+                </option>
+              </select>
+              <div class="text-danger" *ngIf="
                   !userForm.get('roleManagement.project')!.valid &&
                   (userForm.get('roleManagement.project')!.touched ||
                     userForm.get('roleManagement.project')!.dirty)
-                "
-              >
+                ">
                 <div *ngIf="userForm.get('roleManagement.project')!.errors">
-                  <small
-                    *ngIf="
+                  <small *ngIf="
                       userForm.get('roleManagement.project')!.errors!.required
-                    "
-                  >
+                    ">
                     This field is required
                   </small>
                 </div>
@@ -255,30 +602,18 @@
       <div class="row" formGroupName="roleTechnical">
         <div class="col-md">
           <div class="form-group form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="technicalcheckbox"
-              (change)="onChecked('technical')"
-              formControlName="isTechnical"
-            />
-            <label class="form-check-label" for="technicalcheckbox"
-              >Role technical</label
-            >
-            <div
-              class="text-danger"
-              *ngIf="
+            <input type="checkbox" class="form-check-input" id="technicalcheckbox" (change)="onChecked('technical')"
+              formControlName="isTechnical" />
+            <label class="form-check-label" for="technicalcheckbox">Technical</label>
+            <div class="text-danger" *ngIf="
                 !userForm.get('roleTechnical.isTechnical')!.valid &&
                 (userForm.get('roleTechnical.isTechnical')!.touched ||
                   userForm.get('roleTechnical.isTechnical')!.dirty)
-              "
-            >
+              ">
               <div *ngIf="userForm.get('roleTechnical.isTechnical')!.errors">
-                <small
-                  *ngIf="
+                <small *ngIf="
                     userForm.get('roleTechnical.isTechnical')!.errors!.required
-                  "
-                >
+                  ">
                   This field is required
                 </small>
               </div>
@@ -289,37 +624,26 @@
           <div class="col-md">
             <div class="form-group">
               <label for="technical">Technical</label>
-              <select
-                class="form-control"
-                name="technical"
-                id="technical"
-                formControlName="technical"
-                (change)="
+              <select class="form-control" name="technical" id="technical" formControlName="technical" (change)="
                   onManagementChnage(
                     userForm.get('roleTechnical.technical')!.value,
                     'technical'
                   )
-                "
-              >
+                ">
                 <option value="" selected disabled>technical</option>
                 <option *ngFor="let item of percentageList" [value]="item">
                   {{ item }} %
                 </option>
               </select>
-              <div
-                class="text-danger"
-                *ngIf="
+              <div class="text-danger" *ngIf="
                   !userForm.get('roleTechnical.technical')!.valid &&
                   (userForm.get('roleTechnical.technical')!.touched ||
                     userForm.get('roleTechnical.technical')!.dirty)
-                "
-              >
+                ">
                 <div *ngIf="userForm.get('roleTechnical.technical')!.errors">
-                  <small
-                    *ngIf="
+                  <small *ngIf="
                       userForm.get('roleTechnical.technical')!.errors!.required
-                    "
-                  >
+                    ">
                     This field is required
                   </small>
                 </div>
@@ -329,31 +653,21 @@
           <div class="col-md">
             <div class="form-group">
               <label for="architect">Architect</label>
-              <select
-                class="form-control"
-                name="architect"
-                id="architect"
-                formControlName="architect"
-              >
+              <select class="form-control" name="architect" id="architect" formControlName="architect">
                 <option value="" selected disabled>architect</option>
                 <option *ngFor="let item of percentageList" [value]="item">
                   {{ item }} %
                 </option>
               </select>
-              <div
-                class="text-danger"
-                *ngIf="
+              <div class="text-danger" *ngIf="
                   !userForm.get('roleTechnical.architect')!.valid &&
                   (userForm.get('roleTechnical.architect')!.touched ||
                     userForm.get('roleTechnical.architect')!.dirty)
-                "
-              >
+                ">
                 <div *ngIf="userForm.get('roleTechnical.architect')!.errors">
-                  <small
-                    *ngIf="
+                  <small *ngIf="
                       userForm.get('roleTechnical.architect')!.errors!.required
-                    "
-                  >
+                    ">
                     This field is required
                   </small>
                 </div>
@@ -363,31 +677,21 @@
           <div class="col-md">
             <div class="form-group">
               <label for="techLead">Tech lead</label>
-              <select
-                class="form-control"
-                name="techLead"
-                id="techLead"
-                formControlName="techLead"
-              >
+              <select class="form-control" name="techLead" id="techLead" formControlName="techLead">
                 <option value="" selected disabled>techLead</option>
                 <option *ngFor="let item of percentageList" [value]="item">
                   {{ item }} %
                 </option>
               </select>
-              <div
-                class="text-danger"
-                *ngIf="
+              <div class="text-danger" *ngIf="
                   !userForm.get('roleTechnical.techLead')!.valid &&
                   (userForm.get('roleTechnical.techLead')!.touched ||
                     userForm.get('roleTechnical.techLead')!.dirty)
-                "
-              >
+                ">
                 <div *ngIf="userForm.get('roleTechnical.techLead')!.errors">
-                  <small
-                    *ngIf="
+                  <small *ngIf="
                       userForm.get('roleTechnical.techLead')!.errors!.required
-                    "
-                  >
+                    ">
                     This field is required
                   </small>
                 </div>
@@ -397,31 +701,21 @@
           <div class="col-md">
             <div class="form-group">
               <label for="developer">Developer</label>
-              <select
-                class="form-control"
-                name="developer"
-                id="developer"
-                formControlName="developer"
-              >
+              <select class="form-control" name="developer" id="developer" formControlName="developer">
                 <option value="" selected disabled>developer</option>
                 <option *ngFor="let item of percentageList" [value]="item">
                   {{ item }} %
                 </option>
               </select>
-              <div
-                class="text-danger"
-                *ngIf="
+              <div class="text-danger" *ngIf="
                   !userForm.get('roleTechnical.developer')!.valid &&
                   (userForm.get('roleTechnical.developer')!.touched ||
                     userForm.get('roleTechnical.developer')!.dirty)
-                "
-              >
+                ">
                 <div *ngIf="userForm.get('roleTechnical.developer')!.errors">
-                  <small
-                    *ngIf="
+                  <small *ngIf="
                       userForm.get('roleTechnical.developer')!.errors!.required
-                    "
-                  >
+                    ">
                     This field is required
                   </small>
                 </div>
@@ -433,75 +727,50 @@
       <div class="row" formGroupName="roleFunctional">
         <div class="col-md">
           <div class="form-group form-check">
-            <input
-              type="checkbox"
-              class="form-check-input"
-              id="roleFunctionalcheckbox"
-              (change)="onChecked('functional')"
-              formControlName="isFuncational"
-            />
-            <label class="form-check-label" for="roleFunctionalcheckbox"
-              >Role funcational</label
-            >
-            <div
-              class="text-danger"
-              *ngIf="
+            <input type="checkbox" class="form-check-input" id="roleFunctionalcheckbox"
+              (change)="onChecked('functional')" formControlName="isFuncational" />
+            <label class="form-check-label" for="roleFunctionalcheckbox">Funcational</label>
+            <div class="text-danger" *ngIf="
                 !userForm.get('roleFunctional.isFuncational')!.valid &&
                 (userForm.get('roleFunctional.isFuncational')!.touched ||
                   userForm.get('roleFunctional.isFuncational')!.dirty)
-              "
-            >
+              ">
               <div *ngIf="userForm.get('roleFunctional.isFuncational')!.errors">
-                <small
-                  *ngIf="
+                <small *ngIf="
                     userForm.get('roleFunctional.isFuncational')!.errors!
                       .required
-                  "
-                >
+                  ">
                   This field is required
                 </small>
               </div>
             </div>
           </div>
         </div>
-        <ng-container
-          *ngIf="userForm.get('roleFunctional.isFuncational')!.value"
-        >
+        <ng-container *ngIf="userForm.get('roleFunctional.isFuncational')!.value">
           <div class="col-md">
             <div class="form-group">
               <label for="functional">Functional</label>
-              <select
-                class="form-control"
-                name="functional"
-                id="functional"
-                formControlName="functional"
-                (change)="
+              <select class="form-control" name="functional" id="functional" formControlName="functional" (change)="
                   onManagementChnage(
                     userForm.get('roleFunctional.functional')!.value,
                     'functional'
                   )
-                "
-              >
+                ">
                 <option value="" selected disabled>functional</option>
                 <option *ngFor="let item of percentageList" [value]="item">
                   {{ item }} %
                 </option>
               </select>
-              <div
-                class="text-danger"
-                *ngIf="
+              <div class="text-danger" *ngIf="
                   !userForm.get('roleFunctional.functional')!.valid &&
                   (userForm.get('roleFunctional.functional')!.touched ||
                     userForm.get('roleFunctional.functional')!.dirty)
-                "
-              >
+                ">
                 <div *ngIf="userForm.get('roleFunctional.functional')!.errors">
-                  <small
-                    *ngIf="
+                  <small *ngIf="
                       userForm.get('roleFunctional.functional')!.errors!
                         .required
-                    "
-                  >
+                    ">
                     This field is required
                   </small>
                 </div>
@@ -511,29 +780,19 @@
           <div class="col-md">
             <div class="form-group">
               <label for="sme">SME</label>
-              <select
-                class="form-control"
-                name="sme"
-                id="sme"
-                formControlName="sme"
-              >
+              <select class="form-control" name="sme" id="sme" formControlName="sme">
                 <option value="" selected disabled>sme</option>
                 <option *ngFor="let item of percentageList" [value]="item">
                   {{ item }} %
                 </option>
               </select>
-              <div
-                class="text-danger"
-                *ngIf="
+              <div class="text-danger" *ngIf="
                   !userForm.get('roleFunctional.sme')!.valid &&
                   (userForm.get('roleFunctional.sme')!.touched ||
                     userForm.get('roleFunctional.sme')!.dirty)
-                "
-              >
+                ">
                 <div *ngIf="userForm.get('roleFunctional.sme')!.errors">
-                  <small
-                    *ngIf="userForm.get('roleFunctional.sme')!.errors!.required"
-                  >
+                  <small *ngIf="userForm.get('roleFunctional.sme')!.errors!.required">
                     This field is required
                   </small>
                 </div>
@@ -543,31 +802,21 @@
           <div class="col-md">
             <div class="form-group">
               <label for="leadCon">Lead consultant</label>
-              <select
-                class="form-control"
-                name="leadCon"
-                id="leadCon"
-                formControlName="leadCon"
-              >
+              <select class="form-control" name="leadCon" id="leadCon" formControlName="leadCon">
                 <option value="" selected disabled>lead consultant</option>
                 <option *ngFor="let item of percentageList" [value]="item">
                   {{ item }} %
                 </option>
               </select>
-              <div
-                class="text-danger"
-                *ngIf="
+              <div class="text-danger" *ngIf="
                   !userForm.get('roleFunctional.leadCon')!.valid &&
                   (userForm.get('roleFunctional.leadCon')!.touched ||
                     userForm.get('roleFunctional.leadCon')!.dirty)
-                "
-              >
+                ">
                 <div *ngIf="userForm.get('roleFunctional.leadCon')!.errors">
-                  <small
-                    *ngIf="
+                  <small *ngIf="
                       userForm.get('roleFunctional.leadCon')!.errors!.required
-                    "
-                  >
+                    ">
                     This field is required
                   </small>
                 </div>
@@ -577,32 +826,22 @@
           <div class="col-md">
             <div class="form-group">
               <label for="consultant">Consultant</label>
-              <select
-                class="form-control"
-                name="consultant"
-                id="consultant"
-                formControlName="consultant"
-              >
+              <select class="form-control" name="consultant" id="consultant" formControlName="consultant">
                 <option value="" selected disabled>consultant</option>
                 <option *ngFor="let item of percentageList" [value]="item">
                   {{ item }} %
                 </option>
               </select>
-              <div
-                class="text-danger"
-                *ngIf="
+              <div class="text-danger" *ngIf="
                   !userForm.get('roleFunctional.consultant')!.valid &&
                   (userForm.get('roleFunctional.consultant')!.touched ||
                     userForm.get('roleFunctional.consultant')!.dirty)
-                "
-              >
+                ">
                 <div *ngIf="userForm.get('roleFunctional.consultant')!.errors">
-                  <small
-                    *ngIf="
+                  <small *ngIf="
                       userForm.get('roleFunctional.consultant')!.errors!
                         .required
-                    "
-                  >
+                    ">
                     This field is required
                   </small>
                 </div>
@@ -614,21 +853,13 @@
       <hr />
       <div class="rollprofile__action">
         <div class="pr-1">
-          <button
-            class="job-btn job-btn-outline"
-            type="reset"
-            [routerLink]="'/profile/experience'"
-          >
+          <button class="job-btn job-btn-outline" type="reset" [routerLink]="'/profile/experience'">
             Back
           </button>
         </div>
         <div class="pl-1">
-          <button
-            class="job-btn job-btn-mini"
-            [class.disabled]="getDisabled() ? true : false"
-            type="submit"
-            [disabled]="getDisabled() ? true : null"
-          >
+          <button class="job-btn job-btn-mini" [class.disabled]="getDisabled() ? true : false" type="submit"
+            [disabled]="getDisabled() ? true : null">
             Next
           </button>
         </div>

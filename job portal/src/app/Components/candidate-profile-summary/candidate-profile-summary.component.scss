@@ -1,5 +1,8 @@
 // updated css 21/11
+
 .profilesummary{
+  margin: 50px;
+  margin-top: 80px;
   &__cardbody{
     box-shadow: 1px 2px 5px 3px var(--grayLightWarm);
   border: none;
@@ -13,6 +16,9 @@
 // }
 
 .profile-details{
+  &__heading{
+    font-size: 20px;
+  }
   &__profile{
     height: 180px;
     width: 100%;
@@ -27,6 +33,7 @@
   }
   &__username{
     margin-bottom: 4px;
+    font-size: 20px;
   }
   &__worktitle, &__location{
     color: var(--lightGrayishNavy);
@@ -34,9 +41,10 @@
   }
   &__card-title{
     color: var(--secondaryAqua) ;
+    font-size: 17px;
   }
   &__card-sub-title{
-    font-size: 17px;
+    font-size: 15px;
   }
   }
   .experience{
@@ -58,6 +66,9 @@
     }
     &__primaryskill> label, &__secondaryskill> label{
       color: var(--gray30);
+    }
+    &__col{
+      font-size: 14px;
     }
     &__skill-sub{
       // padding-left: 12px;
@@ -86,11 +97,18 @@
       color: var(--lightGrayishNavy);
     }
   }
+  .rollprofile{
+    &__col{
+      font-size: 14px;
+    }
+  }
   label{
     margin-bottom: 0px;
+    font-size: 14px;
   }
   p{
-    font-size: 16px;
+    font-size: 14px !important;
+    font-weight: 500;
     margin-bottom: 3px !important;
   }
 
