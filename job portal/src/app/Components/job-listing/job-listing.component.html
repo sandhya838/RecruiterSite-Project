@@ -1,1 +1,56 @@
-<p>job-listing works!</p>
+<div class="container jobs">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2 class="profile-details__heading">Jobs</h2>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb bg-white">
+                <li class="breadcrumb-item">
+                    <a [routerLink]="'/dashboard'">Dashboard</a>
+                </li>
+                <li class="breadcrumb-item active" aria-current="page">
+                    Jobs
+                </li>
+            </ol>
+        </nav>
+    </div>
+    <div class="card dashbord card">
+        <div class="card-body"><p class="card-container__company-name"></p>
+            <h5 class="card-title">Amdocs</h5>
+            <div class="card-body-text">
+                <p class="card-container__role">
+                    <i class="fa fa-suitcase" aria-hidden="true"></i>
+
+                    consultant
+                </p>
+                <p class="card-container__location">
+                    <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    pune
+                </p>
+            </div>
+        <p class="card-container__company-intro">
+            <i class="fa fa-info-circle" aria-hidden="true"></i>
+                Expert in Strategizing Industry 4.0 Digital Transformation across business functions, enterprise IT
+                    operations so as to influence both the operational efficiency & evolving newer business models.
+              
+            </p>
+            <p class="card-container__type-of-Job">
+                <i class="fa fa-suitcase" aria-hidden="true"></i>
+                Contract,permanant,freelance
+            </p>
+            
+            <!-- <p class="card-container__skills">  <i class="fa fa-pencil-square-o" aria-hidden="true"></i> Skill profile</p> -->
+          
+            <!-- <div class="card-body-text"> -->
+                <div class="row primaryskill">
+                    <label>Primary skill: </label>
+                    <div class="col" id="skill1">java</div>
+                    <div class="col" id="skill2">php</div>
+                    <div class="col" id="skill3">cpp</div>
+                </div>
+                <div class="row secondaryskill">
+                    <label>secondary skill: </label>
+                    <div class="col" id="skill4">c#</div>
+                    <div class="col" id="skill5">angular</div>
+                    <div class="col" id="skill6">react</div>
+                </div>
+
+          

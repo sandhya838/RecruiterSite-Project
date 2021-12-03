@@ -1,0 +1,20 @@
+.card{
+    width: 50rem;
+    height: 30rem;
+    box-shadow: 0 1px 1px 0 rgb(0 0 0 / 5%), 0 1px 2px 0 rgb(0 0 0 / 10%), 0 2px 20px 0 rgb(0 0 0 / 20%);
+
+}
+// p{
+//     margin-right: 50px;
+//     margin-left: 20px;
+// }
+.fa{
+    color: var(--grayMediumWarm);
+}
+.row{
+    margin-left: 0px;
+    margin-right: 0px;
+    &__primaryskill,&__secondaryskill{
+        font-size: 14px;
+    }
+}
