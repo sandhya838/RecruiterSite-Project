@@ -1,4 +1,3 @@
-import { invalid } from "@angular/compiler/src/render3/view/util";
 import { Component, OnInit } from "@angular/core";
 import {
   FormArray,
@@ -123,7 +122,7 @@ export class WorkExperianceComponent implements OnInit {
   }
 
   onClick(formValue: any, isValid: boolean) {
-    console.log('dsfdsfsdf',invalid, formValue);
+    console.log("sdsadsad", isValid, formValue);
     if (isValid) {
       for (const item of formValue?.workExperiences) {
         item["to"] = item.jointomonth + " / " + item.jointoyear;
@@ -162,5 +161,25 @@ export class WorkExperianceComponent implements OnInit {
       years.push(i);
     }
     return years;
+  }
+  onIsCurrentCompany(index: number, isCurrentCompany: boolean) {
+    if (isCurrentCompany) {
+      this.getValidity(index).get("jointomonth")?.clearValidators();
+      this.getValidity(index).get("jointoyear")?.clearValidators();
+    } else {
+      this.getValidity(index)
+        .get("jointomonth")
+        ?.setValidators([Validators.required]);
+      this.getValidity(index)
+        .get("jointoyear")
+        ?.setValidators([Validators.required]);
+    }
+    this.getValidity(index)!.get("jointomonth")!.updateValueAndValidity();
+    this.getValidity(index)!.get("jointoyear")!.updateValueAndValidity();
+    console.log(
+      "error",
+      this.getValidity(index)!.get("jointomonth")!.errors,
+      this.getValidity(index)!.get("jointoyear")!.errors
+    );
   }
 }

@@ -1,8 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
-@import "./assets/styles/index";
-
 @import "ag-grid-community/dist/styles/ag-grid.css";
 @import "ag-grid-community/dist/styles/ag-theme-balham.css";
+@import "./assets/styles/index";
+
 
 body {
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
@@ -72,3 +72,6 @@ app-skill-profile {
     max-width: initial !important;
   }
 }
+
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
