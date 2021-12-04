@@ -3,8 +3,8 @@
       <div class="card-body">
         <form class="jobposting__form" [formGroup]="userForm" novalidate
           (ngSubmit)="onClick(userForm.value, userForm.valid)">
-          <div class="row">
-            <div class="col-6">
+          <div class="row">    
+          <div class="col">
               <label for="companyName">Company Name</label><span class="text-danger">*</span>
               <input type="text" class="form-control" placeholder="Enter Company Name" formControlName="companyName">
               <div
@@ -22,8 +22,9 @@
                   </div>
               </div>
             </div>
-  
-            <div class="col-6">
+            </div>
+            <div class="row">
+            <div class="col">
               <label>Company Introduction</label><span class="text-danger">*</span>
               <input type="text" class="form-control" placeholder="Enter Company Introduction"
                 formControlName="companyIntro">
@@ -43,10 +44,11 @@
               </div>
   
             </div>
-          </div>
+          </div>  
+       
           <div class="row">
             <div class="col">
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label>Type of Job</label>
                 <ng-multiselect-dropdown 
                 formControlName="typeOfJob"
@@ -61,6 +63,18 @@
                       userForm.controls['typeOfJob'].dirty)
           ">
                 </div>
+              </div> -->
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Default checkbox
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                  Checked checkbox
+                </label>
               </div>
             </div>
           </div>
@@ -167,6 +181,28 @@
              
             </div>
           </div>
+          <div class="row">
+            <div class="col">
+              <label>Role Description</label><span class="text-danger">*</span>
+              <input type="text" class="form-control" placeholder="Enter Role Description"
+                formControlName="roleDescription">
+                <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['roleDescription'].valid &&
+                  (userForm.controls['roleDescription'].touched ||
+                    userForm.controls['roleDescription'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['roleDescription'].errors">
+                  <small *ngIf="userForm.controls['roleDescription'].errors.required">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+  
+            </div>
+          </div>  
           <label>Role Profile</label>
           <div class="row">
             <div class="col-4">

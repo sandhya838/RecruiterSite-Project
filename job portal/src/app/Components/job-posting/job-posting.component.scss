@@ -35,10 +35,8 @@
         }
       }
     }
-    .multiselect-dropdown[_ngcontent-tfh-c40] .dropdown-btn[_ngcontent-tfh-c40]{
-      border: 1px solid #333333!important;
-      line-height: 0;
+    :host ::ng-deep .multiselect-dropdown .dropdown-btn {
+      border: 1px solid #333333;
+    border-radius: 7px;
     }
-    
-        
   

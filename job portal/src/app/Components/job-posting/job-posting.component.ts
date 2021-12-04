@@ -37,6 +37,7 @@ export class JobPostingComponent implements OnInit {
       management: ["", [Validators.required]],
       technical: ["", [Validators.required]],
       functional: ["", [Validators.required]],
+      roleDescription: ["", [Validators.required]],
 
 
     });
@@ -73,6 +74,7 @@ export class JobPostingComponent implements OnInit {
         role: "",
         locationpreference: "",
         skills: "",
+        roleDescription:"",
         orgnizationId: "",
         createdBy: "",
 
@@ -83,6 +85,7 @@ export class JobPostingComponent implements OnInit {
       tempFormattedData.role = formValue.role;
       tempFormattedData.locationpreference = formValue.locationpreference;
       tempFormattedData.skills = formValue.skills;
+      tempFormattedData. roleDescription=formValue. roleDescription;
       tempFormattedData.roleProfile.management = formValue.management;
       tempFormattedData.roleProfile.technical = formValue.technical;
       tempFormattedData.roleProfile.functional = formValue.functional;
