@@ -16,6 +16,9 @@ module.exports = {
         email: "required|string",
         password: "required|string",
         contactNumber: "required|string",
+        url:"required|string",
+        file:"required|string",
+        
 
         
     },

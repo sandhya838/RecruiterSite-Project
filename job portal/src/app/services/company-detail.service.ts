@@ -17,11 +17,11 @@ export class CompanyDetailService {
 
     return header;
   }
-  putCompanyDetails(data:any,id:String): Observable<any> {
+  putCompanyDetails(id:string): Observable<any> {
     const header = this._getHeaders();
     return this.http.put(
-       CONSTANTS.COMPANYDETAILS +id,
-      data,
+       CONSTANTS.COMPANYDETAILS +id ,
+    
       { headers: header }
     );
   }

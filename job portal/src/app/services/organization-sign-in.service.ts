@@ -25,7 +25,7 @@ export class OrganizationSignInService {
 
   register(data: any): Observable<any> {
     const header = this._getHeaders();
-    return this.http.post(CONSTANTS.ORGANIZATIONSIGNUP, data, );
+    return this.http.post(CONSTANTS.ORGANIZATIONSIGNUP, data);
   }
 
   getToken(): string | null {

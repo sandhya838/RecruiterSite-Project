@@ -17,14 +17,13 @@ export class OrganizationSignUpComponent implements OnInit {
   signUp: FormGroup = this.formBuilder.group({
     organizationName: ["", [Validators.required]],
     firstname: ["", [Validators.required]],
+    middleName:["", [Validators.required]],
     lastName: ["", [Validators.required]],
     contactNumber: ["", [Validators.required]],
     email: ["", [Validators.required]],
     password: ["", [Validators.required]],
-    file: new FormControl(null, [
-      Validators.required,
-      FileUploadValidators.filesLimit(1),
-    ]),
+    url:["", [Validators.required]],
+    file:["", [Validators.required]]
   });
  
   isPassword:boolean = false;
@@ -50,12 +49,16 @@ export class OrganizationSignUpComponent implements OnInit {
       let fd = new FormData();
       fd.append("organizationName", formValue.organizationName);
       fd.append("firstname", formValue.firstname);
+      fd.append("middleName", formValue.middleName);
       fd.append("lastname", formValue.lastname);
       fd.append("contactNumber", formValue.contactNumber);
       fd.append("email", formValue.email);
+      fd.append("url", formValue.email);
+      fd.append("logo", formValue.logo);
       fd.append("password", this.commonService.encrypt(formValue.password));
+
      
-      // console.log("formValue", fd);
+  
       
       this.organizationSignInService.register(fd).subscribe(
         (response: any) => {
@@ -65,20 +68,16 @@ export class OrganizationSignUpComponent implements OnInit {
           } else {
             this.commonService.alert("error", response.message);
           }
-        },error=> {
-          console.log(error);
-        }
-      );
+        
+        });
+   
+     
     } else {
       this.signUp.markAllAsTouched();
     }
+    console.log(formValue);
+    
   }
-
-  
- 
-
-  
-  
 }
 
 

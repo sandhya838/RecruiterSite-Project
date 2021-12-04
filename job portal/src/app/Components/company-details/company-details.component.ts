@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { data } from 'jquery';
 import { CommonService } from "src/app/services/common.service";
 import { CompanyDetailService } from 'src/app/services/company-detail.service';
+import { NotificationService } from 'src/app/notification.service';
 
 @Component({
   selector: 'app-company-details',
@@ -23,7 +24,7 @@ export class CompanyDetailsComponent implements OnInit {
   constructor(
     public formBuilder: FormBuilder,
     private companyDetailService:CompanyDetailService,
-    private commonService: CommonService
+    private notifyService: NotificationService
     //private router: Router,
     
   ) {}
@@ -32,12 +33,7 @@ export class CompanyDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.viewPort = window.innerWidth > 991 ? true : false;
     this.userForm = this.formBuilder.group({
-      Organization: ["", [Validators.required]],
-      firstName: ["", [Validators.required]],
-      middleName: ["", [Validators.required]],
-      lastName: ["", [Validators.required]],
       location: ["", [Validators.required]],
-      employees: ["", [Validators.required]],
       Description: ["", [Validators.required]],
       country:["", [Validators.required]],
       turnover: [ "", [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
@@ -88,83 +84,56 @@ export class CompanyDetailsComponent implements OnInit {
 
   onClick(formValue: any, isValid: boolean) {
     if (isValid) {
-      const finalData = {
-        countryAdministration: formValue.system,
-        country: formValue.country,
-        location: formValue.location,
-      };
-      console.log("finalData", finalData);
+      const tempFormattedData = {
+        location:"",
+        country:"",
+        Description:"",
+        turnover:"",
+        employee:"",
+
+
+
+
+      }
+      tempFormattedData.location = formValue.location;
+      tempFormattedData.country = formValue.country;
+      tempFormattedData.Description = formValue.Description;
+      tempFormattedData.turnover = formValue.turnover;
+      tempFormattedData.employee = formValue.employee;
+
+
+
+    
       const userData = JSON.parse(
         localStorage.getItem("rememberMe") === "true"
           ? localStorage.getItem("user")
           : (sessionStorage.getItem("user") as any)
       );
+  
       this.companyDetailService
-        .putCompanyDetails(userData?._id,formValue).subscribe((data: any) => {
-          if (data.status === 200) {
-            localStorage.getItem("rememberMe") === "true"
-              ? localStorage.setItem("user", JSON.stringify(data.profile))
-              : sessionStorage.setItem("user", JSON.stringify(data.profile));
-            this.commonService.alert("success", data.message);
-            
-          } else {
-            this.commonService.alert("error", data.message);
-          }
-        });
+        .putCompanyDetails(userData?._id).subscribe((data: any) => {
+      if (data.status === 200) {
+        this.notifyService.showSuccess(data.message);
+        this.userForm.reset();
+      } else {
+        this.notifyService.showError(data.message);
       }
+    }
+
+  );
+}
+
       else {
         this.userForm.markAllAsTouched();
         this.userForm.updateValueAndValidity();
       }
+      console.log(formValue);
     }
+    
+    
   }
       
   
-  // get getControl() {
-  //   return this.userForm.controls;
-  // }
-  // onClick(formValue: any, isValid: boolean) {
-  //   if (isValid) {
-  //     const companyDetails = [];
-  //     const tempFormatedData = {
-  //       details: "",
-  //       desc: "",
-  //       noOfEmp: "",
-  //       loc:""
-  //     };
-  //     tempFormatedData.details = formValue.companyDetails;
-  //     tempFormatedData.desc = formValue.descOfCompany
-  //     tempFormatedData.noOfEmp = formValue.noOfEmployees;
-  //     tempFormatedData.loc = formValue.location;
 
-  //     companyDetails.push(tempFormatedData);
-  //     const finalData = {
-  //       companyDetail: companyDetails,
-  //     };
-  //     this.configService
-  //       .updateUser(localStorage.getItem("ID"), finalData)
-  //       .subscribe(
-  //         (data: any) => {
-  //           console.log(data);
-  //           if (data.status === 200) {
-  //             this.notifyService.showSuccess(data.message);
-  //             //this.router.navigateByUrl("/certificate");
-  //             this.userForm.reset();
-  //           } else {
-  //             this.notifyService.showError(data.message);
-  //           }
-  //         },
-  //         (error) => {
-  //           this.notifyService.showError(error.message);
-  //         }
-  //       );
-  //   } else {
-  //     this.userForm.markAllAsTouched();
-  //     this.userForm.updateValueAndValidity();
-  //   }
-  // }
-  // closeAlert() {
-  //   this.alert = false;
-  // }
 
 

@@ -67,6 +67,7 @@ export class OrganizationSignInComponent implements OnInit {
     } else {
       this.orgsignIn.markAllAsTouched();
     }
+    console.log(this.orgsignIn.valid);
   }
 
   closeAlert() {

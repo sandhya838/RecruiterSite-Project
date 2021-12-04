@@ -35,6 +35,35 @@
           </div>
         </div>
         <div class="form-group">
+          <input type="url" name="url" id="url"
+          class="form-control"
+          formControlName="url"
+           placeholder="https://companyURL.com"
+           pattern="https://.*" size="30"
+         required>
+         <div
+         class="text-danger sign-up__wrapper__error"
+         *ngIf="
+           (signUp.controls['url'].touched ||
+             signUp.controls['url'].dirty) &&
+           !signUp.controls['url'].valid
+         "
+       >
+         <div *ngIf="getControl.url.errors">
+           <div *ngIf="getControl.url.errors.required">
+             This field is required
+           </div>
+         </div>
+       </div>
+          </div>
+
+
+
+
+
+        <div class="row">
+          <div class="col-sm">
+        <div class="form-group">
           <input
             type="text"
             class="form-control"
@@ -58,7 +87,36 @@
           </div>
         </div>
 
+          </div>
+          <div class="col-sm">
+            <div class="form-group">
+          <input
+            type="text"
+            class="form-control"
+            id="middleName"
+            placeholder="middledname"
+            formControlName="middleName"
+          />
+          <div
+            class="text-danger sign-up__wrapper__error"
+            *ngIf="
+              (signUp.controls['middleName'].touched ||
+                signUp.controls['middleName'].dirty) &&
+              !signUp.controls['middleName'].valid
+            "
+          >
+            <div *ngIf="getControl.middleName.errors">
+              <div *ngIf="getControl.middleName.errors.required">
+                This field is required
+              </div>
+            </div>
+          </div>
+          </div>
+          </div>
+          
 
+
+        <div class="col-sm">
         <div class="form-group">
           <input
             type="text"
@@ -81,8 +139,15 @@
               </div>
             </div>
           </div>
+          </div>
+        </div>
         </div>
         
+
+
+
+
+
         <div class="form-group">
           <input
             type="number"
