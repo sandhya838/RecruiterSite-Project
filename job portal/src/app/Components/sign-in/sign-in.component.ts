@@ -32,7 +32,7 @@ export class SignInComponent implements OnInit {
   }
 
   loginSubmit() {
-    if (this.signIn.valid) {
+    if(this.signIn.valid) {
       this.signService
         .login({
           email: this.signIn.value.email,

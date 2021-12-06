@@ -12,6 +12,10 @@ export class RollprofileComponent implements OnInit {
   userForm!: FormGroup;
   percentageList = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
   userId: string | undefined;
+  allFields:boolean =false;
+  onlyManagement:boolean =false;
+  onlyTechnical:boolean =false;
+  onlyFunctional:boolean =false;
 
   constructor(
     public formBuilder: FormBuilder,
@@ -69,6 +73,7 @@ export class RollprofileComponent implements OnInit {
         .get("roleManagement.project")
         ?.setValidators([Validators.required]);
       this.userForm.get("roleManagement")!.updateValueAndValidity();
+      
     } else {
       this.userForm.get("roleManagement.management")?.reset();
       this.userForm.get("roleManagement.portfolio")?.reset();
@@ -174,6 +179,28 @@ export class RollprofileComponent implements OnInit {
       return true;
     } else {
       return false;
+    }
+  }
+  getTotalofFields(){
+   this.onlyManagement=false;
+  //  this.allFields=false;
+    console.log(Number(this.userForm.get("roleManagement.management")!.value) ,
+    Number(this.userForm.get("roleTechnical.technical")!.value) ,
+    Number(this.userForm.get("roleFunctional.functional")!.value));
+    if (
+      Number(this.userForm.get("roleManagement.management")!.value) +
+        Number(this.userForm.get("roleTechnical.technical")!.value) +
+        Number(this.userForm.get("roleFunctional.functional")!.value) >=
+      100
+    ) {
+      this.allFields=true;
+      // console.log(this.allFields);
+    }
+   else if (
+      Number(this.userForm.get("roleManagement.management")!.value)==
+      100
+    ) {
+      this.onlyManagement=true;
     }
   }
 

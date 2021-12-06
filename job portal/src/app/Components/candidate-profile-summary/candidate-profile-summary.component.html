@@ -56,8 +56,8 @@
                   {{ profile.workExperiences[0].companyName }}
                 </li>
                 <li class="profile-details__cmpname">
-                  <i class="fa fa-building" aria-hidden="true"></i>Indian
-                  Institute of Management, Calcutta
+                  <i class="fa fa-building" aria-hidden="true"></i>
+                  {{ profile.educationalDetails[0].institute}}
                 </li>
               </ul>
             </div>
@@ -246,22 +246,9 @@
                 objectives.
               </li>
               <li>
-                Portfolio planning and execution with multi-site/ offshore/
-                Near-Shore delivery with various delivery models to optimize the
-                TCO, improved service availability and customer satisfaction.
-              </li>
-              <li>
                 Good experience on the Contract Commercials & deal shaping.
               </li>
-              <li>
-                Agile Delivery, Cloud Computing (AWS Certified), Blockchain,
-                Data & Analytics (AI, ML), Automation.
-              </li>
-              <li>
-                Industry Domains: Energy Utilities (Reg/De-Reg), Mining &
-                Minerals, Chemicals, BFSI, Manufacturing, Logistics & Life
-                Sciences
-              </li>
+              
             </ul>
           </div>
         </div>
@@ -315,26 +302,50 @@
                   <div class="col experience__col" id="skill5">CSS</div>
                   <div class="col experience__col" id="skill6">SCSS</div>
                 </div>
-                <!-- <ul class="experience__skill" style="list-style-type: square;">
-                  <li>Angular</li>
-                  <li>Bootstrap</li>
-                  <li>HTML, CSS, SCSS</li>
-                  <li>MySQL</li>
-                  <li>Mongodb</li>
-                </ul> -->
                 <p class="experience__description">
                   Portfolio & Program Management ($20Mn) with Delivery
                   leadership, Business Unit Lead with responsibility for top
                   line growth, Annual Budgeting, P&L accountability, Stakeholder
                   Management, Account Planning, GTM strategy, Capability
-                  Building, RFP, RFI & Bid defense for all opportunities across
-                  Technologies (SAP,HANA, Open Stack, Mean Stack, Database,
-                  Mobile, Cloud, Infrastructure) for AD and AMS services in
-                  Germany, Finland, Norway & NA region, Innovation, Digital
-                  Labs, MDM, Data Model Design, Bigdata & Advanced Analytics,
-                  Blockchain, Agile Delivery, Operating Model Design, People
-                  Management, Managing Strategic Partnerships and 3rd Party
-                  Vendors.
+                  Building.
+                </p>
+                <hr>
+
+                <h5 class="experience__title">
+                  {{ profile.workExperiences[0].role }}
+                </h5>
+                <p class="experience__company">
+                  {{ profile.workExperiences[0].companyName }}
+                </p>
+                <p class="experience__duration-time">
+                  {{ profile.workExperiences[0].from }} -
+                  {{ profile.workExperiences[0].to }}
+                  <span class="experience__duration">
+                    {{ profile.totalYearsOfExperience }} yr
+                  </span>
+                </p>
+                <p class="experience__location">Haydrabad, Pune.</p>
+                <div class="row experience__primaryskill">
+                  <label>Primary skill: </label>
+                  <div class="col" id="skill1">
+                    {{ profile?.workExperiences[0]?.skills[0]?.name }}
+                  </div>
+                  <div class="col" id="skill2">
+                    {{ profile?.workExperiences[0]?.skills[1]?.name }}
+                  </div>
+                  <div class="col" id="skill3">
+                    {{ profile?.workExperiences[0]?.skills[2]?.name }}
+                  </div>
+                </div>
+                <div class="row experience__secondaryskill">
+                  <label>secondary skill: </label>
+                  <div class="col experience__col" id="skill4">HTML</div>
+                  <div class="col experience__col" id="skill5">CSS</div>
+                  <div class="col experience__col" id="skill6">SCSS</div>
+                </div>
+                
+                <p class="experience__description">
+                 ...
                 </p>
               </div>
             </div>
@@ -388,14 +399,14 @@
           <div class="row">
             <div class="col-2"></div>
             <div class="col-10">
-              <p class="education__college">MIT ACSC, Pune, Maharastra.</p>
+              <p class="education__college"> {{ profile.educationalDetails[0].institute}}</p>
               <p class="education__degree">
-                Master of Computer Science.
-                <span class="education__yop">2019-2021</span>
+                {{ profile.educationalDetails[0].degree }}
+                <span class="education__yop">{{ profile.educationalDetails[0].yearofPassing.year}}</span>
               </p>
               <p class="education__specialization">
                 Software Engineering
-                <span class="education__grade">9.0 SGPA</span>
+                <span class="education__grade"> {{ profile.educationalDetails[0].grade }} %</span>
               </p>
             </div>
           </div>
@@ -420,8 +431,8 @@
             <div class="col-2"></div>
             <div class="col-10">
               <p class="certification__Name">
-                Angular.
-                <span class="certification__issueDate"> 2019 </span>
+                {{ profile.certifications[0].name }}
+                <span class="certification__issueDate">  {{ profile.certifications[0].year }}</span>
               </p>
               <p class="certification__mentor">Mr.Pranay sir, Mr.Ved sir</p>
               <p class="certification__refrence">
