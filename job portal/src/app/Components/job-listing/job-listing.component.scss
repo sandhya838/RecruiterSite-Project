@@ -58,9 +58,12 @@ h5 {
 }
 
 .card {
-    width: 40rem;
     padding: 10px;
+    height: 280px;
    
+}
+p{
+font-weight: 0;
 }
 
 .fa {
@@ -73,4 +76,22 @@ h5 {
     &__secondaryskill {
         font-size: 14px;
     }
+}
+@media all and (max-width: 600px) {
+    .jobs {
+      &__action {
+        justify-content: space-between;
+      }
+      h5 {
+        font-size: 0.811rem;
+      }
+      .col-8{
+          padding-left: 50px;
+      }
+      .rowjobs{
+          &__experiance{
+
+          }
+    }
+  }
 }
