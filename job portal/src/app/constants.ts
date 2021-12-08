@@ -1,4 +1,4 @@
-const BASEURL = "http://localhost:3000/";
+const BASEURL = "http://23.95.228.167:4080/";
 export const CONSTANTS = {
   SKILLS: [
     { name: "Programming Languages" },
@@ -134,7 +134,7 @@ export const CONSTANTS = {
   ],
   SECRET:
     "SiJIVnYKsw785iHCAZw6QY9hzi573lQnGlToW7LTWaEgtuV00DJFnUSxgMyrXoCgwk0ya1u2PYVRctsYGpJu9oDb1Jitb6gMYOkJujkHK2UNbYv9p8fdcY6dzzfYmRYgiu3mazCwaJXrhqJ7RCVjY7eddfNUFish",
-  BASEURL: "http://localhost:3000/",
+  BASEURL: BASEURL,
   RECOMMENDEDJOBS: "v1/recomandedJobs",
   USERPROFILE:BASEURL + "v1/profile/",
   CANDIDATESIGNUP: BASEURL + "v1/register",
