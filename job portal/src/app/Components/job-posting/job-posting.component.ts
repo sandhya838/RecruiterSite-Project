@@ -31,7 +31,11 @@ export class JobPostingComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       companyName: ["", [Validators.required]],
       companyIntro: ["", [Validators.required]],
-      typeOfJob: ["", [Validators.required]],
+      typeOfJob: this.formBuilder.group({
+        contract: [false],
+        permanant: [true, [Validators.required]],
+        freelance: [false],
+      }),
       role: ["", [Validators.required]],
       location: ["", [Validators.required]],
       primary: ["", [Validators.required]],
@@ -43,16 +47,7 @@ export class JobPostingComponent implements OnInit {
  });
 
 
-    // function onChange(checkedValues: any) {
-    //   console.log('checked = ', checkedValues);
-    // }
-
-    // const plainOptions = ['Contract', 'Permanant', 'freelance'];
-    // const options = [
-    //   { label: 'Contract', value: 'Contract' },
-    //   { label: 'Permanant', value: 'Permanant' },
-    //   { label: 'freelance', value: 'freelance' },
-    // ];
+   
     this.location = [
       { id: 1, name: "Mumbai" },
       { id: 2, name: "Pune" },
@@ -125,7 +120,7 @@ export class JobPostingComponent implements OnInit {
         companyName: "",
         companyIntro: "",
         roleProfile: { management: "", technical: "", functional: "" },
-        typeOfJob: "",
+        typeOfJob:{ contract: "", permanant: "", freelance: "" },
         role: "",
         location: "",
         primary: "",
@@ -138,7 +133,9 @@ export class JobPostingComponent implements OnInit {
       
       tempFormattedData.companyName = formValue.companyName;
       tempFormattedData.companyIntro = formValue.companyIntro;
-      tempFormattedData.typeOfJob = formValue.typeOfJob;
+      tempFormattedData.typeOfJob.contract = formValue.typeOfJOb.contract;
+      tempFormattedData.typeOfJob.permanant = formValue.typeOfJOb.permanant;
+      tempFormattedData.typeOfJob.freelance = formValue.typeOfJOb.freelance;
       tempFormattedData.role = formValue.role;
       tempFormattedData.location = formValue.location;
       tempFormattedData.primary = formValue.primary;

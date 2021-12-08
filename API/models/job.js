@@ -11,7 +11,15 @@ var Jobschema = new Schema({
         type: String
     },
     typeOfJob: {
-        type: []
+        contract:{
+            type:Boolean
+        },
+        permanant:{
+            type:Boolean
+        },
+       freelance:{
+            type:Boolean
+        }
     },
     locationpreference: {
         type: String

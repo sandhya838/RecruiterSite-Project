@@ -59,7 +59,7 @@ h5 {
 
 .card {
     padding: 10px;
-    height: 280px;
+  
    
 }
 p{
@@ -77,7 +77,7 @@ font-weight: 0;
         font-size: 14px;
     }
 }
-@media all and (max-width: 600px) {
+@media all and (max-width:767px) {
     .jobs {
       &__action {
         justify-content: space-between;
@@ -88,10 +88,6 @@ font-weight: 0;
       .col-8{
           padding-left: 50px;
       }
-      .rowjobs{
-          &__experiance{
 
-          }
-    }
   }
 }

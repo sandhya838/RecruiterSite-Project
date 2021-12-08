@@ -68,24 +68,94 @@
           <div class="col-6">
             <label>Type of Jobs</label>
             <div class="form-group">
-              <div class="row">
+              <div class="row" formGroupName="typeOfJob">
                 <div class="col">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label typeofjoblabel" for="inlineCheckbox1">contract</label>
+                    <input class="form-check-input" type="checkbox" id="contract" formControlName="contract">
+                    <label class="form-check-label typeofjoblabel" for="contract">contract</label>
+
                   </div>
+                  <div
+                  class="text-danger"
+                  *ngIf="
+                  !userForm.get('typeOfJob.contract')!.valid &&
+                    (userForm.get('typeOfJob.contract')!.touched ||
+                      userForm.get('typeOfJob.contract')!.dirty)
+                  "
+                >
+                  <div
+                    *ngIf="
+                      userForm.get('typeOfJob.contract')!.errors
+                    "
+                  >
+                    <small
+                      *ngIf="
+                        userForm.get('typeOfJob.contract')!.errors!
+                          .required
+                      "
+                    >
+                      This field is required
+                    </small>
+                  </div>
+                </div>
                 </div>
                 <div class="col">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label typeofjoblabel" for="inlineCheckbox1">Permanant</label>
+                    <input class="form-check-input" type="checkbox" id="permanant"formControlName="permanant">
+                    <label class="form-check-label typeofjoblabel" for="permanant">Permanant</label>
                   </div>
+                  <div
+                  class="text-danger"
+                  *ngIf="
+                  !userForm.get('typeOfJob.permanant')!.valid &&
+                    (userForm.get('typeOfJob.permanant')!.touched ||
+                      userForm.get('typeOfJob.permanant')!.dirty)
+                  "
+                >
+                  <div
+                    *ngIf="
+                      userForm.get('typeOfJob.permanant')!.errors
+                    "
+                  >
+                    <small
+                      *ngIf="
+                        userForm.get('typeOfJob.permanant')!.errors!
+                          .required
+                      "
+                    >
+                      This field is required
+                    </small>
+                  </div>
+                </div>
                 </div>
                 <div class="col">
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option1">
-                    <label class="form-check-label typeofjoblabel" for="inlineCheckbox1">freelance</label>
+                    <input class="form-check-input" type="checkbox" id="freelance"formControlName="freelance">
+                    <label class="form-check-label typeofjoblabel" for="freelance">freelance</label>
                   </div>
+                  <div
+                  class="text-danger"
+                  *ngIf="
+                  !userForm.get('typeOfJob.freelance')!.valid &&
+                    (userForm.get('typeOfJob.freelance')!.touched ||
+                      userForm.get('typeOfJob.freelance')!.dirty)
+                  "
+                >
+                  <div
+                    *ngIf="
+                      userForm.get('typeOfJob.freelance')!.errors
+                    "
+                  >
+                    <small
+                      *ngIf="
+                        userForm.get('typeOfJob.freelance')!.errors!
+                          .required
+                      "
+                    >
+                      This field is required
+                    </small>
+                  </div>
+                </div>
                 </div>
               </div>
             </div>
