@@ -19,11 +19,11 @@ export class OrganizationSignInComponent implements OnInit {
     password: ["", [Validators.required]],
     rememberMe: [false],
   });
-  allData: any;
-  credentials: any = {};
-  msg = "";
+  
+
+
   isPassword = false;
-  OrganizationSignInService: any;
+
  
 
   constructor(

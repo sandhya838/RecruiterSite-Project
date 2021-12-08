@@ -18,13 +18,12 @@ export class CompanyDetailsComponent implements OnInit {
   dropdownSettings = {};
   country: { id: number; name: string }[] = [];
   location: { id: number; name: string }[] = [];
-  user: any;
   viewPort: any;
-  router: any;
+  userData: any;
   constructor(
     public formBuilder: FormBuilder,
     private companyDetailService:CompanyDetailService,
-    private notifyService: NotificationService
+    private commonService: CommonService
     //private router: Router,
     
   ) {}
@@ -39,6 +38,11 @@ export class CompanyDetailsComponent implements OnInit {
       turnover: [ "", [Validators.required, Validators.pattern(/^-?(0|[1-9]\d*)?$/)]],
       employee:[ "", [Validators.required, Validators.pattern(/^[0-9]+([,.][0-9]+)?$/)]]
     });
+    this.userData = JSON.parse(
+      localStorage.getItem("rememberMe") === "true"
+        ? localStorage.getItem("user")
+        : (sessionStorage.getItem("user") as any)
+    );
     this.country = [
       { id: 1, name: "	Afghanistan" },
       { id: 2, name: "Albania" },
@@ -84,50 +88,34 @@ export class CompanyDetailsComponent implements OnInit {
 
   onClick(formValue: any, isValid: boolean) {
     if (isValid) {
-      const tempFormattedData = {
-        location:"",
-        country:"",
-        Description:"",
-        turnover:"",
-        employee:"",
-
-
-
-
-      }
-      tempFormattedData.location = formValue.location;
-      tempFormattedData.country = formValue.country;
-      tempFormattedData.Description = formValue.Description;
-      tempFormattedData.turnover = formValue.turnover;
-      tempFormattedData.employee = formValue.employee;
-
-
-
+      const finalData = {
+        companyDescription:formValue.Description,
+        companyCountry:formValue.country,
+        companyLocation:formValue.location,
+        companyTurnover:formValue.turnover,
+        companyEmployee:formValue.employee,
+      };
     
-      const userData = JSON.parse(
-        localStorage.getItem("rememberMe") === "true"
-          ? localStorage.getItem("user")
-          : (sessionStorage.getItem("user") as any)
-      );
-  
+    console.log("finalData", finalData);   
       this.companyDetailService
-        .putCompanyDetails(userData?._id).subscribe((data: any) => {
-      if (data.status === 200) {
-        this.notifyService.showSuccess(data.message);
-        this.userForm.reset();
-      } else {
-        this.notifyService.showError(data.message);
-      }
-    }
-
-  );
+        .putCompanyDetails(this.userData?._id,finalData).subscribe((data: any) => {
+          if (data.status === 200) {
+            localStorage.getItem("rememberMe") === "true"
+              ? localStorage.setItem("user", JSON.stringify(data.profile))
+              : sessionStorage.setItem("user", JSON.stringify(data.profile));
+            this.commonService.alert("success", data.message);
+            
+          } else {
+            this.commonService.alert("error", data.message);
+          }
+        });
 }
 
       else {
         this.userForm.markAllAsTouched();
         this.userForm.updateValueAndValidity();
       }
-      console.log(formValue);
+ 
     }
     
     

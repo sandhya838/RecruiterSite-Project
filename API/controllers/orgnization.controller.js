@@ -6,7 +6,7 @@ module.exports = {
         name: "required|string",
         logo: "required|string",
         address: "required|string",
-         contactPerson: "required|string",
+        contactPerson: "required|string",
         city: "required|string",
         state: "required|alpha",
         pinCode: "required|numeric",
@@ -16,11 +16,15 @@ module.exports = {
         email: "required|string",
         password: "required|string",
         contactNumber: "required|string",
-        url:"required|string",
-        file:"required|string",
-        
+        url: "required|string",
+        firstName: "required|string",
+        middleName: "required|string",
+        lastName: "required|string",
+        organizationName:"required|string",
 
-        
+
+
+
     },
 
     create: (req, res) => {

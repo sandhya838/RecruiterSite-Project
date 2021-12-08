@@ -16,14 +16,17 @@ export class OrganizationSignUpComponent implements OnInit {
   alert: boolean = false;
   signUp: FormGroup = this.formBuilder.group({
     organizationName: ["", [Validators.required]],
-    firstname: ["", [Validators.required]],
-    middleName:["", [Validators.required]],
+    firstName: ["", [Validators.required]],
+    middleName:[""],
     lastName: ["", [Validators.required]],
     contactNumber: ["", [Validators.required]],
     email: ["", [Validators.required]],
     password: ["", [Validators.required]],
     url:["", [Validators.required]],
-    file:["", [Validators.required]]
+    file: new FormControl(null, [
+      Validators.required,
+      FileUploadValidators.filesLimit(1),
+    ]),
   });
  
   isPassword:boolean = false;
@@ -45,16 +48,19 @@ export class OrganizationSignUpComponent implements OnInit {
   }
 
   onSubmitForm(isValid: boolean, formValue: any) {
+    console.log(isValid);
     if (isValid) {
+      
       let fd = new FormData();
+     
       fd.append("organizationName", formValue.organizationName);
-      fd.append("firstname", formValue.firstname);
+      fd.append("firstName", formValue.firstName);
       fd.append("middleName", formValue.middleName);
-      fd.append("lastname", formValue.lastname);
+      fd.append("lastName", formValue.lastName);
       fd.append("contactNumber", formValue.contactNumber);
       fd.append("email", formValue.email);
       fd.append("url", formValue.email);
-      fd.append("logo", formValue.logo);
+      fd.append("logo", formValue.file[0]);
       fd.append("password", this.commonService.encrypt(formValue.password));
 
      
@@ -63,7 +69,7 @@ export class OrganizationSignUpComponent implements OnInit {
       this.organizationSignInService.register(fd).subscribe(
         (response: any) => {
           if (response.status === 200) {
-            this.router.navigate(["/organization-sign-in"]);
+            this.router.navigate(["/organization-signin"]);
             this.commonService.alert("success", response.message);
           } else {
             this.commonService.alert("error", response.message);
@@ -75,7 +81,7 @@ export class OrganizationSignUpComponent implements OnInit {
     } else {
       this.signUp.markAllAsTouched();
     }
-    console.log(formValue);
+  
     
   }
 }

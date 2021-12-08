@@ -10,10 +10,10 @@ var Organizationschema = new Schema({
     password: {
         type: String
     },
-    contactPerson:{
-        type:String
+    contactPerson: {
+        type: String
     },
-    
+
     contactNumber: {
         type: String
     },
@@ -54,15 +54,26 @@ var Organizationschema = new Schema({
     organizationName: {
         type: String
     },
-    firstname:{
+    firstName: {
         type: String
 
     },
-    lastName:{
+    middleName: {
         type: String
     },
-    
-   
+
+    lastName: {
+        type: String
+    },
+    url: {
+        type: String
+    },
+    file: {
+        type: String
+    },
+
+
+
 
 });
 

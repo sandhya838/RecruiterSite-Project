@@ -2,13 +2,15 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from '@angular/core';
 import { Observable } from "rxjs";
 import { CONSTANTS } from '../constants';
+import { CommonService } from "./common.service";
 
 @Injectable({
   providedIn: 'root'
 })
 export class CompanyDetailService {
-  apiBaseUrl = CONSTANTS.BASEURL;
-  constructor(private http: HttpClient) {}
+
+ 
+  constructor(private http: HttpClient,private commonService: CommonService) {}
   private _getHeaders() {
     let header = new HttpHeaders({
       "x-access-token": sessionStorage.getItem("token") as string,
@@ -17,13 +19,12 @@ export class CompanyDetailService {
 
     return header;
   }
-  putCompanyDetails(id:string): Observable<any> {
-    const header = this._getHeaders();
+  putCompanyDetails(id:any, data: any): Observable<any> {
     return this.http.put(
-       CONSTANTS.COMPANYDETAILS +id ,
+       CONSTANTS.COMPANYDETAILS +id , data,{
+       headers: this.commonService._getHeaders(),
     
-      { headers: header }
-    );
+       });
   }
 
   }
