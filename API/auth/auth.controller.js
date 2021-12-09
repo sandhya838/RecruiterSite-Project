@@ -34,7 +34,6 @@ exports.authToken = function (req, res, next) {
 };
 
 exports.login = (req, res) => {
-    console.log(req.body);
     Profile.findOne({ email: req.body.email, password: req.body.password }, (err, result) => {
         if (err) {
             res.status(401).send({ status: 401, message: 'You are not autorized to get access.' });
@@ -86,7 +85,7 @@ exports.forgotPassword = (req, res) => {
             if (err) {
                 res.status(401).send({ status: 401, message: 'No account with that email address exists.' });
             } else if (result) {
-                
+
 
             } else {
                 return res.status(404).json({ status: 404, message: 'User not found' });

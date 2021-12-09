@@ -1,5 +1,7 @@
-const BASEURL = "http://23.95.228.167:4080/";
+//const BASEURL = "http://23.95.228.167:4080/";
+const BASEURL = "http://localhost:3000/";
 export const CONSTANTS = {
+  MAX_FILE_SIZE: 1024 * 1024 * 5,  // in MB max file size is 5MB
   SKILLS: [
     { name: "Programming Languages" },
     { name: "Web Development" },
@@ -136,12 +138,12 @@ export const CONSTANTS = {
     "SiJIVnYKsw785iHCAZw6QY9hzi573lQnGlToW7LTWaEgtuV00DJFnUSxgMyrXoCgwk0ya1u2PYVRctsYGpJu9oDb1Jitb6gMYOkJujkHK2UNbYv9p8fdcY6dzzfYmRYgiu3mazCwaJXrhqJ7RCVjY7eddfNUFish",
   BASEURL: BASEURL,
   RECOMMENDEDJOBS: "v1/recomandedJobs",
-  USERPROFILE:BASEURL + "v1/profile/",
+  USERPROFILE: BASEURL + "v1/profile/",
   CANDIDATESIGNUP: BASEURL + "v1/register",
   CANDIDATELOGIN: BASEURL + "v1/login",
   CHANGEPASSWORD: BASEURL + "v1/change-password/",
   ABOUTYOU: BASEURL + "v1/aboutyou",
   UPDATEUSERPROFILE: BASEURL + "v1/profile/",
-  UPLOADCERTIFICATES: BASEURL+'v1/upload-certificates/',
-  CREATEJOBS:BASEURL+'v1/create',
+  UPLOADCERTIFICATES: BASEURL + "v1/upload-certificates/",
+  CREATEJOBS: BASEURL + "v1/create",
 };
