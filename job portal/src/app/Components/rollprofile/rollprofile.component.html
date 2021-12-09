@@ -180,8 +180,9 @@
 
         <!--  -->
         <div class="col-9">
-          <ng-container *ngIf="allFields">
-            <div class="row" *ngIf="onlyManagement">
+          <ng-container *ngIf="allFields || onlyManagement">
+          <!-- <ng-container *ngIf="onlyManagement"> -->
+            <div class="row">
               <div class="col-md">
                 <div class="form-group">
                   <label for="Portfolio">Portfolio</label>
@@ -257,7 +258,8 @@
               </div>
             </div>
           </ng-container>
-          <ng-container *ngIf="allFields">
+          <ng-container *ngIf="allFields || onlyFunctional">
+          <!-- <ng-container *ngIf="onlyFunctional"> -->
             <div class="row">
               <div class="col-md">
                 <div class="form-group">
@@ -332,7 +334,8 @@
               </div>
             </div>
           </ng-container>
-          <ng-container *ngIf="allFields">
+          <ng-container *ngIf="allFields || onlyTechnical">
+          <!-- <ng-container *ngIf=" onlyTechnical"> -->
             <div class="row">
               <div class="col-md">
                 <div class="form-group">
@@ -493,7 +496,7 @@
           </div>
         </div>
         <ng-container *ngIf="userForm.get('roleManagement.isManagement')!.value">
-          <div class="col-md " >
+          <div class="col-md ">
             <div class="form-group">
               <label for="Management">Management</label>
               <select class="form-control" name="management" id="management" formControlName="management" (change)="
@@ -523,7 +526,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md" >
+          <div class="col-md">
             <div class="form-group">
               <label for="Portfolio">Portfolio</label>
               <select class="form-control" name="portfolio" id="portfolio" formControlName="portfolio">
@@ -547,7 +550,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md" >
+          <div class="col-md">
             <div class="form-group">
               <label for="account">Account</label>
               <select class="form-control" name="account" id="account" formControlName="account">
@@ -571,7 +574,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md" >
+          <div class="col-md">
             <div class="form-group">
               <label for="project">Project</label>
               <select class="form-control" name="project" id="project" formControlName="project">
@@ -598,7 +601,7 @@
         </ng-container>
       </div>
       <div class="row" formGroupName="roleTechnical">
-        <div class="col-md" >
+        <div class="col-md">
           <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="technicalcheckbox" (change)="onChecked('technical')"
               formControlName="isTechnical" />
@@ -619,7 +622,7 @@
           </div>
         </div>
         <ng-container *ngIf="userForm.get('roleTechnical.isTechnical')!.value">
-          <div class="col-md" >
+          <div class="col-md">
             <div class="form-group">
               <label for="technical">Technical</label>
               <select class="form-control" name="technical" id="technical" formControlName="technical" (change)="
@@ -648,7 +651,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md" >
+          <div class="col-md">
             <div class="form-group">
               <label for="architect">Architect</label>
               <select class="form-control" name="architect" id="architect" formControlName="architect">
@@ -672,7 +675,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md" >
+          <div class="col-md">
             <div class="form-group">
               <label for="techLead">Tech lead</label>
               <select class="form-control" name="techLead" id="techLead" formControlName="techLead">
@@ -696,7 +699,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md" >
+          <div class="col-md">
             <div class="form-group">
               <label for="developer">Developer</label>
               <select class="form-control" name="developer" id="developer" formControlName="developer">
@@ -723,7 +726,7 @@
         </ng-container>
       </div>
       <div class="row" formGroupName="roleFunctional">
-        <div class="col-md" >
+        <div class="col-md">
           <div class="form-group form-check">
             <input type="checkbox" class="form-check-input" id="roleFunctionalcheckbox"
               (change)="onChecked('functional')" formControlName="isFuncational" />
@@ -745,7 +748,7 @@
           </div>
         </div>
         <ng-container *ngIf="userForm.get('roleFunctional.isFuncational')!.value">
-          <div class="col-md" >
+          <div class="col-md">
             <div class="form-group">
               <label for="functional">Functional</label>
               <select class="form-control" name="functional" id="functional" formControlName="functional" (change)="
@@ -775,7 +778,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md" >
+          <div class="col-md">
             <div class="form-group">
               <label for="sme">SME</label>
               <select class="form-control" name="sme" id="sme" formControlName="sme">
@@ -797,7 +800,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md" >
+          <div class="col-md">
             <div class="form-group">
               <label for="leadCon">Lead consultant</label>
               <select class="form-control" name="leadCon" id="leadCon" formControlName="leadCon">
@@ -821,7 +824,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md" >
+          <div class="col-md">
             <div class="form-group">
               <label for="consultant">Consultant</label>
               <select class="form-control" name="consultant" id="consultant" formControlName="consultant">
