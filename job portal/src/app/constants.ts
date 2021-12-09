@@ -1,4 +1,5 @@
-const BASEURL = "http://23.95.228.167:4080/";
+// const BASEURL = "http://23.95.228.167:4080/";
+const BASEURL = "http://localhost:3000/";
 export const CONSTANTS = {
   SKILLS: [
     { name: "Programming Languages" },

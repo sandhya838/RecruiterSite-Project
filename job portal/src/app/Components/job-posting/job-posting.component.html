@@ -244,7 +244,7 @@
           </div>
         </div>
         <label>Role Profile</label>
-        <div class="row">
+        <div class="row" formGroupName="roleProfile">
           <div class="col-4">
             <label>Management</label>
             <select class="form-control" formControlName="management">
@@ -260,17 +260,29 @@
               <option>90%</option>
               <option>100%</option>
             </select>
-            <div class="text-danger" *ngIf="
-                !userForm.controls['management'].valid &&
-                (userForm.controls['management'].touched ||
-                  userForm.controls['management'].dirty)
-              ">
-              <div *ngIf="userForm.controls['management'].errors">
-                <small *ngIf="userForm.controls['management'].errors.required">
-                  This field is required
-                </small>
-              </div>
+            <div
+            class="text-danger"
+            *ngIf="
+            !userForm.get('roleProfile.management')!.valid &&
+              (userForm.get('roleProfile.management')!.touched ||
+                userForm.get('roleProfile.management')!.dirty)
+            "
+          >
+            <div
+              *ngIf="
+                userForm.get('roleProfile.management')!.errors
+              "
+            >
+              <small
+                *ngIf="
+                  userForm.get('roleProfile.management')!.errors!
+                    .required
+                "
+              >
+                This field is required
+              </small>
             </div>
+          </div>
           </div>
           <div class="col-4">
             <label>Technical</label>
@@ -287,17 +299,29 @@
               <option>90%</option>
               <option>100%</option>
             </select>
-            <div class="text-danger" *ngIf="
-                !userForm.controls['technical'].valid &&
-                (userForm.controls['technical'].touched ||
-                  userForm.controls['technical'].dirty)
-              ">
-              <div *ngIf="userForm.controls['technical'].errors">
-                <small *ngIf="userForm.controls['technical'].errors.required">
-                  This field is required
-                </small>
-              </div>
+            <div
+            class="text-danger"
+            *ngIf="
+            !userForm.get('roleProfile.technical')!.valid &&
+              (userForm.get('roleProfile.technical')!.touched ||
+                userForm.get('roleProfile.technical')!.dirty)
+            "
+          >
+            <div
+              *ngIf="
+                userForm.get('roleProfile.technical')!.errors
+              "
+            >
+              <small
+                *ngIf="
+                  userForm.get('roleProfile.technical')!.errors!
+                    .required
+                "
+              >
+                This field is required
+              </small>
             </div>
+          </div>
           </div>
           <div class="col-4">
             <label>Functional</label>
@@ -314,17 +338,29 @@
               <option>90%</option>
               <option>100%</option>
             </select>
-            <div class="text-danger" *ngIf="
-                !userForm.controls['functional'].valid &&
-                (userForm.controls['functional'].touched ||
-                  userForm.controls['functional'].dirty)
-              ">
-              <div *ngIf="userForm.controls['functional'].errors">
-                <small *ngIf="userForm.controls['functional'].errors.required">
-                  This field is required
-                </small>
-              </div>
+            <div
+            class="text-danger"
+            *ngIf="
+            !userForm.get('roleProfile.functional')!.valid &&
+              (userForm.get('roleProfile.functional')!.touched ||
+                userForm.get('roleProfile.functional')!.dirty)
+            "
+          >
+            <div
+              *ngIf="
+                userForm.get('roleProfile.functional')!.errors
+              "
+            >
+              <small
+                *ngIf="
+                  userForm.get('roleProfile.functional')!.errors!
+                    .required
+                "
+              >
+                This field is required
+              </small>
             </div>
+          </div>
           </div>
         </div>
         <hr />

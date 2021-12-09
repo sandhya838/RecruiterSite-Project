@@ -40,10 +40,12 @@ export class JobPostingComponent implements OnInit {
       location: ["", [Validators.required]],
       primary: ["", [Validators.required]],
       secondary: ["", [Validators.required]],
-      management: ["", [Validators.required]],
-      technical: ["", [Validators.required]],
-      functional: ["", [Validators.required]],
       roleDescription: ["", [Validators.required]],
+      roleProfile: this.formBuilder.group({
+        management:["", [Validators.required]],
+        technical: ["", [Validators.required]],
+        functional:["", [Validators.required]],
+      }),
  });
 
 
@@ -116,43 +118,18 @@ export class JobPostingComponent implements OnInit {
     console.log(formValue);
     
     if (isValid) {
-      const tempFormattedData = {
-        companyName: "",
-        companyIntro: "",
-        roleProfile: { management: "", technical: "", functional: "" },
-        typeOfJob:{ contract: "", permanant: "", freelance: "" },
-        role: "",
-        location: "",
-        primary: "",
-        secondary:"",
-        roleDescription: "",
-        orgnizationId: "",
-        createdBy: "",
-      }
+     
      
       
-      tempFormattedData.companyName = formValue.companyName;
-      tempFormattedData.companyIntro = formValue.companyIntro;
-      tempFormattedData.typeOfJob.contract = formValue.typeOfJOb.contract;
-      tempFormattedData.typeOfJob.permanant = formValue.typeOfJOb.permanant;
-      tempFormattedData.typeOfJob.freelance = formValue.typeOfJOb.freelance;
-      tempFormattedData.role = formValue.role;
-      tempFormattedData.location = formValue.location;
-      tempFormattedData.primary = formValue.primary;
-      tempFormattedData.secondary = formValue.secondary;
-      tempFormattedData.roleDescription = formValue.roleDescription;
-      tempFormattedData.roleProfile.management = formValue.management;
-      tempFormattedData.roleProfile.technical = formValue.technical;
-      tempFormattedData.roleProfile.functional = formValue.functional;
-
+     
       const userData = JSON.parse(
         localStorage.getItem("rememberMe") === "true"
           ? localStorage.getItem("user")
           : (sessionStorage.getItem("user") as any)
       );
-      tempFormattedData.orgnizationId = userData._id;
-      tempFormattedData.createdBy = userData._id;
-      this.jobs.createJobs(tempFormattedData)
+      formValue.orgnizationId = userData._id;
+      formValue.createdBy = userData._id;
+      this.jobs.createJobs(formValue)
         .subscribe(
           (data: any) => {
             if (data.status === 200) {
