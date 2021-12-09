@@ -19,9 +19,6 @@
     Jobportal
   </a>
 
-  
-  
-  
   <button
     class="navbar-toggler"
     type="button"
@@ -34,13 +31,17 @@
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
-      <li><a routerLink="/jobs"><p><i class="fa fa-suitcase" aria-hidden="true"></i></p> 
-        <p>Jobs</p></a></li>
-        <li><a routerLink="/profile-summary"><p><i class="fa fa-user" aria-hidden="true"></i></p> 
-          <p>Profile</p></a></li>
-          <li><a routerLink="/job-post"><p><i class="fa fa-user" aria-hidden="true"></i></p> 
-            <p>Job Post</p></a></li>
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0" *ngIf="menu?.length">
+      <li *ngFor="let item of menu">
+
+        <a routerLink="{{ item.url }}" *ngIf="item.isForCandidate === user.role"
+          ><i class="{{ item.icon }} inner-header__main-fa" aria-hidden="true"></i>
+          <div>
+            {{ item.name }}
+          </div></a
+        >
+      </li>
+
       <!-- <li class="nav-item dropdown"></li> -->
       <li class="nav-item dropdown">
         <a
@@ -52,10 +53,6 @@
           aria-expanded="false"
         >
           <div class="inner-header__profile">
-            Welcome
-            {{
-              user?.firstName + " " + user?.middleName + " " + user?.lastName
-            }}
             <img
               class="inner-header__profile__img"
               src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"
@@ -64,6 +61,13 @@
           </div>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" [routerLink]="'/profile-summary'">
+            Welcome
+            {{
+              user?.firstName + " " + user?.middleName + " " + user?.lastName
+            }}</a
+          >
+          <div class="dropdown-divider"></div>
           <a class="dropdown-item" [routerLink]="'/change-password'">
             <i class="fa fa-unlock-alt" aria-hidden="true"></i> Change
             password</a
