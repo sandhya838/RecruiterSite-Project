@@ -15,13 +15,13 @@
 
   <div class="card "> 
   <div class="card company-details__header">
-      <img src="https://blog.cloudflare.com/content/images/2019/12/gradient.jpg" alt="">
+      <img  src="{{ APIURL + 'static/logo/' + userData?.logo}}">
       <div class="company-details__top-right">
         <ul class="company-details__list-style">
-          <li class="company-details__list-item"><i class="fa fa-building-o" aria-hidden="true"></i>  MIT alandi</li>
-          <li class="company-details__list-item"><i class="fa fa-user" aria-hidden="true"></i>  Akshada Ghule</li>
-          <li class="company-details__list-item"><i class="fa fa-envelope" aria-hidden="true"></i>  akshadaghule@gmail.com</li>
-          <li class="company-details__list-item"><i class="fa fa-phone" aria-hidden="true"></i>  8380891905</li>
+          <li class="company-details__list-item"><i class="fa fa-building-o" aria-hidden="true"></i>  {{userData.organizationName}}</li>
+          <li class="company-details__list-item"><i class="fa fa-user" aria-hidden="true"></i> {{userData.firstName}}  {{userData.lastName}}</li>
+          <li class="company-details__list-item"><i class="fa fa-envelope" aria-hidden="true"></i> {{userData.email}} </li>
+          <li class="company-details__list-item"><i class="fa fa-phone" aria-hidden="true"></i> {{userData.contactNumber}}  </li>
         </ul>
       </div>
     </div>

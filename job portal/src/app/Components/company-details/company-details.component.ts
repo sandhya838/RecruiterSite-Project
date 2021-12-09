@@ -3,7 +3,9 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { data } from 'jquery';
 import { CommonService } from "src/app/services/common.service";
 import { CompanyDetailService } from 'src/app/services/company-detail.service';
+import { OrganizationSignInService } from 'src/app/services/organization-sign-in.service';
 import { NotificationService } from 'src/app/notification.service';
+import { CONSTANTS } from 'src/app/constants';
 
 @Component({
   selector: 'app-company-details',
@@ -20,10 +22,14 @@ export class CompanyDetailsComponent implements OnInit {
   location: { id: number; name: string }[] = [];
   viewPort: any;
   userData: any;
+  router: any;
+  APIURL= CONSTANTS.BASEURL;
+  
   constructor(
     public formBuilder: FormBuilder,
     private companyDetailService:CompanyDetailService,
-    private commonService: CommonService
+    private commonService: CommonService,
+    private organizationSignInService: OrganizationSignInService,
     //private router: Router,
     
   ) {}
@@ -42,7 +48,9 @@ export class CompanyDetailsComponent implements OnInit {
       localStorage.getItem("rememberMe") === "true"
         ? localStorage.getItem("user")
         : (sessionStorage.getItem("user") as any)
+       
     );
+    console.log(this.userData);
     this.country = [
       { id: 1, name: "	Afghanistan" },
       { id: 2, name: "Albania" },
@@ -109,6 +117,19 @@ export class CompanyDetailsComponent implements OnInit {
             this.commonService.alert("error", data.message);
           }
         });
+        // this.organizationSignInService.register(fd).subscribe(
+        //   (response: any) => {
+        //     if (response.status === 200) {
+        //       this.router.navigate(["/organization-signin"]);
+        //       this.commonService.alert("success", response.message);
+        //     } else {
+        //       this.commonService.alert("error", response.message);
+        //     }
+        //     const organizationData=formValue;
+        //     response.data=organizationData;
+        //     console.log(response);
+        //   });
+          
 }
 
       else {
@@ -124,4 +145,8 @@ export class CompanyDetailsComponent implements OnInit {
   
 
 
+
+function fd(fd: any) {
+  throw new Error('Function not implemented.');
+}
 

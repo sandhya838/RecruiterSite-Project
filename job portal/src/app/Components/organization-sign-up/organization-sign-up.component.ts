@@ -38,7 +38,8 @@ export class OrganizationSignUpComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {  
+  }
 
   get getControl() {
     return this.signUp.controls;
@@ -48,7 +49,8 @@ export class OrganizationSignUpComponent implements OnInit {
   }
 
   onSubmitForm(isValid: boolean, formValue: any) {
-    console.log(isValid);
+    console.log("organizationData",formValue);
+
     if (isValid) {
       
       let fd = new FormData();
@@ -74,9 +76,12 @@ export class OrganizationSignUpComponent implements OnInit {
           } else {
             this.commonService.alert("error", response.message);
           }
-        
+          const organizationData=formValue;
+          response.data=organizationData;
+          console.log(response);
         });
-   
+        
+
      
     } else {
       this.signUp.markAllAsTouched();

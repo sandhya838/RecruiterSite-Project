@@ -9,7 +9,7 @@
       position: absolute;
       top: 8px;
       right: 16px;
-      color: var(--solitude2);
+      color: var(--black);
     }
     &__list-item{
      list-style: none;
@@ -45,6 +45,11 @@ label {
 }
 .right {
   margin-right: 5px;
+}
+.multiselect-dropdown{
+  border-radius: 7px;
+  height: 44px;
+
 }
 
 
