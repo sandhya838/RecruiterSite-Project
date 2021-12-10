@@ -7,6 +7,9 @@
       height: 40px;
     }
   }
+  &__main-fa{
+    font-size: 33px;
+  }
   .dropdown-toggle {
     &::after {
       display: none;
@@ -16,6 +19,7 @@
     border-radius: 0;
     margin-top: 9px;
     text-align: right;
+    left: auto;
     right: 0;
     .dropdown-item {
       cursor: pointer;
@@ -25,34 +29,33 @@
         font-size: 20px;
       }
       &:hover {
-        background-color: var(--primary);
+        background-color: var(--main);
       }
     }
   }
 }
-li{
+li {
   list-style: none;
- padding-top: 5px;
+  padding-top: 5px;
   width: auto;
   text-align: center;
   padding-right: 25px;
 }
-li p{
+li p {
   margin-bottom: 2px;
   padding-top: 6px;
 }
-p .fa{
-font-size: 18px;
-color: var(--dargGrayWarm02);
-&:hover{
-  color:var(--secondaryAqua);
+p .fa {
+  font-size: 18px;
+  color: var(--dargGrayWarm02);
+  &:hover {
+    color: var(--secondaryAqua);
+  }
 }
+a {
+  color: var(--grayDarkCool);
+  &:hover {
+    color: var(--secondaryAqua);
+    text-decoration: none;
+  }
 }
-a{
-color: var(--grayDarkCool);
-&:hover{
-  color:var(--secondaryAqua);
-  text-decoration: none;
-}
-}
-

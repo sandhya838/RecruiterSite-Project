@@ -7,25 +7,30 @@ var https = require('https');
 const bodyParser = require('body-parser');
 const routes = require('./routers/routes');
 const app = express()
-
+app.use('/static', express.static('public'));
+app.use('/', function (req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Content-Type: application/json");
+  res.header("Access-Control-Allow-Methods", "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With,x-access-token");
+  next();
+});
 app.use(express.json());
 app.use(express.urlencoded({
-  limit: '50000gb', extended: true
+  limit: '5mb', extended: true
 }));
-app.use('/static', express.static('public'));
-app.use(cors())
+
 
 mongoose.connect(constants.URL, constants.OPTIONS).then(
   () => { console.log('Database connection is ready'); },
   err => {
-    console.log('error', err);
+    console.error('error', err);
     throw err;
   }
 );
 
 app.get('/', (req, res) => {
-  console.log('req', req);
-  res.json({ "message": "Welcome to rent management application. Manage your all tanents and amenities." });
+  res.json({ "message": "Welcome to job portal application." });
 });
 routes(app); //register the route
 const options = {

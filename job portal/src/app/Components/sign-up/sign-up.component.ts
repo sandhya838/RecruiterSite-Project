@@ -17,17 +17,7 @@ import { SigninService } from "src/app/signin.service";
 })
 export class SignUpComponent implements OnInit {
   alert: boolean = false;
-  signUp: FormGroup = this.formBuilder.group({
-    firstName: ["", [Validators.required]],
-    lastName: ["", [Validators.required]],
-    middleName: [""],
-    email: ["", [Validators.required]],
-    password: ["", [Validators.required]],
-    file: new FormControl(null, [
-      Validators.required,
-      FileUploadValidators.filesLimit(1),
-    ]),
-  });
+  signUp!: FormGroup;
   isPassword: boolean = false;
 
   constructor(
@@ -37,7 +27,28 @@ export class SignUpComponent implements OnInit {
     private router: Router
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.signUp = this.formBuilder.group({
+      firstName: ["", [Validators.required]],
+      lastName: ["", [Validators.required]],
+      middleName: [""],
+      email: ["", [Validators.required]],
+      password: ["", [Validators.required]],
+      mobileNumber: [
+        "",
+        [
+          Validators.required,
+          Validators.minLength(10),
+          Validators.maxLength(10),
+          Validators.pattern('[5-9]{1}[0-9]{9}')
+        ],
+      ],
+      file: new FormControl(null, [
+        Validators.required,
+        FileUploadValidators.filesLimit(1),
+      ]),
+    });
+  }
 
   get getControl() {
     return this.signUp.controls;
@@ -49,11 +60,13 @@ export class SignUpComponent implements OnInit {
   onSubmitForm(isValid: boolean, formValue: any) {
     if (isValid) {
       let fd = new FormData();
+      fd.append("role", "candidate");
       fd.append("resume", formValue.file[0]);
       fd.append("firstName", formValue.firstName);
       fd.append("lastName", formValue.lastName);
       fd.append("middleName", formValue.middleName);
       fd.append("email", formValue.email);
+      fd.append("mobileNumber", formValue.mobileNumber);
       fd.append("password", this.commonService.encrypt(formValue.password));
 
       this.signInService.register(fd).subscribe((response: any) => {

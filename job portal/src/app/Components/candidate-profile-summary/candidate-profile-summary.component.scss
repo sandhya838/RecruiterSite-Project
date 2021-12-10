@@ -1,119 +1,135 @@
 // updated css 21/11
-.profilesummary{
-  &__cardbody{
+.profilesummary {
+  &__cardbody {
     box-shadow: 1px 2px 5px 3px var(--grayLightWarm);
-  border: none;
-  margin-bottom: 10px;
-  // position: absolute;
-  // top: 75%;
+    border: none;
+    margin-bottom: 10px;
+    a{
+      text-decoration: none;
+    }
+    // position: absolute;
+    // top: 75%;
   }
 }
 // .col-8{
 //   position: relative;
 // }
 
-.profile-details{
-  &__profile{
+.profile-details {
+  &__profile {
     height: 180px;
     width: 100%;
     background-color: coral;
+    position: relative;
+    &__profile-img {
+      position: absolute;
+      top: 50%;
+      left: 4%;
+      z-index: 99;
+    }
   }
-  &__profile-topcard{
+  &__profile-topcard {
     position: relative;
   }
-  &__userDetails{
-    margin-top: 13px !important; 
-   
+  &__userDetails {
+    margin-top: 13px !important;
   }
-  &__username{
+  &__username {
     margin-bottom: 4px;
   }
-  &__worktitle, &__location{
+  &__worktitle,
+  &__location {
     color: var(--lightGrayishNavy);
     // margin-bottom: 2px !important;
   }
-  &__card-title{
-    color: var(--secondaryAqua) ;
+  &__card-title {
+    color: var(--secondaryAqua);
   }
-  &__card-sub-title{
+  &__card-sub-title {
     font-size: 17px;
   }
+}
+.experience {
+  &__company {
+    font-size: 14px;
+    margin-bottom: 1px !important;
   }
-  .experience{
-    &__company{
-      font-size: 14px;
-      margin-bottom: 1px !important;
-    }
-     &__duration-time, &__role,&__location{
-      font-size: 14px;
-      margin-bottom: 1px !important;
-      color: var(--lightGrayishNavy);
-    }
-    &__title{
-      font-size: 17px;
-      margin-bottom: 2px !important;
-    }
-    &__primaryskill{
-      margin-bottom: 15px;
-    }
-    &__primaryskill> label, &__secondaryskill> label{
-      color: var(--gray30);
-    }
-    &__skill-sub{
-      // padding-left: 12px;
-      margin-top: 10px; 
-    }
-    &__description{
-      margin-top: 8px;
-      font-size: 14px;
-      line-height: 22px;
-    }
+  &__duration-time,
+  &__role,
+  &__location {
+    font-size: 14px;
+    margin-bottom: 1px !important;
+    color: var(--lightGrayishNavy);
   }
-  .education{
-    &__degree{
-      font-size: 14px;
-    }
-    &__specialization ,&__grade{
-      font-size: 14px;
-      margin-bottom: 1px !important;
-      color: var(--lightGrayishNavy);
-    }
+  &__title {
+    font-size: 17px;
+    margin-bottom: 2px !important;
   }
-  .certification{
-    &__mentor ,&__refrence ,&__recommendation{
-      font-size: 14px;
-      margin-bottom: 1px !important;
-      color: var(--lightGrayishNavy);
-    }
+  &__primaryskill {
+    margin-bottom: 15px;
   }
-  label{
-    margin-bottom: 0px;
+  &__primaryskill > label,
+  &__secondaryskill > label {
+    color: var(--gray30);
   }
-  p{
-    font-size: 16px;
-    margin-bottom: 3px !important;
+  &__skill-sub {
+    // padding-left: 12px;
+    margin-top: 10px;
   }
-
-  .row{
-    margin-left: 0px;
-    margin-right: 0px;
-        // margin-top: 5px;
+  &__description {
+    margin-top: 8px;
+    font-size: 14px;
+    line-height: 22px;
   }
-  .fa-pencil{
-    color:var(--lightGrayishNavy) !important ;
-    font-size: 24px !important;
-  }
-  ul{
-    list-style: none;
-  }
-  ul>li{
-    margin-bottom: 5px ;
+}
+.education {
+  &__degree {
     font-size: 14px;
   }
-  .fa-building{
-    color: var(--secondaryAqua) !important;
-    font-size: 18px;
-    margin-right: 10px;
+  &__specialization,
+  &__grade {
+    font-size: 14px;
+    margin-bottom: 1px !important;
+    color: var(--lightGrayishNavy);
+  }
+}
+.certification {
+  &__mentor,
+  &__refrence,
+  &__recommendation {
+    font-size: 14px;
+    margin-bottom: 1px !important;
+    color: var(--lightGrayishNavy);
+  }
+}
+label {
+  margin-bottom: 0px;
+}
+p {
+  font-size: 16px;
+  margin-bottom: 3px !important;
+}
+
+.row {
+  margin-left: 0px;
+  margin-right: 0px;
+  // margin-top: 5px;
+}
+.fa-pencil {
+  color: var(--lightGrayishNavy) !important ;
+  font-size: 15px !important;
+}
+ul {
+  list-style: none;
+}
+ul > li {
+  margin-bottom: 5px;
+  font-size: 14px;
+}
+.fa-building {
+  color: var(--secondaryAqua) !important;
+  font-size: 18px;
+  margin-right: 10px;
 }
 .btn-warning {
   // font-family: Raleway-SemiBold;
@@ -142,7 +158,7 @@
 //   border: none;
 //   margin-bottom: 10px;
 // }
-.btn-group-toggle{
+.btn-group-toggle {
   margin-top: 5px;
 }
 img {
@@ -151,36 +167,32 @@ img {
   height: 130px;
   width: 120px;
 }
-.rollprofile{
-  &__col{
+.rollprofile {
+  &__col {
     color: var(--lightGrayishNavy);
   }
 }
 
-
-
-@media only screen and (max-width: 767px){
-  .fa{
+@media only screen and (max-width: 767px) {
+  .fa {
     margin-right: 4px;
   }
-  p{
+  p {
     margin-left: 4px;
     line-height: 20px;
   }
-  .profile-details{
-    &__profile{
+  .profile-details {
+    &__profile {
       margin-bottom: 5px;
     }
-    &__heading{
+    &__heading {
       font-size: 14px;
     }
   }
-  .badge{
+  .badge {
     margin-left: 4px;
   }
 }
-
-
 
 // hr{
 //   margin-right: 0;
