@@ -51,6 +51,17 @@ label {
   height: 44px;
 
 }
+.pl-1, .px-1 {
+  padding-left: 72.25rem !important;
+}
+@media all and (max-width: 767px) {
+  .job-btn.job-btn-mini {
+    padding: 11px 20px 13px;
+    border-radius: 0;
+    margin-left: -958px;
+  
+}
+  }
 
 
 

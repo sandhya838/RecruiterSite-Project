@@ -37,19 +37,19 @@
           <div class="input-group-prepend">
             <Label>Number of employee </Label>
           </div>
-          <input type="text" class="empnumber"  aria-label="Default"formControlName="employee" aria-describedby="inputGroup-sizing-default">
+          <input type="text" class="empnumber"  aria-label="Default"formControlName="numberOfEmployees" aria-describedby="inputGroup-sizing-default">
         </div>
         <div
         class="text-danger"
         *ngIf="
-          !userForm.get('employee')!.valid &&
-          (userForm.get('employee')!.touched ||
-            userForm.get('employee')!.dirty)
+          !userForm.get('numberOfEmployees')!.valid &&
+          (userForm.get('numberOfEmployees')!.touched ||
+            userForm.get('numberOfEmployees')!.dirty)
         "
       >
-        <div *ngIf="userForm.get('employee')!.errors">
+        <div *ngIf="userForm.get('numberOfEmployees')!.errors">
           <small
-            *ngIf="userForm.get('employee')!.errors!.required"
+            *ngIf="userForm.get('numberOfEmployees')!.errors!.required"
           >
             This field is required
           </small>
@@ -150,18 +150,18 @@
 
         <div class="form-group">
           <label>Description</label>
-          <textarea class="form-control " formControlName="Description"  style="height: 88px;" rows="3"></textarea>
+          <textarea class="form-control " formControlName="description"  style="height: 88px;" rows="3"></textarea>
           <div
                 class="text-danger"
                 *ngIf="
-                  !userForm.get('Description')!.valid &&
-                  (userForm.get('Description')!.touched ||
-                    userForm.get('Description')!.dirty)
+                  !userForm.get('description')!.valid &&
+                  (userForm.get('description')!.touched ||
+                    userForm.get('description')!.dirty)
                 "
               >
-                <div *ngIf="userForm.get('Description')!.errors">
+                <div *ngIf="userForm.get('description')!.errors">
                   <small
-                    *ngIf="userForm.get('Description')!.errors!.required"
+                    *ngIf="userForm.get('description')!.errors!.required"
                   >
                     This field is required
                   </small>

@@ -21,6 +21,9 @@ module.exports = {
         middleName: "required|string",
         lastName: "required|string",
         organizationName:"required|string",
+        location:"required|string",
+        turnOver:"required|string",
+      
 
 
 
@@ -80,7 +83,7 @@ module.exports = {
                         if (err) {
                             res.status(500).send({ message: 'Oops! Not able to update orgnizaton. Please try after sometimes', orgnizatons: result });
                         } else {
-                            res.status(200).send({ message: 'orgnizaton updated successfully.', orgnizaton: result });
+                            res.status(200).send({ status:200,message: 'orgnizaton updated successfully.', orgnizaton: result });
                         }
                     });
                 } else {
@@ -90,9 +93,9 @@ module.exports = {
         } else {
             Orgnizaton.findOneAndUpdate({ _id: req.params.orgnizationId }, { $set: req.body }, { new: true }, (err, result) => {
                 if (err) {
-                    res.status(500).send({ message: 'Oops! Not able to update orgnizaton. Please try after sometimes', orgnizatons: result });
+                    res.status(500).send({status:500, message: 'Oops! Not able to update orgnizaton. Please try after sometimes', orgnizatons: result });
                 } else {
-                    res.status(200).send({ message: 'orgnizaton updated successfully.', orgnizaton: result });
+                    res.status(200).send({ status:200,message: 'orgnizaton updated successfully.', orgnizaton: result });
                 }
             });
         }

@@ -36,7 +36,7 @@ var Organizationschema = new Schema({
         type: Number
     },
     country: {
-        type: String
+        type: []
     },
     numberOfEmployees: {
         type: String
@@ -68,9 +68,13 @@ var Organizationschema = new Schema({
     url: {
         type: String
     },
-    file: {
+    location:{
+        type: []
+    },
+    turnOver:{
         type: String
     },
+
 
 
 
