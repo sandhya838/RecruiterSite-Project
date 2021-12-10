@@ -48,7 +48,7 @@
                 {{ profile.lastName }}
               </h4>
               <p class="profile-details__worktitle">
-                {{ profile.workExperiences[0].role }}
+                {{ profile?.workExperiences[0]?.role }}
               </p>
               <p class="profile-details__location">Pune, Maharastra, India</p>
               <p class="profile-details__contact">+91 8380891905</p>
@@ -58,7 +58,7 @@
               <ul>
                 <li class="profile-details__cmpname">
                   <i class="fa fa-building" aria-hidden="true"></i>
-                  {{ profile.workExperiences[0].companyName }}
+                  {{ profile?.workExperiences[0]?.companyName }}
                 </li>
                 <li class="profile-details__cmpname">
                   <i class="fa fa-building" aria-hidden="true"></i>Indian
@@ -112,17 +112,17 @@
           <div class="card-body-text">
             <div class="row rollprofile__management">
               <div class="col rollprofile" id="skill1">
-                Management: <span>{{ profile.roleManagement.management }}</span>
+                Management: <span>{{ profile?.roleManagement?.management }}</span>
               </div>
               <!-- <label>Management: <span>40%</span> </label> -->
               <div class="col rollprofile__col" id="skill1">
-                Portfolio <span>{{ profile.roleManagement.portfolio }}</span>
+                Portfolio <span>{{ profile?.roleManagement?.portfolio }}</span>
               </div>
               <div class="col rollprofile__col" id="skill2">
-                Account <span>{{ profile.roleManagement.account }}</span>
+                Account <span>{{ profile?.roleManagement?.account }}</span>
               </div>
               <div class="col rollprofile__col" id="skill3">
-                Project <span>{{ profile.roleManagement.project }}</span>
+                Project <span>{{ profile?.roleManagement?.project }}</span>
               </div>
             </div>
 
@@ -294,14 +294,14 @@
               <div class="col-2">cmp Logo</div>
               <div class="col-10">
                 <h5 class="experience__title">
-                  {{ profile.workExperiences[0].role }}
+                  {{ profile.workExperiences[0]?.role }}
                 </h5>
                 <p class="experience__company">
-                  {{ profile.workExperiences[0].companyName }}
+                  {{ profile.workExperiences[0]?.companyName }}
                 </p>
                 <p class="experience__duration-time">
-                  {{ profile.workExperiences[0].from }} -
-                  {{ profile.workExperiences[0].to }}
+                  {{ profile.workExperiences[0]?.from }} -
+                  {{ profile.workExperiences[0]?.to }}
                   <span class="experience__duration">
                     {{ profile.totalYearsOfExperience }} yr
                   </span>
