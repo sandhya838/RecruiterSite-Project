@@ -29,18 +29,21 @@ export class AppComponent {
             menu.url === this.router.url &&
             menu.isForCandidate === this.userData.role
         );
-        if (filteredMenus.length <= 0) {
-          window.history.back();
-          this.commonService.alert(
-            "error",
-            this.router.url + " is not a valid url"
-          );
-        }
+        // if (filteredMenus.length <= 0) {
+        //   window.history.back();
+        //   this.commonService.alert(
+        //     "error",
+        //     this.router.url + " is not a valid url"
+        //   );
+        // }
       }
     });
   }
 
   ngOnInit() {
+    if (localStorage.getItem("token")) {
+      this.router.navigate(["/dashboard"]);
+    }
     this.loggedIn =
       localStorage.getItem("rememberMe") === "true"
         ? localStorage.getItem("token")
@@ -49,10 +52,6 @@ export class AppComponent {
         : sessionStorage.getItem("token")
         ? true
         : false;
-    if (localStorage.getItem("token")) {
-      this.router.navigate(["/dashboard"]);
-    }
-
     this.cd.detectChanges();
   }
 }
