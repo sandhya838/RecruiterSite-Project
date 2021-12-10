@@ -21,7 +21,11 @@ export class SigninService {
   }
 
   login(credentials: any) {
-    return this.http.post(CONSTANTS.CANDIDATELOGIN, credentials);
+    return this.http.post(CONSTANTS.CANDIDATELOGIN, credentials, {
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
   }
 
   register(data: any): Observable<any> {

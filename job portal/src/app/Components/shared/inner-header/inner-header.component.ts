@@ -8,6 +8,20 @@ import { Router } from "@angular/router";
 })
 export class InnerHeaderComponent implements OnInit {
   user: any;
+  menu = [
+    {
+      name: "Jobs",
+      url: "/jobs",
+      icon: "fa fa-suitcase",
+      isForCandidate: "candidate",
+    },
+    {
+      name: "Post job",
+      url: "/job-post",
+      icon: "fa fa-suitcase",
+      isForCandidate: "orgnization",
+    },
+  ];
   constructor(private router: Router) {}
 
   ngOnInit(): void {
