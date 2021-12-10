@@ -138,7 +138,12 @@ ul > li {
   background: transparent;
   transition: all 0.3s ease 0s;
 }
-
+.col-md-name{
+  width: 99px;
+}
+.col-3-skill{
+  width: 199px;
+}
 .btn-warning:hover {
   color: var(--catskillwhite);
   background: var(--festival);

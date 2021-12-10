@@ -102,10 +102,18 @@
           </div>
           <div class="card-body-text">
             <div class="row rollprofile__management">
-              <div class="col rollprofile" id="skill1">
+              <div class="col-md-name rollprofile__col"> Management: </div>
+              <div class="col-md">{{ profile.roleManagement.management }}</div>
+              <div class="col-md-name rollprofile__col"> Portfolio:</div>
+              <div class="col-md">{{ profile.roleManagement.portfolio }}</div>
+              <div class="col-md-name rollprofile__col"> Account:</div>
+              <div class="col-md">{{ profile.roleManagement.account }}</div>
+              <div class="col-md-name rollprofile__col"> Project:</div>
+              <div class="col-md">{{ profile.roleManagement.project }}</div>
+
+              <!-- <div class="col rollprofile" id="skill1">
                 Management: <span>{{ profile.roleManagement.management }}</span>
               </div>
-              <!-- <label>Management: <span>40%</span> </label> -->
               <div class="col rollprofile__col" id="skill1">
                 Portfolio <span>{{ profile.roleManagement.portfolio }}</span>
               </div>
@@ -114,14 +122,21 @@
               </div>
               <div class="col rollprofile__col" id="skill3">
                 Project <span>{{ profile.roleManagement.project }}</span>
-              </div>
+              </div> -->
             </div>
 
             <div class="row rollprofile__technical">
-              <div class="col rollprofile" id="skill1">
+              <div class="col-md-name rollprofile__col"> Technical:</div>
+              <div class="col-md">{{ profile?.roleTechnical?.technical }}</div>
+              <div class="col-md-name rollprofile__col"> Architect:</div>
+              <div class="col-md">{{ profile?.roleTechnical?.architect }}</div>
+              <div class="col-md-name rollprofile__col"> TechLead:</div>
+              <div class="col-md">{{ profile?.roleTechnical?.techLead }}</div>
+              <div class="col-md-name rollprofile__col"> Developer:</div>
+              <div class="col-md">{{ profile?.roleTechnical?.developer }}</div>
+              <!-- <div class="col rollprofile" id="skill1">
                 Technical: <span>{{ profile?.roleTechnical?.technical }}</span>
               </div>
-              <!-- <label>Technical: <span>20%</span> </label> -->
               <div class="col rollprofile__col" id="skill1">
                 Architect <span>{{ profile?.roleTechnical?.architect }}</span>
               </div>
@@ -130,15 +145,22 @@
               </div>
               <div class="col rollprofile__col" id="skill3">
                 Developer <span>{{ profile?.roleTechnical?.developer }}</span>
-              </div>
+              </div> -->
             </div>
 
             <div class="row rollprofile__funtional">
-              <div class="col rollprofile" id="skill1">
+              <div class="col-md-name rollprofile__col">  Funtional:</div>
+              <div class="col-md">{{ profile?.roleFunctional?.functional }}</div>
+              <div class="col-md-name rollprofile__col"> SME:</div>
+              <div class="col-md">{{ profile?.roleFunctional?.sme }}</div>
+              <div class="col-md-name rollprofile__col"> Lead con:</div>
+              <div class="col-md">{{ profile?.roleFunctional?.leadCon }}</div>
+              <div class="col-md-name rollprofile__col"> Consultant:</div>
+              <div class="col-md">{{ profile?.roleFunctional?.consultant }}</div>
+              <!-- <div class="col rollprofile" id="skill1">
                 Funtional:
                 <span>{{ profile?.roleFunctional?.functional }}</span>
               </div>
-              <!-- <label>Funtional: <span>40%</span> </label> -->
               <div class="col rollprofile__col" id="skill1">
                 SME <span>{{ profile?.roleFunctional?.sme }}</span>
               </div>
@@ -148,7 +170,7 @@
               <div class="col rollprofile__col" id="skill3">
                 Consultant
                 <span>{{ profile?.roleFunctional?.consultant }}</span>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -169,26 +191,26 @@
 
           <div class="card-body-text">
             <div class="row experience__primaryskill">
-              <label>Primary skill: </label>
-              <div class="col" id="skill1">
+              <div class="col-3-skill">Primary skill: </div>
+              <div class="col-3-skill" id="skill1">
                 {{ profile?.skillTechnical[0]?.name }}
               </div>
-              <div class="col" id="skill2">
+              <div class="col-3-skill" id="skill2">
                 {{ profile?.skillTechnical[1]?.name }}
               </div>
-              <div class="col" id="skill3">
+              <div class="col-3-skill" id="skill3">
                 {{ profile?.skillTechnical[2]?.name }}
               </div>
             </div>
             <div class="row experience__secondaryskill">
-              <label>secondary skill: </label>
-              <div class="col" id="skill4">
+              <div class="col-3-skill">secondary skill: </div>
+              <div class="col-3-skill" id="skill4">
                 {{ profile?.skillFunctional[0]?.name }}
               </div>
-              <div class="col" id="skill5">
+              <div class="col-3-skill" id="skill5">
                 {{ profile?.skillFunctional[1]?.name }}
               </div>
-              <div class="col" id="skill6">
+              <div class="col-3-skill" id="skill6">
                 {{ profile?.skillFunctional[2]?.name }}
               </div>
             </div>
