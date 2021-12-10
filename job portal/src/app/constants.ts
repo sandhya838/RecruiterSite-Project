@@ -1,7 +1,45 @@
 //const BASEURL = "http://23.95.228.167:4080/";
 const BASEURL = "http://localhost:3000/";
 export const CONSTANTS = {
-  MAX_FILE_SIZE: 1024 * 1024 * 5,  // in MB max file size is 5MB
+  MAX_FILE_SIZE: 1024 * 1024 * 5, // in MB max file size is 5MB
+
+  MENUS: [
+    {
+      name: "Jobs",
+      url: "/jobs",
+      icon: "fa fa-suitcase",
+      isForCandidate: "candidate",
+      isMainMenu: true,
+    },
+    {
+      name: "Post job",
+      url: "/job-post",
+      icon: "fa fa-suitcase",
+      isForCandidate: "orgnization",
+      isMainMenu: true,
+    },
+    {
+      name: "Profile summary",
+      url: "/profile-summary",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+    {
+      name: "login",
+      url: "/login",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+    {
+      name: "Sign up",
+      url: "/sign-up",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+  ],
   SKILLS: [
     { name: "Programming Languages" },
     { name: "Web Development" },
