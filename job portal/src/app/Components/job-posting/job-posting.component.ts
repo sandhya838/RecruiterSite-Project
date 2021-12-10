@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CONSTANTS } from 'src/app/constants';
 import { NotificationService } from 'src/app/notification.service';
 import { JobsService } from 'src/app/services/jobs.service';
 
@@ -19,6 +20,7 @@ export class JobPostingComponent implements OnInit {
   location!: { id: number; name: string; }[];
   primarySkills: { id: number; name: string }[] = [];
   secondarySkills: { id: number; name: string }[] = [];
+  experiance: { id: number; name: string }[] = [];
 
   constructor(
     public formBuilder: FormBuilder,
@@ -26,6 +28,7 @@ export class JobPostingComponent implements OnInit {
     //private router: Router,
     private notifyService: NotificationService
   ) { }
+  // APIURL= CONSTANTS.BASEURL;
 
   ngOnInit(): void {
     this.userForm = this.formBuilder.group({
@@ -36,6 +39,7 @@ export class JobPostingComponent implements OnInit {
         permanant: [true, [Validators.required]],
         freelance: [false],
       }),
+      experiance:["", [Validators.required]],
       role: ["", [Validators.required]],
       location: ["", [Validators.required]],
       primary: ["", [Validators.required]],
@@ -47,6 +51,13 @@ export class JobPostingComponent implements OnInit {
         functional:["", [Validators.required]],
       }),
  });
+// const createJobs = JSON.parse(sessionStorage.getItem("user") as any);
+//     const requestHeader ={
+//       companyName:createJobs?.companyName,
+//       location:createJobs?.location,
+//       primary:createJobs?. primary,
+//      secondary:createJobs?.secondary,
+//     };
 
 
    
@@ -61,6 +72,18 @@ export class JobPostingComponent implements OnInit {
       { id: 8, name: "Chennai " },
       { id: 9, name: "gurgoan" },
       { id: 10, name: "Kolkata" },
+    ];
+    this.experiance= [
+      { id: 1, name: "0-1 yrs" },
+      { id: 2, name: "0-2 yrs" },
+      { id: 3, name: "0-3 yrs" },
+      { id: 4, name: "0-4 yrs" },
+      { id: 5, name: "0-5 yrs"},
+      { id: 6, name: "0-6 yrs" },
+      { id: 7, name: "0-7 yrs" },
+      { id: 8, name: "0-8 yrs " },
+      { id: 9, name: "0-9 yrs" },
+      { id: 10, name: "0-10 yrs" },
     ];
     this.primarySkills = [
       { id: 1, name: "Data analysis" },
@@ -118,11 +141,7 @@ export class JobPostingComponent implements OnInit {
     console.log(formValue);
     
     if (isValid) {
-     
-     
-      
-     
-      const userData = JSON.parse(
+     const userData = JSON.parse(
         localStorage.getItem("rememberMe") === "true"
           ? localStorage.getItem("user")
           : (sessionStorage.getItem("user") as any)

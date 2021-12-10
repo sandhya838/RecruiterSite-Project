@@ -162,8 +162,6 @@
           </div>
         
       </div>
-        
-        <!-- <label for="">Skills</label> -->
         <div class="row">
           <div class="col">
             <div class="form-group">
@@ -223,7 +221,26 @@
           </div>
         </div>
         <div class="row">
-          <div class="col">
+          <div class="col-sm">
+            <div class="form-group">
+              <label>Experiance</label>
+              <ng-multiselect-dropdown formControlName="experiance" [placeholder]="'Select Experiance '"
+                [settings]="dropdownSettings" [data]="experiance">
+              </ng-multiselect-dropdown>
+              <div class="text-danger" *ngIf="
+                    !userForm.controls['experiance'].valid &&
+                    (userForm.controls['experiance'].touched ||
+                      userForm.controls['experiance'].dirty)
+                  ">
+                <div *ngIf="userForm.controls['experiance'].errors">
+                  <small *ngIf="userForm.controls['experiance'].errors.required">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm">
             <div class="form-group">
               <label>Location</label>
               <ng-multiselect-dropdown formControlName="location" [placeholder]="'Select location '"
@@ -372,3 +389,4 @@
       </form>
     </div>
   </div>
+

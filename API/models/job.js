@@ -21,8 +21,11 @@ var Jobschema = new Schema({
             type:Boolean
         }
     },
-    locationpreference: {
-        type: String
+    location: {
+        type: []
+    },
+    experiance:{
+        type: []
     },
     roleProfile: {
         management:{
