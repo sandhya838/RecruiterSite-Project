@@ -117,19 +117,7 @@ export class CompanyDetailsComponent implements OnInit {
             this.commonService.alert("error", data.message);
           }
         });
-        // this.organizationSignInService.register(fd).subscribe(
-        //   (response: any) => {
-        //     if (response.status === 200) {
-        //       this.router.navigate(["/organization-signin"]);
-        //       this.commonService.alert("success", response.message);
-        //     } else {
-        //       this.commonService.alert("error", response.message);
-        //     }
-        //     const organizationData=formValue;
-        //     response.data=organizationData;
-        //     console.log(response);
-        //   });
-          
+     
 }
 
       else {
