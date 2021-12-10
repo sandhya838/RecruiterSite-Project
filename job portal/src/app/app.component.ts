@@ -41,6 +41,9 @@ export class AppComponent {
   }
 
   ngOnInit() {
+    if (localStorage.getItem("token")) {
+      this.router.navigate(["/dashboard"]);
+    }
     this.loggedIn =
       localStorage.getItem("rememberMe") === "true"
         ? localStorage.getItem("token")
@@ -49,10 +52,6 @@ export class AppComponent {
         : sessionStorage.getItem("token")
         ? true
         : false;
-    if (localStorage.getItem("token")) {
-      this.router.navigate(["/dashboard"]);
-    }
-
     this.cd.detectChanges();
   }
 }
