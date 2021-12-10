@@ -1,82 +1,57 @@
-<nav
-  class="
+<nav class="
     navbar
     fixed-top
     navbar-expand-lg navbar-light
     bg-light
     py-2
     inner-header
-  "
->
+  ">
   <a class="navbar-brand">
-    <img
-      src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg"
-      width="30"
-      height="30"
-      class="d-inline-block align-top"
-      alt=""
-    />
+    <img src="https://getbootstrap.com/docs/4.0/assets/brand/bootstrap-solid.svg" width="30" height="30"
+      class="d-inline-block align-top" alt="" />
     Jobportal
   </a>
 
-  <button
-    class="navbar-toggler"
-    type="button"
-    data-toggle="collapse"
-    data-target="#navbarTogglerDemo01"
-    aria-controls="navbarTogglerDemo01"
-    aria-expanded="false"
-    aria-label="Toggle navigation"
-  >
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01"
+    aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0" *ngIf="menu?.length">
       <li *ngFor="let item of menu">
 
-        <a routerLink="{{ item.url }}" *ngIf="item.isForCandidate === user.role"
-          ><i class="{{ item.icon }} inner-header__main-fa" aria-hidden="true"></i>
+        <a routerLink="{{ item.url }}" *ngIf="item.isForCandidate === user.role"><i
+            class="{{ item.icon }} inner-header__main-fa" aria-hidden="true"></i>
           <div>
             {{ item.name }}
-          </div></a
-        >
+          </div>
+        </a>
       </li>
 
       <!-- <li class="nav-item dropdown"></li> -->
       <li class="nav-item dropdown">
-        <a
-          class="nav-link dropdown-toggle"
-          id="navbarDropdown"
-          role="button"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
+        <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
           <div class="inner-header__profile">
-            <img
-              class="inner-header__profile__img"
+            <img class="inner-header__profile__img"
               src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"
-              alt=""
-            />
+              alt="" />
           </div>
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" [routerLink]="'/profile-summary'">
-            Welcome
-            {{
+            <a class="dropdown-item" [routerLink]="'/profile-summary'">
+              Welcome
+              {{
               user?.firstName + " " + user?.middleName + " " + user?.lastName
-            }}</a
-          >
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" [routerLink]="'/change-password'">
-            <i class="fa fa-unlock-alt" aria-hidden="true"></i> Change
-            password</a
-          >
-         
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" (click)="onLogOut()">
-            <i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a
-          >
+              }}</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" [routerLink]="'/change-password'">
+              <i class="fa fa-unlock-alt" aria-hidden="true"></i> Change
+              password</a>
+
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" (click)="onLogOut()">
+              <i class="fa fa-sign-out" aria-hidden="true"></i> Logout</a>
         </div>
       </li>
     </ul>
