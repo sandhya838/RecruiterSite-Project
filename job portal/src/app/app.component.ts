@@ -29,13 +29,13 @@ export class AppComponent {
             menu.url === this.router.url &&
             menu.isForCandidate === this.userData.role
         );
-        if (filteredMenus.length <= 0) {
-          window.history.back();
-          this.commonService.alert(
-            "error",
-            this.router.url + " is not a valid url"
-          );
-        }
+        // if (filteredMenus.length <= 0) {
+        //   window.history.back();
+        //   this.commonService.alert(
+        //     "error",
+        //     this.router.url + " is not a valid url"
+        //   );
+        // }
       }
     });
   }
