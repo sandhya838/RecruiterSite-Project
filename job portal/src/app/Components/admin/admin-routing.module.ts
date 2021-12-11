@@ -6,6 +6,7 @@ import { MyProfileComponent } from "src/app/my-profile/my-profile.component";
 import { CandidateProfileCardComponent } from "../candidate-profile-card/candidate-profile-card.component";
 import { CandidateProfileSummaryComponent } from "../candidate-profile-summary/candidate-profile-summary.component";
 import { CertificationComponent } from "../certification/certification.component";
+import { CompanyDetailsComponent } from "../company-details/company-details.component";
 import { DashboardComponent } from "../dashboard/dashboard.component";
 import { EduDetailsComponent } from "../edu-details/edu-details.component";
 import { JobPostingComponent } from "../job-posting/job-posting.component";
@@ -61,6 +62,15 @@ const routes: Routes = [
         path: "certificate",
         component: CertificationComponent,
         canActivate: [AuthGuard],
+      }, {
+        path: "myProfile",
+        component: MyProfileComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: "company-details",
+        component: CompanyDetailsComponent,
+        canActivate: [AuthGuard],
       },
       {
         path: "myProfile",
@@ -101,4 +111,4 @@ const routes: Routes = [
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule],
 })
-export class AdminRoutingModule {}
+export class AdminRoutingModule { }

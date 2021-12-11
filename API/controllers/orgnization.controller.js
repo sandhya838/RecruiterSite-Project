@@ -6,6 +6,7 @@ module.exports = {
         name: "required|string",
         logo: "required|string",
         address: "required|string",
+        contactPerson: "required|string",
         city: "required|string",
         state: "required|alpha",
         pinCode: "required|numeric",
@@ -15,6 +16,18 @@ module.exports = {
         email: "required|string",
         password: "required|string",
         contactNumber: "required|string",
+        url: "required|string",
+        firstName: "required|string",
+        middleName: "required|string",
+        lastName: "required|string",
+        organizationName:"required|string",
+        location:"required|string",
+        turnOver:"required|string",
+      
+
+
+
+
     },
 
     create: (req, res) => {
@@ -22,6 +35,7 @@ module.exports = {
             if (isFileUploaded) {
                 req.body.logo = fileName;
                 Orgnizaton.create(req.body, (err, result) => {
+                    console.log(err)
                     if (err) {
                         res.status(500).send({ status: 500, message: 'Oops! Not able to create orgnizaton. Please try after sometimes', orgnizaton: {} });
                     } else {
@@ -69,7 +83,7 @@ module.exports = {
                         if (err) {
                             res.status(500).send({ message: 'Oops! Not able to update orgnizaton. Please try after sometimes', orgnizatons: result });
                         } else {
-                            res.status(200).send({ message: 'orgnizaton updated successfully.', orgnizaton: result });
+                            res.status(200).send({ status:200,message: 'orgnizaton updated successfully.', orgnizaton: result });
                         }
                     });
                 } else {
@@ -79,9 +93,9 @@ module.exports = {
         } else {
             Orgnizaton.findOneAndUpdate({ _id: req.params.orgnizationId }, { $set: req.body }, { new: true }, (err, result) => {
                 if (err) {
-                    res.status(500).send({ message: 'Oops! Not able to update orgnizaton. Please try after sometimes', orgnizatons: result });
+                    res.status(500).send({status:500, message: 'Oops! Not able to update orgnizaton. Please try after sometimes', orgnizatons: result });
                 } else {
-                    res.status(200).send({ message: 'orgnizaton updated successfully.', orgnizaton: result });
+                    res.status(200).send({ status:200,message: 'orgnizaton updated successfully.', orgnizaton: result });
                 }
             });
         }
