@@ -33,15 +33,15 @@ module.exports = {
                 req.body.resume = fileName;
                 profile.create(req.body, (err, result) => {
                     if (err) {
-                        if (err.code === 11000) {
-                            res.status(412).send({ status: 412, message: err.keyValue.email + ' already exist.', profile: {} });
+                        if (err.keyPattern.mobileNumber) {
+                            res.status(412).send({ status: 412, message: req.body.mobileNumber + ' already exist.', profile: {} });
+                        } else if (err.keyPattern.email) {
+                            res.status(412).send({ status: 412, message: req.body.email + ' already exist.', profile: {} });
                         } else {
-                            console.log('err', err);
                             res.status(500).send({ status: 400, message: 'Oops! Not able to create profile. Please try after sometimes', profile: {} });
                         }
                     } else {
-                        console.log(result);
-                        res.status(200).send({ status: 200, message: 'profile created successfully.', profile: result });
+                        res.status(200).send({ status: 200, message: 'profile created successfully.', profile: {} });
                     }
                 });
             } else {
