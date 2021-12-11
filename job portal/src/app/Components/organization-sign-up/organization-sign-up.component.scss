@@ -1,31 +1,29 @@
-
 .sign-up {
   margin: auto;
-  margin-top: 85px;
   &__wrapper {
-    width: 30rem;
-    margin: 2rem auto;
-    padding: 2rem 2.5rem;
-    border: none;
+    position: fixed;
     top: 50%;
     left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30rem;
+    padding: 2rem 2.5rem;
+    border: none;
     outline: none;
     border-radius: 0.25rem;
-    background: #ffffff;
+    background: var(--white);
     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 10%),
       0 10px 15px -3px rgb(0 0 0 / 10%), 0 10px 15px -3px rgb(0 0 0 / 10%),
       0 4px 6px -2px rgb(0 0 0 / 5%);
     a {
-      color: #007bff !important;
+      color: var(--secondaryAqua) !important;
       font-size: 1rem;
       font-weight: normal;
-      
       line-height: 1.5;
       color: var(--color-black);
       background: var(--color-light);
       cursor: pointer;
+      text-decoration: none;
     }
-    
     .form-control {
       &:hover,
       &:focus,
@@ -35,50 +33,14 @@
     }
     &__heading {
       font-size: 2rem;
-      font-weight: 600;
+      font-weight: 200;
       color: var(--color-black);
     }
     
-    &__email {
-      // font-size: 1rem;
-      // font-weight: 400;
-      height: auto;
-      padding: 0.75rem 1.25rem;
-      // border: none;
-      outline: none;
-      border-radius: 14px;
-      color: var(--color-black);
-      background: #fff;
-      text-rendering: optimizeLegibility;
-    }
-    &__password {
-      font-size: 1rem;
-      font-weight: 400;
-      height: auto;
-      padding: 0.75rem 1.25rem;
-      border: none;
-      outline: none;
-      border-top-left-radius: 2rem;
-      border-bottom-left-radius: 2rem;
-      color: var(--color-black);
-      background: #f1f5f9;
-      text-rendering: optimizeLegibility;
-    }
-    .input-group-text {
-      border-top-right-radius: 2rem;
-      border-bottom-right-radius: 2rem;
-      background-color: #f1f5f9;
-      border: none;
-	  cursor: pointer;
-    }
-    &__btn {
-      cursor: pointer;
-      min-width: 100%;
-      height: auto;
-      padding: 0.65rem 1.25rem;
-      border: none;
-      // border-radius: 2rem;
-      font-weight: 500;
+    &__icon {
+      position: absolute;
+      right: 10px;
+      top: 8px;
     }
     &__line {
       flex: auto;
@@ -86,16 +48,6 @@
       margin-top: 10px;
       background: #dadce0;
     }
-    &__icon {
-      position: absolute;
-      right: 10px;
-      top: 8px;
-    }
-    .btn-primary {
-      color: #0e0e0e;
-      background-color:  #4572f1;
-    }
-   
     .fa {
       padding: 4px;
       font-size: 20px;
@@ -103,22 +55,14 @@
       text-align: center;
       text-decoration: none;
       border-radius: 50%;
-  
-    }
-    .fa-upload{
-      margin-left: 50px;
-    }
-    .fa-eye, .fa-eye-slash{
-      
-      width: 180%;
-       margin-top: -33px;
     }
     .fa-facebook {
       background: #3b5998;
       color: white;
     }
     .fa-google {
-      background: #ff0000;
+   
+      background: var(--text-danger);
       color: white;
     }
     .fa-linkedin {
@@ -129,34 +73,8 @@
       font-size: 11px;
     }
   }
+
 }
-
-.form-control-file, .form-control-range {
-  display: block;
-  width: 100%;
-  border: 1px solid #484242;
-  line-height: 32px;
-  border-radius: 7px;
-  font-size: 12px;
-}
-.upload-button {
-  cursor: pointer;
-  display: block;
-  padding: 2px 4px;
-  border-left: 1px solid #ddd;
-  border-radius: 0 4px 4px 0;
-  min-width: 100px;
-  margin: 0;
-  position: relative;
-  outline: none;
-}
-
-
-
-
-
-
-
 @media all and (max-width: 767px) {
   .sign-up {
     margin: auto 15px;

@@ -70,7 +70,7 @@ const routes: Routes = [
       {
         path: "company-details",
         component: CompanyDetailsComponent,
-        canActivate: [AuthGuard],
+        canActivate: [OrgGuard],
       },
       {
         path: "myProfile",

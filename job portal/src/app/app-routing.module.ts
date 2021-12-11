@@ -3,7 +3,6 @@ import { RouterModule, Routes } from "@angular/router";
 import { SignUpComponent } from "./Components/sign-up/sign-up.component";
 import { SignInComponent } from "./Components/sign-in/sign-in.component";
 import { PrimarySkillComponent } from "./Components/primary-skill/primary-skill.component";
-import { AuthGuard } from "./authguard";
 import { LoginguardGuard } from "./loginguard.guard";
 import { JobProfileCardComponent } from "./Components/job-profile-card/job-profile-card.component";
 import { OrganizationSignInComponent } from "./Components/organization-sign-in/organization-sign-in.component";

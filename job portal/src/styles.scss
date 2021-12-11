@@ -38,7 +38,8 @@ body {
 // }
 
 app-sign-up,
-app-certification {
+app-certification,
+app-organization-sign-up {
   .upload-button {
     text-align: center;
     background-color: transparent !important;
@@ -65,21 +66,18 @@ app-work-experiance,
 app-rollprofile,
 app-company-details,
 app-skill-profile {
-app-skill-profile,
-app-job-posting {
-  .dropdown-btn {
-    height: 46px !important;
-    padding-top: 12px !important;
-    font-size: 12px !important;
-    border: 1px solid #333333 !important;
-    height: 40px !important;
-    border-radius: 7px !important;
+  app-skill-profile,
+  app-job-posting {
+    .dropdown-btn {
+      height: 46px !important;
+      padding-top: 12px !important;
+      font-size: 12px !important;
+      border: 1px solid #333333 !important;
+      height: 40px !important;
+      border-radius: 7px !important;
+    }
+    .selected-item {
+      max-width: initial !important;
+    }
   }
-  .selected-item {
-    max-width: initial !important;
-  }
-}
-
-/* Importing Bootstrap SCSS file. */
-@import "~bootstrap/scss/bootstrap";
 }

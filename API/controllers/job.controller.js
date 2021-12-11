@@ -14,6 +14,19 @@ module.exports = {
 
     // Retrieve and return all jobss from the database.
 
+    findAllJobs: (req, res) => {
+        Jobs.
+            find({ _id: req.params.jobId }).
+            populate('createdBy').
+            exec((err, result) => {
+                if (err) {
+                    res.status(500).send({ message: 'Oops! Not able to get all jobs. Please try after sometimes', jobss: result });
+                } else {
+                    res.status(200).send({ message: 'jobss got successfully listed.', jobss: result });
+                }
+            });
+    },
+
     findAll: (req, res) => {
         Jobs.
             find({}).
