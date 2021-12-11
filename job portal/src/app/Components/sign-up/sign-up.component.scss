@@ -61,6 +61,7 @@
       color: white;
     }
     .fa-google {
+   
       background: var(--text-danger);
       color: white;
     }
@@ -72,8 +73,8 @@
       font-size: 11px;
     }
   }
-}
 
+}
 @media all and (max-width: 767px) {
   .sign-up {
     margin: auto 15px;

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { CONSTANTS } from "src/app/constants";
 
 @Component({
   selector: "app-inner-header",
@@ -8,6 +9,7 @@ import { Router } from "@angular/router";
 })
 export class InnerHeaderComponent implements OnInit {
   user: any;
+  menu = CONSTANTS.MENUS;
   constructor(private router: Router) {}
 
   ngOnInit(): void {

@@ -3,40 +3,39 @@
 @import "ag-grid-community/dist/styles/ag-theme-balham.css";
 @import "./assets/styles/index";
 
-
 body {
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 // global css for multiselect dropdown
-.multiselect-dropdown .dropdown-btn {
-  display: inline-block;
-  border: 1px solid #adadad;
-  width: 100%;
-  padding: 6px 12px;
-  margin-bottom: 0;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.9;
-  text-align: left;
-  vertical-align: middle;
-  cursor: pointer;
-  background-image: none;
-  border-radius: 4px;
-}
-.multiselect-dropdown[_ngcontent-amg-c40]
-  .dropdown-btn[_ngcontent-amg-c40]
-  .selected-item[_ngcontent-amg-c40] {
-  border: 1px solid #337ab7;
-  margin-right: 4px;
-  background: #156fe6;
-  padding: 0 5px;
-  color: #fff;
-  border-radius: 2px;
-  float: left;
-  display: flex;
-  max-width: 0px;
-}
+// .multiselect-dropdown .dropdown-btn {
+//   display: inline-block;
+//   border: 1px solid #adadad;
+//   width: 100%;
+//   padding: 6px 12px;
+//   margin-bottom: 0;
+//   font-size: 13px;
+//   font-weight: 400;
+//   line-height: 1.9;
+//   text-align: left;
+//   vertical-align: middle;
+//   cursor: pointer;
+//   background-image: none;
+//   border-radius: 4px;
+// }
+// .multiselect-dropdown[_ngcontent-amg-c40]
+//   .dropdown-btn[_ngcontent-amg-c40]
+//   .selected-item[_ngcontent-amg-c40] {
+//   border: 1px solid #337ab7;
+//   margin-right: 4px;
+//   background: #156fe6;
+//   padding: 0 5px;
+//   color: #fff;
+//   border-radius: 2px;
+//   float: left;
+//   display: flex;
+//   max-width: 0px;
+// }
 
 app-sign-up,
 app-certification {
@@ -61,13 +60,21 @@ app-certification {
     font-size: 12px !important;
   }
 }
+
 app-work-experiance,
 app-rollprofile,
 app-job-posting,
+app-company-details,
 app-skill-profile {
+app-skill-profile,
+app-job-posting {
   .dropdown-btn {
     height: 46px !important;
     padding-top: 12px !important;
+    font-size: 12px !important;
+    border: 1px solid #333333 !important;
+    height: 40px !important;
+    border-radius: 7px !important;
   }
   .selected-item {
     max-width: initial !important;
@@ -75,4 +82,5 @@ app-skill-profile {
 }
 
 /* Importing Bootstrap SCSS file. */
-@import '~bootstrap/scss/bootstrap';
+@import "~bootstrap/scss/bootstrap";
+}

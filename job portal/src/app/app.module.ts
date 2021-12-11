@@ -14,13 +14,17 @@ import { PageNotFoundComponent } from "./Components/page-not-found/page-not-foun
 import { AgGridModule } from "ag-grid-angular";
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
 import { TokenInterceptorService } from "./token-interceptor-service.service";
+import { OrganizationSignInComponent } from './Components/organization-sign-in/organization-sign-in.component';
+import { ErrorInterceptor } from "./services/error.interceptor";
+import { ForgotPasswordComponent } from './Components/forgot-password/forgot-password.component';
 import { CandidateProfileCardComponent } from './Components/candidate-profile-card/candidate-profile-card.component';
 import { QRCodeModule } from 'angularx-qrcode';
-import { ErrorInterceptor } from "./services/error.interceptor";
+
 import { CandidateProfileSummaryComponent } from './Components/candidate-profile-summary/candidate-profile-summary.component';
 import { JobPostingComponent } from './Components/job-posting/job-posting.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { JobListingComponent } from "./Components/job-listing/job-listing.component";
+import { OrganizationPageComponent } from './Components/organization-page/organization-page.component';
 
 @NgModule({
   declarations: [
@@ -29,10 +33,14 @@ import { JobListingComponent } from "./Components/job-listing/job-listing.compon
     SideListboxComponent,
     SignInComponent,
     PageNotFoundComponent,
+    OrganizationSignInComponent,
+    ForgotPasswordComponent,
+  
     CandidateProfileCardComponent,
     CandidateProfileSummaryComponent,
     JobPostingComponent,
     JobListingComponent,
+    OrganizationPageComponent,
   ],
   imports: [
     BrowserModule,
