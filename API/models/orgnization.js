@@ -7,13 +7,15 @@ var Organizationschema = new Schema({
     email: {
         type: String
     },
+    role: {
+        type: String
+      },
     password: {
         type: String
     },
     contactPerson: {
         type: String
     },
-
     contactNumber: {
         type: String
     },

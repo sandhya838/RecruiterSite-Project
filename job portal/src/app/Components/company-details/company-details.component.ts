@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { data } from 'jquery';
+import { CONSTANTS } from 'src/app/helper/constants';
 import { CommonService } from "src/app/services/common.service";
 import { CompanyDetailService } from 'src/app/services/company-detail.service';
-import { CONSTANTS } from 'src/app/constants';
 
 @Component({
   selector: 'app-company-details',

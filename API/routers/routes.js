@@ -24,6 +24,7 @@ module.exports = (app) => {
   /*************Jobs ******************** */
   app.post('/v1/create', auth.authToken, job.create);
   app.get('/v1/jobs', auth.authToken, job.findAll);
+  app.get('/v1/jobs-created-by/:jobId', auth.authToken, job.findAllJobs);
   app.get('/v1/job/:jobId', auth.authToken, job.findOne);
   app.delete('/v1/job/:jobId', auth.authToken, job.delete);
   app.put('/v1/job/:jobId', auth.authToken, job.update);

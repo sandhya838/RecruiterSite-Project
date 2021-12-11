@@ -14,6 +14,17 @@ module.exports = {
 
     // Retrieve and return all jobss from the database.
 
+    findAllJobs: (req, res) => {
+        Jobs.
+            find({ orgnizationId: req.params.jobId }, (err, result) => {
+                if (err) {
+                    res.status(500).send({ status: 500, message: 'Oops! Not able to get all jobs. Please try after sometimes', jobs: result });
+                } else {
+                    res.status(200).send({ status: 200, message: 'jobss got successfully listed.', jobs: result });
+                }
+            });
+    },
+
     findAll: (req, res) => {
         Jobs.
             find({}).

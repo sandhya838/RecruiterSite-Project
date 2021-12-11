@@ -4,10 +4,10 @@ var Schema = mongoose.Schema;
 
 
 var Jobschema = new Schema({
-    companyName: {
+    organizationName: {
         type: String
     },
-    companyIntro: {
+    description: {
         type: String
     },
     typeOfJob: {
