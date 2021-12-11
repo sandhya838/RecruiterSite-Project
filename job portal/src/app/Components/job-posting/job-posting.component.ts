@@ -51,7 +51,7 @@ export class JobPostingComponent implements OnInit {
         functional:["", [Validators.required]],
       }),
  });
-// const createJobs = JSON.parse(sessionStorage.getItem("user") as any);
+// const createJobs= JSON.parse(sessionStorage.getItem("user") as any);
 //     const requestHeader ={
 //       companyName:createJobs?.companyName,
 //       location:createJobs?.location,
