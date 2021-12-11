@@ -1,6 +1,6 @@
 import { ChangeDetectorRef, Component } from "@angular/core";
 import { NavigationEnd, Router } from "@angular/router";
-import { CONSTANTS } from "./constants";
+import { CONSTANTS } from "./helper/constants";
 import { CommonService } from "./services/common.service";
 
 @Component({

@@ -1,1 +1,35 @@
-<p>inner-footer works!</p>
+<div *ngIf="viewPort"
+  class="
+    navbar
+    fixed-bottom
+    navbar-light
+    bg-light
+    d-flex
+    justify-content-between
+    align-items-center
+  "
+>
+  <ng-container *ngFor="let item of menu;let isLast = last">
+    <div *ngIf="item.isMainMenu">
+      <a routerLink="{{ item.url }}" *ngIf="item.isForCandidate === user.role"
+        ><i
+          class="{{ item.icon }} inner-footer__main-fa"
+          aria-hidden="true"
+        ></i>
+        <div>
+          {{ item.name }}
+        </div></a
+      >
+    </div>
+    <div class="inner-footer__profile" *ngIf="isLast">
+        <img
+          class="inner-footer__profile__img"
+          src="https://www.pngfind.com/pngs/m/610-6104451_image-placeholder-png-user-profile-placeholder-image-png.png"
+          alt=""
+        />
+        <div>Profile</div>
+      </div>
+
+  </ng-container>
+  
+</div>

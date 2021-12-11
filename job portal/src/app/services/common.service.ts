@@ -2,7 +2,7 @@ import { HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import * as CryptoJS from "crypto-js";
 import { ToastrService } from "ngx-toastr";
-import { CONSTANTS } from "../constants";
+import { CONSTANTS } from "../helper/constants";
 
 @Injectable({
   providedIn: "root",

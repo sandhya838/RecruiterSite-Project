@@ -1,0 +1,13 @@
+.inner-footer {
+    box-shadow: 0 4px 5px -2px rgb(0 0 0 / 10%);
+    &__profile {
+      cursor: pointer;
+      &__img {
+        width: 40px;
+        height: 40px;
+      }
+    }
+    &__main-fa{
+      font-size: 33px;
+    }
+}

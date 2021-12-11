@@ -1,5 +1,5 @@
-//const BASEURL = "http://23.95.228.167:4080/";
-const BASEURL = "http://localhost:3000/";
+const BASEURL = "http://23.95.228.167:4080/";
+//const BASEURL = "http://localhost:3000/";
 export const CONSTANTS = {
   MAX_FILE_SIZE: 1024 * 1024 * 5, // in MB max file size is 5MB
 
@@ -12,8 +12,15 @@ export const CONSTANTS = {
       isMainMenu: true,
     },
     {
+      name: "Search",
+      url: "/search",
+      icon: "fa fa-search",
+      isForCandidate: "candidate",
+      isMainMenu: true,
+    },
+    {
       name: "Post job",
-      url: "/job-post",
+      url: "/post-job",
       icon: "fa fa-suitcase",
       isForCandidate: "orgnization",
       isMainMenu: true,
@@ -270,4 +277,5 @@ export const CONSTANTS = {
   CREATEJOBS:BASEURL+'v1/create',
   // UPLOADCERTIFICATES: BASEURL + "v1/upload-certificates/",
   // CREATEJOBS: BASEURL + "v1/create",
+  ORGNIZATIONJOBS: BASEURL+'v1/jobs-created-by/',
 };

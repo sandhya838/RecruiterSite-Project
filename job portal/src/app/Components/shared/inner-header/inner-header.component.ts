@@ -1,6 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
-import { CONSTANTS } from "src/app/constants";
+import { CONSTANTS } from "src/app/helper/constants";
 
 @Component({
   selector: "app-inner-header",
