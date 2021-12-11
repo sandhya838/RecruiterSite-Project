@@ -12,8 +12,15 @@ export const CONSTANTS = {
       isMainMenu: true,
     },
     {
+      name: "Search",
+      url: "/search",
+      icon: "fa fa-search",
+      isForCandidate: "candidate",
+      isMainMenu: true,
+    },
+    {
       name: "Post job",
-      url: "/job-post",
+      url: "/post-job",
       icon: "fa fa-suitcase",
       isForCandidate: "orgnization",
       isMainMenu: true,

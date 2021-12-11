@@ -13,13 +13,13 @@ import { SignInComponent } from "./Components/sign-in/sign-in.component";
 import { PageNotFoundComponent } from "./Components/page-not-found/page-not-found.component";
 import { AgGridModule } from "ag-grid-angular";
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
-import { TokenInterceptorService } from "./token-interceptor-service.service";
+import { TokenInterceptorService } from "./interceptor/token-interceptor-service.service";
 import { CandidateProfileCardComponent } from './Components/candidate-profile-card/candidate-profile-card.component';
 import { QRCodeModule } from 'angularx-qrcode';
 import { ErrorInterceptor } from "./services/error.interceptor";
-import { CandidateProfileSummaryComponent } from './Components/candidate-profile-summary/candidate-profile-summary.component';
 import { JobPostingComponent } from './Components/job-posting/job-posting.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { CandidateProfileSummaryComponent } from "./Components/candidate-profile-summary/candidate-profile-summary.component";
 
 @NgModule({
   declarations: [

@@ -8,7 +8,7 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { ConfigService } from "src/app/config.service";
-import { CONSTANTS } from "src/app/constants";
+import { CONSTANTS } from "src/app/helper/constants";
 import { CommonService } from "src/app/services/common.service";
 
 @Component({
