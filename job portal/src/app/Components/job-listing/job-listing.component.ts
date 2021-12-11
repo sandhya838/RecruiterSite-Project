@@ -22,19 +22,18 @@ export class JobListingComponent implements OnInit {
      role:createJobs?.secondary,
     };
 
-    this.jobservice.createJobs(requestHeader).subscribe((result)=>{
-      if(result.matchedJobs.length){
-        this.createjob=result.matchedJobs;
-
-      }
-      console.log(result)
-    })
+   
+      
 
   }
  
 
 }
 function requestHeader(requestHeader: any) {
+  throw new Error('Function not implemented.');
+}
+
+function id(id: any) {
   throw new Error('Function not implemented.');
 }
 
