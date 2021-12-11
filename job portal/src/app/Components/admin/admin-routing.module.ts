@@ -9,6 +9,8 @@ import { CertificationComponent } from "../certification/certification.component
 import { CompanyDetailsComponent } from "../company-details/company-details.component";
 import { DashboardComponent } from "../dashboard/dashboard.component";
 import { EduDetailsComponent } from "../edu-details/edu-details.component";
+import { ExperianceComponent } from "../experiance/experiance.component";
+import { JobListingComponent } from "../job-listing/job-listing.component";
 import { JobPostingComponent } from "../job-posting/job-posting.component";
 import { RollprofileComponent } from "../rollprofile/rollprofile.component";
 import { UserProfileComponent } from "../user-profile/user-profile.component";
@@ -86,6 +88,11 @@ const routes: Routes = [
         path: "post-job",
         component: JobPostingComponent,
         canActivate: [OrgGuard],
+      },
+      {
+        path:"job-list",
+        component: JobListingComponent,
+        canActivate:[AuthGuard],
       },
       {
         path: "change-password",
