@@ -23,6 +23,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { CandidateProfileSummaryComponent } from './Components/candidate-profile-summary/candidate-profile-summary.component';
 import { JobPostingComponent } from './Components/job-posting/job-posting.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { OrganizationPageComponent } from './Components/organization-page/organization-page.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     CandidateProfileCardComponent,
     CandidateProfileSummaryComponent,
     JobPostingComponent,
+    OrganizationPageComponent,
   ],
   imports: [
     BrowserModule,
