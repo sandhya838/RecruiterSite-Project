@@ -30,7 +30,7 @@ export class OrgGuard implements CanActivate {
     if (this.signinService.isLoggedIn() && userData.role === "orgnization") {
       return true;
     }
-    this.router.navigate([""]);
+    this.router.navigate(["/organization-signin"]);
     return false;
   }
 }

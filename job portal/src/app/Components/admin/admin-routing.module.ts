@@ -92,7 +92,7 @@ const routes: Routes = [
       {
         path:"job-list",
         component: JobListingComponent,
-        canActivate:[AuthGuard],
+        canActivate:[OrgGuard],
       },
       {
         path: "change-password",

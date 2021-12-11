@@ -16,13 +16,11 @@ module.exports = {
 
     findAllJobs: (req, res) => {
         Jobs.
-            find({ _id: req.params.jobId }).
-            populate('createdBy').
-            exec((err, result) => {
+            find({ orgnizationId: req.params.jobId }, (err, result) => {
                 if (err) {
-                    res.status(500).send({ message: 'Oops! Not able to get all jobs. Please try after sometimes', jobss: result });
+                    res.status(500).send({ status: 500, message: 'Oops! Not able to get all jobs. Please try after sometimes', jobs: result });
                 } else {
-                    res.status(200).send({ message: 'jobss got successfully listed.', jobss: result });
+                    res.status(200).send({ status: 200, message: 'jobss got successfully listed.', jobs: result });
                 }
             });
     },
