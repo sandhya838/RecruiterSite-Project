@@ -1,68 +1,195 @@
-<div class="container">
-    <div
-      *ngIf="alert"
-      class="alert alert-success alert-dismissible fade show"
-      role="alert"
-    >
-      <strong>Success!</strong> Your data is successfully submitted.
-      <pre>{{ allData | json }}</pre>
-      <button
-        (click)="closeAlert()"
-        type="button"
-        class="close"
-        data-dismiss="alert"
-        aria-label="Close"
-      >
-        <span aria-hidden="true">&times;</span>
-      </button>
+<div class=" company-details">
+  <div class="d-flex justify-content-between align-items-center">
+    <h2 class="profile-summary__heading">company details</h2>
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb bg-white">
+        <li class="breadcrumb-item">
+          <a [routerLink]="'/dashboard'">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          company details
+        </li>
+      </ol>
+    </nav>
+  </div>
+
+  <div class="card "> 
+  <div class="card company-details__header">
+      <img  src="{{ APIURL + 'static/logo/' + userData?.logo}}">
+      <div class="company-details__top-right">
+        <ul class="company-details__list-style">
+          <li class="company-details__list-item"><i class="fa fa-building-o" aria-hidden="true"></i>  {{userData.organizationName}}</li>
+          <li class="company-details__list-item"><i class="fa fa-user" aria-hidden="true"></i> {{userData.firstName}}  {{userData.lastName}}</li>
+          <li class="company-details__list-item"><i class="fa fa-envelope" aria-hidden="true"></i> {{userData.email}} </li>
+          <li class="company-details__list-item"><i class="fa fa-phone" aria-hidden="true"></i> {{userData.contactNumber}}  </li>
+        </ul>
+      </div>
     </div>
-      <form [formGroup]="userForm"  novalidate (ngSubmit)="onClick(userForm.value, userForm.valid)"> 
-      
-          <div class="row g-3 row-margin-05" > 
-  
-               <div class="col-4"> 
-                 <label>Details of the Company</label>
-                 <input type="text" class="form-control" placeholder="" formControlName="companyDetails"> 
-                 <div class="text-danger" *ngIf="getControl.companyDetails.touched && getControl.companyDetails.invalid">
-                        <div *ngIf="getControl.companyDetails.errors">Enter valid data.</div>
-                 </div>
-               </div> 
-               <div class="col-4"> 
-                  <label>Decription of the Company</label>
-                  <input type="text" class="form-control" placeholder="" formControlName="descOfCompany" required> 
-                  <div class="text-danger" *ngIf="getControl.descOfCompany.touched && getControl.descOfCompany.invalid">
-                         <div *ngIf="getControl.descOfCompany.errors">Enter valid data.</div>
-                  </div>
-                </div> 
-                <div class="col-4"> 
-                  <label>No of Employees</label>
-                  <input type="text" class="form-control" placeholder="" formControlName="noOfEmployees" required> 
-                  <div class="text-danger" *ngIf="getControl.noOfEmployees.touched && getControl.noOfEmployees.invalid">
-                         <div *ngIf="getControl.noOfEmployees.errors">Enter valid data.</div>
-                  </div>
-                </div> 
-                <div class="col-md-4">
-                    <label>Location of Operations</label><span class="text-danger">*</span>
-                    <select class="form-control" placeholder="" formControlName="location">
-                      <option selected disabled value="">-select-</option>
-                      <option>Mumbai</option>
-                      <option>Pune</option>
-                      <option>Chennai</option>
-                      <option>Kolkata</option>
-                      <option>surat</option>
-                      <option>Kolhapur</option>
-                      <option>Jalgaon</option>
-                      <option>Hyderabad</option>
-                    </select>
-                    <div
-                      class="text-danger"
-                      *ngIf="getControl.location.touched && getControl.location.invalid"
-                    >
-                      <div *ngIf="getControl.location.errors">Please select a valid city.</div>
+    
+   
+      <div class="card-body">
+        <form  [formGroup]=" userForm"
+        (ngSubmit)="onClick(userForm.value, userForm.valid)"
+        novalidate>
+        <div class="row">
+          <div class="col">
+        <div class="input-group mb-3">
+          <div class="input-group-prepend">
+            <Label>Number of employee </Label>
+          </div>
+          <input type="text" class="empnumber"  aria-label="Default"formControlName="numberOfEmployees" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div
+        class="text-danger"
+        *ngIf="
+          !userForm.get('numberOfEmployees')!.valid &&
+          (userForm.get('numberOfEmployees')!.touched ||
+            userForm.get('numberOfEmployees')!.dirty)
+        "
+      >
+        <div *ngIf="userForm.get('numberOfEmployees')!.errors">
+          <small
+            *ngIf="userForm.get('numberOfEmployees')!.errors!.required"
+          >
+            This field is required
+          </small>
+        </div>
+      </div>
+    </div>
+
+
+
+          <div class="col">
+        <div class="input-group w-100">
+          <div class="input-group-prepend">
+            <Label>Company turnover(million) </Label>
+          </div>
+          <input type="text" class="Company__turnover" formControlName="turnover"  aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        </div>
+        <div
+        class="text-danger"
+        *ngIf="
+          !userForm.get('turnover')!.valid &&
+          (userForm.get('turnover')!.touched ||
+            userForm.get('turnover')!.dirty)
+        "
+      >
+        <div *ngIf="userForm.get('turnover')!.errors">
+          <small
+            *ngIf="userForm.get('turnover')!.errors!.required"
+          >
+            This field is required
+          </small>
+        </div>
+      </div>
+    </div>
+  </div>
+                  
+
+              <div class="row">
+                <div class="col">
+             <div class="form-group">
+              <label>Country of operation</label>
+              <ng-multiselect-dropdown
+              formControlName="country"
+                [placeholder]="'Select country'"
+                [settings]="dropdownSettings"
+                [data]="country"
+              >
+              </ng-multiselect-dropdown>
+              <div
+                    class="text-danger"
+                    *ngIf="
+                      !userForm.get('country')!.valid &&
+                      (userForm.get('country')!.touched ||
+                        userForm.get('country')!.dirty)
+                    "
+                  >
+                    <div *ngIf="userForm.get('country')!.errors">
+                      <small
+                        *ngIf="userForm.get('country')!.errors!.required"
+                      >
+                        This field is required
+                      </small>
                     </div>
                   </div>
-         
-         
-               
-              
-              </div> 
+            </div>
+          </div>
+
+
+
+            <div class="col">
+            <div class="form-group">
+              <label>Location of operation</label>
+              <ng-multiselect-dropdown
+              formControlName="location"
+                [placeholder]="'Select location'"
+                [settings]="dropdownSettings"
+                [data]="location"
+              >
+              </ng-multiselect-dropdown>
+              <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.controls['location'].valid &&
+                  (userForm.controls['location'].touched ||
+                    userForm.controls['location'].dirty)
+                "
+              >
+                <div *ngIf="userForm.controls['location'].errors">
+                  <small *ngIf="userForm.controls['location'].errors.required">
+                    This field is required
+                  </small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+       
+
+
+        <div class="form-group">
+          <label>Description</label>
+          <textarea class="form-control " formControlName="description"  style="height: 88px;" rows="3"></textarea>
+          <div
+                class="text-danger"
+                *ngIf="
+                  !userForm.get('description')!.valid &&
+                  (userForm.get('description')!.touched ||
+                    userForm.get('description')!.dirty)
+                "
+              >
+                <div *ngIf="userForm.get('description')!.errors">
+                  <small
+                    *ngIf="userForm.get('description')!.errors!.required"
+                  >
+                    This field is required
+                  </small>
+                </div>
+              </div>
+
+        </div>
+
+        
+        <div class="user-profile__action">
+          <div class="pl-1">
+            <button class="job-btn job-btn-mini" type="submit">Submit</button>
+          </div>
+        </div>
+
+
+        </form>
+
+
+
+
+
+      
+      </div>
+  </div>
+
+
+
+
+  
+  

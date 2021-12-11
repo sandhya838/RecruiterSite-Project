@@ -27,9 +27,7 @@ export class ExperianceComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       totalYearsOfExperience: ["", [Validators.required]],
       teamSize: ["", [Validators.required]],
-      volumeOfBusinessManged: [
-        "",
-        [Validators.required, Validators.pattern(/^[0-9]+([,.][0-9]+)?$/)],
+      volumeOfBusinessManged: [ "", [Validators.required, Validators.pattern(/^[0-9]+([,.][0-9]+)?$/)],
       ],
       noticePeriod: ["", [Validators.required]],
       salary: ["", [Validators.required]],

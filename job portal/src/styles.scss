@@ -63,6 +63,8 @@ app-certification {
 
 app-work-experiance,
 app-rollprofile,
+app-company-details,
+app-skill-profile {
 app-skill-profile,
 app-job-posting {
   .dropdown-btn {
@@ -80,3 +82,4 @@ app-job-posting {
 
 /* Importing Bootstrap SCSS file. */
 @import "~bootstrap/scss/bootstrap";
+}
