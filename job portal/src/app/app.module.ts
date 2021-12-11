@@ -23,6 +23,7 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { CandidateProfileSummaryComponent } from './Components/candidate-profile-summary/candidate-profile-summary.component';
 import { JobPostingComponent } from './Components/job-posting/job-posting.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { JobListingComponent } from "./Components/job-listing/job-listing.component";
 import { OrganizationPageComponent } from './Components/organization-page/organization-page.component';
 
 @NgModule({
@@ -38,6 +39,7 @@ import { OrganizationPageComponent } from './Components/organization-page/organi
     CandidateProfileCardComponent,
     CandidateProfileSummaryComponent,
     JobPostingComponent,
+    JobListingComponent,
     OrganizationPageComponent,
   ],
   imports: [

@@ -11,10 +11,21 @@ var Jobschema = new Schema({
         type: String
     },
     typeOfJob: {
+        contract:{
+            type:Boolean
+        },
+        permanant:{
+            type:Boolean
+        },
+       freelance:{
+            type:Boolean
+        }
+    },
+    location: {
         type: []
     },
-    locationpreference: {
-        type: String
+    experiance:{
+        type: []
     },
     roleProfile: {
         management:{
