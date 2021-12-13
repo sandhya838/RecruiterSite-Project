@@ -199,9 +199,9 @@
             </div>
           </div>
         </div>
-        <div class="row">
+        <div class="row" formGroupName="skills">
           <div class="col">
-            <div class="form-group">
+            <div class="form-group" >
               <label>Primary skills</label>
               <ng-multiselect-dropdown
                 formControlName="primary"
@@ -213,13 +213,13 @@
               <div
                 class="text-danger"
                 *ngIf="
-                  !userForm.controls['primary'].valid &&
-                  (userForm.controls['primary'].touched ||
-                    userForm.controls['primary'].dirty)
+                  !userForm.get('skills.primary')!.valid &&
+                  (userForm.get('skills.primary')!.touched ||
+                    userForm.get('skills.primary')!.dirty)
                 "
               >
-                <div *ngIf="userForm.controls['primary'].errors">
-                  <small *ngIf="userForm.controls['primary'].errors.required">
+                <div *ngIf="userForm.get('skills.primary')!.errors">
+                  <small *ngIf="userForm.get('skills.primary')!.errors!.required">
                     This field is required
                   </small>
                 </div>
@@ -239,13 +239,13 @@
               <div
                 class="text-danger"
                 *ngIf="
-                  !userForm.controls['secondary'].valid &&
-                  (userForm.controls['secondary'].touched ||
-                    userForm.controls['secondary'].dirty)
+                  !userForm.get('skills.secondary')!.valid &&
+                  (userForm.get('skills.secondary')!.touched ||
+                    userForm.get('skills.secondary')!.dirty)
                 "
               >
-                <div *ngIf="userForm.controls['secondary'].errors">
-                  <small *ngIf="userForm.controls['secondary'].errors.required">
+                <div *ngIf="userForm.get('skills.secondary')!.errors">
+                  <small *ngIf="userForm.get('skills.secondary')!.errors!.required">
                     This field is required
                   </small>
                 </div>

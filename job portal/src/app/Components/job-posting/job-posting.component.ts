@@ -43,11 +43,14 @@ export class JobPostingComponent implements OnInit {
         permanant: [true, [Validators.required]],
         freelance: [false],
       }),
+     skills: this.formBuilder.group({
+        primary: [[], [Validators.required]],
+       secondary: [[], [Validators.required]],
+       }),
       experiance: ["", [Validators.required]],
       role: ["", [Validators.required]],
       location: ["", [Validators.required]],
-      primary: ["", [Validators.required]],
-      secondary: ["", [Validators.required]],
+     
       roleDescription: ["", [Validators.required]],
       roleProfile: this.formBuilder.group({
         management: ["", [Validators.required]],
