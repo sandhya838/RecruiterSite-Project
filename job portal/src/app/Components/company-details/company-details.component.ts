@@ -81,7 +81,7 @@ export class CompanyDetailsComponent implements OnInit {
     };
     this.location = [
       { id: 1, name: "Karnataka" },
-      { id: 2, name: " mumbai" },
+      { id: 2, name: " Mumbai" },
       { id: 3, name: " Maharashtra" },
       { id: 4, name: "Manipur " },
       { id: 5, name: "panjab" },
