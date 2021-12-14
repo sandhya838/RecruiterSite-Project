@@ -41,9 +41,15 @@ var Jobschema = new Schema({
     role: {
         type: String
     },
-    skills: {
-        type: String
+    skills:{
+        primary:{
+            type:[]
+        },
+        secondary:{
+            type:[]
+        }
     },
+   
     orgnizationId:{
         type: String
     },
