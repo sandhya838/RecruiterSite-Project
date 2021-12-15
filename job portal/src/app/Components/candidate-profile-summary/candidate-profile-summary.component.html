@@ -92,7 +92,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col-sm-11">
-              <h5 class="profile-details__card-title">Roll profile</h5>
+              <h5 class="profile-details__card-title">Role profile</h5>
             </div>
             <div class="col-sm-1">
               <a routerLink="/role-profile">
@@ -100,7 +100,7 @@
               </a>
             </div>
           </div>
-          <div class="card-body-text">
+          <div class="card-body-text role-profile">
             <div class="row rollprofile__management">
               <div class="col-md-name rollprofile__col"> Management: </div>
               <div class="col-md">{{ profile.roleManagement.management }}</div>
@@ -191,26 +191,26 @@
 
           <div class="card-body-text">
             <div class="row experience__primaryskill">
-              <div class="col-3-skill">Primary skill: </div>
-              <div class="col-3-skill" id="skill1">
+              <div class="col skill">Primary skill: </div>
+              <div class="col skill" id="skill1">
                 {{ profile?.skillTechnical[0]?.name }}
               </div>
-              <div class="col-3-skill" id="skill2">
+              <div class="col skill" id="skill2">
                 {{ profile?.skillTechnical[1]?.name }}
               </div>
-              <div class="col-3-skill" id="skill3">
+              <div class="col skill" id="skill3">
                 {{ profile?.skillTechnical[2]?.name }}
               </div>
             </div>
             <div class="row experience__secondaryskill">
-              <div class="col-3-skill">secondary skill: </div>
-              <div class="col-3-skill" id="skill4">
+              <div class="col skill">secondary skill: </div>
+              <div class="col skill" id="skill4">
                 {{ profile?.skillFunctional[0]?.name }}
               </div>
-              <div class="col-3-skill" id="skill5">
+              <div class="col skill" id="skill5">
                 {{ profile?.skillFunctional[1]?.name }}
               </div>
-              <div class="col-3-skill" id="skill6">
+              <div class="col skill" id="skill6">
                 {{ profile?.skillFunctional[2]?.name }}
               </div>
             </div>
@@ -231,6 +231,7 @@
           </div>
 
           <div class="card-body-text">
+            <!-- <p>Experience summary</p> -->
             <h5 class="profile-details__card-sub-title">Experience summary</h5>
             <ul style="list-style-type: square">
               <li>
@@ -537,7 +538,8 @@
       <div class="card profilesummary__cardbody">
         <div class="card-body">
           <h5 class="profile-details__card-title">4. B.G check</h5>
-          <h5 class="profile-details__card-sub-title">Status</h5>
+          <p>Status</p>
+          <!-- <h5 class="profile-details__card-sub-title">Status</h5> -->
           <div class="card-body-text">
             <p></p>
           </div>
