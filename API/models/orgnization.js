@@ -7,7 +7,13 @@ var Organizationschema = new Schema({
     email: {
         type: String
     },
+    role: {
+        type: String
+      },
     password: {
+        type: String
+    },
+    contactPerson: {
         type: String
     },
     contactNumber: {
@@ -32,7 +38,7 @@ var Organizationschema = new Schema({
         type: Number
     },
     country: {
-        type: String
+        type: []
     },
     numberOfEmployees: {
         type: String
@@ -46,7 +52,35 @@ var Organizationschema = new Schema({
     },
     updatedDate: {
         type: Date
-    }
+    },
+    organizationName: {
+        type: String
+    },
+    firstName: {
+        type: String
+
+    },
+    middleName: {
+        type: String
+    },
+
+    lastName: {
+        type: String
+    },
+    url: {
+        type: String
+    },
+    location:{
+        type: []
+    },
+    turnOver:{
+        type: String
+    },
+
+
+
+
+
 });
 
 module.exports = mongoose.model('Orgnizations', Organizationschema);

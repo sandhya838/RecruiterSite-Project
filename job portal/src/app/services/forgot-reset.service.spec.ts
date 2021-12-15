@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { PopupService } from './popup.service';
+import { ForgotResetService } from './forgot-reset.service';
 
-describe('PopupService', () => {
-  let service: PopupService;
+describe('ForgotResetService', () => {
+  let service: ForgotResetService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(PopupService);
+    service = TestBed.inject(ForgotResetService);
   });
 
   it('should be created', () => {

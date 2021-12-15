@@ -13,13 +13,18 @@ import { SignInComponent } from "./Components/sign-in/sign-in.component";
 import { PageNotFoundComponent } from "./Components/page-not-found/page-not-found.component";
 import { AgGridModule } from "ag-grid-angular";
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
-import { TokenInterceptorService } from "./token-interceptor-service.service";
-import { CandidateProfileCardComponent } from './Components/candidate-profile-card/candidate-profile-card.component';
-import { QRCodeModule } from 'angularx-qrcode';
+import { TokenInterceptorService } from "./interceptor/token-interceptor-service.service";
+import { QRCodeModule } from "angularx-qrcode";
 import { ErrorInterceptor } from "./services/error.interceptor";
-import { CandidateProfileSummaryComponent } from './Components/candidate-profile-summary/candidate-profile-summary.component';
-import { JobPostingComponent } from './Components/job-posting/job-posting.component';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
+import { OrganizationSignInComponent } from "./Components/organization-sign-in/organization-sign-in.component";
+import { ForgotPasswordComponent } from "./Components/forgot-password/forgot-password.component";
+import { CandidateProfileCardComponent } from "./Components/candidate-profile-card/candidate-profile-card.component";
+
+import { CandidateProfileSummaryComponent } from "./Components/candidate-profile-summary/candidate-profile-summary.component";
+import { JobPostingComponent } from "./Components/job-posting/job-posting.component";
+import { OrganizationPageComponent } from "./Components/organization-page/organization-page.component";
+import { JobListingComponent } from "./Components/job-listing/job-listing.component";
 
 @NgModule({
   declarations: [
@@ -28,9 +33,14 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     SideListboxComponent,
     SignInComponent,
     PageNotFoundComponent,
+    OrganizationSignInComponent,
+    ForgotPasswordComponent,
+
     CandidateProfileCardComponent,
     CandidateProfileSummaryComponent,
     JobPostingComponent,
+    JobListingComponent,
+    OrganizationPageComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,7 +54,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule,
     AngularMultiSelectModule,
     QRCodeModule,
-    NgbModule 
+    NgbModule,
   ],
   providers: [
     {

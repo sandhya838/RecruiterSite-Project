@@ -1,0 +1,66 @@
+
+.company-details{
+    &__top-right{
+      position: absolute;
+      top: 8px;
+      right: 16px;
+      color: var(--black);
+    }
+    &__list-item{
+     list-style: none;
+     margin-top: 12px;
+    }
+  }
+  img{
+    height: 155px;
+    width: 100%;
+  }
+  input{
+    width: 110%;
+height: auto;
+  }
+  .form-group  {
+    font-size: 14px;
+    font-family: roboto;
+}
+.empnumber,.Company__turnover{
+  
+  
+    height: 44px;
+    border-radius: 7px;
+
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 0.5rem;
+  font-family: 'Roboto';
+  margin-top: 9px;
+  font-size: 16px;
+}
+.right {
+  margin-right: 5px;
+}
+.multiselect-dropdown{
+  border-radius: 7px;
+  height: 44px;
+
+}
+.pl-1, .px-1 {
+  padding-left: 72.25rem !important;
+}
+@media all and (max-width: 767px) {
+  .job-btn.job-btn-mini {
+    padding: 11px 20px 13px;
+    border-radius: 0;
+    margin-left: -958px;
+  
+}
+  }
+
+
+
+
+
+
+

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from "@angular/router";
+import { CONSTANTS } from "src/app/helper/constants";
 
 @Component({
   selector: "app-inner-header",
@@ -8,20 +9,7 @@ import { Router } from "@angular/router";
 })
 export class InnerHeaderComponent implements OnInit {
   user: any;
-  menu = [
-    {
-      name: "Jobs",
-      url: "/jobs",
-      icon: "fa fa-suitcase",
-      isForCandidate: "candidate",
-    },
-    {
-      name: "Post job",
-      url: "/job-post",
-      icon: "fa fa-suitcase",
-      isForCandidate: "orgnization",
-    },
-  ];
+  menu = CONSTANTS.MENUS;
   constructor(private router: Router) {}
 
   ngOnInit(): void {

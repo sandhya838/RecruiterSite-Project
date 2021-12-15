@@ -1,7 +1,131 @@
-//const BASEURL = "http://23.95.228.167:4080/";
+// const BASEURL = "http://23.95.228.167:4080/";
 const BASEURL = "http://localhost:3000/";
 export const CONSTANTS = {
-  MAX_FILE_SIZE: 1024 * 1024 * 5,  // in MB max file size is 5MB
+  MAX_FILE_SIZE: 1024 * 1024 * 5, // in MB max file size is 5MB
+
+  MENUS: [
+    {
+      name: "Jobs",
+      url: "/jobs",
+      icon: "fa fa-suitcase",
+      isForCandidate: "candidate",
+      isMainMenu: true,
+    },
+    {
+      name: "Search",
+      url: "/search",
+      icon: "fa fa-search",
+      isForCandidate: "candidate",
+      isMainMenu: true,
+    },
+    {
+      name: "Post job",
+      url: "/post-job",
+      icon: "fa fa-suitcase",
+      isForCandidate: "orgnization",
+      isMainMenu: true,
+    },
+    {
+      name: "Profile summary",
+      url: "/profile-summary",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+    {
+      name: "login",
+      url: "/login",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+    {
+      name: "Sign up",
+      url: "/sign-up",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+    {
+      name: "dashboard",
+      url: "/dashboard",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+    {
+      name: "about-you",
+      url: "/about-you",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+    
+    {
+      name: "profile-summary",
+      url: "/profile-summary",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+    {
+      name: "work-experience",
+      url: "/work-experience",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+    {
+      name: "education-details/:id",
+      url: "/education-details/:id",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+    {
+      name: "role-profile",
+      url: "/role-profile",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+    {
+      name: "certificate",
+      url: "/certificate",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+    {
+      name: "myProfile",
+      url: "/myProfile",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+    {
+      name: "candidate-profile",
+      url: "/candidate-profile",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+    
+    {
+      name: "change-password",
+      url: "/change-password",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+    {
+      name: "profile",
+      url: "/profile",
+      icon: "",
+      isForCandidate: "candidate",
+      isMainMenu: false,
+    },
+  ],
   SKILLS: [
     { name: "Programming Languages" },
     { name: "Web Development" },
@@ -144,6 +268,14 @@ export const CONSTANTS = {
   CHANGEPASSWORD: BASEURL + "v1/change-password/",
   ABOUTYOU: BASEURL + "v1/aboutyou",
   UPDATEUSERPROFILE: BASEURL + "v1/profile/",
-  UPLOADCERTIFICATES: BASEURL + "v1/upload-certificates/",
-  CREATEJOBS: BASEURL + "v1/create",
+  ORGANIZATIONlOGIN: BASEURL + "v1/orgnization-login",
+  ORGANIZATIONSIGNUP: BASEURL + "v1/register-orgnization",
+  FORGOTPASSWORD:BASEURL + "v1/forgot-password",
+  UPLOADCERTIFICATES: BASEURL+'v1/upload-certificates/',
+  COMPANYDETAILS: BASEURL + "v1/orgnization/",  
+  // UPLOADCERTIFICATES: BASEURL+'v1/upload-certificates/',
+  CREATEJOBS:BASEURL+'v1/create',
+  // UPLOADCERTIFICATES: BASEURL + "v1/upload-certificates/",
+  // CREATEJOBS: BASEURL + "v1/create",
+  ORGNIZATIONJOBS: BASEURL+'v1/jobs-created-by/',
 };

@@ -3,7 +3,6 @@ import { Validators, FormBuilder, FormGroup } from "@angular/forms";
 import { Router } from "@angular/router";
 import { CommonService } from "src/app/services/common.service";
 import { SigninService } from "src/app/signin.service";
-import { User } from "src/app/user";
 
 @Component({
   selector: "app-sign-in",
@@ -71,4 +70,5 @@ export class SignInComponent implements OnInit {
   showPassword() {
     this.isPassword = !this.isPassword;
   }
+
 }

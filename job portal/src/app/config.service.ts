@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, throwError } from "rxjs";
 import { catchError, retry } from "rxjs/operators";
-import { CONSTANTS } from "./constants";
+import { CONSTANTS } from "./helper/constants";
 import { CommonService } from "./services/common.service";
 
 @Injectable({

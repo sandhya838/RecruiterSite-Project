@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { CONSTANTS } from "../../constants";
+import { CONSTANTS } from "../../helper/constants";
 import { JobsService } from "../../services/jobs.service";
 
 @Component({

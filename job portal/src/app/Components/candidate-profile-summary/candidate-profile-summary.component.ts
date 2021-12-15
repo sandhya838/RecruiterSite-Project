@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CONSTANTS } from 'src/app/constants';
+import { CONSTANTS } from 'src/app/helper/constants';
 import { UserprofileService } from 'src/app/services/userprofile.service';
 
 @Component({

@@ -58,6 +58,7 @@ exports.login = (req, res) => {
 };
 exports.orgnization_login = (req, res) => {
     Orgnization.findOne({ email: req.body.email, password: req.body.password }, (err, result) => {
+        console.log('result',result);
         if (err) {
             res.status(401).send({ status: 401, message: 'You are not autorized to get access.' });
         } else if (result) {

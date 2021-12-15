@@ -22,6 +22,11 @@
   label{
       font-size: 13px;
   }
+  .typeofjoblabel{
+    font-size: 13px;
+    margin-top: -12px;
+}
+  
   .user-profile {
       &__action {
         display: flex;
@@ -35,9 +40,8 @@
         }
       }
     }
-    .multiselect-dropdown[_ngcontent-tfh-c40] .dropdown-btn[_ngcontent-tfh-c40]{
-      border: 1px solid black !important;
+    :host ::ng-deep .multiselect-dropdown .dropdown-btn {
+      border: 1px solid #333333;
+    border-radius: 7px;
     }
-    
-        
   

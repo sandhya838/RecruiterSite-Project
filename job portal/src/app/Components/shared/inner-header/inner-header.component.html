@@ -18,15 +18,21 @@
   </button>
   <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
     <ul class="navbar-nav ml-auto mt-2 mt-lg-0" *ngIf="menu?.length">
-      <li *ngFor="let item of menu">
-
-        <a routerLink="{{ item.url }}" *ngIf="item.isForCandidate === user.role"><i
-            class="{{ item.icon }} inner-header__main-fa" aria-hidden="true"></i>
-          <div>
-            {{ item.name }}
-          </div>
-        </a>
-      </li>
+      <ng-container *ngFor="let item of menu">
+        <li *ngIf="item.isMainMenu">
+          <a
+            routerLink="{{ item.url }}"
+            *ngIf="item.isForCandidate === user.role"
+            ><i
+              class="{{ item.icon }} inner-header__main-fa"
+              aria-hidden="true"
+            ></i>
+            <div>
+              {{ item.name }}
+            </div></a
+          >
+        </li>
+      </ng-container>
 
       <!-- <li class="nav-item dropdown"></li> -->
       <li class="nav-item dropdown">
