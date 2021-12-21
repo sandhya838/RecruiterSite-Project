@@ -9,6 +9,7 @@ import { OrganizationSignInComponent } from "./Components/organization-sign-in/o
 import { ForgotPasswordComponent } from "./Components/forgot-password/forgot-password.component";
 import { OrganizationSignUpComponent } from "./Components/organization-sign-up/organization-sign-up.component";
 import { PageNotFoundComponent } from "./Components/page-not-found/page-not-found.component";
+import { FeedbackFormComponent } from "./Components/feedback-form/feedback-form.component";
 const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
   { path: "", redirectTo: "/organization-signin", pathMatch: "full" },
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: "signUp", component: SignUpComponent },
   // {path:"priSkill",component:PrimarySkillComponent, canActivate:[AuthGuard]}
   { path: "**", pathMatch: "full", component: PageNotFoundComponent },
+  
 ];
 
 @NgModule({

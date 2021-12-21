@@ -25,6 +25,7 @@ import { CandidateProfileSummaryComponent } from "./Components/candidate-profile
 import { JobPostingComponent } from "./Components/job-posting/job-posting.component";
 import { OrganizationPageComponent } from "./Components/organization-page/organization-page.component";
 import { JobListingComponent } from "./Components/job-listing/job-listing.component";
+import { FeedbackFormComponent } from './Components/feedback-form/feedback-form.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { JobListingComponent } from "./Components/job-listing/job-listing.compon
     JobPostingComponent,
     JobListingComponent,
     OrganizationPageComponent,
+    FeedbackFormComponent,
   ],
   imports: [
     BrowserModule,

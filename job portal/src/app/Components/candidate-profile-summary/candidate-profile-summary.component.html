@@ -102,18 +102,18 @@
           </div>
           <div class="card-body-text role-profile">
             <div class="row rollprofile__management">
-              <div class="col rollprofile" id="skill1">
-                Management: <span>{{ profile?.roleManagement?.management }}</span>
-              </div>
-              <div class="col rollprofile__col" id="skill1">
-                Portfolio <span>{{ profile?.roleManagement?.portfolio }}</span>
-              </div>
-              <div class="col rollprofile__col" id="skill2">
-                Account <span>{{ profile?.roleManagement?.account }}</span>
-              </div>
-              <div class="col rollprofile__col" id="skill3">
-                Project <span>{{ profile?.roleManagement?.project }}</span>
-              </div>
+              <div class="col-md-name  rollprofile__col" id="skill1">
+                Management: </div>
+
+              <div class="col-md">{{ profile?.roleManagement?.management }}</div>
+              <div class="col-md-name  rollprofile__col" id="skill1">Portfolio:</div>
+              <div class="col-md">{{ profile?.roleManagement?.portfolio }}</div>
+
+              <div class="col-md-name  rollprofile__col" id="skill2">Account:</div>
+              <div class="col-md">{{ profile?.roleManagement?.account }}</div>
+
+              <div class="col-md-name  rollprofile__col" id="skill3"> Project:</div>
+              <div class="col-md">{{ profile?.roleManagement?.project }}</div>
             </div>
 
             <div class="row rollprofile__technical">
@@ -140,7 +140,7 @@
             </div>
 
             <div class="row rollprofile__funtional">
-              <div class="col-md-name rollprofile__col">  Funtional:</div>
+              <div class="col-md-name rollprofile__col"> Funtional:</div>
               <div class="col-md">{{ profile?.roleFunctional?.functional }}</div>
               <div class="col-md-name rollprofile__col"> SME:</div>
               <div class="col-md">{{ profile?.roleFunctional?.sme }}</div>
@@ -262,7 +262,7 @@
               <li>
                 Good experience on the Contract Commercials & deal shaping.
               </li>
-              
+
             </ul>
           </div>
         </div>
@@ -357,9 +357,9 @@
                   <div class="col experience__col" id="skill5">CSS</div>
                   <div class="col experience__col" id="skill6">SCSS</div>
                 </div>
-                
+
                 <p class="experience__description">
-                 ...
+                  ...
                 </p>
               </div>
             </div>
@@ -446,7 +446,7 @@
             <div class="col-10">
               <p class="certification__Name">
                 {{ profile.certifications[0].name }}
-                <span class="certification__issueDate">  {{ profile.certifications[0].year }}</span>
+                <span class="certification__issueDate"> {{ profile.certifications[0].year }}</span>
               </p>
               <p class="certification__mentor">Mr.Pranay sir, Mr.Ved sir</p>
               <p class="certification__refrence">
@@ -505,6 +505,40 @@
         <div class="card-body">
           <h5 class="profile-details__card-title">1. Video</h5>
           <h5 class="profile-details__card-sub-title">Experience summary</h5>
+
+          <div class="row">
+            <div class="col">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter">
+            Upload video
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Add Video</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil voluptatibus temporibus aspernatur
+                    doloremque eos ducimus.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save video</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="col">
+          <a routerLink="/feedback">Feedback form</a>
+        </div>
+      </div>
         </div>
       </div>
 
@@ -553,5 +587,8 @@
     <!-- col-4 close -->
   </div>
   <!-- row close -->
+
+  <!-- <app-feedback-form></app-feedback-form> -->
+
 </div>
 <!-- container close -->
