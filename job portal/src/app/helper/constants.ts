@@ -278,4 +278,5 @@ export const CONSTANTS = {
   // UPLOADCERTIFICATES: BASEURL + "v1/upload-certificates/",
   // CREATEJOBS: BASEURL + "v1/create",
   ORGNIZATIONJOBS: BASEURL+'v1/jobs-created-by/',
+  JOBDETAILS:BASEURL+'v1/job/'
 };

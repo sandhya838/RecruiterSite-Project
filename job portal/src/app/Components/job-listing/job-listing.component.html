@@ -19,9 +19,12 @@
             <img src="../../../assets/img/rec.jpg" class="jobs__logo" alt="..." />
           </div>
           <div class="col-8">
+             <a [routerLink]="['/job-details',job?._id]">
          <h5 class="card-title">
                 {{ job?.role }}
+                
               </h5>
+            </a>
               <p>{{ job?.organizationName }}</p>
           
           </div>

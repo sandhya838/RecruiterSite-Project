@@ -210,6 +210,7 @@
             </div>
           </div>
         </div>
+        
         <div class="row" formGroupName="skills">
           <div class="col">
             <div class="form-group" >
@@ -267,12 +268,16 @@
         <div class="row">
           <div class="col">
             <label>Role Description</label><span class="text-danger">*</span>
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Enter Role Description"
-              formControlName="roleDescription"
-            />
+            <div class="NgxEditor__Wrapper">
+              <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+              <ngx-editor
+                [editor]="editor"
+                [ngModel]="html"
+                [disabled]="false"
+                [placeholder]="'Type here...'"
+                formControlName="roleDescription"
+              ></ngx-editor>
+            </div>
             <div
               class="text-danger"
               *ngIf="
@@ -284,6 +289,37 @@
               <div *ngIf="userForm.controls['roleDescription'].errors">
                 <small
                   *ngIf="userForm.controls['roleDescription'].errors.required"
+                >
+                  This field is required
+                </small>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col">
+            <label>Desired Candidate Profile</label><span class="text-danger">*</span>
+            <div class="NgxEditor__Wrapper candidate-profile-editor">
+              <ngx-editor-menu [editor]="editor1"> </ngx-editor-menu>
+              <ngx-editor
+                [editor]="editor1"
+                
+                [disabled]="false"
+                [placeholder]="'Type here...'"
+                formControlName="candidateProfile"
+              ></ngx-editor>
+            </div>
+            <div
+              class="text-danger"
+              *ngIf="
+                !userForm.controls['candidateProfile'].valid &&
+                (userForm.controls['candidateProfile'].touched ||
+                  userForm.controls['candidateProfile'].dirty)
+              "
+            >
+              <div *ngIf="userForm.controls['candidateProfile'].errors">
+                <small
+                  *ngIf="userForm.controls['candidateProfile'].errors.required"
                 >
                   This field is required
                 </small>

@@ -96,7 +96,7 @@ const routes: Routes = [
         canActivate:[OrgGuard],
       },
       {
-        path:"job-view",
+        path:"job-details/:job_id",
         component: JobViewComponent,
         canActivate:[OrgGuard],
       },

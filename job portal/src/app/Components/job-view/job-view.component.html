@@ -1,1 +1,143 @@
-<p>job-view works!</p>
+<ng-container *ngIf="jobdata">
+  <div class="jobview">
+    <div class="d-flex justify-content-between align-items-center">
+      <h2 class="profile-details__heading">Job view </h2>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb bg-white">
+          <li class="breadcrumb-item">
+            <a [routerLink]="'/dashboard'">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item active" aria-current="page">Job view</li>
+        </ol>
+      </nav>
+    </div>
+    <div class="card jobview__cardbody">
+      <div class="card-body">
+        <div class="jobview__role">
+          <h5>{{jobdata.role}}</h5>
+        </div>
+
+        <div class="jobview__companyName mt-2">
+          <span>{{jobdata.organizationName}}</span>
+          <span class="jobview__location">
+            Pune, Maharashtra, India
+          </span>
+          <span class="jobview__posted-date ml-2 ">
+            1 day ago
+          </span>
+        </div>
+        <div class="col">
+
+          <div class="row">
+            <i class="fa fa-suitcase mr-2" aria-hidden="true"></i>
+            {{jobdata.typeOfJob.contract}}  {{jobdata.typeOfJob.permanant}}  {{jobdata.typeOfJob.freelance}}
+          </div>
+          <div class="row">
+            <i class="fa fa-calculator mr-2" aria-hidden="true"></i>
+            {{userData.numberOfEmployees}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col mt-2">
+            <span><button type="button" class="btn btn-primary">Apply</button></span>
+            <span><button type="button" class="btn btn-outline-primary ml-5">Saved</button></span>
+          </div>
+        </div>
+
+        <div class="jobview__job-poster mt-4">
+          <h6>
+            Posted by
+          </h6>
+        </div>
+
+        <div class="row">
+          <div class="col-1">
+            <div class="jobview__logo">
+              <img src="../../../assets/img/rec.jpg" height="50" width="50" class="jobview__logo" class="rounded-circle"
+                alt="">
+            </div>
+          </div>
+          <div class="col-11">
+            <div class="col-sm">
+              <div class="job-poster-info">
+                {{ userData.firstName }} {{ userData.lastName }}
+              </div>
+            </div>
+            <div class="col-sm">
+              <p>
+                {{ userData.organizationName }}
+              </p>
+            </div>
+
+          </div>
+        </div>
+        <div class="jobview__desc mt-4">
+          <h5>Job Description</h5>
+          <div [innerHtml]='jobdata.roleDescription'>
+
+          </div>
+        </div>
+
+
+
+
+        <strong>Expertise Details</strong>
+        <ul>
+          <div class="row jobview__primaryskill">
+            <div class="col-sm">
+              <label>Primary skill: </label>
+              <span *ngFor="let skills of jobview[1].skills?.primary"> {{ skills.name }}&nbsp;</span>
+            </div>
+          </div>
+          <div class="row jobs__secondaryskill">
+            <div class="col-sm">
+              <label>Secondary skill: </label>
+              <span *ngFor="let skills of jobview[1].skills?.secondary"> {{ skills.name }} &nbsp;</span>
+            </div>
+          </div>
+        </ul>
+
+
+        <strong>Role Profile</strong>
+        <ul>
+          <li>management:</li>
+          <li>Functional:</li>
+          <li>Technical:</li>
+        </ul>
+        <div class="jobview__desc mt-4">
+          <h5>Desired Candidate Profile</h5>
+          <div [innerHtml]='jobdata. candidateProfile'>
+
+          </div>
+        </div>
+
+
+
+      </div>
+      <div class="jobview__company-Box">
+        <div class="card-body">
+          <h5 class="mt-2 mb-4">About the Company</h5>
+          <div class="row">
+            <div class="col-1">
+              <img src="../../../assets/img/rec.jpg" height="70" width="70" class="jobview__company-logo" alt="">
+            </div>
+            <div class="col-8 ml-5">
+              {{userData.organizationName}}
+            </div>
+            <div class="col-2">
+              <button type="button" class="btn btn-outline-primary">Follow</button>
+            </div>
+          </div>
+          <div class="jobview__company-information mt-2">
+            
+            <div class="jobview__company-information-info mt-4">
+             {{userData.description}}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</ng-container>

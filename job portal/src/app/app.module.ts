@@ -26,6 +26,7 @@ import { JobPostingComponent } from "./Components/job-posting/job-posting.compon
 import { OrganizationPageComponent } from "./Components/organization-page/organization-page.component";
 import { JobListingComponent } from "./Components/job-listing/job-listing.component";
 import { JobViewComponent } from './Components/job-view/job-view.component';
+import { NgxEditorModule } from "ngx-editor";
 
 @NgModule({
   declarations: [
@@ -57,6 +58,7 @@ import { JobViewComponent } from './Components/job-view/job-view.component';
     AngularMultiSelectModule,
     QRCodeModule,
     NgbModule,
+    NgxEditorModule,
   ],
   providers: [
     {

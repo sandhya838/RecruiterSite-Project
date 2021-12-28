@@ -26,6 +26,13 @@ export class CompanyDetailService {
     
        });
   }
+  getJobDetails(id:any): Observable<any> {
+    return this.http.get(
+       CONSTANTS.JOBDETAILS +id ,{
+       headers: this.commonService._getHeaders(),
+    
+       });
+  }
 
   }
 
