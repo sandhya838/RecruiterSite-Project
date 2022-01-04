@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { AppRoutingModule } from "./app-routing.module";
 import { ToastrModule } from "ngx-toastr";
+import { NgxStarRatingModule } from 'ngx-star-rating';
 import { AppComponent } from "./app.component";
 import { UserProfileComponent } from "./Components/user-profile/user-profile.component";
 import { SideListboxComponent } from "./Components/side-listbox/side-listbox.component";
@@ -57,6 +58,7 @@ import { FeedbackFormComponent } from './Components/feedback-form/feedback-form.
     AngularMultiSelectModule,
     QRCodeModule,
     NgbModule,
+    NgxStarRatingModule
   ],
   providers: [
     {
