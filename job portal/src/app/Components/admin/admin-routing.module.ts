@@ -18,6 +18,7 @@ import { WorkExperianceComponent } from "../work-experiance/work-experiance.comp
 import { AdminComponent } from "./admin.component";
 import { OrgGuard } from "src/app/helper/org-guard/org.guard";
 import { CommonGuard } from "src/app/helper/guard/common-guard/common.guard";
+import { FeedbackFormComponent } from "../feedback-form/feedback-form.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
@@ -93,6 +94,10 @@ const routes: Routes = [
         path:"job-list",
         component: JobListingComponent,
         canActivate:[OrgGuard],
+      },
+      {
+        path:"feedback",
+        component: FeedbackFormComponent,
       },
       {
         path: "change-password",

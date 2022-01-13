@@ -18,13 +18,8 @@
       <div class="row profile-details__profile-topcard">
         <div class="profile-details__profile">
           <div class="profile-details__profile__profile-img">
-            <img
-              class="card-img-top"
-              src="https://bootdey.com/img/Content/avatar/avatar7.png"
-              alt="Card image cap"
-              class="rounded-circle"
-              width="135"
-            />
+            <img class="card-img-top" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Card image cap"
+              class="rounded-circle" width="135" />
           </div>
         </div>
       </div>
@@ -61,8 +56,8 @@
                   {{ profile?.workExperiences[0]?.companyName }}
                 </li>
                 <li class="profile-details__cmpname">
-                  <i class="fa fa-building" aria-hidden="true"></i>Indian
-                  Institute of Management, Calcutta
+                  <i class="fa fa-building" aria-hidden="true"></i>
+                  {{ profile.educationalDetails[0].institute}}
                 </li>
               </ul>
             </div>
@@ -79,11 +74,7 @@
           <div class="row">
             <div class="col-sm-11">
               <h5 class="profile-details__card-title">Resume</h5>
-              <a
-                href="{{ APIURL + 'static/resume/' + profile.resume }}"
-                target="_blank"
-                [download]="profile.resume"
-              >
+              <a href="{{ APIURL + 'static/resume/' + profile.resume }}" target="_blank" [download]="profile.resume">
                 <i class="fa fa-download" aria-hidden="true"></i>
                 {{ profile.resume }}
               </a>
@@ -101,7 +92,7 @@
         <div class="card-body">
           <div class="row">
             <div class="col-sm-11">
-              <h5 class="profile-details__card-title">Roll profile</h5>
+              <h5 class="profile-details__card-title">Role profile</h5>
             </div>
             <div class="col-sm-1">
               <a routerLink="/role-profile">
@@ -109,28 +100,34 @@
               </a>
             </div>
           </div>
-          <div class="card-body-text">
+          <div class="card-body-text role-profile">
             <div class="row rollprofile__management">
-              <div class="col rollprofile" id="skill1">
-                Management: <span>{{ profile?.roleManagement?.management }}</span>
-              </div>
-              <!-- <label>Management: <span>40%</span> </label> -->
-              <div class="col rollprofile__col" id="skill1">
-                Portfolio <span>{{ profile?.roleManagement?.portfolio }}</span>
-              </div>
-              <div class="col rollprofile__col" id="skill2">
-                Account <span>{{ profile?.roleManagement?.account }}</span>
-              </div>
-              <div class="col rollprofile__col" id="skill3">
-                Project <span>{{ profile?.roleManagement?.project }}</span>
-              </div>
+              <div class="col-md-name  rollprofile__col" id="skill1">
+                Management: </div>
+
+              <div class="col-md">{{ profile?.roleManagement?.management }}</div>
+              <div class="col-md-name  rollprofile__col" id="skill1">Portfolio:</div>
+              <div class="col-md">{{ profile?.roleManagement?.portfolio }}</div>
+
+              <div class="col-md-name  rollprofile__col" id="skill2">Account:</div>
+              <div class="col-md">{{ profile?.roleManagement?.account }}</div>
+
+              <div class="col-md-name  rollprofile__col" id="skill3"> Project:</div>
+              <div class="col-md">{{ profile?.roleManagement?.project }}</div>
             </div>
 
             <div class="row rollprofile__technical">
-              <div class="col rollprofile" id="skill1">
+              <div class="col-md-name rollprofile__col"> Technical:</div>
+              <div class="col-md">{{ profile?.roleTechnical?.technical }}</div>
+              <div class="col-md-name rollprofile__col"> Architect:</div>
+              <div class="col-md">{{ profile?.roleTechnical?.architect }}</div>
+              <div class="col-md-name rollprofile__col"> TechLead:</div>
+              <div class="col-md">{{ profile?.roleTechnical?.techLead }}</div>
+              <div class="col-md-name rollprofile__col"> Developer:</div>
+              <div class="col-md">{{ profile?.roleTechnical?.developer }}</div>
+              <!-- <div class="col rollprofile" id="skill1">
                 Technical: <span>{{ profile?.roleTechnical?.technical }}</span>
               </div>
-              <!-- <label>Technical: <span>20%</span> </label> -->
               <div class="col rollprofile__col" id="skill1">
                 Architect <span>{{ profile?.roleTechnical?.architect }}</span>
               </div>
@@ -139,15 +136,22 @@
               </div>
               <div class="col rollprofile__col" id="skill3">
                 Developer <span>{{ profile?.roleTechnical?.developer }}</span>
-              </div>
+              </div> -->
             </div>
 
             <div class="row rollprofile__funtional">
-              <div class="col rollprofile" id="skill1">
+              <div class="col-md-name rollprofile__col"> Funtional:</div>
+              <div class="col-md">{{ profile?.roleFunctional?.functional }}</div>
+              <div class="col-md-name rollprofile__col"> SME:</div>
+              <div class="col-md">{{ profile?.roleFunctional?.sme }}</div>
+              <div class="col-md-name rollprofile__col"> Lead con:</div>
+              <div class="col-md">{{ profile?.roleFunctional?.leadCon }}</div>
+              <div class="col-md-name rollprofile__col"> Consultant:</div>
+              <div class="col-md">{{ profile?.roleFunctional?.consultant }}</div>
+              <!-- <div class="col rollprofile" id="skill1">
                 Funtional:
                 <span>{{ profile?.roleFunctional?.functional }}</span>
               </div>
-              <!-- <label>Funtional: <span>40%</span> </label> -->
               <div class="col rollprofile__col" id="skill1">
                 SME <span>{{ profile?.roleFunctional?.sme }}</span>
               </div>
@@ -157,7 +161,7 @@
               <div class="col rollprofile__col" id="skill3">
                 Consultant
                 <span>{{ profile?.roleFunctional?.consultant }}</span>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -178,26 +182,26 @@
 
           <div class="card-body-text">
             <div class="row experience__primaryskill">
-              <label>Primary skill: </label>
-              <div class="col" id="skill1">
+              <div class="col skill">Primary skill: </div>
+              <div class="col skill" id="skill1">
                 {{ profile?.skillTechnical[0]?.name }}
               </div>
-              <div class="col" id="skill2">
+              <div class="col skill" id="skill2">
                 {{ profile?.skillTechnical[1]?.name }}
               </div>
-              <div class="col" id="skill3">
+              <div class="col skill" id="skill3">
                 {{ profile?.skillTechnical[2]?.name }}
               </div>
             </div>
             <div class="row experience__secondaryskill">
-              <label>secondary skill: </label>
-              <div class="col" id="skill4">
+              <div class="col skill">secondary skill: </div>
+              <div class="col skill" id="skill4">
                 {{ profile?.skillFunctional[0]?.name }}
               </div>
-              <div class="col" id="skill5">
+              <div class="col skill" id="skill5">
                 {{ profile?.skillFunctional[1]?.name }}
               </div>
-              <div class="col" id="skill6">
+              <div class="col skill" id="skill6">
                 {{ profile?.skillFunctional[2]?.name }}
               </div>
             </div>
@@ -213,12 +217,12 @@
             </div>
             <div class="col-sm-1">
               <a routerLink="">
-                <i class="fa fa-pencil" aria-hidden="true"></i
-              ></a>
+                <i class="fa fa-pencil" aria-hidden="true"></i></a>
             </div>
           </div>
 
           <div class="card-body-text">
+            <!-- <p>Experience summary</p> -->
             <h5 class="profile-details__card-sub-title">Experience summary</h5>
             <ul style="list-style-type: square">
               <li>
@@ -256,22 +260,9 @@
                 objectives.
               </li>
               <li>
-                Portfolio planning and execution with multi-site/ offshore/
-                Near-Shore delivery with various delivery models to optimize the
-                TCO, improved service availability and customer satisfaction.
-              </li>
-              <li>
                 Good experience on the Contract Commercials & deal shaping.
               </li>
-              <li>
-                Agile Delivery, Cloud Computing (AWS Certified), Blockchain,
-                Data & Analytics (AI, ML), Automation.
-              </li>
-              <li>
-                Industry Domains: Energy Utilities (Reg/De-Reg), Mining &
-                Minerals, Chemicals, BFSI, Manufacturing, Logistics & Life
-                Sciences
-              </li>
+
             </ul>
           </div>
         </div>
@@ -321,30 +312,54 @@
                 </div>
                 <div class="row experience__secondaryskill">
                   <label>secondary skill: </label>
-                  <div class="col" id="skill4">HTML</div>
-                  <div class="col" id="skill5">CSS</div>
-                  <div class="col" id="skill6">SCSS</div>
+                  <div class="col experience__col" id="skill4">HTML</div>
+                  <div class="col experience__col" id="skill5">CSS</div>
+                  <div class="col experience__col" id="skill6">SCSS</div>
                 </div>
-                <!-- <ul class="experience__skill" style="list-style-type: square;">
-                  <li>Angular</li>
-                  <li>Bootstrap</li>
-                  <li>HTML, CSS, SCSS</li>
-                  <li>MySQL</li>
-                  <li>Mongodb</li>
-                </ul> -->
                 <p class="experience__description">
                   Portfolio & Program Management ($20Mn) with Delivery
                   leadership, Business Unit Lead with responsibility for top
                   line growth, Annual Budgeting, P&L accountability, Stakeholder
                   Management, Account Planning, GTM strategy, Capability
-                  Building, RFP, RFI & Bid defense for all opportunities across
-                  Technologies (SAP,HANA, Open Stack, Mean Stack, Database,
-                  Mobile, Cloud, Infrastructure) for AD and AMS services in
-                  Germany, Finland, Norway & NA region, Innovation, Digital
-                  Labs, MDM, Data Model Design, Bigdata & Advanced Analytics,
-                  Blockchain, Agile Delivery, Operating Model Design, People
-                  Management, Managing Strategic Partnerships and 3rd Party
-                  Vendors.
+                  Building.
+                </p>
+                <hr>
+
+                <h5 class="experience__title">
+                  {{ profile.workExperiences[0].role }}
+                </h5>
+                <p class="experience__company">
+                  {{ profile.workExperiences[0].companyName }}
+                </p>
+                <p class="experience__duration-time">
+                  {{ profile.workExperiences[0].from }} -
+                  {{ profile.workExperiences[0].to }}
+                  <span class="experience__duration">
+                    {{ profile.totalYearsOfExperience }} yr
+                  </span>
+                </p>
+                <p class="experience__location">Haydrabad, Pune.</p>
+                <div class="row experience__primaryskill">
+                  <label>Primary skill: </label>
+                  <div class="col" id="skill1">
+                    {{ profile?.workExperiences[0]?.skills[0]?.name }}
+                  </div>
+                  <div class="col" id="skill2">
+                    {{ profile?.workExperiences[0]?.skills[1]?.name }}
+                  </div>
+                  <div class="col" id="skill3">
+                    {{ profile?.workExperiences[0]?.skills[2]?.name }}
+                  </div>
+                </div>
+                <div class="row experience__secondaryskill">
+                  <label>secondary skill: </label>
+                  <div class="col experience__col" id="skill4">HTML</div>
+                  <div class="col experience__col" id="skill5">CSS</div>
+                  <div class="col experience__col" id="skill6">SCSS</div>
+                </div>
+
+                <p class="experience__description">
+                  ...
                 </p>
               </div>
             </div>
@@ -398,14 +413,14 @@
           <div class="row">
             <div class="col-2"></div>
             <div class="col-10">
-              <p class="education__college">MIT ACSC, Pune, Maharastra.</p>
+              <p class="education__college"> {{ profile.educationalDetails[0].institute}}</p>
               <p class="education__degree">
-                Master of Computer Science.
-                <span class="education__yop">2019-2021</span>
+                {{ profile.educationalDetails[0].degree }}
+                <span class="education__yop">{{ profile.educationalDetails[0].yearofPassing.year}}</span>
               </p>
               <p class="education__specialization">
                 Software Engineering
-                <span class="education__grade">9.0 SGPA</span>
+                <span class="education__grade"> {{ profile.educationalDetails[0].grade }} %</span>
               </p>
             </div>
           </div>
@@ -430,15 +445,13 @@
             <div class="col-2"></div>
             <div class="col-10">
               <p class="certification__Name">
-                Angular.
-                <span class="certification__issueDate"> 2019 </span>
+                {{ profile.certifications[0].name }}
+                <span class="certification__issueDate"> {{ profile.certifications[0].year }}</span>
               </p>
               <p class="certification__mentor">Mr.Pranay sir, Mr.Ved sir</p>
               <p class="certification__refrence">
                 Refrence
-                <span class="certification__recommendation"
-                  >Recommendations</span
-                >
+                <span class="certification__recommendation">Recommendations</span>
               </p>
             </div>
           </div>
@@ -452,23 +465,19 @@
         <div class="card-body">
           <h5 class="profile-details__card-title">Candidate profile</h5>
           <div class="card-body-text">
-            <label class="candidateprofile_stength"
-              >Profile strength- <span> 70% </span>
+            <label class="candidateprofile_stength">Profile strength- <span> 70% </span>
             </label>
           </div>
           <div class="card-body-text">
-            <label class="candidateprofile_stength"
-              >Salary strength- <span> 40% </span>
+            <label class="candidateprofile_stength">Salary strength- <span> 40% </span>
             </label>
           </div>
           <div class="card-body-text">
-            <label class="candidateprofile_stength"
-              >Social contact reach- <span> 50% </span>
+            <label class="candidateprofile_stength">Social contact reach- <span> 50% </span>
             </label>
           </div>
           <div class="card-body-text">
-            <label class="candidateprofile_stength"
-              >Skill strength- <span> 50% </span>
+            <label class="candidateprofile_stength">Skill strength- <span> 50% </span>
             </label>
           </div>
         </div>
@@ -481,22 +490,11 @@
             <p>Actively looking for opportunity :</p>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-light active">
-                <input
-                  type="radio"
-                  name="options"
-                  id="option1"
-                  autocomplete="off"
-                  checked
-                />
+                <input type="radio" name="options" id="option1" autocomplete="off" checked />
                 Yes
               </label>
               <label class="btn btn-light">
-                <input
-                  type="radio"
-                  name="options"
-                  id="option2"
-                  autocomplete="off"
-                />No
+                <input type="radio" name="options" id="option2" autocomplete="off" />No
               </label>
             </div>
           </div>
@@ -507,6 +505,40 @@
         <div class="card-body">
           <h5 class="profile-details__card-title">1. Video</h5>
           <h5 class="profile-details__card-sub-title">Experience summary</h5>
+
+          <div class="row">
+            <div class="col">
+          <!-- Button trigger modal -->
+          <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter">
+            Upload video
+          </button>
+          <!-- Modal -->
+          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Add Video</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil voluptatibus temporibus aspernatur
+                    doloremque eos ducimus.</p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-primary">Save video</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+          <div class="col">
+          <a routerLink="/feedback">Feedback form</a>
+        </div>
+      </div>
         </div>
       </div>
 
@@ -531,7 +563,8 @@
       <div class="card profilesummary__cardbody">
         <div class="card-body">
           <h5 class="profile-details__card-title">4. B.G check</h5>
-          <h5 class="profile-details__card-sub-title">Status</h5>
+          <p>Status</p>
+          <!-- <h5 class="profile-details__card-sub-title">Status</h5> -->
           <div class="card-body-text">
             <p></p>
           </div>
@@ -554,5 +587,8 @@
     <!-- col-4 close -->
   </div>
   <!-- row close -->
+
+  <!-- <app-feedback-form></app-feedback-form> -->
+
 </div>
 <!-- container close -->

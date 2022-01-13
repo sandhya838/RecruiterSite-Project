@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { AppRoutingModule } from "./app-routing.module";
 import { ToastrModule } from "ngx-toastr";
+import { NgxStarRatingModule } from 'ngx-star-rating';
 import { AppComponent } from "./app.component";
 import { UserProfileComponent } from "./Components/user-profile/user-profile.component";
 import { SideListboxComponent } from "./Components/side-listbox/side-listbox.component";
@@ -25,6 +26,7 @@ import { CandidateProfileSummaryComponent } from "./Components/candidate-profile
 import { JobPostingComponent } from "./Components/job-posting/job-posting.component";
 import { OrganizationPageComponent } from "./Components/organization-page/organization-page.component";
 import { JobListingComponent } from "./Components/job-listing/job-listing.component";
+import { FeedbackFormComponent } from './Components/feedback-form/feedback-form.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +43,7 @@ import { JobListingComponent } from "./Components/job-listing/job-listing.compon
     JobPostingComponent,
     JobListingComponent,
     OrganizationPageComponent,
+    FeedbackFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,7 @@ import { JobListingComponent } from "./Components/job-listing/job-listing.compon
     AngularMultiSelectModule,
     QRCodeModule,
     NgbModule,
+    NgxStarRatingModule
   ],
   providers: [
     {

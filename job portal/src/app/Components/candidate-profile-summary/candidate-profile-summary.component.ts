@@ -39,11 +39,12 @@ export class CandidateProfileSummaryComponent implements OnInit {
     this.userprofileService. getUserDetails(userData?._id).subscribe((result) => {
       if (result.profile.length) {
         this.userProfile = result.profile;
-      
-        
+ 
       }
       console.log(result);
     });
+
+    
   }
 
 }
