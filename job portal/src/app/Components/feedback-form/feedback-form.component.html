@@ -171,7 +171,7 @@
           </div>
         </div>
         <div class="col-4"><textarea class="form-control" id="exampleFormControlTextarea1" rows="8"  cols="30"
-            placeholder="Comments" formControlName="primarySkillComments"></textarea>
+            placeholder="Comments" formControlName="priamrySkillComments"></textarea>
         </div>
       </div>
       <!--  -->
@@ -262,7 +262,7 @@
           </div>
         </div>
         <div class="col-4"><textarea class="form-control" id="exampleFormControlTextarea1" rows="8"  cols="30"
-            placeholder="Comments" formControlName="primarySkillComments"></textarea>
+            placeholder="Comments" formControlName="secondarySkillComments"></textarea>
         </div>
       </div>
 
@@ -272,7 +272,7 @@
           <label for="" class="form-group">Skill Rating as</label>
         </div>
         <div class="col">
-          <div class="row">
+          <div class="row feedBack__skillRatingrow">
             <label for="" class="form-group">Consultant/ Developer</label>
           </div>
           <div class="row">
@@ -280,7 +280,7 @@
           </div>
         </div>
         <div class="col">
-          <div class="row">
+          <div class="row feedBack__skillRatingrow">
             <label for="" class="form-group">TechLead/ Lead Con</label>
           </div>
           <div class="row">
@@ -289,7 +289,7 @@
         </div>
 
         <div class="col">
-          <div class="row">
+          <div class="row feedBack__skillRatingrow">
             <label for="" class="form-group">Architect/ SME</label>
           </div>
           <div class="row">
@@ -303,21 +303,21 @@
         <div class="col-2">
           <label for="" class="form-group">Role profile</label>
         </div>
-        <div class="col-3">
+        <div class="col-3 feedBack__colManagement">
           <label for="" class="form-group">Management (%)</label>
           <br>
-          <input type="text" class="form-control" formControlName="management" />
+          <input type="text" class="form-control" formControlName="management"  [ngModel]="profile.roleManagement.management" />
         </div>
-        <div class="col-3">
+        <div class="col-3 feedBack__coltechnical">
           <label for="" class="form-group">Technical (%)</label>
           <br>
-          <input type="text" class="form-control" formControlName="technical" />
+          <input type="text" class="form-control" formControlName="technical" [ngModel]="profile.roleTechnical.technical" />
 
         </div>
-        <div class="col-3">
+        <div class="col-3 feedBack__colfuntional">
           <label for="" class="form-group">Functional/ Business (%)</label>
           <br>
-          <input type="text" class="form-control" formControlName="functional" />
+          <input type="text" class="form-control" formControlName="functional" [ngModel]="profile.roleFunctional.functional" />
 
         </div>
       </div>
