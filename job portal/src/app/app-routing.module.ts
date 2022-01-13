@@ -9,12 +9,14 @@ import { OrganizationSignInComponent } from "./Components/organization-sign-in/o
 import { ForgotPasswordComponent } from "./Components/forgot-password/forgot-password.component";
 import { OrganizationSignUpComponent } from "./Components/organization-sign-up/organization-sign-up.component";
 import { PageNotFoundComponent } from "./Components/page-not-found/page-not-found.component";
+
 const routes: Routes = [
   { path: "", redirectTo: "/login", pathMatch: "full" },
   { path: "", redirectTo: "/organization-signin", pathMatch: "full" },
   { path: "login", component: SignInComponent },
   { path: "organization-signin", component: OrganizationSignInComponent },
   { path: "forgot-password", component: ForgotPasswordComponent },
+  
   {
     path: "sign-up",
     loadChildren: () =>
@@ -37,6 +39,7 @@ const routes: Routes = [
   //     import("./Components/organization-sign-up").then((m) => m.SignUpModule),
   // },
   { path: "OrganizationSignUpComponent", component: OrganizationSignUpComponent },
+ 
   { path: "signUp", component: SignUpComponent },
   // {path:"priSkill",component:PrimarySkillComponent, canActivate:[AuthGuard]}
   { path: "**", pathMatch: "full", component: PageNotFoundComponent },

@@ -20,11 +20,12 @@ import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
 import { OrganizationSignInComponent } from "./Components/organization-sign-in/organization-sign-in.component";
 import { ForgotPasswordComponent } from "./Components/forgot-password/forgot-password.component";
 import { CandidateProfileCardComponent } from "./Components/candidate-profile-card/candidate-profile-card.component";
-
 import { CandidateProfileSummaryComponent } from "./Components/candidate-profile-summary/candidate-profile-summary.component";
 import { JobPostingComponent } from "./Components/job-posting/job-posting.component";
 import { OrganizationPageComponent } from "./Components/organization-page/organization-page.component";
 import { JobListingComponent } from "./Components/job-listing/job-listing.component";
+import { AddUserComponent } from './Components/add-user/add-user.component';
+
 
 @NgModule({
   declarations: [
@@ -35,12 +36,13 @@ import { JobListingComponent } from "./Components/job-listing/job-listing.compon
     PageNotFoundComponent,
     OrganizationSignInComponent,
     ForgotPasswordComponent,
-
     CandidateProfileCardComponent,
     CandidateProfileSummaryComponent,
     JobPostingComponent,
     JobListingComponent,
     OrganizationPageComponent,
+    AddUserComponent,
+
   ],
   imports: [
     BrowserModule,

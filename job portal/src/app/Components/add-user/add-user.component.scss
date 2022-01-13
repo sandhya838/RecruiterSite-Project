@@ -1,0 +1,45 @@
+.card-body{
+  width: 80%;
+  margin-left: 120px;
+}
+
+
+
+
+legend {
+    font-size: 20px;
+  }
+ 
+  fieldset {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 32px;
+    margin-top: 83px;
+  }
+ 
+  .adduser{
+    &__action {
+        display: flex;
+        justify-content: flex-end;
+      }
+      &__icon{
+        position: absolute;
+        right: 58px;
+        top: 40px;
+      }
+     
+     
+      
+      }
+      .fa-eye,.fa-eye-slash{
+        position: absolute;
+        top: 44%;
+        left: 80%;
+      }
+ 
+      @media all and (max-width: 767px) {
+        .card-body{
+          margin-left: 29px;
+        }
+        
+        }
+      

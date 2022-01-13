@@ -31,7 +31,7 @@ export class CompanyDetailsComponent implements OnInit {
     //private router: Router,
     
   ) {}
-  numberpattern = "^[0-9]*$";
+
 
   ngOnInit(): void {
     this.viewPort = window.innerWidth > 991 ? true : false;
@@ -39,8 +39,8 @@ export class CompanyDetailsComponent implements OnInit {
       location: ["", [Validators.required]],
       description: ["", [Validators.required]],
       country:["", [Validators.required]],
-      turnover: [ "", [Validators.required, Validators.pattern(/^-?(0|[1-9]*)?$/)]],
-      numberOfEmployees:[ "", [Validators.required, Validators.pattern(/^[0-9]+([,.][0-9]+)?$/)]]
+      turnover:  ['', [Validators.required, Validators.pattern("^[0-9]*$")]],
+      numberOfEmployees: ['', [Validators.required, Validators.pattern("^[0-9]*$")]]
     });
     this.userData = JSON.parse(
       localStorage.getItem("rememberMe") === "true"
