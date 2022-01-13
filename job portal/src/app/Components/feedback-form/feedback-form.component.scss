@@ -22,6 +22,15 @@ input.star:checked ~ label.star:before {
     margin-right: 10px;
     margin-left: -46px;
   }
+  &__colManagement{
+    margin-left: -54px;
+  }
+&__coltechnical{
+  margin-left: 34px;
+}
+&__colfuntional{
+  margin-left: 34px;
+}
   .col-md-8{
     margin-left: -22px;
   }
@@ -38,6 +47,12 @@ input.star:checked ~ label.star:before {
     &__star-row {
       flex-direction: column;
       margin-left: -16px;
+    }
+    &__skillRatingrow{
+      margin-left: 0px;
+    }
+    &__colManagement,&__coltechnical,&__colfuntional{
+      margin-left: 0px;
     }
     .col-8{
       max-width: 100%;
