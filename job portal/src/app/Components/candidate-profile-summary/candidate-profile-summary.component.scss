@@ -7,13 +7,8 @@
     a{
       text-decoration: none;
     }
-    // position: absolute;
-    // top: 75%;
   }
 }
-// .col-8{
-//   position: relative;
-// }
 
 .profile-details {
   &__profile {
@@ -36,6 +31,7 @@
   }
   &__username {
     margin-bottom: 4px;
+    font-size: 20px;
   }
   &__worktitle,
   &__location {
@@ -47,8 +43,13 @@
   }
   &__card-sub-title {
     font-size: 17px;
+    padding-left: 15px;
   }
 }
+.role-profile{
+  padding-left: 15px;
+}
+
 .experience {
   &__company {
     font-size: 14px;
@@ -68,6 +69,9 @@
   &__primaryskill {
     margin-bottom: 15px;
   }
+  // &__secondaryskill{
+  //   padding-left: 15px;
+  // }
   &__primaryskill > label,
   &__secondaryskill > label {
     color: var(--gray30);
@@ -142,7 +146,12 @@ ul > li {
   background: transparent;
   transition: all 0.3s ease 0s;
 }
-
+.col-md-name{
+  width: 99px;
+}
+.col-3-skill{
+  width: 199px;
+}
 .btn-warning:hover {
   color: var(--catskillwhite);
   background: var(--festival);

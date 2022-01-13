@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { AppRoutingModule } from "./app-routing.module";
 import { ToastrModule } from "ngx-toastr";
+import { NgxStarRatingModule } from 'ngx-star-rating';
 import { AppComponent } from "./app.component";
 import { UserProfileComponent } from "./Components/user-profile/user-profile.component";
 import { SideListboxComponent } from "./Components/side-listbox/side-listbox.component";
@@ -27,6 +28,7 @@ import { OrganizationPageComponent } from "./Components/organization-page/organi
 import { JobListingComponent } from "./Components/job-listing/job-listing.component";
 import { JobViewComponent } from './Components/job-view/job-view.component';
 import { NgxEditorModule } from "ngx-editor";
+import { FeedbackFormComponent } from './Components/feedback-form/feedback-form.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +46,7 @@ import { NgxEditorModule } from "ngx-editor";
     JobListingComponent,
     OrganizationPageComponent,
     JobViewComponent,
+    FeedbackFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +62,7 @@ import { NgxEditorModule } from "ngx-editor";
     QRCodeModule,
     NgbModule,
     NgxEditorModule,
+    NgxStarRatingModule
   ],
   providers: [
     {
