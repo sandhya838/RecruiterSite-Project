@@ -7,36 +7,6 @@ body {
   font-family: "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-// global css for multiselect dropdown
-// .multiselect-dropdown .dropdown-btn {
-//   display: inline-block;
-//   border: 1px solid #adadad;
-//   width: 100%;
-//   padding: 6px 12px;
-//   margin-bottom: 0;
-//   font-size: 13px;
-//   font-weight: 400;
-//   line-height: 1.9;
-//   text-align: left;
-//   vertical-align: middle;
-//   cursor: pointer;
-//   background-image: none;
-//   border-radius: 4px;
-// }
-// .multiselect-dropdown[_ngcontent-amg-c40]
-//   .dropdown-btn[_ngcontent-amg-c40]
-//   .selected-item[_ngcontent-amg-c40] {
-//   border: 1px solid #337ab7;
-//   margin-right: 4px;
-//   background: #156fe6;
-//   padding: 0 5px;
-//   color: #fff;
-//   border-radius: 2px;
-//   float: left;
-//   display: flex;
-//   max-width: 0px;
-// }
-
 app-sign-up,
 app-certification,
 app-organization-sign-up {
@@ -62,42 +32,32 @@ app-organization-sign-up {
   }
 }
 
-app-work-experiance,
-app-rollprofile,
-app-job-posting,
-app-company-details,
-app-skill-profile {
-  app-skill-profile,
-  app-job-posting {
-    .dropdown-btn {
-      height: 46px !important;
-      padding-top: 12px !important;
-      font-size: 12px !important;
-      border: 1px solid #333333 !important;
-     
-      border-radius: 7px !important;
-      .selected-item {
-        min-width: fit-content !important;
-      }
+.multiselect-dropdown {
+  .dropdown-btn {
+    height: 40px !important;
+    padding-top: 10px !important;
+    font-size: 12px !important;
+    border: 1px solid #333333 !important;
+
+    border-radius: 7px !important;
+    .selected-item {
+      min-width: fit-content !important;
     }
-    
   }
 }
-.NgxEditor
-  {
 
-  
+.NgxEditor {
   padding: 0.5rem;
   max-height: 500px !important;
   height: 500px !important;
-} 
+}
 
-app-feedback-form{
-  ngx-star-rating{
-    label.star{
+app-feedback-form {
+  ngx-star-rating {
+    label.star {
       padding: 5px !important;
-    font-size: 28px !important;
-    margin-top: -9px;
+      font-size: 28px !important;
+      margin-top: -9px;
     }
     input.star:checked ~ label.star:before {
       color: orange !important;

@@ -31,4 +31,19 @@ export class ConfigService {
       }),
     });
   }
+  getCountries() {
+    return this.http.get(CONSTANTS.COUNTRIES, {
+      headers: new HttpHeaders({ "Content-Type": "application/json" }),
+    });
+  }
+  getStates(countryCode: string) {
+    return this.http.get(CONSTANTS.STATES + countryCode, {
+      headers: new HttpHeaders({ "Content-Type": "application/json" }),
+    });
+  }
+  getCities(stateCode: string, countryCode: string) {
+    return this.http.get(CONSTANTS.CITIES + stateCode + "/" + countryCode, {
+      headers: new HttpHeaders({ "Content-Type": "application/json" }),
+    });
+  }
 }

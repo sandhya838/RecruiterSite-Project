@@ -2,7 +2,7 @@ module.exports = {
   HOSTNAME: 'localhost',
   PORT: process.env.PORT || 3000,
   URL: 'mongodb+srv://jobadmin:jobadmin123@cluster0.cvoxk.mongodb.net/jobportaldb?retryWrites=true&w=majority',
-  // URL: 'mongodb://localhost:27017/jobportal?readPreference=primary&appname=MongoDBCompass&directConnection=true&ssl=false',
+  //URL: 'mongodb://localhost:27017/jobportal?readPreference=primary&appname=MongoDBCompass&directConnection=true&ssl=false',
   OPTIONS: {
     useNewUrlParser: true,
     useUnifiedTopology: true,

@@ -31,7 +31,7 @@ export class SignInComponent implements OnInit {
   }
 
   loginSubmit() {
-    if(this.signIn.valid) {
+    if (this.signIn.valid) {
       this.signService
         .login({
           email: this.signIn.value.email,
@@ -49,15 +49,15 @@ export class SignInComponent implements OnInit {
               sessionStorage.setItem("token", response.token);
               sessionStorage.setItem("user", JSON.stringify(response.user));
             }
-
-            this.router.navigate([
-              response?.isProfileUpdated ? "/dashboard" : "/profile/about-you",
-            ]);
           } else if (response.status === 400) {
             this.commonService.alert("error", response.message);
           } else {
             this.commonService.alert("error", response.message);
           }
+
+          this.router.navigate([
+            response?.user?.isProfileUpdated ? "/dashboard" : "/profile/about-you",
+          ]);
         });
     } else {
       this.signIn.markAllAsTouched();
@@ -70,5 +70,4 @@ export class SignInComponent implements OnInit {
   showPassword() {
     this.isPassword = !this.isPassword;
   }
-
 }
