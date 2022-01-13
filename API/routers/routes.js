@@ -8,10 +8,12 @@ module.exports = (app) => {
   uploadCertificate = multer({ dest: 'public/certificates/' });
   const orgnization = require('../controllers/orgnization.controller');
   const job = require('../controllers/job.controller');
+  const feedback = require('../controllers/feedback.controller');
 
   /**********************orgnization pre APIs **************** */
   app.post('/v1/orgnization-login', auth.orgnization_login);
   app.post('/v1/register-orgnization', uploadLogo.single('logo'), orgnization.create);
+  app.post('/v1/feedback', feedback.create);
 
   /************ Orgnization post login ****************** */
   app.get('/v1/orgnizations', auth.authToken, orgnization.findAll);
@@ -19,6 +21,14 @@ module.exports = (app) => {
   app.delete('/v1/orgnization/:orgnizationId', auth.authToken, orgnization.delete);
   app.put('/v1/orgnization/:orgnizationId', auth.authToken, orgnization.update);
   app.put('/v1/orgnization-change-password/:id', auth.authToken, orgnization.changePassword);
+
+
+  /*****************Feedback************************ */
+
+  app.get('/v1/feedbacks', auth.authToken,feedback.findAll);
+  app.get('/v1/feedback/:feedbackId', auth.authToken, feedback.findOne);
+  app.delete('/v1/feedback/:feedbackId', auth.authToken, feedback.delete);
+  app.put('/v1/feedback/:feedbackId', auth.authToken, feedback.update);
 
 
   /*************Jobs ******************** */
@@ -34,7 +44,7 @@ module.exports = (app) => {
   /************** Pre Login APIs ****************** */
   app.post('/v1/login', auth.login);
   app.post('/v1/register', upload.single('resume'), requestValidator.validateParams(profile.createRules), profile.create);
-  app.post('/v1/forgot-password',  auth.forgotPassword);
+  app.post('/v1/forgot-password', auth.forgotPassword);
 
   /****************** profile routings *************** */
   app.post('/v1/aboutyou', auth.authToken, profile.create);
