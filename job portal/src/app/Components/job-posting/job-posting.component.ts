@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { NotificationService } from "src/app/notification.service";
 import { JobsService } from "src/app/services/jobs.service";
+import { Editor } from 'ngx-editor';
 
 @Component({
   selector: "app-job-posting",
@@ -10,6 +11,9 @@ import { JobsService } from "src/app/services/jobs.service";
   styleUrls: ["./job-posting.component.scss"],
 })
 export class JobPostingComponent implements OnInit {
+  editor1= new Editor();
+  editor= new Editor();
+  html: '' | undefined;
   userForm!: FormGroup;
   allData: any;
   alert: boolean = false;
@@ -35,6 +39,7 @@ export class JobPostingComponent implements OnInit {
   // APIURL= CONSTANTS.BASEURL;
 
   ngOnInit(): void {
+  
     this.userForm = this.formBuilder.group({
       organizationName: ["", [Validators.required]],
       description: ["", [Validators.required]],
@@ -52,6 +57,7 @@ export class JobPostingComponent implements OnInit {
       location: ["", [Validators.required]],
      
       roleDescription: ["", [Validators.required]],
+      candidateProfile: ["", [Validators.required]],
       roleProfile: this.formBuilder.group({
         management: ["", [Validators.required]],
         technical: ["", [Validators.required]],
@@ -132,6 +138,9 @@ export class JobPostingComponent implements OnInit {
       limitSelection: 3,
       allowSearchFilter: true,
     };
+  }
+  ngOnDestroy(): void {
+    this.editor.destroy();
   }
   get getControl() {
     return this.userForm.controls;

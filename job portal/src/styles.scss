@@ -74,14 +74,24 @@ app-skill-profile {
       padding-top: 12px !important;
       font-size: 12px !important;
       border: 1px solid #333333 !important;
-      height: 40px !important;
+     
       border-radius: 7px !important;
+      .selected-item {
+        min-width: fit-content !important;
+      }
     }
-    .selected-item {
-      max-width: initial !important;
-    }
+    
   }
 }
+.NgxEditor
+  {
+
+  
+  padding: 0.5rem;
+  max-height: 500px !important;
+  height: 500px !important;
+} 
+
 app-feedback-form{
   ngx-star-rating{
     label.star{

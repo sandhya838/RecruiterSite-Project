@@ -11,6 +11,8 @@ import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { HttpClientModule } from "@angular/common/http";
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
+import { NgxEditorModule } from "ngx-editor";
+
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
     NgMultiSelectDropDownModule.forRoot(),
     HttpClientModule,
     AngularMultiSelectModule,
+    NgxEditorModule,
+    
   ],
 })
 export class AdminModule {}

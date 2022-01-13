@@ -26,6 +26,8 @@ import { CandidateProfileSummaryComponent } from "./Components/candidate-profile
 import { JobPostingComponent } from "./Components/job-posting/job-posting.component";
 import { OrganizationPageComponent } from "./Components/organization-page/organization-page.component";
 import { JobListingComponent } from "./Components/job-listing/job-listing.component";
+import { JobViewComponent } from './Components/job-view/job-view.component';
+import { NgxEditorModule } from "ngx-editor";
 import { FeedbackFormComponent } from './Components/feedback-form/feedback-form.component';
 
 @NgModule({
@@ -43,6 +45,7 @@ import { FeedbackFormComponent } from './Components/feedback-form/feedback-form.
     JobPostingComponent,
     JobListingComponent,
     OrganizationPageComponent,
+    JobViewComponent,
     FeedbackFormComponent,
   ],
   imports: [
@@ -58,6 +61,7 @@ import { FeedbackFormComponent } from './Components/feedback-form/feedback-form.
     AngularMultiSelectModule,
     QRCodeModule,
     NgbModule,
+    NgxEditorModule,
     NgxStarRatingModule
   ],
   providers: [

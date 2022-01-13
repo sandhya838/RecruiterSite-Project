@@ -10,6 +10,12 @@ var Jobschema = new Schema({
     description: {
         type: String
     },
+    roleDescription:{
+        type:String
+    },
+    candidateProfile:{
+        type:String
+    },
     typeOfJob: {
         contract:{
             type:Boolean
