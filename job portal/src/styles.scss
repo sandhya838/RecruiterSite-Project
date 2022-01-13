@@ -82,3 +82,15 @@ app-skill-profile {
     }
   }
 }
+app-feedback-form{
+  ngx-star-rating{
+    label.star{
+      padding: 5px !important;
+    font-size: 28px !important;
+    margin-top: -9px;
+    }
+    input.star:checked ~ label.star:before {
+      color: orange !important;
+    }
+  }
+}
