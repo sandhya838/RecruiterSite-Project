@@ -3,9 +3,12 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 // import { getDiffieHellman } from 'crypto';
 import { data } from "jquery";
+import { IDropdownSettings } from "ng-multiselect-dropdown";
 import { ConfigService } from "src/app/config.service";
 import { NotificationService } from "src/app/notification.service";
 import { CommonService } from "src/app/services/common.service";
+import { filter } from "rxjs/operators";
+import { response } from "express";
 
 @Component({
   selector: "app-user-profile",
@@ -13,11 +16,40 @@ import { CommonService } from "src/app/services/common.service";
   styleUrls: ["./user-profile.component.scss"],
 })
 export class UserProfileComponent implements OnInit {
-  alert: boolean = false;
   userForm!: FormGroup;
   allData: any;
   currentUserData = null;
   userId: string | undefined;
+  dropdownSettings: IDropdownSettings = {
+    singleSelection: true,
+    idField: "code",
+    textField: "name",
+    selectAllText: "Select country",
+    unSelectAllText: "",
+    itemsShowLimit: 3,
+    allowSearchFilter: true,
+  };
+  cityDropdownSettings: IDropdownSettings = {
+    singleSelection: true,
+    idField: "isoCode",
+    textField: "name",
+    selectAllText: "Select city",
+    unSelectAllText: "",
+    itemsShowLimit: 3,
+    allowSearchFilter: true,
+  };
+  stateDropdownSettings: IDropdownSettings = {
+    singleSelection: true,
+    idField: "state_code",
+    textField: "name",
+    selectAllText: "Select city",
+    unSelectAllText: "",
+    itemsShowLimit: 3,
+    allowSearchFilter: true,
+  };
+  countries = [];
+  selectedCities = [];
+  selectedStates = [];
   constructor(
     public formBuilder: FormBuilder,
     private notifyService: NotificationService,
@@ -49,15 +81,27 @@ export class UserProfileComponent implements OnInit {
     );
     this.userId = userData._id;
     this.userForm.patchValue(userData);
+    this.getCountries();
   }
 
   get getControl() {
     return this.userForm.controls;
   }
 
+  getCountries() {
+    this.selectedStates = [];
+    this.configService
+      .getCountries()
+      .pipe(filter(Boolean))
+      .subscribe((response: any) => {
+        console.log("countries", response);
+        this.countries = response.countries;
+      });
+  }
+
   onClick(formValue: any, isValid: boolean) {
     if (isValid) {
-      formValue.createdBy= this.userId;
+      formValue.createdBy = this.userId;
       this.configService
         .updateUser(this.userId, formValue)
         .subscribe((data: any) => {
@@ -77,7 +121,23 @@ export class UserProfileComponent implements OnInit {
     }
   }
 
-  closeAlert() {
-    this.alert = false;
+  onCountrySelect(item: any) {
+    console.log(item);
+    this.configService
+      .getStates(item.code)
+      .pipe(filter(Boolean))
+      .subscribe((response: any) => {
+        this.selectedStates = response.states;
+      });
+  }
+
+  onStateSelect(item: any, counrty: any) {
+    console.log(item,counrty);
+    this.configService
+      .getCities(item.state_code, counrty[0].code)
+      .pipe(filter(Boolean))
+      .subscribe((response: any) => {
+        this.selectedCities = response.cities;
+      });
   }
 }

@@ -9,11 +9,17 @@ module.exports = (app) => {
   const orgnization = require('../controllers/orgnization.controller');
   const job = require('../controllers/job.controller');
   const feedback = require('../controllers/feedback.controller');
+  const countryStateCity = require('../controllers/countries_state_and_city.controller');
 
   /**********************orgnization pre APIs **************** */
   app.post('/v1/orgnization-login', auth.orgnization_login);
   app.post('/v1/register-orgnization', uploadLogo.single('logo'), orgnization.create);
   app.post('/v1/feedback', feedback.create);
+  app.post('/v1/feedback', feedback.create);
+  app.get('/v1/countries', countryStateCity.findCountries);
+  app.get('/v1/states/:countryCode', countryStateCity.findStateByCountry);
+  app.get('/v1/cities/:stateCode/:countryCode', countryStateCity.findCityByCountryAndState);
+
 
   /************ Orgnization post login ****************** */
   app.get('/v1/orgnizations', auth.authToken, orgnization.findAll);
