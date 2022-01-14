@@ -56,9 +56,10 @@ export class RollprofileComponent implements OnInit {
     );
     this.userId = userData._id;
     this.userForm.patchValue(userData);
+    this.getTotalofFields();
   }
 
-  onChecked(type: string) {
+  onChecked() {
     if (this.userForm.get("roleManagement.isManagement")!.value) {
       this.userForm
         .get("roleManagement.management")
@@ -122,12 +123,130 @@ export class RollprofileComponent implements OnInit {
       this.userForm.get("roleFunctional.consultant")?.reset();
       this.userForm.get("roleFunctional")!.updateValueAndValidity();
     }
-    this.userForm.get("roleTechnical")?.enable();
-    this.userForm.get("roleFunctional")?.enable();
-    this.userForm.get("roleManagement")?.enable();
   }
-  onManagementChnage(value: string, type: string) {
+
+  onSubFieldTotal(type: string, value: string) {
+    switch (type) {
+      case "portfolio":
+        if (value === "100") {
+          this.userForm.get("roleManagement.account")?.disable();
+          this.userForm.get("roleManagement.project")?.disable();
+          this.userForm.get("roleManagement.account")?.setValue(0);
+          this.userForm.get("roleManagement.project")?.setValue(0);
+        } else {
+          this.userForm.get("roleManagement.account")?.enable();
+          this.userForm.get("roleManagement.project")?.enable();
+        }
+        this.userForm.get("roleManagement")!.updateValueAndValidity();
+
+        break;
+      case "account":
+        if (value === "100") {
+          this.userForm.get("roleManagement.portfolio")?.disable();
+          this.userForm.get("roleManagement.project")?.disable();
+          this.userForm.get("roleManagement.portfolio")?.setValue(0);
+          this.userForm.get("roleManagement.project")?.setValue(0);
+        } else {
+          this.userForm.get("roleManagement.portfolio")?.enable();
+          this.userForm.get("roleManagement.project")?.enable();
+        }
+        this.userForm.get("roleManagement")!.updateValueAndValidity();
+
+        break;
+      case "project":
+        if (value === "100") {
+          this.userForm.get("roleManagement.portfolio")?.disable();
+          this.userForm.get("roleManagement.account")?.disable();
+          this.userForm.get("roleManagement.portfolio")?.setValue(0);
+          this.userForm.get("roleManagement.account")?.setValue(0);
+        } else {
+          this.userForm.get("roleManagement.portfolio")?.enable();
+          this.userForm.get("roleManagement.account")?.enable();
+        }
+        this.userForm.get("roleManagement")!.updateValueAndValidity();
+        break;
+      case "architect":
+        if (value === "100") {
+          this.userForm.get("roleTechnical.techLead")?.setValue(0);
+          this.userForm.get("roleTechnical.developer")?.setValue(0);
+          this.userForm.get("roleTechnical.techLead")?.disable();
+          this.userForm.get("roleTechnical.developer")?.disable();
+        } else {
+          this.userForm.get("roleTechnical.techLead")?.enable();
+          this.userForm.get("roleTechnical.developer")?.enable();
+        }
+        this.userForm.get("roleTechnical")!.updateValueAndValidity();
+        break;
+      case "techLead":
+        if (value === "100") {
+          this.userForm.get("roleTechnical.architect")?.setValue(0);
+          this.userForm.get("roleTechnical.developer")?.setValue(0);
+          this.userForm.get("roleTechnical.architect")?.disable();
+          this.userForm.get("roleTechnical.developer")?.disable();
+        } else {
+          this.userForm.get("roleTechnical.architect")?.enable();
+          this.userForm.get("roleTechnical.developer")?.enable();
+        }
+        this.userForm.get("roleTechnical")!.updateValueAndValidity();
+        break;
+      case "developer":
+        if (value === "100") {
+          this.userForm.get("roleTechnical.architect")?.setValue(0);
+          this.userForm.get("roleTechnical.techLead")?.setValue(0);
+          this.userForm.get("roleTechnical.architect")?.disable();
+          this.userForm.get("roleTechnical.techLead")?.disable();
+        } else {
+          this.userForm.get("roleTechnical.architect")?.enable();
+          this.userForm.get("roleTechnical.techLead")?.enable();
+        }
+        this.userForm.get("roleTechnical")!.updateValueAndValidity();
+        break;
+      case "sme":
+        if (value === "100") {
+          this.userForm.get("roleFunctional.leadCon")?.setValue(0);
+          this.userForm.get("roleFunctional.consultant")?.setValue(0);
+          this.userForm.get("roleFunctional.leadCon")?.disable();
+          this.userForm.get("roleFunctional.consultant")?.disable();
+        } else {
+          this.userForm.get("roleFunctional.leadCon")?.enable();
+          this.userForm.get("roleFunctional.consultant")?.enable();
+        }
+        this.userForm.get("roleFunctional")!.updateValueAndValidity();
+        break;
+      case "leadCon":
+        if (value) {
+          this.userForm.get("roleFunctional.sme")?.setValue(0);
+          this.userForm.get("roleFunctional.consultant")?.setValue(0);
+          this.userForm.get("roleFunctional.sme")?.disable();
+          this.userForm.get("roleFunctional.consultant")?.disable();
+        } else {
+          this.userForm.get("roleFunctional.sme")?.enable();
+          this.userForm.get("roleFunctional.consultant")?.enable();
+        }
+        this.userForm.get("roleFunctional")!.updateValueAndValidity();
+        break;
+      case "consultant":
+        if (value) {
+          this.userForm.get("roleFunctional.sme")?.setValue(0);
+          this.userForm.get("roleFunctional.leadCon")?.setValue(0);
+          this.userForm.get("roleFunctional.sme")?.disable();
+          this.userForm.get("roleFunctional.leadCon")?.disable();
+        } else {
+          this.userForm.get("roleFunctional.sme")?.enable();
+          this.userForm.get("roleFunctional.leadCon")?.enable();
+        }
+        this.userForm.get("roleFunctional")!.updateValueAndValidity();
+        break;
+
+      default:
+        break;
+    }
+  }
+
+  onManagementChange(value: string, type: string) {
     if (type === "management") {
+      this.userForm.get("roleManagement.isManagement")?.setValue(true);
+      this.userForm.get("roleTechnical.isTechnical")?.setValue(false);
       if (value === "100") {
         this.userForm.get("roleTechnical")?.disable();
         this.userForm.get("roleFunctional")?.disable();
@@ -135,11 +254,15 @@ export class RollprofileComponent implements OnInit {
         this.userForm.get("roleTechnical")?.enable();
         this.userForm.get("roleFunctional")?.enable();
       }
+      this.userForm
+        .get("roleManagement.isManagement")
+        ?.updateValueAndValidity();
       this.userForm.get("roleTechnical")?.updateValueAndValidity();
       this.userForm.get("roleFunctional")?.updateValueAndValidity();
     }
 
     if (type === "technical") {
+      this.userForm.get("roleTechnical.isTechnical")?.setValue(true);
       if (value === "100") {
         this.userForm.get("roleManagement")?.disable();
         this.userForm.get("roleFunctional")?.disable();
@@ -147,10 +270,12 @@ export class RollprofileComponent implements OnInit {
         this.userForm.get("roleManagement")?.enable();
         this.userForm.get("roleFunctional")?.enable();
       }
+      this.userForm.get("roleTechnical.isTechnical")?.updateValueAndValidity();
       this.userForm.get("roleManagement")?.updateValueAndValidity();
       this.userForm.get("roleFunctional")?.updateValueAndValidity();
     }
     if (type === "functional") {
+      this.userForm.get("roleFunctional.isFuncational")!.setValue(true);
       if (value === "100") {
         this.userForm.get("roleTechnical")?.disable();
         this.userForm.get("roleManagement")?.disable();
@@ -158,9 +283,13 @@ export class RollprofileComponent implements OnInit {
         this.userForm.get("roleTechnical")?.enable();
         this.userForm.get("roleManagement")?.enable();
       }
+      this.userForm
+        .get("roleFunctional.isFuncational")
+        ?.updateValueAndValidity();
       this.userForm.get("roleTechnical")?.updateValueAndValidity();
       this.userForm.get("roleManagement")?.updateValueAndValidity();
     }
+    this.onChecked();
   }
 
   getTotalPercentage() {
@@ -184,59 +313,48 @@ export class RollprofileComponent implements OnInit {
     this.onlyManagement = false;
     this.onlyTechnical = false;
     this.onlyFunctional = false;
-    this.allFields =false;
-    console.log(
-      Number(this.userForm.get("roleManagement.management")!.value),
-      Number(this.userForm.get("roleTechnical.technical")!.value),
-      Number(this.userForm.get("roleFunctional.functional")!.value)
-    );
-    if (
-      Number(this.userForm.get("roleManagement.management")!.value) +
-        Number(this.userForm.get("roleTechnical.technical")!.value) +
-        Number(this.userForm.get("roleFunctional.functional")!.value) >=
-      100
-    ) {
-      this.allFields = true;
-      console.log(this.allFields);
-    }
+    this.allFields = false;
     if (Number(this.userForm.get("roleManagement.management")!.value) == 100) {
       this.onlyManagement = true;
-      this.allFields =false;
-      console.log(this.onlyManagement);
-    }
-    if (Number(this.userForm.get("roleFunctional.functional")!.value) == 100) {
+      this.allFields = false;
+    } else if (
+      Number(this.userForm.get("roleFunctional.functional")!.value) == 100
+    ) {
       this.onlyFunctional = true;
-      this.allFields =false;
-      console.log(this.onlyFunctional);
-    }
-    if (Number(this.userForm.get("roleTechnical.technical")!.value) == 100) {
+      this.allFields = false;
+    } else if (
+      Number(this.userForm.get("roleTechnical.technical")!.value) == 100
+    ) {
       this.onlyTechnical = true;
-      this.allFields =false;
-      console.log(this.onlyTechnical);
-    }
-    if (
+      this.allFields = false;
+    } else if (
       Number(this.userForm.get("roleManagement.management")!.value) +
         Number(this.userForm.get("roleTechnical.technical")!.value) ==
       100
     ) {
       this.onlyManagement = true;
       this.onlyTechnical = true;
-    }
-    if (
+    } else if (
       Number(this.userForm.get("roleManagement.management")!.value) +
         Number(this.userForm.get("roleFunctional.functional")!.value) ==
       100
     ) {
       this.onlyManagement = true;
       this.onlyFunctional = true;
-    }
-    if (
+    } else if (
       Number(this.userForm.get("roleTechnical.technical")!.value) +
         Number(this.userForm.get("roleFunctional.functional")!.value) ==
       100
     ) {
       this.onlyTechnical = true;
       this.onlyFunctional = true;
+    } else if (
+      Number(this.userForm.get("roleManagement.management")!.value) +
+        Number(this.userForm.get("roleTechnical.technical")!.value) +
+        Number(this.userForm.get("roleFunctional.functional")!.value) >=
+      100
+    ) {
+      this.allFields = true;
     }
   }
 
@@ -278,7 +396,6 @@ export class RollprofileComponent implements OnInit {
   }
 
   getDisabled() {
-    console.log();
     return (
       this.getTotalOfFuncaional() ||
       this.getTotalOfTechnical() ||

@@ -4,7 +4,9 @@ var Schema = mongoose.Schema;
 
 
 var ProfileSchema = new Schema({
-
+  countryCode:{
+    type: String
+  },
   title: {
     type: String
   },
@@ -44,22 +46,22 @@ var ProfileSchema = new Schema({
     type: String
   },
   countryOfLiving: {
-    type: String
+    type: []
   },
   state: {
-    type: String
+    type: []
   },
   city: {
-    type: String
+    type: []
   },
   nationality: {
-    type: String
+    type: []
   },
   currentNationality: {
-    type: String
+    type: []
   },
   previousNationality: {
-    type: String
+    type: []
   },
   totalYearsOfExperience: {
     type: String

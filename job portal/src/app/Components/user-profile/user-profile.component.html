@@ -146,15 +146,33 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Mobile number</label>
-            <input
-              type="tel"
-              class="form-control"
-              id="mobileNumber"
-              name="mobileNumber"
-              formControlName="mobileNumber"
-              minlength="10"
-              maxlength="10"
-            />
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <input
+                  formControlName="countryCode"
+                  list="countryPhoneCode"
+                  name="dialCode"
+                  id="dialCode"
+                />
+                <datalist id="countryPhoneCode">
+                  <option
+                    *ngFor="let country of countries"
+                    [value]="country['dial_code']"
+                  >
+                    {{ country["dial_code"] }}
+                  </option>
+                </datalist>
+              </div>
+              <input
+                type="tel"
+                class="form-control"
+                id="mobileNumber"
+                name="mobileNumber"
+                formControlName="mobileNumber"
+                minlength="10"
+                maxlength="10"
+              />
+            </div>
             <div
               class="text-danger"
               *ngIf="
@@ -208,11 +226,16 @@
           <div class="form-group">
             <label>State</label>
             <ng-multiselect-dropdown
-            formControlName="state"
+              formControlName="state"
               [placeholder]="'State'"
               [settings]="stateDropdownSettings"
               [data]="selectedStates"
-              (onSelect)="onStateSelect($event,userForm.controls['countryOfLiving'].value)"
+              (onSelect)="
+                onStateSelect(
+                  $event,
+                  userForm.controls['countryOfLiving'].value
+                )
+              "
             >
             </ng-multiselect-dropdown>
             <div
@@ -263,21 +286,14 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Nationality</label>
-            <select
-              class="form-select"
-              class="form-control"
+            <ng-multiselect-dropdown
               formControlName="nationality"
-              required
+              [placeholder]="'Nationality'"
+              [settings]="dropdownSettings"
+              [data]="countries"
+              (onSelect)="onCountrySelect($event)"
             >
-              <option selected disabled value="">nationality</option>
-              <option>Indian</option>
-              <option>Us</option>
-              <option>UK</option>
-              <option>chines</option>
-              <option>cuban</option>
-              <option>French</option>
-              <option>German</option>
-            </select>
+            </ng-multiselect-dropdown>
             <div
               class="text-danger"
               *ngIf="
@@ -299,21 +315,14 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Current nationality</label>
-            <select
-              class="form-select"
-              class="form-control"
+            <ng-multiselect-dropdown
               formControlName="currentNationality"
+              [placeholder]="'Current nationality'"
+              [settings]="dropdownSettings"
+              [data]="countries"
+              (onSelect)="onCountrySelect($event)"
             >
-              <option selected disabled value="">current nationality</option>
-              <option>Mumbai</option>
-              <option>Pune</option>
-              <option>Chennai</option>
-              <option>Kolkata</option>
-              <option>surat</option>
-              <option>Kolhapur</option>
-              <option>Jalgaon</option>
-              <option>Hyderabad</option>
-            </select>
+            </ng-multiselect-dropdown>
             <div
               class="text-danger"
               *ngIf="
@@ -337,21 +346,14 @@
         <div class="col-md-6">
           <div class="form-group">
             <label>Previous ationality</label>
-            <select
-              class="form-select"
-              class="form-control"
+            <ng-multiselect-dropdown
               formControlName="previousNationality"
-              required
+              [placeholder]="'Previous nationality'"
+              [settings]="dropdownSettings"
+              [data]="countries"
+              (onSelect)="onCountrySelect($event)"
             >
-              <option selected disabled value="">previous nationality</option>
-              <option>Indian</option>
-              <option>Us</option>
-              <option>UK</option>
-              <option>chines</option>
-              <option>cuban</option>
-              <option>French</option>
-              <option>German</option>
-            </select>
+            </ng-multiselect-dropdown>
             <div
               class="text-danger"
               *ngIf="
