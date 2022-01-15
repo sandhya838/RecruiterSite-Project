@@ -90,6 +90,9 @@ var ProfileSchema = new Schema({
   industryServed: {
     type: String
   },
+  about: {
+    type: String
+  },
 
   roleManagement: {
     isManagement: { type: Boolean },
@@ -175,12 +178,20 @@ var ProfileSchema = new Schema({
         type: String,
       },
       skills: {
-        type: [],
+        primary: {
+          type: []
+        },
+        secondary: {
+          type: []
+        },
       },
       deliverables: {
         type: String
       },
       role: {
+        type: String
+      },
+      desciption: {
         type: String
       }
     }

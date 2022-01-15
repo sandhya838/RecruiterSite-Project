@@ -17,7 +17,6 @@ import { response } from "express";
 })
 export class UserProfileComponent implements OnInit {
   userForm!: FormGroup;
-  allData: any;
   currentUserData = null;
   userId: string | undefined;
   dropdownSettings: IDropdownSettings = {
@@ -107,14 +106,14 @@ export class UserProfileComponent implements OnInit {
       .getCurrentCountryDetails()
       .pipe(filter(Boolean))
       .subscribe((response: any) => {
-        this.selectedPhoneCode = (
-          this.countries.filter(
-            (country: any) => country.code === response.countryCode
-          )[0] as any
-        )?.dial_code;
+        this.countries.forEach((country: any) => {
+          if (country.code === response.countryCode) {
+            this.selectedPhoneCode = country.dial_code;
+            this.userForm.get("countryCode")?.setValue(this.selectedPhoneCode);
+            this.userForm.get("countryCode")?.updateValueAndValidity();
+          }
+        });
       });
-    this.userForm.get("countryCode")?.setValue(this.selectedPhoneCode);
-    this.userForm.get("countryCode")?.updateValueAndValidity();
   }
 
   onClick(formValue: any, isValid: boolean) {

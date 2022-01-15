@@ -71,7 +71,12 @@
                     class="form-check-input"
                     id="isCurrentCompany"
                     formControlName="isCurrentCompany"
-                    (change)="onIsCurrentCompany(i, getValidity(i).get('isCurrentCompany')!.value)"
+                    (change)="
+                      onIsCurrentCompany(
+                        i,
+                        getValidity(i).get('isCurrentCompany')!.value
+                      )
+                    "
                   />
                   <label class="form-check-label" for="isCurrentCompany"
                     >Is your current company?</label
@@ -325,13 +330,13 @@
                 </div>
               </div>
             </div>
-            <div class="row">
+            <div class="row" formGroupName="skills">
               <div class="col">
                 <div class="form-group">
-                  <label>Skills used</label>
+                  <label>Primary skills</label>
                   <ng-multiselect-dropdown
-                    formControlName="skills"
-                    [placeholder]="'Select skill used'"
+                    formControlName="primary"
+                    [placeholder]="'Primary skill'"
                     [settings]="dropdownSettings"
                     [data]="skills"
                   >
@@ -339,14 +344,47 @@
                   <div
                     class="text-danger"
                     *ngIf="
-                      !getValidity(i).get('skills')!.valid &&
-                      (getValidity(i).get('skills')!.touched ||
-                        getValidity(i).get('skills')!.dirty)
+                      !getValidity(i).get('skills.primary')!.valid &&
+                      (getValidity(i).get('skills.primary')!.touched ||
+                        getValidity(i).get('skills.primary')!.dirty)
                     "
                   >
-                    <div *ngIf="getValidity(i).get('skills')!.errors">
+                    <div *ngIf="getValidity(i).get('skills.primary')!.errors">
                       <small
-                        *ngIf="getValidity(i).get('skills')!.errors!.required"
+                        *ngIf="
+                          getValidity(i).get('skills.primary')!.errors!.required
+                        "
+                      >
+                        This field is required
+                      </small>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="col">
+                <div class="form-group">
+                  <label>Secondary skills</label>
+                  <ng-multiselect-dropdown
+                    formControlName="secondary"
+                    [placeholder]="'Secondary skill'"
+                    [settings]="dropdownSettings"
+                    [data]="skills"
+                  >
+                  </ng-multiselect-dropdown>
+                  <div
+                    class="text-danger"
+                    *ngIf="
+                      !getValidity(i).get('skills.secondary')!.valid &&
+                      (getValidity(i).get('skills.secondary')!.touched ||
+                        getValidity(i).get('skills.secondary')!.dirty)
+                    "
+                  >
+                    <div *ngIf="getValidity(i).get('skills.secondary')!.errors">
+                      <small
+                        *ngIf="
+                          getValidity(i).get('skills.secondary')!.errors!
+                            .required
+                        "
                       >
                         This field is required
                       </small>

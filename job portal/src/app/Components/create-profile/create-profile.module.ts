@@ -15,6 +15,7 @@ import { WorkExperianceComponent } from "../work-experiance/work-experiance.comp
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { FileUploadModule } from "@iplab/ngx-file-upload";
+import { NgxEditorModule } from "ngx-editor";
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { FileUploadModule } from "@iplab/ngx-file-upload";
     NgMultiSelectDropDownModule.forRoot(),
     CreateProfileRoutingModule,
     FileUploadModule,
+    NgxEditorModule
   ],
 })
 export class CreateProfileModule {}

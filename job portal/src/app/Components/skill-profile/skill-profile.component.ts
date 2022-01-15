@@ -28,15 +28,16 @@ export class SkillProfileComponent implements OnInit {
   ngOnInit(): void {
     this.viewPort = window.innerWidth > 991 ? true : false;
     this.userForm = this.formBuilder.group({
-      technical: ["", [Validators.required]],
-      system: ["", [Validators.required]],
-      functional: ["", [Validators.required]],
+      skillTechnical: ["", [Validators.required]],
+      skillSysAdministration: ["", [Validators.required]],
+      skillFunctional: ["", [Validators.required]],
     });
     this.user = JSON.parse(
       localStorage.getItem("rememberMe") === "true"
         ? localStorage.getItem("user")
         : (sessionStorage.getItem("user") as any)
     );
+    this.userForm.patchValue(this.user);
     this.technicalSkills = [
       { id: 1, name: "Data analysis" },
       { id: 2, name: "Project management" },
@@ -81,14 +82,8 @@ export class SkillProfileComponent implements OnInit {
 
   onClick(formValue: any, isValid: boolean) {
     if (isValid) {
-      const finalData = {
-        skillSysAdministration: formValue.system,
-        skillTechnical: formValue.technical,
-        skillFunctional: formValue.functional,
-      };
-      console.log("finalData", finalData);
       this.configService
-        .updateUser(this.user?._id, finalData)
+        .updateUser(this.user?._id, formValue)
         .subscribe((data: any) => {
           if (data.status === 200) {
             localStorage.getItem("rememberMe") === "true"

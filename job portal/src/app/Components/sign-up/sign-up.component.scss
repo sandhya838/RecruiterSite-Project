@@ -1,4 +1,7 @@
 .sign-up {
+  .input-group-prepend {
+    max-width: 13% !important;
+  }
   margin: auto;
   &__wrapper {
     position: fixed;
@@ -36,7 +39,7 @@
       font-weight: 200;
       color: var(--color-black);
     }
-    
+
     &__icon {
       position: absolute;
       right: 10px;
@@ -61,7 +64,6 @@
       color: white;
     }
     .fa-google {
-   
       background: var(--text-danger);
       color: white;
     }
@@ -73,10 +75,12 @@
       font-size: 11px;
     }
   }
-
 }
 @media all and (max-width: 767px) {
   .sign-up {
+    .input-group-prepend {
+      max-width: 25% !important;
+    }
     margin: auto 15px;
     &__wrapper {
       width: 100%;

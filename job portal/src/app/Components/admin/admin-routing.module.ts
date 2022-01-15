@@ -20,6 +20,7 @@ import { OrgGuard } from "src/app/helper/org-guard/org.guard";
 import { CommonGuard } from "src/app/helper/guard/common-guard/common.guard";
 import { JobViewComponent } from "../job-view/job-view.component";
 import { FeedbackFormComponent } from "../feedback-form/feedback-form.component";
+import { NgxEditorModule } from "ngx-editor";
 
 const routes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
@@ -126,7 +127,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
+  imports: [RouterModule.forChild(routes),NgxEditorModule],
   exports: [RouterModule],
 })
 export class AdminRoutingModule { }
