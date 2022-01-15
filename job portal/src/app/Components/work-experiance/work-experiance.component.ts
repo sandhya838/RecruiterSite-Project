@@ -56,6 +56,14 @@ export class WorkExperianceComponent implements OnInit {
     );
     this.userId = userData._id;
     this.updateValueInForm(userData);
+    let index=0;
+    for(const item of userData?.workExperiences){
+      if(item?.isCurrentCompany){
+         this.onIsCurrentCompany(index, item?.isCurrentCompany);
+      }
+      index++;
+    }
+   
     this.dropdownSettings = {
       singleSelection: false,
       idField: "name",
@@ -95,7 +103,10 @@ export class WorkExperianceComponent implements OnInit {
       joinyear: ["", [Validators.required]],
       jointomonth: ["", [Validators.required]],
       jointoyear: ["", [Validators.required]],
-      skills: ["", [Validators.required]],
+      skills: this.formBuilder.group({
+        primary: ["", [Validators.required]],
+        secondary: ["", [Validators.required]],
+      }),
       role: ["", [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/)]],
       deliverables: ["", [Validators.required]],
     });
@@ -122,7 +133,6 @@ export class WorkExperianceComponent implements OnInit {
   }
 
   onClick(formValue: any, isValid: boolean) {
-    console.log("sdsadsad", isValid, formValue);
     if (isValid) {
       for (const item of formValue?.workExperiences) {
         item["to"] = item.jointomonth + " / " + item.jointoyear;

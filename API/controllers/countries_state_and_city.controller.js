@@ -1,7 +1,4 @@
-const feedback = require('../models/feedback');
 const  fs = require('fs');
-
-
 module.exports = {
 
     findCountries:(req, res)=>{
@@ -9,7 +6,6 @@ module.exports = {
             if (err) {
                 res.status(500).send({ status: 400, message: 'Oops! Not able to get countries. Please try after sometimes', countries: {} });
             } else {
-                console.log('data',JSON.parse(data));
                 res.status(200).send({ status: 200, message: 'Countries listed successfully.', countries: JSON.parse(data) });
             }
         })

@@ -4,7 +4,9 @@ var Schema = mongoose.Schema;
 
 
 var ProfileSchema = new Schema({
-
+  countryCode: {
+    type: String
+  },
   title: {
     type: String
   },
@@ -44,22 +46,22 @@ var ProfileSchema = new Schema({
     type: String
   },
   countryOfLiving: {
-    type: String
+    type: []
   },
   state: {
-    type: String
+    type: []
   },
   city: {
-    type: String
+    type: []
   },
   nationality: {
-    type: String
+    type: []
   },
   currentNationality: {
-    type: String
+    type: []
   },
   previousNationality: {
-    type: String
+    type: []
   },
   totalYearsOfExperience: {
     type: String
@@ -88,23 +90,29 @@ var ProfileSchema = new Schema({
   industryServed: {
     type: String
   },
+  about: {
+    type: String
+  },
 
   roleManagement: {
+    isManagement: { type: Boolean },
     management: { type: String },
     portfolio: { type: String },
     account: { type: String },
     project: { type: String },
   },
   roleTechnical: {
+    isTechnical: { type: Boolean },
     technical: { type: String },
     architect: { type: String },
     techLead: { type: String },
     developer: { type: String },
   },
   roleFunctional: {
+    isFunctional: { type: Boolean },
     functional: { type: String },
     sme: { type: String },
-    leadCon: { type: String },
+    leadConsultant: { type: String },
     consultant: { type: String },
   },
   skillSysAdministration: {
@@ -170,12 +178,20 @@ var ProfileSchema = new Schema({
         type: String,
       },
       skills: {
-        type: [],
+        primary: {
+          type: []
+        },
+        secondary: {
+          type: []
+        },
       },
       deliverables: {
         type: String
       },
       role: {
+        type: String
+      },
+      desciption: {
         type: String
       }
     }

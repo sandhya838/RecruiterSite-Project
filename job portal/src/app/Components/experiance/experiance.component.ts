@@ -1,6 +1,7 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnDestroy, OnInit } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
+import { Editor } from "ngx-editor";
 import { ConfigService } from "src/app/config.service";
 import { NotificationService } from "src/app/notification.service";
 import { CommonService } from "src/app/services/common.service";
@@ -10,9 +11,10 @@ import { CommonService } from "src/app/services/common.service";
   templateUrl: "./experiance.component.html",
   styleUrls: ["./experiance.component.scss"],
 })
-export class ExperianceComponent implements OnInit {
+export class ExperianceComponent implements OnInit, OnDestroy {
   userForm!: FormGroup;
   userId: string | undefined;
+  editor = new Editor();
   constructor(
     public formBuilder: FormBuilder,
     private notifyService: NotificationService,
@@ -20,6 +22,9 @@ export class ExperianceComponent implements OnInit {
     private router: Router,
     private commonService: CommonService
   ) {}
+  ngOnDestroy(): void {
+    this.editor.destroy();
+  }
   pattern = "^[ a-zA-Z;;]*$";
   mixpattern = "^[ a-z0-9_-]*$";
   numberpattern = "^[0-9]*$";
@@ -27,7 +32,9 @@ export class ExperianceComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       totalYearsOfExperience: ["", [Validators.required]],
       teamSize: ["", [Validators.required]],
-      volumeOfBusinessManged: [ "", [Validators.required, Validators.pattern(/^[0-9]+([,.][0-9]+)?$/)],
+      volumeOfBusinessManged: [
+        "",
+        [Validators.required, Validators.pattern(/^[0-9]+([,.][0-9]+)?$/)],
       ],
       noticePeriod: ["", [Validators.required]],
       salary: ["", [Validators.required]],
@@ -35,6 +42,7 @@ export class ExperianceComponent implements OnInit {
       variableSalary: ["", [Validators.required]],
       otherComponent: ["", [Validators.required]],
       industryServed: ["", [Validators.required]],
+      about: ["", [Validators.required]],
     });
     const userData = JSON.parse(
       localStorage.getItem("rememberMe") === "true"

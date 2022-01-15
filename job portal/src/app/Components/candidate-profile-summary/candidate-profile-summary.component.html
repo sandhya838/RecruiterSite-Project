@@ -18,8 +18,13 @@
       <div class="row profile-details__profile-topcard">
         <div class="profile-details__profile">
           <div class="profile-details__profile__profile-img">
-            <img class="card-img-top" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Card image cap"
-              class="rounded-circle" width="135" />
+            <img
+              class="card-img-top"
+              src="https://bootdey.com/img/Content/avatar/avatar7.png"
+              alt="Card image cap"
+              class="rounded-circle"
+              width="135"
+            />
           </div>
         </div>
       </div>
@@ -45,8 +50,13 @@
               <p class="profile-details__worktitle">
                 {{ profile?.workExperiences[0]?.role }}
               </p>
-              <p class="profile-details__location">Pune, Maharastra, India</p>
-              <p class="profile-details__contact">+91 8380891905</p>
+              <p class="profile-details__location">
+                {{ profile?.city[0]?.name }}, {{ profile?.state[0]?.name }},
+                {{ profile?.countryOfLiving[0]?.name }}
+              </p>
+              <p class="profile-details__contact">
+                {{ profile?.countryCode }} {{ profile?.mobileNumber }}
+              </p>
               <p class="profile-details__email">{{ profile.email }}</p>
             </div>
             <div class="col-5">
@@ -57,7 +67,7 @@
                 </li>
                 <li class="profile-details__cmpname">
                   <i class="fa fa-building" aria-hidden="true"></i>
-                  {{ profile.educationalDetails[0].institute}}
+                  {{ profile.educationalDetails[0].institute }}
                 </li>
               </ul>
             </div>
@@ -74,7 +84,11 @@
           <div class="row">
             <div class="col-sm-11">
               <h5 class="profile-details__card-title">Resume</h5>
-              <a href="{{ APIURL + 'static/resume/' + profile.resume }}" target="_blank" [download]="profile.resume">
+              <a
+                href="{{ APIURL + 'static/resume/' + profile.resume }}"
+                target="_blank"
+                [download]="profile.resume"
+              >
                 <i class="fa fa-download" aria-hidden="true"></i>
                 {{ profile.resume }}
               </a>
@@ -102,66 +116,67 @@
           </div>
           <div class="card-body-text role-profile">
             <div class="row rollprofile__management">
-              <div class="col-md-name  rollprofile__col" id="skill1">
-                Management: </div>
+              <div
+                class="col-md-name rollprofile__col"
+                id="skill1"
+                *ngIf="profile?.roleManagement?.isManagement"
+              >
+                Management:
+              </div>
 
-              <div class="col-md">{{ profile?.roleManagement?.management }}</div>
-              <div class="col-md-name  rollprofile__col" id="skill1">Portfolio:</div>
-              <div class="col-md">{{ profile?.roleManagement?.portfolio }}</div>
+              <div class="col-md">
+                {{ profile?.roleManagement?.management }}%
+              </div>
+              <div class="col-md-name rollprofile__col" id="skill1">
+                Portfolio:
+              </div>
+              <div class="col-md">
+                {{ profile?.roleManagement?.portfolio }}%
+              </div>
 
-              <div class="col-md-name  rollprofile__col" id="skill2">Account:</div>
-              <div class="col-md">{{ profile?.roleManagement?.account }}</div>
+              <div class="col-md-name rollprofile__col" id="skill2">
+                Account:
+              </div>
+              <div class="col-md">{{ profile?.roleManagement?.account }}%</div>
 
-              <div class="col-md-name  rollprofile__col" id="skill3"> Project:</div>
-              <div class="col-md">{{ profile?.roleManagement?.project }}</div>
+              <div class="col-md-name rollprofile__col" id="skill3">
+                Project:
+              </div>
+              <div class="col-md">{{ profile?.roleManagement?.project }}%</div>
             </div>
 
-            <div class="row rollprofile__technical">
-              <div class="col-md-name rollprofile__col"> Technical:</div>
-              <div class="col-md">{{ profile?.roleTechnical?.technical }}</div>
-              <div class="col-md-name rollprofile__col"> Architect:</div>
-              <div class="col-md">{{ profile?.roleTechnical?.architect }}</div>
-              <div class="col-md-name rollprofile__col"> TechLead:</div>
-              <div class="col-md">{{ profile?.roleTechnical?.techLead }}</div>
-              <div class="col-md-name rollprofile__col"> Developer:</div>
-              <div class="col-md">{{ profile?.roleTechnical?.developer }}</div>
-              <!-- <div class="col rollprofile" id="skill1">
-                Technical: <span>{{ profile?.roleTechnical?.technical }}</span>
-              </div>
-              <div class="col rollprofile__col" id="skill1">
-                Architect <span>{{ profile?.roleTechnical?.architect }}</span>
-              </div>
-              <div class="col rollprofile__col" id="skill2">
-                Tech lead <span>{{ profile?.roleTechnical?.techLead }}</span>
-              </div>
-              <div class="col rollprofile__col" id="skill3">
-                Developer <span>{{ profile?.roleTechnical?.developer }}</span>
-              </div> -->
+            <div
+              class="row rollprofile__technical"
+              *ngIf="profile?.roleManagement?.isTechnical"
+            >
+              <div class="col-md-name rollprofile__col">Technical:</div>
+              <div class="col-md">{{ profile?.roleTechnical?.technical }}%</div>
+              <div class="col-md-name rollprofile__col">Architect:</div>
+              <div class="col-md">{{ profile?.roleTechnical?.architect }}%</div>
+              <div class="col-md-name rollprofile__col">TechLead:</div>
+              <div class="col-md">{{ profile?.roleTechnical?.techLead }}%</div>
+              <div class="col-md-name rollprofile__col">Developer:</div>
+              <div class="col-md">{{ profile?.roleTechnical?.developer }}%</div>
             </div>
 
-            <div class="row rollprofile__funtional">
-              <div class="col-md-name rollprofile__col"> Funtional:</div>
-              <div class="col-md">{{ profile?.roleFunctional?.functional }}</div>
-              <div class="col-md-name rollprofile__col"> SME:</div>
-              <div class="col-md">{{ profile?.roleFunctional?.sme }}</div>
-              <div class="col-md-name rollprofile__col"> Lead con:</div>
-              <div class="col-md">{{ profile?.roleFunctional?.leadCon }}</div>
-              <div class="col-md-name rollprofile__col"> Consultant:</div>
-              <div class="col-md">{{ profile?.roleFunctional?.consultant }}</div>
-              <!-- <div class="col rollprofile" id="skill1">
-                Funtional:
-                <span>{{ profile?.roleFunctional?.functional }}</span>
+            <div
+              class="row rollprofile__funtional"
+              *ngIf="profile?.roleManagement?.isFunctional"
+            >
+              <div class="col-md-name rollprofile__col">Funtional:</div>
+              <div class="col-md">
+                {{ profile?.roleFunctional?.functional }}%
               </div>
-              <div class="col rollprofile__col" id="skill1">
-                SME <span>{{ profile?.roleFunctional?.sme }}</span>
+              <div class="col-md-name rollprofile__col">SME:</div>
+              <div class="col-md">{{ profile?.roleFunctional?.sme }}%</div>
+              <div class="col-md-name rollprofile__col">Lead consultant:</div>
+              <div class="col-md">
+                {{ profile?.roleFunctional?.leadConsultant }}%
               </div>
-              <div class="col rollprofile__col" id="skill2">
-                Lead con <span>{{ profile?.roleFunctional?.leadCon }}</span>
+              <div class="col-md-name rollprofile__col">Consultant:</div>
+              <div class="col-md">
+                {{ profile?.roleFunctional?.consultant }}%
               </div>
-              <div class="col rollprofile__col" id="skill3">
-                Consultant
-                <span>{{ profile?.roleFunctional?.consultant }}</span>
-              </div> -->
             </div>
           </div>
         </div>
@@ -181,28 +196,55 @@
           </div>
 
           <div class="card-body-text">
-            <div class="row experience__primaryskill">
-              <div class="col skill">Primary skill: </div>
-              <div class="col skill" id="skill1">
-                {{ profile?.skillTechnical[0]?.name }}
-              </div>
-              <div class="col skill" id="skill2">
-                {{ profile?.skillTechnical[1]?.name }}
-              </div>
-              <div class="col skill" id="skill3">
-                {{ profile?.skillTechnical[2]?.name }}
+            <div
+              class="row experience__secondaryskill"
+              *ngIf="profile?.skillTechnical?.length"
+            >
+              <div class="col-auto">Technical skills:</div>
+              <div
+                *ngFor="
+                  let skill of profile?.skillTechnical;
+                  let i = index;
+                  let last = last
+                "
+              >
+                <span class="badge badge-light mr-2" id="{{ i }}admin">
+                  {{ skill?.name }}</span
+                >
               </div>
             </div>
-            <div class="row experience__secondaryskill">
-              <div class="col skill">secondary skill: </div>
-              <div class="col skill" id="skill4">
-                {{ profile?.skillFunctional[0]?.name }}
+            <div
+              class="row experience__secondaryskill"
+              *ngIf="profile?.skillFunctional?.length"
+            >
+              <div class="col-auto">Funcational skills:</div>
+              <div
+                *ngFor="
+                  let skill of profile?.skillFunctional;
+                  let i = index;
+                  let last = last
+                "
+              >
+                <span class="badge badge-light mr-2" id="{{ i }}admin">
+                  {{ skill?.name }}</span
+                >
               </div>
-              <div class="col skill" id="skill5">
-                {{ profile?.skillFunctional[1]?.name }}
-              </div>
-              <div class="col skill" id="skill6">
-                {{ profile?.skillFunctional[2]?.name }}
+            </div>
+            <div
+              class="row experience__secondaryskill"
+              *ngIf="profile?.skillSysAdministration?.length"
+            >
+              <div class="col-auto">Administrative skills:</div>
+              <div
+                *ngFor="
+                  let skill of profile?.skillSysAdministration;
+                  let i = index;
+                  let last = last
+                "
+              >
+                <span class="badge badge-light mr-2" id="{{ i }}admin">
+                  {{ skill?.name }}</span
+                >
               </div>
             </div>
           </div>
@@ -217,53 +259,13 @@
             </div>
             <div class="col-sm-1">
               <a routerLink="">
-                <i class="fa fa-pencil" aria-hidden="true"></i></a>
+                <i class="fa fa-pencil" aria-hidden="true"></i
+              ></a>
             </div>
           </div>
 
           <div class="card-body-text">
-            <!-- <p>Experience summary</p> -->
-            <h5 class="profile-details__card-sub-title">Experience summary</h5>
-            <ul style="list-style-type: square">
-              <li>
-                21 years of IT industry experience of which 17 yrs in Solution
-                Architecting, Deal shaping and Service Delivery of large scale
-                System Transformation & Application Management engagements on
-                SAP, S4 HANA & Digital Stack and 4 Yrs in Marketing the IT
-                services (CAD, GIS & Remote Sensing) & products.
-              </li>
-              <li>
-                Portfolio Management expertise, with complete P&L responsibility
-                for revenues around 20Mn, across Continental Europe, Europe & NA
-                geographies for Utilities, Mfg and Life Sciences businesses.
-              </li>
-              <li>
-                Expert in Strategizing Industry 4.0 Digital Transformation
-                across business functions, enterprise IT operations so as to
-                influence both the operational efficiency & evolving newer
-                business models.
-              </li>
-              <li>
-                Experienced in setting up large scale Application Management
-                engagements including-Mobilization, Transition, Service
-                introduction & Performance Management
-              </li>
-              <li>
-                Successfully handled large Multi Geo Transformation program
-                implementation including Program Planning and execution with
-                stake holder management & reporting.
-              </li>
-              <li>
-                Excellent skills in aligning to the senior business and internal
-                stake holders to envisage the Progressively Growth Oriented
-                Account Plan in alignment with the customer Business & IT
-                objectives.
-              </li>
-              <li>
-                Good experience on the Contract Commercials & deal shaping.
-              </li>
-
-            </ul>
+            <div class="ml-3" [innerHtml]="profile?.about"></div>
           </div>
         </div>
       </div>
@@ -280,124 +282,78 @@
               </a>
             </div>
           </div>
-          <div class="card-body-text">
-            <div class="row">
-              <div class="col-2">cmp Logo</div>
-              <div class="col-10">
-                <h5 class="experience__title">
-                  {{ profile.workExperiences[0]?.role }}
-                </h5>
-                <p class="experience__company">
-                  {{ profile.workExperiences[0]?.companyName }}
-                </p>
-                <p class="experience__duration-time">
-                  {{ profile.workExperiences[0]?.from }} -
-                  {{ profile.workExperiences[0]?.to }}
-                  <span class="experience__duration">
+          <div class="card-body-text" *ngIf="profile?.workExperiences?.length">
+            <ng-container
+              *ngFor="
+                let experience of profile?.workExperiences;
+                let last = last
+              "
+            >
+              <div class="row">
+                <div class="col-2">cmp Logo</div>
+                <div class="col-10">
+                  <h5 class="experience__title">
+                    {{ experience?.role }}
+                  </h5>
+                  <p class="experience__company">
+                    {{ experience?.companyName }}
+                  </p>
+                  <p class="experience__duration-time">
+                    From {{ experience?.from }} -
+                    <span *ngIf="experience?.isCurrentCompany; else till">
+                      to present</span
+                    >
+                    <ng-template #till>
+                      {{ experience?.to }}
+                    </ng-template>
+                    <!-- <span class="experience__duration">
                     {{ profile.totalYearsOfExperience }} yr
-                  </span>
-                </p>
-                <p class="experience__location">Haydrabad, Pune.</p>
-                <div class="row experience__primaryskill">
-                  <label>Primary skill: </label>
-                  <div class="col" id="skill1">
-                    {{ profile?.workExperiences[0]?.skills[0]?.name }}
+                  </span> -->
+                  </p>
+                  <!-- <p class="experience__location">Haydrabad, Pune.</p> -->
+                  <div class="row experience__primaryskill">
+                    <label>Primary skill: </label>
+                    <div
+                      *ngFor="
+                        let skill of experience?.skills?.primary;
+                        let i = index;
+                        let last = last
+                      "
+                    >
+                      <span class="badge badge-light mr-2" id="{{ i }}admin">
+                        {{ skill?.name }}</span
+                      >
+                    </div>
                   </div>
-                  <div class="col" id="skill2">
-                    {{ profile?.workExperiences[0]?.skills[1]?.name }}
+                  <div class="row experience__primaryskill">
+                    <label>secondary skill: </label>
+                    <div
+                      *ngFor="
+                        let skill of experience?.skills?.secondary;
+                        let i = index;
+                        let last = last
+                      "
+                    >
+                      <span class="badge badge-light mr-2" id="{{ i }}admin">
+                        {{ skill?.name }}</span
+                      >
+                    </div>
                   </div>
-                  <div class="col" id="skill3">
-                    {{ profile?.workExperiences[0]?.skills[2]?.name }}
-                  </div>
+                  <p class="experience__description">
+                    {{ experience?.deliverables }}
+                  </p>
                 </div>
-                <div class="row experience__secondaryskill">
-                  <label>secondary skill: </label>
-                  <div class="col experience__col" id="skill4">HTML</div>
-                  <div class="col experience__col" id="skill5">CSS</div>
-                  <div class="col experience__col" id="skill6">SCSS</div>
-                </div>
-                <p class="experience__description">
-                  Portfolio & Program Management ($20Mn) with Delivery
-                  leadership, Business Unit Lead with responsibility for top
-                  line growth, Annual Budgeting, P&L accountability, Stakeholder
-                  Management, Account Planning, GTM strategy, Capability
-                  Building.
-                </p>
-                <hr>
-
-                <h5 class="experience__title">
-                  {{ profile.workExperiences[0].role }}
-                </h5>
-                <p class="experience__company">
-                  {{ profile.workExperiences[0].companyName }}
-                </p>
-                <p class="experience__duration-time">
-                  {{ profile.workExperiences[0].from }} -
-                  {{ profile.workExperiences[0].to }}
-                  <span class="experience__duration">
-                    {{ profile.totalYearsOfExperience }} yr
-                  </span>
-                </p>
-                <p class="experience__location">Haydrabad, Pune.</p>
-                <div class="row experience__primaryskill">
-                  <label>Primary skill: </label>
-                  <div class="col" id="skill1">
-                    {{ profile?.workExperiences[0]?.skills[0]?.name }}
-                  </div>
-                  <div class="col" id="skill2">
-                    {{ profile?.workExperiences[0]?.skills[1]?.name }}
-                  </div>
-                  <div class="col" id="skill3">
-                    {{ profile?.workExperiences[0]?.skills[2]?.name }}
-                  </div>
-                </div>
-                <div class="row experience__secondaryskill">
-                  <label>secondary skill: </label>
-                  <div class="col experience__col" id="skill4">HTML</div>
-                  <div class="col experience__col" id="skill5">CSS</div>
-                  <div class="col experience__col" id="skill6">SCSS</div>
-                </div>
-
-                <p class="experience__description">
-                  ...
-                </p>
               </div>
-            </div>
-            <hr />
-            <div class="row">
-              <div class="col-2">cmp Logo</div>
-              <div class="col-10">
-                <h5 class="experience__title">Full Stack Web Developer</h5>
-                <p class="experience__company">On Device Solution Ltd.</p>
-                <p class="experience__duration-time">
-                  Nov 2020 – Present
-                  <span class="experience__duration"> 1 yr 6 months </span>
-                </p>
-                <p class="experience__location">Haydrabad, Pune.</p>
-                <p class="experience__skill-sub">
-                  Angular, Bootstrap, HTML, Css, Scss, MySQL, Mongodb
-                </p>
-                <p class="experience__description">
-                  Portfolio & Program Management ($20Mn) with Delivery
-                  leadership, Business Unit Lead with responsibility for top
-                  line growth, Annual Budgeting, P&L accountability, Stakeholder
-                  Management, Account Planning, GTM strategy, Capability
-                  Building, RFP, RFI & Bid defense for all opportunities across
-                  Technologies (SAP,HANA, Open Stack, Mean Stack, Database,
-                  Mobile, Cloud, Infrastructure) for AD and AMS services in
-                  Germany, Finland, Norway & NA region, Innovation, Digital
-                  Labs, MDM, Data Model Design, Bigdata & Advanced Analytics,
-                  Blockchain, Agile Delivery, Operating Model Design, People
-                  Management, Managing Strategic Partnerships and 3rd Party
-                  Vendors.
-                </p>
-              </div>
-            </div>
+              <hr *ngIf="!last" />
+            </ng-container>
           </div>
         </div>
       </div>
 
-      <div class="card profilesummary__cardbody education">
+      <div
+        class="card profilesummary__cardbody education"
+        *ngIf="profile?.educationalDetails?.length"
+      >
         <div class="card-body">
           <div class="row">
             <div class="col-sm-11">
@@ -410,24 +366,44 @@
             </div>
           </div>
 
-          <div class="row">
+          <div
+            class="row"
+            *ngFor="let education of profile?.educationalDetails"
+          >
             <div class="col-2"></div>
             <div class="col-10">
-              <p class="education__college"> {{ profile.educationalDetails[0].institute}}</p>
-              <p class="education__degree">
-                {{ profile.educationalDetails[0].degree }}
-                <span class="education__yop">{{ profile.educationalDetails[0].yearofPassing.year}}</span>
+              <p class="education__college">
+                <i class="fa fa-university" aria-hidden="true"></i>
+                {{ education?.institute }}
               </p>
-              <p class="education__specialization">
-                Software Engineering
-                <span class="education__grade"> {{ profile.educationalDetails[0].grade }} %</span>
+              <p>
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                <span class="education__yop">
+                  {{ education?.yearofPassing.month }}/
+                  {{ education?.yearofPassing.year }}</span
+                >
+              </p>
+              <p class="education__degree">
+                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
+                {{ education?.degree | uppercase }}
+              </p>
+              <p class="education__degree">
+                <i class="fa fa-trophy" aria-hidden="true"></i>
+                {{ education?.grade | uppercase }}
+              </p>
+              <p class="education__degree">
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                {{ education?.country | uppercase }}
               </p>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="card profilesummary__cardbody certification">
+      <div
+        class="card profilesummary__cardbody certification"
+        *ngIf="profile?.certifications?.length"
+      >
         <div class="card-body">
           <div class="row">
             <div class="col-sm-11">
@@ -441,18 +417,30 @@
               </a>
             </div>
           </div>
-          <div class="row">
+          <div class="row" *ngFor="let certification of profile?.certifications">
             <div class="col-2"></div>
             <div class="col-10">
               <p class="certification__Name">
-                {{ profile.certifications[0].name }}
-                <span class="certification__issueDate"> {{ profile.certifications[0].year }}</span>
+                {{ certification?.name }}
+                <span class="certification__issueDate">
+                  {{ certification?.month }} /  {{ certification?.year }}</span
+                >
               </p>
-              <p class="certification__mentor">Mr.Pranay sir, Mr.Ved sir</p>
+              <a
+              href="{{ APIURL + 'static/certificates/' + certification.certificate }}"
+              target="_blank"
+              [download]="certification.certificate"
+            >
+              <i class="fa fa-download" aria-hidden="true"></i>
+              {{ certification.certificate }}
+            </a>
+              <!-- <p class="certification__mentor">Mr.Pranay sir, Mr.Ved sir</p>
               <p class="certification__refrence">
                 Refrence
-                <span class="certification__recommendation">Recommendations</span>
-              </p>
+                <span class="certification__recommendation"
+                  >Recommendations</span
+                >
+              </p> -->
             </div>
           </div>
         </div>
@@ -465,19 +453,23 @@
         <div class="card-body">
           <h5 class="profile-details__card-title">Candidate profile</h5>
           <div class="card-body-text">
-            <label class="candidateprofile_stength">Profile strength- <span> 70% </span>
+            <label class="candidateprofile_stength"
+              >Profile strength- <span> 70% </span>
             </label>
           </div>
           <div class="card-body-text">
-            <label class="candidateprofile_stength">Salary strength- <span> 40% </span>
+            <label class="candidateprofile_stength"
+              >Salary strength- <span> 40% </span>
             </label>
           </div>
           <div class="card-body-text">
-            <label class="candidateprofile_stength">Social contact reach- <span> 50% </span>
+            <label class="candidateprofile_stength"
+              >Social contact reach- <span> 50% </span>
             </label>
           </div>
           <div class="card-body-text">
-            <label class="candidateprofile_stength">Skill strength- <span> 50% </span>
+            <label class="candidateprofile_stength"
+              >Skill strength- <span> 50% </span>
             </label>
           </div>
         </div>
@@ -490,11 +482,22 @@
             <p>Actively looking for opportunity :</p>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-light active">
-                <input type="radio" name="options" id="option1" autocomplete="off" checked />
+                <input
+                  type="radio"
+                  name="options"
+                  id="option1"
+                  autocomplete="off"
+                  checked
+                />
                 Yes
               </label>
               <label class="btn btn-light">
-                <input type="radio" name="options" id="option2" autocomplete="off" />No
+                <input
+                  type="radio"
+                  name="options"
+                  id="option2"
+                  autocomplete="off"
+                />No
               </label>
             </div>
           </div>
@@ -508,37 +511,66 @@
 
           <div class="row">
             <div class="col">
-          <!-- Button trigger modal -->
-          <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter">
-            Upload video
-          </button>
-          <!-- Modal -->
-          <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLongTitle">Add Video</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
-                </div>
-                <div class="modal-body">
-                  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nihil voluptatibus temporibus aspernatur
-                    doloremque eos ducimus.</p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                  <button type="button" class="btn btn-primary">Save video</button>
+              <!-- Button trigger modal -->
+              <button
+                type="button"
+                class="btn btn-light"
+                data-toggle="modal"
+                data-target="#exampleModalCenter"
+              >
+                Upload video
+              </button>
+              <!-- Modal -->
+              <div
+                class="modal fade"
+                id="exampleModalCenter"
+                tabindex="-1"
+                role="dialog"
+                aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true"
+              >
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLongTitle">
+                        Add Video
+                      </h5>
+                      <button
+                        type="button"
+                        class="close"
+                        data-dismiss="modal"
+                        aria-label="Close"
+                      >
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      <p>
+                        Lorem ipsum dolor sit amet consectetur, adipisicing
+                        elit. Nihil voluptatibus temporibus aspernatur
+                        doloremque eos ducimus.
+                      </p>
+                    </div>
+                    <div class="modal-footer">
+                      <button
+                        type="button"
+                        class="btn btn-secondary"
+                        data-dismiss="modal"
+                      >
+                        Close
+                      </button>
+                      <button type="button" class="btn btn-primary">
+                        Save video
+                      </button>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
+            <div class="col">
+              <a routerLink="/feedback">Feedback form</a>
+            </div>
           </div>
-        </div>
-          <div class="col">
-          <a routerLink="/feedback">Feedback form</a>
-        </div>
-      </div>
         </div>
       </div>
 
@@ -589,6 +621,5 @@
   <!-- row close -->
 
   <!-- <app-feedback-form></app-feedback-form> -->
-
 </div>
 <!-- container close -->

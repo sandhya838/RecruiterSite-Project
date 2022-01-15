@@ -17,7 +17,6 @@ import { response } from "express";
 })
 export class UserProfileComponent implements OnInit {
   userForm!: FormGroup;
-  allData: any;
   currentUserData = null;
   userId: string | undefined;
   dropdownSettings: IDropdownSettings = {
@@ -50,6 +49,7 @@ export class UserProfileComponent implements OnInit {
   countries = [];
   selectedCities = [];
   selectedStates = [];
+  selectedPhoneCode: string | undefined;
   constructor(
     public formBuilder: FormBuilder,
     private notifyService: NotificationService,
@@ -64,6 +64,7 @@ export class UserProfileComponent implements OnInit {
       title: ["", [Validators.required]],
       email: ["", [Validators.required, Validators.email]],
       mobileNumber: ["", [Validators.required]],
+      countryCode: [this.selectedPhoneCode, [Validators.required]],
       firstName: ["", [Validators.required, Validators.pattern(this.pattern)]],
       middleName: [""],
       lastName: ["", [Validators.required, Validators.pattern(this.pattern)]],
@@ -82,6 +83,7 @@ export class UserProfileComponent implements OnInit {
     this.userId = userData._id;
     this.userForm.patchValue(userData);
     this.getCountries();
+    this.getCurrentCountryDetails();
   }
 
   get getControl() {
@@ -90,16 +92,32 @@ export class UserProfileComponent implements OnInit {
 
   getCountries() {
     this.selectedStates = [];
+    this.selectedCities = [];
     this.configService
       .getCountries()
       .pipe(filter(Boolean))
       .subscribe((response: any) => {
-        console.log("countries", response);
         this.countries = response.countries;
       });
   }
 
+  getCurrentCountryDetails() {
+    this.configService
+      .getCurrentCountryDetails()
+      .pipe(filter(Boolean))
+      .subscribe((response: any) => {
+        this.countries.forEach((country: any) => {
+          if (country.code === response.countryCode) {
+            this.selectedPhoneCode = country.dial_code;
+            this.userForm.get("countryCode")?.setValue(this.selectedPhoneCode);
+            this.userForm.get("countryCode")?.updateValueAndValidity();
+          }
+        });
+      });
+  }
+
   onClick(formValue: any, isValid: boolean) {
+    console.log(formValue, isValid);
     if (isValid) {
       formValue.createdBy = this.userId;
       this.configService
@@ -122,7 +140,7 @@ export class UserProfileComponent implements OnInit {
   }
 
   onCountrySelect(item: any) {
-    console.log(item);
+    this.selectedCities = [];
     this.configService
       .getStates(item.code)
       .pipe(filter(Boolean))
@@ -132,7 +150,6 @@ export class UserProfileComponent implements OnInit {
   }
 
   onStateSelect(item: any, counrty: any) {
-    console.log(item,counrty);
     this.configService
       .getCities(item.state_code, counrty[0].code)
       .pipe(filter(Boolean))

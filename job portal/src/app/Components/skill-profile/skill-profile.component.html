@@ -10,7 +10,7 @@
           <div class="form-group">
             <label>Technical skills</label>
             <ng-multiselect-dropdown
-              formControlName="technical"
+              formControlName="skillTechnical"
               [placeholder]="'Select technical skill'"
               [settings]="dropdownSettings"
               [data]="technicalSkills"
@@ -19,13 +19,13 @@
             <div
               class="text-danger"
               *ngIf="
-                !userForm.controls['technical'].valid &&
-                (userForm.controls['technical'].touched ||
-                  userForm.controls['technical'].dirty)
+                !userForm.controls['skillTechnical'].valid &&
+                (userForm.controls['skillTechnical'].touched ||
+                  userForm.controls['skillTechnical'].dirty)
               "
             >
-              <div *ngIf="userForm.controls['technical'].errors">
-                <small *ngIf="userForm.controls['technical'].errors.required">
+              <div *ngIf="userForm.controls['skillTechnical'].errors">
+                <small *ngIf="userForm.controls['skillTechnical'].errors.required">
                   This field is required
                 </small>
               </div>
@@ -38,7 +38,7 @@
           <div class="form-group">
             <label>Functional skill</label>
             <ng-multiselect-dropdown
-              formControlName="functional"
+              formControlName="skillFunctional"
               [placeholder]="'Select functional skill'"
               [settings]="dropdownSettings"
               [data]="functionalSkills"
@@ -47,13 +47,13 @@
             <div
               class="text-danger"
               *ngIf="
-                !userForm.controls['functional'].valid &&
-                (userForm.controls['functional'].touched ||
-                  userForm.controls['functional'].dirty)
+                !userForm.controls['skillFunctional'].valid &&
+                (userForm.controls['skillFunctional'].touched ||
+                  userForm.controls['skillFunctional'].dirty)
               "
             >
-              <div *ngIf="userForm.controls['functional'].errors">
-                <small *ngIf="userForm.controls['functional'].errors.required">
+              <div *ngIf="userForm.controls['skillFunctional'].errors">
+                <small *ngIf="userForm.controls['skillFunctional'].errors.required">
                   This field is required
                 </small>
               </div>
@@ -66,7 +66,7 @@
           <div class="form-group">
             <label>System adminstration skill</label>
             <ng-multiselect-dropdown
-              formControlName="system"
+              formControlName="skillSysAdministration"
               [placeholder]="'Select system skill'"
               [settings]="dropdownSettings"
               [data]="technicalSkills"
@@ -75,13 +75,13 @@
             <div
               class="text-danger"
               *ngIf="
-                !userForm.controls['system'].valid &&
-                (userForm.controls['system'].touched ||
-                  userForm.controls['system'].dirty)
+                !userForm.controls['skillSysAdministration'].valid &&
+                (userForm.controls['skillSysAdministration'].touched ||
+                  userForm.controls['skillSysAdministration'].dirty)
               "
             >
-              <div *ngIf="userForm.controls['system'].errors">
-                <small *ngIf="userForm.controls['system'].errors.required">
+              <div *ngIf="userForm.controls['skillSysAdministration'].errors">
+                <small *ngIf="userForm.controls['skillSysAdministration'].errors.required">
                   This field is required
                 </small>
               </div>

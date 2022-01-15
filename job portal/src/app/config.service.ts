@@ -46,4 +46,7 @@ export class ConfigService {
       headers: new HttpHeaders({ "Content-Type": "application/json" }),
     });
   }
+  getCurrentCountryDetails() {
+    return this.http.get("http://ip-api.com/json");
+  }
 }
