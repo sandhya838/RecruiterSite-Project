@@ -4,7 +4,7 @@ var Schema = mongoose.Schema;
 
 
 var ProfileSchema = new Schema({
-  countryCode:{
+  countryCode: {
     type: String
   },
   title: {
@@ -92,21 +92,24 @@ var ProfileSchema = new Schema({
   },
 
   roleManagement: {
+    isManagement: { type: Boolean },
     management: { type: String },
     portfolio: { type: String },
     account: { type: String },
     project: { type: String },
   },
   roleTechnical: {
+    isTechnical: { type: Boolean },
     technical: { type: String },
     architect: { type: String },
     techLead: { type: String },
     developer: { type: String },
   },
   roleFunctional: {
+    isFunctional: { type: Boolean },
     functional: { type: String },
     sme: { type: String },
-    leadCon: { type: String },
+    leadConsultant: { type: String },
     consultant: { type: String },
   },
   skillSysAdministration: {

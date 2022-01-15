@@ -18,7 +18,7 @@
     <div
       class="alert alert-dismissible fade show alert alert-danger"
       role="alert"
-      *ngIf="getTotalOfFuncaional() ? true : false"
+      *ngIf="getTotalOfFuncaional()"
     >
       The addition of all sme, lead consultant and consultant is 100%.
       <button
@@ -33,7 +33,7 @@
     <div
       class="alert alert-dismissible fade show alert alert-danger"
       role="alert"
-      *ngIf="getTotalOfManagement() ? true : false"
+      *ngIf="getTotalOfManagement()"
     >
       The addition of all portfolio, account and project is 100%.
       <button
@@ -48,7 +48,7 @@
     <div
       class="alert alert-dismissible fade show alert alert-danger"
       role="alert"
-      *ngIf="getTotalOfTechnical() ? true : false"
+      *ngIf="getTotalOfTechnical()"
     >
       The addition of all architect, techLead and developer is 100%.
       <button
@@ -144,7 +144,8 @@
                 onSubFieldTotal(
                   'portfolio',
                   userForm.get('roleManagement.portfolio')!.value
-                )
+                );
+                disabledField('management')
               "
             >
               <option value="" selected disabled>portfolio</option>
@@ -184,7 +185,8 @@
                 onSubFieldTotal(
                   'account',
                   userForm.get('roleManagement.account')!.value
-                )
+                );
+                disabledField('management')
               "
             >
               <option value="" selected disabled>account</option>
@@ -224,7 +226,8 @@
                 onSubFieldTotal(
                   'project',
                   userForm.get('roleManagement.project')!.value
-                )
+                );
+                disabledField('management')
               "
             >
               <option value="" selected disabled>project</option>
@@ -299,15 +302,15 @@
             <div
               class="text-danger"
               *ngIf="
-                !userForm.get('roleTechnical.isTechnical')!.valid &&
-                (userForm.get('roleTechnical.isTechnical')!.touched ||
-                  userForm.get('roleTechnical.isTechnical')!.dirty)
+                !userForm.get('roleTechnical.technical')!.valid &&
+                (userForm.get('roleTechnical.technical')!.touched ||
+                  userForm.get('roleTechnical.technical')!.dirty)
               "
             >
-              <div *ngIf="userForm.get('roleTechnical.isTechnical')!.errors">
+              <div *ngIf="userForm.get('roleTechnical.technical')!.errors">
                 <small
                   *ngIf="
-                    userForm.get('roleTechnical.isTechnical')!.errors!.required
+                    userForm.get('roleTechnical.technical')!.errors!.required
                   "
                 >
                   This field is required
@@ -328,7 +331,8 @@
                 onSubFieldTotal(
                   'architect',
                   userForm.get('roleTechnical.architect')!.value
-                )
+                );
+                disabledField('technical')
               "
             >
               <option value="" selected disabled>architect</option>
@@ -368,7 +372,8 @@
                 onSubFieldTotal(
                   'techLead',
                   userForm.get('roleTechnical.techLead')!.value
-                )
+                );
+                disabledField('technical')
               "
             >
               <option value="" selected disabled>techLead</option>
@@ -408,7 +413,8 @@
                 onSubFieldTotal(
                   'developer',
                   userForm.get('roleTechnical.developer')!.value
-                )
+                );
+                disabledField('technical')
               "
             >
               <option value="" selected disabled>developer</option>
@@ -482,16 +488,15 @@
             <div
               class="text-danger"
               *ngIf="
-                !userForm.get('roleFunctional.isFuncational')!.valid &&
-                (userForm.get('roleFunctional.isFuncational')!.touched ||
-                  userForm.get('roleFunctional.isFuncational')!.dirty)
+                !userForm.get('roleFunctional.functional')!.valid &&
+                (userForm.get('roleFunctional.functional')!.touched ||
+                  userForm.get('roleFunctional.functional')!.dirty)
               "
             >
-              <div *ngIf="userForm.get('roleFunctional.isFuncational')!.errors">
+              <div *ngIf="userForm.get('roleFunctional.functional')!.errors">
                 <small
                   *ngIf="
-                    userForm.get('roleFunctional.isFuncational')!.errors!
-                      .required
+                    userForm.get('roleFunctional.functional')!.errors!.required
                   "
                 >
                   This field is required
@@ -512,7 +517,8 @@
                 onSubFieldTotal(
                   'sme',
                   userForm.get('roleFunctional.sme')!.value
-                )
+                );
+                disabledField('functional')
               "
             >
               <option value="" selected disabled>sme</option>
@@ -540,17 +546,18 @@
         </div>
         <div class="col-md-3" *ngIf="allFields || onlyFunctional">
           <div class="form-group">
-            <label for="leadCon">Lead consultant</label>
+            <label for="leadConsultant">Lead consultant</label>
             <select
               class="form-control"
-              name="leadCon"
-              id="leadCon"
-              formControlName="leadCon"
+              name="leadConsultant"
+              id="leadConsultant"
+              formControlName="leadConsultant"
               (change)="
                 onSubFieldTotal(
-                  'leadCon',
-                  userForm.get('roleFunctional.leadCon')!.value
-                )
+                  'leadConsultant',
+                  userForm.get('roleFunctional.leadConsultant')!.value
+                );
+                disabledField('functional')
               "
             >
               <option value="" selected disabled>lead consultant</option>
@@ -561,15 +568,18 @@
             <div
               class="text-danger"
               *ngIf="
-                !userForm.get('roleFunctional.leadCon')!.valid &&
-                (userForm.get('roleFunctional.leadCon')!.touched ||
-                  userForm.get('roleFunctional.leadCon')!.dirty)
+                !userForm.get('roleFunctional.leadConsultant')!.valid &&
+                (userForm.get('roleFunctional.leadConsultant')!.touched ||
+                  userForm.get('roleFunctional.leadConsultant')!.dirty)
               "
             >
-              <div *ngIf="userForm.get('roleFunctional.leadCon')!.errors">
+              <div
+                *ngIf="userForm.get('roleFunctional.leadConsultant')!.errors"
+              >
                 <small
                   *ngIf="
-                    userForm.get('roleFunctional.leadCon')!.errors!.required
+                    userForm.get('roleFunctional.leadConsultant')!.errors!
+                      .required
                   "
                 >
                   This field is required
@@ -590,7 +600,8 @@
                 onSubFieldTotal(
                   'consultant',
                   userForm.get('roleFunctional.consultant')!.value
-                )
+                );
+                disabledField('functional')
               "
             >
               <option value="" selected disabled>consultant</option>
@@ -633,9 +644,9 @@
         <div class="pl-1">
           <button
             class="job-btn job-btn-mini"
-            [class.disabled]="getDisabled() ? true : false"
+            [class.disabled]="disabledSubmit || getDisabled() ? true : false"
             type="submit"
-            [disabled]="getDisabled() ? true : null"
+            [disabled]="disabledSubmit || getDisabled() ? true : null"
           >
             Next
           </button>
