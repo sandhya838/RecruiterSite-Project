@@ -221,7 +221,7 @@ uploadFile = (file, callBack) => {
 
 },
     writeCertificate = (file, callBack) => {
-        const fileName = file.fieldname + '-certificate-' + Date.now() + '.' + file.mimetype.split('/').pop();
+        const fileName = file.fieldname + '-' + Date.now() + '.' + file.mimetype.split('/').pop();
         fs.rename(file.path, file.destination + fileName, (err) => {
             if (err) {
                 callBack(false, '');
