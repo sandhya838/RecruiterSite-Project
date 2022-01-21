@@ -1,52 +1,47 @@
-
-.company-details{
-    &__top-right{
+.company-details {
+  &__header {
+    position: relative;
+    text-align: center;
+    img {
+      width: 100%;
+      height: 130px;
+    }
+    &__top-right {
       position: absolute;
       top: 8px;
       right: 16px;
-      color: var(--black);
-    }
-    &__list-item{
-     list-style: none;
-     margin-top: 12px;
+      text-align: start;
+      mix-blend-mode: multiply;
     }
   }
-  img{
-    height: 155px;
-    width: 100%;
+  &__list-item {
+    list-style: none;
+    margin-top: 12px;
   }
-  input{
-    width: 110%;
-height: auto;
-  }
-  .form-group  {
-    font-size: 14px;
-    font-family: roboto;
 }
-.empnumber,.Company__turnover{
-  
-  
-    height: 44px;
-    border-radius: 7px;
 
+.empnumber,
+.Company__turnover {
+  height: 44px;
+  border-radius: 7px;
 }
 
 label {
   display: inline-block;
   margin-bottom: 0.5rem;
-  font-family: 'Roboto';
+  font-family: "Roboto";
   margin-top: 9px;
   font-size: 16px;
 }
 .right {
   margin-right: 5px;
 }
-.multiselect-dropdown{
+.multiselect-dropdown {
   border-radius: 7px;
   height: 44px;
-
 }
-.pl-1, .px-1 {
+.pl-1,
+.px-1 {
   padding-left: 72.25rem !important;
 }
 @media all and (max-width: 767px) {
@@ -54,13 +49,5 @@ label {
     padding: 11px 20px 13px;
     border-radius: 0;
     margin-left: -958px;
-  
-}
   }
-
-
-
-
-
-
-
+}

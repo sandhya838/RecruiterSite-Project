@@ -18,6 +18,7 @@ module.exports = (app) => {
   app.post('/v1/feedback', feedback.create);
   app.get('/v1/countries', countryStateCity.findCountries);
   app.get('/v1/states/:countryCode', countryStateCity.findStateByCountry);
+  app.get('/v1/cities/:countryCode', countryStateCity.findCityByCountry);
   app.get('/v1/cities/:stateCode/:countryCode', countryStateCity.findCityByCountryAndState);
 
 

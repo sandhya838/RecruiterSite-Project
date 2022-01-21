@@ -21,6 +21,17 @@ module.exports = {
             }
         })
     },
+    findCityByCountry:(req, res)=>{
+        fs.readFile('./config/cities.json',(err, data)=>{
+            console.log('err',err);
+            if (err) {
+                res.status(500).send({ status: 400, message: 'Oops! Not able to get state. Please try after sometimes', cities: {} });
+            } else {
+                const cities = JSON.parse(data).filter(state=>state.country_code === req.params.countryCode)
+                res.status(200).send({ status: 200, message: 'state listed successfully.', cities: cities });
+            }
+        })
+    },
     findCityByCountryAndState:(req, res)=>{
         fs.readFile('./config/cities.json',(err, data)=>{
             if (err) {

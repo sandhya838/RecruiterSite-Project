@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { NotificationService } from "src/app/notification.service";
 import { UserprofileService } from "src/app/services/userprofile.service";
 
@@ -24,14 +24,48 @@ export class FeedbackFormComponent implements OnInit {
     private notifyService: NotificationService,
     private router: Router,
     private userprofileService: UserprofileService,
-    private fb: FormBuilder
+    private activeRoute: ActivatedRoute
   ) {
     this.ratingnum3 = 0;
   }
 
+  getSkillsAndRating() {
+    console.log("this.userProfile", this.userProfile);
+    if (this.userProfile) {
+      this.userProfile?.skills?.primary.forEach(
+        (element: any, index: number) => {
+          console.log("element", element, index);
+        }
+      );
+    }
+    return this.formBuilder.group({
+      degree: ["", [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/)]],
+      institute: [
+        "",
+        [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/)],
+      ],
+      country: ["", [Validators.required, Validators.pattern(/^[a-zA-Z ]*$/)]],
+      grade: ["", [Validators.required]],
+      yearofPassing: this.formBuilder.group({
+        month: ["", [Validators.required]],
+        year: ["", [Validators.required]],
+      }),
+    });
+  }
+
   ngOnInit(): void {
-    const userProifleData = JSON.parse(sessionStorage.getItem("user") as any);
+    this.userprofileService
+      .getUserDetails(this.router.url.split('/').pop() as string)
+      .subscribe((result) => {
+        if (result.profile) {
+          this.userProfile = result.profile;
+          console.log('result.profile',result.profile);
+          this.fullName =
+            this.userProfile.firstName + " " + this.userProfile.lastName;
+        }
+      });
     this.feedBackForm = this.formBuilder.group({
+      skillsAndRating: this.getSkillsAndRating(),
       primarySkillRating1: ["", [Validators.required]],
       primarySkillRating2: ["", [Validators.required]],
       primarySkillRating3: ["", [Validators.required]],
@@ -48,7 +82,7 @@ export class FeedbackFormComponent implements OnInit {
       motivationSkillRating: ["", [Validators.required]],
       flexibilitySkillRating: ["", [Validators.required]],
       professionalSkillRating: ["", [Validators.required]],
-      candidateName: ["", [Validators.required]],
+      candidateName: ['', [Validators.required]],
       interviewerName: ["", [Validators.required]],
       candidateID: ["", [Validators.required]],
       priamrySkillComments: [""],
@@ -66,29 +100,7 @@ export class FeedbackFormComponent implements OnInit {
       technical: [""],
       functional: [""],
     });
-    this.profile = JSON.parse(
-      localStorage.getItem("rememberMe") === "true"
-        ? localStorage.getItem("user")
-        : (sessionStorage.getItem("user") as any)
-    );
-
-    this.feedBackForm.patchValue(this.profile);
-    console.log("bindedData", this.profile);
-
-    const userData = JSON.parse(
-      localStorage.getItem("rememberMe") === "true"
-        ? localStorage.getItem("user")
-        : (sessionStorage.getItem("user") as any)
-    );
-    this.userprofileService
-      .getUserDetails(userData?._id)
-      .subscribe((result) => {
-        if (result.profile.length) {
-          this.userProfile = result.profile;
-        }
-        console.log(result);
-        this.fullName = this.profile.firstName + " " + this.profile.lastName;
-      });
+    this.feedBackForm.get('candidateName')?.setValue(this.fullName);
   }
 
   makeActiveTill(event: any) {

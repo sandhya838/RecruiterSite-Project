@@ -103,7 +103,7 @@ const routes: Routes = [
         canActivate:[OrgGuard],
       },
       {
-        path:"feedback",
+        path:"feedback/:id",
         component: FeedbackFormComponent,
       },
       {

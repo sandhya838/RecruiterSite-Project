@@ -9,7 +9,7 @@ var Organizationschema = new Schema({
     },
     role: {
         type: String
-      },
+    },
     password: {
         type: String
     },
@@ -17,6 +17,9 @@ var Organizationschema = new Schema({
         type: String
     },
     contactNumber: {
+        type: String
+    },
+    countryCode: {
         type: String
     },
     name: {
@@ -70,10 +73,10 @@ var Organizationschema = new Schema({
     url: {
         type: String
     },
-    location:{
+    location: {
         type: []
     },
-    turnOver:{
+    turnOver: {
         type: String
     },
 

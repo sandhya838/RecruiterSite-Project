@@ -16,7 +16,7 @@
   <div class="card">
     <div class="card company-details__header">
       <img src="{{ APIURL + 'static/logo/' + userData?.logo }}" />
-      <div class="company-details__top-right">
+      <div class="company-details__header__top-right">
         <ul class="company-details__list-style">
           <li class="company-details__list-item">
             <i class="fa fa-building-o" aria-hidden="true"></i>
@@ -45,17 +45,13 @@
         novalidate
       >
         <div class="row">
-          <div class="col">
-            <div class="input-group mb-3">
-              <div class="input-group-prepend">
-                <Label>Number of employee </Label>
-              </div>
+          <div class="col-md">
+            <div class="form-group">
+              <label>Number of employee </label>
               <input
                 type="text"
-                class="empnumber"
-                aria-label="Default"
+                class="form-control"
                 formControlName="numberOfEmployees"
-                aria-describedby="inputGroup-sizing-default"
               />
             </div>
             <div
@@ -76,29 +72,25 @@
             </div>
           </div>
 
-          <div class="col">
-            <div class="input-group w-100">
-              <div class="input-group-prepend">
-                <Label>Company turnover(million) </Label>
-              </div>
+          <div class="col-md">
+            <div class="form-group">
+              <label>Company turnover(million) </label>
               <input
                 type="text"
-                class="Company__turnover"
-                formControlName="turnover"
-                aria-label="Default"
-                aria-describedby="inputGroup-sizing-default"
+                class="form-control"
+                formControlName="turnOver"
               />
             </div>
             <div
               class="text-danger"
               *ngIf="
-                !userForm.get('turnover')!.valid &&
-                (userForm.get('turnover')!.touched ||
-                  userForm.get('turnover')!.dirty)
+                !userForm.get('turnOver')!.valid &&
+                (userForm.get('turnOver')!.touched ||
+                  userForm.get('turnOver')!.dirty)
               "
             >
-              <div *ngIf="userForm.get('turnover')!.errors">
-                <small *ngIf="userForm.get('turnover')!.errors!.required">
+              <div *ngIf="userForm.get('turnOver')!.errors">
+                <small *ngIf="userForm.get('turnOver')!.errors!.required">
                   This field is required
                 </small>
               </div>
@@ -107,14 +99,16 @@
         </div>
 
         <div class="row">
-          <div class="col">
+          <div class="col-md">
             <div class="form-group">
               <label>Country of operation</label>
               <ng-multiselect-dropdown
                 formControlName="country"
                 [placeholder]="'Select country'"
                 [settings]="dropdownSettings"
-                [data]="country"
+                [data]="countries"
+                (onSelect)="onCountrySelect($event)"
+                (onDeSelect)="onCountryDeSelect($event)"
               >
               </ng-multiselect-dropdown>
               <div
@@ -133,15 +127,14 @@
               </div>
             </div>
           </div>
-
-          <div class="col">
+          <div class="col-md">
             <div class="form-group">
               <label>Location of operation</label>
               <ng-multiselect-dropdown
                 formControlName="location"
                 [placeholder]="'Select location'"
-                [settings]="dropdownSettings"
-                [data]="location"
+                [settings]="cityDropdownSettings"
+                [data]="selectedCities"
               >
               </ng-multiselect-dropdown>
               <div
