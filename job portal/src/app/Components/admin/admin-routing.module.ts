@@ -93,7 +93,7 @@ const routes: Routes = [
         canActivate: [OrgGuard],
       },
       {
-        path:"job-list",
+        path:"posted-jobs",
         component: JobListingComponent,
         canActivate:[OrgGuard],
       },

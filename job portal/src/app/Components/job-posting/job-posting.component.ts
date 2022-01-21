@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators } from "@angular/forms";
 import { Router } from "@angular/router";
 import { NotificationService } from "src/app/notification.service";
 import { JobsService } from "src/app/services/jobs.service";
-import { Editor } from 'ngx-editor';
+import { Editor } from "ngx-editor";
 
 @Component({
   selector: "app-job-posting",
@@ -11,9 +11,9 @@ import { Editor } from 'ngx-editor';
   styleUrls: ["./job-posting.component.scss"],
 })
 export class JobPostingComponent implements OnInit {
-  editor1= new Editor();
-  editor= new Editor();
-  html: '' | undefined;
+  editor1 = new Editor();
+  editor = new Editor();
+  html: "" | undefined;
   userForm!: FormGroup;
   allData: any;
   alert: boolean = false;
@@ -39,7 +39,6 @@ export class JobPostingComponent implements OnInit {
   // APIURL= CONSTANTS.BASEURL;
 
   ngOnInit(): void {
-  
     this.userForm = this.formBuilder.group({
       organizationName: ["", [Validators.required]],
       description: ["", [Validators.required]],
@@ -48,14 +47,14 @@ export class JobPostingComponent implements OnInit {
         permanant: [true, [Validators.required]],
         freelance: [false],
       }),
-     skills: this.formBuilder.group({
+      skills: this.formBuilder.group({
         primary: [[], [Validators.required]],
-       secondary: [[], [Validators.required]],
-       }),
+        secondary: [[], [Validators.required]],
+      }),
       experiance: ["", [Validators.required]],
       role: ["", [Validators.required]],
       location: ["", [Validators.required]],
-     
+
       roleDescription: ["", [Validators.required]],
       candidateProfile: ["", [Validators.required]],
       roleProfile: this.formBuilder.group({
@@ -153,7 +152,7 @@ export class JobPostingComponent implements OnInit {
         (data: any) => {
           if (data.status === 200) {
             this.notifyService.showSuccess(data.message);
-            this.router.navigateByUrl('/job-list');
+            this.router.navigateByUrl("/posted-jobs");
             this.userForm.reset();
           } else {
             this.notifyService.showError(data.message);
@@ -169,7 +168,69 @@ export class JobPostingComponent implements OnInit {
     }
   }
 
-  closeAlert() {
-    this.alert = false;
+  getTotalofFields() {
+    this.userForm.get("roleProfile.technical")?.enable();
+    this.userForm.get("roleProfile.functional")?.enable();
+    this.userForm.get("roleProfile.management")?.enable();
+    if (Number(this.userForm.get("roleProfile.management")!.value) == 100) {
+      this.userForm.get("roleProfile.technical")?.disable();
+      this.userForm.get("roleProfile.functional")?.disable();
+      this.userForm.get("roleProfile.technical")?.setValue(0);
+      this.userForm.get("roleProfile.functional")?.setValue(0);
+    } else if (
+      Number(this.userForm.get("roleProfile.functional")!.value) == 100
+    ) {
+      this.userForm.get("roleProfile.technical")?.setValue(0);
+      this.userForm.get("roleProfile.management")?.setValue(0);
+      this.userForm.get("roleProfile.technical")?.disable();
+      this.userForm.get("roleProfile.management")?.disable();
+    } else if (
+      Number(this.userForm.get("roleProfile.technical")!.value) == 100
+    ) {
+      this.userForm.get("roleProfile.functional")?.setValue(0);
+      this.userForm.get("roleProfile.management")?.setValue(0);
+      this.userForm.get("roleProfile.functional")?.disable();
+      this.userForm.get("roleProfile.management")?.disable();
+    } else if (
+      Number(this.userForm.get("roleProfile.management")!.value) +
+        Number(this.userForm.get("roleProfile.technical")!.value) ==
+      100
+    ) {
+      this.userForm.get("roleProfile.functional")?.setValue(0);
+      this.userForm.get("roleProfile.functional")?.disable();
+    } else if (
+      Number(this.userForm.get("roleProfile.management")!.value) +
+        Number(this.userForm.get("roleProfile.functional")!.value) ==
+      100
+    ) {
+      this.userForm.get("roleProfile.technical")?.setValue(0);
+      this.userForm.get("roleProfile.technical")?.disable();
+    } else if (
+      Number(this.userForm.get("roleProfile.technical")!.value) +
+        Number(this.userForm.get("roleProfile.functional")!.value) ==
+      100
+    ) {
+      this.userForm.get("roleProfile.management")?.setValue(0);
+      this.userForm.get("roleProfile.management")?.disable();
+    }
+
+    this.userForm.get("roleProfile")?.updateValueAndValidity();
+  }
+
+  getTotalPercentage() {
+    if (
+      Number(this.userForm.get("roleProfile.management")!.value) +
+        Number(this.userForm.get("roleProfile.technical")!.value) +
+        Number(this.userForm.get("roleProfile.functional")!.value) <
+        100 ||
+      Number(this.userForm.get("roleProfile.management")!.value) +
+        Number(this.userForm.get("roleProfile.technical")!.value) +
+        Number(this.userForm.get("roleProfile.functional")!.value) >
+        100
+    ) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }

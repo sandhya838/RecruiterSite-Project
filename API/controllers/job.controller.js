@@ -2,21 +2,32 @@ const Jobs = require('../models/job');
 
 module.exports = {
     create: (req, res) => {
+        findLastCountOfJobs(count => {
+            if (count) {
+                req.jobId = count;
+                const data = { ...req.body, jobId: count };
+                Jobs.create(data, (err, result) => {
+                    if (err) {
+                        res.status(500).send({ status: 400, message: 'Oops! Not able to create jobs. Please try after sometimes', jobs: {} });
+                    } else {
+                        res.status(200).send({ status: 200, message: 'jobs created successfully.', job: {} });
+                    }
+                });
 
-        Jobs.create(req.body, (err, result) => {
-            if (err) {
-                res.status(500).send({ status: 400, message: 'Oops! Not able to create jobs. Please try after sometimes', jobs: {} });
-            } else {
-                res.status(200).send({ status: 200, message: 'jobs created successfully.', job: {} });
             }
+            else {
+                res.status(500).send({ status: 400, message: 'Oops! Not able to create jobs. Please try after sometimes', jobs: {} });
+            }
+
         });
+
     },
 
     // Retrieve and return all jobss from the database.
 
     findAllJobs: (req, res) => {
         Jobs.
-            find({ orgnizationId: req.params.jobId }, (err, result) => {
+            find({ orgnizationId: req.params.jobId }).populate('createdBy').populate('createdBy').sort({ jobId: -1 }).exec((err, result) => {
                 if (err) {
                     res.status(500).send({ status: 500, message: 'Oops! Not able to get all jobs. Please try after sometimes', jobs: result });
                 } else {
@@ -28,12 +39,12 @@ module.exports = {
     findAll: (req, res) => {
         Jobs.
             find({}).
-            populate('createdBy').
+            populate('createdBy').sort({ jobId: -1 }).
             exec((err, result) => {
                 if (err) {
-                    res.status(500).send({ message: 'Oops! Not able to get all jobs. Please try after sometimes', jobss: result });
+                    res.status(500).send({ message: 'Oops! Not able to get all jobs. Please try after sometimes', jobs: result });
                 } else {
-                    res.status(200).send({ message: 'jobss got successfully listed.', jobss: result });
+                    res.status(200).send({ message: 'jobss got successfully listed.', jobs: result });
                 }
             });
     },
@@ -57,7 +68,7 @@ module.exports = {
     update: (req, res) => {
         Jobs.findOneAndUpdate({ _id: req.params.jobId }, { $set: req.body }, { new: true }, (err, result) => {
             if (err) {
-                res.status(500).send({ message: 'Oops! Not able to update jobs. Please try after sometimes', jobss: result });
+                res.status(500).send({ message: 'Oops! Not able to update jobs. Please try after sometimes', jobs: result });
             } else {
                 res.status(200).send({ message: 'jobs updated successfully.', jobs: result });
             }
@@ -72,6 +83,25 @@ module.exports = {
                 res.status(200).send({ message: 'jobs deleted successfully.', jobs: result });
             }
         });
-    }
+    },
+    makeJobActiveOrInActive: (req, res) => {
+        Jobs.findOneAndUpdate({ _id: req.params.jobId }, { $set: req.body }, { new: true }, (err, result) => {
+            if (err) {
+                res.status(500).send({ message: 'Oops! Not able to update jobs. Please try after sometimes', jobs: result });
+            } else {
+                res.status(200).send({ message: 'jobs updated successfully.', jobs: result });
+            }
+        });
+    },
+}
+
+
+findLastCountOfJobs = (callBack) => {
+    Jobs.
+        find({}, (err, result) => {
+            if (result) {
+                callBack(result.length + 1)
+            }
+        })
 }
 

@@ -45,6 +45,7 @@ module.exports = (app) => {
   app.get('/v1/job/:jobId', auth.authToken, job.findOne);
   app.delete('/v1/job/:jobId', auth.authToken, job.delete);
   app.put('/v1/job/:jobId', auth.authToken, job.update);
+  app.put('/v1/makeJobActiveOrInActive/:jobId', auth.authToken, job.makeJobActiveOrInActive);
   app.post('/v1/recomandedJobs', auth.authToken, profile.recomandedJobs);
 
 

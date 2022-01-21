@@ -29,6 +29,7 @@ import { JobListingComponent } from "./Components/job-listing/job-listing.compon
 import { JobViewComponent } from './Components/job-view/job-view.component';
 import { NgxEditorModule } from "ngx-editor";
 import { FeedbackFormComponent } from './Components/feedback-form/feedback-form.component';
+import { MomentModule } from 'angular2-moment';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { FeedbackFormComponent } from './Components/feedback-form/feedback-form.
     QRCodeModule,
     NgbModule,
     NgxEditorModule,
-    NgxStarRatingModule
+    NgxStarRatingModule,
+    MomentModule
   ],
   providers: [
     {

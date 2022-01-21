@@ -1,17 +1,32 @@
 <div class="jobposting">
   <div class="d-flex justify-content-between align-items-center">
-    <h2 class="profile-details__heading">Job view </h2>
+    <h2 class="profile-details__heading">Post job</h2>
     <nav aria-label="breadcrumb">
       <ol class="breadcrumb bg-white">
         <li class="breadcrumb-item">
           <a [routerLink]="'/dashboard'">Dashboard</a>
         </li>
-        <li class="breadcrumb-item active" aria-current="page">Job view</li>
+        <li class="breadcrumb-item active" aria-current="page">Post job</li>
       </ol>
     </nav>
   </div>
   <div class="card">
     <div class="card-body">
+      <div
+        class="alert alert-dismissible fade show alert alert-danger"
+        role="alert"
+        *ngIf="getTotalPercentage() ? true : false"
+      >
+        The addition of all management, technical and functional is 100%.
+        <button
+          type="button"
+          class="close"
+          data-dismiss="alert"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
       <form
         class="jobposting__form"
         [formGroup]="userForm"
@@ -210,10 +225,10 @@
             </div>
           </div>
         </div>
-        
+
         <div class="row" formGroupName="skills">
           <div class="col">
-            <div class="form-group" >
+            <div class="form-group">
               <label>Primary skills</label>
               <ng-multiselect-dropdown
                 formControlName="primary"
@@ -231,7 +246,9 @@
                 "
               >
                 <div *ngIf="userForm.get('skills.primary')!.errors">
-                  <small *ngIf="userForm.get('skills.primary')!.errors!.required">
+                  <small
+                    *ngIf="userForm.get('skills.primary')!.errors!.required"
+                  >
                     This field is required
                   </small>
                 </div>
@@ -257,7 +274,9 @@
                 "
               >
                 <div *ngIf="userForm.get('skills.secondary')!.errors">
-                  <small *ngIf="userForm.get('skills.secondary')!.errors!.required">
+                  <small
+                    *ngIf="userForm.get('skills.secondary')!.errors!.required"
+                  >
                     This field is required
                   </small>
                 </div>
@@ -272,7 +291,6 @@
               <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
               <ngx-editor
                 [editor]="editor"
-                [ngModel]="html"
                 [disabled]="false"
                 [placeholder]="'Type here...'"
                 formControlName="roleDescription"
@@ -298,12 +316,12 @@
         </div>
         <div class="row">
           <div class="col">
-            <label>Desired Candidate Profile</label><span class="text-danger">*</span>
+            <label>Desired Candidate Profile</label
+            ><span class="text-danger">*</span>
             <div class="NgxEditor__Wrapper candidate-profile-editor">
               <ngx-editor-menu [editor]="editor1"> </ngx-editor-menu>
               <ngx-editor
                 [editor]="editor1"
-                
                 [disabled]="false"
                 [placeholder]="'Type here...'"
                 formControlName="candidateProfile"
@@ -363,7 +381,7 @@
                 formControlName="location"
                 [placeholder]="'Select location '"
                 [settings]="dropdownSettings"
-                [data]="location"
+                [data]="user?.location"
               >
               </ng-multiselect-dropdown>
               <div
@@ -383,22 +401,27 @@
             </div>
           </div>
         </div>
-        <label>Role Profile</label>
+        <label>Role Profile ( in % )</label>
         <div class="row" formGroupName="roleProfile">
           <div class="col-4">
             <label>Management</label>
-            <select class="form-control" formControlName="management">
+            <select
+              class="form-control"
+              formControlName="management"
+              (change)="getTotalofFields()"
+            >
               <option selected disabled value="">Percentage</option>
-              <option>10%</option>
-              <option>20%</option>
-              <option>30%</option>
-              <option>40%</option>
-              <option>50%</option>
-              <option>60%</option>
-              <option>70%</option>
-              <option>80%</option>
-              <option>90%</option>
-              <option>100%</option>
+              <option>0</option>
+              <option>10</option>
+              <option>20</option>
+              <option>30</option>
+              <option>40</option>
+              <option>50</option>
+              <option>60</option>
+              <option>70</option>
+              <option>80</option>
+              <option>90</option>
+              <option>100</option>
             </select>
             <div
               class="text-danger"
@@ -421,18 +444,23 @@
           </div>
           <div class="col-4">
             <label>Technical</label>
-            <select class="form-control" formControlName="technical">
+            <select
+              class="form-control"
+              formControlName="technical"
+              (change)="getTotalofFields()"
+            >
               <option selected disabled value="">Percentage</option>
-              <option>10%</option>
-              <option>20%</option>
-              <option>30%</option>
-              <option>40%</option>
-              <option>50%</option>
-              <option>60%</option>
-              <option>70%</option>
-              <option>80%</option>
-              <option>90%</option>
-              <option>100%</option>
+              <option>0</option>
+              <option>10</option>
+              <option>20</option>
+              <option>30</option>
+              <option>40</option>
+              <option>50</option>
+              <option>60</option>
+              <option>70</option>
+              <option>80</option>
+              <option>90</option>
+              <option>100</option>
             </select>
             <div
               class="text-danger"
@@ -455,18 +483,23 @@
           </div>
           <div class="col-4">
             <label>Functional</label>
-            <select class="form-control" formControlName="functional">
+            <select
+              class="form-control"
+              formControlName="functional"
+              (change)="getTotalofFields()"
+            >
               <option selected disabled value="">Percentage</option>
-              <option>10%</option>
-              <option>20%</option>
-              <option>30%</option>
-              <option>40%</option>
-              <option>50%</option>
-              <option>60%</option>
-              <option>70%</option>
-              <option>80%</option>
-              <option>90%</option>
-              <option>100%</option>
+              <option>0</option>
+              <option>10</option>
+              <option>20</option>
+              <option>30</option>
+              <option>40</option>
+              <option>50</option>
+              <option>60</option>
+              <option>70</option>
+              <option>80</option>
+              <option>90</option>
+              <option>100</option>
             </select>
             <div
               class="text-danger"
@@ -491,7 +524,13 @@
         <hr />
         <div class="user-profile__action">
           <div class="pl-1">
-            <button class="job-btn job-btn-mini" type="submit">Submit</button>
+            <button
+              class="job-btn job-btn-mini"
+              type="submit"
+              [disabled]="getTotalPercentage() ? true : null"
+            >
+              Submit
+            </button>
           </div>
         </div>
       </form>
