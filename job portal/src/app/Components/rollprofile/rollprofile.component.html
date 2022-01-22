@@ -112,24 +112,6 @@
                 </small>
               </div>
             </div>
-            <div
-              class="text-danger"
-              *ngIf="
-                !userForm.get('roleManagement.management')!.valid &&
-                (userForm.get('roleManagement.management')!.touched ||
-                  userForm.get('roleManagement.management')!.dirty)
-              "
-            >
-              <div *ngIf="userForm.get('roleManagement.management')!.errors">
-                <small
-                  *ngIf="
-                    userForm.get('roleManagement.management')!.errors!.required
-                  "
-                >
-                  This field is required
-                </small>
-              </div>
-            </div>
           </div>
         </div>
         <div class="col-md-3" *ngIf="allFields || onlyManagement">
@@ -299,24 +281,6 @@
                 </small>
               </div>
             </div>
-            <div
-              class="text-danger"
-              *ngIf="
-                !userForm.get('roleTechnical.technical')!.valid &&
-                (userForm.get('roleTechnical.technical')!.touched ||
-                  userForm.get('roleTechnical.technical')!.dirty)
-              "
-            >
-              <div *ngIf="userForm.get('roleTechnical.technical')!.errors">
-                <small
-                  *ngIf="
-                    userForm.get('roleTechnical.technical')!.errors!.required
-                  "
-                >
-                  This field is required
-                </small>
-              </div>
-            </div>
           </div>
         </div>
         <div class="col-md-3" *ngIf="allFields || onlyTechnical">
@@ -467,24 +431,6 @@
                 {{ item }} %
               </option>
             </select>
-            <div
-              class="text-danger"
-              *ngIf="
-                !userForm.get('roleFunctional.functional')!.valid &&
-                (userForm.get('roleFunctional.functional')!.touched ||
-                  userForm.get('roleFunctional.functional')!.dirty)
-              "
-            >
-              <div *ngIf="userForm.get('roleFunctional.functional')!.errors">
-                <small
-                  *ngIf="
-                    userForm.get('roleFunctional.functional')!.errors!.required
-                  "
-                >
-                  This field is required
-                </small>
-              </div>
-            </div>
             <div
               class="text-danger"
               *ngIf="

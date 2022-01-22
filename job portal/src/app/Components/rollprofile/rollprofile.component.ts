@@ -28,7 +28,7 @@ export class RollprofileComponent implements OnInit {
     this.userForm = this.formBuilder.group({
       roleManagement: this.formBuilder.group({
         isManagement: ["", Validators.required],
-        management: [""],
+        management: ["", Validators.required],
         portfolio: [""],
         account: [""],
         project: [""],
@@ -36,7 +36,7 @@ export class RollprofileComponent implements OnInit {
 
       roleTechnical: this.formBuilder.group({
         isTechnical: ["", Validators.required],
-        technical: [""],
+        technical: ["", Validators.required],
         architect: [""],
         techLead: [""],
         developer: [""],
@@ -44,7 +44,7 @@ export class RollprofileComponent implements OnInit {
 
       roleFunctional: this.formBuilder.group({
         isFuncational: ["", Validators.required],
-        functional: [""],
+        functional: ["", Validators.required],
         sme: [""],
         leadConsultant: [""],
         consultant: [""],
@@ -299,6 +299,7 @@ export class RollprofileComponent implements OnInit {
     }
 
     if (type === "technical") {
+      console.log('saddasfdsf');
       this.userForm.get("roleTechnical.isTechnical")?.setValue(true);
       if (value === "100") {
         this.userForm.get("roleManagement")?.disable();
@@ -351,38 +352,44 @@ export class RollprofileComponent implements OnInit {
     this.onlyTechnical = false;
     this.onlyFunctional = false;
     this.allFields = false;
-    if (Number(this.userForm.get("roleManagement.management")!.value) == 100) {
+    if (Number(this.userForm.get("roleManagement.management")!.value) >= 100) {
       this.onlyManagement = true;
       this.allFields = false;
     } else if (
-      Number(this.userForm.get("roleFunctional.functional")!.value) == 100
+      Number(this.userForm.get("roleFunctional.functional")!.value) >= 100
     ) {
       this.onlyFunctional = true;
       this.allFields = false;
     } else if (
-      Number(this.userForm.get("roleTechnical.technical")!.value) == 100
+      Number(this.userForm.get("roleTechnical.technical")!.value) >= 100
     ) {
       this.onlyTechnical = true;
       this.allFields = false;
     } else if (
       Number(this.userForm.get("roleManagement.management")!.value) +
-        Number(this.userForm.get("roleTechnical.technical")!.value) ==
+        Number(this.userForm.get("roleTechnical.technical")!.value) >=
       100
     ) {
+      this.userForm.get("roleFunctional.functional")?.setValue(0);
+      this.userForm.get("roleFunctional.functional")?.disable();
       this.onlyManagement = true;
       this.onlyTechnical = true;
     } else if (
       Number(this.userForm.get("roleManagement.management")!.value) +
-        Number(this.userForm.get("roleFunctional.functional")!.value) ==
+        Number(this.userForm.get("roleFunctional.functional")!.value) >=
       100
     ) {
+      this.userForm.get("roleTechnical.technical")?.setValue(0);
+      this.userForm.get("roleTechnical.technical")?.disable();
       this.onlyManagement = true;
       this.onlyFunctional = true;
     } else if (
       Number(this.userForm.get("roleTechnical.technical")!.value) +
-        Number(this.userForm.get("roleFunctional.functional")!.value) ==
+        Number(this.userForm.get("roleFunctional.functional")!.value) >=
       100
     ) {
+      this.userForm.get("roleManagement.management")?.setValue(0);
+      this.userForm.get("roleManagement.management")?.disable();
       this.onlyTechnical = true;
       this.onlyFunctional = true;
     } else if (
@@ -526,7 +533,6 @@ export class RollprofileComponent implements OnInit {
       ) {
         this.disabledSubmit = null;
         (formValue.createdBy = this.userId),
-          console.log("finalData", formValue);
         this.configService
           .updateUser(this.userId, formValue)
           .subscribe((data: any) => {

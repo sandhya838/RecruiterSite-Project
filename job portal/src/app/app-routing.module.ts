@@ -31,15 +31,10 @@ const routes: Routes = [
     loadChildren: () =>
       import("./Components/organization-sign-up/organization-sign-up.module").then((m) => m.OrganizationSignUpModule),
   },
-  // { path: "orglogin", component: OrganizationSignInComponent },
-  // {
-  //   path: "orgsign-up",
-  //   loadChildren: () =>
-  //     import("./Components/organization-sign-up").then((m) => m.SignUpModule),
-  // },
+ 
   { path: "OrganizationSignUpComponent", component: OrganizationSignUpComponent },
   { path: "signUp", component: SignUpComponent },
-  // {path:"priSkill",component:PrimarySkillComponent, canActivate:[AuthGuard]}
+  
   { path: "**", pathMatch: "full", component: PageNotFoundComponent },
   
 ];

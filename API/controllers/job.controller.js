@@ -93,6 +93,23 @@ module.exports = {
             }
         });
     },
+    searchJobs: (req, res) => {
+        const regex = new RegExp(["^", req.body.search, "$"].join(""), "i");
+        Jobs.find({
+            $or: [
+                { 'skills.primary.name': regex },
+                { 'skills.secondary.name': regex }
+            ]
+        }).populate('createdBy').
+            exec((err, result) => {
+                if (err) {
+                    res.status(500).send({ message: 'Oops! Not able to find jobs. Please try after sometimes', jobs: [] });
+                } else {
+                    res.status(200).send({ message: 'jobs found successfully.', jobs: result });
+                }
+            })
+
+    },
 }
 
 

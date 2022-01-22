@@ -26,4 +26,7 @@ export class InnerHeaderComponent implements OnInit {
     localStorage.clear();
     this.router.navigate([""], { replaceUrl: true });
   }
+  makeActive(url: string) {
+    return this.router.url.split("/").pop() === url.split("/").pop();
+  }
 }

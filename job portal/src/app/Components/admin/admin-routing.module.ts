@@ -21,6 +21,7 @@ import { CommonGuard } from "src/app/helper/guard/common-guard/common.guard";
 import { JobViewComponent } from "../job-view/job-view.component";
 import { FeedbackFormComponent } from "../feedback-form/feedback-form.component";
 import { NgxEditorModule } from "ngx-editor";
+import { SearchComponent } from "./search/search.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
@@ -67,7 +68,8 @@ const routes: Routes = [
         path: "certificate",
         component: CertificationComponent,
         canActivate: [AuthGuard],
-      }, {
+      },
+      {
         path: "myProfile",
         component: MyProfileComponent,
         canActivate: [AuthGuard],
@@ -93,17 +95,17 @@ const routes: Routes = [
         canActivate: [OrgGuard],
       },
       {
-        path:"posted-jobs",
+        path: "posted-jobs",
         component: JobListingComponent,
-        canActivate:[OrgGuard],
+        canActivate: [OrgGuard],
       },
       {
-        path:"job-details/:job_id",
+        path: "job-details/:job_id",
         component: JobViewComponent,
-        canActivate:[OrgGuard],
+        canActivate: [OrgGuard],
       },
       {
-        path:"feedback/:id",
+        path: "feedback/:id",
         component: FeedbackFormComponent,
       },
       {
@@ -122,12 +124,16 @@ const routes: Routes = [
             (m) => m.CreateProfileModule
           ),
       },
+      {
+        path: "search",
+        component: SearchComponent,
+      },
     ],
   },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes),NgxEditorModule],
+  imports: [RouterModule.forChild(routes), NgxEditorModule],
   exports: [RouterModule],
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {}

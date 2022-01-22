@@ -46,4 +46,10 @@ export class JobsService {
       headers: header,
     });
   }
+  searchJobs(data: any) {
+    const header = this._getHeaders();
+    return this.http.post(CONSTANTS.SEARCHJOBS, data, {
+      headers: header,
+    });
+  }
 }
