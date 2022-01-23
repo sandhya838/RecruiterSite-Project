@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Subscription } from "rxjs";
 import { CONSTANTS } from "src/app/helper/constants";
 import { JobsService } from "src/app/services/jobs.service";
@@ -19,10 +20,21 @@ export class SearchComponent implements OnInit {
       : (sessionStorage.getItem("user") as any)
   );
 
-  constructor(private jobsService: JobsService) {}
+  constructor(private jobsService: JobsService,
+    private router: Router,
+    private route: ActivatedRoute,) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.searchKeyWords= this.route.snapshot.queryParamMap.get('query') as string;
+    this.onSearch();
+  }
   onSearch() {
+    this.router.navigate([], {
+      queryParams: {
+        query: this.searchKeyWords
+      },
+      queryParamsHandling: 'merge',
+    });
     this.apiSubscription.add(
       this.jobsService
         .searchJobs({ search: this.searchKeyWords })

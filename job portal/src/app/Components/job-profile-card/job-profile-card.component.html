@@ -1,4 +1,4 @@
-<ng-container *ngIf="recommendedJobs?.length">
+<ng-container *ngIf="recommendedJobs?.length; else noData">
   <div class="container jobs mb-3" *ngFor="let job of recommendedJobs">
     <div class="card jobs__wrapper border">
       <div class="row">
@@ -38,4 +38,8 @@
     </div>
   </div>
 </ng-container>
-
+<ng-template #noData>
+  <div class="mt-5 d-flex justify-content-center align-items-center">
+    <h6>No recommended jobs found!</h6>
+  </div>
+</ng-template>

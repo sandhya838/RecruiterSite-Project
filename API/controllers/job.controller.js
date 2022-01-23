@@ -95,7 +95,7 @@ module.exports = {
     },
     searchJobs: (req, res) => {
         const regex = new RegExp(["^", req.body.search, "$"].join(""), "i");
-        Jobs.find({
+        Jobs.find({isActive:true,
             $or: [
                 { 'skills.primary.name': regex },
                 { 'skills.secondary.name': regex }

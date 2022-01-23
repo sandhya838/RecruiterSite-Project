@@ -97,12 +97,12 @@ const routes: Routes = [
       {
         path: "posted-jobs",
         component: JobListingComponent,
-        canActivate: [OrgGuard],
+        canActivate: [CommonGuard],
       },
       {
         path: "job-details/:job_id",
         component: JobViewComponent,
-        canActivate: [OrgGuard],
+        canActivate: [CommonGuard],
       },
       {
         path: "feedback/:id",

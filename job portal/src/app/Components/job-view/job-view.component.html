@@ -89,7 +89,7 @@
           <div class="col-1">
             <div class="jobview__logo">
               <img
-                src="{{ APIURL + 'static/logo/' + userData?.logo }}"
+                src="{{ APIURL + 'static/logo/' + jobdata?.createdBy?.logo }}"
                 height="50"
                 width="50"
                 class="jobview__logo"
@@ -100,10 +100,10 @@
           </div>
           <div class="col-11">
             <div class="job-poster-info">
-              {{ userData.firstName }} {{ userData.lastName }}
+              {{ jobdata?.createdBy?.firstName }} {{ jobdata?.createdBy?.lastName }}
             </div>
             <p>
-              {{ userData.organizationName }}
+              {{ jobdata?.createdBy?.organizationName }}
             </p>
           </div>
         </div>
@@ -154,7 +154,7 @@
           <div class="row">
             <div class="col-1">
               <img
-                src="{{ APIURL + 'static/logo/' + userData?.logo }}"
+                src="{{ APIURL + 'static/logo/' + jobdata?.createdBy?.logo }}"
                 height="70"
                 width="70"
                 class="jobview__company-logo"
@@ -162,7 +162,7 @@
               />
             </div>
             <div class="col-8 ml-5">
-              {{ userData.organizationName }}
+              {{ jobdata?.createdBy?.organizationName }}
             </div>
             <div class="col-2" *ngIf="userData?.role !== 'orgnization'">
               <button type="button" class="btn btn-outline-primary">
@@ -172,7 +172,7 @@
           </div>
           <div class="jobview__company-information mt-2">
             <div class="jobview__company-information-info mt-4">
-              {{ userData.description }}
+              {{ jobdata?.createdBy?.description }}
             </div>
           </div>
         </div>
