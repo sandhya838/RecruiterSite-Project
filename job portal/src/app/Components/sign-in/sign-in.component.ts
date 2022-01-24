@@ -56,7 +56,7 @@ export class SignInComponent implements OnInit {
           }
 
           this.router.navigate([
-            response?.user?.isProfileUpdated ? "/dashboard" : "/profile/about-you",
+            response?.user?.isProfileUpdated ? "/candidate-dashboard" : "/profile/about-you",
           ]);
         });
     } else {

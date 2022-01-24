@@ -1,0 +1,28 @@
+img {
+    background-color: var(--festival);
+}
+.profile-view-number{
+    color: var(--secondaryAqua);
+    font-size: 22px;
+}
+.candidateDashboard{
+    p{
+        margin-bottom: 7px;
+    }
+    &__card{
+        border: 1px solid #ebf0f6;;
+        // box-shadow: 0 2px 5px rgb(133 140 148 / 40%), 0 0 1px #c4c7cc;
+        box-shadow: 0 1px 2px 0 rgb(0 106 194 / 20%);
+    }
+    &__card:hover{
+        // box-shadow: 1px 2px 5px 3px var(--grayLightWarm);
+        // box-shadow: 0 8px 10px rgba(133 140 148 / 20%), 0 0 2px #a0a2a5;
+        box-shadow: 0 3px 8px 0 rgb(0 106 194 / 20%);
+    cursor: pointer;
+    }
+}
+.candidateDashboard{
+    &__container {
+        max-width: 1350px !important;
+    }
+}

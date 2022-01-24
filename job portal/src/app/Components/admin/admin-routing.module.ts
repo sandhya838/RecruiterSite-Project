@@ -21,9 +21,10 @@ import { CommonGuard } from "src/app/helper/guard/common-guard/common.guard";
 import { JobViewComponent } from "../job-view/job-view.component";
 import { FeedbackFormComponent } from "../feedback-form/feedback-form.component";
 import { NgxEditorModule } from "ngx-editor";
+import { CandidatedashboardComponent } from "../CandidateDashboard/candidatedashboard/candidatedashboard.component";
 
 const routes: Routes = [
-  { path: "", redirectTo: "/dashboard", pathMatch: "full" },
+  { path: "", redirectTo: "/candidateDashboard", pathMatch: "full" },
   {
     path: "",
     component: AdminComponent,
@@ -31,6 +32,16 @@ const routes: Routes = [
       {
         path: "dashboard",
         component: DashboardComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: "candidate-dashboard",
+        component: CandidatedashboardComponent,
+        canActivate: [AuthGuard],
+      },
+      {
+        path: "candidate-profile-card",
+        component: CandidateProfileCardComponent,
         canActivate: [AuthGuard],
       },
       {
@@ -67,7 +78,8 @@ const routes: Routes = [
         path: "certificate",
         component: CertificationComponent,
         canActivate: [AuthGuard],
-      }, {
+      },
+      {
         path: "myProfile",
         component: MyProfileComponent,
         canActivate: [AuthGuard],
@@ -93,17 +105,17 @@ const routes: Routes = [
         canActivate: [OrgGuard],
       },
       {
-        path:"job-list",
+        path: "job-list",
         component: JobListingComponent,
-        canActivate:[OrgGuard],
+        canActivate: [OrgGuard],
       },
       {
-        path:"job-details/:job_id",
+        path: "job-details/:job_id",
         component: JobViewComponent,
-        canActivate:[OrgGuard],
+        canActivate: [OrgGuard],
       },
       {
-        path:"feedback",
+        path: "feedback",
         component: FeedbackFormComponent,
       },
       {
@@ -127,7 +139,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes),NgxEditorModule],
+  imports: [RouterModule.forChild(routes), NgxEditorModule],
   exports: [RouterModule],
 })
-export class AdminRoutingModule { }
+export class AdminRoutingModule {}

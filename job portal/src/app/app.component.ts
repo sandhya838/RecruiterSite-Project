@@ -42,7 +42,7 @@ export class AppComponent {
 
   ngOnInit() {
     if (localStorage.getItem("token")) {
-      this.router.navigate(["/dashboard"]);
+      this.router.navigate(["/candidateDashboard"]);
     }
     this.loggedIn =
       localStorage.getItem("rememberMe") === "true"
