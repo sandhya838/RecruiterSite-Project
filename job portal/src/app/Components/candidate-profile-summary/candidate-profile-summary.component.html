@@ -366,37 +366,42 @@
             </div>
           </div>
 
-          <div
-            class="row"
-            *ngFor="let education of profile?.educationalDetails"
+          <ng-container
+            *ngFor="
+              let education of profile?.educationalDetails;
+              let last = last
+            "
           >
-            <div class="col-2"></div>
-            <div class="col-10">
-              <p class="education__college">
-                <i class="fa fa-university" aria-hidden="true"></i>
-                {{ education?.institute }}
-              </p>
-              <p>
-                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                <span class="education__yop">
-                  {{ education?.yearofPassing.month }}/
-                  {{ education?.yearofPassing.year }}</span
-                >
-              </p>
-              <p class="education__degree">
-                <i class="fa fa-graduation-cap" aria-hidden="true"></i>
-                {{ education?.degree | uppercase }}
-              </p>
-              <p class="education__degree">
-                <i class="fa fa-trophy" aria-hidden="true"></i>
-                {{ education?.grade | uppercase }}
-              </p>
-              <p class="education__degree">
-                <i class="fa fa-map-marker" aria-hidden="true"></i>
-                {{ education?.country | uppercase }}
-              </p>
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-10">
+                <p class="education__college">
+                  Institute name:
+                  {{ education?.institute }}
+                </p>
+                <p>
+                  Year of passing:
+                  <span class="education__yop">
+                    {{ education?.yearofPassing.month }}/
+                    {{ education?.yearofPassing.year }}</span
+                  >
+                </p>
+                <p class="education__degree">
+                  Degree:
+                  {{ education?.degree | uppercase }}
+                </p>
+                <p class="education__degree">
+                  Grade:
+                  {{ education?.grade | uppercase }}
+                </p>
+                <p class="education__degree">
+                  Country:
+                  {{ education?.country | uppercase }}
+                </p>
+              </div>
             </div>
-          </div>
+            <hr *ngIf="!last" />
+          </ng-container>
         </div>
       </div>
 
@@ -417,32 +422,35 @@
               </a>
             </div>
           </div>
-          <div class="row" *ngFor="let certification of profile?.certifications">
-            <div class="col-2"></div>
-            <div class="col-10">
-              <p class="certification__Name">
-                {{ certification?.name }}
-                <span class="certification__issueDate">
-                  {{ certification?.month }} /  {{ certification?.year }}</span
+          <ng-container
+            *ngFor="
+              let certification of profile?.certifications;
+              let last = last
+            "
+          >
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-10">
+                <p class="certification__Name">
+                  {{ certification?.name }}
+                  <span class="certification__issueDate">
+                    {{ certification?.month }} / {{ certification?.year }}</span
+                  >
+                </p>
+                <a
+                  href="{{
+                    APIURL + 'static/certificates/' + certification.certificate
+                  }}"
+                  target="_blank"
+                  [download]="certification.certificate"
                 >
-              </p>
-              <a
-              href="{{ APIURL + 'static/certificates/' + certification.certificate }}"
-              target="_blank"
-              [download]="certification.certificate"
-            >
-              <i class="fa fa-download" aria-hidden="true"></i>
-              {{ certification.certificate }}
-            </a>
-              <!-- <p class="certification__mentor">Mr.Pranay sir, Mr.Ved sir</p>
-              <p class="certification__refrence">
-                Refrence
-                <span class="certification__recommendation"
-                  >Recommendations</span
-                >
-              </p> -->
+                  <i class="fa fa-download" aria-hidden="true"></i>
+                  {{ certification.certificate }}
+                </a>
+              </div>
             </div>
-          </div>
+            <hr *ngIf="!last" />
+          </ng-container>
         </div>
       </div>
     </div>
@@ -568,7 +576,7 @@
               </div>
             </div>
             <div class="col">
-              <a routerLink="/feedback">Feedback form</a>
+              <a routerLink="/feedback/{{profile?._id}}">Feedback form</a>
             </div>
           </div>
         </div>

@@ -46,6 +46,12 @@ export class ConfigService {
       headers: new HttpHeaders({ "Content-Type": "application/json" }),
     });
   }
+  getCitiesByCountryCode(countryCode: string) {
+    return this.http.get(CONSTANTS.CITIES + countryCode, {
+      headers: new HttpHeaders({ "Content-Type": "application/json" }),
+    });
+  }
+
   getCurrentCountryDetails() {
     return this.http.get("http://ip-api.com/json");
   }

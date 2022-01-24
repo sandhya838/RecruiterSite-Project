@@ -1,10 +1,13 @@
+.form-control {
+  height: 60px !important;
+  border-radius: 0;
+}
 .jobs {
   &__logo {
     width: 55px;
     height: 55px;
     border-radius: 7px;
     position: absolute;
-
     left: 23px;
   }
   &__wrapper {
@@ -79,6 +82,11 @@ p {
 }
 @media all and (max-width: 767px) {
   .jobs {
+    &__logo {
+      width: 30px;
+      height: 30px;
+      left: 7px;
+    }
     &__action {
       justify-content: space-between;
     }

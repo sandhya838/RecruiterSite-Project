@@ -10,30 +10,37 @@
       </ol>
     </nav>
   </div>
+  <div class="d-flex justify-content-end mb-2">
+    <button class="job-btn job-btn-mini" [routerLink]="'/post-job'">Post new job</button>
+  </div>
   <div class="row" *ngIf="jobs?.length">
-    <div class="col-sm-6 mb-4"  *ngFor="let job of jobs">
+    <div class="col-sm-6 mb-4" *ngFor="let job of jobs">
       <div class="card jobs__wrapper border">
         <div class="row">
           <div class="col-2">
-            <!-- <img src="{{ APIURL + 'static/logo/' + job.logo}}" class="jobs__logo" alt="..."> -->
-            <img src="../../../assets/img/rec.jpg" class="jobs__logo" alt="..." />
+            <img
+              src="{{ APIURL + 'static/logo/' + job?.createdBy?.logo }}"
+              class="jobs__logo"
+              alt="{{ job?.organizationName }}"
+            />
           </div>
           <div class="col-8">
-             <a [routerLink]="['/job-details',job?._id]">
-         <h5 class="card-title">
+            <a [routerLink]="['/job-details', job?._id]">
+              <h5 class="card-title">
                 {{ job?.role }}
-                
               </h5>
             </a>
-              <p>{{ job?.organizationName }}</p>
-          
+            <p>{{ job?.organizationName }}</p>
           </div>
         </div>
-      <div class="row jobs__experiance">
+        <div class="row jobs__experiance">
           <div class="col-sm">
             <p class="experiance">
               <i class="fa fa-suitcase" aria-hidden="true"></i>
-              <span *ngFor="let experiance of job?.experiance"  class="badge badge-light">
+              <span
+                *ngFor="let experiance of job?.experiance"
+                class="badge badge-light"
+              >
                 {{ experiance.name }}
               </span>
             </p>
@@ -41,7 +48,10 @@
           <div class="col-sm">
             <p class="location">
               <i class="fa fa-map-marker" aria-hidden="true"></i>
-              <span *ngFor="let location of job?.location" class="badge badge-light">
+              <span
+                *ngFor="let location of job?.location"
+                class="badge badge-light"
+              >
                 {{ location.name }}
               </span>
             </p>
@@ -50,32 +60,39 @@
         <div class="row jobs__primaryskill">
           <div class="col-sm">
             <label>Primary skill: </label>
-          <span *ngFor="let skills of job?.skills?.primary" class="badge badge-light"> {{ skills.name }}&nbsp;</span>
-      </div>
+            <span
+              *ngFor="let skills of job?.skills?.primary"
+              class="badge badge-light"
+            >
+              {{ skills.name }}&nbsp;</span
+            >
+          </div>
         </div>
         <div class="row jobs__secondaryskill">
           <div class="col-sm">
             <label>Secondary skill: </label>
-           <span *ngFor="let skills of job?.skills?.secondary" class="badge badge-light"> {{ skills.name }} &nbsp;</span>
-            </div>
+            <span
+              *ngFor="let skills of job?.skills?.secondary"
+              class="badge badge-light"
+            >
+              {{ skills.name }} &nbsp;</span
+            >
+          </div>
         </div>
-        <div class="job-listing">
-          <div class="col-2 jobs__action">
-            <div class="pl-1">
+        <div class="jobs" *ngIf="userData?.role !== 'orgnization'">
+          <div class="jobs__action">
+            <div>
               <button class="job-btn job-btn-mini" type="submit">
                 shortlist
               </button>
             </div>
-          </div>
-          <div class="col-sm">
-            <div class="jobs__action">
-            <i class="fa fa-star-o" aria-hidden="true"></i>
-              </div>
-           
+
+            <div>
+              <i class="fa fa-star-o" aria-hidden="true"></i>
+            </div>
           </div>
         </div>
       </div>
     </div>
-   
   </div>
 </div>

@@ -11,12 +11,15 @@ import { NgMultiSelectDropDownModule } from "ng-multiselect-dropdown";
 import { HttpClientModule } from "@angular/common/http";
 import { AngularMultiSelectModule } from "angular2-multiselect-dropdown";
 import { NgxEditorModule } from "ngx-editor";
+import { SearchComponent } from "./search/search.component";
 
 
 @NgModule({
   declarations: [
     AdminComponent,
     DashboardComponent,
+    SearchComponent,
+
     
   ],
   imports: [

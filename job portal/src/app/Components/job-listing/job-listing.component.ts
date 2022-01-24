@@ -10,17 +10,17 @@ import { JobsService } from "src/app/services/jobs.service";
 export class JobListingComponent implements OnInit {
   jobs:any;
   APIURL= CONSTANTS.BASEURL;
+  userData = JSON.parse(
+    localStorage.getItem("rememberMe") === "true"
+      ? localStorage.getItem("user")
+      : (sessionStorage.getItem("user") as any)
+  );
 
   constructor(private jobservice: JobsService) {}
 
   ngOnInit(): void {
-    const userData = JSON.parse(
-      localStorage.getItem("rememberMe") === "true"
-        ? localStorage.getItem("user")
-        : (sessionStorage.getItem("user") as any)
-    );
     this.jobservice
-      .getJObsPostedByorgnization(userData._id)
+      .getJObsPostedByorgnization(this.userData._id)
       .subscribe((result) => {
         if (result.jobs.length) {
           this.jobs = result.jobs;

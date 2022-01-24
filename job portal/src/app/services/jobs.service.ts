@@ -30,12 +30,26 @@ export class JobsService {
     );
   }
   createJobs(data: any): Observable<any> {
-    console.log(data);
     const header = this._getHeaders();
     return this.http.post(CONSTANTS.CREATEJOBS, data, { headers: header });
   }
   getJObsPostedByorgnization(id: string): Observable<any> {
     const header = this._getHeaders();
     return this.http.get(CONSTANTS.ORGNIZATIONJOBS + id, { headers: header });
+  }
+  makeJobActiveOrInActive(
+    jobId: string,
+    data: { isActive: boolean }
+  ): Observable<any> {
+    const header = this._getHeaders();
+    return this.http.put(CONSTANTS.MAKEJOBACTIVEORINACTIVE + jobId, data, {
+      headers: header,
+    });
+  }
+  searchJobs(data: any) {
+    const header = this._getHeaders();
+    return this.http.post(CONSTANTS.SEARCHJOBS, data, {
+      headers: header,
+    });
   }
 }

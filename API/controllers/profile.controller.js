@@ -149,6 +149,8 @@ module.exports = {
             });
     },
 
+    
+
     changePassword: (req, res) => {
         console.log(req.body);
         profile.findById({ _id: req.params.id }, (err, result) => {

@@ -1,11 +1,14 @@
 <ng-container *ngIf="jobdata">
   <div class="jobview">
     <div class="d-flex justify-content-between align-items-center">
-      <h2 class="profile-details__heading">Job view </h2>
+      <h2 class="profile-details__heading">Job details</h2>
       <nav aria-label="breadcrumb">
         <ol class="breadcrumb bg-white">
           <li class="breadcrumb-item">
             <a [routerLink]="'/dashboard'">Dashboard</a>
+          </li>
+          <li class="breadcrumb-item">
+            <a [routerLink]="'/posted-jobs'">Jobs</a>
           </li>
           <li class="breadcrumb-item active" aria-current="page">Job view</li>
         </ol>
@@ -14,136 +17,166 @@
     <div class="card jobview__cardbody">
       <div class="card-body">
         <div class="jobview__role">
-          <h5>{{jobdata.role}}</h5>
+          <h5>{{ jobdata.role }}</h5>
+        </div>
+        <div class="position-relative float-right">
+          <label class="switch">
+            <input
+              type="checkbox"
+              [checked]="jobdata?.isActive ? true : null"
+              (change)="
+                makeJobActiveOrInActive(jobdata?._id, {
+                  isActive: !jobdata?.isActive
+                })
+              "
+            />
+            <span class="slider round"></span>
+          </label>
         </div>
 
-        <div class="jobview__companyName mt-2">
-          <span>{{jobdata.organizationName}}</span>
-          <span class="jobview__location" >
-           <ng-container *ngFor='let item of jobdata.location;let isLast=last'>
-             {{item.name}} <span *ngIf='!isLast'>,</span>
-           </ng-container> 
+        <div class="jobview__companyName my-2">
+          <span>{{ jobdata.organizationName }}</span>
+          <span
+            class="jobview__location"
+            *ngFor="let item of jobdata.location; let isLast = last"
+          >
+            {{ item.name }} <span *ngIf="!isLast">,</span>
           </span>
-          <span class="jobview__posted-date ml-2 ">
-          ago: {{jobdata.createdDate| date}}
+          <span class="jobview__posted-date ml-2">
+            ago: {{ jobdata?.createdDate | amTimeAgo }}
+          </span>
+        </div>
+        <div>
+          <i class="fa fa-history" aria-hidden="true"></i> &nbsp;
+          <span *ngFor="let exp of jobdata?.experiance">{{ exp.name }}</span>
+        </div>
+        <div>
+          <i class="fa fa-suitcase" aria-hidden="true"></i>
+          <span class="badge badge-light" *ngIf="jobdata.typeOfJob.contract">
+            Contract
+          </span>
+          <span class="badge badge-light" *ngIf="jobdata.typeOfJob.permanant">
+            Permanant
+          </span>
+          <span class="badge badge-light" *ngIf="jobdata.typeOfJob.freelance"
+            >Freelance
           </span>
         </div>
         <div class="col">
-
-          <div class="row">
-            <i class="fa fa-suitcase mr-2" aria-hidden="true"></i>
-            <span class="badge badge-light" *ngIf="jobdata.typeOfJob.contract"> Contract </span>
-            <span class="badge badge-light" *ngIf="jobdata.typeOfJob.permanant"> Permanant </span>
-            <span class="badge badge-light" *ngIf="jobdata.typeOfJob.freelance">Freelance </span>
-            
-          </div>
           <div class="row">
             <i class="fa fa-calculator mr-2" aria-hidden="true"></i>
-            {{userData.numberOfEmployees}}
+            {{ userData.numberOfEmployees }}
           </div>
         </div>
-        <div class="jobview">
+        <div class="jobview" *ngIf="userData?.role !== 'orgnization'">
           <div class="row">
-          <div class="pl-1">
-            <button class="job-btn job-btn-mini mr-2" type="submit">Apply</button>
-          </div>
-          <div class="pr-1">
-            <button
-              class="job-btn job-btn-outline " >
-             save
-            </button>
-          </div>
+            <div class="pl-1">
+              <button class="job-btn job-btn-mini mr-2" type="submit">
+                Apply
+              </button>
+            </div>
+            <div class="pr-1">
+              <button class="job-btn job-btn-outline">save</button>
+            </div>
           </div>
         </div>
 
         <div class="jobview__job-poster mt-4">
-          <h6>
-            Posted by
-          </h6>
+          <h6>Posted by</h6>
         </div>
 
         <div class="row">
           <div class="col-1">
             <div class="jobview__logo">
-              <img src="../../../assets/img/rec.jpg" height="50" width="50" class="jobview__logo" class="rounded-circle"
-                alt="">
+              <img
+                src="{{ APIURL + 'static/logo/' + jobdata?.createdBy?.logo }}"
+                height="50"
+                width="50"
+                class="jobview__logo"
+                class="rounded-circle"
+                alt=""
+              />
             </div>
           </div>
           <div class="col-11">
-            
-              <div class="job-poster-info">
-                {{ userData.firstName }} {{ userData.lastName }}
-              </div>
-               <p>
-                {{ userData.organizationName }}
-              </p>
-            
-
+            <div class="job-poster-info">
+              {{ jobdata?.createdBy?.firstName }} {{ jobdata?.createdBy?.lastName }}
+            </div>
+            <p>
+              {{ jobdata?.createdBy?.organizationName }}
+            </p>
           </div>
         </div>
         <div class="jobview__desc mt-4">
           <h5>Job Description</h5>
-          <div [innerHtml]='jobdata.roleDescription'>
-
-          </div>
+          <div [innerHtml]="jobdata.roleDescription"></div>
         </div>
- <strong>Expertise Details</strong>
+        <strong>Expertise Details</strong>
         <ul>
           <div class="row jobview__primaryskill">
             <div class="col-sm">
               <label>Primary skill: </label>
-              <span *ngFor="let skills of jobdata.skills?.primary"> {{ skills.name }}&nbsp;</span>
+              <span *ngFor="let skills of jobdata.skills?.primary">
+                {{ skills.name }}&nbsp;</span
+              >
             </div>
           </div>
           <div class="row jobs__secondaryskill">
             <div class="col-sm">
               <label>Secondary skill: </label>
-              <span *ngFor="let skills of jobdata.skills?.secondary"> {{ skills.name }} &nbsp;</span>
+              <span *ngFor="let skills of jobdata.skills?.secondary">
+                {{ skills.name }} &nbsp;</span
+              >
             </div>
           </div>
         </ul>
 
-
         <strong>Role Profile</strong>
         <ul>
-          <li>management:</li>
-          <li>Functional:</li>
-          <li>Technical:</li>
+          <li *ngIf="jobdata?.roleProfile?.management">
+            management: {{ jobdata?.roleProfile?.management }} %
+          </li>
+          <li *ngIf="jobdata?.roleProfile?.functional">
+            Functional: {{ jobdata?.roleProfile?.functional }} %
+          </li>
+          <li *ngIf="jobdata?.roleProfile?.technical">
+            Technical: {{ jobdata?.roleProfile?.technical }} %
+          </li>
         </ul>
         <div class="jobview__desc mt-4">
           <h5>Desired Candidate Profile</h5>
-          <div [innerHtml]='jobdata. candidateProfile'>
-
-          </div>
+          <div [innerHtml]="jobdata.candidateProfile"></div>
         </div>
-
-
-
       </div>
       <div class="jobview__company-Box">
         <div class="card-body">
           <h5 class="mt-2 mb-4">About the Company</h5>
           <div class="row">
             <div class="col-1">
-              <img src="../../../assets/img/rec.jpg" height="70" width="70" class="jobview__company-logo" alt="">
+              <img
+                src="{{ APIURL + 'static/logo/' + jobdata?.createdBy?.logo }}"
+                height="70"
+                width="70"
+                class="jobview__company-logo"
+                alt=""
+              />
             </div>
             <div class="col-8 ml-5">
-              {{userData.organizationName}}
+              {{ jobdata?.createdBy?.organizationName }}
             </div>
-            <div class="col-2">
-              <button type="button" class="btn btn-outline-primary">Follow</button>
+            <div class="col-2" *ngIf="userData?.role !== 'orgnization'">
+              <button type="button" class="btn btn-outline-primary">
+                Follow
+              </button>
             </div>
           </div>
           <div class="jobview__company-information mt-2">
-            
             <div class="jobview__company-information-info mt-4">
-             {{userData.description}}
+              {{ jobdata?.createdBy?.description }}
             </div>
           </div>
         </div>
-
       </div>
     </div>
-
   </div>
 </ng-container>

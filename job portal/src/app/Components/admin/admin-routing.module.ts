@@ -22,6 +22,7 @@ import { JobViewComponent } from "../job-view/job-view.component";
 import { FeedbackFormComponent } from "../feedback-form/feedback-form.component";
 import { NgxEditorModule } from "ngx-editor";
 import { CandidatedashboardComponent } from "../CandidateDashboard/candidatedashboard/candidatedashboard.component";
+import { SearchComponent } from "./search/search.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/candidateDashboard", pathMatch: "full" },
@@ -105,17 +106,17 @@ const routes: Routes = [
         canActivate: [OrgGuard],
       },
       {
-        path: "job-list",
+        path: "posted-jobs",
         component: JobListingComponent,
-        canActivate: [OrgGuard],
+        canActivate: [CommonGuard],
       },
       {
         path: "job-details/:job_id",
         component: JobViewComponent,
-        canActivate: [OrgGuard],
+        canActivate: [CommonGuard],
       },
       {
-        path: "feedback",
+        path: "feedback/:id",
         component: FeedbackFormComponent,
       },
       {
@@ -133,6 +134,10 @@ const routes: Routes = [
           import("../create-profile/create-profile.module").then(
             (m) => m.CreateProfileModule
           ),
+      },
+      {
+        path: "search",
+        component: SearchComponent,
       },
     ],
   },

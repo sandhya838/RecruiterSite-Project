@@ -1,37 +1,62 @@
 <div class="card feedBack">
   <div class="card-body">
     <div class="card-heading">
-      <h2> Feedback form</h2>
+      <h2>Feedback form</h2>
     </div>
-    <form [formGroup]="feedBackForm" (ngSubmit)="onClick(feedBackForm.value, feedBackForm.valid)" novalidate>
+    <form
+      [formGroup]="feedBackForm"
+      (ngSubmit)="onClick(feedBackForm.value, feedBackForm.valid)"
+      novalidate
+    >
       <div class="row feedBack__row">
-        <div class="col-2"><label for="" class="form-group">Candidate name:</label></div>
-        <div class="col"><input type="text" class="form-control" formControlName="candidateName" [ngModel]="fullName" />
-          <div class="text-danger" *ngIf="
-                    !feedBackForm.controls['candidateName'].valid &&
-                    (feedBackForm.controls['candidateName'].touched ||
-                      feedBackForm.controls['candidateName'].dirty)
-                  ">
+        <div class="col-2">
+          <label for="" class="form-group">Candidate name:</label>
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="candidateName"
+            readonly
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              !feedBackForm.controls['candidateName'].valid &&
+              (feedBackForm.controls['candidateName'].touched ||
+                feedBackForm.controls['candidateName'].dirty)
+            "
+          >
             <div *ngIf="feedBackForm.controls['candidateName'].errors">
-              <small *ngIf="
-                        feedBackForm.controls['candidateName'].errors.required
-                      ">
+              <small
+                *ngIf="feedBackForm.controls['candidateName'].errors.required"
+              >
                 This field is required
               </small>
             </div>
           </div>
         </div>
-        <div class="col-2"><label for="" class="form-group">Interviewer name:</label></div>
-        <div class="col"> <input type="text" class="form-control" formControlName="interviewerName" />
-          <div class="text-danger" *ngIf="
-                    !feedBackForm.controls['interviewerName'].valid &&
-                    (feedBackForm.controls['interviewerName'].touched ||
-                      feedBackForm.controls['interviewerName'].dirty)
-                  ">
+        <div class="col-2">
+          <label for="" class="form-group">Interviewer name:</label>
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="interviewerName"
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              !feedBackForm.controls['interviewerName'].valid &&
+              (feedBackForm.controls['interviewerName'].touched ||
+                feedBackForm.controls['interviewerName'].dirty)
+            "
+          >
             <div *ngIf="feedBackForm.controls['interviewerName'].errors">
-              <small *ngIf="
-                        feedBackForm.controls['interviewerName'].errors.required
-                      ">
+              <small
+                *ngIf="feedBackForm.controls['interviewerName'].errors.required"
+              >
                 This field is required
               </small>
             </div>
@@ -40,39 +65,60 @@
       </div>
 
       <div class="row feedBack__row">
-        <div class="col-2"><label for="" class="form-group">Candidate barcode:</label></div>
+        <div class="col-2">
+          <label for="" class="form-group">Candidate barcode:</label>
+        </div>
         <div class="col"></div>
       </div>
 
       <div class="row feedBack__row">
-        <div class="col-2"><label for="" class="form-group">Candidate ID:</label></div>
-        <div class="col"><input type="text" class="form-control" formControlName="candidateID" />
-          <div class="text-danger" *ngIf="
-                    !feedBackForm.controls['candidateID'].valid &&
-                    (feedBackForm.controls['candidateID'].touched ||
-                      feedBackForm.controls['candidateID'].dirty)
-                  ">
+        <div class="col-2">
+          <label for="" class="form-group">Candidate ID:</label>
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="candidateID"
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              !feedBackForm.controls['candidateID'].valid &&
+              (feedBackForm.controls['candidateID'].touched ||
+                feedBackForm.controls['candidateID'].dirty)
+            "
+          >
             <div *ngIf="feedBackForm.controls['candidateName'].errors">
-              <small *ngIf="
-                        feedBackForm.controls['candidateName'].errors.required
-                      ">
+              <small
+                *ngIf="feedBackForm.controls['candidateName'].errors.required"
+              >
                 This field is required
               </small>
             </div>
           </div>
         </div>
-        <div class="col-2"><label for="" class="form-group">Candidate ID:</label></div>
-        <div class="col"><input type="text" class="form-control" formControlName="candidateID"
-            [ngModel]="profile._id" />
-          <div class="text-danger" *ngIf="
-                    !feedBackForm.controls['candidateID'].valid &&
-                    (feedBackForm.controls['candidateID'].touched ||
-                      feedBackForm.controls['candidateID'].dirty)
-                  ">
+        <div class="col-2">
+          <label for="" class="form-group">Candidate ID:</label>
+        </div>
+        <div class="col">
+          <input
+            type="text"
+            class="form-control"
+            formControlName="candidateID"
+          />
+          <div
+            class="text-danger"
+            *ngIf="
+              !feedBackForm.controls['candidateID'].valid &&
+              (feedBackForm.controls['candidateID'].touched ||
+                feedBackForm.controls['candidateID'].dirty)
+            "
+          >
             <div *ngIf="feedBackForm.controls['candidateID'].errors">
-              <small *ngIf="
-                        feedBackForm.controls['candidateID'].errors.required
-                      ">
+              <small
+                *ngIf="feedBackForm.controls['candidateID'].errors.required"
+              >
                 This field is required
               </small>
             </div>
@@ -87,15 +133,25 @@
         <div class="col-6">
           <div class="row feedBack__star-row">
             <div class="col-8">
-              <input type="text" class="form-control" formControlName="primarySkill1"
-                [ngModel]="profile.workExperiences[0].skills[0].name" />
-              <div class="text-danger" *ngIf="
-                      !feedBackForm.controls['primarySkill1'].valid &&
-                      (feedBackForm.controls['primarySkill1'].touched ||
-                        feedBackForm.controls['primarySkill1'].dirty)
-                    ">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="primarySkill1"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !feedBackForm.controls['primarySkill1'].valid &&
+                  (feedBackForm.controls['primarySkill1'].touched ||
+                    feedBackForm.controls['primarySkill1'].dirty)
+                "
+              >
                 <div *ngIf="feedBackForm.controls['primarySkill1'].errors">
-                  <small *ngIf="feedBackForm.controls['primarySkill1'].errors.required">
+                  <small
+                    *ngIf="
+                      feedBackForm.controls['primarySkill1'].errors.required
+                    "
+                  >
                     This field is required
                   </small>
                 </div>
@@ -103,20 +159,35 @@
             </div>
             <div class="col-4">
               <div class="row">
-              <ngx-star-rating formControlName="primarySkillRating1" [id]="'primarySkillRating1'"></ngx-star-rating>
-            </div></div>
+                <ngx-star-rating
+                  formControlName="primarySkillRating1"
+                  [id]="'primarySkillRating1'"
+                ></ngx-star-rating>
+              </div>
+            </div>
           </div>
           <div class="row feedBack__star-row">
             <div class="col-8">
-              <input type="text" class="form-control" formControlName="primarySkill2"
-                [ngModel]="profile.workExperiences[0].skills[1].name" />
-              <div class="text-danger" *ngIf="
-              !feedBackForm.controls['primarySkill2'].valid &&
-              (feedBackForm.controls['primarySkill2'].touched ||
-                feedBackForm.controls['primarySkill2'].dirty)
-            ">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="primarySkill2"
+               
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !feedBackForm.controls['primarySkill2'].valid &&
+                  (feedBackForm.controls['primarySkill2'].touched ||
+                    feedBackForm.controls['primarySkill2'].dirty)
+                "
+              >
                 <div *ngIf="feedBackForm.controls['primarySkill2'].errors">
-                  <small *ngIf="feedBackForm.controls['primarySkill2'].errors.required">
+                  <small
+                    *ngIf="
+                      feedBackForm.controls['primarySkill2'].errors.required
+                    "
+                  >
                     This field is required
                   </small>
                 </div>
@@ -124,20 +195,35 @@
             </div>
             <div class="col-4">
               <div class="row">
-              <ngx-star-rating formControlName="primarySkillRating2" [id]="'primarySkillRating2'"></ngx-star-rating>
-            </div></div>
+                <ngx-star-rating
+                  formControlName="primarySkillRating2"
+                  [id]="'primarySkillRating2'"
+                ></ngx-star-rating>
+              </div>
+            </div>
           </div>
           <div class="row feedBack__star-row">
             <div class="col-8">
-              <input type="text" class="form-control" formControlName="primarySkill3"
-                [ngModel]="profile.workExperiences[0].skills[2].name" />
-              <div class="text-danger" *ngIf="
-              !feedBackForm.controls['primarySkill3'].valid &&
-              (feedBackForm.controls['primarySkill3'].touched ||
-                feedBackForm.controls['primarySkill3'].dirty)
-            ">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="primarySkill3"
+               
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !feedBackForm.controls['primarySkill3'].valid &&
+                  (feedBackForm.controls['primarySkill3'].touched ||
+                    feedBackForm.controls['primarySkill3'].dirty)
+                "
+              >
                 <div *ngIf="feedBackForm.controls['primarySkill3'].errors">
-                  <small *ngIf="feedBackForm.controls['primarySkill3'].errors.required">
+                  <small
+                    *ngIf="
+                      feedBackForm.controls['primarySkill3'].errors.required
+                    "
+                  >
                     This field is required
                   </small>
                 </div>
@@ -145,20 +231,34 @@
             </div>
             <div class="col-4">
               <div class="row">
-              <ngx-star-rating formControlName="primarySkillRating3" [id]="'primarySkillRating3'"></ngx-star-rating>
-            </div></div>
+                <ngx-star-rating
+                  formControlName="primarySkillRating3"
+                  [id]="'primarySkillRating3'"
+                ></ngx-star-rating>
+              </div>
+            </div>
           </div>
           <div class="row feedBack__star-row">
             <div class="col-8">
-              <input type="text" class="form-control" formControlName="primarySkill4"
-                [ngModel]="profile.workExperiences[0].skills[3].name" />
-              <div class="text-danger" *ngIf="
-              !feedBackForm.controls['primarySkill4'].valid &&
-              (feedBackForm.controls['primarySkill4'].touched ||
-                feedBackForm.controls['primarySkill4'].dirty)
-            ">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="primarySkill4"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !feedBackForm.controls['primarySkill4'].valid &&
+                  (feedBackForm.controls['primarySkill4'].touched ||
+                    feedBackForm.controls['primarySkill4'].dirty)
+                "
+              >
                 <div *ngIf="feedBackForm.controls['primarySkill4'].errors">
-                  <small *ngIf="feedBackForm.controls['primarySkill4'].errors.required">
+                  <small
+                    *ngIf="
+                      feedBackForm.controls['primarySkill4'].errors.required
+                    "
+                  >
                     This field is required
                   </small>
                 </div>
@@ -166,12 +266,23 @@
             </div>
             <div class="col-4">
               <div class="row">
-              <ngx-star-rating formControlName="primarySkillRating4" [id]="'primarySkillRating4'"></ngx-star-rating>
-            </div></div>
+                <ngx-star-rating
+                  formControlName="primarySkillRating4"
+                  [id]="'primarySkillRating4'"
+                ></ngx-star-rating>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-4"><textarea class="form-control" id="exampleFormControlTextarea1" rows="8"  cols="30"
-            placeholder="Comments" formControlName="priamrySkillComments"></textarea>
+        <div class="col-4">
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="8"
+            cols="30"
+            placeholder="Comments"
+            formControlName="priamrySkillComments"
+          ></textarea>
         </div>
       </div>
       <!--  -->
@@ -182,14 +293,25 @@
         <div class="col-6">
           <div class="row feedBack__star-row">
             <div class="col-8">
-              <input type="text" class="form-control" formControlName="secondarySkill1" />
-              <div class="text-danger" *ngIf="
-                      !feedBackForm.controls['secondarySkill1'].valid &&
-                      (feedBackForm.controls['secondarySkill1'].touched ||
-                        feedBackForm.controls['secondarySkill1'].dirty)
-                    ">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="secondarySkill1"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !feedBackForm.controls['secondarySkill1'].valid &&
+                  (feedBackForm.controls['secondarySkill1'].touched ||
+                    feedBackForm.controls['secondarySkill1'].dirty)
+                "
+              >
                 <div *ngIf="feedBackForm.controls['secondarySkill1'].errors">
-                  <small *ngIf="feedBackForm.controls['secondarySkill1'].errors.required">
+                  <small
+                    *ngIf="
+                      feedBackForm.controls['secondarySkill1'].errors.required
+                    "
+                  >
                     This field is required
                   </small>
                 </div>
@@ -197,19 +319,34 @@
             </div>
             <div class="col-4">
               <div class="row">
-                <ngx-star-rating formControlName="secondarySkillRating1" [id]="'secondarySkillRating1'"></ngx-star-rating>
-            </div></div>
+                <ngx-star-rating
+                  formControlName="secondarySkillRating1"
+                  [id]="'secondarySkillRating1'"
+                ></ngx-star-rating>
+              </div>
+            </div>
           </div>
           <div class="row feedBack__star-row">
             <div class="col-8">
-              <input type="text" class="form-control" formControlName="secondarySkill2" />
-              <div class="text-danger" *ngIf="
-              !feedBackForm.controls['secondarySkill2'].valid &&
-              (feedBackForm.controls['secondarySkill2'].touched ||
-                feedBackForm.controls['secondarySkill2'].dirty)
-            ">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="secondarySkill2"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !feedBackForm.controls['secondarySkill2'].valid &&
+                  (feedBackForm.controls['secondarySkill2'].touched ||
+                    feedBackForm.controls['secondarySkill2'].dirty)
+                "
+              >
                 <div *ngIf="feedBackForm.controls['secondarySkill2'].errors">
-                  <small *ngIf="feedBackForm.controls['secondarySkill2'].errors.required">
+                  <small
+                    *ngIf="
+                      feedBackForm.controls['secondarySkill2'].errors.required
+                    "
+                  >
                     This field is required
                   </small>
                 </div>
@@ -217,19 +354,34 @@
             </div>
             <div class="col-4">
               <div class="row">
-                <ngx-star-rating formControlName="secondarySkillRating2" [id]="'secondarySkillRating2'"></ngx-star-rating>
-            </div></div>
+                <ngx-star-rating
+                  formControlName="secondarySkillRating2"
+                  [id]="'secondarySkillRating2'"
+                ></ngx-star-rating>
+              </div>
+            </div>
           </div>
           <div class="row feedBack__star-row">
             <div class="col-8">
-              <input type="text" class="form-control" formControlName="secondarySkill3" />
-              <div class="text-danger" *ngIf="
-              !feedBackForm.controls['secondarySkill3'].valid &&
-              (feedBackForm.controls['secondarySkill3'].touched ||
-                feedBackForm.controls['secondarySkill3'].dirty)
-            ">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="secondarySkill3"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !feedBackForm.controls['secondarySkill3'].valid &&
+                  (feedBackForm.controls['secondarySkill3'].touched ||
+                    feedBackForm.controls['secondarySkill3'].dirty)
+                "
+              >
                 <div *ngIf="feedBackForm.controls['secondarySkill3'].errors">
-                  <small *ngIf="feedBackForm.controls['secondarySkill3'].errors.required">
+                  <small
+                    *ngIf="
+                      feedBackForm.controls['secondarySkill3'].errors.required
+                    "
+                  >
                     This field is required
                   </small>
                 </div>
@@ -237,19 +389,34 @@
             </div>
             <div class="col-4">
               <div class="row">
-                <ngx-star-rating formControlName="secondarySkillRating3" [id]="'secondarySkillRating3'"></ngx-star-rating>
-            </div></div>
+                <ngx-star-rating
+                  formControlName="secondarySkillRating3"
+                  [id]="'secondarySkillRating3'"
+                ></ngx-star-rating>
+              </div>
+            </div>
           </div>
           <div class="row feedBack__star-row">
             <div class="col-8">
-              <input type="text" class="form-control" formControlName="secondarySkill4" />
-              <div class="text-danger" *ngIf="
-              !feedBackForm.controls['secondarySkill4'].valid &&
-              (feedBackForm.controls['secondarySkill4'].touched ||
-                feedBackForm.controls['secondarySkill4'].dirty)
-            ">
+              <input
+                type="text"
+                class="form-control"
+                formControlName="secondarySkill4"
+              />
+              <div
+                class="text-danger"
+                *ngIf="
+                  !feedBackForm.controls['secondarySkill4'].valid &&
+                  (feedBackForm.controls['secondarySkill4'].touched ||
+                    feedBackForm.controls['secondarySkill4'].dirty)
+                "
+              >
                 <div *ngIf="feedBackForm.controls['secondarySkill4'].errors">
-                  <small *ngIf="feedBackForm.controls['secondarySkill4'].errors.required">
+                  <small
+                    *ngIf="
+                      feedBackForm.controls['secondarySkill4'].errors.required
+                    "
+                  >
                     This field is required
                   </small>
                 </div>
@@ -257,15 +424,25 @@
             </div>
             <div class="col-4">
               <div class="row">
-                <ngx-star-rating formControlName="secondarySkillRating4" [id]="'secondarySkillRating4'"></ngx-star-rating>
-            </div></div>
+                <ngx-star-rating
+                  formControlName="secondarySkillRating4"
+                  [id]="'secondarySkillRating4'"
+                ></ngx-star-rating>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="col-4"><textarea class="form-control" id="exampleFormControlTextarea1" rows="8"  cols="30"
-            placeholder="Comments" formControlName="secondarySkillComments"></textarea>
+        <div class="col-4">
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="8"
+            cols="30"
+            placeholder="Comments"
+            formControlName="secondarySkillComments"
+          ></textarea>
         </div>
       </div>
-
 
       <div class="row feedBack__row">
         <div class="col-2">
@@ -276,7 +453,10 @@
             <label for="" class="form-group">Consultant/ Developer</label>
           </div>
           <div class="row">
-            <ngx-star-rating formControlName="consultantRating" [id]="'consultantRating'"></ngx-star-rating>
+            <ngx-star-rating
+              formControlName="consultantRating"
+              [id]="'consultantRating'"
+            ></ngx-star-rating>
           </div>
         </div>
         <div class="col">
@@ -284,7 +464,10 @@
             <label for="" class="form-group">TechLead/ Lead Con</label>
           </div>
           <div class="row">
-            <ngx-star-rating formControlName="techLeadRating" [id]="'techLeadRating'"></ngx-star-rating>
+            <ngx-star-rating
+              formControlName="techLeadRating"
+              [id]="'techLeadRating'"
+            ></ngx-star-rating>
           </div>
         </div>
 
@@ -293,10 +476,12 @@
             <label for="" class="form-group">Architect/ SME</label>
           </div>
           <div class="row">
-            <ngx-star-rating formControlName="architectRating" [id]="'architectRating'"></ngx-star-rating>
+            <ngx-star-rating
+              formControlName="architectRating"
+              [id]="'architectRating'"
+            ></ngx-star-rating>
           </div>
         </div>
-
       </div>
 
       <div class="row feedBack__row">
@@ -305,20 +490,30 @@
         </div>
         <div class="col-3 feedBack__colManagement">
           <label for="" class="form-group">Management (%)</label>
-          <br>
-          <input type="text" class="form-control" formControlName="management"  [ngModel]="profile.roleManagement.management" />
+          <br />
+          <input
+            type="text"
+            class="form-control"
+            formControlName="management"
+          />
         </div>
         <div class="col-3 feedBack__coltechnical">
           <label for="" class="form-group">Technical (%)</label>
-          <br>
-          <input type="text" class="form-control" formControlName="technical" [ngModel]="profile.roleTechnical.technical" />
-
+          <br />
+          <input
+            type="text"
+            class="form-control"
+            formControlName="technical"
+          />
         </div>
         <div class="col-3 feedBack__colfuntional">
           <label for="" class="form-group">Functional/ Business (%)</label>
-          <br>
-          <input type="text" class="form-control" formControlName="functional" [ngModel]="profile.roleFunctional.functional" />
-
+          <br />
+          <input
+            type="text"
+            class="form-control"
+            formControlName="functional"
+          />
         </div>
       </div>
 
@@ -328,7 +523,10 @@
         </div>
         <div class="col-4">
           <div class="row">
-            <ngx-star-rating formControlName="communicationSkillRating" [id]="'communicationSkillRating'">
+            <ngx-star-rating
+              formControlName="communicationSkillRating"
+              [id]="'communicationSkillRating'"
+            >
             </ngx-star-rating>
           </div>
         </div>
@@ -340,7 +538,10 @@
         </div>
         <div class="col-4">
           <div class="row">
-            <ngx-star-rating formControlName="presentationSkillRating" [id]="'presentationSkillRating'">
+            <ngx-star-rating
+              formControlName="presentationSkillRating"
+              [id]="'presentationSkillRating'"
+            >
             </ngx-star-rating>
           </div>
         </div>
@@ -348,24 +549,34 @@
 
       <div class="row feedBack__row">
         <div class="col-2">
-          <label for="" class="form-group">Motivation/Initiative (Pick new skills, additional responsibilities
-            etc.,) :</label>
+          <label for="" class="form-group"
+            >Motivation/Initiative (Pick new skills, additional responsibilities
+            etc.,) :</label
+          >
         </div>
         <div class="col-4">
           <div class="row">
-            <ngx-star-rating formControlName="motivationSkillRating" [id]="'motivationSkillRating'"></ngx-star-rating>
+            <ngx-star-rating
+              formControlName="motivationSkillRating"
+              [id]="'motivationSkillRating'"
+            ></ngx-star-rating>
           </div>
         </div>
       </div>
 
       <div class="row feedBack__row">
         <div class="col-2">
-          <label for="" class="form-group">Flexibility ( Work hours, location of work, accommodativeness etc.,)
-            :</label>
+          <label for="" class="form-group"
+            >Flexibility ( Work hours, location of work, accommodativeness
+            etc.,) :</label
+          >
         </div>
         <div class="col-4">
           <div class="row">
-            <ngx-star-rating formControlName="flexibilitySkillRating" [id]="'flexibilitySkillRating'"></ngx-star-rating>
+            <ngx-star-rating
+              formControlName="flexibilitySkillRating"
+              [id]="'flexibilitySkillRating'"
+            ></ngx-star-rating>
           </div>
         </div>
       </div>
@@ -376,7 +587,10 @@
         </div>
         <div class="col-4">
           <div class="row">
-            <ngx-star-rating formControlName="professionalSkillRating" [id]="'professionalSkillRating'">
+            <ngx-star-rating
+              formControlName="professionalSkillRating"
+              [id]="'professionalSkillRating'"
+            >
             </ngx-star-rating>
           </div>
         </div>
@@ -387,27 +601,31 @@
           <label for="" class="form-group">Overall Summary </label>
         </div>
         <div class="col">
-          <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" formControlName="summary"></textarea>
+          <textarea
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="4"
+            formControlName="summary"
+          ></textarea>
         </div>
       </div>
 
       <div class="row feedback__action">
         <div class="col-11">
-          <button class="job-btn job-btn-outline" type="reset" [routerLink]="'/profile-summary'">
+          <button
+            class="job-btn job-btn-outline"
+            type="reset"
+            [routerLink]="'/profile-summary'"
+          >
             Back
           </button>
         </div>
         <div class="col">
           <button class="job-btn job-btn-mini" type="submit">Save</button>
         </div>
-
       </div>
-
     </form>
   </div>
-
-
-
 </div>
 
 <!-- 
@@ -417,7 +635,7 @@
       <div class="col-md-2"><label for="" class="form-group">Primary skill:</label></div>
       <div class="col-md-10">  
         <input type="text" class="form-control" formControlName="primarySkill1"
-        [ngModel]="profile.workExperiences[0].skills[0].name" />
+        />
       </div>
     </div>
     

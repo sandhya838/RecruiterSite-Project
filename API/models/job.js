@@ -7,56 +7,63 @@ var Jobschema = new Schema({
     organizationName: {
         type: String
     },
+    isActive: {
+        type: Boolean,
+        default: true
+    },
+    jobId: {
+        type: Number,
+    },
     description: {
         type: String
     },
-    roleDescription:{
-        type:String
+    roleDescription: {
+        type: String
     },
-    candidateProfile:{
-        type:String
+    candidateProfile: {
+        type: String
     },
     typeOfJob: {
-        contract:{
-            type:Boolean
+        contract: {
+            type: Boolean
         },
-        permanant:{
-            type:Boolean
+        permanant: {
+            type: Boolean
         },
-       freelance:{
-            type:Boolean
+        freelance: {
+            type: Boolean
         }
     },
     location: {
         type: []
     },
-    experiance:{
+    experiance: {
         type: []
     },
     roleProfile: {
-        management:{
-            type:String
+        management: {
+            type: String
         },
-        technical:{
-            type:String
+        technical: {
+            type: String
         },
-        functional:{
-            type:String
+        functional: {
+            type: String
         },
     },
     role: {
         type: String
     },
-    skills:{
-        primary:{
-            type:[]
+    skills: {
+        primary: {
+            type: []
         },
-        secondary:{
-            type:[]
+        secondary: {
+            type: []
         }
     },
-   
-    orgnizationId:{
+
+    orgnizationId: {
         type: String
     },
     createdDate: {

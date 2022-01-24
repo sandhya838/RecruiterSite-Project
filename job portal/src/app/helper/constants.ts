@@ -1,5 +1,5 @@
-// const BASEURL = "http://23.95.228.167:4080/";
- const BASEURL = "http://localhost:3000/";
+//const BASEURL = "http://23.95.228.167:4080/";
+const BASEURL = "http://localhost:3000/";
 export const CONSTANTS = {
   MAX_FILE_SIZE: 1024 * 1024 * 5, // in MB max file size is 5MB
 
@@ -19,8 +19,8 @@ export const CONSTANTS = {
       isMainMenu: true,
     },
     {
-      name: "Post job",
-      url: "/post-job",
+      name: "Jobs",
+      url: "/posted-jobs",
       icon: "fa fa-suitcase",
       isForCandidate: "orgnization",
       isMainMenu: true,
@@ -60,7 +60,7 @@ export const CONSTANTS = {
       isForCandidate: "candidate",
       isMainMenu: false,
     },
-    
+
     {
       name: "profile-summary",
       url: "/profile-summary",
@@ -110,7 +110,7 @@ export const CONSTANTS = {
       isForCandidate: "candidate",
       isMainMenu: false,
     },
-    
+
     {
       name: "change-password",
       url: "/change-password",
@@ -270,16 +270,18 @@ export const CONSTANTS = {
   UPDATEUSERPROFILE: BASEURL + "v1/profile/",
   ORGANIZATIONlOGIN: BASEURL + "v1/orgnization-login",
   ORGANIZATIONSIGNUP: BASEURL + "v1/register-orgnization",
-  FORGOTPASSWORD:BASEURL + "v1/forgot-password",
-  UPLOADCERTIFICATES: BASEURL+'v1/upload-certificates/',
-  COMPANYDETAILS: BASEURL + "v1/orgnization/",  
+  FORGOTPASSWORD: BASEURL + "v1/forgot-password",
+  UPLOADCERTIFICATES: BASEURL + "v1/upload-certificates/",
+  COMPANYDETAILS: BASEURL + "v1/orgnization/",
   // UPLOADCERTIFICATES: BASEURL+'v1/upload-certificates/',
-  CREATEJOBS:BASEURL+'v1/create',
+  CREATEJOBS: BASEURL + "v1/create",
   // UPLOADCERTIFICATES: BASEURL + "v1/upload-certificates/",
   // CREATEJOBS: BASEURL + "v1/create",
-  ORGNIZATIONJOBS: BASEURL+'v1/jobs-created-by/',
-  JOBDETAILS:BASEURL+'v1/job/',
-  COUNTRIES: BASEURL+'v1/countries',
-  STATES: BASEURL+'v1/states/',
-  CITIES: BASEURL+'v1/cities/',
+  ORGNIZATIONJOBS: BASEURL + "v1/jobs-created-by/",
+  JOBDETAILS: BASEURL + "v1/job/",
+  COUNTRIES: BASEURL + "v1/countries",
+  STATES: BASEURL + "v1/states/",
+  CITIES: BASEURL + "v1/cities/",
+  MAKEJOBACTIVEORINACTIVE: BASEURL + "v1/makeJobActiveOrInActive/",
+  SEARCHJOBS: BASEURL + "v1/search",
 };

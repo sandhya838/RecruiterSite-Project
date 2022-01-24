@@ -18,6 +18,7 @@ module.exports = (app) => {
   app.post('/v1/feedback', feedback.create);
   app.get('/v1/countries', countryStateCity.findCountries);
   app.get('/v1/states/:countryCode', countryStateCity.findStateByCountry);
+  app.get('/v1/cities/:countryCode', countryStateCity.findCityByCountry);
   app.get('/v1/cities/:stateCode/:countryCode', countryStateCity.findCityByCountryAndState);
 
 
@@ -31,7 +32,7 @@ module.exports = (app) => {
 
   /*****************Feedback************************ */
 
-  app.get('/v1/feedbacks', auth.authToken,feedback.findAll);
+  app.get('/v1/feedbacks', auth.authToken, feedback.findAll);
   app.get('/v1/feedback/:feedbackId', auth.authToken, feedback.findOne);
   app.delete('/v1/feedback/:feedbackId', auth.authToken, feedback.delete);
   app.put('/v1/feedback/:feedbackId', auth.authToken, feedback.update);
@@ -44,7 +45,9 @@ module.exports = (app) => {
   app.get('/v1/job/:jobId', auth.authToken, job.findOne);
   app.delete('/v1/job/:jobId', auth.authToken, job.delete);
   app.put('/v1/job/:jobId', auth.authToken, job.update);
+  app.put('/v1/makeJobActiveOrInActive/:jobId', auth.authToken, job.makeJobActiveOrInActive);
   app.post('/v1/recomandedJobs', auth.authToken, profile.recomandedJobs);
+  app.post('/v1/search', auth.authToken, job.searchJobs);
 
 
   /************** Pre Login APIs ****************** */

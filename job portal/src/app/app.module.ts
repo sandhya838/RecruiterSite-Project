@@ -30,6 +30,7 @@ import { JobViewComponent } from './Components/job-view/job-view.component';
 import { NgxEditorModule } from "ngx-editor";
 import { FeedbackFormComponent } from './Components/feedback-form/feedback-form.component';
 import { CandidatedashboardComponent } from './Components/CandidateDashboard/candidatedashboard/candidatedashboard.component';
+import { MomentModule } from 'angular2-moment';
 
 @NgModule({
   declarations: [
@@ -65,7 +66,8 @@ import { CandidatedashboardComponent } from './Components/CandidateDashboard/can
     QRCodeModule,
     NgbModule,
     NgxEditorModule,
-    NgxStarRatingModule
+    NgxStarRatingModule,
+    MomentModule
   ],
   providers: [
     {

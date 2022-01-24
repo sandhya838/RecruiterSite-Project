@@ -9,6 +9,8 @@ import { Router } from "@angular/router";
 import { OrganizationSignInService } from "src/app/services/organization-sign-in.service";
 import { CommonService } from "src/app/services/common.service";
 import { FileUploadValidators } from "@iplab/ngx-file-upload";
+import { ConfigService } from "src/app/config.service";
+import { filter } from "rxjs/operators";
 
 @Component({
   selector: "app-organization-sign-up",
@@ -22,6 +24,7 @@ export class OrganizationSignUpComponent implements OnInit {
     firstName: ["", [Validators.required]],
     middleName: [""],
     lastName: ["", [Validators.required]],
+    countryCode: ["", [Validators.required]],
     contactNumber: [
       "",
       [
@@ -41,15 +44,45 @@ export class OrganizationSignUpComponent implements OnInit {
   });
 
   isPassword: boolean = false;
+  countries: any;
+  selectedPhoneCode: any;
 
   constructor(
     public formBuilder: FormBuilder,
     private organizationSignInService: OrganizationSignInService,
     private commonService: CommonService,
-    private router: Router
+    private router: Router,
+    private configService: ConfigService
   ) {}
 
-  ngOnInit(): void {}
+  getCountries() {
+    this.configService
+      .getCountries()
+      .pipe(filter(Boolean))
+      .subscribe((response: any) => {
+        this.countries = response.countries;
+      });
+  }
+
+  getCurrentCountryDetails() {
+    this.configService
+      .getCurrentCountryDetails()
+      .pipe(filter(Boolean))
+      .subscribe((response: any) => {
+        this.countries.forEach((country: any) => {
+          if (country.code === response.countryCode) {
+            this.selectedPhoneCode = country.dial_code;
+            this.signUp.get("countryCode")?.setValue(this.selectedPhoneCode);
+            this.signUp.get("countryCode")?.updateValueAndValidity();
+          }
+        });
+      });
+  }
+
+  ngOnInit(): void {
+    this.getCountries();
+    this.getCurrentCountryDetails();
+  }
 
   get getControl() {
     return this.signUp.controls;
@@ -68,6 +101,7 @@ export class OrganizationSignUpComponent implements OnInit {
       fd.append("middleName", formValue.middleName);
       fd.append("lastName", formValue.lastName);
       fd.append("contactNumber", formValue.contactNumber);
+      fd.append("countryCode", formValue.countryCode);
       fd.append("email", formValue.email);
       fd.append("url", formValue.email);
       fd.append("logo", formValue.file[0]);
