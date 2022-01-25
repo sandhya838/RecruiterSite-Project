@@ -20,6 +20,7 @@ import { OrgGuard } from "src/app/helper/org-guard/org.guard";
 import { CommonGuard } from "src/app/helper/guard/common-guard/common.guard";
 import { JobViewComponent } from "../job-view/job-view.component";
 import { FeedbackFormComponent } from "../feedback-form/feedback-form.component";
+import { DashboardRecruiterComponent } from "../dashboard-recruiter/dashboard-recruiter.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/dashboard", pathMatch: "full" },
@@ -94,6 +95,11 @@ const routes: Routes = [
       {
         path:"job-list",
         component: JobListingComponent,
+        canActivate:[OrgGuard],
+      },
+      {
+        path:"recruiter-dashboard",
+        component: DashboardRecruiterComponent,
         canActivate:[OrgGuard],
       },
       {
