@@ -189,7 +189,7 @@
               <h5 class="profile-details__card-title">Skill profile</h5>
             </div>
             <div class="col-sm-1">
-              <a routerLink="/skill-profile">
+              <a routerLink="/profile/skills">
                 <i class="fa fa-pencil" aria-hidden="true"></i>
               </a>
             </div>
@@ -200,7 +200,7 @@
               class="row experience__secondaryskill"
               *ngIf="profile?.skillTechnical?.length"
             >
-              <div class="col-auto">Technical skills:</div>
+              <div class="col-auto">Primary skills:</div>
               <div
                 *ngFor="
                   let skill of profile?.skillTechnical;
@@ -217,7 +217,7 @@
               class="row experience__secondaryskill"
               *ngIf="profile?.skillFunctional?.length"
             >
-              <div class="col-auto">Funcational skills:</div>
+              <div class="col-auto">Secondary skills:</div>
               <div
                 *ngFor="
                   let skill of profile?.skillFunctional;
@@ -230,7 +230,7 @@
                 >
               </div>
             </div>
-            <div
+            <!-- <div
               class="row experience__secondaryskill"
               *ngIf="profile?.skillSysAdministration?.length"
             >
@@ -246,7 +246,7 @@
                   {{ skill?.name }}</span
                 >
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </div>
@@ -290,7 +290,9 @@
               "
             >
               <div class="row">
-                <div class="col-2">cmp Logo</div>
+                <div class="col-2">cmp Logo
+                  <!-- <img src="{{getLogo(experience?.companyName)}}" alt=""> -->
+                </div>
                 <div class="col-10">
                   <h5 class="experience__title">
                     {{ experience?.role }}

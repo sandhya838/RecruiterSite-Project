@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CONSTANTS } from 'src/app/helper/constants';
+import { CommonService } from 'src/app/services/common.service';
 import { UserprofileService } from 'src/app/services/userprofile.service';
 
 @Component({
@@ -11,7 +12,8 @@ export class CandidateProfileSummaryComponent implements OnInit {
   APIURL= CONSTANTS.BASEURL;
   userProfile:any;
   profile:any;
-  constructor(private userprofileService: UserprofileService) { }
+  constructor(private userprofileService: UserprofileService,
+    private commonService: CommonService) { }
 
   ngOnInit(): void {
     const userProifleData = JSON.parse(sessionStorage.getItem("user") as any);
@@ -45,6 +47,11 @@ export class CandidateProfileSummaryComponent implements OnInit {
     });
 
     
+  }
+  getLogo(name: string){
+  //  this.commonService.getCompanyLogoByName(name).subscribe((result:any)=>{
+  //    console.log(result);
+  //  }).unsubscribe();
   }
 
 }

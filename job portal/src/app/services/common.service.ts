@@ -1,7 +1,8 @@
-import { HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import * as CryptoJS from "crypto-js";
 import { ToastrService } from "ngx-toastr";
+import { Observable } from "rxjs";
 import { CONSTANTS } from "../helper/constants";
 
 @Injectable({
@@ -9,7 +10,7 @@ import { CONSTANTS } from "../helper/constants";
 })
 export class CommonService {
   key = CONSTANTS.SECRET;
-  constructor(private toastr: ToastrService) {}
+  constructor(private toastr: ToastrService, private http: HttpClient) {}
 
   encrypt(value: string) {
     var key = CryptoJS.enc.Utf8.parse(this.key);
@@ -58,10 +59,15 @@ export class CommonService {
         break;
     }
   }
-   _getHeaders() {
+  _getHeaders() {
     return new HttpHeaders({
       "x-access-token": sessionStorage.getItem("token") as string,
       "Content-Type": "application/json",
     });
+  }
+  getCompanyLogoByName(name: string): Observable<any> {
+     return this.http.get(
+      "https://autocomplete.clearbit.com/v1/companies/suggest?query=" + name
+    );
   }
 }

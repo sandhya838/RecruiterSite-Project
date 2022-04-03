@@ -30,20 +30,29 @@ module.exports = {
     create: (req, res) => {
         uploadFile(req.file, (isFileUploaded, fileName) => {
             if (isFileUploaded) {
-                req.body.resume = fileName;
-                profile.create(req.body, (err, result) => {
-                    if (err) {
-                        if (err.keyPattern.mobileNumber) {
-                            res.status(412).send({ status: 412, message: req.body.mobileNumber + ' already exist.', profile: {} });
-                        } else if (err.keyPattern.email) {
-                            res.status(412).send({ status: 412, message: req.body.email + ' already exist.', profile: {} });
-                        } else {
-                            res.status(500).send({ status: 400, message: 'Oops! Not able to create profile. Please try after sometimes', profile: {} });
-                        }
+                findCandidateId((candidateId) => {
+                    req.body.resume = fileName;
+                    if (candidateId) {
+                        req.body.candidateId = candidateId;
+                        profile.create(req.body, (err, result) => {
+                            if (err) {
+                                if (err.keyPattern.mobileNumber) {
+                                    res.status(412).send({ status: 412, message: req.body.mobileNumber + ' already exist.', profile: {} });
+                                } else if (err.keyPattern.email) {
+                                    res.status(412).send({ status: 412, message: req.body.email + ' already exist.', profile: {} });
+                                } else {
+                                    res.status(500).send({ status: 400, message: 'Oops! Not able to create profile. Please try after sometimes', profile: {} });
+                                }
+                            } else {
+                                res.status(200).send({ status: 200, message: 'profile created successfully.', profile: {} });
+                            }
+                        });
+
                     } else {
-                        res.status(200).send({ status: 200, message: 'profile created successfully.', profile: {} });
+                        res.status(500).send({ status: 400, message: 'Oops! Not able to create profile. Please try after sometimes', profile: {} });
                     }
-                });
+                })
+
             } else {
                 if (err) throw res.status(500).send({ status: 500, message: 'Oops! Not able to create register user. Please try after sometimes', profile: {} });
             }
@@ -149,7 +158,7 @@ module.exports = {
             });
     },
 
-    
+
 
     changePassword: (req, res) => {
         console.log(req.body);
@@ -236,3 +245,13 @@ uploadFile = (file, callBack) => {
         });
 
     };
+
+findCandidateId = (callBack) => {
+    profile.find({}, (err, result) => {
+        if (err) {
+            callBack(0);
+        } else {
+            callBack(result.length + 1)
+        }
+    });
+}

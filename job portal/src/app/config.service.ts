@@ -24,7 +24,6 @@ export class ConfigService {
     });
   }
   uploadCertificates(id: string, data: any) {
-    console.log("dasdasd", data);
     return this.http.post(CONSTANTS.UPLOADCERTIFICATES + id, data, {
       headers: new HttpHeaders({
         "x-access-token": sessionStorage.getItem("token") as string,
@@ -54,5 +53,12 @@ export class ConfigService {
 
   getCurrentCountryDetails() {
     return this.http.get("http://ip-api.com/json");
+  }
+  sendFeedback(data: any) {
+    return this.http.post(CONSTANTS.FEEDBACK, data, {
+      headers: new HttpHeaders({
+        "x-access-token": sessionStorage.getItem("token") as string,
+      }),
+    });
   }
 }

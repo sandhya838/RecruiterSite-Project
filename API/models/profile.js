@@ -10,6 +10,9 @@ var ProfileSchema = new Schema({
   title: {
     type: String
   },
+  candidateId: {
+    type: Number
+  },
   location: {
     type: []
   },

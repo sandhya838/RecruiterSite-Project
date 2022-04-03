@@ -1,89 +1,35 @@
-input[type="radio"] {
-  width: 30px;
-  height: 30px;
-  margin-right: 15px;
-}
-input {
-  margin-bottom: 5px;
-}
-.row {
-  margin-bottom: 10px;
-}
 input.star:checked ~ label.star:before {
   color: pink !important;
 }
 
 .feedBack {
-  &__star-row {
-    margin-bottom: 0px;
-    margin-left: -61px;
-  }
-  .col {
-    margin-right: 10px;
-    margin-left: -46px;
-  }
-  &__colManagement{
-    margin-left: -54px;
-  }
-&__coltechnical{
-  margin-left: 34px;
-}
-&__colfuntional{
-  margin-left: 34px;
-}
-  .col-md-8{
-    margin-left: -22px;
+  fieldset{
+    border: 1px solid;
   }
   textarea{
-    margin-left: -43px;
+    height: auto;
+  }
+  &__primarySkillrating {
+    position: relative;
+    top: 10%;
+  }
+  &__Professional,
+  &__Flexibility,
+  &__Motivation,
+  &__Presentation,
+  &__CommunicationSkills {
+    position: absolute;
+    right: 15px;
+  }
+  &__action {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
   }
 }
 
 @media all and (max-width: 767px) {
-  .feedBack {
-    &__row {
-      flex-direction: column;
-    }
-    &__star-row {
-      flex-direction: column;
-      margin-left: -16px;
-    }
-    &__skillRatingrow{
-      margin-left: 0px;
-    }
-    &__colManagement,&__coltechnical,&__colfuntional{
-      margin-left: 0px;
-    }
-    .col-8{
-      max-width: 100%;
-    }
-    .col-4{
-      max-width: 100%;
-    }
-    .col-2 {
-      max-width: 67.666667%;
-    }
-    .col {
-      margin-right: 0px;
-      margin-left: 0px;
-    }
-    textarea{
-      margin-left: 0px;
-    }
-    .form-group {
-      margin-bottom: 2px;
-    }
-    .col-3 {
-      max-width: 100%;
-    }
-    .col-6{
-      max-width: 100%;
-    }
-    .col-11{
-      max-width: 65.666667%;
-    }
-  }
-  ngx-star-rating{
-      margin-left: 15px;
+  ngx-star-rating {
+    margin-left: 15px;
   }
 }

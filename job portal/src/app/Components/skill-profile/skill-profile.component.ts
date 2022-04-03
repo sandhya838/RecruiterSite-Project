@@ -29,7 +29,7 @@ export class SkillProfileComponent implements OnInit {
     this.viewPort = window.innerWidth > 991 ? true : false;
     this.userForm = this.formBuilder.group({
       skillTechnical: ["", [Validators.required]],
-      skillSysAdministration: ["", [Validators.required]],
+      // skillSysAdministration: ["", [Validators.required]],
       skillFunctional: ["", [Validators.required]],
     });
     this.user = JSON.parse(

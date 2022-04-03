@@ -284,4 +284,5 @@ export const CONSTANTS = {
   CITIES: BASEURL + "v1/cities/",
   MAKEJOBACTIVEORINACTIVE: BASEURL + "v1/makeJobActiveOrInActive/",
   SEARCHJOBS: BASEURL + "v1/search",
+  FEEDBACK: BASEURL + "v1/createFeedback",
 };

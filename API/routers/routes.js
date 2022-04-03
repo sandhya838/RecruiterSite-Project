@@ -33,6 +33,7 @@ module.exports = (app) => {
   /*****************Feedback************************ */
 
   app.get('/v1/feedbacks', auth.authToken, feedback.findAll);
+  app.post('/v1/createFeedback', auth.authToken, feedback.create);
   app.get('/v1/feedback/:feedbackId', auth.authToken, feedback.findOne);
   app.delete('/v1/feedback/:feedbackId', auth.authToken, feedback.delete);
   app.put('/v1/feedback/:feedbackId', auth.authToken, feedback.update);
