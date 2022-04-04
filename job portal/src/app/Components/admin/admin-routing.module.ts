@@ -23,6 +23,7 @@ import { FeedbackFormComponent } from "../feedback-form/feedback-form.component"
 import { NgxEditorModule } from "ngx-editor";
 import { CandidatedashboardComponent } from "../CandidateDashboard/candidatedashboard/candidatedashboard.component";
 import { SearchComponent } from "./search/search.component";
+import { LandingPageComponent } from "../landing-page/landing-page.component";
 
 const routes: Routes = [
   { path: "", redirectTo: "/candidateDashboard", pathMatch: "full" },
@@ -30,6 +31,10 @@ const routes: Routes = [
     path: "",
     component: AdminComponent,
     children: [
+      {
+        path:"landing-page",
+        component: LandingPageComponent,
+      },
       {
         path: "dashboard",
         component: DashboardComponent,

@@ -15,7 +15,7 @@
 
   <div class="row">
     <div class="col-7">
-      <div class="row profile-details__profile-topcard">
+      <!-- <div class="row profile-details__profile-topcard">
         <div class="profile-details__profile">
           <div class="profile-details__profile__profile-img">
             <img
@@ -27,13 +27,13 @@
             />
           </div>
         </div>
-      </div>
+      </div> -->
       <div class="card profilesummary__cardbody">
         <div class="card-body">
           <div class="row">
             <div class="col-sm-11">
-              <!-- <img class="card-img-top" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Card image cap"
-                class="rounded-circle" width="135"> -->
+              <img class="card-img-top" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Card image cap"
+                class="rounded-circle" width="135">
             </div>
             <div class="col-sm-1">
               <a routerLink="/about-you">
@@ -84,11 +84,7 @@
           <div class="row">
             <div class="col-sm-11">
               <h5 class="profile-details__card-title">Resume</h5>
-              <a
-                href="{{ APIURL + 'static/resume/' + profile.resume }}"
-                target="_blank"
-                [download]="profile.resume"
-              >
+              <a href="{{ APIURL + 'static/resume/' + profile.resume }}" target="_blank" [download]="profile.resume">
                 <i class="fa fa-download" aria-hidden="true"></i>
                 {{ profile.resume }}
               </a>
@@ -116,11 +112,7 @@
           </div>
           <div class="card-body-text role-profile">
             <div class="row rollprofile__management">
-              <div
-                class="col-md-name rollprofile__col"
-                id="skill1"
-                *ngIf="profile?.roleManagement?.isManagement"
-              >
+              <div class="col-md-name rollprofile__col" id="skill1" *ngIf="profile?.roleManagement?.isManagement">
                 Management:
               </div>
 
@@ -145,10 +137,7 @@
               <div class="col-md">{{ profile?.roleManagement?.project }}%</div>
             </div>
 
-            <div
-              class="row rollprofile__technical"
-              *ngIf="profile?.roleManagement?.isTechnical"
-            >
+            <div class="row rollprofile__technical" *ngIf="profile?.roleManagement?.isTechnical">
               <div class="col-md-name rollprofile__col">Technical:</div>
               <div class="col-md">{{ profile?.roleTechnical?.technical }}%</div>
               <div class="col-md-name rollprofile__col">Architect:</div>
@@ -159,10 +148,7 @@
               <div class="col-md">{{ profile?.roleTechnical?.developer }}%</div>
             </div>
 
-            <div
-              class="row rollprofile__funtional"
-              *ngIf="profile?.roleManagement?.isFunctional"
-            >
+            <div class="row rollprofile__funtional" *ngIf="profile?.roleManagement?.isFunctional">
               <div class="col-md-name rollprofile__col">Funtional:</div>
               <div class="col-md">
                 {{ profile?.roleFunctional?.functional }}%
@@ -196,55 +182,37 @@
           </div>
 
           <div class="card-body-text">
-            <div
-              class="row experience__secondaryskill"
-              *ngIf="profile?.skillTechnical?.length"
-            >
+            <div class="row experience__secondaryskill" *ngIf="profile?.skillTechnical?.length">
               <div class="col-auto">Technical skills:</div>
-              <div
-                *ngFor="
+              <div *ngFor="
                   let skill of profile?.skillTechnical;
                   let i = index;
                   let last = last
-                "
-              >
+                ">
                 <span class="badge badge-light mr-2" id="{{ i }}admin">
-                  {{ skill?.name }}</span
-                >
+                  {{ skill?.name }}</span>
               </div>
             </div>
-            <div
-              class="row experience__secondaryskill"
-              *ngIf="profile?.skillFunctional?.length"
-            >
+            <div class="row experience__secondaryskill" *ngIf="profile?.skillFunctional?.length">
               <div class="col-auto">Funcational skills:</div>
-              <div
-                *ngFor="
+              <div *ngFor="
                   let skill of profile?.skillFunctional;
                   let i = index;
                   let last = last
-                "
-              >
+                ">
                 <span class="badge badge-light mr-2" id="{{ i }}admin">
-                  {{ skill?.name }}</span
-                >
+                  {{ skill?.name }}</span>
               </div>
             </div>
-            <div
-              class="row experience__secondaryskill"
-              *ngIf="profile?.skillSysAdministration?.length"
-            >
+            <div class="row experience__secondaryskill" *ngIf="profile?.skillSysAdministration?.length">
               <div class="col-auto">Administrative skills:</div>
-              <div
-                *ngFor="
+              <div *ngFor="
                   let skill of profile?.skillSysAdministration;
                   let i = index;
                   let last = last
-                "
-              >
+                ">
                 <span class="badge badge-light mr-2" id="{{ i }}admin">
-                  {{ skill?.name }}</span
-                >
+                  {{ skill?.name }}</span>
               </div>
             </div>
           </div>
@@ -259,8 +227,7 @@
             </div>
             <div class="col-sm-1">
               <a routerLink="/profile/experience">
-                <i class="fa fa-pencil" aria-hidden="true"></i
-              ></a>
+                <i class="fa fa-pencil" aria-hidden="true"></i></a>
             </div>
           </div>
 
@@ -283,12 +250,10 @@
             </div>
           </div>
           <div class="card-body-text" *ngIf="profile?.workExperiences?.length">
-            <ng-container
-              *ngFor="
+            <ng-container *ngFor="
                 let experience of profile?.workExperiences;
                 let last = last
-              "
-            >
+              ">
               <div class="row">
                 <div class="col-2">cmp Logo</div>
                 <div class="col-10">
@@ -301,8 +266,7 @@
                   <p class="experience__duration-time">
                     From {{ experience?.from }} -
                     <span *ngIf="experience?.isCurrentCompany; else till">
-                      to present</span
-                    >
+                      to present</span>
                     <ng-template #till>
                       {{ experience?.to }}
                     </ng-template>
@@ -313,30 +277,24 @@
                   <!-- <p class="experience__location">Haydrabad, Pune.</p> -->
                   <div class="row experience__primaryskill">
                     <label>Primary skill: </label>
-                    <div
-                      *ngFor="
+                    <div *ngFor="
                         let skill of experience?.skills?.primary;
                         let i = index;
                         let last = last
-                      "
-                    >
+                      ">
                       <span class="badge badge-light mr-2" id="{{ i }}admin">
-                        {{ skill?.name }}</span
-                      >
+                        {{ skill?.name }}</span>
                     </div>
                   </div>
                   <div class="row experience__primaryskill">
                     <label>secondary skill: </label>
-                    <div
-                      *ngFor="
+                    <div *ngFor="
                         let skill of experience?.skills?.secondary;
                         let i = index;
                         let last = last
-                      "
-                    >
+                      ">
                       <span class="badge badge-light mr-2" id="{{ i }}admin">
-                        {{ skill?.name }}</span
-                      >
+                        {{ skill?.name }}</span>
                     </div>
                   </div>
                   <p class="experience__description">
@@ -350,10 +308,7 @@
         </div>
       </div>
 
-      <div
-        class="card profilesummary__cardbody education"
-        *ngIf="profile?.educationalDetails?.length"
-      >
+      <div class="card profilesummary__cardbody education" *ngIf="profile?.educationalDetails?.length">
         <div class="card-body">
           <div class="row">
             <div class="col-sm-11">
@@ -366,12 +321,10 @@
             </div>
           </div>
 
-          <ng-container
-            *ngFor="
+          <ng-container *ngFor="
               let education of profile?.educationalDetails;
               let last = last
-            "
-          >
+            ">
             <div class="row">
               <div class="col-2"></div>
               <div class="col-10">
@@ -383,8 +336,7 @@
                   Year of passing:
                   <span class="education__yop">
                     {{ education?.yearofPassing.month }}/
-                    {{ education?.yearofPassing.year }}</span
-                  >
+                    {{ education?.yearofPassing.year }}</span>
                 </p>
                 <p class="education__degree">
                   Degree:
@@ -405,10 +357,7 @@
         </div>
       </div>
 
-      <div
-        class="card profilesummary__cardbody certification"
-        *ngIf="profile?.certifications?.length"
-      >
+      <div class="card profilesummary__cardbody certification" *ngIf="profile?.certifications?.length">
         <div class="card-body">
           <div class="row">
             <div class="col-sm-11">
@@ -422,28 +371,21 @@
               </a>
             </div>
           </div>
-          <ng-container
-            *ngFor="
+          <ng-container *ngFor="
               let certification of profile?.certifications;
               let last = last
-            "
-          >
+            ">
             <div class="row">
               <div class="col-2"></div>
               <div class="col-10">
                 <p class="certification__Name">
                   {{ certification?.name }}
                   <span class="certification__issueDate">
-                    {{ certification?.month }} / {{ certification?.year }}</span
-                  >
+                    {{ certification?.month }} / {{ certification?.year }}</span>
                 </p>
-                <a
-                  href="{{
+                <a href="{{
                     APIURL + 'static/certificates/' + certification.certificate
-                  }}"
-                  target="_blank"
-                  [download]="certification.certificate"
-                >
+                  }}" target="_blank" [download]="certification.certificate">
                   <i class="fa fa-download" aria-hidden="true"></i>
                   {{ certification.certificate }}
                 </a>
@@ -461,23 +403,19 @@
         <div class="card-body">
           <h5 class="profile-details__card-title">Candidate profile</h5>
           <div class="card-body-text">
-            <label class="candidateprofile_stength"
-              >Profile strength- <span> 70% </span>
+            <label class="candidateprofile_stength">Profile strength- <span> 70% </span>
             </label>
           </div>
           <div class="card-body-text">
-            <label class="candidateprofile_stength"
-              >Salary strength- <span> 40% </span>
+            <label class="candidateprofile_stength">Salary strength- <span> 40% </span>
             </label>
           </div>
           <div class="card-body-text">
-            <label class="candidateprofile_stength"
-              >Social contact reach- <span> 50% </span>
+            <label class="candidateprofile_stength">Social contact reach- <span> 50% </span>
             </label>
           </div>
           <div class="card-body-text">
-            <label class="candidateprofile_stength"
-              >Skill strength- <span> 50% </span>
+            <label class="candidateprofile_stength">Skill strength- <span> 50% </span>
             </label>
           </div>
         </div>
@@ -490,22 +428,11 @@
             <p>Actively looking for opportunity :</p>
             <div class="btn-group btn-group-toggle" data-toggle="buttons">
               <label class="btn btn-light active">
-                <input
-                  type="radio"
-                  name="options"
-                  id="option1"
-                  autocomplete="off"
-                  checked
-                />
+                <input type="radio" name="options" id="option1" autocomplete="off" checked />
                 Yes
               </label>
               <label class="btn btn-light">
-                <input
-                  type="radio"
-                  name="options"
-                  id="option2"
-                  autocomplete="off"
-                />No
+                <input type="radio" name="options" id="option2" autocomplete="off" />No
               </label>
             </div>
           </div>
@@ -520,35 +447,19 @@
           <div class="row">
             <div class="col">
               <!-- Button trigger modal -->
-              <button
-                type="button"
-                class="btn btn-light"
-                data-toggle="modal"
-                data-target="#exampleModalCenter"
-              >
+              <button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter">
                 Upload video
               </button>
               <!-- Modal -->
-              <div
-                class="modal fade"
-                id="exampleModalCenter"
-                tabindex="-1"
-                role="dialog"
-                aria-labelledby="exampleModalCenterTitle"
-                aria-hidden="true"
-              >
+              <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog"
+                aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
                 <div class="modal-dialog modal-dialog-centered" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
                       <h5 class="modal-title" id="exampleModalLongTitle">
                         Add Video
                       </h5>
-                      <button
-                        type="button"
-                        class="close"
-                        data-dismiss="modal"
-                        aria-label="Close"
-                      >
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
@@ -560,11 +471,7 @@
                       </p>
                     </div>
                     <div class="modal-footer">
-                      <button
-                        type="button"
-                        class="btn btn-secondary"
-                        data-dismiss="modal"
-                      >
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">
                         Close
                       </button>
                       <button type="button" class="btn btn-primary">

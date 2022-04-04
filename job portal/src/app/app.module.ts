@@ -31,6 +31,7 @@ import { NgxEditorModule } from "ngx-editor";
 import { FeedbackFormComponent } from './Components/feedback-form/feedback-form.component';
 import { CandidatedashboardComponent } from './Components/CandidateDashboard/candidatedashboard/candidatedashboard.component';
 import { MomentModule } from 'angular2-moment';
+import { LandingPageComponent } from './Components/landing-page/landing-page.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +51,7 @@ import { MomentModule } from 'angular2-moment';
     JobViewComponent,
     FeedbackFormComponent,
     CandidatedashboardComponent,
+    LandingPageComponent,
     
   ],
   imports: [

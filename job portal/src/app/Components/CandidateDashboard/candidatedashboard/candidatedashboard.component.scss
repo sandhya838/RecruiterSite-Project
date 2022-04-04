@@ -1,28 +1,61 @@
 img {
-    background-color: var(--festival);
+  background-color: var(--festival);
 }
-.profile-view-number{
-    color: var(--secondaryAqua);
-    font-size: 22px;
+.profile-view-number {
+  color: var(--secondaryAqua);
+  font-size: 22px;
 }
-.candidateDashboard{
-    p{
-        margin-bottom: 7px;
-    }
-    &__card{
-        border: 1px solid #ebf0f6;;
-        // box-shadow: 0 2px 5px rgb(133 140 148 / 40%), 0 0 1px #c4c7cc;
-        box-shadow: 0 1px 2px 0 rgb(0 106 194 / 20%);
-    }
-    &__card:hover{
-        // box-shadow: 1px 2px 5px 3px var(--grayLightWarm);
-        // box-shadow: 0 8px 10px rgba(133 140 148 / 20%), 0 0 2px #a0a2a5;
-        box-shadow: 0 3px 8px 0 rgb(0 106 194 / 20%);
+.candidateDashboard {
+  p {
+    margin-bottom: 7px;
+  }
+  &__card {
+    border: 1px solid #ebf0f6;
+    // box-shadow: 0 2px 5px rgb(133 140 148 / 40%), 0 0 1px #c4c7cc;
+    box-shadow: 0 1px 2px 0 rgb(0 106 194 / 20%);
+  }
+  &__card:hover {
+    // box-shadow: 1px 2px 5px 3px var(--grayLightWarm);
+    // box-shadow: 0 8px 10px rgba(133 140 148 / 20%), 0 0 2px #a0a2a5;
+    box-shadow: 0 3px 8px 0 rgb(0 106 194 / 20%);
     cursor: pointer;
-    }
+  }
 }
-.candidateDashboard{
-    &__container {
-        max-width: 1350px !important;
-    }
+.candidateprofile_strength {
+  margin-bottom: 0px;
+}
+.candidateDashboard {
+  &__container {
+    max-width: 1350px !important;
+  }
+}
+//
+
+.navbar {
+  overflow: hidden;
+  background-color: #f8f9fa !important;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+}
+
+.navbar a {
+  float: left;
+  display: block;
+  color: var(--black);
+  background-color: var(--main);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.navbar a:hover {
+  background-color: var(--main);
+  color: var(--black);
+}
+
+.navbar a.active {
+  background-color: var(--main);
+  color: var(--secondaryAqua);
 }

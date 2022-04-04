@@ -37,7 +37,7 @@ export class CompanyDetailsComponent implements OnInit {
     this.getCountries();
     this.viewPort = window.innerWidth > 991 ? true : false;
     this.userForm = this.formBuilder.group({
-      location: ["", [Validators.required]],
+      location: ["", []],
       description: ["", [Validators.required]],
       country: ["", [Validators.required]],
       turnOver: [
