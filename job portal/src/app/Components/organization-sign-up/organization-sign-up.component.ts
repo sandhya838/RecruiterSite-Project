@@ -10,7 +10,7 @@ import { OrganizationSignInService } from "src/app/services/organization-sign-in
 import { CommonService } from "src/app/services/common.service";
 import { FileUploadValidators } from "@iplab/ngx-file-upload";
 import { ConfigService } from "src/app/config.service";
-import { filter } from "rxjs/operators";
+import { combineLatest } from "rxjs";
 
 @Component({
   selector: "app-organization-sign-up",
@@ -55,33 +55,45 @@ export class OrganizationSignUpComponent implements OnInit {
     private configService: ConfigService
   ) {}
 
-  getCountries() {
-    this.configService
-      .getCountries()
-      .pipe(filter(Boolean))
-      .subscribe((response: any) => {
-        this.countries = response.countries;
-      });
-  }
+  // getCountries() {
+  //   this.configService
+  //     .getCountries()
+  //     .pipe(filter(Boolean))
+  //     .subscribe((response: any) => {
+  //       this.countries = response.countries;
+  //     });
+  // }
 
-  getCurrentCountryDetails() {
-    this.configService
-      .getCurrentCountryDetails()
-      .pipe(filter(Boolean))
-      .subscribe((response: any) => {
-        this.countries.forEach((country: any) => {
-          if (country.code === response.countryCode) {
-            this.selectedPhoneCode = country.dial_code;
-            this.signUp.get("countryCode")?.setValue(this.selectedPhoneCode);
-            this.signUp.get("countryCode")?.updateValueAndValidity();
-          }
-        });
-      });
-  }
+  // getCurrentCountryDetails() {
+  //   this.configService
+  //     .getCurrentCountryDetails()
+  //     .pipe(filter(Boolean))
+  //     .subscribe((response: any) => {
+  //       this.countries.forEach((country: any) => {
+  //         if (country.code === response.countryCode) {
+  //           this.selectedPhoneCode = country.dial_code;
+  //           this.signUp.get("countryCode")?.setValue(this.selectedPhoneCode);
+  //           this.signUp.get("countryCode")?.updateValueAndValidity();
+  //         }
+  //       });
+  //     });
+  // }
 
   ngOnInit(): void {
-    this.getCountries();
-    this.getCurrentCountryDetails();
+    combineLatest([
+      this.configService.getCountries(),
+      this.configService.getCurrentCountryDetails(),
+    ]).subscribe(([countries, currentCountry]: any) => {
+      this.countries = countries.countries;
+      this.countries.forEach((country: any) => {
+        if (country.code === currentCountry.countryCode) {
+          this.selectedPhoneCode = country.dial_code;
+          this.signUp.get("countryCode")?.setValue(this.selectedPhoneCode);
+          this.signUp.get("countryCode")?.updateValueAndValidity();
+          console.log(" this.selectedPhoneCode", this.selectedPhoneCode);
+        }
+      });
+    });
   }
 
   get getControl() {

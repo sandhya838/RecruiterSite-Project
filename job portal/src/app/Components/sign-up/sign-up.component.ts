@@ -7,7 +7,7 @@ import {
 } from "@angular/forms";
 import { Router } from "@angular/router";
 import { FileUploadValidators } from "@iplab/ngx-file-upload";
-import { filter } from "rxjs/operators";
+import { combineLatest } from "rxjs";
 import { ConfigService } from "src/app/config.service";
 import { CommonService } from "src/app/services/common.service";
 import { SigninService } from "src/app/signin.service";
@@ -54,31 +54,20 @@ export class SignUpComponent implements OnInit {
         FileUploadValidators.filesLimit(1),
       ]),
     });
-    this.getCountries();
-    this.getCurrentCountryDetails();
-  }
-  getCountries() {
-    this.configService
-      .getCountries()
-      .pipe(filter(Boolean))
-      .subscribe((response: any) => {
-        this.countries = response.countries;
+    combineLatest([
+      this.configService.getCountries(),
+      this.configService.getCurrentCountryDetails(),
+    ]).subscribe(([countries, currentCountry]: any) => {
+      this.countries = countries.countries;
+      this.countries.forEach((country: any) => {
+        if (country.code === currentCountry.countryCode) {
+          this.selectedPhoneCode = country.dial_code;
+          this.signUp.get("countryCode")?.setValue(this.selectedPhoneCode);
+          this.signUp.get("countryCode")?.updateValueAndValidity();
+          console.log(" this.selectedPhoneCode", this.selectedPhoneCode);
+        }
       });
-  }
-
-  getCurrentCountryDetails() {
-    this.configService
-      .getCurrentCountryDetails()
-      .pipe(filter(Boolean))
-      .subscribe((response: any) => {
-        this.countries.forEach((country: any) => {
-          if (country.code === response.countryCode) {
-            this.selectedPhoneCode = country.dial_code;
-            this.signUp.get("countryCode")?.setValue(this.selectedPhoneCode);
-            this.signUp.get("countryCode")?.updateValueAndValidity();
-          }
-        });
-      });
+    });
   }
 
   get getControl() {
