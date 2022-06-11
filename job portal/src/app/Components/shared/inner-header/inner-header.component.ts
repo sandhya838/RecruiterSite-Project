@@ -10,6 +10,8 @@ import { CONSTANTS } from "src/app/helper/constants";
 export class InnerHeaderComponent implements OnInit {
   user: any;
   menu = CONSTANTS.MENUS;
+  isProfileUpdated = "";
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {
@@ -19,6 +21,9 @@ export class InnerHeaderComponent implements OnInit {
         : (sessionStorage.getItem("user") as any)
     );
     this.user = userData;
+    this.isProfileUpdated = this.user?.isProfileUpdated
+      ? "/profile-summary"
+      : "/profile/about-you";
   }
 
   onLogOut() {

@@ -2,31 +2,70 @@
   <div class="container jobs mb-3" *ngFor="let job of recommendedJobs">
     <div class="card jobs__wrapper border">
       <div class="row">
-        <div class="col-2">
+        <div class="col-2" *ngIf="job.createdBy.logo">
           <img
             class="jobs__logo"
             [src]="APIURL + 'static/logo/' + job.createdBy.logo"
             alt="{{ job.createdBy.name }}"
           />
+          <div class="jobs__orgname">
+            {{job.organizationName}}
+          </div>
         </div>
-        <div class="col-8">
+        <div class="col-8 px-0 ">
           <h5 class="card-title">
-            <a href="..">{{ job.title }}</a>
+            <a>{{ job.title }}</a>
           </h5>
           <p class="job-card-container__company-name">
             {{ job.createdBy.name }}
           </p>
-          <p class="job-card-container__company-location">
-            {{ job.createdBy.city }},{{ job.createdBy.state }},
-            {{ job.createdBy.country }}
-          </p>
-          <p class="job-card-container__salary">
-            <i class="fa fa-money" aria-hidden="true"></i>18,000 per month
-          </p>
+          <div class="row">
+            <div class="col-sm">
+                <i class="fa fa-suitcase" aria-hidden="true"></i>
+                <span
+                  *ngFor="let experiance of job?.experiance"
+                  class="badge badge-light"
+                >
+                  {{ experiance.name }}
+                </span>
+            </div>
+            <div class="col-sm">
+             
+                <i class="fa fa-map-marker" aria-hidden="true"></i>
+                <span
+                  *ngFor="let location of job?.location"
+                  class="badge badge-light"
+                >
+                  {{ location.name }}
+                </span>
+            </div>
+          </div>
+          <div class="row" *ngIf="job?.skills?.primary?.length">
+            <div class="col-sm">
+              <label>Primary skill: </label>
+              <span
+                *ngFor="let skills of job?.skills?.primary;let last = last"
+                class="badge badge-light"
+              >
+                {{ skills.name }} <span *ngIf="!last">;</span>&nbsp;</span
+              >
+            </div>
+          </div>
+          <div class="row job-card-container__secondaryskill" *ngIf="job?.skills?.secondary?.length">
+            <div class="col-sm">
+              <label>Secondary skill: </label>
+              <span
+                *ngFor="let skills of job?.skills?.secondary;let last = last"
+                class="badge badge-light"
+              >
+                {{ skills.name }}<span *ngIf="!last">;</span> &nbsp;</span
+              >
+            </div>
+          </div>
           <p class="card-text">
             <i class="fa fa-clock-o" aria-hidden="true"></i
             ><small class="text-muted">
-              {{ job.createdDate | date: "mm-dd-yyyy" }}</small
+              {{ job.createdDate | date: "dd-MM-yyyy" }}</small
             >
           </p>
         </div>
