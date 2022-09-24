@@ -1,4 +1,4 @@
-const BASEURL = "http://23.95.228.167:4080/";
+const BASEURL = "http://149.57.131.115:3000/";
 //const BASEURL = "http://localhost:3000/";
 export const CONSTANTS = {
   MAX_FILE_SIZE: 1024 * 1024 * 5, // in MB max file size is 5MB
